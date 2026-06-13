@@ -108,10 +108,8 @@ export default function Sandbox() {
   const [activeMethod, setActiveMethod] = useState('');
   const [rightTab, setRightTab] = useState('player');
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  // —— 面板宽度（可拖拽调整，刷新记忆）——
-  const [playerRatio, setPlayerRatio] = useState(() => {
-    try { return parseFloat(localStorage.getItem('sb-player-ratio') || '0.55'); } catch { return 0.55; }
-  });
+  // —— 面板宽度（可拖拽调整，刷新记忆；初始值固定避免 SSR hydration 不一致）——
+  const [playerRatio, setPlayerRatio] = useState(0.55);
   const [isDragging, setIsDragging] = useState(false);
 
   const infoPanelRef = useRef(null);
@@ -339,6 +337,9 @@ export default function Sandbox() {
       const h = parseInt(window.localStorage.getItem('CodeMirrorHeight'), 10);
       if (h >= MIN_EDITOR_H && h <= MAX_EDITOR_H) setEditorHeight(h);
       if (window.localStorage.getItem('SbConsoleCollapsed') === '1') setConsoleCollapsed(true);
+      // 恢复面板宽度比例（在 useEffect 中读取，避免 SSR hydration 不一致）
+      const r = parseFloat(window.localStorage.getItem('sb-player-ratio'));
+      if (!isNaN(r) && r > 0.1 && r < 0.9) setPlayerRatio(r);
     } catch (e) { /* ignore */ }
   }, []);
 

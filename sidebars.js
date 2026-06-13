@@ -34,10 +34,19 @@ const sidebars = {
       collapsible: false,
       items: [
         'tutorials/multi-video',
+        'tutorials/framework-integration',
         'tutorials/explorer',
         'tutorials/explorer-guideline',
         'tutorials/cloud-deploy',
         'tutorials/revision-history',
+      ],
+    },
+    {
+      type: 'category',
+      label: '帮助',
+      collapsible: false,
+      items: [
+        'tutorials/faq',
       ],
     },
   ],
@@ -67,6 +76,7 @@ const sidebars = {
       items: [
         'api/events/edit-helper',
         'api/events/tools',
+        'api/events/camera-tour',
       ],
     },
     {

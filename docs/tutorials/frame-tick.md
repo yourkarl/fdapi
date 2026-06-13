@@ -121,7 +121,59 @@ tick
 如下示例代码：
 
 ```html
-<!doctype html> <html> <head> <meta charset="utf-8"> <title>TICK-FollowVideoProjection</title> <script type="text/javascript" src="../../ac_conf.js"></script> <script type="text/javascript" src="../../ac.min.js"></script> <style type="text/css"> body { color: white; background-color: black; } </style> </head> <body> Tick Test <hr> <div id="info1"></div><br> <div id="info2"></div> </body> </html> <script> window.onload = async function () { new DigitalTwinAPI(); } /** * tick事件 监听每一帧操作 */ async function tick(frame) { //获取无人机每一帧实时位置 注意：tick方法里禁止调用耗时接口 否则会导致视频流卡顿影响交互 let resultStr = await fdapi.customObject.get('co1'); //反序列化 let result = JSON.parse(resultStr); //调试显示代码 //document.getElementById('info').innerText = `[Frame:${frame}] ` + JSON.stringify(result); //当前每帧的车辆位置 let currentPos = result.data[0].location; let currentRoa = result.data[0].rotation; //显示无人机实时位置 朝向 document.getElementById('info1').innerText = "无人机实时位置: \n"+ currentPos; document.getElementById('info2').innerText = "无人机实时朝向: \n"+ currentRoa; if (result.command == CommandType.CustomObject_Get) { //当前每帧的无人机位置 let location = result.data[0].location; let rotation = result.data[0].rotation; let vp1 = { id: "vp1", location: location, rotation: [rotation[0] - 45, rotation[1], rotation[2]], }; //根据无人机位置朝向更新视频投影 fdapi.videoProjection.update(vp1); } } </script>
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>TICK-FollowVideoProjection</title>
+  <script type="text/javascript" src="../../ac_conf.js"></script>
+  <script type="text/javascript" src="../../ac.min.js"></script>
+  <style>
+    body { color: white; background-color: black; }
+  </style>
+</head>
+<body>
+  Tick Test <hr>
+  <div id="info1"></div><br>
+  <div id="info2"></div>
+</body>
+</html>
+
+<script>
+window.onload = async function () {
+  // tick 页面初始化 DigitalTwinAPI 不需要任何参数
+  new DigitalTwinAPI();
+};
+
+/**
+ * tick 事件——每帧由渲染进程回调
+ * 注意：禁止在 tick 内调用耗时接口，否则会导致视频流卡顿
+ */
+async function tick(frame) {
+  // 获取无人机每帧实时位置
+  const resultStr = await fdapi.customObject.get('co1');
+  const result    = JSON.parse(resultStr);
+
+  const currentPos = result.data[0].location;
+  const currentRoa = result.data[0].rotation;
+
+  // 在调试窗口显示实时位置和朝向
+  document.getElementById('info1').innerText = '无人机实时位置:\n' + currentPos;
+  document.getElementById('info2').innerText = '无人机实时朝向:\n' + currentRoa;
+
+  if (result.command === CommandType.CustomObject_Get) {
+    const location = result.data[0].location;
+    const rotation = result.data[0].rotation;
+
+    // 每帧根据无人机位置朝向更新视频投影
+    fdapi.videoProjection.update({
+      id:       'vp1',
+      location: location,
+      rotation: [rotation[0] - 45, rotation[1], rotation[2]],
+    });
+  }
+}
+</script>
 ```
 
 上面代码实现的功能是：每帧改变标签的值，然后获取该标签的信息，在tick页面上显示出来。代码运行效果：

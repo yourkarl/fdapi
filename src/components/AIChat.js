@@ -78,9 +78,8 @@ function hasRawCode(content) {
 
 // ---- 主组件 ----
 export default function AIChat({ onInsertCode }) {
-  const [apiKey, setApiKey] = useState(() => {
-    try { return localStorage.getItem(API_KEY_STORAGE) || ''; } catch { return ''; }
-  });
+  // SSR 兼容：初始值固定为空，hydration 后再从 localStorage 读取
+  const [apiKey, setApiKey] = useState('');
   const [keyDraft, setKeyDraft] = useState('');
   const [keyError, setKeyError] = useState('');
   const [showConfig, setShowConfig] = useState(false);
@@ -97,6 +96,14 @@ export default function AIChat({ onInsertCode }) {
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
+
+  // hydration 后从 localStorage 恢复 API Key
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem(API_KEY_STORAGE);
+      if (stored) setApiKey(stored);
+    } catch {}
+  }, []);
 
   // ---- API Key 管理 ----
   const saveKey = () => {
