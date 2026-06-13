@@ -4,7 +4,16 @@
       "PowerShell(Get-ChildItem -Recurse src | Select-Object FullName | ForEach-Object { $_.FullName.Replace\\(\"D:\\\\工作备份\\\\DTS文档改版\\\\docusaurus\\\\\", \"\"\\) })",
       "Bash(npm run *)",
       "Bash(grep -cE \"如下：$\" \"D:\\\\工作备份\\\\DTS文档改版\\\\docusaurus\\\\docs\\\\tutorials\\\\revision-history.md\")",
-      "Bash(awk '/如下：/{getline; getline; if \\($0 ~ /^#|^$/\\) c++} END{print \"可能缺失内容的小节:\", c}' \"D:\\\\工作备份\\\\DTS文档改版\\\\docusaurus\\\\docs\\\\tutorials\\\\revision-history.md\")"
+      "Bash(awk '/如下：/{getline; getline; if \\($0 ~ /^#|^$/\\) c++} END{print \"可能缺失内容的小节:\", c}' \"D:\\\\工作备份\\\\DTS文档改版\\\\docusaurus\\\\docs\\\\tutorials\\\\revision-history.md\")",
+      "Bash(node -e ' *)",
+      "Bash(grep -rhoE '通过 \\\\`api\\\\.[a-zA-Z0-9]+\\\\` 访问' docs/api)",
+      "Bash(grep -rhoE '^### `[a-zA-Z0-9_]+\\\\\\(' docs/api)",
+      "Bash(grep -rhoE '通过 \\\\`api\\\\.[a-zA-Z0-9]+\\\\`' docs/api)",
+      "Bash(grep -rloE '`api\\\\.[a-zA-Z0-9]+`' docs/api)",
+      "Bash(grep -rhoE '`api\\\\.[a-zA-Z0-9]+`' docs/api)",
+      "Bash(python gen_param_meta.py)",
+      "Bash(python3 gen_param_meta.py)",
+      "PowerShell(cd \"D:\\\\工作备份\\\\DTS文档改版\\\\docusaurus\"; \\(Get-Command python\\).Source; python --version; python gen_param_meta.py 2>&1 | Out-String)"
     ]
   }
 }

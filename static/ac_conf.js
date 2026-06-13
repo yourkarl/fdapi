@@ -4,7 +4,7 @@
  * Path: The absolute path where the SDK folder is located (for setting the path of test data in the sample code)
  */
 var HostConfig = {
-  "Player": "172.31.102.105:8080",
+  "Player": "10.128.245.150:8080",
   "Path": "C:/Users/freedo/AppData/Roaming/DTS Cloud/7.1/SDK",
   "UseHttps": false
 }

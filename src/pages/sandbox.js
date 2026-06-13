@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Layout from '@theme/Layout';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import CodeMirror from '@uiw/react-codemirror';
 import { javascript, javascriptLanguage } from '@codemirror/lang-javascript';
 import { oneDark } from '@codemirror/theme-one-dark';
 // real-examples (~700KB) 懒加载，不阻塞首屏
 import { API_COMPLETIONS } from '../data/api-completions';
 import AIChat from '../components/AIChat';
+import ParamPanel from '../components/ParamPanel';
 
 // ============================================================
 // 在线调试台 —— 迁移自旧版 main.html / int_test.js 全部功能：
@@ -81,6 +83,10 @@ function fdapiCompletions(context) {
 const fdapiCompletionExt = javascriptLanguage.data.of({ autocomplete: fdapiCompletions });
 
 export default function Sandbox() {
+  // 站点 baseUrl（如 /fdapi/）：静态资源、SDK 脚本、文档链接都需带此前缀，否则部署在子路径下会 404
+  const { siteConfig } = useDocusaurusContext();
+  const baseUrl = siteConfig.baseUrl;
+
   // —— 连接状态 ——
   const [status, setStatus] = useState('loading'); // loading|no-sdk|connecting|ready|error
   const [versionHtml, setVersionHtml] = useState('');
@@ -307,13 +313,13 @@ export default function Sandbox() {
       window.exeFunction = (fn, ms) => setTimeout(fn, ms);
 
       if (!window.__dtsSdkLoaded) {
-        try { await loadScript('/ac_conf.js'); } catch (e) { /* ac_conf.js 可选 */ }
+        try { await loadScript(baseUrl + 'ac_conf.js'); } catch (e) { /* ac_conf.js 可选 */ }
         if (!window.HostConfig) {
           window.HostConfig = { API: '127.0.0.1:4321', Player: '127.0.0.1:8889', Path: '' };
           writeLog('⚠️ 未找到 ac_conf.js，使用默认 HostConfig: ' + JSON.stringify(window.HostConfig), false, 'orange');
         }
         try {
-          await loadScript('/ac.min.js');
+          await loadScript(baseUrl + 'ac.min.js');
           window.__dtsSdkLoaded = true;
         } catch (e) {
           if (!disposed) {
@@ -431,6 +437,22 @@ export default function Sandbox() {
       writeLog(e.message, false, 'red');
       writeLog(e.stack, false, 'red');
     }
+  }, [writeLog]);
+
+  // ---------- 参数面板调节：写回代码 +（立即执行时）防抖重跑 ----------
+  const tweakTimerRef = useRef(null);
+  const onPanelTweak = useCallback((newCode) => {
+    setCode(newCode);
+    if (flagsRef.current.notExecute) return;      // 「立即执行」关闭：仅写回编辑器，不运行
+    if (!window.fdapi) return;
+    clearTimeout(tweakTimerRef.current);
+    tweakTimerRef.current = setTimeout(() => {
+      try {
+        window.eval('(async ()=>{' + newCode + '})()');
+      } catch (e) {
+        writeLog(e.message, false, 'red');
+      }
+    }, 250);
   }, [writeLog]);
 
   // ---------- 执行 JSON / 日志回放（旧版 doSendJson + execJson） ----------
@@ -709,8 +731,8 @@ export default function Sandbox() {
           {coordType !== '' && <span className="sb-chip">{coordType === '1' ? '球面坐标系' : '投影坐标系'}</span>}
 
           <span className="sb-links">
-            <a className="sb-link" href="/dts-sdk.d.ts" download title="下载 fdapi 的 TypeScript 类型声明，放入工程获得 IDE 智能提示">TS 类型声明 ⬇</a>
-            <a className="sb-link" href="/docs/api/quickstart/digital-twin-api">API 文档 ↗</a>
+            <a className="sb-link" href={baseUrl + 'dts-sdk.d.ts'} download title="下载 fdapi 的 TypeScript 类型声明，放入工程获得 IDE 智能提示">TS 类型声明 ⬇</a>
+            <a className="sb-link" href={baseUrl + 'docs/api/quickstart/digital-twin-api'}>API 文档 ↗</a>
           </span>
         </div>
 
@@ -804,6 +826,8 @@ export default function Sandbox() {
                 {/* player 容器必须保持无 React 子节点：SDK 会向其中注入 video 元素 */}
                 <div className="sb-player-box">
                   <div id="player" />
+                  {/* lil-gui 参数面板：解析当前示例代码参数，浮于视频流右上角 */}
+                  <ParamPanel code={code} onTweak={onPanelTweak} />
                   {(status === 'no-sdk' || !isCloud) && (
                     <div className="sb-player-empty">
                       {status === 'no-sdk' ? (

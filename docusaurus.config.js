@@ -85,6 +85,7 @@ const config = {
             to: '/sandbox',
             label: '🧪 在线调试',
             position: 'left',
+            target: '_blank',
           },
           {
             href: 'https://github.com/yourkarl/fdapi',
