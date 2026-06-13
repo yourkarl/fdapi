@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>WebUI Extension</title>
+    <script src="../../ac.min.js"></script>
+    <style type="text/css">
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 9pt;
+
+            overflow: scroll;
+        }
+
+        .info {
+            margin-top: 5px;
+            background-color: rgba(199, 237, 204, 0.8);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button onclick="javascript:location.reload()">Reload</button>
+        <button onclick="javascript:startTick()">Start Tick</button>
+        <button onclick="javascript:stopTick()">Stop Tick</button>
+        <button onclick="javascript:createOdline()">Create ODLine</button>
+        <button onclick="javascript:deleteOdline()">Delete ODLine</button>
+        <button onclick="javascript:getViewportSize()">GetViewportSize</button>
+        <button onclick="javascript:setData()">SetData</button>
+        <button onclick="javascript:getData()">GetData</button>
+    </div>
+    <div class="info">
+        <div id="info1"></div>
+        <hr />
+        <div id="info2"></div>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    var tagId = 'webui_tick_tag';
+
+    var tagData = {
+        id: tagId,
+        coordinate: [493237, 2491951, 2.9],
+        text: 'Tag2:0',
+        textSize: 20,
+        textColor: Color.Yellow,
+        range: [1, 10000],
+        showLine: false
+    }
+
+    window.onload = function () {
+        document.getElementById('info1').innerText = 'onload';
+
+        new DigitalTwinAPI(null, {
+            onReady: () => {
+                document.getElementById('info1').innerText = 'onReady is called.'
+            },
+            onEvent: e => {
+                document.getElementById('info2').innerText = e.eventtype;
+            },
+            onLog: (msg, noLineBreak, color) => {
+                let e = document.getElementById('info2');
+                if (e) {
+                    msg = color ? `<font color="${color}">` + msg + '</font>' : msg;
+                    e.insertAdjacentHTML('beforeend', msg + (noLineBreak ? '' : '\n'));
+                    e.scrollTop = e.scrollHeight + 100;
+                }
+            }
+        });
+    }
+
+    function startTick() {
+
+        window.i = 0;
+        fdapi.tag.delete(tagId);
+        fdapi.tag.add(tagData, o => fdapi.tag.focus(tagId, 100, 0));
+
+        window.tick = frame => {
+            let data = fdapi.tag.setText(tagId, 'Tag2:' + (i++).toString(), null);
+            document.getElementById('info1').innerText = `[Frame:${frame}] ` + JSON.stringify(tagData);
+        }
+    }
+
+    function stopTick() {
+        delete window.tick;
+
+        fdapi.tag.delete(tagId);
+        document.getElementById('info1').innerText = 'tick stopped.'
+        document.getElementById('info2').innerText = '';
+    }
+
+    function tick_next(o, frame) {
+        if (o.command == CommandType.Tag_Update) {
+            fdapi.tag.get(tagId, null);
+        }
+        else if (o.command == CommandType.Tag_Get) {
+            document.getElementById('info2').innerText = `[Frame:${frame}] ` + JSON.stringify(o);
+        }
+    }
+
+    function createOdline() {
+        fdapi.odline.clear();
+        let o = {
+            id: 'od1',
+            color: Color.Green,
+            coordinates: [[492303.65625, 2487534.5, 4.195], [491391.5625, 2487777.5, 4.2]],
+            flowRate: 1,
+            intensity: 1,
+            bendDegree: 0.5,
+            tiling: 0.5,
+            lineThickness: 15,
+            flowPointSizeScale: 30,
+            labelSizeScale: 1000,
+            lineShape: 1,
+            lineStyle: 0,
+            flowShape: 1,
+            startPointShape: 1,
+            endPointShape: 1,
+            startLabelShape: 1,
+            endLabelShape: 1
+        };
+        fdapi.odline.add(o);
+        fdapi.odline.focus(o.id);
+    }
+
+    function deleteOdline() {
+        fdapi.odline.clear();
+    }
+
+    async function getViewportSize() {
+        let res = await FdExternal.getViewportSize();
+        alert(res);
+    }
+
+    function setData() {
+        FdExternal.setData('name', 'iFreedo-元空间，新生活！');
+    }
+
+    async function getData() {
+        let val = await FdExternal.getData('name');
+        alert(val);
+    }
+
+
+</script>

@@ -1,0 +1,2708 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>DTS二次开发文档 Class: DigitalTwinPlayer</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.Cerulean.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html"><img class="branding-logo" src="../images/api-logo.svg"
+		alt="logo"/>DTS二次开发文档</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Antenna.html">Antenna</a></li><li><a href="BaseObject.html">BaseObject</a></li><li><a href="BattlefieldSimulation.html">BattlefieldSimulation</a></li><li><a href="Beam.html">Beam</a></li><li><a href="BoxTrigger.html">BoxTrigger</a></li><li><a href="Camera.html">Camera</a></li><li><a href="CameraTour.html">CameraTour</a></li><li><a href="CameraTourData.html">CameraTourData</a></li><li><a href="CameraTourKeyFrame.html">CameraTourKeyFrame</a></li><li><a href="Cesium3DTileset.html">Cesium3DTileset</a></li><li><a href="Coastline.html">Coastline</a></li><li><a href="Coord.html">Coord</a></li><li><a href="CustomMesh.html">CustomMesh</a></li><li><a href="CustomObject.html">CustomObject</a></li><li><a href="CustomTag.html">CustomTag</a></li><li><a href="DaHuaVideoFusion.html">DaHuaVideoFusion</a></li><li><a href="Decal.html">Decal</a></li><li><a href="DigitalTwinAPI.html">DigitalTwinAPI</a></li><li><a href="DigitalTwinPlayer.html">DigitalTwinPlayer</a></li><li><a href="Drone.html">Drone</a></li><li><a href="DynamicWater.html">DynamicWater</a></li><li><a href="EditHelper.html">EditHelper</a></li><li><a href="ExcavationAnalysis.html">ExcavationAnalysis</a></li><li><a href="FdExternal.html">FdExternal</a></li><li><a href="FiniteElement.html">FiniteElement</a></li><li><a href="FiniteElement2.html">FiniteElement2</a></li><li><a href="FloodFill.html">FloodFill</a></li><li><a href="Fluid.html">Fluid</a></li><li><a href="GaussianSplatting.html">GaussianSplatting</a></li><li><a href="GeoJSONLayer.html">GeoJSONLayer</a></li><li><a href="GlobeTerrain.html">GlobeTerrain</a></li><li><a href="GuideLine.html">GuideLine</a></li><li><a href="HeatMap.html">HeatMap</a></li><li><a href="HeatMap3D.html">HeatMap3D</a></li><li><a href="HighlightArea.html">HighlightArea</a></li><li><a href="HydroDynamic1D.html">HydroDynamic1D</a></li><li><a href="HydroDynamic2D.html">HydroDynamic2D</a></li><li><a href="HydrodynamicModel.html">HydrodynamicModel</a></li><li><a href="HydrodynamicModel2.html">HydrodynamicModel2</a></li><li><a href="ImageryLayer.html">ImageryLayer</a></li><li><a href="ImageryLayer2.html">ImageryLayer2</a></li><li><a href="InfoTree.html">InfoTree</a></li><li><a href="Light.html">Light</a></li><li><a href="Marker.html">Marker</a></li><li><a href="Marker3D.html">Marker3D</a></li><li><a href="MarkerLayer.html">MarkerLayer</a></li><li><a href="Misc.html">Misc</a></li><li><a href="OceanHeatMap.html">OceanHeatMap</a></li><li><a href="ODLine.html">ODLine</a></li><li><a href="Panorama.html">Panorama</a></li><li><a href="Plot.html">Plot</a></li><li><a href="Polygon.html">Polygon</a></li><li><a href="Polygon3D.html">Polygon3D</a></li><li><a href="Polyline.html">Polyline</a></li><li><a href="QueryOption.html">QueryOption</a></li><li><a href="RadiationPoint.html">RadiationPoint</a></li><li><a href="River.html">River</a></li><li><a href="Satellite.html">Satellite</a></li><li><a href="Settings.html">Settings</a></li><li><a href="SettingsPanel.html">SettingsPanel</a></li><li><a href="ShapeFileLayer.html">ShapeFileLayer</a></li><li><a href="SignalWave.html">SignalWave</a></li><li><a href="SmoothedParticleHydrodynamics.html">SmoothedParticleHydrodynamics</a></li><li><a href="SplineMesh.html">SplineMesh</a></li><li><a href="Tag.html">Tag</a></li><li><a href="TileLayer.html">TileLayer</a></li><li><a href="Tools.html">Tools</a></li><li><a href="TopologyLine.html">TopologyLine</a></li><li><a href="TrafficSimulation.html">TrafficSimulation</a></li><li><a href="Train.html">Train</a></li><li><a href="VectorField.html">VectorField</a></li><li><a href="Vehicle.html">Vehicle</a></li><li><a href="Vehicle2.html">Vehicle2</a></li><li><a href="VideoProjection.html">VideoProjection</a></li><li><a href="WaterFlowField.html">WaterFlowField</a></li><li><a href="WaterMesh.html">WaterMesh</a></li><li><a href="Weather.html">Weather</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="tutorial-API_AsyncCall.html">API_AsyncCall</a></li><li><a href="tutorial-API_AuthSDK.html">API_AuthSDK</a></li><li><a href="tutorial-API_Camera.html">API_Camera</a></li><li><a href="tutorial-API_Color.html">API_Color</a></li><li><a href="tutorial-API_Coordinates.html">API_Coordinates</a></li><li><a href="tutorial-API_Event.html">API_Event</a></li><li><a href="tutorial-API_FrameTick.html">API_FrameTick</a></li><li><a href="tutorial-API_Introduction.html">API_Introduction</a></li><li><a href="tutorial-API_MultiVideoInPage.html">API_MultiVideoInPage</a></li><li><a href="tutorial-API_ResourceDesc.html">API_ResourceDesc</a></li><li><a href="tutorial-API_Revision.html">API_Revision</a></li><li><a href="tutorial-Cloud.html">Cloud</a></li><li><a href="tutorial-Explorer.html">Explorer</a></li><li><a href="tutorial-Explorer_Guidline.html">Explorer_Guidline</a></li><li><a href="tutorial-HelloWorld.html">HelloWorld</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#ActionMode">ActionMode</a></li><li><a href="global.html#AnimationMask">AnimationMask</a></li><li><a href="global.html#APIErrorCode">APIErrorCode</a></li><li><a href="global.html#AssetType">AssetType</a></li><li><a href="global.html#BPFuncParamType">BPFuncParamType</a></li><li><a href="global.html#buildURL">buildURL</a></li><li><a href="global.html#CloudStatus">CloudStatus</a></li><li><a href="global.html#Color">Color</a></li><li><a href="global.html#CommandType">CommandType</a></li><li><a href="global.html#DroneTrailStyle">DroneTrailStyle</a></li><li><a href="global.html#fdapi">fdapi</a></li><li><a href="global.html#FieldType">FieldType</a></li><li><a href="global.html#ForwardAxis">ForwardAxis</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#HeatMapStyle">HeatMapStyle</a></li><li><a href="global.html#HydroDynamic2DStyle">HydroDynamic2DStyle</a></li><li><a href="global.html#MapMode">MapMode</a></li><li><a href="global.html#MeasurementMode">MeasurementMode</a></li><li><a href="global.html#MousePickMask">MousePickMask</a></li><li><a href="global.html#OceanHeatMapStyle">OceanHeatMapStyle</a></li><li><a href="global.html#PanelType">PanelType</a></li><li><a href="global.html#PlotStyle">PlotStyle</a></li><li><a href="global.html#Polygon3DStyle">Polygon3DStyle</a></li><li><a href="global.html#PolygonStyle">PolygonStyle</a></li><li><a href="global.html#PolylineStyle">PolylineStyle</a></li><li><a href="global.html#post">post</a></li><li><a href="global.html#RendererType">RendererType</a></li><li><a href="global.html#request">request</a></li><li><a href="global.html#ResetType">ResetType</a></li><li><a href="global.html#SM3">SM3</a></li><li><a href="global.html#sm3Digest">sm3Digest</a></li><li><a href="global.html#SplineMeshStyle">SplineMeshStyle</a></li><li><a href="global.html#UIPanelType">UIPanelType</a></li><li><a href="global.html#VectorFieldStyle">VectorFieldStyle</a></li><li><a href="global.html#VehicleViewMode">VehicleViewMode</a></li><li><a href="global.html#VERSION">VERSION</a></li><li><a href="global.html#Viewport">Viewport</a></li><li><a href="global.html#VisualType">VisualType</a></li><li><a href="global.html#WaterFlowFieldStyle">WaterFlowFieldStyle</a></li><li><a href="global.html#WaterMode">WaterMode</a></li><li><a href="global.html#WSErrorCode">WSErrorCode</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+			
+
+	<h1 class="page-title">Class: DigitalTwinPlayer</h1>
+<section>
+
+<header>
+    
+        <h2>
+        DigitalTwinPlayer
+        </h2>
+        
+            <div class="class-description"><h4>云渲染视频流对象</h4>
+<p>用于在页面上创建和显示三维视频流，并进行键盘、鼠标、触摸屏等交互操作。</p></div>
+        
+    
+</header>
+
+
+<article>
+    <div class="container-overview">
+    
+        
+<hr>
+<dt>
+    <h4 class="name" id="DigitalTwinPlayer"><span class="type-signature"></span>new DigitalTwinPlayer<span class="signature">(host, option)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>DigitalTwinPlayer类的构造函数</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>host</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>服务地址，格式如下 IP:Port，例如： <code>'192.168.1.29:8082';</code><br>
+此处的Port对应CloudMaster-&gt;服务设置-&gt;服务地址里的端口号，这里分两种情况，使用独立端口和使用1个端口，见下图所示：<br>
+<img src="../images/api/PlayerPort.png" alt=""></p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>option</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>初始化选项，支持以下属性（都是可选）</p>
+<ul>
+<li>
+<p><font color=royalblue>domId</font></p>
+<ul>
+<li>参数类型：string</li>
+<li>参数说明：HTML元素ID（它将作为要创建的Video标签的父元素），如果未设置此参数，则不传输视频流，只进行API调用<br>
+<br></li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>iid</font></p>
+<ul>
+<li>参数类型：string</li>
+<li>参数说明：云渲染实例的ID，该属性有以下两种情况：
+<ul>
+<li>（1）对于带视频流的连接（指定了domId属性），该属性是可选的，如果没有指定iid，则自动分配空闲的实例</li>
+<li>（2）对于不带视频流的API调用，该属性是必需的，必需指定云渲染实例才能进行API调用<br>
+<br></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>pid</font></p>
+<ul>
+<li>参数类型：number</li>
+<li>参数说明：指定实例要加载的工程ID，</li>
+<li>注意事项：如果实例设置中锁定了工程文件，此处如果指定的pid是另外的工程，会导致切换工程失败。<br>
+<br></li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>reset</font></p>
+<ul>
+<li>参数类型：boolean</li>
+<li>参数说明：指定是否重置实例。如果设置reset为true，每次连接（包括刷新）都会得到一个全新的实例</li>
+<li>注意事项：如果设置为true，每次刷新页面也会导致实例重启。<br>
+<br></li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>customString</font></p>
+<ul>
+<li>参数类型：string</li>
+<li>参数说明：用来存储用户自定义信息</li>
+<li>注意事项：<br>
+<br></li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>ui</font></p>
+<ul>
+<li>
+<p>参数类型：object</p>
+</li>
+<li>
+<p>参数说明：用于设置界面组件的可见性。 支持以下属性：</p>
+<ul>
+<li>
+<p><font color=royalblue>startupInfo</font></p>
+<ul>
+<li>参数类型：boolean，默认值：true</li>
+<li>参数说明：初始化过程中是否显示详细信息。<br>
+<img src="../images/api/showStartupInfo.png" alt=""></li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>statusIndicator</font></p>
+<ul>
+<li>参数类型：boolean，默认值：true</li>
+<li>参数说明：左上角闪烁的状态指示灯，可以从不同的颜色看出当前的状态，具体含义请参考 <a href="global.html#CloudStatus"><code>CloudStatus</code></a></li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>statusButton</font></p>
+<ul>
+<li>参数类型：boolean，默认值：false</li>
+<li>参数说明：左下角是否显示信息按钮，点击时，会在小窗口显示当前连接的实时运行状态；鼠标停留时，会显示当前所连接实例的详细信息。<br>
+鼠标点击效果：<img src="../images/api/StatusButtonClick.png" alt=""><br>
+鼠标悬停效果：<img src="../images/api/StatusButtonHover.png" alt=""></li>
+<li>注意事项：可以在视频流窗口上快速双击鼠标中键来显示运行状态窗口</li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>fullscreenButton</font></p>
+<ul>
+<li>参数类型：boolean，默认值：false</li>
+<li>参数说明：是否在左下角显示“全屏”按钮</li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>homeButton</font></p>
+<ul>
+<li>参数类型：boolean，默认值：false</li>
+<li>参数说明：是否在左下角显示“回到初始位置”按钮</li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>taskListBar</font></p>
+<ul>
+<li>参数类型：number，默认值：1</li>
+<li>参数说明：是否在下方显示“任务队列（API调用队列）”信息，取值如下：<br>
+0: 永不显示<br>
+1: 执行比较耗时的操作时显示<br>
+2: 一直显示<br>
+<img src="../images/api/taskListBar.png" alt=""></li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>debugEventsPanel</font></p>
+<ul>
+<li>参数类型：boolean，默认值false</li>
+<li>参数说明：是否显示触摸事件详细信息（仅用于调试）<br>
+<img src="../images/api/debugEventsPanel.png" alt=""></li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>mainUI</font></p>
+<ul>
+<li>参数类型：boolean，无默认值</li>
+<li>参数说明：是否显示Cloud工具栏。 也可以通过settings.setMainUIVisibility设置</li>
+<li>注意事项：如果设置为true就显示，如果设置为false就隐藏，如果没有设置，就保持原状。</li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>campass</font></p>
+<ul>
+<li>参数类型：boolean，无默认值</li>
+<li>参数说明：是否显示指北针。 也可以可以通过settings.setCampassVisible设置</li>
+<li>注意事项：如果设置为true就显示，如果设置为false就隐藏，如果没有设置，就保持原状。<br>
+<br></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>apiOptions</font></p>
+<ul>
+<li>参数类型：object</li>
+<li>参数说明：用于指定DigitalTwinAPI的初始化选项，具体属性值请参考 <a href="DigitalTwinAPI.html"><code>DigitalTwinAPI</code></a></li>
+<li>注意事项：初始化DigitalTwinPlayer的时候会自动创建DigitalTwinAPI对象，所以不需要再单独创建，后面可以通过getAPI()获取<br>
+<br></li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>events</font></p>
+<ul>
+<li>
+<p>参数类型：object</p>
+</li>
+<li>
+<p>参数说明：用于设置一些事件回调函数，目前可以设置以下属性：</p>
+<ul>
+<li>
+<p><font color=royalblue>onConnClose</font><br>
+参数类型：function，服务连接断开的回调函数，函数参数为event（断开事件）</p>
+</li>
+<li>
+<p><font color=royalblue>onVideoLoaded</font><br>
+参数类型：function，当视频流加载成功(loadedmetadata)后触发</p>
+</li>
+<li>
+<p><font color=royalblue>onRtcStatsReport</font><br>
+参数类型：function，用于接收视频流的状态信息，例如：帧率、码率、QP等。</p>
+</li>
+<li>
+<p><font color=royalblue>mouseKeyListener</font><br>
+参数类型：object，用于设置键盘、鼠标交互事件，后面可以随时通过 <a href="DigitalTwinPlayer.html#setActionEventEnabled"><code>DigitalTwinPlayer#setActionEventEnabled</code></a> 进行开关。<br>
+可以设置以下值（类型都是function)：</p>
+<ul>
+<li><font color=royalblue>onMouseEnter</font></li>
+<li><font color=royalblue>onMouseLeave</font></li>
+<li><font color=royalblue>onMouseMove</font></li>
+<li><font color=royalblue>onMouseDown</font></li>
+<li><font color=royalblue>onMouseUp</font></li>
+<li><font color=royalblue>onKeyDown</font></li>
+<li><font color=royalblue>onKeyUp</font></li>
+<li><font color=royalblue>onKeyPress</font></li>
+</ul>
+</li>
+</ul>
+<p>-<font color=royalblue>touchListener</font><br>
+参数类型：function，用于接收触摸事件，可以随时通过 <a href="DigitalTwinPlayer.html#setActionEventEnabled"><code>DigitalTwinPlayer#setActionEventEnabled</code></a> 进行开关。</p>
+<p>-<font color=royalblue>onLoginRequired</font><br>
+参数类型：function，如果开启了用户系统，当需要登录的时候会调用此方法。</p>
+</li>
+</ul>
+</li>
+</ul>
+<br>
+<ul>
+<li>
+<p><font color=royalblue>keyEventTarget</font></p>
+<ul>
+<li>
+<p>参数类型：string，取值：'document', 'video', 'none'，默认值'video'</p>
+</li>
+<li>
+<p>参数说明：该属性用于设置键盘的作用对象：视频标签(video)、网页文档(document)、禁用(none)。 用户可以根据自己的应用场景设置合适的键盘交互对象：</p>
+<ul>
+<li>
+<p>如果网页仅用于全屏三维展示，没有其他页面元素，可以将键盘事件设置给document，这样在任何情况下都可以随时用键盘进行漫游。</p>
+</li>
+<li>
+<p>如果页面中除了三维视频流，还有其他元素（比如文本输入框），如果这个时候，用document对象接收键盘事件，那么就会出现在文本输入框输入文字的时候，三维依然在交互的问题，这时可以将keyEventReceiver设置为'video'，即可避免这种问题。  如果keyEventReceiver设为'video', 不是任何时候都可以用键盘进行三维交互的，必须视频标签元素处于焦点状态方可（可以用TAB切换焦点 或者鼠标点击设为焦点）</p>
+</li>
+<li>
+<p>如果不需要用键盘进行三维交互，可以将此属性设为 'none'。<br>
+<br></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>password</font></p>
+<ul>
+<li>参数类型：string</li>
+<li>参数说明：设置实例的访问密码，如果服务设置了密码，那么客户端需要提供正确的密码才能连接实例<br>
+<br></li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>urlExtraInfo</font></p>
+<ul>
+<li>参数类型：object</li>
+<li>参数说明：用于给WebSocket连接的URL添加附加信息（例如认证授权信息等）<br>
+<br></li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>useBuiltinCursors</font></p>
+<ul>
+<li>参数类型：boolean，默认值true</li>
+<li>参数说明：设置是否使用内置光标，如果设置为false, 则不使用内置光标，视频窗口将一直显示箭头样式的光标<br>
+<br></li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>useHttps</font></p>
+<ul>
+<li>参数类型：boolean，默认值false</li>
+<li>参数说明：明确指定使用HTTPS进行WebSocket连接。如果使用Nginx通过Https反向代理Cloud的Http服务，为了能够正确的建立连接，需要在初始化DigitalTwinPlayer的时候设置useHttps属性为true。<br>
+<br></li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>registerEvents</font></p>
+<ul>
+<li>参数类型：boolean，默认值true</li>
+<li>参数说明：初始化时是否注册交互事件（包括键盘、鼠标、触摸）。<br>
+如果在charts设计模式下，需要将此属性设置为false，以防止视频流组件无法拖动。<br>
+<br></li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>receiveRenderEvents</font></p>
+<ul>
+<li>参数类型：boolean，默认值true</li>
+<li>参数说明：设置是否接收三维渲染进程的事件。 当在一个页面上初始化多个DigitalTwinPlayer对象，并且访问的是同一个实例时，需要设置此属性为false，否则同一个事件会收到多次。<br>
+<br></li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>enableApiCallLog</font></p>
+<ul>
+<li>参数类型：boolean，默认值false</li>
+<li>参数说明：Cloud调用接口时，是否开启客户端日志（客户端日志通过apiOptions.onlog设置）</li>
+<li>添加日期：2023.11.17<br>
+<br></li>
+</ul>
+</li>
+<li>
+<p><font color=royalblue>enableEventSync</font></p>
+<ul>
+<li>参数类型：boolean，默认值false</li>
+<li>参数说明：当在同一个页面上创建多个DigitalTwinPlayer对象时，enableEventSync属性设置为true的player对象将参与到交互同步，也就是，在一个视频流上进行键盘、鼠标、触摸操作时，这些交互事件将同步发送到其他enableEventSync属性设置为true的视频流上， 这样就可以实现多个视频流显示同样的视角，进行方案对比等功能。</li>
+<li>注意事项：后面可以通过setEnableEventSync()方法随时开关此功能</li>
+<li>添加日期：2024.08.22</li>
+</ul>
+</li>
+</ul>
+<br></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        <dl>
+            
+<hr>
+<dt class="name" id="fullscreen">
+    <h4 id="fullscreen"><span class="type-signature"></span>fullscreen<span class="type-signature"> :boolean</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>设置是否进入全屏状态，如果为true则全屏显示视频流，如果为false则退出全屏</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">boolean</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt class="name" id="fullscreen">
+    <h4 id="fullscreen"><span class="type-signature"></span>fullscreen<span class="type-signature"> :boolean</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>获取当前是否处于全屏状态</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">boolean</span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id="destroy"><span class="type-signature"></span>destroy<span class="signature">(reason)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>销毁</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>reason</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选参数，指定原因，如果初始化DigitalTwinPlayer时指定了显示调试信息，可以在界面上显示销毁的原因。</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getAPI"><span class="type-signature"></span>getAPI<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>获取DigitalTwinAPI接口</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getHost"><span class="type-signature"></span>getHost<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>获取服务器的地址（ip:port）</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getInstanceInfo"><span class="type-signature"></span>getInstanceInfo<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>获取当前所连接的实例信息</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getVideoElement"><span class="type-signature"></span>getVideoElement<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>获取用于播放Cloud视频流的video元素</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Video元素</p>
+</div>
+
+
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getVideoElementSize"><span class="type-signature"></span>getVideoElementSize<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>获取Video元素的尺寸</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>包含width,height属性的object对象</p>
+</div>
+
+
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getVideoSize"><span class="type-signature"></span>getVideoSize<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+	<dt class="important tag-deprecated method-doc-label method-doc-details-label">Deprecated:</dt>
+	
+    <dd>
+        <ul class="dummy">
+            <li>已废弃，请使用getVideoStreamSize代替</li>
+        </ul>
+    </dd>
+    
+    
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getVideoStreamSize"><span class="type-signature"></span>getVideoStreamSize<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>获取视频流的尺寸</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>包含width,height属性的object对象</p>
+</div>
+
+
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="resize"><span class="type-signature"></span>resize<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>重新调整布局</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="screen2World"><span class="type-signature"></span>screen2World<span class="signature">(x, y, fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>屏幕坐标转为投影坐标 请参考<a href="tutorial-API_Introduction.html">二次开发：四种坐标的区别</a>。<br><br>
+注意：这里的屏幕坐标是相对Video元素的坐标，坐标原点位于Video元素的左上角。</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>屏幕坐标值x</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>屏幕坐标值y</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="setActionEventEnabled"><span class="type-signature"></span>setActionEventEnabled<span class="signature">(bEnable)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>设置是否开启键盘、鼠标交互事件的回调功能</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>bEnable</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="setEnableEventSync"><span class="type-signature"></span>setEnableEventSync<span class="signature">(bEnabled)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>用于开关交互事件同步功能</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>bEnabled</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>是否开启</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="setInstanceOptions"><span class="type-signature">&lt;async> </span>setInstanceOptions<span class="signature">(o)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>设置实例选项，调用此接口可以实现在不刷新页面的情况下切换使用的实例或工程文件</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>o</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>实例选项，支持以下属性：</p>
+<ul>
+<li>iid 实例ID（如果不需要切换实例，可以不用设置此属性）</li>
+<li>pid 工程ID（如果不需要切换工程，可以不用设置此属性）</li>
+</ul></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>如果设置的参数与当前的实例的参数相同，则返回false, 否则返回true</p>
+</div>
+
+
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="setKeyEventTarget"><span class="type-signature"></span>setKeyEventTarget<span class="signature">(newVal)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>设置键盘交互事件的目标对象</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>newVal</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的值：document / video / none，具体含义请参考DigitalTwinPlayer对象的初始化方法</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="setResolution"><span class="type-signature"></span>setResolution<span class="signature">(w, h)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>设置视频流的尺寸，如果云渲染后台启用了自适应，那么视频流的分辨率也会自动调整。 如果没有启用自适应，则调用不起作用。<br>
+注意：</p>
+<ul>
+<li>视频流支持的最大分辨率为4096*4096，如果设置的宽高超过这个大小，将自动按比例缩放到合适的大小</li>
+<li>因为移动端都是高分屏，通常是CSS分辨率的几倍，所以实际设置的宽高会乘以这个系数（devicePixelRatio）</li>
+</ul>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>w</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>宽度</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>h</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>高度</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>如果云渲染后台没有开启自适应，或者设置的分辨率与当前的分辨率相同，则返回undefined。 否则返回实际设置的分辨率数组，例如： [3846,2160]</p>
+</div>
+
+
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="world2Screen"><span class="type-signature">&lt;async> </span>world2Screen<span class="signature">(x, y, z, fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>投影坐标转为屏幕坐标 请参考<a href="tutorial-API_Introduction.html">二次开发：四种坐标的区别</a><br>
+注意：这里的屏幕坐标是相对Video元素的坐标，坐标原点位于Video元素的左上角。</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>世界坐标点x</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>世界坐标点y</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>z</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>世界坐标点z</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a>
+	
+		on 2026-05-28
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

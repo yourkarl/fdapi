@@ -1,0 +1,2108 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>DTS二次开发文档 Class: VectorField</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.Cerulean.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html"><img class="branding-logo" src="../images/api-logo.svg"
+		alt="logo"/>DTS二次开发文档</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Antenna.html">Antenna</a></li><li><a href="BaseObject.html">BaseObject</a></li><li><a href="BattlefieldSimulation.html">BattlefieldSimulation</a></li><li><a href="Beam.html">Beam</a></li><li><a href="BoxTrigger.html">BoxTrigger</a></li><li><a href="Camera.html">Camera</a></li><li><a href="CameraTour.html">CameraTour</a></li><li><a href="CameraTourData.html">CameraTourData</a></li><li><a href="CameraTourKeyFrame.html">CameraTourKeyFrame</a></li><li><a href="Cesium3DTileset.html">Cesium3DTileset</a></li><li><a href="Coastline.html">Coastline</a></li><li><a href="Coord.html">Coord</a></li><li><a href="CustomMesh.html">CustomMesh</a></li><li><a href="CustomObject.html">CustomObject</a></li><li><a href="CustomTag.html">CustomTag</a></li><li><a href="DaHuaVideoFusion.html">DaHuaVideoFusion</a></li><li><a href="Decal.html">Decal</a></li><li><a href="DigitalTwinAPI.html">DigitalTwinAPI</a></li><li><a href="DigitalTwinPlayer.html">DigitalTwinPlayer</a></li><li><a href="Drone.html">Drone</a></li><li><a href="DynamicWater.html">DynamicWater</a></li><li><a href="EditHelper.html">EditHelper</a></li><li><a href="ExcavationAnalysis.html">ExcavationAnalysis</a></li><li><a href="FdExternal.html">FdExternal</a></li><li><a href="FiniteElement.html">FiniteElement</a></li><li><a href="FiniteElement2.html">FiniteElement2</a></li><li><a href="FloodFill.html">FloodFill</a></li><li><a href="Fluid.html">Fluid</a></li><li><a href="GaussianSplatting.html">GaussianSplatting</a></li><li><a href="GeoJSONLayer.html">GeoJSONLayer</a></li><li><a href="GlobeTerrain.html">GlobeTerrain</a></li><li><a href="GuideLine.html">GuideLine</a></li><li><a href="HeatMap.html">HeatMap</a></li><li><a href="HeatMap3D.html">HeatMap3D</a></li><li><a href="HighlightArea.html">HighlightArea</a></li><li><a href="HydroDynamic1D.html">HydroDynamic1D</a></li><li><a href="HydroDynamic2D.html">HydroDynamic2D</a></li><li><a href="HydrodynamicModel.html">HydrodynamicModel</a></li><li><a href="HydrodynamicModel2.html">HydrodynamicModel2</a></li><li><a href="ImageryLayer.html">ImageryLayer</a></li><li><a href="ImageryLayer2.html">ImageryLayer2</a></li><li><a href="InfoTree.html">InfoTree</a></li><li><a href="Light.html">Light</a></li><li><a href="Marker.html">Marker</a></li><li><a href="Marker3D.html">Marker3D</a></li><li><a href="MarkerLayer.html">MarkerLayer</a></li><li><a href="Misc.html">Misc</a></li><li><a href="OceanHeatMap.html">OceanHeatMap</a></li><li><a href="ODLine.html">ODLine</a></li><li><a href="Panorama.html">Panorama</a></li><li><a href="Plot.html">Plot</a></li><li><a href="Polygon.html">Polygon</a></li><li><a href="Polygon3D.html">Polygon3D</a></li><li><a href="Polyline.html">Polyline</a></li><li><a href="QueryOption.html">QueryOption</a></li><li><a href="RadiationPoint.html">RadiationPoint</a></li><li><a href="River.html">River</a></li><li><a href="Satellite.html">Satellite</a></li><li><a href="Settings.html">Settings</a></li><li><a href="SettingsPanel.html">SettingsPanel</a></li><li><a href="ShapeFileLayer.html">ShapeFileLayer</a></li><li><a href="SignalWave.html">SignalWave</a></li><li><a href="SmoothedParticleHydrodynamics.html">SmoothedParticleHydrodynamics</a></li><li><a href="SplineMesh.html">SplineMesh</a></li><li><a href="Tag.html">Tag</a></li><li><a href="TileLayer.html">TileLayer</a></li><li><a href="Tools.html">Tools</a></li><li><a href="TopologyLine.html">TopologyLine</a></li><li><a href="TrafficSimulation.html">TrafficSimulation</a></li><li><a href="Train.html">Train</a></li><li><a href="VectorField.html">VectorField</a></li><li><a href="Vehicle.html">Vehicle</a></li><li><a href="Vehicle2.html">Vehicle2</a></li><li><a href="VideoProjection.html">VideoProjection</a></li><li><a href="WaterFlowField.html">WaterFlowField</a></li><li><a href="WaterMesh.html">WaterMesh</a></li><li><a href="Weather.html">Weather</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="tutorial-API_AsyncCall.html">API_AsyncCall</a></li><li><a href="tutorial-API_AuthSDK.html">API_AuthSDK</a></li><li><a href="tutorial-API_Camera.html">API_Camera</a></li><li><a href="tutorial-API_Color.html">API_Color</a></li><li><a href="tutorial-API_Coordinates.html">API_Coordinates</a></li><li><a href="tutorial-API_Event.html">API_Event</a></li><li><a href="tutorial-API_FrameTick.html">API_FrameTick</a></li><li><a href="tutorial-API_Introduction.html">API_Introduction</a></li><li><a href="tutorial-API_MultiVideoInPage.html">API_MultiVideoInPage</a></li><li><a href="tutorial-API_ResourceDesc.html">API_ResourceDesc</a></li><li><a href="tutorial-API_Revision.html">API_Revision</a></li><li><a href="tutorial-Cloud.html">Cloud</a></li><li><a href="tutorial-Explorer.html">Explorer</a></li><li><a href="tutorial-Explorer_Guidline.html">Explorer_Guidline</a></li><li><a href="tutorial-HelloWorld.html">HelloWorld</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#ActionMode">ActionMode</a></li><li><a href="global.html#AnimationMask">AnimationMask</a></li><li><a href="global.html#APIErrorCode">APIErrorCode</a></li><li><a href="global.html#AssetType">AssetType</a></li><li><a href="global.html#BPFuncParamType">BPFuncParamType</a></li><li><a href="global.html#buildURL">buildURL</a></li><li><a href="global.html#CloudStatus">CloudStatus</a></li><li><a href="global.html#Color">Color</a></li><li><a href="global.html#CommandType">CommandType</a></li><li><a href="global.html#DroneTrailStyle">DroneTrailStyle</a></li><li><a href="global.html#fdapi">fdapi</a></li><li><a href="global.html#FieldType">FieldType</a></li><li><a href="global.html#ForwardAxis">ForwardAxis</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#HeatMapStyle">HeatMapStyle</a></li><li><a href="global.html#HydroDynamic2DStyle">HydroDynamic2DStyle</a></li><li><a href="global.html#MapMode">MapMode</a></li><li><a href="global.html#MeasurementMode">MeasurementMode</a></li><li><a href="global.html#MousePickMask">MousePickMask</a></li><li><a href="global.html#OceanHeatMapStyle">OceanHeatMapStyle</a></li><li><a href="global.html#PanelType">PanelType</a></li><li><a href="global.html#PlotStyle">PlotStyle</a></li><li><a href="global.html#Polygon3DStyle">Polygon3DStyle</a></li><li><a href="global.html#PolygonStyle">PolygonStyle</a></li><li><a href="global.html#PolylineStyle">PolylineStyle</a></li><li><a href="global.html#post">post</a></li><li><a href="global.html#RendererType">RendererType</a></li><li><a href="global.html#request">request</a></li><li><a href="global.html#ResetType">ResetType</a></li><li><a href="global.html#SM3">SM3</a></li><li><a href="global.html#sm3Digest">sm3Digest</a></li><li><a href="global.html#SplineMeshStyle">SplineMeshStyle</a></li><li><a href="global.html#UIPanelType">UIPanelType</a></li><li><a href="global.html#VectorFieldStyle">VectorFieldStyle</a></li><li><a href="global.html#VehicleViewMode">VehicleViewMode</a></li><li><a href="global.html#VERSION">VERSION</a></li><li><a href="global.html#Viewport">Viewport</a></li><li><a href="global.html#VisualType">VisualType</a></li><li><a href="global.html#WaterFlowFieldStyle">WaterFlowFieldStyle</a></li><li><a href="global.html#WaterMode">WaterMode</a></li><li><a href="global.html#WSErrorCode">WSErrorCode</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+			
+
+	<h1 class="page-title">Class: VectorField</h1>
+<section>
+
+<header>
+    
+        <h2>
+        VectorField
+        </h2>
+        
+            <div class="class-description"><p>向量场类对象，基于真实数据对风场、波浪、洋流、河流、箭头、烟雾的场数据形态进行仿真，支持tif和bin格式<br>
+一般通过api.vectorField调用其方法</p>
+<p>数据格式参考以下说明：</p>
+<ol>
+<li>流场数据最终提供给程序使用是以三维纹理的方式用于渲染，所以要求在三个维度上采样均匀，也就是采样点间隔均匀，否则会变形甚至错误。</li>
+<li>鉴于大部分气象海洋数据的坐标系都是wgs84坐标系，所以支持内部进行坐标重投影。 场如果是投影后的，可以变量控制加以区分。</li>
+<li>场数据一个bin文件是一层数据，bin文件中不再保存采样点坐标，只有三维向量(U,V,W)。采样点存储需要行优先，横向从左到右存储，纵向从上向下顺序存储。 注意：向量的方向要在一个文件里，不能分别存储。</li>
+<li>场数据导出时，每一层的数据文件必须以 （当前层索引).bin 为后缀存储。 比如 time0_isobaricInhPa2.bin， 因为配置给程序时只给一个参数，路径+time0_isobaricInhPa，后面的索引和后缀根据配置的层数自动添加循环加载数据。</li>
+<li>如果是二维向量场，第三个分量W也必须给值，可以设置为0，不能只写两个变量，程序只识别三维向量。</li>
+</ol>
+<p>bin文件结构描述：<br>
+bin文件类似于dem文件结构的一个二维数组，数组元素可以是一个浮点数（标量）或者3个浮点数（向量），按行顺序排列。<br>
+例如有321*701的bin文件，即一个321x701的行列矩阵，前701个浮点是第0行，再701个浮点是第1行，直至第320行。bin文件渲染后在空间上会对应渲染范围参数。</p>
+<p>tif文件结构描述：<br>
+所有tif文件的坐标系须和acp工程坐标系保持一致<br>
+每一个tif文件包含uvw三波段<br>
+每层是一个tif文件<br>
+所有tif文件的分辨率须保持一致</p></div>
+        
+    
+</header>
+
+
+<article>
+    <div class="container-overview">
+    
+        
+<hr>
+<dt>
+    <h4 class="name" id="VectorField"><span class="type-signature">&lt;protected> </span>new VectorField<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+	<dt class="tag-see method-doc-label method-doc-details-label">See:</dt>
+	<dd class="tag-see">
+		<ul>
+			<li><a href="DigitalTwinAPI.html#vectorField">DigitalTwinAPI#vectorField</a></li>
+			</ul>
+	</dd>
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id="add"><span class="type-signature"></span>add<span class="signature">(data, fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>添加一个或多个VectorField向量场对象</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+|
+
+<span class="param-type">array</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>构造向量场对象VectorField的数据对象，可以是Object类型或者Array类型，对于每一个VectorField对象，支持以下属性：</p>
+<ul>
+<li>
+<p><strong>id</strong>             (string)    VectorField对象ID</p>
+</li>
+<li>
+<p><strong>groupId</strong>        (string)    可选，Group分组</p>
+</li>
+<li>
+<p><strong>userData</strong>       (string)    可选，用户自定义数据</p>
+</li>
+<li>
+<p><strong>coordinateType</strong> (number)    坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0</p>
+</li>
+<li>
+<p><strong>coordinate</strong>             (array)    向量场对象的坐标位置</p>
+</li>
+<li>
+<p><strong>spawnRate</strong>              (number)   粒子每秒生成的速率，影响粒子数量</p>
+</li>
+<li>
+<p><strong>spawnRateMin</strong>           (number)   近距离粒子的生成速度，影响粒子数量</p>
+</li>
+<li>
+<p><strong>spawnRateMax</strong>           (number)   远距离粒子的生成速度，影响粒子数量</p>
+</li>
+<li>
+<p><strong>spawnRatePower</strong>         (number)   按距离插值时使用指数函数，设置指数函数的N次方，影响粒子数量</p>
+</li>
+<li>
+<p><strong>spawnLineRate</strong>          (number)   每个线条上每秒生成的粒子数量</p>
+</li>
+<li>
+<p><strong>spawnLineCap</strong>           (number)   每个线条上粒子的最大数量</p>
+</li>
+<li>
+<p><strong>repeatCount</strong>            (number)   向量场重复次数，即粒子发射器的数量，影响粒子数量</p>
+</li>
+<li>
+<p><strong>killSpeed</strong>              (number)   粒子显示的最小速度，影响粒子数量</p>
+</li>
+<li>
+<p><strong>backKill</strong>               (boolean)  是否背面剔除，影响粒子数量</p>
+</li>
+<li>
+<p><strong>vfIntensAsVelocity</strong>     (number)   场的强度到速度的缩放比例，影响粒子长度</p>
+</li>
+<li>
+<p><strong>lifeTime</strong>               (number)   粒子的生命周期，即粒子存活时间，单位：秒，影响粒子长度</p>
+</li>
+<li>
+<p><strong>lifeTimeOcean</strong>          (number)   洋流模式下粒子存活时间，仅displayMode为洋流模式生效，单位：秒，影响粒子长度</p>
+</li>
+<li>
+<p><strong>singleSpriteSize</strong>       (number)   单个粒子大小，单位米，影响粒子大小</p>
+</li>
+<li>
+<p><strong>singleSpriteSizeOcean</strong>  (number)   洋流模式下单个粒子大小，仅displayMode为洋流模式生效，单位米，影响粒子大小</p>
+</li>
+<li>
+<p><strong>lodMin</strong>                 (number)   粒子大小最小缩放比例，默认值：0.6，影响粒子大小</p>
+</li>
+<li>
+<p><strong>lodMax</strong>                 (number)   粒子大小最大缩放比例，默认值：2，影响粒子大小</p>
+</li>
+<li>
+<p><strong>lodMaxDistance</strong>         (number)   粒子大小的最大缩放距离，即从[0~lodMaxDistance]映射到[lodMin~lodMax]对粒子大小进行缩放，注意：若超过此值则使用lodMax进行缩放，影响粒子大小</p>
+</li>
+<li>
+<p><strong>lodMinDistance</strong>         (number)   粒子大小的最小缩放距离，即从[0~lodMinDistance]映射到[lodMin~lodMax]对粒子大小进行缩放，注意：若小于此值则使用lodMin进行缩放，影响粒子大小</p>
+</li>
+<li>
+<p><strong>headBrightness</strong>         (number)   粒子发射器头部粒子的亮度缩放值，默认值：0.3，值越大发射器头部的粒子越亮</p>
+</li>
+<li>
+<p><strong>vectorFieldArray</strong>       (array)    向量场点位数据数组，注意：和vectorFieldFilePath参数二选一即可</p>
+</li>
+<li>
+<p><strong>vetorFieldFilePath</strong>     (string)   包含向量场点位数据的文件路径，支持通配符（xxx{z}.tif），{z}即文件名称最后的数字序号，注意：和vectorFieldArray参数二选一即可</p>
+</li>
+<li>
+<p><strong>binFileIndex</strong>           (number)   数据文件名称开始索引，(xxx_0.tif,xxx_1.bin,xxx_2.bin...)，即从第几个bin/tif文件开始加载，默认从bin/tif文件名称数字后缀索引为0的开始加载，比如设置为0 则从xxx0.bin/xxx0.tif开始加载</p>
+</li>
+<li>
+<p><strong>depth</strong>                  (number)   向量场数据加载bin/tif的层数，范围：[0~文件最大索引值]</p>
+</li>
+<li>
+<p><strong>fileOrder</strong>              (number)   向量场数据加载bin/tif文件的堆叠顺序，0：正向堆叠（0~z层） 1：反向堆叠（z~0层）</p>
+</li>
+<li>
+<p><strong>reset</strong>                  (boolean)  向量场更新时是否对原场数据进行重置（动画拖影效果），默认：false，注意：仅对update()函数生效</p>
+</li>
+<li>
+<p><strong>displayMode</strong>            (string)   向量场的显示形态类型枚举【风场、波浪、洋流、河流、箭头、烟雾等类型】 ，参考 <a href="global.html#VectorFieldStyle"><code>VectorFieldStyle</code></a></p>
+</li>
+<li>
+<p><strong>width</strong>                  (number)   向量场分层数据宽的分辨率</p>
+</li>
+<li>
+<p><strong>height</strong>                 (number)   向量场分层数据高的分辨率</p>
+</li>
+<li>
+<p><strong>dataBounds</strong>             (array)    向量场数据包含的bbox范围和高度范围</p>
+</li>
+<li>
+<p><strong>renderBounds</strong>           (array)    待绘制的bbox范围，可以与向量场数据范围不一致，渲染裁切的部分区域</p>
+</li>
+<li>
+<p><strong>bDynamicRenderBound</strong>    (boolean)  是否动态计算渲染范围，默认：false。注意：仅球面上生效</p>
+</li>
+<li>
+<p><strong>fieldScale</strong>             (array)    向量场缩放大小</p>
+</li>
+<li>
+<p><strong>bNeedProjection</strong>        (boolean)  是否需要重投影，经纬度坐标需要设置为true，默认值：false</p>
+</li>
+<li>
+<p><strong>wkt</strong>                    (string)   重投影时的wkt字符串，为空时，默认投影到web墨卡托</p>
+</li>
+<li>
+<p><strong>offset</strong>                 (array)    向量场数据的整体偏移，默认不需要偏移</p>
+</li>
+<li>
+<p><strong>posFile</strong>                (string)   位置坐标文件路径，txt文件格式类型</p>
+</li>
+<li>
+<p><strong>vFFile</strong>                 (string)   UV流速流向的文件路径，txt文件格式类型</p>
+</li>
+<li>
+<p><strong>nDim</strong>                   (number)   流速流向数据纬度，即二维UV或者三维UVW</p>
+</li>
+<li>
+<p><strong>speedRange</strong>             (array)    流速流向的取值范围，示例：[min,max]</p>
+</li>
+<li>
+<p><strong>vecScale</strong>               (array)    向量缩放，默认值：[1,1,1]，仅支持txt文件格式类型</p>
+</li>
+<li>
+<p><strong>downsample</strong>             (number)   分辨率按此参数进行缩放的比例，一般取2的n次幂，如：2，4，6，8，16...</p>
+</li>
+<li>
+<p><strong>particleMaxNumber</strong>      (number)   粒子最大数量限制</p>
+</li>
+<li>
+<p><strong>speedPower</strong>             (number)   粒子速度的幂次方，小于1则粒子速度变小，大于1则粒子速度变大。默认值：1，注意：场内粒子的速度差距比较大时才需要设置此参数</p>
+</li>
+<li>
+<p><strong>colorStops</strong>             (array)    颜色插值对象数组，支持按速度显示对应颜色，每一个对象都有以下属性：<br>
+<p style="margin:5px 0px 0px 80px;"><b>color</b>         (Color)     速度值对应的图例颜色<br>
+<p style="margin:5px 0px 0px 80px;"><b>value</b>         (number)    速度值<br>
+<p></p></p>
+</li>
+<li>
+<p><strong>opacityStops</strong>           (array)    不透明度插值对象数组，支持按速度显示对应的不透明度，每一个对象都有以下属性：<br>
+<p style="margin:5px 0px 0px 80px;"><b>opacity</b>       (number)    速度值对应的不透明度，取值范围：[0~1]<br>
+<p style="margin:5px 0px 0px 80px;"><b>value</b>         (number)    速度值<br>
+<p></p></p>
+</li>
+<li>
+<p><strong>subFields</strong>              (array)    向量场支持的子场渲染范围会根据相机距离自动计算，定义一个或多个区域的子场来实现远近景切换Lod的效果，子场范围是依次包含的关系，第一个是从整体中指定一部分，第二个应该比第一个更小，依次类推，形成多级lod效果，每一个子场对象包含的参数如下：<br>
+<p style="margin:5px 0px 0px 80px;"><b>renderSphereOutRadius</b>        (number)   子场动态渲染的球的内径<br>
+<p style="margin:5px 0px 0px 80px;"><b>renderSphereInnerRadius</b>      (number)   子场动态渲染的球的外径<br>
+<p style="margin:5px 0px 0px 80px;"><b>startIndex</b>             (number)   父场repeatcount参数中该子场区域使用的粒子发射器数量的起始索引，剩下的粒子发射器影响父场<br>
+<p style="margin:5px 0px 0px 80px;"><b>endIndex</b>               (number)   父场repeatcount参数中该子场区域使用的粒子发射器数量的结束索引，剩下的粒子发射器影响父场<br>
+<p style="margin:5px 0px 0px 80px;"><b>singleSpriteSize</b>       (number)   子场的单个粒子大小，单位米，影响粒子大小<br>
+<p style="margin:5px 0px 0px 80px;"><b>lodMin</b>                 (number)   子场包含粒子大小的最小缩放比例，默认值：0.6，影响粒子大小<br>
+<p style="margin:5px 0px 0px 80px;"><b>lodMax</b>                 (number)   子场包含粒子大小的最大缩放比例，默认值：2.0，影响粒子大小<br>
+<p style="margin:5px 0px 0px 80px;"><b>spawnRate</b>              (number)   子场粒子每秒生成的速率，影响粒子数量<br>
+<p style="margin:5px 0px 0px 80px;"><b>spawnLineRate</b>          (number)   每个线条上每秒生成的粒子数量<br>
+<p style="margin:5px 0px 0px 80px;"><b>spawnLineCap</b>           (number)   每个线条上粒子的最大数量<br>
+<p style="margin:5px 0px 0px 80px;"><b>spawnRateMin</b>           (number)   子场近距离粒子的生成速度，影响粒子数量<br>
+<p style="margin:5px 0px 0px 80px;"><b>spawnRateMax</b>           (number)   子场远距离粒子的生成速度，影响粒子数量<br>
+<p style="margin:5px 0px 0px 80px;"><b>spawnRatePower</b>         (number)   子场粒子的密度变化曲线，即按距离插值时使用指数函数，设置指数函数的N次方，影响粒子数量<br>
+<p style="margin:5px 0px 0px 80px;"><b>lodMaxDistance</b>         (number)   子场粒子大小的最大缩放距离，即从[0~lodMaxDistance]映射到[lodMin~lodMax]对粒子大小进行缩放，注意：举例若超过此值则使用lodMax进行缩放，影响粒子大小<br>
+<p style="margin:5px 0px 0px 80px;"><b>lodMinDistance</b>         (number)   子场粒子大小的最小缩放距离，即从[0~lodMinDistance]映射到[lodMin~lodMax]对粒子大小进行缩放，注意：若小于此值则使用lodMin进行缩放，影响粒子大小<br>
+<p style="margin:5px 0px 0px 80px;"><b>lifeTime</b>               (number)   子场粒子的生命周期，即粒子存活时间，单位：秒，影响粒子长度<br>
+<p style="margin:5px 0px 0px 80px;"><b>lifeTimeMinScale</b>       (number)   子场粒子生命周期的缩放因子范围的最小值<br>
+<p style="margin:5px 0px 0px 80px;"><b>lifeTimeMaxScale</b>       (number)   子场粒子生命周期的缩放因子范围的最大值</p>
+</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">请求数据结构示例 
+        [{
+            &quot;id&quot;:&quot;vectorField&quot;,
+            &quot;coordinate&quot;:[0,0,0],
+            &quot;repeatCount&quot;:10,
+            &quot;displayMode&quot;:0,
+            &quot;width&quot;: 720,
+            &quot;height&quot;: 360,
+            &quot;binFileIndex&quot;: 0,
+            &quot;depth&quot;: 2,
+            &quot;vetorFieldFilePath&quot;: &quot;D:\\tif\\vf_{z}.tif&quot;, //通配符{z}表示从0开始加载：vf_0.tif,vf_1.tif 两层tif
+            &quot;dataBounds&quot;:[-20037508,-20037508,0,20037508,20037508,1000],
+            &quot;renderBounds&quot;: [-20037508,-20037508,0,20037508,20037508,1000],
+            &quot;fieldScale&quot;:[1,1,1],
+            &quot;bNeedProjection&quot;: false,
+            &quot;wkt&quot;: &quot;&quot;,
+            &quot;offeset&quot;: [0,0,0],
+            &quot;singleSpriteSize&quot;: 100,
+            &quot;vfIntensAsVelocity&quot;: 2,
+            &quot;spawnRate&quot;: 200,
+            &quot;lifeTime&quot;: 3,
+            &quot;colorStops&quot;:  [
+                {&quot;value&quot;: 100, &quot;color&quot;: [1,0,0,1]},
+                {&quot;value&quot;: 50,  &quot;color&quot;: [1,1,0,1]},
+                {&quot;value&quot;: 25,  &quot;color&quot;: [0,0,1,1]},
+                {&quot;value&quot;: 0,   &quot;color&quot;: [0,1,0,1]}
+            ],
+            &quot;opacityStops&quot;:  [
+                {&quot;value&quot;: 100, &quot;opacity&quot;: 1},
+                {&quot;value&quot;: 50,  &quot;opacity&quot;: 0.75},
+                {&quot;value&quot;: 25,  &quot;opacity&quot;: 0.5},
+                {&quot;value&quot;: 0,   &quot;opacity&quot;: 0}
+            ],
+            &quot;subFields&quot;: [
+                {
+                    &quot;renderBoundRatio&quot;:[0.2,0.2,1],
+                    &quot;startIndex&quot;: 0,
+                    &quot;endIndex&quot;: 2,
+                    &quot;singleSpriteSize&quot;: 50,
+                    &quot;lodMin&quot;: 1,
+                    &quot;lodMax&quot;: 1,
+                    &quot;spawnRate&quot;: 200,
+                    &quot;spawnRateMin&quot;: 100,
+                    &quot;spawnRateMax&quot;: 500,
+                    &quot;spawnRatePower&quot;: 1,
+                    &quot;lodMinDistance&quot;: 500,
+                    &quot;lodMaxDistance&quot;: 1000,
+                    &quot;lifeTime&quot;: 3,
+                    &quot;lifeTimeMinScale&quot;: 1,
+                    &quot;lifeTimeMaxScale&quot;: 2,
+                },
+            
+            ]
+        }] </pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="clear"><span class="type-signature"></span>clear<span class="signature">(fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>清空场景中所有的VectorField对象</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="delete"><span class="type-signature"></span>delete<span class="signature">(ids, fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>删除一个或多个VectorField对象</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ids</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">array</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>要删除的VectorField对象的ID或者ID数组（可以删除一个或者多个）</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="focus"><span class="type-signature"></span>focus<span class="signature">(ids, distance, flyTime, rotation, fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>自动定位到合适的观察距离</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ids</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">array</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>VectorField对象的ID或者ID数组</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>distance</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>flyTime</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>rotation</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0]</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="get"><span class="type-signature"></span>get<span class="signature">(ids, fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>根据ID获取VectorField对象的详细信息</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ids</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">array</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>要获取的VectorField对象ID或者ID数组（可以获取一个或者多个）</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">VectorField的详细信息[{
+            &quot;id&quot;:	&quot;flowField1&quot;,
+            &quot;groupId&quot;:	&quot;flowFieldGroup1&quot;,
+            &quot;userData&quot;:	&quot;myFlowFieldData&quot;,
+            &quot;coordinateType&quot;:	0,
+            ...
+            
+        }]</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="hide"><span class="type-signature"></span>hide<span class="signature">(ids, fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>隐藏VectorField对象</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ids</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">array</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>VectorField对象的ID或者ID数组</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="setViewportVisible"><span class="type-signature"></span>setViewportVisible<span class="signature">(id, vp, fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>设置向量场对象在进入多视口状态下视口可见性</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>VectorField对象ID</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>vp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Viewport">Viewport</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>视口掩码（Viewport位运算）</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="show"><span class="type-signature"></span>show<span class="signature">(ids, fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>显示VectorField对象</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>ids</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">array</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>VectorField对象的ID或者ID数组</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">(data, fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>修改一个或多个VectorField对象</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+|
+
+<span class="param-type">array</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>构造向量场对象VectorField的数据对象，可以是Object类型或者Array类型，对于每一个VectorField对象，目前只支持更新以下属性：</p>
+<ul>
+<li>
+<p><strong>id</strong>             (string)    VectorField对象ID</p>
+</li>
+<li>
+<p><strong>dataBounds</strong>             (array)    向量场数据经纬度范围和高度范围</p>
+</li>
+<li>
+<p><strong>renderBounds</strong>           (array)    待绘制的数据范围，可以与向量场数据不一致</p>
+</li>
+<li>
+<p><strong>singleSpriteSize</strong>       (number)   单个粒子大小，单位米</p>
+</li>
+<li>
+<p><strong>singleSpriteSizeOcean</strong>  (number)   洋流模式下单个粒子大小，仅displayMode为洋流模式生效，单位米</p>
+</li>
+<li>
+<p><strong>vfIntensAsVelocity</strong>     (number)   场到强度到速度的缩放比例</p>
+</li>
+<li>
+<p><strong>lifeTime</strong>               (number)   粒子的生命周期，即粒子存活时间，单位：秒，影响粒子长度</p>
+</li>
+<li>
+<p><strong>lifeTimeOcean</strong>          (number)   洋流模式下粒子存活时间，仅displayMode为洋流模式生效，单位：秒</p>
+</li>
+<li>
+<p><strong>colorStops</strong>             (array)    颜色插值对象数组，支持按速度显示对应颜色，每一个对象都有以下属性：<br>
+<p style="margin:5px 0px 0px 80px;">color         (array)     速度值对应的图例颜色<br>
+<p style="margin:5px 0px 0px 80px;">value         (number)    速度值</p>
+</li>
+<li>
+<p><strong>opacityStops</strong>           (array)    不透明度插值对象数组，支持按速度显示对应的不透明度，每一个对象都有以下属性：<br>
+<p style="margin:5px 0px 0px 80px;">opacity       (number)    速度值对应的不透明度，取值范围：[0~1]<br>
+<p style="margin:5px 0px 0px 80px;">value         (number)    速度值</p>
+</li>
+<li>
+<p><strong>fenceThickness</strong>         (number)   向量场栅栏宽度，默认值：1</p>
+</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a>
+	
+		on 2026-05-28
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

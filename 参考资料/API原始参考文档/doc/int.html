@@ -1,0 +1,76 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Interface Test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="styles/int.css">
+    <link rel="stylesheet" href="styles/tooltip.css">
+    <link rel="stylesheet" href="scripts/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="scripts/codemirror/theme/mdn-like.css">
+    <script type="text/javascript" src="scripts/jquery/jquery-3.7.0.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery/tooltip.js"></script>
+    <script type="text/javascript" src="scripts/codemirror/lib/codemirror.js"></script>
+    <script type="text/javascript" src="scripts/codemirror/lib/javascript.js"></script>
+    <script type="text/javascript" src="../../ac.min.js"></script>
+    <script type="text/javascript" src="../../ac_conf.js"></script>
+    <script type="text/javascript" src="scripts/int_test.js"></script>
+    <script type="text/javascript" src="scripts/int.js"></script>
+</head>
+
+<body>
+    <table border="0" id="mainTable">
+        <tr>
+            <td align="left" valign="top">
+                <div>
+                    <span id="spanServer">
+                        IP <input type="text" id="txtIP" size="10" onchange="onServerChanged()" />
+                        Port <input type="text" id="txtPort" size="3" onchange="onServerChanged()" />
+                        <input type="button" value="连接" id="btnConnect" onclick="connectServer()" />&emsp;
+                    </span>
+                    Version: <span id="spanVer"></span>&emsp;
+                    <a href="doc/index.html" target="_blank" class="tip-hotspot" data-tip="API开发文档">API开发文档</a>
+                    
+                    <p>API导航：<select id="apiNavigator">
+                        <option value="leftPanel">===请选择===</option>
+                        <optgroup id="projection_pcs" label="投影坐标系">
+
+                        </optgroup>
+
+                        <optgroup id="ellipsoid_gcs" label="球面坐标系">
+
+                        </optgroup>
+                    </select></p>
+                </div>
+                <div id="commonPageArea"> </div>
+            </td>
+            <td align="left" valign="top" width="80%">
+                <div style="position:fixed;">
+                    <div>
+                        <input type="checkbox" name="cbNotExecute" id="cbNotExecute"><label for="cbNotExecute" class="tip-hotspot" data-tip="命令点击后在编辑框显示代码，然后手动点击执行JS代码">命令点击不执行</label>&nbsp;
+                        <a href="javascript:doSendJson()" title="日志回放">执行JSON</a>&nbsp;
+                        <a href="javascript:doExecCode()">执行JS</a> &nbsp;
+                        <!-- <a href="javascript:clearCodeEditor()">清除代码 </a>&emsp; -->
+                        <a href="javascript:increaseHeight(100)">高度+ </a> &nbsp;
+                        <a href="javascript:increaseHeight(-100)">高度- </a> &emsp;
+                        &nbsp;&nbsp;
+                        <input type="checkbox" checked="checked" name="cbAutoClearLog" id="cbAutoClearLog"><label for="cbAutoClearLog" title="日志积累到一定量后自动清除，避免影响性能">自动清屏</label>
+                        <input type="checkbox" checked="checked" name="closeLog" id="closeLog"><label for="closeLog" title="关闭后可以避免日志输出太多，影响页面渲染性能">开启日志</label>
+                        &nbsp;&nbsp;
+                        <a href="javascript:clearScreen()" title="清除页面右侧的输出日志">清除日志-></a>
+                        <div id="codeEditor" style="margin-top:8px;">
+                            <textarea id="textAreaCode"></textarea>
+                        </div>
+                    </div>
+                    <div style="margin:9px;">
+                        <a href="javascript:clearScreen()">清除日志</a>&emsp;
+                        <br />
+                    </div>
+                    <pre id="infoPanel"></pre>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

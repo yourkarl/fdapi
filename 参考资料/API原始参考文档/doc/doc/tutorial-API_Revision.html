@@ -1,0 +1,5093 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>DTS二次开发文档 Tutorial: API_Revision</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.Cerulean.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html"><img class="branding-logo" src="../images/api-logo.svg"
+		alt="logo"/>DTS二次开发文档</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Antenna.html">Antenna</a></li><li><a href="BaseObject.html">BaseObject</a></li><li><a href="BattlefieldSimulation.html">BattlefieldSimulation</a></li><li><a href="Beam.html">Beam</a></li><li><a href="BoxTrigger.html">BoxTrigger</a></li><li><a href="Camera.html">Camera</a></li><li><a href="CameraTour.html">CameraTour</a></li><li><a href="CameraTourData.html">CameraTourData</a></li><li><a href="CameraTourKeyFrame.html">CameraTourKeyFrame</a></li><li><a href="Cesium3DTileset.html">Cesium3DTileset</a></li><li><a href="Coastline.html">Coastline</a></li><li><a href="Coord.html">Coord</a></li><li><a href="CustomMesh.html">CustomMesh</a></li><li><a href="CustomObject.html">CustomObject</a></li><li><a href="CustomTag.html">CustomTag</a></li><li><a href="DaHuaVideoFusion.html">DaHuaVideoFusion</a></li><li><a href="Decal.html">Decal</a></li><li><a href="DigitalTwinAPI.html">DigitalTwinAPI</a></li><li><a href="DigitalTwinPlayer.html">DigitalTwinPlayer</a></li><li><a href="Drone.html">Drone</a></li><li><a href="DynamicWater.html">DynamicWater</a></li><li><a href="EditHelper.html">EditHelper</a></li><li><a href="ExcavationAnalysis.html">ExcavationAnalysis</a></li><li><a href="FdExternal.html">FdExternal</a></li><li><a href="FiniteElement.html">FiniteElement</a></li><li><a href="FiniteElement2.html">FiniteElement2</a></li><li><a href="FloodFill.html">FloodFill</a></li><li><a href="Fluid.html">Fluid</a></li><li><a href="GaussianSplatting.html">GaussianSplatting</a></li><li><a href="GeoJSONLayer.html">GeoJSONLayer</a></li><li><a href="GlobeTerrain.html">GlobeTerrain</a></li><li><a href="GuideLine.html">GuideLine</a></li><li><a href="HeatMap.html">HeatMap</a></li><li><a href="HeatMap3D.html">HeatMap3D</a></li><li><a href="HighlightArea.html">HighlightArea</a></li><li><a href="HydroDynamic1D.html">HydroDynamic1D</a></li><li><a href="HydroDynamic2D.html">HydroDynamic2D</a></li><li><a href="HydrodynamicModel.html">HydrodynamicModel</a></li><li><a href="HydrodynamicModel2.html">HydrodynamicModel2</a></li><li><a href="ImageryLayer.html">ImageryLayer</a></li><li><a href="ImageryLayer2.html">ImageryLayer2</a></li><li><a href="InfoTree.html">InfoTree</a></li><li><a href="Light.html">Light</a></li><li><a href="Marker.html">Marker</a></li><li><a href="Marker3D.html">Marker3D</a></li><li><a href="MarkerLayer.html">MarkerLayer</a></li><li><a href="Misc.html">Misc</a></li><li><a href="OceanHeatMap.html">OceanHeatMap</a></li><li><a href="ODLine.html">ODLine</a></li><li><a href="Panorama.html">Panorama</a></li><li><a href="Plot.html">Plot</a></li><li><a href="Polygon.html">Polygon</a></li><li><a href="Polygon3D.html">Polygon3D</a></li><li><a href="Polyline.html">Polyline</a></li><li><a href="QueryOption.html">QueryOption</a></li><li><a href="RadiationPoint.html">RadiationPoint</a></li><li><a href="River.html">River</a></li><li><a href="Satellite.html">Satellite</a></li><li><a href="Settings.html">Settings</a></li><li><a href="SettingsPanel.html">SettingsPanel</a></li><li><a href="ShapeFileLayer.html">ShapeFileLayer</a></li><li><a href="SignalWave.html">SignalWave</a></li><li><a href="SmoothedParticleHydrodynamics.html">SmoothedParticleHydrodynamics</a></li><li><a href="SplineMesh.html">SplineMesh</a></li><li><a href="Tag.html">Tag</a></li><li><a href="TileLayer.html">TileLayer</a></li><li><a href="Tools.html">Tools</a></li><li><a href="TopologyLine.html">TopologyLine</a></li><li><a href="TrafficSimulation.html">TrafficSimulation</a></li><li><a href="Train.html">Train</a></li><li><a href="VectorField.html">VectorField</a></li><li><a href="Vehicle.html">Vehicle</a></li><li><a href="Vehicle2.html">Vehicle2</a></li><li><a href="VideoProjection.html">VideoProjection</a></li><li><a href="WaterFlowField.html">WaterFlowField</a></li><li><a href="WaterMesh.html">WaterMesh</a></li><li><a href="Weather.html">Weather</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="tutorial-API_AsyncCall.html">API_AsyncCall</a></li><li><a href="tutorial-API_AuthSDK.html">API_AuthSDK</a></li><li><a href="tutorial-API_Camera.html">API_Camera</a></li><li><a href="tutorial-API_Color.html">API_Color</a></li><li><a href="tutorial-API_Coordinates.html">API_Coordinates</a></li><li><a href="tutorial-API_Event.html">API_Event</a></li><li><a href="tutorial-API_FrameTick.html">API_FrameTick</a></li><li><a href="tutorial-API_Introduction.html">API_Introduction</a></li><li><a href="tutorial-API_MultiVideoInPage.html">API_MultiVideoInPage</a></li><li><a href="tutorial-API_ResourceDesc.html">API_ResourceDesc</a></li><li><a href="tutorial-API_Revision.html">API_Revision</a></li><li><a href="tutorial-Cloud.html">Cloud</a></li><li><a href="tutorial-Explorer.html">Explorer</a></li><li><a href="tutorial-Explorer_Guidline.html">Explorer_Guidline</a></li><li><a href="tutorial-HelloWorld.html">HelloWorld</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#ActionMode">ActionMode</a></li><li><a href="global.html#AnimationMask">AnimationMask</a></li><li><a href="global.html#APIErrorCode">APIErrorCode</a></li><li><a href="global.html#AssetType">AssetType</a></li><li><a href="global.html#BPFuncParamType">BPFuncParamType</a></li><li><a href="global.html#buildURL">buildURL</a></li><li><a href="global.html#CloudStatus">CloudStatus</a></li><li><a href="global.html#Color">Color</a></li><li><a href="global.html#CommandType">CommandType</a></li><li><a href="global.html#DroneTrailStyle">DroneTrailStyle</a></li><li><a href="global.html#fdapi">fdapi</a></li><li><a href="global.html#FieldType">FieldType</a></li><li><a href="global.html#ForwardAxis">ForwardAxis</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#HeatMapStyle">HeatMapStyle</a></li><li><a href="global.html#HydroDynamic2DStyle">HydroDynamic2DStyle</a></li><li><a href="global.html#MapMode">MapMode</a></li><li><a href="global.html#MeasurementMode">MeasurementMode</a></li><li><a href="global.html#MousePickMask">MousePickMask</a></li><li><a href="global.html#OceanHeatMapStyle">OceanHeatMapStyle</a></li><li><a href="global.html#PanelType">PanelType</a></li><li><a href="global.html#PlotStyle">PlotStyle</a></li><li><a href="global.html#Polygon3DStyle">Polygon3DStyle</a></li><li><a href="global.html#PolygonStyle">PolygonStyle</a></li><li><a href="global.html#PolylineStyle">PolylineStyle</a></li><li><a href="global.html#post">post</a></li><li><a href="global.html#RendererType">RendererType</a></li><li><a href="global.html#request">request</a></li><li><a href="global.html#ResetType">ResetType</a></li><li><a href="global.html#SM3">SM3</a></li><li><a href="global.html#sm3Digest">sm3Digest</a></li><li><a href="global.html#SplineMeshStyle">SplineMeshStyle</a></li><li><a href="global.html#UIPanelType">UIPanelType</a></li><li><a href="global.html#VectorFieldStyle">VectorFieldStyle</a></li><li><a href="global.html#VehicleViewMode">VehicleViewMode</a></li><li><a href="global.html#VERSION">VERSION</a></li><li><a href="global.html#Viewport">Viewport</a></li><li><a href="global.html#VisualType">VisualType</a></li><li><a href="global.html#WaterFlowFieldStyle">WaterFlowFieldStyle</a></li><li><a href="global.html#WaterMode">WaterMode</a></li><li><a href="global.html#WSErrorCode">WSErrorCode</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			<section class="tutorial-section">
+
+<header>
+    
+
+    <h2>API_Revision</h2>
+</header>
+
+<article>
+    <h3>2026.05.27  Satellite卫星系统新增高亮和取消高亮方法</h3>
+<ol>
+<li>
+<h5>Satellite新增方法如下：</h5>
+<ul>
+<li>highlight()       打开指定卫星的缩略图的高亮效果</li>
+<li>unHighlight()  取消指定卫星缩略图的高亮效果</li>
+<li>unHighlightAll()   取消所有卫星缩略图的高亮效果</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2026.05.22  Weather天气对象新增方法、Satellite卫星系统新增方法</h3>
+<ol>
+<li>
+<h5>Weather新增设置大气环境的瑞利散射系数方法如下：</h5>
+<ul>
+<li>setRayleighScatter(rayleighScatter)   设置大气环境的瑞利散射系数</li>
+</ul>
+</li>
+<li>
+<h5>Satellite新增方法如下：</h5>
+<ul>
+<li>addLinkage(data)       添加卫星之间的连接线，卫星运动时连接线会跟随同步运动</li>
+<li>updateLinkage(data)  更新卫星连接线的参数配置</li>
+<li>deleteLinkage(data)   删除指定的卫星连接线</li>
+<li>clearLinkage(data)    清空卫星之间的连接线</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2026.05.12  多边形对象Polygon新增填充透明渐变样式和参数</h3>
+<ol>
+<li>
+<h5>Polygon新增参数如下：</h5>
+<ul>
+<li><strong>gradualWidth</strong>    (number)        透明渐变的间隔宽度，单位：米，默认值：10</li>
+<li><strong>outerAlpha</strong>    (number)     多边形填充的透明度渐变的起始值，取值范围：[0~1]，默认值：0.3</li>
+<li><strong>innerAlpha</strong>      (number)     多边形填充的透明度渐变的结束值，取值范围：[0~1]，默认值：1</li>
+</ul>
+</li>
+<li>
+<h5>Polygon新增style样式枚举如下：</h5>
+<ul>
+<li><strong>AlphaGradualBorder</strong>    透明渐变边界</li>
+</ul>
+</li>
+</ol>
+<br> 
+<h3>2026.05.09  Plot对象新增停止绘制方法、 VectorField对象新增子场参数</h3>
+<ol>
+<li>
+<h5>Plot对象新增停止绘制方法stopDraw()</h5>
+<ul>
+<li><strong>stopDraw()</strong>     停止绘制Plot</li>
+</ul>
+</li>
+<li>
+<h5>VectorField对象新增子场参数如下：</h5>
+<ul>
+<li><strong>spawnLineRate</strong>      (number)   每个线条上每秒生成的粒子数量</li>
+<li><strong>spawnLineCap</strong>        (number)   每个线条上粒子的最大数量</li>
+</ul>
+</li>
+</ol>
+<br> 
+<h3>2026.05.08  新增引导线GuideLine对象及操作方法</h3>
+<ol>
+<li>
+<h5>引导线GuideLine对象新增操作方法如下</h5>
+<ul>
+<li><strong>add()</strong>   	  添加引导线</li>
+<li><strong>update()</strong>   更新引导线</li>
+<li><strong>clear()</strong>       清空引导线</li>
+<li><strong>focus()</strong>      定位引导线</li>
+<li><strong>hide()</strong>       隐藏引导线</li>
+<li><strong>show()</strong>     显示引导线</li>
+<li><strong>delete()</strong>   删除引导线</li>
+<li><strong>get()</strong>         查询引导线</li>
+</ul>
+</li>
+</ol>
+<br> 
+<h3>2026.04.28  Polyline对象新增贴合模型方法</h3>
+<ol>
+<li>
+<h5>新增方法如下：</h5>
+<ul>
+<li>attachObject(array)    设置一个或多个Polyline对象的起点和终点跟随对应的模型移动</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2026.04.27  向量场VectorFiled对象新增支持子场的系列参数</h3>
+<ol>
+<li>
+<h5>新增子场subFields包含的参数如下：</h5>
+<ul>
+<li><strong>renderSphereOutRadius</strong>      (array)      子场渲染的粒子发射器的外径</li>
+<li><strong>renderSphereInnerRadius</strong>      (array)    子场渲染的粒子发射器内径</li>
+<li><strong>startIndex</strong>             (number)   父场repeatcount参数中该子场区域使用的粒子发射器数量的起始索引，剩下的粒子发射器影响父场</li>
+<li><strong>endIndex</strong>               (number)   父场repeatcount参数中该子场区域使用的粒子发射器数量的结束索引，剩下的粒子发射器影响父场</li>
+<li><strong>singleSpriteSize</strong>   (number)   子场的单个粒子大小，单位米，影响粒子大小</li>
+<li><strong>lodMin</strong>                   (number)   子场包含粒子大小的最小缩放比例，默认值：0.6，影响粒子大小</li>
+<li><strong>lodMax</strong>                  (number)   子场包含粒子大小的最大缩放比例，默认值：2.0，影响粒子大小</li>
+<li><strong>spawnRate</strong>                  (number)   子场粒子每秒生成的速率，影响粒子数量</li>
+<li><strong>spawnRateMin</strong>           (number)   子场近距离粒子的生成速度，影响粒子数量</li>
+<li><strong>spawnRateMax</strong>          (number)   子场远距离粒子的生成速度，影响粒子数量</li>
+<li><strong>spawnRatePower</strong>      (number)   子场粒子的密度变化曲线，即按距离插值时使用指数函数，设置指数函数的N次方，影响粒子数量</li>
+<li><strong>lodMaxDistance</strong>         (number)   子场粒子大小的最大缩放距离，即从[0~lodMaxDistance]映射到[lodMin~lodMax]对粒子大小进行缩放，注意：举例若超过此值则使用lodMax进行缩放，影响粒子大小</li>
+<li><strong>lodMinDistance</strong>         (number)   子场粒子大小的最小缩放距离，即从[0~lodMinDistance]映射到[lodMin~lodMax]对粒子大小进行缩放，注意：若小于此值则使用lodMin进行缩放，影响粒子大小</li>
+<li><strong>lifeTime</strong>                        (number)   子场粒子的生命周期，即粒子存活时间，单位：秒，影响粒子长度</li>
+<li><strong>lifeTimeMinScale</strong>       (number)   子场粒子生命周期的缩放因子范围的最小值</li>
+<li><strong>lifeTimeMaxScale</strong>      (number)   子场粒子生命周期的缩放因子范围的最大值</li>
+</ul>
+</li>
+</ol>
+<br> 
+<h3>2026.04.17 CustomObject对象新增拆分楼层方法、SmoothedParticleHydrodynamics对象新增支持vtk文件和bin文件添加方法、新增海岸线Coastline对象及操作方法</h3>
+<ol>
+<li>
+<h5>CustomObject对象新增拆分楼层方法如下</h5>
+<ul>
+<li><strong>cutFloor(obj)</strong>    把一个CustomObject类型的楼宇模型按层高拆分为若干个指定的楼层，注意：仅支持CustomObject类型的楼宇模型</li>
+</ul>
+</li>
+<li>
+<h5>SmoothedParticleHydrodynamics对象新增支持vtk和bin文件加载方法</h5>
+<ul>
+<li><strong>addByBin(data)</strong>    根据bin文件添加sph</li>
+<li><strong>addByVtk(data)</strong>    根据vtk文件添加sph</li>
+</ul>
+</li>
+<li>
+<h5>海岸线Coastline对象新增操作方法如下</h5>
+<ul>
+<li><strong>add()</strong>   	  添加海岸线</li>
+<li><strong>update()</strong>   更新海岸线</li>
+<li><strong>clear()</strong>       清空海岸线</li>
+<li><strong>focus()</strong>      定位海岸线</li>
+<li><strong>hide()</strong>       隐藏海岸线</li>
+<li><strong>show()</strong>     显示海岸线</li>
+<li><strong>delete()</strong>   删除海岸线</li>
+<li><strong>get()</strong>         查询海岸线</li>
+</ul>
+</li>
+</ol>
+<br> 
+<h3>2026.04.02 Tools对象新增河道横断面分析方法</h3>
+<ol>
+<li>
+<h5>新增河道横断面分析方法如下</h5>
+<ul>
+<li><strong>riverCrossSectionByShp(option)</strong>    根据河道的shp文件和tif高程对河道横断面进行分析</li>
+<li><strong>riverCrossSection(option)</strong>          根据河道的坐标点和tif高程对河道横断面进行分析</li>
+</ul>
+</li>
+</ol>
+<br> 
+<h3>2026.03.31  Settings对象新增方法、Plot对象新增方法</h3>
+<ol>
+<li>
+<h5>Settings新增设置VTPK标注的深度检测的相机高度阈值方法</h5>
+<ul>
+<li><strong>setLabelLayerDepthTestHeight(height)</strong>     {number} depthTestHeight 深度检测的相机高度阈值，高于此高度时深度检测失效，默认值：2000米，单位：米</li>
+</ul>
+</li>
+<li>
+<h5>Plot对象新增根据ID获取Plot对象的描边坐标集合方法</h5>
+<ul>
+<li><strong>getStrokeCoordinates(ids)</strong>    {string|array} ids 要获取的Plot对象ID或者ID数组（可以获取一个或者多个）</li>
+</ul>
+</li>
+</ol>
+<br> 
+<h3>2026.03.25  GeoJsonLayer对象新增控制自定义材质底面和顶面是否绘制参数</h3>
+<ol>
+<li>
+<h5>GeoJsonLayer对象新增参数</h5>
+<ul>
+<li><strong>generateTop</strong>           (boolean)    可选参数，是否生成顶面，默认：true</li>
+<li><strong>generateBottom</strong>    (boolean)    可选参数，是否生成底面，默认：true</li>
+</ul>
+</li>
+</ol>
+<br> 
+<h3>2026.03.20  态势标绘制对象新增绘制方法startDraw()、Hydrodynamic2d更新方法新增参数</h3>
+<ol>
+<li>
+<h5>根据鼠标交互获取到坐标值创建对象</h5>
+<ul>
+<li><strong>startDraw(plot)</strong>     进入标绘对象的手工绘制模式，</li>
+</ul>
+</li>
+<li>
+<h5>新增两类样式枚举，自由绘制线和面</h5>
+<ul>
+<li>
+<p><strong>FreehandLineString</strong>     自由线绘制：从鼠标左键按下不松开然后光标开始移动进行绘制线段，光标经过的所有坐标位置按顺序连成线，直到松开鼠标左键结束绘制。</p>
+</li>
+<li>
+<p><strong>FreehandPolygon</strong>     自由面绘制：从鼠标左键按下不松开然后光标开始移动进行绘制平面，光标经过的所有坐标位置首尾闭合绘制成面，直到松开鼠标左键结束绘制</p>
+</li>
+</ul>
+</li>
+<li>
+<h5>Hydrodynamic2d对象update()更新方法新增参数</h5>
+<ul>
+<li><strong>vertexWaterDepth</strong> (boolean) 是否根据顶点水深插值，默认值：true</li>
+</ul>
+</li>
+</ol>
+<br> 
+<h3>2026.03.14  Tools测量方法新增测量单位和坐标支持</h3>
+<ol>
+<li>
+<h5>Tools设置测量方法新增以下参数</h5>
+<ul>
+<li><strong>unitType</strong>      (number)     单位 0：米 1：千米 2：英尺，默认值 0</li>
+<li><strong>coordinates</strong>  (array)  待测量坐标数组，不传则根据交互拾取的坐标进行测量</li>
+</ul>
+</li>
+</ol>
+<br> 
+<h3>2026.03.13  卫星仿真对象Satellite新增操作方法</h3>
+<ol>
+<li>
+<h5>Satellite对象新增如下方法：</h5>
+<ul>
+<li><strong>setFollow()</strong>   设置相机跟随卫星移动</li>
+<li><strong>showSatellite()</strong>   显示卫星模型及文字标签</li>
+<li><strong>hideSatellite()</strong> 隐藏卫星模型及文字标签</li>
+<li><strong>showText()</strong>      显示卫星文字标签</li>
+<li><strong>hideText()</strong>        隐藏卫星文字标签</li>
+<li><strong>showModel()</strong>  显示卫星模型</li>
+<li><strong>hideModel()</strong>    隐藏卫星模型</li>
+</ul>
+</li>
+</ol>
+<br> 
+<h3>2026.03.05  Weather天气对象新增设置太阳颜色方法</h3>
+<ol>
+<li>
+<h5>Weather对象新增setSunColor(color)方法</h5>
+<ul>
+<li><strong>setSunColor()</strong>      (color)     自定义太阳颜色<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2026.03.04  球面工程Weather天气对象新增以下方法</h3>
+<ol>
+<li>
+<h5>Weather对象新增以下三个方法</h5>
+<ul>
+<li><strong>setEarthCloudIntensity()</strong>      (number)     设置地球大气云层的亮度，取值范围：[0~1]，设置0则隐藏云层</li>
+<li><strong>setEarthNightLightIntensity()</strong>      (number)     设置地球夜晚灯光的亮度，取值范围：[0~1]，设置0则关闭灯光</li>
+<li><strong>setEarthStarBackgroundIntensity()</strong>      (number)     设置星空背景的亮度，取值范围：[0~1]，设置0则关闭星空背景亮度</li>
+</ul>
+</li>
+</ol>
+<br> 
+<h3>2026.02.11  新增卫星仿真对象Satellite及操作方法、Cesium3DTileset对象新增属性</h3>
+<ol>
+<li>
+<h5>Satellite对象新增如下方法：</h5>
+<ul>
+<li><strong>add()</strong>   	  添加卫星</li>
+<li><strong>update()</strong>   更新卫星</li>
+<li><strong>clear()</strong>       清空卫星</li>
+<li><strong>focus()</strong>      定位卫星</li>
+<li><strong>callBPFunction()</strong>  调用卫星模型的蓝图函数</li>
+<li><strong>getBPFunction()</strong>  查询卫星模型的蓝图函数</li>
+</ul>
+</li>
+<li>
+<h5>Cesium3DTileset对象新增是否参与光照属性</h5>
+<ul>
+<li><strong>enableLighting</strong> (boolean)   可选，服务是否参与光照，默认值：true<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2026.02.02  Tools下测量方法新增角度测量</h3>
+<ol>
+<li>
+<h5>新增角度测量枚举：</h5>
+<ul>
+<li><strong>Angle</strong>      (number)      7 角度测量  返回测量的角度</li>
+</ul>
+</li>
+</ol>
+<br> 
+<h3>2026.01.28  视频投影对象VideoProjection新增属性、Vehicle2新增设置视口可见性方法</h3>
+<ol>
+<li>
+<h5>新增如下属性：</h5>
+<ul>
+<li><strong>screen</strong>         (boolean)   是否显示投影幕布，默认值：false</li>
+<li><strong>screenDistance</strong> (number)    投影幕布的显示距离，单位：米，默认值：100米</li>
+</ul>
+</li>
+<li>
+<h5>Vehicle2新增设置视口可见性方法</h5>
+<ul>
+<li><strong>setViewportVisible()</strong>      多视口状态下，设置Vehicle2对象在各视口的可见性</li>
+</ul>
+</li>
+</ol>
+<br> 
+<h3>2026.01.12  GlobeTerrain对象新增属性</h3>
+<ol>
+<li>
+<h5>新增如下属性：</h5>
+<ul>
+<li><strong>alpha</strong>      (number)      可选，球面网络图层的透明度，取值范围：[0,1]</li>
+<li><strong>bConvertSRGB</strong>  (boolean) 可选，球面网络图层服务加载时颜色效果是否开启RGB模式转换为SRGB，默认值：true</li>
+</ul>
+</li>
+</ol>
+<br> 
+<h3>2026.01.09  Polyline和Polygon对象新增arcType属性</h3>
+<ol>
+<li>
+<h5>Polyline和Polygon对象新增如下属性：</h5>
+<ul>
+<li><strong>arcType</strong>        (number)        球面地形下绘制贴地弧线的类型，0：劣弧 1：优弧，默认值：0</li>
+</ul>
+</li>
+</ol>
+<br> 
+<h3>2025.12.25  无人机Drone对象新增轨迹线和灯光秀属性</h3>
+<ol>
+<li>
+<h5>无人机Drone对象新增如下属性：</h5>
+<ul>
+<li><strong>trailType</strong>      (number)     可选，轨迹线类型，取值范围：[0,1,2]，0:无轨迹 1：拖尾效果 2：条带效果，默认值：0</li>
+<li><strong>trailColor</strong>     (Color)      可选，轨迹线颜色</li>
+<li><strong>trailDuration</strong>  (number)     可选，轨迹持续时间，单位：秒，默认值：0</li>
+<li><strong>lightColor</strong>     (Color)      可选，灯光秀颜色</li>
+</ul>
+</li>
+</ol>
+<br> 
+<h3>2025.12.24 Settings对象新增方法、Marker对象设置聚合样式方法新增参数</h3>
+<ol>
+<li>
+<h5>Settings对象新增设置网络图层服务的裂分等级的偏移量方法</h5>
+<ul>
+<li><strong>setImageryLayerLevelOffset(LevelOffset)</strong>   	  设置网络图层服务的裂分等级的偏移量，如果图层服务当前某处的裂分等级为6级，参数设置为1则当前图层服务的裂分等级增加1变为7级。</li>
+</ul>
+</li>
+<li>
+<h5>Marker对象setClusterStyle(style)方法新增参数</h5>
+<ul>
+<li><strong>enableAnimation</strong> (boolean) 是否开启marker聚合时的透明渐变动画，默认值：true</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.12.23  GeoJSONLayer对象新增根据属性高亮要素的操作方法</h3>
+<ol>
+<li>
+<h5>GeoJSONLayer对象新增操作方法如下：</h5>
+<ul>
+<li><strong>highlightFeatureByProperty()</strong>   	  根据要素包含的属性字段名称和对应的值来高亮GeoJSONLayer图层对象内部对应的要素区域</li>
+<li><strong>unHighlightFeatureByProperty()</strong>   根据要素包含的属性字段名称和对应的值来取消高亮GeoJSONLayer图层对象内部对应的要素区域</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.12.16  Settings对象新增设置VTPK标注的符号化设置方法</h3>
+<ol>
+<li>
+<h5>设置VTPK标注的符号化配置参数方法如下</h5>
+<ul>
+<li><strong>setLabelLayerScaleRatio(scale)</strong>           设置VTPK标注的缩放显示百分比</li>
+<li><strong>setLabelLayerLineSpace(lineSpace)</strong>           设置VTPK线性标注的间隔</li>
+<li><strong>setLabelLayerSymbolAvoidance(type)</strong>           设置VTPK标注符号避让方式</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.12.12  球面GlobeTerrain新增操作方法</h3>
+<ol>
+<li>
+<h5>设置更新初始化加载的影像服务、新增全参数图层服务</h5>
+<ul>
+<li><strong>setImagery(imageryUrl, imageryResourceUrl)</strong>           设置更新初始化加载的影像服务</li>
+<li><strong>setImageryBySchemaParams(option)</strong>     根据自定义参数的图层服务来更新初始化球面加载的影像服务</li>
+<li><strong>addImageryLayerBySchemaParams(obj)</strong> 根据自定义参数添加球面网络地图服务，如WMTS/WMS/MVT/TMS服务等网络图层服务</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.12.09  相机Camera对象支持按顺序播放多个导览，查询导览列表接口返回导览所在目录信息</h3>
+<ol>
+<li>
+<h5>按顺序播放多个导览、返回导览所在目录信息</h5>
+<ul>
+<li><strong>playAnimation(ids)</strong>           按传入索引序号的顺序播放一个或多个动画导览</li>
+<li><strong>getAnimationList</strong>     返回新增foldername属性 导览所在文件夹名称 acp工程内全局唯一</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.11.27  新增光滑粒子流体动力学仿真对象(SmoothedParticleHydrodynamics)及相关操作方法</h3>
+<ol>
+<li>
+<h5>SmoothedParticleHydrodynamics对象新增如下方法：</h5>
+<ul>
+<li><strong>add()</strong>   	  添加SmoothedParticleHydrodynamics对象</li>
+<li><strong>update()</strong>   更新SmoothedParticleHydrodynamics对象</li>
+<li><strong>clear()</strong>       清空SmoothedParticleHydrodynamics对象</li>
+<li><strong>show()</strong>      显示SmoothedParticleHydrodynamics对象</li>
+<li><strong>hide()</strong>        隐藏SmoothedParticleHydrodynamics对象</li>
+<li><strong>delete()</strong>    删除SmoothedParticleHydrodynamics对象</li>
+<li><strong>get()</strong>          查询SmoothedParticleHydrodynamics对象</li>
+<li><strong>focus()</strong>     定位SmoothedParticleHydrodynamics对象</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.11.21  新增GlobeTerrain类，包含球面坐标系下Cesium球面地形影像服务的相关操作方法、ImageryLayer2新增设置图层顺序方法</h3>
+<ol>
+<li>
+<h5>GlobeTerrain对象新增如下方法：</h5>
+<ul>
+<li><strong>init()</strong>   	      初始化Cesium球面的地形和影像</li>
+<li><strong>destroy()</strong>    销毁Cesium球面的地形和影像</li>
+<li><strong>show()</strong>      显示Cesium球面的地形和影像</li>
+<li><strong>hide()</strong>        隐藏Cesium球面的地形和影像</li>
+<li><strong>addImageryLayer()</strong>       添加Cesium球面的图层服务，支持类型包含WMS、WMTS、MVT和TMS</li>
+<li><strong>deleteImageryLayer()</strong>  删除图层服务</li>
+<li><strong>clearImageryLayer()</strong>    清空图层服务</li>
+<li><strong>setImageryLayerDrawOrder()</strong>    设置图层服务的顺序</li>
+</ul>
+</li>
+<li>
+<h5>ImageryLayer2对象新增如下方法：</h5>
+<ul>
+<li><strong>setDrawOrder()</strong>    设置图层服务的顺序</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.11.18  高级载具Vehicle2对象更新方法支持更新载具颜色</h3>
+<ol>
+<li>
+<h5>update方法新增支持以下参数</h5>
+<ul>
+<li><strong>color</strong>   	   可选，载具自定义涂装颜色，注意：若传入此颜色参数会覆盖掉内置的涂装颜色（colorType）</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.11.06  海洋热力图新增海浪样式枚举OceanHeatMapStyle</h3>
+<ol>
+<li>
+<h5>新增波浪样式枚举</h5>
+<ul>
+<li><strong>Arrow()</strong>     箭头样式</li>
+<li><strong>Flow()</strong>   	   流场样式</li>
+<li><strong>Wave()</strong>   	  波浪样式</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.11.04  GeoJSONLayer对象新增参数、新增无人机Drone对象及相关操作方法</h3>
+<ol>
+<li>
+<h5>无人机Drone对象新增如下方法：</h5>
+<ul>
+<li><strong>add()</strong>   	  添加无人机Drone</li>
+<li><strong>update()</strong>   更新无人机Drone</li>
+<li><strong>clear()</strong>       清空无人机Drone</li>
+<li><strong>show()</strong>      显示无人机Drone</li>
+<li><strong>hide()</strong>        隐藏无人机Drone</li>
+<li><strong>delete()</strong>    删除无人机Drone</li>
+<li><strong>get()</strong>          查询无人机Drone</li>
+<li><strong>moveTo()</strong>       无人机Drone运动</li>
+<li><strong>focus()</strong>  定位无人机Drone</li>
+</ul>
+</li>
+<li>
+<h5>GeoJSONLayer对象新增深度检测和反走样参数</h5>
+<ul>
+<li><strong>depthTest</strong>            (boolean)   是否做深度检测，默认开启：true，true会被遮挡，false不会被遮挡</li>
+<li><strong>enableAntialias</strong>  (boolean)   是否开启反走样，默认开启：true</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.10.24  向量场VectorField对象新增bDynamicRenderBound参数</h3>
+<ol>
+<li>
+<h5>向量场VectorField对象新增bDynamicRenderBound参数</h5>
+<ul>
+<li><strong>bDynamicRenderBound</strong>    (boolean)  是否动态计算渲染范围，默认：false</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.10.23  CustomObject、 GeoJSONLayer、SplineMesh新增参数</h3>
+<ol>
+<li>
+<h5>CustomObject对象下的addByTileLayer()方法新增visible参数</h5>
+<ul>
+<li><strong>visible</strong>        (boolean)   可选，复制模型完成后是否显示，默认：true</li>
+</ul>
+</li>
+<li>
+<h5>GeoJSONLayer对象新增标注字体大小和颜色属性</h5>
+<ul>
+<li><strong>textColor</strong>       (Color)        可选，文字标注的字体颜色，默认颜色：[1,1,1,1]</li>
+<li><strong>textSize</strong>         (number)    可选，文字标注的字体大小，默认大小：24</li>
+</ul>
+</li>
+<li>
+<h5>SplineMesh新增meshPath参数</h5>
+<ul>
+<li><strong>meshPath</strong>       (string)     可选(和style二选一)，路径模型自定义样式的打包路径，注意：若传入此路径会自动覆盖style样式</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.10.20  新增OceanHeatMap海洋热力图对象</h3>
+<ol>
+<li>
+<h5>新增以下操作方法</h5>
+<ul>
+<li><strong>add()</strong>   	  添加对象</li>
+<li><strong>update()</strong>   更新对象</li>
+<li><strong>clear()</strong>       清空对象</li>
+<li><strong>show()</strong>      显示对象</li>
+<li><strong>hide()</strong>        隐藏对象</li>
+<li><strong>delete()</strong>    删除对象</li>
+<li><strong>get()</strong>          查询对象</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.10.14  向量场VectorField对象新增fileOrder参数</h3>
+<ol>
+<li>
+<h5>向量场VectorField对象新增fileOrder参数</h5>
+<ul>
+<li><strong>fileOrder</strong>          (number)   向量场数据加载bin/tif文件的堆叠顺序，0：正向堆叠（0~z层） 1：反向堆叠（z~0层）</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.10.09  三维热力图对象新增billboards参数</h3>
+<ol>
+<li>
+<h5>HeatMap3d新增billboards参数</h5>
+<ul>
+<li><strong>billboards</strong>            (object)    三维热力图对象始终朝向相机（广告牌效果），仅体素模式下displayMode=1生效，包含参数如下： scale   (number)     面向屏幕的缩放值</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.09.16  SplineMesh对象增加按组操作方法</h3>
+<ol>
+<li>
+<h5>新增按组操作方法如下：</h5>
+<ul>
+<li>增加showByGroupId()方法</li>
+<li>增加hideByGroupId()方法</li>
+<li>增加deleteByGroupId()方法</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.09.15  Settings对象新增设置鼠标悬浮和移动事件返回的时间间隔方法</h3>
+<ol>
+<li>
+<h5>新增设置鼠标悬浮和移动事件返回的时间间隔方法</h5>
+<ul>
+<li>setMouseHoverTime(time) 设置鼠标悬浮事件返回的时间间隔</li>
+<li>setMouseMoveTime(time)  设置鼠标移动事件返回的时间间隔</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.09.05  三维热力图对象新增执行盒子剖切时是否裁切体素参数</h3>
+<ol>
+<li>
+<h5>HeatMap3d新增clipVoxel参数</h5>
+<ul>
+<li><strong>clipVoxel</strong>          (boolean)   三维热力图执行盒子剖切时是否裁切体素(displayMode:1)，默认值：true</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.08.26 Camera对象的playAnimation()方法新增mask参数</h3>
+<ol>
+<li>
+<h5>Camera对象的playAnimation()方法新增mask参数</h5>
+<ul>
+<li><strong>mask</strong>  (number) 可选，播放动画导览时生效的工程配置掩码类别，支持组合设置。请参考 <a href="global.html#AnimationMask"><code>AnimationMask</code></a></li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.08.22 TileLayer对象的setPointCloudStyle方法新增仅线框显示</h3>
+<ol>
+<li>
+<h5>TileLayer对象的setPointCloudStyle方法新增仅线框显示</h5>
+<ul>
+<li><strong>renderBoxWireframe</strong>   (number)    盒子模式下是否显示线框，取值：[0,1,2]，0不显示 1显示 2仅显示线框（隐藏面）</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.08.21  向量场VectorField对象新增参数、高斯泼溅GaussianSplatting对象新增碰撞参数、CustomObject对象focus()方法新增offset参数、HeatMap3D对象新增opacityMaskClip参数</h3>
+<ol>
+<li>
+<h5>向量场VectorField对象新增粒子发射器头部粒子的亮度控制参数</h5>
+<ul>
+<li><strong>headBrightness</strong>         (number)   粒子发射器头部粒子的亮度缩放值，默认值：1，值越大发射器头部的粒子越亮</li>
+</ul>
+</li>
+<li>
+<h5>高斯泼溅GaussianSplatting对象新增碰撞参数</h5>
+<ul>
+<li><strong>collision</strong>      (boolean)   可选，模型加载后是否开启碰撞，默认值：false</li>
+</ul>
+</li>
+<li>
+<h5>CustomObject对象focus()方法新增offset参数</h5>
+<ul>
+<li><strong>offset</strong>      (array) 可选参数，相机视角的偏移量，取值示例：[X, Y, Z]，分别是三个方向的偏移量，单位：米</li>
+</ul>
+</li>
+<li>
+<h5>HeatMap3D对象新增opacityMaskClip参数</h5>
+<ul>
+<li><strong>opacityMaskClip</strong>   (number)    三维热力图clipbox剖切支持的透明度阈值，色带colors参数内配置的颜色透明度值如果大于此值则进行剖切</li>
+</ul>
+</li>
+<li>
+<h5>Marker对象新增autoHideText参数</h5>
+<ul>
+<li><strong>autoHideText</strong>           (boolean) 打开弹窗时是否自动隐藏文字，默认值：true</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.08.12  Tools对象新增打开测量和剖切面板方法</h3>
+<ol>
+<li>
+<h5>新增以下方法</h5>
+<ul>
+<li>showMeasurePanel(type, screenPosition)  新增打开测量功能面板</li>
+<li>showClipPanel(type, screenPosition)  新增打开剖切功能面板</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.08.11  三维热力图对象新增包围盒线框颜色参数、视频投影对象新增曝光度参数</h3>
+<ol>
+<li>
+<h5>HeatMap3d新增包围盒线框颜色参数boundsColor</h5>
+<ul>
+<li><strong>boundsColor</strong>         (array)     三维热力图的包围盒1px边框的颜色，默认不显示，取值示例如白色线框：[1,1,1,1]</li>
+</ul>
+</li>
+<li>
+<h5>VideoProjection新增曝光度参数</h5>
+<ul>
+<li><strong>exposure</strong>       (number)    曝光度，取值范围：[0~3]，默认值：0.6</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.07.29  HydroDynamic2D二维水动力对象新增动态箭头配置相关参数、 Settings设置对象新增方法</h3>
+<ol>
+<li>
+<h5>新增动态箭头配置参数</h5>
+<ul>
+<li>
+<p><strong>arrowVisibleDistance</strong>  (number)  可选参数，动态箭头显示的最大距离，单位：米</p>
+</li>
+<li>
+<p><strong>dynamicArrow</strong> (number)  (object) 可选参数，动态箭头的配置参数对象如下：</p>
+   <p style="margin:10px 0px 0px 30px;">numArrows     (number)     箭头数量</P>
+     <p style="margin:10px 0px 0px 30px;">speedFactor   (number)     速度因子</P>
+ <p style="margin:10px 0px 0px 30px;">sizeScale     (number)     尺寸缩放因子</P>
+</li>
+</ul>
+</li>
+<li>
+<h5>Settings设置对象新增方法</h5>
+<ul>
+<li>setPlayerName(name,size)  联网模式（会议室）下设置角色漫游和无人机漫游模式时模型上方显示的角色名称</li>
+</ul>
+</li>
+</ol>
+  <br>
+<h3>2025.07.21  三维热力图Heatmap3D对象新增预加载和播放、暂停等方法</h3>
+<ol>
+<li>
+<h5>新增load和play、pause和setTime方法</h5>
+<ul>
+<li>load(obj) 预加载多个tif文件构成的三维热力图动画</li>
+<li>play(id)    执行播放三维热力图动画</li>
+<li>pause(id) 暂停播放三维热力图动画</li>
+<li>setTime(id,startTime)  设置从第几秒开始播放三维热力图动画</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.07.18  FiniteElement2有限元仿真对象新增过滤器相关操作方法</h3>
+<ol>
+<li>
+<h5>新增以下方法</h5>
+<ul>
+<li>applyContourFilter()  根据等值线的数值添加过滤器并展示过滤后的有限元模型分析结果</li>
+<li>applyPlaneClipFilter() 切面过滤器</li>
+<li>applyBoxClipFilter()  盒子过滤器</li>
+<li>applySphereClipFilter()  球型过滤器</li>
+<li>applyCylinderClipFilter() 圆柱体过滤器<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2025.07.10  FiniteElement2有限元仿真对象新增过滤器相关操作方法</h3>
+<ol>
+<li>
+<h5>新增以下3个方法</h5>
+<ul>
+<li>applyThresholdFilter()  根据属性字段的区间值添加过滤器并展示过滤后的有限元模型分析结果</li>
+<li>removeFilter()  移除指定的有限元模型对象添加的相关过滤器</li>
+<li>clearFilter()  清空指定的有限元模型对象添加的所有过滤器</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.07.05  图层TileLayer对象新增方法</h3>
+<ol>
+<li>
+<h5>TileLayer对象新增以下3个方法</h5>
+<ul>
+<li>highlightActorWithColor()  使用颜色去高亮一个Actor，支持设置不同的高亮颜色去高亮不同的Actor</li>
+<li>highlightActorsWithColor()  使用颜色去高亮多个Actor，支持设置不同的高亮颜色去高亮不同的Actor</li>
+<li>unHighlightAllPoints()  取消高亮点云包含所有点的高亮效果</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.07.01  FiniteElement2有限元仿真对象新增箭头符号化参数</h3>
+<ol>
+<li>
+<h5>新增箭头参数arrow</h5>
+<ul>
+<li><strong>field</strong> (string) 使用此属性字段名称对应的值符号化显示箭头</li>
+<li><strong>sizeScale</strong> (number) 可选，箭头尺寸</li>
+<li><strong>colorField</strong> (string) 颜色属性字段名称</li>
+<li><strong>lengthScale</strong> (number) 可选，箭头长度缩放值</li>
+<li><strong>colorComponent</strong> (string) 颜色属性字段对应的分量名称</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.06.26  自定义对象CustomObject和样条线对象SplineMesh新增参数</h3>
+<ol>
+<li>
+<h5>CustomObject新增曲线差值类型和差值分段数量参数</h5>
+<ul>
+<li><strong>curveType</strong>      (number)    可选，路径模型绘制时曲线的插值类型，取值范围：[0,1]，默认值：0</li>
+<li><strong>segment</strong>        (number)     可选，路径模型的绘制时曲线的插值的分段数量，默认值：10</li>
+</ul>
+</li>
+<li>
+<h5>SplineMesh对象新增曲线差值类型和差值分段数量参数</h5>
+<ul>
+<li><strong>curveType</strong>      (number)    可选，路径模型绘制时曲线的插值类型，取值范围：[0,1]，默认值：0</li>
+<li><strong>segment</strong>        (number)     可选，路径模型的绘制时曲线的插值的分段数量，默认值：10</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.06.24  新增FiniteElement2有限元仿真对象</h3>
+<ol>
+<li>
+<h5>新增以下方法</h5>
+<ul>
+<li><strong>add()</strong>   	  添加对象</li>
+<li><strong>update()</strong>   更新对象</li>
+<li><strong>clear()</strong>       清空对象</li>
+<li><strong>show()</strong>      显示对象</li>
+<li><strong>hide()</strong>        隐藏对象</li>
+<li><strong>delete()</strong>    删除对象</li>
+<li><strong>get()</strong>          查询对象</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.06.19  ImageryLayer2球面图层服务增加参数</h3>
+<ol>
+<li>
+<h5>新增颜色效果转换参数</h5>
+<ul>
+<li><strong>bConvertSRGB</strong>    (boolean) 可选，球面网络图层服务加载时颜色效果是否开启RGB模式转换为SRGB，默认值：true</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.05.29  有限元对象新增特征线信息参数</h3>
+<ol>
+<li>
+<h5>新增特征线参数</h5>
+<ul>
+<li><strong>filePath</strong>     (string)   包含特征线信息的文件路径</li>
+<li><strong>color</strong>          (Color)    特征线的颜色</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.05.22  ImageryLayer2对象新增方法</h3>
+<ol>
+<li>
+<h5>ImageryLayer2对象新增add方法</h5>
+<ul>
+<li>addByUrl(data) 根据图层服务的xmlPath添加一个或多个球面网络地图服务</li>
+<li>addBySchemaParams(data)  根据图层服务的自定义参数添加一个或多个球面网络地图服务</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.05.21  Settings对象新增方法查询和设置自定义的人物角色模型和无人机模型</h3>
+<ol>
+<li>
+<h5>查询和设置自定义的人物角色模型和无人机模型</h5>
+<ul>
+<li>setCharacterAssetPath(assetPath) 人物漫游模式下，设置自定义的无人机模型</li>
+<li>getCharacterAssetPath()  查询当前工程已经挂载的pak文件包含的自定义的角色模型路径</li>
+<li>setDroneAssetPath(assetPath) 无人机漫游模式下，设置自定义的无人机模型</li>
+<li>getDroneAssetPath()  查询当前工程已经挂载的pak文件包含的自定义的无人机模型路径</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.05.16  2D水动力模型对象新增水浪效果漫延的流速区间范围</h3>
+<ol>
+<li>
+<h5>新增流速影响水浪效果参数</h5>
+<ul>
+<li>crestWaterSpeedRange  (array)     可选，水浪效果漫延的流速区间范围，默认值：[0,1]，注意：和深度区间表现为叠加的效果，区间内的水流速度值越大浪头越来越明显<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2025.05.12  SplineMesh新增支持调用蓝图函数、Settings对象新增控制鼠标右键的点击拾取及Polygon3D新增支持深度检测、载具2新增标识牌显示配置参数</h3>
+<ol>
+<li>
+<h5>SplineMesh新增支持查询和调用蓝图函数方法</h5>
+<ul>
+<li>getBPFunction(ids)      查询splineMesh包含的蓝图函数</li>
+<li>callBPFunction(data)   调用splineMesh包含的蓝图函数</li>
+</ul>
+</li>
+<li>
+<h5>Settings对象新增控制鼠标右键的点击拾取方法</h5>
+<ul>
+<li>enableRightClickMousePick(enable)  控制鼠标右键的点击拾取，默认关闭</li>
+</ul>
+</li>
+<li>
+<h5>Polygon3D新增支持深度检测参数</h5>
+<ul>
+<li>depthTest   (boolean)    是否做深度检测，默认为true，true会被遮挡，false不会被遮挡，注意：非半透明材质不支持深度检测</li>
+</ul>
+</li>
+<li>
+<h5>载具2新增标识牌显示配置参数</h5>
+<ul>
+<li>visible    (boolean)    标识牌是否可见</li>
+<li>offset     (array)        标识牌偏移</li>
+<li>text      (string)          标识牌显示的字符串<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2025.04.30  相机Camera对象新增导出正交投影图片接口</h3>
+<ol>
+<li>
+<h5>新增导出正交投影图片接口</h5>
+<ul>
+<li>exportOrthoImage(path, imageSize, orthoWidth, location, rotation, backGroundColor） 根据传入的参数导出相机位置对应的正交投影图片</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.04.23  新增BoxTrigger盒子热区范围对象，当customObject或camera进入和退出盒子热区范围则触发相关事件</h3>
+<ol>
+<li>
+<h5>新增以下方法</h5>
+<ul>
+<li>add(data)  新增BoxTrigger盒子热区范围对象</li>
+<li>delete(id)  删除BoxTrigger盒子热区范围对象</li>
+<li>clear()   清空BoxTrigger盒子热区范围对象</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.04.10  2D水动力模型对象新增流场样式及相关参数、球面网络图层新增透明度参数</h3>
+<ol>
+<li>
+<h5>新增流场样式和羽化参数</h5>
+<ul>
+<li><strong>alphaGradientDepthRange</strong>  (array)  边缘羽化的水深范围，默认值：[0,2]，单位：米，对应的alpha区间为[0,1]，注意：仅在alphaMode=1时生效</li>
+</ul>
+</li>
+<li>
+<h5>球面网络图层新增透明度参数</h5>
+<ul>
+<li><strong>alpha</strong>  (number)  球面网络图层的透明度，取值范围：[0,1]</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.04.07  Tools分析工具可视域分析接口新增水平角和俯仰角参数</h3>
+<ol>
+<li>
+<h5>新增水平角和俯仰角参数</h5>
+<ul>
+<li>【yaw】   水平角，取值范围：[-180°~180°]，默认值：0</li>
+<li>【pitch】 俯仰角，取值范围：[-90°~90°]，默认值：0</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.03.21  Polyline对象增加1像素线宽样式枚举</h3>
+<ol>
+<li>
+<h5>OnePixelWidth：1像素线宽样式</h5>
+</li>
+</ol>
+<br>
+<h3>2025.03.17  新增军事态势标绘对象Plot及相关操作方法</h3>
+<ol>
+<li>
+<h5>拓扑线对象新增如下方法：</h5>
+<ul>
+<li><strong>add()</strong>   	  添加Plot对象</li>
+<li><strong>update()</strong>   更新Plot对象</li>
+<li><strong>clear()</strong>       清空Plot对象</li>
+<li><strong>show()</strong>      显示Plot对象</li>
+<li><strong>hide()</strong>        隐藏Plot对象</li>
+<li><strong>showAll()</strong> 显示所有Plot对象</li>
+<li><strong>hideAll()</strong>   隐藏所有Plot对象</li>
+<li><strong>delete()</strong>    删除Plot对象</li>
+<li><strong>get()</strong>          查询Plot对象<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2025.03.07  CustomObject对象focus()方法跟随模式新增枚举</h3>
+<ol>
+<li>
+<h5>新增枚举跟随世界的绝对朝向</h5>
+<ul>
+<li>跟随世界的绝对朝向：   FollowWorldRotation</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.02.28  Weather对象新增海浪效果设置和查询接口</h3>
+<ol>
+<li>
+<h5>新增setOceanWave和getOceanWave()接口</h5>
+<ul>
+<li>setOceanWave(option) 设置海浪参数</li>
+<li>getOceanWave()    查询海浪参数<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2025.02.21  新增拓扑线对象TopologyLine及相关操作方法</h3>
+<ol>
+<li>
+<h5>拓扑线对象新增如下方法：</h5>
+<ul>
+<li><strong>add()</strong>   	  添加拓扑线对象</li>
+<li><strong>update()</strong>   更新拓扑线对象</li>
+<li><strong>clear()</strong>       清空拓扑线对象</li>
+<li><strong>show()</strong>      显示拓扑线对象</li>
+<li><strong>hide()</strong>        隐藏拓扑线对象</li>
+<li><strong>showAll()</strong> 显示所有拓扑线对象</li>
+<li><strong>hideAll()</strong>   隐藏所有拓扑线对象</li>
+<li><strong>delete()</strong>    删除超拓扑线对象</li>
+<li><strong>get()</strong>          查询拓扑线对象<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2025.02.20  新增超欠挖分析对象excavationAnalysis及相关操作方法</h3>
+<ol>
+<li>
+<h5>超欠挖分析对象新增如下方法：</h5>
+<ul>
+<li><strong>add()</strong>   	  添加超欠挖分析对象</li>
+<li><strong>update()</strong>   更新超欠挖分析对象</li>
+<li><strong>clear()</strong>       清空超欠挖分析对象</li>
+<li><strong>show()</strong>      显示超欠挖分析对象</li>
+<li><strong>hide()</strong>        隐藏超欠挖分析对象</li>
+<li><strong>delete()</strong>    删除超欠挖分析对象</li>
+<li><strong>get()</strong>          查询超欠挖分析对象<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2025.02.14  图层对象setPointCloudStyle()方法新增lod参数</h3>
+<ol>
+<li>
+<h5>新增是否开启lod参数 默认值false</h5>
+<ul>
+<li>(boolean)   是否开启lod，默认值：false</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.01.21  TileLayer对象新增enableFluid()方法</h3>
+<ol>
+<li>
+<h5>设置图层对水流体对象Fluid的支持</h5>
+</li>
+</ol>
+<pre><code>-   **enableFluid()**      设置图层对水流体对象Fluid的支持，注意：设置false不支持时则水流体的物理碰撞会忽略此图层
+</code></pre>
+<br>
+<h3>2025.01.16  热力图增加预加载和播放、暂停等方法</h3>
+<ol>
+<li>
+<h5>增加load和play、pause和setTime方法</h5>
+<ul>
+<li>load(obj) 预加载多个tif文件，准备播放热力图动画</li>
+<li>play(id)    播放热力图动画</li>
+<li>pause(id) 暂停播放热力图动画</li>
+<li>setTime(id,startTime)  设置从第几秒开始播放</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.01.15  向量场对象新增参数</h3>
+<ol>
+<li>
+<h5>新增speedPower参数</h5>
+</li>
+</ol>
+<pre><code>-   **speedPower**     (number)   粒子速度的幂次方，小于1则粒子速度变小，大于1则粒子速度变大。默认值：1，注意：场内粒子的速度差距比较大时才需要设置此参数
+</code></pre>
+<br>
+<h3>2025.01.14  新增gaussianSplatting对象及相关操作方法</h3>
+<ol>
+<li>
+<h5>高斯泼溅对象新增如下方法：</h5>
+<ul>
+<li><strong>add()</strong>   	  添加高斯泼溅对象</li>
+<li><strong>update()</strong>   更新高斯泼溅对象</li>
+<li><strong>clear()</strong>       清空高斯泼溅对象</li>
+<li><strong>show()</strong>      显示高斯泼溅对象</li>
+<li><strong>hide()</strong>        隐藏高斯泼溅对象</li>
+<li><strong>delete()</strong>    删除高斯泼溅对象</li>
+<li><strong>get()</strong>          查询高斯泼溅对象<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2025.01.14  热力图对象HeatMap增加addByTif()方法</h3>
+<ol>
+<li>
+<h5>HeatMap增加addByTif()方法</h5>
+<ul>
+<li>addByTif(heatMap)  通过tif文件添加热力图对象</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2025.01.06  自定义对象CustomObject对象新增生长动画方法</h3>
+<ol>
+<li>
+<h5>CustomObjec增加showGrowth()方法</h5>
+<ul>
+<li>showGrowth(data) 模拟从3dt中复制的CustomObject对象的生长动画效果</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2024.12.30  热力图对象HeatMap增加高亮和取消高亮方法</h3>
+<ol>
+<li>
+<h5>增加highlightPixels()和unHighlightAllPixels()方法</h5>
+<ul>
+<li>highlightPixels(id, pixelCoords)  高亮热力图指定的像素点</li>
+<li>unHighlightAllPixels(id) 取消热力图所有像素点高亮</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2024.12.11  CustomObject对象新增参数</h3>
+<ol>
+<li>
+<h5>新增自动高度和碰撞参数</h5>
+</li>
+</ol>
+<pre><code>-   **autoHeight**       boolean  是否开启自动高度 开启后贴地不再使用坐标Z
+-   **collision**   boolean  是否开启碰撞
+</code></pre>
+<br>
+<h3>2024.11.19  图层对象增加setPointCloudStyle()方法</h3>
+<ol>
+<li>
+<h5>图层对象增加setPointCloudStyle()方法</h5>
+<ul>
+<li>setPointCloudStyle() 根据点云的属性值来设置点云模型的渲染颜色</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2024.11.13 相机对象增加cancelFollow()方法</h3>
+<ol>
+<li>
+<h5>相机对象增加cancelFollow()方法</h5>
+<ul>
+<li>cancelFollow()  取消自动跟随相机视角</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2024.11.12  新增Vehicle2对象及相关操作方法</h3>
+<ol>
+<li>
+<h5>Vehicle2对象新增如下方法：</h5>
+<ul>
+<li><strong>add()</strong>   	  添加载具2对象</li>
+<li><strong>update()</strong>   更新载具2对象</li>
+<li><strong>clear()</strong>       清空载具2对象</li>
+<li><strong>show()</strong>      显示载具2对象</li>
+<li><strong>hide()</strong>        隐藏载具2对象</li>
+<li><strong>delete()</strong>    删除载具2对象</li>
+<li><strong>get()</strong>          查询载具2对象</li>
+<li><strong>moveTo()</strong>       载具2对象运动</li>
+<li><strong>focus()</strong>  定位载具2对象</li>
+<li><strong>setFollow()</strong>  设置载具2对象相机跟随</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2024.11.08  新增Train对象及相关操作方法</h3>
+<ol>
+<li>
+<h5>火车对象新增如下方法：</h5>
+<ul>
+<li><strong>add()</strong>   	  添加火车对象</li>
+<li><strong>moveTo()</strong>   设置火车行驶</li>
+<li><strong>pause()</strong>       暂停行驶</li>
+<li><strong>resume()</strong>  恢复行驶</li>
+<li><strong>show()</strong>      显示火车</li>
+<li><strong>hide()</strong>        隐藏火车</li>
+<li><strong>clear()</strong>     清空火车</li>
+<li><strong>delete()</strong>    删除火车</li>
+<li><strong>get()</strong>          查询火车</li>
+<li><strong>focus()</strong>     定位火车</li>
+<li><strong>setFollow()</strong>  设置火车行驶时相机跟随</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2024.10.17  新增ImageryLayer2对象球面坐标系下加载网络图层服务对象</h3>
+<ol>
+<li>
+<h5>新增ImageryLayer2对象球面坐标系下加载网络图层服务对象</h5>
+</li>
+</ol>
+<pre><code>- **add()**   	  添加网络图层服务对象
+- **delete()**     删除网络图层服务对象
+- **show()**      显示网络图层服务对象
+- **showAll()**       显示全部网络图层服务对象
+- **hide()**             隐藏网络图层服务对象
+- **hideAll()**        隐藏全部网络图层服务对象
+- **clear()**           清除全部网络图层服务对象
+</code></pre>
+<br>
+<h3>2024.07.19  新增城市级交通仿真对象TrafficSimulation及相关操作方法</h3>
+<ol>
+<li>
+<h5>TrafficSimulation对象新增如下方法</h5>
+</li>
+</ol>
+<pre><code>- **add()**   	  添加交通仿真对象
+- **update()**   更新交通仿真对象（定时器按时刻dat文件更新模拟城市级交通仿真）
+- **delete()**     删除交通仿真对象
+- **show()**      显示交通仿真对象包含的所有车辆
+- **hide()**        隐藏交通仿真对象包含的所有车辆
+- **showHeatMap()**      显示交通仿真对象的热力效果
+- **hideHeatMap()**        隐藏交通仿真对象的热力效果
+- **showTextLabel()**     显示交通仿真对象的车辆的文字标签
+- **hideTextLabel()**       隐藏交通仿真对象的车辆的文字标签
+- **highlight()**                 高亮交通仿真对象包含的所有车辆
+- **unHighlight()**           取消交通仿真对象包含的所有车辆的高亮效果
+- **autoHighlight()**        根据相机高度自动切换车辆高亮效果
+</code></pre>
+<br>
+<h3>2024.07.17  新增路径模型SplineMesh对象及相关操作方法</h3>
+<ol>
+<li>
+<h5>SplineMesh对象新增如下方法</h5>
+</li>
+</ol>
+<pre><code>- **add()**   	  添加路径模型
+- **update()**   更新路径模型
+- **clear()**       清空路径模型
+- **show()**      显示路径模型
+- **hide()**        隐藏路径模型
+- **showAll()**      显示所有路径模型
+- **hideAll()**        隐藏所有路径模型
+- **focus()**      定位路径模型
+- **delete()**    删除路径模型
+- **get()**          查询路径模型
+</code></pre>
+<br>
+<h3>2024.03.01  Polyline、Polygon和Polygon3D对象增加原色样式枚举</h3>
+<ol>
+<li>
+<h5>OriginColor：原色</h5>
+</li>
+</ol>
+<br>
+<h3>2023.12.29  Fluid对象新增color颜色属性</h3>
+<ol>
+<li>
+<h5>流体仿真自定义颜色属性：color</h5>
+</li>
+</ol>
+<br>
+<h3>2023.12.26  GeoJSONLayer对象新增高亮和定位方法</h3>
+<ol>
+<li>
+<h5>高亮某个要素：highlightFeature()</h5>
+</li>
+<li>
+<h5>停止高亮：stopHighlightFeature()</h5>
+</li>
+<li>
+<h5>高亮多个要素：highlightFeatures()</h5>
+</li>
+<li>
+<h5>停止高亮要素：stopHighlightFeatures()</h5>
+</li>
+<li>
+<h5>定位某个要素：focusFeature()</h5>
+</li>
+</ol>
+<br>
+<h3>2023.12.25  GeoJSONLayer对象新增属性</h3>
+<ol>
+<li>
+<h5>GeoJSONLayer新增文字标注属性：textMarkerFiled</h5>
+</li>
+<li>
+<h5>GeoJSONLayer新增文字标注可见范围属性：textRange</h5>
+</li>
+<li>
+<h5>GeoJSONLayer新增贴地属性：onTerrain</h5>
+</li>
+</ol>
+<br>
+<h3>2023.12.20  Tools对象新增getUIPanel方法</h3>
+<ol>
+<li>
+<h5>新增查询系统UI面板状态方法如下：</h5>
+<ul>
+<li>新增方法： getUIPanel(type,fn)</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2023.12.13  标注对象Marker新增方法、Tools天际线分析新增参数</h3>
+<ol>
+<li>
+<h5>Marker对象新增设置视口可见性方法如下：</h5>
+<ul>
+<li>新增方法： setViewportVisible(id,vp,fn)</li>
+</ul>
+</li>
+<li>
+<h5>Tools对象天际线分析增加交互锁定参数</h5>
+<ul>
+<li>新增交互锁定参数： interactiveLock</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2023.12.08  Misc新增统计接口 统计ACP工程包含的资产信息</h3>
+<ol>
+<li>
+<h5>projectAssetCountAll() 统计ACP工程包含的全部资产</h5>
+</li>
+<li>
+<h5>projectAssetCount(assetType) 统计ACP工程包含的各类资产</h5>
+</li>
+</ol>
+<br>
+<h3>2023.12.01  HydroDynamic1D和2D对象新增属性</h3>
+<ol>
+<li>
+<h5>HydroDynamic1D和2D对象新增水波纹亮度属性waveBrightness</h5>
+</li>
+</ol>
+<br>
+<h3>2023.11.27  设置面板设置后期效果新增相关参数</h3>
+<ol>
+<li>
+<h5>globalIllumination: false, //屏幕空间全局光照;</h5>
+</li>
+<li>
+<h5>chromaticAberration: 0, //透镜色差;</h5>
+</li>
+<li>
+<h5>ambientRadius: 100, //环境光遮罩半径</h5>
+</li>
+<li>
+<h5>ambientFadeDistance: 12000, //环境光遮罩淡出距离</h5>
+</li>
+<li>
+<h5>exposureEnabled: false,//自动曝光</h5>
+</li>
+<li>
+<h5>exposureCompensation: 0, //曝光补偿</h5>
+</li>
+<li>
+<h5>depthFiethSwitch: false,//景深开关</h5>
+</li>
+<li>
+<h5>focalLength: 10000,//   焦距</h5>
+</li>
+<li>
+<h5>aperture: 4,//   光圈</h5>
+</li>
+<li>
+<h5>deepBlur: 2,//   深度模糊</h5>
+</li>
+</ol>
+<br>
+<h3>2023.11.23  GeoJSONLayer、ImageryLayer和CustomObject新增属性和方法</h3>
+<ol>
+<li>
+<h5>GeoJSONLayer增加定位方法focus()</h5>
+</li>
+<li>
+<h5>GeoJSONLayer新增rotation属性 控制旋转 新增range属性  控制点的可视范围</h5>
+</li>
+<li>
+<h5>ImageryLayer增加定位方法focus()</h5>
+</li>
+<li>
+<h5>CustomObject对象新增visible参数 控制模型加载后是否显示</h5>
+</li>
+</ol>
+<br>
+<h3>2023.11.22  波束对象增加range参数</h3>
+<ol>
+<li>
+<h5>随着相机观察距离的拉远拉近波束透明度会进行线性变化，越远越透明直至看不到</h5>
+</li>
+</ol>
+<br>
+<h3>2023.11.21  TileLayer新增设置热力样式接口</h3>
+<ol>
+<li>
+<h5>TileLayer图层对象新增分层热力样式设置接口setHeatMapStyle()</h5>
+</li>
+</ol>
+<br>
+<h3>2023.11.20  GeoJSONLayer对象和波束SignalWave对象新增属性</h3>
+<ol>
+<li>
+<h5>GeoJSONLayer新增offset属性</h5>
+</li>
+<li>
+<h5>SignalWave新增opacity不透明度属性，优化波束样式显示</h5>
+</li>
+</ol>
+<br>
+<h3>2023.11.17  HydroDynamic1D对象新增属性</h3>
+<ol>
+<li>
+<h5>HydroDynamic1D新增waterMode属性</h5>
+</li>
+</ol>
+<br>
+<h3>2023.11.10  Settings对象新增设置人物漫游接口</h3>
+<ol>
+<li>
+<h5>Settings对象新增setCharacterRoaming()接口</h5>
+</li>
+</ol>
+<br>
+<h3>2023.11.6  新增HydroDynamic1D对象（一维水动力模型）</h3>
+<ol>
+<li>
+<h5>HydroDynamic1D对象新增如下方法</h5>
+</li>
+</ol>
+<pre><code>- **add()**   	  添加一维水动力模型
+- **update()**   更新一维水动力模型
+- **clear()**       清空一维水动力模型
+- **show()**      显示一维水动力模型
+- **hide()**        隐藏一维水动力模型
+- **focus()**      定位一维水动力模型
+- **delete()**    删除一维水动力模型
+- **get()**          查询一维水动力模型
+</code></pre>
+<br>
+<h3>2023.11.3  Misc对象新增方法</h3>
+<ol>
+<li>
+<h5>Misc对象新增reloadPak()方法</h5>
+</li>
+<li>
+<h5>Misc对象新增download()方法</h5>
+</li>
+</ol>
+<br>
+<h3>2023.10.26  向量场对象和二维水动力模型支持TIF文件构建</h3>
+<ol>
+<li>
+<h5>VectorField对象新增tif类型文件支持</h5>
+</li>
+<li>
+<h5>HydroDynamic2D对象新增tif类型文件支持</h5>
+</li>
+</ol>
+<br>
+<h3>2023.10.23  新增HydroDynamic2D对象（二维水动力模型）</h3>
+<ol>
+<li>
+<h5>HydroDynamic2D对象新增如下方法</h5>
+</li>
+</ol>
+<pre><code>- **add()**   	  添加二维水动力模型
+- **update()**    更新二维水动力模型
+- **clear()**      清空二维水动力模型
+- **show()**      显示二维水动力模型
+- **hide()**       隐藏二维水动力模型
+- **focus()**     定位二维水动力模型
+- **delete()**    删除二维水动力模型
+- **get()**        查询二维水动力模型
+</code></pre>
+<br>
+<h3>2023.09.20   Settings对象新增查询工程坐标系接口</h3>
+<ol>
+<li>
+<h5>Settings对象新增getProjectWKT()接口</h5>
+</li>
+</ol>
+<br>
+<h3>2023.09.18  蓝图函数支持控制Marker3D对象拓展参数内的图标和动画</h3>
+<ol>
+<li>
+<h5>蓝图函数新增枚举类型16，支持设置拓展参数内的图标和样式动画</h5>
+</li>
+</ol>
+<br>
+<h3>2023.09.05  WaterFlowField和HeatMap3D支持多视口</h3>
+<ol>
+<li>
+<h5>水流场对象和三维热力对象支持在不同视口下设置显示</h5>
+</li>
+</ol>
+<br>
+<h3>2023.09.04  新增天线方向图和波束对象</h3>
+<ol>
+<li>
+<h5>新增天线方向图对象Antenna接口如下</h5>
+</li>
+</ol>
+<pre><code>- **add()**   	  添加天线方向图对象
+- **update()**    更新天线方向图对象
+- **clear()**      清空天线方向图对象
+- **show()**      显示天线方向图对象
+- **hide()**       隐藏天线方向图对象
+- **focus()**     定位天线方向图对象
+- **delete()**    删除天线方向图对象
+- **get()**        查询天线方向图对象
+</code></pre>
+<ol start="2">
+<li>
+<h5>新增波束对象SignalWave接口如下</h5>
+</li>
+</ol>
+<pre><code>- **add()**   	  添加波束对象
+- **update()**    更新波束对象
+- **clear()**      清空波束对象
+- **show()**      显示波束对象
+- **hide()**       隐藏波束对象
+- **focus()**     定位波束对象
+- **delete()**    删除波束对象
+- **get()**        查询波束对象
+</code></pre>
+<br>
+<h3>2023.08.23  HeatMap3D支持稀疏体素方式构建</h3>
+<ol>
+<li>
+<h5>支持sparseVoxels构建对象</h5>
+</li>
+<li>
+<h5>增加查询体素方法queryVoxel()</h5>
+</li>
+<li>
+<h5>新增textureFilter属性参数</h5>
+</li>
+</ol>
+<br>
+<h3>2023.08.18 TileLayer对象新增clear()方法、GeoJsonLayer新增属性</h3>
+<ol>
+<li>
+<h5>TileLayer对象新增clear()方法</h5>
+</li>
+<li>
+<h5>GeoJsonLayer新增投影转换属性</h5>
+</li>
+</ol>
+<br>
+<h3>2023.08.12  热力图HeatMap对象支持bin文件添加和更新</h3>
+<ol>
+<li>
+<h5>热力图对象add()方法支持bin文件</h5>
+</li>
+<li>
+<h5>热力图对象update()方法支持bin文件及插值更新动画</h5>
+</li>
+</ol>
+<br>
+<h3>2023.08.11  新增流体仿真对象Fluid</h3>
+<ol>
+<li>
+<h5>新增流体仿真对象Fluid接口如下</h5>
+</li>
+</ol>
+<pre><code>- **add()**   	  添加流体仿真对象
+- **addSource()**  添加流体仿真的出水点
+- **update()**        更新流体仿真对象
+- **clear()**      清空流体仿真对象
+- **show()**      显示流体仿真对象
+- **reset()**      重置流体仿真对象
+- **hide()**       隐藏流体仿真对象
+- **focus()**     定位流体仿真对象
+- **delete()**    删除流体仿真对象
+- **get()**        查询流体仿真对象
+</code></pre>
+<br>
+<h3>2023.07.27  新增有限元仿真对象FiniteElement</h3>
+<ol>
+<li>
+<h5>新增有限元仿真对象FiniteElement接口如下</h5>
+</li>
+</ol>
+<pre><code>- **add()**   	  添加有限元仿真对象
+- **update()**    更新有限元仿真对象
+- **clear()**      清空有限元仿真对象
+- **show()**      显示有限元仿真对象
+- **hide()**       隐藏有限元仿真对象
+- **focus()**     定位有限元仿真对象
+- **delete()**    删除有限元仿真对象
+- **get()**        查询有限元仿真对象
+</code></pre>
+<br>
+<h3>2023.07.14 CustomObject对象新增参数</h3>
+<ol>
+<li>
+<h5>isEffectRotation (boolean)   模型执行移动方法moveTo()时是否开启旋转效果，注意：仅在moveTo()方法调用时生效</h5>
+</li>
+</ol>
+<br>
+<h3>2023.06.28  新增向量场对象VectorField</h3>
+<ol>
+<li>
+<h5>新增向量场对象VectorField接口如下</h5>
+</li>
+</ol>
+<pre><code>- **add()**   	  添加向量场对象
+- **update()**    更新向量场对象
+- **clear()**      清空向量场对象
+- **show()**      显示向量场对象
+- **hide()**       隐藏向量场对象
+- **focus()**     定位向量场对象
+- **delete()**    删除向量场对象
+- **get()**        查询向量场对象
+</code></pre>
+<br>
+<h3>2023.05.30  Settings对象和TileLayer对象新增方法</h3>
+<ol>
+<li>
+<h5>Settings对象新增方法如下：</h5>
+<ul>
+<li><strong>setScreenControlsVisible(visiable)</strong>    布尔类型参数，当交互模式为人物或无人机模式时，设置屏幕操纵杆UI的可见性</li>
+</ul>
+</li>
+<li>
+<h5>图层TileLayer对象增加setEnableDecal()方法</h5>
+<ul>
+<li>setEnableDecal(data) 设置图层对贴花类型对象的贴合支持，包含Decal对象和HeatMap对象</li>
+</ul>
+</li>
+</ol>
+<br> 
+<h3>2023.05.26 优化Reset接口、Heatmap新增样式</h3>
+<ol>
+<li>
+<h5>优化DigitalTwinAPI类的Reset方法</h5>
+<p>reset方法增加了一个参数type，用于设置要重置的类型</p>
+<p><img src="../images/api_revision/image-20230526163511266.png" alt="image-20230526163511266"></p>
+<p>ResetType是一个可自由组合的枚举类型，定义如下：</p>
+<p><img src="../images/api_revision/image-20230526163624659.png" alt="image-20230526163624659"></p>
+<p>reset方法如果不传参数，默认行为是清除添加的所有对象。  如果要清除对象并复位相机，则可以这样调用：</p>
+<pre class="prettyprint source lang-javascript"><code>api.reset(ResetType.ClearObjects | ResetType.ResetCamera);  或者 
+api.reset(1 | 4); 或者 
+api.reset(5);
+</code></pre>
+<p>这样用户就不用自己通过调用一大堆对象的clear方法去一个一个清除所添加的对象了。</p>
+</li>
+<li>
+<h5>Heatmap新增波峰样式 HeatMapStyle</h5>
+</li>
+</ol>
+<br>
+<h3>2023.05.09 Player用户自定义信息</h3>
+<ol>
+<li>
+<h5>AirCityPlayer增加初始化属性：customString</h5>
+<p>customString可用于存储用户自定义信息，稍候能够在实例管理接口的GetStatus后返回。如下的代码设置customString后</p>
+<p><img src="D:/RelCloud-5.4/SDK/doc/images/api_revision/image-20230509161643307.png" alt="image-20230509161643307"></p>
+</li>
+</ol>
+<p>可以在CloudMaster的连接信息里看到此内容：</p>
+<p><img src="D:/RelCloud-5.4/SDK/doc/images/api_revision/image-20230509161726475.png" alt="image-20230509161726475"></p>
+<p>也可以在实时运行状态里看到：</p>
+<p><img src="D:/RelCloud-5.4/SDK/doc/images/api_revision/image-20230509161803146.png" alt="image-20230509161803146"></p>
+<br>
+<h3>2023.04.21 Marker3D对象增加按组操作方法、水流场对象增加属性</h3>
+<ol>
+<li>
+<h5>Marker3D对象新增方法如下：</h5>
+<ul>
+<li>Marker3D对象增加showByGroupId()方法</li>
+<li>Marker3D对象增加hideByGroupId()方法</li>
+<li>Marker3D对象增加deleteByGroupId()方法</li>
+</ul>
+</li>
+<li>
+<h5>WaterFlowField水流场对象增加属性如下：</h5>
+<ul>
+<li>
+<p><strong>traceFactor</strong>     (number)   光流轨迹保持因子，仅在displayMode=2生效，取值范围：[0~100] 值越大粒子轨迹越长，注意：水流场的采样点越稀疏，因子值就要设置越大</p>
+<br>
+</li>
+</ul>
+</li>
+</ol>
+<h3>2023.04.18  相机对象增加环绕方法、载具对象增加偏移属性</h3>
+<h5>相机对象增加环绕方法</h5>
+<ul>
+<li>flyAround(location, rotation, distance, time)   相机环绕指定位置旋转一周</li>
+</ul>
+<h5>载具对象增加偏移属性</h5>
+<ul>
+<li><strong>localOffset</strong>    可选，载具基于原始位置坐标的偏移量，默认值：[0,0,0]</li>
+</ul>
+<br>
+<h3>2023.04.13  新增编辑助手右键结束交互事件</h3>
+<h5>EditHelper右键结束绘制后，返回EditHelperFinished事件</h5>
+<ul>
+<li>事件名称<strong>EditHelperFinished</strong>  ，监听此事件可以获取绘制的坐标点数组coordinates</li>
+</ul>
+<pre class="prettyprint source lang-javascript"><code>OnEvent: EditHelperFinished
+{
+    &quot;eventtype&quot;: &quot;EditHelperFinished&quot;,
+    &quot;coordinates&quot;: [[493117.875,2492701,0.6926171779632568],[492929.53125,2492265,2.290585994720459],[492777.71875,2492419.25,0.022695312276482582],[492818.1875,2492759.5,18.905742645263672],[493011.6875,2492885.5,17.678945541381836]]
+}
+</code></pre>
+<br>
+<h3>2023.03.30  水流场新增透明度参数alphas</h3>
+<h5>支持根据水深、UV值等设置流场对应区域的透明度：</h5>
+<ul>
+<li><strong>alphas</strong>         (array)     流场内运动的采样点渲染区域不透明度数组，一维数组，数组元素：数值，范围：[0~1]，其中alphas数组必须和points和uvs保持对应关系且长度一致</li>
+</ul>
+<br>
+<h3>2023.03.29  新增设置大地图下的贴合模式</h3>
+<h5>支持三种贴合模式：</h5>
+<ul>
+<li>decalMode:  大地图贴地模式下的贴合模式，0：都不接受   1：贴合所有  2：仅贴合地形；注意：此参数仅在renderMode设置为3时生效</li>
+</ul>
+<br>
+<h3>2023.03.17  Vehicle载具对象新增涂装颜色colorType属性</h3>
+<h5>载具对象新增颜色属性：</h5>
+<ul>
+<li><strong>colorType</strong>     (number)     可选，载具涂装颜色，取值范围：[0~任意正整数]，默认值：0 随机使用涂装颜色，大于0则使用其他涂装颜色</li>
+</ul>
+<br>
+<h3>2023.03.10  Coord对象新增支持火星坐标和百度坐标转换</h3>
+<h5>Coord对象新增坐标转换类型参数：</h5>
+<ul>
+<li>gcs2pcs(coordinates, coordinateType)</li>
+<li>pcs2gcs(coordinates, coordinateType)</li>
+</ul>
+<br>
+<h3>2023.02.28  CustomObject对象增加闪烁和停止闪烁方法</h3>
+<h5>对象新增控制闪烁相关方法：</h5>
+<ul>
+<li>开始闪烁：customObject.glow(data);</li>
+<li>停止闪烁：customObject.stopGlow(ids);</li>
+</ul>
+<br>
+<h3>2023.02.23  Misc对象增加蓝图函数和材质信息查询方法</h3>
+<h5>新增查询蓝图函数信息方法：</h5>
+<ul>
+<li>misc.getBPFunction(path)</li>
+</ul>
+<h5>新增查询材质包含的参数信息方法：</h5>
+<ul>
+<li>misc.getMaterial(path)</li>
+</ul>
+<br>
+<h3>2023.02.22  载具对象Vehicle增加属性</h3>
+<h5>载具对象Vehicle增加属性：</h5>
+<ul>
+<li>@param {boolean} autoHeight 是否自动计算载具行驶高度，默认值：true，注意：当设置为false时会使用载具坐标的高度Z</li>
+</ul>
+<br>
+<h3>2023.02.17  CustomObject视角跟随、设置点云、太阳和月亮尺寸</h3>
+<h5>自定义对象新增actionMode枚举参数：</h5>
+<ul>
+<li>@param {ActionMode} actionMode 可选参数，相机视角跟随模式枚举，注意：如果指定了rotation参数同时又指定了跟随枚举，则枚举值包含的相机欧拉角会覆盖rotation参数</li>
+</ul>
+<h5>TileLayer图层对象增加设置点云大小方法：</h5>
+<ul>
+<li>tileLayer.setPointCloudSize(size)</li>
+</ul>
+<h5>Weather对象增加设置太阳、月亮尺寸方法：</h5>
+<ul>
+<li>weather.setSunSize(sunSize)</li>
+<li>weather.setMoonSize(moonSize)</li>
+</ul>
+<br>
+<h3>2023.02.15  HeatMap热力图增加新的样式参数</h3>
+<h5>热力图对象增加新的样式参数：</h5>
+<ul>
+<li>@param {number} style        可选，热力图样式</li>
+<li>@param {number} textureSize  style=0时参数生效，纹理大小，默认值：1024，取值范围：[128~4096]，注意：值越大纹理越清晰但创建越耗时</li>
+<li>@param {number} opacityMode  style=0时参数生效，不透明度模式，默认值：1，取值范围：0：使用自定义色卡颜色的不透明度 1：使用热力点的不透明度</li>
+<li>@param {array}  opacityRange style=0时参数生效，不透明度范围，默认值：[0~1.0]，注意：仅opacityMode为1时有效</li>
+<li>@param {number} blur         style=0时参数生效，热力点模糊因子，默认值：0.85，注意：模糊系数越高，渐变越平滑，取值范围：[0~1.0]</li>
+<li>@param {object} colors       style=0时参数生效，自定义颜色卡区间数组，包含渐变控制参数、无效点颜色和颜色数组<br>
+<br></li>
+</ul>
+<h3>2023.02.10  TileLayer对象新增图层碰撞信息查询方法</h3>
+<h5>TileLayer对象新增图层碰撞信息查询方法：</h5>
+<ul>
+<li>getCollision(tileLayerIds)：查询图层包含的碰撞检测信息<br>
+<br></li>
+</ul>
+<h3>2023.02.08  CustomObject对象新增方法</h3>
+<h5>CustomObject对象新增方法如下：</h5>
+<ul>
+<li>moveTo(data)：设置CustomObject对象根据实时GPS坐标运动<br>
+<br></li>
+</ul>
+<h3>2023.02.06  Marker对象新增支持贴合载具Vehicle运动</h3>
+<h5>Marker对象贴合Vehicle方法如下：</h5>
+<ul>
+<li>setAttachCustomObject(data)：设置标注Marker贴合载具对象Vehicle运动<br>
+<br></li>
+</ul>
+<h3>2023.02.01  Heatmap3d对象新增属性</h3>
+<ol>
+<li>
+<h5>Heatmap对象新增属性denoise：</h5>
+</li>
+</ol>
+<ul>
+<li><strong>denoise</strong>           (number)    降噪级别，取值范围：[0,1,2,3,4,5]，默认值：0 不做降噪；1~5 五级，值越大降噪越耗时</li>
+</ul>
+<br>
+<h3>2023.01.30 属性改名</h3>
+<ol>
+<li>
+<h5>DigitalTwinPlayer的初始化属性由于功能扩展而改名</h5>
+<p>debugTouchPanel改名为debugEventsPanel，将此属性设置为true后，将在左上角显示一个半透明的调试面板，之前只能显示触摸事件，现在可以显示键盘、鼠标、触摸事件了，方便调试。</p>
+</li>
+</ol>
+<br>
+<h3>2023.01.17  新增火星坐标系和百度坐标系支持</h3>
+<ol>
+<li>
+<h5>新增火星坐标系和百度坐标系支持</h5>
+</li>
+</ol>
+<ul>
+<li><strong>coordinateType</strong>       (number)    坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0</li>
+</ul>
+ <br>
+<h3>2023.01.13  CustomObject对象startMove方法新增参数</h3>
+<ol>
+<li>
+<h5>startMove方法新增rotation参数</h5>
+</li>
+</ol>
+<ul>
+<li><strong>rotation</strong>       (array)    可选参数，每个时刻模型的运动姿态（欧拉角），不传则系统自动计算。格式：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]</li>
+</ul>
+ <br>
+<h3>2023.01.11  Heatmap3d、Weather对象修改</h3>
+<ol>
+<li>
+<h5>Heatmap对象新增属性：</h5>
+</li>
+</ol>
+<ul>
+<li><strong>heatValueMode</strong>     (number)    热力值模式，取值：[0,1,2,3,4,5,6] ，0 : Interp插值（默认值）   1 : Nearest最近   2 : Addition叠加   3 : Minimum最小   4 : Maximum最大   5 : Overwrite覆盖   6 : DoOnce独占</li>
+<li><strong>heatValueRange</strong>    (array)     热力值的范围：[min,max]，数组元素类型：[任意浮点数]</li>
+<li><strong>voxelShape</strong>  (number)    体积点形状，取值：[0,1]，0 : Sphere球（默认值）  1 : Box盒子</li>
+<li><strong>voxelAlphaMode</strong>  (number)       三位像素块透明模式，取值：[0,1]，0 : 使用颜色渐变（默认值）  1 : 使用点</li>
+<li><strong>textureSize</strong>       (number)    纹理尺寸，取值范围：[128~512]，默认：128</li>
+<li><strong>colors</strong>            (array)     颜色卡区间数组，包含渐变控制和颜色数组</li>
+<li><strong>voxels</strong>            (array)     体素坐标数组，包含热力点坐标、热力值影响半径、热力值和不透明度四个属性结构示例：[{&quot;coordinate&quot;: [0,0,0],&quot;radius&quot;: 5,&quot;heatValue&quot;: 0.5,&quot;alpha&quot;: 1}]</li>
+</ul>
+<ol start="2">
+<li>
+<h5>Heatmap对象新增增加三维像素块方法：</h5>
+</li>
+</ol>
+<ul>
+<li><strong>addVoxels()</strong> ,即支持动态往HeatMap3D对象内添加三维像素块</li>
+</ul>
+<ol start="3">
+<li>
+<h5>Weather对象新增设置阴影强度方法</h5>
+</li>
+</ol>
+<ul>
+<li><strong>setShadowIntensity()</strong> , 设置阴影强度，值越大表示阴影越强</li>
+</ul>
+ <br>
+<h3>2022.12.30  Misc对象新增getConvexPolygon()方法</h3>
+<ol>
+<li>
+<h5>新增getConvexPolygon()方法：</h5>
+</li>
+</ol>
+<ul>
+<li>getConvexPolygon(array)  从一组离散点中获取凸多边形的顶点索引<br>
+<br></li>
+</ul>
+<h3>2022.12.26 Vehicle 对象增加moveTo()方法</h3>
+<ol>
+<li>
+<h5>新增moveTo()方法：</h5>
+</li>
+</ol>
+<ul>
+<li>moveTo(data)  设置Vehicle对象运动的路径点（根据实时GPS数据运动）<br>
+<br></li>
+</ul>
+<h3>2022.12.22 HeatMap3D 对象add方法增加属性</h3>
+<ol>
+<li>
+<h5>新增add方法属性：</h5>
+</li>
+</ol>
+<ul>
+<li><strong>clipBox</strong>           (array)     三维热力图盒子剖切的bbox范围，格式示例：[minX,minY,minZ,maxX,maxY,maxZ]<br>
+<br></li>
+</ul>
+<h3>2022.12.16 ImageryLayer 对象add方法增加属性</h3>
+<ol>
+<li>
+<h5>新增ImageryLayer对象add方法属性：</h5>
+<ul>
+<li><strong>xmlPath</strong>          (string)     可选，xml协议的url路径，不传则默认从init()方法获取</li>
+<li><strong>layerName</strong>       (string)      可选，图层名称，不传则默认从init()方法获取</li>
+<li><strong>tileMatrixName</strong>  (string)      可选，如果服务类型是WMTS：tileMatrixName是切片方案，如果服务类型是WMS：tileMatrixName是坐标类型，不传则默认从init()方法获取</li>
+<li><strong>ogcEPSG</strong>         (string)      可选，坐标系类型，不传则默认从init()方法获取</li>
+</ul>
+</li>
+</ol>
+<br> 
+<h3>2022.12.16  CustomMesh对象新增属性</h3>
+<ol>
+<li>
+<h5>CustomMesh对象新增属性如下：</h5>
+</li>
+</ol>
+<ul>
+<li><strong>colors</strong>  (array)   顶点颜色数组</li>
+<li><strong>createCollision</strong>  (boolean)  是否创建碰撞体<br>
+<br></li>
+</ul>
+<h3>2022.12.06  Polygon和Polyline对象新增自定义材质替换相关属性</h3>
+<ol>
+<li>
+<h5>Polygon和Polyline对象各自新增属性如下：</h5>
+</li>
+</ol>
+<ul>
+<li>
+<p><strong>material</strong>    自定义材质路径</p>
+</li>
+<li>
+<p><strong>scalarParameters</strong>  材质数值参数，用来控制材质不透明度、亮度、UV等</p>
+</li>
+<li>
+<p><strong>vectorParameters</strong> 材质数组参数，用来控制材质颜色rgba等<br>
+<br></p>
+</li>
+</ul>
+<h3>2022.12.01 自定义对象CustomObject新增属性</h3>
+<h3>注意：<strong>此localRotation属性替代了之前老版本的rotation属性，原来的rotation属性修正为控制世界坐标系的旋转</strong></h3>
+<ol>
+<li>
+<h5>CustomObject对象新增控制自身旋转属性：</h5>
+<ul>
+<li><strong>localRotation</strong>   (array)  模型自身旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2022.11.30 新增载具对象Vehicle及相关操作方法</h3>
+<ol>
+<li>
+<h5>Vehicle对象新增如下方法：</h5>
+<ul>
+<li><strong>add()</strong>   	  添加载具对象</li>
+<li><strong>update()</strong>   更新载具对象</li>
+<li><strong>clear()</strong>       清空载具对象</li>
+<li><strong>show()</strong>      显示载具对象</li>
+<li><strong>hide()</strong>        隐藏载具对象</li>
+<li><strong>delete()</strong>    删除载具对象</li>
+<li><strong>get()</strong>          查询载具对象</li>
+<li><strong>setWayPoints()</strong>       给载具对象添加运动的路径点</li>
+<li><strong>start()</strong>         启动载具运动</li>
+<li><strong>pause()</strong>       暂停载具运动</li>
+<li><strong>resume()</strong>    恢复载具运动</li>
+<li><strong>stop()</strong>          停止载具运动<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.11.26 CustomObject对象setLocation()新增参数</h3>
+<ol>
+<li>
+<h5>setLocation()方法新增参数如下：</h5>
+<ul>
+<li><strong>smoothTime</strong>      {number}    可选，平滑移动的插值时间，仅在smoothMotion=1即平滑移动下生效，注意：传值若为0则根据调用setLocation()接口的时间自动计算平滑移动的插值时间，默认值：1，单位：秒<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.11.16 新增保存场景方法</h3>
+<ol>
+<li>
+<h5>新增saveProject方法</h5>
+<ul>
+<li><strong>saveProject()</strong>   保存场景（只保存场景设置，不保存接口创建的对象）<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.11.10 Polygon3D对象新增方法</h3>
+<ol>
+<li>
+<h5>新增如下方法</h5>
+<ul>
+<li><strong>showAll()</strong>   显示所有Polygon3D对象</li>
+<li><strong>hideAll()</strong>    隐藏所有Polygon3D对象<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.11.09 SettingPanel对象设置后期方法新增属性</h3>
+<ol>
+<li>
+<h5>setPostProcessMode() 方法参数新增属性如下：</h5>
+<ul>
+<li><strong>darkCorner</strong>      {number}    暗角，取值范围：[0~1]，单位：百分比，默认值：0</li>
+<li><strong>lutMode</strong>            {number}    LUT调色模式，取值范围：[0~30]，默认值：0（关闭调色模式），1-30对应不同LUT调色效果</li>
+<li><strong>lutIntensity</strong>      {number}    LUT调色强度，类型为百分比，取值范围：[0~1.0]，默认值：0，即小数对应的百分比<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.11.08 Tools、Misc对象新增方法</h3>
+<ol>
+<li>
+<h5>Tools新增显示隐藏系统面板方法如下：</h5>
+<ul>
+<li>显示系统面板方法 showPanel(type,positon)</li>
+<li>隐藏系统面板方法 hidePanel()</li>
+</ul>
+</li>
+<li>
+<h5>Misc对象新增方法如下：</h5>
+<ul>
+<li>setMultiviewportInteractSync(bool) 多视口模式下设置相机是否同步<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.11.02 新增设置指北针位置方法</h3>
+<ol>
+<li>
+<h5>Settings对象新增方法如下：</h5>
+<ul>
+<li>setCampassPosition(left,top)   设置指北针位置<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.10.29  贴花对象新增参数</h3>
+<ol>
+<li>
+<h5>新增贴花类型参数</h5>
+<ul>
+<li>decalBlendMode (number) 贴花类型，取值范围：[0,1]；取值说明：0背景混合，1仅贴花；默认值：0<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.10.28  Tools设置测量增加字体大小控制参数</h3>
+<ol>
+<li>
+<h5>设置测量模式增加字体大小参数</h5>
+<ul>
+<li>测量模式显示字体大小：textSize 默认值10<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.10.20 完善VideoProjection和Settings对象</h3>
+<ol>
+<li>
+<h5>VideoProjection对象新增方法如下：</h5>
+<ul>
+<li>clear()方法</li>
+</ul>
+</li>
+<li>
+<h5>Settings对象新增方法如下：</h5>
+<ul>
+<li>查询当前交互模式 getInteractiveMode()方法<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.10.12 完善ImageryLayer、ShapeFileLayer</h3>
+<ol>
+<li>
+<h5>新增ImageryLayer对象方法如下：</h5>
+<ul>
+<li>ImageryLayer对象增加show()方法</li>
+<li>ImageryLayer对象增加hide()方法</li>
+<li>ImageryLayer对象增加delete()方法</li>
+</ul>
+</li>
+<li>
+<h5>ShapeFileLayer对象新增属性cacheAllField：</h5>
+<ul>
+<li>cacheAllField   (boolean)   当type==Polygon时此属性可选，Polygon支持缓存所有字段，以便于高效动态更新Polygon不同字段的效果，默认值：false<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.10.09 扩展初始化属性</h3>
+<ol>
+<li>
+<h5>DigitalTwinPlayer初始化参数options增加属性</h5>
+<ul>
+<li>
+<p>mainUI：是否显示Cloud工具栏，如果设置为true就显示，如果设置为false就隐藏，如果没有设置，就保持原状。</p>
+</li>
+<li>
+<p>campass: 是否显示指北针，如果设置为true就显示，如果设置为false就隐藏，如果没有设置，就保持原状。</p>
+</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2022.09.28 新增设置WMTS图层服务的透明度方法</h3>
+<ol>
+<li>
+<h5>Settings对象新增如下方法：</h5>
+<ul>
+<li>setWMTSLayerOpacity(data)  设置图层透明度<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.09.27 相机限制、后期泛光参数、移除VTPK</h3>
+<ol>
+<li>
+<h5>Camera新增如下方法：</h5>
+<ul>
+<li>lockByBBox(bbox)  根据bbox范围锁定相机交互范围</li>
+<li>unLockByBBox()     解锁相机交互</li>
+</ul>
+</li>
+<li>
+<h5>设置面板后期设置setPostProcessMode()新增如下参数：</h5>
+<ul>
+<li>bloomIntensity: 0.1,//泛光，取值范围：[0~10.0]，默认值：0</li>
+</ul>
+</li>
+<li>
+<h5>Settings对象新增如下方法：</h5>
+<ul>
+<li>removeLabelLayer()  移除当前显示的VTPK的标注<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.09.16 实例管理功能支持REST</h3>
+<ol>
+<li>
+<h5>实例管理服务接口调用支持REST方式</h5>
+<p>实例管理服务有2种调用方式：WebSocket和REST，两种方式发送和接收的数据格式都是JSON</p>
+<ul>
+<li>
+<p>WebSocket方式，需要先建立连接，然后才能调用</p>
+</li>
+<li>
+<p>REST通过HTTP POST，注意：POST时Content-Type需要设置为application/json，要发送的JSON字符串设置在Body里</p>
+</li>
+<li>
+<p>获取实时运行状态的接口不支持REST，只能通过WebSocket方式调用</p>
+<p><img src="../images/api_revision/image-20220916180734433.png" alt="image-20220916180734433"></p>
+</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2022.09.15 SettingsPanel对象新增设置相机最大高度参数</h3>
+<ol>
+<li>
+<h5>相机设置支持最大相机高度maxCameraHeight</h5>
+<ul>
+<li>设置相机面板参数 setCameraMode(nearClipPlane, fovH, minCameraHeight, maxCameraHeight)<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.09.09 增加ImageryLayer 网络图层对象及相关操作方法</h3>
+<ol>
+<li>
+<h5>新增ImageryLayer对象，相关操作方法如下：</h5>
+<ul>
+<li>ImageryLayer对象增加init()方法</li>
+<li>ImageryLayer对象增加add()方法<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.09.01 优化ShapeFile对象命名修改为ShapeFileLayer</h3>
+<ol>
+<li>
+<h5>矢量图层对象名称修改为ShapeFileLayer</h5>
+<ul>
+<li>兼容之前5.2/5.1的别名写法，例如shapeFile和shp<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.08.31 Marker对象新增按分组操作方法</h3>
+<ol>
+<li>
+<h5>动态标注对象新增如下方法：</h5>
+<ul>
+<li>showByGroupId() 按分组ID显示</li>
+<li>hideByGroupId() 按分组ID隐藏</li>
+<li>deleteByGroupId() 按分组ID删除<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.08.25 优化focus()方法</h3>
+<ol>
+<li>
+<h5>新增rotation参数控制相机定位时旋转</h5>
+<ul>
+<li><strong>rotation</strong> (array)   可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0]<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.08.23 完善Marker对象</h3>
+<ol>
+<li>
+<h5>Marker对象新增智能模式下属性</h5>
+<ul>
+<li><strong>autoDisplayModeSwitchFirstRatio</strong>      (number) 智能模式时的显示模式切换时range参数的首段比例，仅在displayMode=4时生效，取值范围：[0.01~1.0)，默认值0.01，示例：如果range=[1,1000]，则在[1,10]范围内dislayMode=2</li>
+<li><strong>autoDisplayModeSwitchSecondRatio</strong>     (number) 智能模式时的显示模式切换时range参数的第二段比例，仅在displayMode=4时生效，取值范围：[0.01~1.0)，默认值0.1，示例：如果range=[1,1000]，则在[10,100]范围内dislayMode=1，大于100则dislayMode=1<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.08.22 完善Settings、InfoTree</h3>
+<ol>
+<li>
+<h5>Settings对象新增方法setCursorAutoSync()</h5>
+<ul>
+<li>设置多客户端访问时鼠标同步</li>
+</ul>
+</li>
+<li>
+<h5>InfoTree对象新增focus()方法</h5>
+<ul>
+<li>图层树对象新增focus()方法<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.08.19 完善Marker对象</h3>
+<ol>
+<li>
+<h5>displayMode参数新增显示模式</h5>
+<ul>
+<li>displayMode:3，移动时不显示，不参与避让聚</li>
+<li>displayMode:4，智能模式，根据当前相机高度自动适配以上模式，类似金字塔lod加载效果，内置规则:range范围的1%内取值2，1%至10%取值1，大于10%取值0<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.08.17 完善Setting对象</h3>
+<ol>
+<li>
+<h5>设置VTPK标注方法</h5>
+<ul>
+<li>setLabelLayer(name)</li>
+</ul>
+</li>
+<li>
+<h5>获取所有VTPK方法</h5>
+<ul>
+<li>getLabelLayer()</li>
+</ul>
+</li>
+<li>
+<h5>相机移动事件的开关方法增加事件返回间隔时间参数</h5>
+<p>settings对象setEnableCameraMovingEvent方法增加period参数，值越小返回的越快，单位：毫秒，默认：20ms，取值范围：[0~100]</p>
+</li>
+</ol>
+ <br>
+<h3>2022.07.21 优化DigitalTwinPlayer</h3>
+<ol>
+<li>
+<h5>显示任务队列</h5>
+<p>由于现在的接口都是在主线程执行的，当接口调用比较耗时的时候，视频流会处于假死状态（无法交互），为了让用户知道当前的状态，增加了API调用信息的显示。</p>
+<p>DigitalTwinPlayer类的构造函数增加属性：showTaskList，取值如下：</p>
+<ul>
+<li>
+<p>0: 永不显示</p>
+</li>
+<li>
+<p>1: 执行比较耗时的操作时显示（默认值）</p>
+</li>
+<li>
+<p>2: 一直显示</p>
+</li>
+</ul>
+<p>如果值为1，当一条API指令执行时间超过1秒，就会显示任务队列信息。</p>
+<p><img src="../images/api_revision/image-20220725180836365.png" alt="image-20220725180836365"></p>
+</li>
+<li>
+<h5>增加错误代码</h5>
+<p>如果当前实例正在执行比较耗时的API指令，用户在连接的时候，就会出现黑屏现象，为了明确提示用户，增加了错误代码：4107</p>
+<p><img src="../images/api_revision/image-20220725181014285.png" alt="image-20220725181014285"></p>
+<br>
+</li>
+</ol>
+<h3>2022.07.21 完善DigitalTwinPlayer</h3>
+<ol>
+<li>
+<h5>二次开发可以获取视频流实时状态</h5>
+<p>DigitalTwinPlayer类的构造函数增加属性：onvideostatus，用于接收视频流的状态信息，例如：帧率、码率等</p>
+<pre class="prettyprint source lang-javascript"><code>var options = {
+	'onvideostatus': stats => {         //用于接收视频流的状态信息，例如：帧率、码率、QP等
+           document.title = `Cloud--FPS:${stats.framesPerSecond}`;
+    },
+    //其他属性...
+}
+var aircityPlayer = new DigitalTwinPlayer(playerHost, options);
+</code></pre>
+</li>
+<li>
+<h5>actionEventHander属性改名为onaction</h5>
+<p>DigitalTwinPlayer构造函数的初始化属性actionEventHander改名为onaction，为了兼容之前代码，之前的actionEventHander仍然可用。</p>
+</li>
+<li>
+<h5>二次开发可以随时开关键盘、鼠标交互事件</h5>
+<p>DigitalTwinPlayer类增加方法：setActionEventEnabled，可以随时设置是否开启键盘、鼠标交互事件的回调功能</p>
+<br>
+</li>
+</ol>
+<h3>2022.07.18 视频投影对象新增支持投影线框</h3>
+<ol>
+<li>
+<h5>投影线框参数：</h5>
+<ul>
+<li><strong>frustumVisible</strong> (boolean)   是否显示投影线框，默认值：false<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.07.07 光源Light对象新增支持automate属性</h3>
+<ol>
+<li>
+<h5>Light对象新增属性描述如下：</h5>
+<ul>
+<li><strong>automate</strong>           (boolean) 可选参数，是否根据系统时间自动开关，即开启后晚上自动亮白天自动灭，默认值：true<br>
+<br></li>
+</ul>
+</li>
+</ol>
+<h3>2022.06.21 完善customObject、marker对象</h3>
+<ol>
+<li>
+<h5>customObject的objectId参数描述如下：</h5>
+<ul>
+<li><strong>objectId</strong>       (string | array)    TileLayer图层中包含的待复制的模型(Actor)的ObjectId，同时也支持数组类型参数即把多个actor复制为一个customObject</li>
+</ul>
+</li>
+<li>
+<h5>marker的imagePath和hoverImagePath参数描述如下：</h5>
+<ul>
+<li>
+<p><strong>imagePath</strong>      (string) 图片路径，支持gif动图，支持本地路径和网络路径</p>
+</li>
+<li>
+<p><strong>hoverImagePath</strong> (string) 鼠标悬停时显示的图片路径，支持gif动图，支持本地路径和网络路径<br>
+<br></p>
+</li>
+</ul>
+</li>
+</ol>
+<h3>2022.06.20 全景图对象新增方法，Marker、ShapeFile对象新增属性</h3>
+<ol>
+<li>
+<h5>Panorama对象新增操作方法如下：</h5>
+<ul>
+<li>进入全景图模式：enter(id)</li>
+<li>退出全景图模式：exit()</li>
+<li>切换显示模式：switchMode()</li>
+</ul>
+</li>
+<li>
+<h5>Marker对象新增属性如下：</h5>
+<ul>
+<li><strong>clusterByImage</strong>  (boolean)  聚合时是否根据图片路径分类聚合显示，即当多个marker的imagePath路径参数相同时按路径对marker分类聚合</li>
+</ul>
+</li>
+<li>
+<h5>ShapeFile对象新增属性如下：</h5>
+<ul>
+<li><strong>clusterByImage</strong>    (boolean) 当type==Point时此属性可选，是否按相同图片路径(pointImage)聚合显示</li>
+</ul>
+<br>
+</li>
+</ol>
+<h3>2022.06.14 视频流展示新增多视口模式（分屏显示）</h3>
+<ol>
+<li>
+<h5>Misc对象新增的操作多视口方法如下：</h5>
+<ul>
+<li>进入多视口：enterMultiViewportMode(viewportMode,lineColor,lineSize)</li>
+<li>退出多视口：exitMultiViewportMode()</li>
+<li>设置当前激活视口：setActiveViewport(index)</li>
+<li>获取当前激活视口：getActiveViewport()</li>
+</ul>
+<br>
+</li>
+</ol>
+<h3>2022.06.02 蓝图函数支持传递多个参数</h3>
+<ol>
+<li>
+<h5>Misc对象下callBPFunction()和CustomObject对象下callFunction()/callFunction4CustomObjectArr()新增parameters属性</h5>
+</li>
+</ol>
+<ul>
+<li>
+<p><strong>parameters</strong>  传入多个参数，数组类型，结构示例：[{&quot;paramType&quot;:BPFuncParamType.String,&quot;paramValue&quot;:&quot;示例值&quot;},{&quot;paramType&quot;:BPFuncParamType.Bool,&quot;paramValue&quot;:false},{&quot;paramType&quot;:BPFuncParamType.Float,&quot;paramValue&quot;:100.8}]</p>
+<br>
+</li>
+</ul>
+<h3>2022.05.27 贴花对象Decal新增bbox参数</h3>
+<ol>
+<li>
+<h5>贴花对象Decal新增bbox参数</h5>
+</li>
+</ol>
+<ul>
+<li>
+<p><strong>bbox</strong>  可选参数，贴花覆盖的包围盒范围，数组格式：[minX,minY,minZ,maxX,maxY,maxZ]，数组元素：[任意浮点数]，注意：设置bbox参数后location、scale参数会失效</p>
+  <br>
+</li>
+</ul>
+<h3>2022.05.19 Polygon3D对象新增自定义材质替换属性</h3>
+<ol>
+<li>
+<h5>Polygon3D对象新增自定义材质替换属性</h5>
+</li>
+</ol>
+<ul>
+<li>
+<p><strong>material</strong>    自定义材质路径</p>
+</li>
+<li>
+<p><strong>scalarParameters</strong>  材质数值参数，用来控制材质不透明度亮度等</p>
+</li>
+<li>
+<p><strong>vectorParameters</strong> 材质数组参数，用来控制材质颜色rgba等</p>
+</li>
+<li>
+<p><strong>generateTop</strong> 是否显示顶面</p>
+</li>
+<li>
+<p><strong>generateSide</strong> 是否显示侧面</p>
+</li>
+<li>
+<p><strong>generateBottom</strong> 是否显示底面</p>
+<br>
+</li>
+</ul>
+<h3>2022.05.19 修改Tools对象体剖切方法和日日照分析方法</h3>
+<ol>
+<li>
+<h5>Tools对象体剖切方法更新</h5>
+</li>
+</ol>
+<ul>
+<li>tools.startVolumeClip(...)方法新增rocation参数</li>
+<li>新增更新体剖切方法:tools.updateVolumeClip(...)</li>
+</ul>
+<ol start="2">
+<li>
+<h5>日照分析startSunshineAnalysis(options)方法设置对象options新增时间区间属性</h5>
+</li>
+</ol>
+<ul>
+<li><strong>startTime</strong>     开始时间，取值类型：时间字符串，默认值：08:00</li>
+<li><strong>endTime</strong>       结束时间，取值类型：时间字符串，默认值：16:00</li>
+</ul>
+<br>
+<h3>2022.05.16 优化Cloud UI及交互</h3>
+<ol>
+<li>
+<h5>完善DigitalTwinCloud视频流窗口的UI</h5>
+<p>视频流窗口的左下角增加3个按钮：显示信息、全屏显示、初始位置</p>
+<p><img src="../images/api_revision/image-20220516152345380.png" alt="image-20220516152345380"></p>
+</li>
+</ol>
+<ul>
+<li>
+<h6>显示信息按钮</h6>
+<p>鼠标移上去显示当前实例的详细信息，点击显示或隐藏实时运行状态窗口</p>
+</li>
+<li>
+<h6>全屏显示</h6>
+<p>点击可全屏显示视频流或者退出全屏显示</p>
+</li>
+<li>
+<h6>初始位置</h6>
+<p>鼠标左键点击：回到SavedCamera或者工程初始位置</p>
+<p>鼠标右键点击：保存当前的相机位置到SavedCamera</p>
+<p>鼠标中间点击：重置SavedCamera为工程初始位置并跳转</p>
+</li>
+</ul>
+<ol start="2">
+<li>
+<h5>DigitalTwinCloud键盘交互默认方式改为video</h5>
+<p>之前版本的键盘交互默认是关闭的，现在改为video。</p>
+</li>
+</ol>
+<br>
+<h3>2022.05.11 键盘鼠标交互事件</h3>
+<ol>
+<li>
+<h5>DigitalTwinPlayer增加了键盘、鼠标交互事件的回调函数</h5>
+<p>DigitalTwinPlayer的初始化参数params增加属性：actionEventHander，可以用来设置键盘、鼠标交互事件的回调函数，目前支持以下事件的回调：</p>
+<ul>
+<li>onmouseenter</li>
+<li>onmouseleave</li>
+<li>onmousemove</li>
+<li>onmousedown</li>
+<li>onmouseup</li>
+<li>onkeydown</li>
+<li>onkeyup</li>
+</ul>
+<pre class="prettyprint source lang-javascript"><code> let actionEventHander = {
+        'onmousedown': e => { log(`[MouseDn] button: ${e.button}, pos: ${e.x}, ${e.y}`) },
+        'onmouseup': e => { log(`[MouseUp] button: ${e.button}, pos: ${e.x}, ${e.y}`) },
+        'onkeydown': e => { log(`KeyDown: ${e.code}`) }
+    }
+ aircityPlayer = new DigitalTwinPlayer(&quot;192.168.1.29:8080&quot;, {
+    'actionEventHander': actionEventHander  //鼠标、键盘交互事件的回调
+    //其他属性
+    //...
+});
+</code></pre>
+<p>运行效果：</p>
+<pre class="prettyprint source lang-javascript"><code>[MouseDn] button: 2, pos: 892, 625
+[MouseUp] button: 2, pos: 892, 625
+KeyDown: KeyF
+KeyDown: KeyA
+KeyDown: KeyD
+KeyDown: ControlLeft
+KeyDown: ShiftLeft
+</code></pre>
+</li>
+<li>
+<h5>CustomMesh对象新增自定义材质替换属性</h5>
+<ul>
+<li>
+<p><strong>material</strong>    自定义材质路径</p>
+</li>
+<li>
+<p><strong>scalarParameters</strong>  材质数值参数，用来控制材质不透明度</p>
+</li>
+<li>
+<p><strong>vectorParameters</strong> 材质数组参数，用来控制材质颜色</p>
+</li>
+</ul>
+</li>
+<li>
+<h5>蓝图函数参数类型枚举(BPFuncParamType)新增浮点数组</h5>
+<ul>
+<li>FloatArray新增浮点数值参数类型FloatArray</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2022.05.10 DigitalTwinPlayer</h3>
+<ol>
+<li>
+<h5>DigitalTwinPlayer类增加初始化参数</h5>
+<p>DigitalTwinPlayer初始化参数params增加属性：useHttps，可以明确指定是否使用HTTPS进行WebSocket连接。</p>
+<p>如果使用Nginx通过Https反向代理DigitalTwinCloud的Http服务，为了能够正确的建立连接，需要在初始化DigitalTwinPlayer的时候设置useHttps属性为true。</p>
+</li>
+</ol>
+<br>
+<h3>2022.05.09 导出天际线</h3>
+<ol>
+<li>
+<h5>优化导出天际线的接口</h5>
+<p>原先的接口定义如下：tools.exportSkyline(filePath, imageSize);</p>
+<p>第一个参数只能是云渲染服务器的路径，这在Cloud环境下调用会有诸多不便，为了解决这个问题，增强了第一个参数的含义，如果传递的是文件路径，则导出图片到磁盘指定的位置， 如果传递字符串&quot;base64&quot;（不区分大小写），则接口返回图片的BASE64编码字符串。</p>
+<p>如下代码的运行效果：</p>
+<p><code> fdapi.tools.exportSkyline('base64', [400, 200],</code></p>
+<p><img src="../images/api_revision/image-20220509165651003.png" alt="image-20220509165651003"></p>
+</li>
+</ol>
+<br>
+<h3>2022.04.18 实现全屏功能</h3>
+<ol>
+<li>
+<h5>视频流窗口实现全屏功能</h5>
+<p>DigitalTwinPlayer对象增加属性：fullscreen{get, set}，可以用来设置是否全屏，也可以获取当前是否处于全屏状态</p>
+<p>例如：<code>fdplayer.fullscreen = true</code></p>
+<p>DigitalTwinPlayer对象初始化参数options增加属性showFullscreenButton，用于控制是否在右下角显示“全屏”按钮，默认为false，不显示。</p>
+</li>
+</ol>
+<br>
+<h3>2022.04.15 内嵌浏览器内核支持回调了</h3>
+<ol>
+<li>
+<h5>Marker的弹窗页面和tick页面里调用API支持回调了</h5>
+<p>现在在弹窗页面和tick页面里调用API方法，完全跟正常页面调用一样了，支持回调函数了。</p>
+<p>例如：</p>
+<pre class="prettyprint source lang-javascript"><code>    async function getCamera() {
+        let o = await fdapi.camera.get();
+        document.getElementById('info').innerText = JSON.stringify(o);
+    }
+</code></pre>
+<p>运行效果：</p>
+<p><strong><img src="../images/api_revision/image-20220415164210407.png" alt="image-20220415164210407"></strong></p>
+</li>
+</ol>
+<br>
+<h3>2022.04.13  增加获取SDK完整版本号的方法</h3>
+<ol>
+<li>
+<h5>DigitalTwinAPI类增加方法getVersion</h5>
+<p>可获取SDK的完整版本号，例如：5.3.0413</p>
+<p>注：通过AcApiVersion或者acapi.VERSION获取到的是SDK的大版本号，例如：5.3，而通过此方法获取到的是完整版本号</p>
+</li>
+</ol>
+<br>
+<h3>2022.04.07 Polyline和Polygon对象增加可视范围参数</h3>
+<ol>
+<li>
+<h5>Polyline、Polygon新增可视范围参数</h5>
+<ul>
+<li>range    (array)     可视范围: [近裁距离, 远裁距离]，取值范围: [任意负值, 任意正值]</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2022.04.01 天气对象设置雾效新增雾化范围参数</h3>
+<ol>
+<li>
+<h5>setFogParam() 新增雾化范围参数fogRange</h5>
+<ul>
+<li>setFogParam(fogDensity, fogGroundDensity, fogGroundHeight, fogRange)</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2022.03.25 Marker3D、Weather、TileLayer、Tools、Camera对象修改</h3>
+<ol>
+<li>
+<h5>Marker3D新增可视范围和自动高度属性</h5>
+<ul>
+<li>range：3D标注的可视距离范围：[min,max]，单位：米</li>
+<li>autoHeight：自动判断下方是否有物体，设置正确高度，默认值：false</li>
+</ul>
+</li>
+<li>
+<h5>Weather对象新增设置云层高度方法</h5>
+<ul>
+<li>设置云层高度：setCloudHeight(cloudHeight)  参数单位：公里</li>
+</ul>
+</li>
+<li>
+<h5>TileLayer对象Foucs方法新增定位距离和飞机时间参数</h5>
+<ul>
+<li>distance：定位距离 单位：米</li>
+<li>flyTime  :  飞行时间 单位：秒</li>
+</ul>
+</li>
+<li>
+<h5>Tools对象视域分析接口新增起始坐标位置属性</h5>
+<ul>
+<li>startPoint：起点坐标位置</li>
+<li>endPoint :   终点坐标位置</li>
+</ul>
+</li>
+<li>
+<h5>Camera对象新增方法计算空间两点的欧拉角</h5>
+<ul>
+<li>getEulerAngle(startPoint,endPoint)：起始点坐标位置</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2022.03.25 支持Node服务器环境调用</h3>
+<ol>
+<li>
+<h5>DigitalTwinCloud JS API支持Node服务器环境调用了</h5>
+<p>使用方法与浏览器环境一样</p>
+<pre class="prettyprint source lang-javascript"><code>const acapi = require('./ac.min');
+var fdapi = new acapi.DigitalTwinAPI('192.168.1.29:4321', {
+    onReady: () => {
+        let data = {
+            id: 't1',
+            coordinate: [491274.65625, 2489124, 21.0],
+            text: '北京银行',
+            range: [1, 10000]
+        }
+        fdapi.tag.delete('t1');
+        fdapi.camera.set(492472.750000, 2487660.750000, 1637.308838, -49.619568, -93.635345, 0);
+        fdapi.tag.add(data);
+    }
+});
+</code></pre>
+</li>
+<li>
+<h5>WebSocket方式的API调用不再限制数据大小</h5>
+<p>之前通过WebSocket方式调用API会有数据大小限制（超过30MB就会造成WebSocket连接断开），新的版本不再有这个限制了，对浏览器环境和Node服务器环境都没有限制了。</p>
+<p>注意：</p>
+<p>  只有通过CloudAPI调用接口发送数据才不会有限制， 如果自己创建WebSocket对象，自己发送数据还是有限制。</p>
+</li>
+</ol>
+<br>
+<h3>2022.03.24 实现在三维渲染每帧的时候执行JS脚本</h3>
+<p>  用户经常需要使用定时器（setInterval）或者循环来执行一些非常频繁的接口调用，以实现一些自定义的动画效果，但是这些接口调用是通过JS API实现的， 因为Javascript是单线程执行的，太频繁的调用会影响浏览器的响应，另外Cloud的鼠标、键盘交互事件也是通过JS发送到后台的，频繁的接口调用会影响交互事件的传输，造成交互卡顿。 而且如果传输的数据量比较大时，也会占用不少带宽。</p>
+<p>  为了解决这个问题，实现更高效的API调用，今天的版本实现了在C++每帧渲染的时候执行JS脚本以实现用户自定义的动画效果，这种实现比前端API调用有以下优点：</p>
+<ul>
+<li>高效，直接本机通过C++调用JS</li>
+<li>不影响鼠标、键盘交互，以及其他接口的调用</li>
+<li>不占用网络带宽</li>
+</ul>
+<h5>DigitalTwinAPI增加2个方法：registerTick和removeTick</h5>
+<p>registerTick用于注册每帧执行的脚本，示例：</p>
+<p><code>fdapi.registerTick(&quot;D:/RelCloud-5.1/SDK/samples/popup/tick.html&quot;)</code></p>
+<p>参数是html页面的地址，内容如下：</p>
+<pre class="prettyprint source lang-javascript"><code>&lt;!doctype html>
+&lt;html>
+&lt;head>
+    &lt;meta charset=&quot;utf-8&quot;>
+    &lt;title>TICK回调代码&lt;/title>
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../../ac_conf.js&quot;>&lt;/script>
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../../ac.min.js&quot;>&lt;/script>
+&lt;/head>
+&lt;body>
+&lt;/body>
+&lt;/html>
+&lt;script>
+    var fdapi;
+    let tagdata = {id: 't1',coordinate: [491274.65625, 2489124, 21.0],text: '北京银行'};
+    window.onload = function () {
+        fdapi = new DigitalTwinAPI();
+        fdapi.tag.delete('t1');
+        fdapi.camera.set(492472.750000, 2487660.750000, 1637.308838, -49.619568, -93.635345, 0);
+        fdapi.tag.add(tagdata);
+    }
+    function ontick() {
+        tagdata.coordinate[0] += 10;
+        fdapi.tag.setCoordinate('t1', tagdata.coordinate);
+    }
+&lt;/script>
+</code></pre>
+<p>说明：</p>
+<p>1）此页面是在服务器上执行的</p>
+<p>2）此页面可以使用所有的Cloud API，约束条件跟在POI弹窗里调接口是一样的，不支持回调。</p>
+<p>3）<font color=red>ontick方法名是固定的</font>，在C++渲染的每帧会调用此JS方法</p>
+<p>4）registerTick可以多次调用，后面的调用会冲掉前面的调用</p>
+<p>removeTick用于移除设置的每帧回调。</p>
+<br>
+<h3>2022.03.23 ShapeFile对象新增Feature要素操作方法</h3>
+<ol>
+<li>
+<h5>ShapeFile对象新增方法如下：</h5>
+<ul>
+<li>高亮单个要素区域：highlightFeature(shapeFileId,featureId)</li>
+<li>取消高亮单个要素区域：stopHighlightFeature(shapeFileId,featureId)</li>
+<li>高亮多个要素区域：highlightFeatures(data)</li>
+<li>取消高亮多个要素区域：highlightFeatures(data)</li>
+<li>定位要素区域：focusFeature(shapeFileId, featureId, distance, flyTime)</li>
+<li>查询多个要素区域：getFeature(data)</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2022.03.22 实现在POI弹窗里进行接口调用及交互操作</h3>
+<p>因为这些对象的弹出窗口是在后台渲染的，之前是一个孤立的浏览器内核窗口，不能进行API调用，不能和主页面进行交互操作，用户要实现这些功能，需要进行非常复杂的代码实现，既不稳定也很难用， 为了解决这一问题，今天的版本实现了以下几个功能：</p>
+<ol>
+<li>
+<h5>和主页面进行通信（单向）</h5>
+<p>在弹窗的页面中进行如下调用：``FDExternal.postevent('this is a message.')`</p>
+<p>FDExternal是弹窗的浏览器内核的内置对象</p>
+<p>主页面的事件处理：</p>
+<pre class="prettyprint source lang-javascript"><code>    //onEvent
+    let _onEvent = (e) => {
+        if (e.eventtype == 'MarkerCallBack') {
+            alert(e.Data);
+        }
+        log('OnEvent: ' + e.eventtype);
+    };
+</code></pre>
+</li>
+</ol>
+<p><img src="../images/api_revision/image-20220322161044829.png" alt="image-20220322161044829"></p>
+<ol start="2">
+<li>
+<h5>在弹窗里直接进行接口调用</h5>
+<pre class="prettyprint source lang-javascript"><code>    var fdapi;
+
+    window.onload = function () {
+        fdapi = new DigitalTwinAPI(); //初始化时不需要传递任何参数
+    }
+
+    function callApi() {
+        fdapi.settings.setMainUIVisibility(false);
+        fdapi.odline.clear();
+        let o = {
+            id: 'od1',color: Color.Green,
+            coordinates: [[492303.65625, 2487534.5, 4.195], [491391.5625, 2487777.5, 4.2]],
+            flowRate: 1,intensity: 1,bendDegree: 0.5,
+            tiling: 0.5,lineThickness: 15,flowPointSizeScale: 30,
+            labelSizeScale: 1000,endLabelShape: 1，
+            lineShape: 1,lineStyle: 0,flowShape: 1,
+            startPointShape: 1,endPointShape: 1,startLabelShape: 1            
+        };
+        fdapi.odline.add(o);
+        fdapi.odline.focus(o.id);       
+    }
+</code></pre>
+<p>这种方式效率很高，不会通过网络传输，也不会占用主页面的脚本执行时间，直接通过JS调用C++的底层功能。 但是也是有缺点的：</p>
+<ul>
+<li>
+<p>调试不方便，因为代码是在POI弹窗里运行，所以没有办法像浏览器一样进行调试，如果直接在浏览器运行弹窗页面也是不能进行API调用的（因为浏览器里没有FDExternal对象）</p>
+</li>
+<li>
+<p>没有接口调用的返回值，不能使用回调函数或者异步操作(await/async,  then等)</p>
+</li>
+</ul>
+<p>如果不能接受上面2个缺点，可以通过第1条更新进行迂回实现，通过向主页面发送消息，所有逻辑代码在主页面里实现。</p>
+</li>
+<li>
+<h5>在弹窗里直接调用C++方法关闭窗口</h5>
+</li>
+</ol>
+<pre class="prettyprint source lang-javascript"><code>    function closeWindow() {
+        FDExternal.close();
+    }
+</code></pre>
+<p>​		通过这个方法可以在弹窗页面里实现自定义的关闭按钮</p>
+<br>
+<h3>2022.03.17 新增三维热力图对象，Settings新增交互模式、Marker新增方法</h3>
+<ol>
+<li>
+<h5>HeatMap3D对象新增方法如下：</h5>
+<ul>
+<li>添加对象：add()</li>
+<li>修改对象：update()</li>
+<li>删除对象：delete()</li>
+<li>查询对象：get()</li>
+<li>聚焦对象：focus()</li>
+<li>隐藏对象：hide()</li>
+<li>显示对象：show()</li>
+<li>清空对象:   clear()</li>
+</ul>
+</li>
+<li>
+<h5>Settings对象修改方法如下：</h5>
+<ul>
+<li>setInteractiveMode(mode)：设置交互模式，0：自由交互模式，1：第三人称模式，2：无人机模式，3：中心漫游模式（物体观察模式），4：地图模式</li>
+</ul>
+</li>
+<li>
+<h5>Marker对象新增方法如下：</h5>
+<ul>
+<li>setAttachCustomObject(data)：设置标注Marker贴合模型对象CustomObject，模拟标注跟随物体运动</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2022.03.11  Settings对象setMapMode()方法增加设置WMTS最大层级参数</h3>
+<ol>
+<li>
+<h5>Settings对象setMapMode()方法新增设置WMTS最大层级参数如下：</h5>
+<ul>
+<li>maxLevel : WMTS服务最大显示层级，取值范围：[0~22]，默认值：10</li>
+</ul>
+</li>
+</ol>
+ <br>
+<h3>2022.03.10  图层TileLayer对象新增getAllFlattenInfo方法、get()方法增加包围盒bbox信息</h3>
+<ol>
+<li>
+<h5>TileLayer对象新增方法和属性如下：</h5>
+<ul>
+<li>BBox：[minX,minY,minZ,MaxX,maxY,maxZ]</li>
+<li>新增方法：getAllFlattenInfo() 查询所有图层的剖切信息</li>
+</ul>
+</li>
+</ol>
+ <br>
+<h3>2022.03.08 优化光标资源</h3>
+<ol>
+<li>
+<h5>将光标文件内置</h5>
+<p>之前的SDK用户在进行二次开发时需要将SDK目录的cursors文件夹拷贝到自己的环境并与ac.min.js在一个文件夹下。今天之后的版本不再需要这个cursors文件夹了，光标资源已经内置到API里，不需要单独的cur文件了。</p>
+</li>
+<li>
+<h5>DigitalTwinPlayer初始化增加属性：useBuiltinCursors</h5>
+<p>参数类型：boolean，默认值true<br>
+设置是否使用内置光标，如果设置为false, 则不使用内置光标，视频窗口将一直显示箭头样式的光标</p>
+</li>
+</ol>
+<br>
+<h3>2022.03.04  水流场WaterFlowField对象属性调整</h3>
+<ol>
+<li>
+<h5>WaterFlowField对象调整属性如下：</h5>
+<ul>
+<li>WaterFlowField对象新增属性：<strong>uvRangeMapping</strong>  (array)     流速重映射范围，为了突出流动效果，可以对流速有效范围进行一个映射</li>
+<li>WaterFlowField对象修改属性：<strong>colorSpeedRange</strong>修改为<strong>validUVRange</strong>   (array)     流速有效范围，流速小于min的区域会显示蓝色，min到max之间的区域会从蓝色过渡到红色显示热</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2022.03.02 DigitalTwinPlayer对象增加初始化属性</h3>
+<ol>
+<li>
+<h5>DigitalTwinPlayer初始化参数options增加属性urlExtraInfo</h5>
+<p>在初始化DigitalTwinPlayer对象时，可以在options参数中设置属性：urlExtraInfo，用于在创建WebSocket连接的URL后面添加附加信息（例如授权认证信息等），例如如下的示例代码：</p>
+<pre class="prettyprint source lang-javascript"><code>var player = new DigitalTwinPlayer('127.0.0.1:8080', {
+    iid:'2471787814316',
+    pid:1, 
+    urlExtraInfo:{
+        userToken:'jb3k5b345',
+    	appToken:'jbsfhjg4234'
+    }   
+})
+</code></pre>
+<p>最终生成的WebSocket URL是这样的：<code>ws://192.168.1.29:8080/player?hasVideo=true&amp;iid=2471787814316&amp;pid=1&amp;userToken=jb3k5b345&amp;appToken=jbsfhjg4234</code></p>
+</li>
+</ol>
+<br>
+<h3>2022.03.01 视频投影对象自定义蒙版图片属性</h3>
+<ol>
+<li>
+<h5>VideoProjection对象新增自定义蒙版图片属性</h5>
+<p><strong>texturePath</strong>    (string)    自定义投影蒙版图片路径，可以是本地路径，也支持网络路径</p>
+</li>
+</ol>
+<br>
+<h3>2022.02.24  全景图对象增加属性、TileLayer对象setCollision()方法增加参数</h3>
+<ol>
+<li>
+<h5>全景图对象增加属性</h5>
+<p>是否贴地：onTerrain，布尔类型，默认true，设置为贴地后offset偏移量的Z轴会失效<br>
+偏移量：offset，数组类型，[X,Y,Z]</p>
+</li>
+<li>
+<h5>TileLayer对象setCollision()方法增加参数</h5>
+<p>enableMouseInteract          是否开启鼠标交互，默认值：true 开启交互<br>
+enableMousePick                 是否开启鼠标拾取查询，默认值：true 开启拾取<br>
+enableCharacterCollision    是否开启碰撞，默认值：true 开启碰撞</p>
+</li>
+</ol>
+<br>
+<h3>2022.01.25  Tools对象多边形剖切增加反转参数和3dt挖洞增加反转参数</h3>
+<ol>
+<li>
+<h5>多边形剖切增加反转参数：isReverseCut</h5>
+<p>多边形剖切反转：tools.startPolygonClip(coordinates,isReverseCut)</p>
+</li>
+<li>
+<h5>TileLayer多边形挖洞方法增加反转参数：isReverseCut</h5>
+<p>新增多边形挖洞反转：tileLayer.addHole()<br>
+修改多边形挖洞反转：tileLayer.updateHole()</p>
+</li>
+</ol>
+<br>
+<h3>2022.01.26  Tools对象新增等高线分析方法</h3>
+<ol>
+<li>
+<h5>Tools对象新增等高线分析方法</h5>
+开始分析：startContourLineAnalysis(option)<br>
+结束分析：stopContourLineAnalysis()</li>
+</ol>
+<br>
+<h3>2022.01.21  Tools对象新增坡度坡向分析方法，设置测量增加地表面积测量类型枚举</h3>
+<ol>
+<li>
+<h5>Tools对象新增坡度坡向分析方法</h5>
+<p>开始分析：startTerrainSlopeAnalysis(option)<br>
+结束分析：stopTerrainSlopeAnalysis()</p>
+</li>
+<li>
+<h5>Tools对象设置测量模式增加地表面积测量类型枚举</h5>
+<p>地表面积测量：MeasurementMode.TerrainArea</p>
+</li>
+</ol>
+<br>
+<h3>2022.01.13  TileLayer对象设置样式setStyle()方法新增参数</h3>
+<ol>
+<li>
+<h5>TileLayer对象设置样式方法新增参数</h5>
+<p>饱和度：saturation<br>
+亮度：brightness<br>
+对比度：contrast<br>
+对比度基准：contrastBase</p>
+</li>
+</ol>
+<br>
+<h3>2022.01.13  Tools对象新增日照分析</h3>
+<ol>
+<li>
+<h5>Tools对象新增日照分析工具</h5>
+开始日照分析方法：startSunshineAnalysis(options)<br>
+结束日照分析方法：stopSunshineAnalysis()</li>
+</ol>
+<br>
+<h3>2022.01.06  Tools对象新增多条线段求交方法</h3>
+<ol>
+<li>
+<h5>Tools对象新增方法linesIntersect()</h5>
+linesIntersect(startEndPointArr, highPrecision,returnDetails)：支持一次设置多条线段求交，支持设置返回信息精度和返回内容详情</li>
+</ol>
+<br>
+<h3>2021.12.28 Marker对象新增属性 Weather对象新增方法</h3>
+<ol>
+<li>
+<h5>Marker对象新增属性</h5>
+<p>hoverImageSize：鼠标悬停时显示的图片尺寸，[width,height]，默认值：[0,0] 使用图片原始尺寸</p>
+</li>
+<li>
+<h5>Weather对象新增设置云层厚度方法</h5>
+<p>setCloudTickness(cloudTickness)：云层厚度，取值范围：[0~20]</p>
+<p>: [28,28],//鼠标悬停时显示的图片尺寸</p>
+</li>
+</ol>
+<br>
+<h3>2021.12.27 TileLayer接口修复挖平操作方法</h3>
+<ol>
+<li>
+<h5>TileLayer修复挖平方法addModifier()的bug</h5>
+</li>
+</ol>
+<br>
+<h3>2021.12.24 TileLayer接口修改</h3>
+<ol>
+<li>
+<h5>TileLayer add方法的data参数增加可见性和是否释放资源属性</h5>
+<p>visible：添加后是否可见</p>
+<p>releaseWhenHidden：隐藏时是否释放资源</p>
+</li>
+</ol>
+<br>
+<h3>2021.12.23 Tools对象新增通视分析、开敞度分析和填挖方分析方法</h3>
+<ol>
+<li>
+<h5>新增通视分析和开敞度分析</h5>
+<ul>
+<li>Tools对象增加通视分析方法：startVisiblityAnalysis()、stopVisiblityAnalysis()</li>
+<li>Tools对象增加开敞度分析方法：startViewDomeAnalysis()、stopViewDomeAnalysis()</li>
+<li>Tools对象增加填挖方分析方法：startCutFillAnalysis()、stopCutFillAnalysis()</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.12.22 TileLayer对象新增方法和get()新增返回属性</h3>
+<ol>
+<li>
+<h5>新增设置TileLayer图层的可视高度范围方法，get()方法返回增加属性</h5>
+<ul>
+<li>TileLayer对象增加setViewHeightRange(id, minVisibleHeight, maxVisibleHeight)</li>
+<li>TileLayer对象get()方法返回结果增加minVisibleHeight、maxVisibleHeight属性，可视高度范围的最小最大值</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.12.13 设置面板SettingsPanel--后期选项增加设置倾斜摄影透明度参数</h3>
+<ol>
+<li>
+<h5>后期设置方法setPostProcessMode()新增设置属性如下：</h5>
+<ul>
+<li>osgbGlobalAlpha: 0.8 //倾斜摄影不透明度，取值范围：[0,1.0]，默认值：1.0</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.12.10 新增流场WaterFlowField对象及相关操作方法</h3>
+<ol>
+<li>
+<h5>WaterFlowField对象新增方法如下：</h5>
+<ul>
+<li>WaterFlowField对象增加add()方法</li>
+<li>WaterFlowField对象增加update()方法</li>
+<li>WaterFlowField对象增加delete()方法</li>
+<li>WaterFlowField对象增加get()方法</li>
+<li>WaterFlowField对象增加clear()方法</li>
+<li>WaterFlowField对象增加focus()方法</li>
+<li>WaterFlowField对象增加hide()方法</li>
+<li>WaterFlowField对象增加show()方法</li>
+</ul>
+</li>
+<li>
+<h5>修复TileLayer的hideActors()方法：</h5>
+<ul>
+<li>修复TileLayer的隐藏多个Actor方法 hideActors()</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.12.08 三维图层TileLayer对象增加三个属性</h3>
+<ol>
+<li>
+<h5>TileLayer对象新增属性及默认取值如下：</h5>
+<ul>
+<li>enableMouseInteract             (boolean)    是否开启鼠标交互，默认值：true 开启交互</li>
+<li>enableMousePick                    (boolean)    是否开启鼠标拾取查询，默认值：true 开启拾取</li>
+<li>enableCharacterCollision      (boolean)    是否开启碰撞，默认值：true 开启碰撞</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.12.07 自定义对象CustomObject增加方法</h3>
+<ol>
+<li>
+<h5>CustomObject对象新增设置视口可见性方法如下：</h5>
+<ul>
+<li>新增方法： setViewportVisible(id,vp,fn)  仅在播放导览时生效</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.12.03 优化API调用性能，Tools剖切方法增加参数，自定义对象增加控制移动方法</h3>
+<ol>
+<li>
+<h5>实现禁用回调功能以优化性能</h5>
+<p>​		之前调用每个API方法，服务器在处理后都会返回调用结果，但是有些接口用户根本不关心也不需要服务器返回结果，比如设置相机位置、显隐界面UI等。</p>
+<p>​		因为服务器返回信息都是排队返回的，如果在大量调用接口的时候，每个接口都返回信息，就会造成队列拥挤，这样用户真正需要调用返回信息的接口的时候，就会等待很久。所以增加了禁用服务器返回的功能。</p>
+<p>​		每个API方法的最后一个参数都是回调函数fn，如果想禁止服务器在处理后返回响应，只需要将fn 设置成null即可（注意不是undefined，必需是null）。</p>
+<pre class="prettyprint source lang-javascript"><code>async function test_stress_disable_callback() {
+    log('100次API调用开始...');
+    let t1 = new Date().getTime();
+    for (let i = 0; i &lt; 100; i++) {
+        fdapi.settings.setMainUIVisibility(false, null);
+        //下面是启用回调的代码，可以对比一下
+        //await fdapi.settings.setMainUIVisibility(false);
+    }
+    let t2 = new Date().getTime();
+    log('100次API调用开始! 总共耗时：' + (t2 - t1));
+}
+</code></pre>
+<p>如上测试代码，如果禁用服务器响应总耗时是477ms，如果启用服务器响应，总耗时是10072ms。</p>
+<p>注意：fn设置成null以后，此方法就不能再等待了，前面不能加await了。</p>
+</li>
+</ol>
+<br>
+<ol start="2">
+<li>
+<h5>Tools面、体剖切方法增加参数</h5>
+<ul>
+<li>新增参数：Tools面剖切方法新增参数控制交互编辑startPlaneClip(location, rotation, isShowPlane,isEditable, fn)</li>
+<li>新增参数：Tools体剖切方法新增参数控制交互编辑 startVolumeClip(bbox, value, isShowBBox ,isEditable, fn)</li>
+</ul>
+</li>
+<li>
+<h5>CustomObject增加控制对象移动方法</h5>
+<ul>
+<li>新增方法：startMove() 按路径轨迹和差分时间执行物体移动</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.12.02 Light对象新增可视距离distance属性</h3>
+<ol>
+<li>
+<h5>新增功能如下</h5>
+<ul>
+<li>Light光源对象增加可视距离distance属性，默认5000米</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.12.01 新增SettingsPanel对象新增Polyline样式</h3>
+<ol>
+<li>
+<h5>新增设置面板SettingsPanel对象及相关操作方法如下</h5>
+<ul>
+<li>设置汇报模式参数 setReportModeMode()</li>
+<li>获取汇报模式参数 getReportModeMode()</li>
+<li>设置控制面板参数 setControlMode()</li>
+<li>获取控制面板参数 getControlMode()</li>
+<li>设置后期面板参数 setPostProcessMode()</li>
+<li>获取后期面板参数 getPostProcessMode()</li>
+<li>设置相机面板参数 setCameraMode()</li>
+<li>获取相机面板参数 getCameraMode()</li>
+<li>设置地图面板参数 setMapMode()</li>
+<li>获取地图面板参数 getMapMode()</li>
+</ul>
+</li>
+<li>
+<h5>Polyline新增两种虚线样式</h5>
+<ul>
+<li>普通虚线 PolylineStyle.DottedNormal</li>
+<li>圆点虚线 PolylineStyle.DottedCircle</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.11.26 自定义对象CustomObject对象新增替换和恢复材质方法</h3>
+<ol>
+<li>
+<h5>新增相关方法如下</h5>
+<ul>
+<li>替换自定义对象材质 overrideMaterial()</li>
+<li>恢复自定义对象材质 restoreMaterial()</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.11.25 天气对象新增6个参数及相关设置方法</h3>
+<ol>
+<li>
+<h5>参数设置相关方法如下</h5>
+<ul>
+<li>设置太阳光照射强度 setSunIntensity(0.7)</li>
+<li>设置月亮光照射强度 setMoonIntensity(30)</li>
+<li>设置环境光强度 setAmbientLightIntensity(0.3)</li>
+<li>设置色温值 setTemperature(8500)</li>
+<li>设置阴影质量 setShadowQuality(2)</li>
+<li>设置阴影可视距离 setShadowDistance(2000)</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.11.19 顶点编辑新增四种坐标架类型</h3>
+<ol>
+<li>
+<h5>进入顶点编辑时，新增四种类型坐标架交互</h5>
+<ul>
+<li>1.缩放</li>
+<li>2.旋转</li>
+<li>3.位移</li>
+<li>4.混合，默认取值是4</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.11.19 新增WaterMesh水流网格对象及相关操作方法，Marker对象增加两个新属性</h3>
+<ol>
+<li>
+<h5>新增WaterMesh水流网格对象，相关操作方法如下</h5>
+<ul>
+<li>waterMesh对象增加add()方法</li>
+<li>waterMesh对象增加update()方法</li>
+<li>waterMesh对象增加delete()方法</li>
+<li>waterMesh对象增加get()方法</li>
+<li>waterMesh对象增加clear()方法</li>
+<li>waterMesh对象增加focus()方法</li>
+<li>waterMesh对象增加hide()方法</li>
+<li>waterMesh对象增加show()方法</li>
+</ul>
+</li>
+<li>
+<h5>Marker对象增加两个新属性</h5>
+<ul>
+<li>Marker对象增加属性：boolean fixedSize 是否固定图片尺寸</li>
+<li>Marker对象增加属性：boolean useTextAnimation 是否使用画效果</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.11.16 优化API调用时机</h3>
+<ol>
+<li>
+<h5>API首次调用必需在onReady回调里</h5>
+<p>如果页面加载时，尚未接收到onReady回调就进行了API调用，某些接口可能有崩溃的风险，今天的版本优化了此功能，避免了潜在的风险，如果API调用早于onReady回调，会收到调用失败的结果</p>
+<p><img src="../images/api_revision/image-20211116164512371.png" alt="image-20211116164512371"></p>
+<p>如果开启了日志，在WebSocket.log里也可以看到相关的日志记录：</p>
+<p><img src="../images/api_revision/image-20211116164553039.png" alt="image-20211116164553039"></p>
+</li>
+</ol>
+<br>
+<h3>2021.11.08 增加实例访问权限功能</h3>
+<ol>
+<li>
+<h5>实例连接增加访问令牌</h5>
+<p>DigitalTwinPlayer对象初始化参数options增加属性token，用于设置实例访问令牌，如果服务设置了令牌，那么客户端需要提供正确的令牌才能连接实例。</p>
+</li>
+</ol>
+<br>
+<h3>2021.11.05 新增Light光源对象及相关操作方法</h3>
+<ol>
+<li>
+<h5>新增Light光源对象，相关操作方法如下：</h5>
+<ul>
+<li>Light对象增加add()方法</li>
+<li>Light对象增加update()方法</li>
+<li>Light对象增加delete()方法</li>
+<li>Light对象增加get()方法</li>
+<li>Light对象增加clear()方法</li>
+<li>Light对象增加focus()方法</li>
+<li>Light对象增加hide()方法</li>
+<li>Light对象增加hideAll()方法</li>
+<li>Light对象增加show()方法</li>
+<li>Light对象增加showAll()方法</li>
+</ul>
+</li>
+<li>
+<h5>Beam对象新增显示/隐藏操作方法如下：</h5>
+<ul>
+<li>Beam对象增加hide()方法</li>
+<li>Beam对象增加hideAll()方法</li>
+<li>Beam对象增加show()方法</li>
+<li>Beam对象增加showAll()方法</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.11.02 TileLayer对象新增方法支持空间库查询</h3>
+<ol>
+<li>
+<h5>TileLayer对象新增方法：</h5>
+<ul>
+<li>新增：从空间库查询Actor详细属性方法 getActorInfoFromDB()</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.11.01 TileLayer对象修复高亮多个Actor问题</h3>
+<ol>
+<li>
+<h5>高亮接口bug：</h5>
+<ul>
+<li>修复：高亮多个Actor方法highlightActors()</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.10.25 完善示例，优化用户体验</h3>
+<ol>
+<li>
+<h5>完善实例管理接口的实例，增加KickPlayer示例</h5>
+<p>具体请参考manager.html</p>
+</li>
+<li>
+<h5>优化用户体验</h5>
+<p>视频流窗口的左上角增加闪烁的小圆点（状态指示器），从指示点的颜色可以判断当前的运行状态，当DigitalTwinPlayer对象初始化时showStartupInfo设置为false不显示启动信息的时候，这个指示点是很有用的。 具体含义请参考CloudStatus类型。</p>
+<p><img src="../images/api_revision/image-20211025112847688.png" alt="image-20211025112847688"></p>
+</li>
+</ol>
+<br>
+<h3>2021.10.18 Marker对象新增属性、RadiationPoint对象新增方法及优化部分接口</h3>
+<ol>
+<li>
+<h5>接口优化：</h5>
+<ul>
+<li>优化：包含亮度的所有对象，亮度参数统一命名为intensity</li>
+<li>新增：Marker对象增加showLine属性</li>
+<li>新增：RadiationPoint对象增加hideAll()和showAll方法</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.10.15 Tools对象新增替换贴图纹理方法</h3>
+<ol>
+<li>
+<h5>Tools新增操作方法如下：</h5>
+<ul>
+<li>Tools对象增加使用视频替换纹理方法：replaceTextureByVideo()</li>
+<li>Tools对象增加使用图片替换纹理方法：replaceTextureByImage()</li>
+<li>Tools对象增加使用网页替换纹理方法：replaceTextureByUrl()</li>
+<li>Tools对象增加恢复纹理方法：restoreTexture()</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.10.12 资源文件支持相对路径</h3>
+<ol>
+<li>
+<h5>所有接口的中引用的资源文件支持相对路径了</h5>
+</li>
+</ol>
+<p><img src="../images/api_revision/image-20211012170916868.png" alt="image-20211012170916868"></p>
+<p>首先在CloudMaster的文件资源管理界面进行资源同步操作，之后就可以在API接口中使用相对路径了。</p>
+<p>例如：</p>
+<pre class="prettyprint source lang-javascript"><code>let o = {
+    id: 'p1',
+    coordinate: [495269.37, 2491073.25, 25.4],
+    imagePath: '@path:emoji/2x/0023-fe0f-20e3.png',
+    imageSize: [28, 28],
+    text: '北京银行',
+};
+fdapi.tag.add(o);
+</code></pre>
+<br>
+<h3>2021.10.08 修复Settings里设置交互开关bug</h3>
+<ol>
+<li>
+<h5>修复设置交互开关方法的bug</h5>
+<ul>
+<li>setEnableInteract方法：设置交互开关，目前支持启用和禁用鼠标交互，禁用后可以通过API设置交互</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.09.26 增加Camera对象获取导览缩略图方法</h3>
+<ol>
+<li>
+<h5>新增根据导览名称获取对应导览缩略图base64字符串方法，如下：</h5>
+<ul>
+<li>Camera对象增加getAnimationImage()方法</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.09.22 增加Marker3D对象及相关操作方法，TileLayer新增压平和新增挖洞操作方法</h3>
+<ol>
+<li>
+<h5>新增Marker3D对象，相关操作方法如下：</h5>
+<ul>
+<li>Marker3D对象增加add()方法</li>
+<li>Marker3D对象增加update()方法</li>
+<li>Marker3D对象增加delete()方法</li>
+<li>Marker3D对象增加get()方法</li>
+<li>Marker3D对象增加clear()方法</li>
+<li>Marker3D对象增加focus()方法</li>
+<li>Marker3D对象增加hide()方法</li>
+<li>Marker3D对象增加hideAll()方法</li>
+<li>Marker3D对象增加show()方法</li>
+<li>Marker3D对象增加showAll()方法</li>
+</ul>
+</li>
+<li>
+<h5>TileLayer新增压平和新增挖洞操作方法</h5>
+<ul>
+<li>TileLayer对象新增根据坐标添加压平addModifiers()方法</li>
+<li>TileLayer对象新增根据shapeFile路径添加压平addModifierByShapeFile方法</li>
+<li>TileLayer对象新增根据坐标添加挖洞addHole()方法</li>
+<li>TileLayer对象新增根据shapeFile路径添加挖洞addHoleByShapeFile方法</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.09.18 Polygon3DStyle增加枚举类型</h3>
+<ol>
+<li>
+<h5>新增枚举类型取值说明：</h5>
+<ul>
+<li>单色无光照，SingleColor: 9</li>
+<li>单色有光照，SingleColorWithLight: 10</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.09.18 CustomObject和Polygon增加方法，蓝图函数增加坐标类型参数</h3>
+<ol>
+<li>
+<h5>对象增加方法：</h5>
+<ul>
+<li>CustomObject对象增加setTintColor()方法：设置模型叠加颜色</li>
+<li>Polygon对象增加stopHighlight()方法： 取消对象高亮效果</li>
+</ul>
+</li>
+<li>
+<h5>蓝图函数CallBPFunction增加坐标类型参数</h5>
+<ul>
+<li>参数支持单个坐标和坐标数组</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.09.16 完善DigitalTwinPlayer对象</h3>
+<ol>
+<li>
+<h5>完善三维键盘交互功能</h5>
+<p>之前的版本的键盘交互都是绑定到document对象，这样有个问题就是在页面输入时也会触发三维交互，影响体验。今天的版本在DigitalTwinPlayer初始化的options参数里增加了keyEventReceiver属性，用于设置键盘事件绑定，可设置的值为：'document', 'video', 'none'，二次开发可以根据应用场景选择合适的值。</p>
+</li>
+<li>
+<h5>增加视频流加载成功的回调方法</h5>
+<p>DigitalTwinPlayer初始化的options参数里增加了onloaded属性，可用于设置当视频流加载完成后的回调方法，具体请参考API文档和示例。</p>
+</li>
+<li>
+<h5>DigitalTwinPlayer对象增加resize方法</h5>
+<p>当自动布局无效时，可以手动调用此方法调整布局。</p>
+<pre class="prettyprint source lang-javascript"><code>let options = {
+    'iid': iid,                 //如果想连接指定的云渲染实例，可以指定这个参数
+    'pid': pid,                 //工程ID
+    'domId': 'player',          //DOM元素
+    'apiOptions': apiOptions,   //DigitalTwinAPI初始化选项
+    'keyEventTarget': 'none', //三维键盘交互事件接收者，可选的值：document / video / none
+    'showStatus': true,         //如果不需要，直接去掉showStatus属性即可
+    'showStartupInfo': true,    //如果不需要显示启动信息，直接去掉showStartupInfo即可
+    'onclose': _onClose,        //一般情况下不需要这个属性
+    'onloaded': () => console.log('video stream loaded.')
+}
+var aircityPlayer = new DigitalTwinPlayer(playerHost, options)
+</code></pre>
+</li>
+<li>
+<h5>实现工程切换接口</h5>
+<p>DigitalTwinPlayer增加方法setInstanceOptions，实现切换实例参数的功能。</p>
+<p>调用此接口可以实现在不刷新页面的情况下切换实例参数</p>
+</li>
+</ol>
+<br>
+<h3>2021.09.15 修正Marker对象属性名称：dispalyMode</h3>
+<ol>
+<li>
+<h5>修改属性名称：</h5>
+<ul>
+<li>修改为displayMode</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.09.08 TileLayer对象新增挖洞相关操作</h3>
+<ol>
+<li>
+<h5>TileLayer对象新增以下方法：</h5>
+<ul>
+<li>TileLayer对象增加addHole()方法 : 新增挖洞操作</li>
+<li>TileLayer对象增加updateHole方法: 更新挖洞操作</li>
+<li>TileLayer对象增加deleteHole方法: 删除挖洞操作</li>
+<li>TileLayer对象增加clearHole方法 : 清空挖洞操作</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.09.06 Marker和Tag对象增加属性，EditHelper和Tools删除相关参数</h3>
+<ol>
+<li>
+<h5>修改明细：</h5>
+<ul>
+<li>Marker和Tag对象： 添加popupBackgroundColor  弹出层颜色透明度属性 （ array）</li>
+<li>EditHelper对象：setParam接口   删除参数 DrawType和DrawTickness</li>
+<li>Tools对象： setMeasurement接口 删除参数 LineSize</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.09.02 增加ShapeFile对象及方法</h3>
+<ol>
+<li>
+<h5>ShapeFile新增以下方法：</h5>
+<ul>
+<li>ShapeFile对象增加add()方法</li>
+<li>ShapeFile对象增加clear()方法</li>
+<li>ShapeFile对象增加delete()方法</li>
+<li>ShapeFile对象增加focus()方法</li>
+<li>ShapeFile对象增加get()方法</li>
+<li>ShapeFile对象增加hide()方法</li>
+<li>ShapeFile对象增加hideAll()方法</li>
+<li>ShapeFile对象增加show()方法</li>
+<li>ShapeFile对象增加showAll()方法</li>
+<li>ShapeFile对象增加update()方法</li>
+<li>ShapeFile对象增加open()方法</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.08.30 添加方法</h3>
+<ol>
+<li>
+<h5>完善以下对象的方法：</h5>
+<ul>
+<li>weather对象增加getDateTime方法</li>
+<li>camera对象增加getAnimationList方法</li>
+<li>tileLayer对象增加getActorInfo方法</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.08.25 实例管理服务权限优化</h3>
+<ol>
+<li>
+<h5>优化了实例管理服务接口的权限</h5>
+<p>之前的实例管理服务是需要权限的，调用接口之前需要先登录才能正常调用，现在改成可选的了，如果部署的网络环境没有安全问题（比如内网部署），可以不用开启接口调用权限。</p>
+<p><img src="../images/api_revision/image-20210825161024687.png" alt="image-20210825161024687"></p>
+<p><img src="../images/api_revision/image-20210825161232119.png" alt="image-20210825161232119"></p>
+</li>
+</ol>
+<br>
+<h3>2021.08.23 时间模拟</h3>
+<ol>
+<li>
+<h5>Weather对象增加时间模拟的接口</h5>
+<p>weather.simulateTime(startTime, endTime, duration)</p>
+<p>具体使用方法请参考接口帮助文档和示例代码。</p>
+</li>
+</ol>
+<br>
+<h3>2021.08.13 增加新接口</h3>
+<ol>
+<li>
+<h5>增加FloodFill和Cesium3DTile类</h5>
+</li>
+<li>
+<h5>TileLayer增加获取图层详细信息的方法</h5>
+<p>tileLayer.getInformation</p>
+</li>
+</ol>
+<br>
+<h3>2021.07.22 重构Cloud接口调用方式</h3>
+<ol>
+<li>
+<h5>API调用同时支持WebSocket和WebRTC两种方式</h5>
+<p>Cloud的API调用默认是重用WebRTC通道，不需要单独设置端口号。如果想使用之前的WebSocket方式，也是可以的，现在可以同时支持这两种方式。开启WebSocket调用方式的方法如下：</p>
+<ul>
+<li>
+<p><strong>在CloudMaster配置界面的实例编辑高级参数里开启：</strong></p>
+<p><img src="../images/api_revision/image-20210722160628521.png" alt="image-20210722160628521"></p>
+</li>
+<li>
+<p><strong>如果是通过实例管理服务的接口进行实例动态启停，可以在实例运行参数里加上websocketPort属性即可</strong>，具体使用方法请参考SDK/manager.html</p>
+<p><img src="../images/api_revision/image-20210722160931177.png" alt="image-20210722160931177"></p>
+</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.07.21 水淹分析</h3>
+<ol>
+<li>
+<h5>实现水淹分析接口</h5>
+<p>tools对象增加方法：startFloodFill，stopFloodFill</p>
+</li>
+<li>
+<h5>支持WMTS</h5>
+<p>地图设置(settings.setMapMode)支持wmts，具体请参考API文档</p>
+</li>
+</ol>
+<br>
+<h3>2021.07.13 重构API和测试代码</h3>
+<ol>
+<li>
+<h5>重构对象的创建方式</h5>
+<p>之前的对象XX创建方式是通过XXData来创建的，比如创建标签（Tag），需要先simple.html然后设置调用tag.add，现在不需要用这种方式了，直接构造object即可，例如：</p>
+<pre class="prettyprint source lang-javascript"><code>let o = {
+	id: 'p1',
+	coordinate: [495269.37, 2491073.25, 25.4],
+	imagePath: HostConfig.Path + '/samples/images/tag.png',
+	url: HostConfig.Path + '/samples/popup/simple.html',
+	imageSize: [28, 28],
+	text: '北京银行',
+	range: [1, 8000.0],
+	textRange: 3000,
+	showLine: true,
+	textColor: Color.Black,
+	textBackgroundColor: Color.White,
+	hoverImagePath: HostConfig.Path + '/samples/images/hilightarea.png',
+	textSize: 10,
+	autoHeight: true
+	}
+await fdapi.tag.add(o);
+fdapi.tag.focus(o.id, 200, 0);
+</code></pre>
+<p>SDK自带的测试代码已经全部换成这种创建方式。</p>
+<p><strong>注意：</strong></p>
+<p>​		以前的创建方式目前仍然可以继续使用，不过<strong>API文档已经移除了相关Data的注释</strong>，如果要查看之前的调用方式，请参考之前版本的API文档。</p>
+</li>
+<li>
+<h5>RadiationPoint对象增加属性：autoHeight</h5>
+<p>autoHeight：自动判断下方是否有物体，设置正确高度，默认值：false</p>
+</li>
+</ol>
+<br>
+<h3>2021.07.12 完善接口</h3>
+<ol>
+<li>
+<h5>完善CustomTag类的方法</h5>
+<p>CustomTagData增加属性popupPos，用于设置弹窗的位置。</p>
+<br>
+</li>
+</ol>
+<h3>2021.07.07 完善OnReady回调</h3>
+<ol>
+<li>
+<h5>解决onReady回调引起的接口调用问题</h5>
+<p>之前的onReady回调函数是在WebSocket连接成功时触发，这样有隐患，因为此时可能工程尚未加载完成，Explorer环境尚未准备好，如果此时调用接口，可能导致接口调用无效或者程序崩溃。</p>
+<p>修改后的逻辑是：当工程加载完成后才会触发onReady回调。</p>
+<p>注：用户不需要自己处理CompleteInitialization事件，SDK内部会自动处理，当收到CompleteInitialization事件时自动触发onReady回调。</p>
+<p><img src="../images/api_revision/image-20210707173627672.png" alt="image-20210707173627672"></p>
+</li>
+</ol>
+<br>
+<h3>2021.07.01 DigitalTwinCloud重磅升级！！！</h3>
+<ol>
+<li>
+<h5>DigitalTwinCloud改变API调用方式</h5>
+<p>之前的版本是通过WebSocket方式进行API调用的，所以需要设置一个-websocketport参数，现在不需要这个参数设置了，改为直接通过<strong>WebRTC信道</strong>进行API调用。 这个改变只针对Cloud， 对于Explorer还需要之前的调用方式。</p>
+<br>
+</li>
+<li>
+<h5>优化DigitalTwinPlayer、DigitalTwinAPI对象的初始化方式</h5>
+<p>之前的DigitalTwinAPI的构造函数是这样的：constructor(host, fnOnReady, fnLog);</p>
+<p>重构之后的构造函数是这样的：constructor(host, options, reserved);</p>
+<p>重构之后，仍然兼容之前的调用方式（建议改成新的调用方式）。具体请参考帮助文档以及API测试页面。<strong>需要注意的是：之前的第一个参数host可以传实例ID，重构之后的host参数只能使用ip:port这样的形式，不能再传实例ID。</strong></p>
+<p>示例代码：</p>
+<pre class="prettyprint source lang-javascript"><code>    //DigitalTwinAPI初始化选项
+    let apiOptions = {
+        'onReady': _onReady,
+        'onApiVersion': _onApiVersion,
+        'onEvent': _onEvent,
+        'onLog': log
+    };
+	aircityApi = new DigitalTwinAPI(HostConfig.API, apiOptions);
+</code></pre>
+<br>
+<p>之前的DigitalTwinPlayer构造函数是这样的：constructor(host, domId, token, showStatus, showStartupInfo);</p>
+<p>重构之后的构造函数是这样的：constructor(host, options);</p>
+<p>重构之后，仍然兼容之前的调用方式（不过建议改成新的调用方式）。具体请参考帮助文档以及API测试页面。<strong>需要注意的是：之前的第一个参数host可以传实例ID，重构之后的host参数只能使用ip:port这样的形式，不能再传实例ID。</strong></p>
+<p><strong>对于Cloud应用可以不用显式的创建DigitalTwinAPI对象，只需要在DigitalTwinPlayer创建参数里指定apiOptions，就会自动创建。</strong></p>
+<p>示例代码：</p>
+<pre class="prettyprint source lang-javascript"><code>let iid = getQueryVariable('iid');
+let apiOptions = {
+	'onReady': _onReady,
+	'onApiVersion': _onApiVersion,
+	'onEvent': _onEvent,
+	'onLog': log
+};
+//DigitalTwinPlayer
+let options;
+if (document.getElementById('player')) { //需要显示视频流
+    options = {
+	'iid': iid,         //如果想连接指定的云渲染实例，可以指定这个参数
+	'domId': 'player',
+	'apiOptions': apiOptions,
+	'showStatus': true,
+	'showStartupInfo': true
+    }
+}
+else {
+    options = {
+	'iid': iid,          //不带视频流的连接必须指定云渲染实例
+	'apiOptions': apiOptions
+    };
+}
+aircityPlayer = new DigitalTwinPlayer(HostConfig.Player, options);
+
+//对于Cloud应用可以不用显式的创建DigitalTwinAPI对象，只需要在DigitalTwinPlayer创建参数里指定apiOptions，就会自动创建。
+aircityApi = aircityPlayer.getAPI();  
+</code></pre>
+<br>
+</li>
+<li>
+<h5>支持内网穿透功能</h5>
+<p>之前的版本只能在有公网IP的机器上部署云渲染，这样有了很大的限制。 现在可以支持在任意网络环境中部署云渲染了。</p>
+<br>
+</li>
+<li>
+<h5>支持分布式部署</h5>
+<p>之前的版本云渲染相关的所有功能组件都必须在一台机器上部署，现在可以分布式部署了，比如在内网只部署云渲染节点，服务功能放在有公网IP的机器上。当用户连接的时候，可以自动分配空闲的云渲染实例，也可以指定访问特定的实例。</p>
+<br>
+</li>
+</ol>
+<h3>2021.06.30 设置交互模式</h3>
+<ol>
+<li>
+<h5>settings对象增加设置交互模式的方法</h5>
+<p>setInteractiveMode(mode, fn)</p>
+<p>mode 交互模式，0：自由，1：第三人称，2：无人机</p>
+</li>
+<li>
+<h5>Polyline, Polygon的样式增加“贴地模式”</h5>
+<p>Polyline, Polygon之前的样式现在可以用枚举值了 ，具体请参考API文档。</p>
+<p><img src="../images/api_revision/image-20210630105421249.png" alt="image-20210630105421249"></p>
+</li>
+<li>
+<h5>TileLayer增加新的方法</h5>
+<ul>
+<li>
+<p>增加设置视口可见性的方法：setViewportVisible</p>
+</li>
+<li>
+<p>增加获取指定TileLayer的所有ObjectID的方法：getObjectIDs</p>
+</li>
+</ul>
+</li>
+<li>
+<h5>增加相机移动事件的开关</h5>
+<p>settings对象增加setEnableCameraMovingEvent方法</p>
+<p>CameraMoving事件默认不再触发，如果需要触发CameraMoving事件，可以调用settings.setEnableCameraMovingEvent(true)来实现。</p>
+</li>
+<li>
+<h5>增加新的功能类</h5>
+<ul>
+<li>增加CustomMesh类</li>
+<li>增加新的标注类（标注类比之前的标签类tag功能更加强大）</li>
+</ul>
+</li>
+</ol>
+<br>
+<h3>2021.05.25 增加接口</h3>
+<ol>
+<li>
+<h5>settings对象增加交互开关</h5>
+<p>fdapi.settings.setEnableInteract(bEnable)</p>
+<p>用来设置交互开关，包括键盘、鼠标、触摸，如果禁用，只能通过接口控制相机</p>
+</li>
+<li>
+<h5>增加设置指北针是否可见的接口</h5>
+<p>fdapi.settings.setCampassVisible</p>
+</li>
+<li>
+<h5>Tag对象增加属性：autoHeight, textSize</h5>
+<p>autoHeight: 自动判断Tag下方是否有物体，设置tag的正确高度</p>
+<p>textSize：设置标签文本大小</p>
+</li>
+<li>
+<h5>camera对象增加pauseAnimation, resumeAnimation方法</h5>
+<p>可用于暂停、恢复播放动画导览。</p>
+</li>
+</ol>
+<br>
+<h3>2021.04.28 优化API版本信息接口</h3>
+<ol>
+<li>
+<h5>云渲染服务器返回的版本号增加类型字段，用于区分软件的版本，例如Trunk/Master/Cluster等。</h5>
+<p>通过版本类型和版本字段组合，更加唯一的确定了当前所使用的API版本。</p>
+<p><img src="../images/api_revision/image-20210428145057819.png" alt="image-20210428145057819"></p>
+<br>
+</li>
+<li>
+<h5>tag对象增加2个属性：popupPos、popupSize，用于设置弹出窗口的位置和大小</h5>
+<p>注意：这2个属性不在TagData的构造函数中，需要创建TagData后再设置</p>
+<p>数据类型：</p>
+<p>popupPos:  [x, y]</p>
+<p>popupSize: [width, height]</p>
+<br>
+</li>
+<li>
+<h5>增加启动进程的方法</h5>
+<p>misc对象增加startProcess方法，用于调用系统进程，例如用系统浏览器打开一个网页，调用系统中的某个程序执行需要的功能等。</p>
+<p>具体请参考测试页面int.html</p>
+</li>
+</ol>
+<br>
+<h3>2021.04.23 TileLayer压平</h3>
+<ol>
+<li>
+<h5>增加TileLayer压平操作相关的接口</h5>
+<p>tileLayer对象增加以下方法：</p>
+<p>addModifier、updateModifier、deleteModifier、clearModifier</p>
+</li>
+<li>
+<h5>优化视频流自适应功能</h5>
+<p>云渲染视频流最大支持4K， 当页面video元素大小超过4K时，按比例进行缩放，比如8000x2000的大小，则云渲染后台的分辨率为：3840x960。</p>
+</li>
+</ol>
+<br>
+<h3>2021.04.16 设置码率</h3>
+<ol>
+<li>
+<h5>DigitalTwinPlayer对象增加设置码率的接口</h5>
+<p>setBitrate(maxBitrate)</p>
+<p>参数为最大码率，默认值为30000，可以根据自己的实际情况设置为合适的值。</p>
+<p>SDK的测试页面player.html, main.html，可以通过url参数进行设置， 例如 http://192.168.1.29/player.html?bitrate=15000</p>
+<br>
+</li>
+</ol>
+<h3>2021.04.12 优化tools对象</h3>
+<ol>
+<li>
+<h5>天际线分析方法增加属性</h5>
+<p>startSkylineAnalysis方法的options参数增加tileLayers属性</p>
+<p><img src="../images/api_revision/20210305-skyline.png" alt="20210305-skyline"></p>
+<p>exportSkyline方法去掉skylineColor和backgroundColor参数，增加options参数</p>
+<p><img src="../images/api_revision/20210305-skyline2.png" alt="20210305-skyline2"></p>
+</li>
+<li>
+<h5>增加设置鼠标拾取功能的方法</h5>
+<p>misc对象增加setMousePickMask方法，之前的setQueryToolState方法已弃用。</p>
+</li>
+</ol>
+<br>
+<h3>2021.04.08 统一方法名</h3>
+<ol>
+<li>
+<h5>统一tools对象的测量、剖切、分析接口的方法名</h5>
+<p>都以start和stop为前缀，具体如下：</p>
+<p>createSkyline ---&gt;  startSkylineAnalysis</p>
+<p>deleteSkyline ---&gt; stopSkylineAnalysis</p>
+<p>createViewshed ---&gt; startViewshedAnalysis</p>
+<p>deleteViewshed ---&gt; stopViewshedAnalysis</p>
+<br>
+</li>
+<li>
+<h5>解决无法手动调整视频流大小的BUG</h5>
+<p>手动设置大小和自动调整大小只能二选一。</p>
+<p>具体请参考player_resize.html</p>
+<br>
+</li>
+<li>
+<h5>添加相机控制接口</h5>
+<p>camera对象增加以下方法，用于控制相机：前进、后退、左移、右移、上升、下降、左转、右转、抬头、低头以及停止。</p>
+<p>moveForward<br>
+moveBackward<br>
+moveLeft<br>
+moveRight<br>
+moveUp<br>
+moveDown<br>
+turnLeft<br>
+turnRight<br>
+turnUp<br>
+turnDown<br>
+stop</p>
+</li>
+</ol>
+<br>
+<h3>2021.04.02 添加天际线和视域分析功能</h3>
+<ol>
+<li>
+<h5>tools对象增加天际线分析功能</h5>
+<p>tools对象增加以下方法：</p>
+<ul>
+<li>createSkyline	创建天际线</li>
+<li>deleteSkyline    删除天际线</li>
+<li>exportSkyline   导出天际线</li>
+</ul>
+</li>
+<li>
+<h5>tools对象增加视域分析功能</h5>
+<p>tools对象增加以下方法：</p>
+<ul>
+<li>createViewshed	开始视域分析</li>
+<li>deleteViewshed    停止视域分析</li>
+</ul>
+<p>注意：</p>
+<p>​		以前的视域分析功能(fdapi.viewshed)已弃用</p>
+</li>
+</ol>
+<br>
+<h3>2021.03.23 接口改名</h3>
+<ol>
+<li>
+<h5>坐标转换方法改名</h5>
+<p>proj2Geo ---&gt; pcs2gcs</p>
+<p>geo2Proj ---&gt;  gcs2pcs</p>
+</li>
+</ol>
+<br>
+<h3>2021.03.22 优化实例管理接口、增加剖切功能</h3>
+<ol>
+<li>
+<h5>设置实例参数的接口增加了参数&quot;async&quot;，</h5>
+<p>用于设置接口是异步调用还是同步调用，命令格式如下：</p>
+<pre class="prettyprint source lang-javascript"><code>     var o = {
+            'command': CommandType.SetInstanceParams,
+            'async': true,   
+            'instanceId': instanceId,
+            'projectPath': projectPath,
+            'adjustResolution': adjustResolution,
+            'limitOneClient': limitOneClient
+        }
+        __ws.send(JSON.stringify(o));
+</code></pre>
+<p>async参数是可选的，如果设置为true，那么立即返回结果，如果设置为false或者没有此参数，会等待实例启动结果，然后再返回。（也就是说此接口默认会等待）</p>
+<br>
+</li>
+<li>
+<h5>实例管理服务增加错误代码</h5>
+<pre class="prettyprint source"><code>    const WSErrorCode = {
+        OK: 0,
+        NoInstance: 1,				//没有可用的实例
+        InstanceNotFound: 2,		//没有找到指定的实例
+        InstanceNotRunning: 3,		//指定的实例没有在运行
+        ProjectPathNotExist: 4,	    //工程文件不存在
+        AsyncProcessing: 5,		    //异步处理中...
+        StartInstanceFailed: 6,	    //实例启动失败
+        MaxCode: 255
+    };
+</code></pre>
+<ul>
+<li>AsyncProcessing：异步操作进行中，比如SetInstanceParam命令，如果设置了aysnc为true，那么返回的错误代码就是AsyncProcessing，说明实例正在启动</li>
+<li>StartInstanceFailed：启动实例失败</li>
+</ul>
+<br>
+</li>
+<li>
+<h5>增加剖切相关的接口</h5>
+<p>增加面剖切和体剖切相关的功能接口</p>
+<p>​		startPlaneClip、stopPlaneClip</p>
+<p>​		startVolumeClip、stopVolumeClip</p>
+<p>之前的stopClip方法已过期</p>
+<p>暂时可继续使用，建议用stopPolygonClip代替。</p>
+</li>
+</ol>
+<br>
+<br>
+<h3>2021.03.19 重构异步调用</h3>
+<ol>
+<li>
+<h5>实现接口异步调用的三种方式</h5>
+<p>三种方式：callback、then、async/await</p>
+<p>使用方法请参考：<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p>
+</li>
+<li>
+<h5>优化设置相机的接口：camera.set</h5>
+<p>现在camera.set方法可以传递三种类型的参数了</p>
+<p>使用方法请参考：<a href="tutorial-API_Camera.html">二次开发：关于设置相机位置的三种形式</a></p>
+</li>
+<li>
+<h5>统一所有接口的返回值</h5>
+<p>之前对tag.get, polyline.get等这些对象的get方法的回调函数的返回值进行的特殊处理，现在进行了统一，对于使用async/await方式进行异步调用，所有的接口返回值都是一样的了，就是在int.html里调用接口后显示的Reponse输出内容</p>
+<p>以tag.get举例，调用方式如下：</p>
+<pre class="prettyprint source lang-javascript"><code>async function test_tag_get() {
+    let res = await fdapi.tag.get('p1');
+    let o = res.data[0];
+    log(`获取标签：\n id: ${o.id} \n text: ${o.text}`);
+}
+
+或者：
+function test_tag_get() {
+    fdapi.tag.get('p1', function(res){
+        let o = res.data[0];
+    log(`获取标签：\n id: ${o.id} \n text: ${o.text}`);
+    });   
+}
+</code></pre>
+<p>运行上面的代码后，res参数就是下面的JSON对象：</p>
+<pre class="prettyprint source lang-javascript"><code>{
+	&quot;command&quot;:	90,
+	&quot;timestamp&quot;:	1616134672222,
+	&quot;callbackIndex&quot;:	3,
+	&quot;result&quot;:	0,
+	&quot;resultMessage&quot;:	&quot;OK&quot;,simple.html
+	&quot;data&quot;:	[{
+			&quot;id&quot;:	&quot;p1&quot;,
+			&quot;groupId&quot;:	&quot;&quot;,
+			&quot;userData&quot;:	&quot;&quot;,
+			&quot;coordinate&quot;:	[495269.343750, 2491073.250000, 25.400000],
+			&quot;imageSize&quot;:	[28.000000, 28.000000],
+			&quot;url&quot;:	&quot;D:\\Pojects\\DigitalTwinCloud\\SDK/simple.html&quot;,
+			&quot;imagePath&quot;:	&quot;D:\\Pojects\\DigitalTwinCloud\\SDK/images/tag.png&quot;,
+			&quot;hoverImagePath&quot;:	&quot;D:\\Pojects\\DigitalTwinCloud\\SDK/images/hilightarea.png&quot;,
+			&quot;text&quot;:	&quot;北京银行&quot;,
+			&quot;textColor&quot;:	[0.000000, 0.000000, 0.000000, 1.000000],
+			&quot;textBackgroundColor&quot;:	[1.000000, 1.000000, 1.000000, 1.000000],
+			&quot;textBorderColor&quot;:	[0.000000, 0.000000, 0.000000, 0.000000],
+			&quot;range&quot;:	[1.000000, 8000.000000],
+			&quot;textRange&quot;:	3000.000000,
+			&quot;showLine&quot;:	1,
+			&quot;autoHidePopupWindow&quot;:	1
+		}]
+}
+</code></pre>
+</li>
+</ol>
+<br>
+<br>
+<h3>2021.03.18 重构JS库完善API接口</h3>
+<ol>
+<li>
+<h5>增加获取图层数信息的接口</h5>
+<p>调用方法：</p>
+<pre class="prettyprint source lang-javascript"><code> fdapi.infoTree.get((response) => {
+        let str = response.infotree;
+        let o = JSON.parse(str);
+        log(JSON.stringify(o));
+});
+</code></pre>
+<p>回调返回的数据格式如下：</p>
+<pre class="prettyprint source lang-javascript"><code>{
+	&quot;command&quot;:	217,
+	&quot;timestamp&quot;:	1615272910405,
+	&quot;callbackIndex&quot;:	3,
+	&quot;result&quot;:	0,
+	&quot;infotree&quot;:	[{
+			&quot;iD&quot;:	&quot;ProjectTree_Root&quot;,
+			&quot;index&quot;:	0,
+			&quot;parentIndex&quot;:	-1,
+			&quot;name&quot;:	&quot;世界&quot;,
+			&quot;type&quot;:	&quot;EPT_Folder&quot;
+		}, {
+			&quot;iD&quot;:	&quot;D18ABAB9405A2AC58E6D49BF28A86706&quot;,
+			&quot;index&quot;:	1,
+			&quot;parentIndex&quot;:	0,
+			&quot;name&quot;:	&quot;EmergencyRoom_UniversalKey&quot;,
+			&quot;type&quot;:	&quot;EPT_Scene&quot;
+		}, {
+			&quot;iD&quot;:	&quot;8F4AD37744DCF514E62EED80BA6D4064&quot;,
+			&quot;index&quot;:	2,
+			&quot;parentIndex&quot;:	0,
+			&quot;name&quot;:	&quot;SDKDemo&quot;,
+			&quot;type&quot;:	&quot;EPT_Scene&quot;
+		}, {
+			&quot;iD&quot;:	&quot;8E543D9B427BE68A2726C380501D6DC2&quot;,
+			&quot;index&quot;:	3,
+			&quot;parentIndex&quot;:	0,
+			&quot;name&quot;:	&quot;building&quot;,
+			&quot;type&quot;:	&quot;EPT_Scene&quot;
+		}]
+}
+</code></pre>
+<br>
+</li>
+<li>
+<h5>playMovie方法增加loop参数，用于指定是否循环播放</h5>
+<p><code>fdapi.misc.playMovie('c:/media/courier.mp4', true);</code></p>
+<br>
+</li>
+<li>
+<h5>增加reset方法</h5>
+<p><code>fdapi.reset(); </code></p>
+<p>调用后可以将场景重置到刚打开工程的状态。</p>
+<br>
+</li>
+<li>
+<h5>重构JS库以支持VUE开发</h5>
+<p>点击查看 API_Vue</p>
+<br>
+</li>
+<li>
+<h5>DigitalTwinCloud对象改名为DigitalTwinAPI，现在的调用方法如下：</h5>
+<p><code>var api = new DigitalTwinAPI(...);</code></p>
+<p>为了保持兼容，DigitalTwinCloud还可以继续使用，<code>var api  = new DigitalTwinCloud(...);</code></p>
+<br>
+</li>
+<li>
+<h5>重构JS库，现在支持在同一个HTML页面创建多个云渲染实例了</h5>
+<p>具体使用方法请参考<a href="tutorial-API_MultiVideoInPage.html">在一个页面中嵌入多个云渲染窗口</a></p>
+<br>
+</li>
+<li>
+<h5>完善CustomObject类的方法</h5>
+<p>增加了以下几个方法：（具体参数请参考API修改记录）</p>
+<ul>
+<li>
+<p><code>addByTileLayer</code>：从TileLayer图层添加CustomObject对象</p>
+</li>
+<li>
+<p><code>highlight</code>：高亮</p>
+</li>
+<li>
+<p><code>unhighlight</code>：取消高亮</p>
+</li>
+<li>
+<p><code>callFunction</code>：调用CustomObject对象的蓝图函数</p>
+</li>
+<li>
+<p><code>focus</code>：该方法距离参数功能增强</p>
+</li>
+</ul>
+<p><img src="../images/api/CustomObject_Focus.png" alt="CustomObject_Focus"></p>
+</li>
+<li>
+<h5>配置工具增加使用样例功能的功能：</h5>
+<p>首次使用DigitalTwinCloud或者想学习接口使用方法，查看示例代码的时候可以选择样例功能。</p>
+<p><img src="../images/api/UseDemoAcp.png" alt="UseDemoAcp"></p>
+</li>
+<li>
+<h5>回调函数返回的JSON数据里增加resultMessage属性，用于只是错误代码的信息</h5>
+<pre class="prettyprint source lang-javascript"><code>{
+	&quot;command&quot;:	255,
+	&quot;timestamp&quot;:	0,
+	&quot;callbackIndex&quot;:	0,
+	&quot;result&quot;:	7,
+	&quot;resultMessage&quot;:	&quot;InvalidRequestType&quot;
+}
+</code></pre>
+</li>
+<li>
+<h5>统一Camera的Get/Set方法的参数</h5>
+<ol>
+<li>
+<p><strong>camera的get方法返回的信息由之前的x, y, z, heading, tilt, roll调整为x, y, z, pitch, yaw, roll和数组</strong></p>
+<p>set/lookAt/lookAtBBox方法的参数也做了对应的调整，参见下面第2条说明</p>
+</li>
+<li>
+<p><strong>camera增加useOldDataFormat方法</strong></p>
+<p>用于设置是否使用旧版本的数据格式（2021.03.17之前的版本），这是一个全局的设置。<br>
+受影响的方法有：camera对象的set、lookAt、lookAtBBox，以camera.set举例：<br>
+之前版本的方法定义如下：<code>(x, y, z, heading, tilt, flyTime, fn)</code><br>
+现在的定义如下：<code>set(x, y, z, pitch, yaw, flyTime, fn)</code><br>
+两个的区别就是heading(yaw), tilt(pitch)的顺序互换了一下<br>
+如果调用了useOldDataFormat()，可以让用户代码保持兼容（不用修改就可以在新版本上运行）</p>
+</li>
+</ol>
+</li>
+</ol>
+<br>
+<h3>2021.03.05 完善坐标系-增加动态水接口</h3>
+<ol>
+<li>
+<h5>coord对象增加坐标系转换接口：geo2Proj, proj2Geo</h5>
+<p>geo2Proj: 地理坐标转投影坐标</p>
+<p>proj2Geo: 投影坐标转地理坐标</p>
+<br>
+</li>
+<li>
+<h5>object的派生类支持使用经纬度创建了</h5>
+<p>目前支持一下对象使用经纬度创建： tag、customTag, polyline,  odline, polygon, polygon3D, beam, radiationPoint,  videoProjection, viewshed</p>
+<p>以tag为例，在构造TagData后，设置coordinateType为WGS84即可，例如：</p>
+<p>let o = new TagData('tag1', ....);</p>
+<p>o.<strong>coordinateType</strong> = 1;</p>
+<p>fdapi.tag.add(o);</p>
+<br>
+</li>
+<li>
+<h5>增加quit方法，可以调用此方法退出程序</h5>
+<p>fdapi.quit();</p>
+<br>
+</li>
+<li>
+<h5>完善tileLayer对象的stopHighlightActor方法</h5>
+<p>之前的stopHighlightActor是取消场景里所有相关的高亮，现在可以传递参数，取消指定tileLayer、指定actor的高亮了。</p>
+<p>fdapi.tileLayer.stopHighlightActor(tileLayerId, tileLayerActorObjectId);</p>
+<p>如果想取消所有的高亮，可以调用__g.tileLayer.stopHighlightActor(); 或者 fdapi.tileLayer.stopHighlightActors();</p>
+<br>
+</li>
+<li>
+<h5>增加动态水接口：dynamicWater</h5>
+<p><img src="../images/api_revision/20210305-water.png" alt="20210305-water"></p>
+</li>
+</ol>
+<br>
+<br>
+<h3>2021.03.01 CameraTour</h3>
+<ol>
+<li>
+<h5>CameraTourData类的构造函数去掉duration和userData参数</h5>
+<p>现在的调用方式如下：</p>
+<p>let data = new CameraTourData('1', 'tour1', keyFrames);</p>
+</li>
+<li>
+<h5>tools对象增加lineIntersect方法，进行线段求交。</h5>
+</li>
+</ol>
+<br /> 
+<h3>2021.02.04 优化完善配置工具</h3>
+<ol>
+<li>
+<p>配置工具进行了功能完善</p>
+<p><img src="../images/api_revision/clip_image002.jpg" alt="img"></p>
+</li>
+<li>
+<p>现在可以单独对每一个实例进行启动、停止了</p>
+</li>
+<li>
+<p>实例增加了标识符(ID)</p>
+</li>
+<li>
+<p>实例列表增加了运行状态显示（实时的）</p>
+</li>
+<li>
+<p>多显卡的机器可以自动给实例分配到合适的显卡上</p>
+</li>
+<li>
+<p>完善实例管理服务相关的接口</p>
+</li>
+</ol>
+ <br />
+<h3>2021.01.18 VideoProjection</h3>
+<ol>
+<li>
+<h5>VideoProjectionData去掉mediaType参数</h5>
+<p>现在不需要再设置视频类型了，内部自动会判断。</p>
+</li>
+<li>
+<h5>配置工具增加单独启动HTTP服务的功能</h5>
+</li>
+</ol>
+ <br />
+<h3>2021.01.10 增加视域功能</h3>
+<ol>
+<li>
+<p>新增Viewshed对象</p>
+</li>
+<li>
+<p>TileLayer对象增加setStyle方法，可以设置图层的样式</p>
+</li>
+</ol>
+ <br />
+<h3>2020.01.08 增加Tools类</h3>
+<ol>
+<li>
+<h5>新增了 tools工具类，</h5>
+<p>增加测量相关的方法：setMeasurement / enterMeasurement / exitMeasurement / finishMeasurement</p>
+<p>可以拾取坐标点、直线测量、水平/垂直测量、面/体测量等。（具体请参考帮助文档）</p>
+</li>
+<li>
+<h5>misc类里的挖洞接口startPolygonClip、stopClip转移到 tools类</h5>
+</li>
+</ol>
+ <br />
+<h3>2020.01.05 设置相机接口的默认值</h3>
+<ol>
+<li>
+<p>camera对象的set, lookAt, lookAtBBox三个方法的参数heading, tilt 现在是可选的了，如果没有设置，系统会自动计算合适的默认值。</p>
+</li>
+<li>
+<p>camera对象的set, lookAt, lookAtBBox以及object对象的focus、focusAll增加参数：flyTime，可以设置相机飞行时间，默认值2秒</p>
+</li>
+</ol>
+ <br />
+<h3>2020.12.25 全屏播放视频</h3>
+<ol>
+<li>
+<h5>misc对象增加全屏播放视频的功能</h5>
+<p>为了提高播放性能，在播放的过程中，三维渲染会自动停止。</p>
+<p>fdapi.misc.playMovie(url);</p>
+<p>fdapi.misc.stopMovie();</p>
+</li>
+<li>
+<h5>增加全景图对象：Panorama</h5>
+<p>可以指定坐标，图片路径，可以增删改，可以focus。</p>
+</li>
+<li>
+<h5>增加贴画对象：Decal</h5>
+<p>可以指定图片，中心点，旋转缩放信息等，也可以focus。</p>
+</li>
+</ol>
+ <br />
+<h3>2020.12.15 统一TileLayer拾取事件</h3>
+<ol>
+<li>
+<h5>Tilelayer拾取事件返回信息：</h5>
+<p>ID应该就是tilelayer的ID</p>
+<p>ObjectID应该是一个对象的唯一标识，不同类型数据发布的3dt含义有点区别，具体如下：</p>
+<ul>
+<li>
+<p>xml+osg：ObjectID就是xml里的<OID>属性，应该是个GUID字符串</p>
+</li>
+<li>
+<p>rvt文件：ObjectID就是revit里每个构件的GUID</p>
+</li>
+<li>
+<p>美工工程发布3dt：ObjectID就是UE工程里actor的NameID</p>
+</li>
+</ul>
+<p>另外之前拾取事件返回的Name信息可以去掉了，那是历史遗留问题，现在统一用ObjectID信息</p>
+</li>
+<li>
+<h5>layers对象更名为infoTree</h5>
+<p>之前通过__g.layers调用的接口为了兼容依然可以继续使用</p>
+</li>
+<li>
+<h5>layers对象去掉setVisibility， enableXRay, disableXRay这3个方法</h5>
+</li>
+<li>
+<h5>解决几个接口相关的BUG:</h5>
+<ul>
+<li>
+<p>polygon填充色无效</p>
+</li>
+<li>
+<p>customTag弹出窗口无法隐藏的BUG</p>
+</li>
+<li>
+<p>customObject无法显示的BUG</p>
+</li>
+</ul>
+</li>
+</ol>
+ <br />
+<h3>2020.12.13 TileLayer挖洞</h3>
+<ol>
+<li>
+<h5>增加TileLayer挖洞相关的接口</h5>
+<ol>
+<li>
+<p>misc对象增加2个方法：startPolygonClip和stopClip，用于对TileLayer进行多边形挖洞StartPolygonClip的坐标参数支持多Part Polygon，与Polygon、3DPolygon、HighlightArea对象创建时传递的坐标数组参数一样。</p>
+</li>
+<li>
+<p>tileLayer对象增加2个方法：enableClip, disableClip，用于设置指定的TileLayer是否参与挖洞</p>
+</li>
+</ol>
+</li>
+</ol>
+ <br />
+<h3>2020.12.08 Polygon增加属性</h3>
+<ol>
+<li>
+<p>polygon增加2个属性：brightness和style</p>
+</li>
+<li>
+<p>优化安装程序，去掉python依赖</p>
+</li>
+</ol>
+ <br />
+<h3>2020.12.02 显示隐藏植物</h3>
+<ol>
+<li>misc类增加ShowAllFoliage和HideAllFoliage接口，用来显示 隐藏Explorer里创建的植物。</li>
+</ol>
+ <br />
+<h3>2020.11.23 polyline增加shape</h3>
+<ol>
+<li>polyline增加属性：shape,取值：0或1， 0：直线， 1：曲线</li>
+</ol>
+ <br />
+<h3>2020.11.06 Polygon格式-相机导览</h3>
+<ol>
+<li>
+<h5>misc对象增加进入、退出汇报演示的接口：</h5>
+<p>enterReportMode</p>
+<p>exitReportMode</p>
+</li>
+<li>
+<h5>Polygon、3DPolygon可以创建多Part以及带内环的样式了，</h5>
+<p>在创建时，通过给coordinates参数传递不同的格式即可，具体请参考API帮助文档。</p>
+<p>​	<img src="../images/api_revision/clip_image004.jpg" alt="img"></p>
+</li>
+<li>
+<h5>增加cameraTour对象，可以创建相机导览</h5>
+</li>
+</ol>
+ <br />
+<h3>2020.10.29 崩溃-拾取-标签窗口</h3>
+<ol>
+<li>
+<p>增加CustomObject拾取事件，可以返回创建时传递的ID</p>
+</li>
+<li>
+<p>解决3D Polygon调用显示接口崩溃的BUG</p>
+</li>
+<li>
+<p>优化标签弹出窗口的显示方式</p>
+<p>之前是点击个标签弹出一个新窗口，现在是所有点击共享一个窗口，当点击另外一个标签时，之前的窗口隐藏，然后在点击处显示一个窗口。</p>
+</li>
+</ol>
+ <br />
+<h3>2020.10.26 depthTest-移动端视频流</h3>
+<ol>
+<li>
+<p>Polyline和Polygon对象增加是否做深度检测的属性<strong>depthTest</strong>，默认是true。（DepthTest=true应该会被遮挡，false的话不会被遮挡）</p>
+<p><img src="../images/api_revision/clip_image006.jpg" alt="img"></p>
+<p>（depthTest为true）</p>
+<p>​	<img src="../images/api_revision/clip_image008.jpg" alt="img"></p>
+<p>​	（depthTest为false）</p>
+</li>
+<li>
+<p>解决DigitalTwinCloud视频流在移动设备上无法正常显示的BUG：</p>
+<p><img src="../images/api_revision/clip_image010.jpg" alt="img"></p>
+</li>
+</ol>
+ <br />
+<h3>2020.10.20 withOffset</h3>
+<ol>
+<li>
+<h5>EditHelper.Finish方法增加withOffset参数</h5>
+<p>用于设置是否计算工程中心偏移，默认值是true。</p>
+</li>
+</ol>
+ <br />
+<h3>2020.10.14 增加接口-工具自适应</h3>
+<ol>
+<li>
+<h5>增加EditHelper接口，实现用户手动绘制线、面等几何类型。可以通过__g.editHelper进行调用</h5>
+<p><img src="../images/api_revision/clip_image012.jpg" alt="img"></p>
+</li>
+<li>
+<h5>配置工具增加配置选项：</h5>
+</li>
+</ol>
+<ul>
+<li>
+<p>可以设置是否开启视频流自适应客户端分辨率的功能</p>
+</li>
+<li>
+<p>可以设置是否限制一个实例只允许一个用户连接，默认是勾选的。 当超过一个客户端连接的时候，客户端会提示错误： ws close 4001: Only allow one client</p>
+<p><img src="../images/api_revision/clip_image014.jpg" alt="img"></p>
+</li>
+</ul>
+<ol start="3">
+<li>
+<h5>Layers对象增加接口： ShowByGroupId、 HideByGroupId、 HighlightByGroupId、 DeleteByGroupId。</h5>
+<p>在创建对象的时候，可以设置groupId属性，然后就可以通过上面的接口进行批量显隐、删除、高亮。</p>
+<p><img src="../images/api_revision/clip_image016.jpg" alt="img"></p>
+</li>
+<li>
+<h5>对象增加userData属性，在创建对象时，可以设置userData属性，通过get获取时，可以返回当初设置的userData，例如：</h5>
+<p>let o = new TagData();</p>
+<p>o.id=&quot;tag1&quot;;</p>
+<p>o.userData = &quot;用户自定义数据&quot;;</p>
+<p>...</p>
+</li>
+<li>
+<h5>完善视频流的自适应机制，</h5>
+<p>在一个实例允许多个客户端连接的时候，当连接数大于1时，所有客户端会自动停止视频流大小自适应，直到关闭其他页面只剩下一个连接时，才会重新自适应。</p>
+</li>
+<li>
+<h5>Polygon3D接口增加2个属性：tillingX， tillingY</h5>
+</li>
+<li>
+<h5>DigitalTwinCloud接口增加方法：highlightColor，用于设置高亮时的颜色</h5>
+<p>fdapi.highlightColor(Color.Red);</p>
+</li>
+<li>
+<h5>TileLayer增加ShowAllActor和HideAllActor接口</h5>
+<p>function test_tileLayer_actor_showAllActors() {</p>
+<p>fdapi.tileLayer.showAllActors('1');</p>
+<p>}</p>
+<p>function test_tileLayer_actor_hideAllActors() {</p>
+<p>fdapi.tileLayer.hideAllActors('1');</p>
+<p>}</p>
+</li>
+</ol>
+ <br />
+<h3>2020.09.28 VectorTile管理</h3>
+<ol>
+<li>
+<p>DigitalTwinCloud配置工具增加VectorTile发布结果管理功能</p>
+<p><img src="../images/api_revision/clip_image018.jpg" alt="img"></p>
+</li>
+</ol>
+ <br />
+<h3>2020.09.23 黑暗模式</h3>
+<ol>
+<li>
+<p>Weather接口增加设置黑暗模式的功能</p>
+<p>fdapi.weather.setDarkMode(true);</p>
+<p>调用上面接口后，天空会进入黑暗模式</p>
+<p><img src="../images/api_revision/clip_image020.jpg" alt="img"></p>
+</li>
+</ol>
+ <br />
+<h3>2020.09.22 优化Polygon创建效率</h3>
+<ol>
+<li>
+<h5>DigitalTwinPlayer对象增加方法enableAutoAdjustResolution，</h5>
+<p>可以设置启用或关闭视频窗口缩放时自动调整分辨率的功能。这个功能默认是启用的，如果想关闭此功能，可以在初始化的时候调用enableAutoAdjustResolution(false)</p>
+<p>let acp = new DigitalTwinPlayer(HostConfig.Player, 'player', HostConfig.Token, true, true);</p>
+<p>acp.enableAutoAdjustResolution(false);</p>
+</li>
+<li>
+<h5>优化Polygon创建</h5>
+<p>当Polygon的定点数组过大时，创建速度非常慢，优化后创建速度大大提高</p>
+<p>另外Polygon的属性frameThickness之前的单位是cm，现在改成了m，当frameThickness设置为0时，不会创建边框（轮廓）了。</p>
+</li>
+<li>
+<h5>优化测试页面index.html， int.html</h5>
+<p><img src="../images/api_revision/clip_image022.jpg" alt="img"></p>
+</li>
+</ol>
+ <br />
+<h3>2020.09.18 视频播放-ODLine</h3>
+<ol>
+<li>
+<h5>增加视频播放窗口</h5>
+<p>fdapi.misc.playVideo(1, 20, 20, 400, 300, 'd:/data/video/1.mp4');</p>
+<p>fdapi.misc.stopPlayVideo(1);</p>
+</li>
+<li>
+<h5>增加ODLine对象</h5>
+<p><img src="../images/api_revision/clip_image024.jpg" alt="img"></p>
+</li>
+<li>
+<h5>视频流窗口缩放时，可以自动改变后台渲染窗口大小，以达到自适应分辨率的效果</h5>
+</li>
+</ol>
+ <br />
+<h3>2020.09.09 视频投影</h3>
+<ol>
+<li>
+<h5>增加视频投影对象VideoProjection</h5>
+<p>let o = new VideoProjectionData();</p>
+<p>o.id = &quot;vp1&quot;;</p>
+<p>o.videoURL = &quot;d:/data/video/1.mp4&quot;;</p>
+<p>o.mediaType = 0;</p>
+<p>o.location = [66.14, -7288.16, 9.47];</p>
+<p>o.rotation = [-50, 0, 0];</p>
+<p>o.fov = 90;</p>
+<p>o.aspectRatio = 1.77;</p>
+<p>o.distance = 100;</p>
+<p>fdapi.videoProjection.add(o);</p>
+<p><img src="../images/api_revision/clip_image026.gif" alt="img"></p>
+</li>
+</ol>
+ <br />
+<h3>2020.09.02 tiling-hoverImagePath</h3>
+<ol>
+<li>
+<h5>Polyline（PolylineData）增加 tiling属性，</h5>
+<p>用于设置材质贴图平铺，这个值 &lt;= 0 使用自动计算按Polyline长度比例平铺， &gt;0使用用户输入的值去平埔</p>
+</li>
+<li>
+<h5>Tag（TagData）增加 hoverImagePath 属性，</h5>
+<p>用于设置鼠标悬停时的图片</p>
+</li>
+</ol>
+ <br />
+<h3>2020.08.28 样式-安装包</h3>
+<ol>
+<li>
+<h5>3D Polygon增加样式</h5>
+<p><img src="../images/api_revision/clip_image028.gif" alt="img"></p>
+</li>
+<li>
+<h5>修改安装包的默认安装位置：由Program Files修改为AppData， 因为Program Files文件夹没有写入权限</h5>
+</li>
+</ol>
+ <br />
+<h3>2020.08.26 安装包目录结构</h3>
+<ol>
+<li>
+<p>DigitalTwinCloud目录结构改变，增加Tools文件夹</p>
+<p><img src="../images/api_revision/clip_image030.gif" alt="img"></p>
+<p><img src="../images/api_revision/clip_image032.gif" alt="img"></p>
+</li>
+</ol>
+<br />
+<h3>2020.08.21 增加Polyline对象</h3>
+<ol>
+<li>
+<p>增加Polyline对象</p>
+<p>let coords = [[2084.75, -8474.21, 5.7], [2133.45, -8556.37, 5.7], [2270.38, -8499.91, 5.7], [2278.18, -8436.39, 5.7], [2152.5, -8361.8, 5.7]];//多边形的坐标数组</p>
+<p>let color = [0, 0, 1, 1];//多边形的填充颜色</p>
+<p>let o = new PolylineData('p1', color, coords);</p>
+<p>fdapi.polyline.add(o);</p>
+<p>显示效果：</p>
+<p><img src="../images/api_revision/clip_image034.gif" alt="img"></p>
+</li>
+</ol>
+<br />
+<h3>2020.08.14 增加CustomTag对象</h3>
+<ol>
+<li>
+<h5>接口的简化别名：</h5>
+</li>
+</ol>
+<ul>
+<li>
+<p>g.tileLayer 的别名： g.tl</p>
+</li>
+<li>
+<p>g.customTag的别名： g.ctag</p>
+</li>
+<li>
+<p>g.radiationPoint的别名： g.rp</p>
+</li>
+<li>
+<p>g.highlightArea的别名： g.ha</p>
+</li>
+<li>
+<p>g.customObject的别名： g.co</p>
+</li>
+</ul>
+<ol start="2">
+<li>
+<h5>增加CustomTag，可以创建HTML样式的标签</h5>
+<p><img src="../images/api_revision/clip_image036.gif" alt="img"></p>
+<p>显示效果：</p>
+<p><img src="../images/api_revision/clip_image038.gif" alt="img"></p>
+<p>CustomTag的背景可以设置透明度，在需要透明的地方设置CSS属性background-color为rgba颜色即可。</p>
+<p>background-color: rgba(255, 255, 255, 0);</p>
+</li>
+</ol>
+ <br />
+<h3>2020.08.07 Polygon样式-Tag可见距离</h3>
+<ol>
+<li>
+<h5>Polygon增加设置边框颜色和厚度的属性：frameColor、frameThickness</h5>
+<p>let coords = [[2084.75, -8474.21, 5.7], [2133.45, -8556.37, 5.7], [2270.38, -8499.91, 5.7], [2278.18, -8436.39, 5.7], [2152.5, -8361.8, 5.7]];//多边形的坐标数组</p>
+<p>let color = [0, 0, 1, 1];//多边形的填充颜色</p>
+<p>let frameColor = Color.Red;</p>
+<p>let frameThickness = 500;</p>
+<p>let o = new PolygonData('1', color, coords, frameColor, frameThickness);</p>
+<p>fdapi.polygon.add(o);</p>
+<p>运行效果：</p>
+<p><img src="../images/api_revision/clip_image040.gif" alt="img"></p>
+</li>
+<li>
+<h5>tag增加文字的最大最小可见距离属性</h5>
+<p>也就是说图片和文字要能分别设置最大最小可见距离。图标和文字的可见距离分开主要是为了解决这种文字挤到一起的问题，例如：</p>
+<p><img src="../images/api_revision/clip_image042.gif" alt="img"></p>
+<p>图标的可见距离可以设远点，文字的可见距离设近点，离远了能看到图标，近了再显示出文字。当然鼠标移到标签的图标上不关多远都会显示文字。</p>
+</li>
+</ol>
+<br />
+<h3>2020.08.05 truesky</h3>
+<ol>
+<li>
+<p>支持truesky</p>
+</li>
+<li>
+<p>完善heatmap</p>
+</li>
+</ol>
+<br />
+<h3>2020.08.03 初始化日志-beam-token</h3>
+<ol>
+<li>
+<h5>实现视频流初始化过程中的日志显示，此功能有以下几个好处：</h5>
+</li>
+</ol>
+<ul>
+<li>
+<p>方便的看到视频流初始化过程，用户就不会再盲目的等待了</p>
+</li>
+<li>
+<p>如果有错误发生，也可以看到是哪个地方出现问题</p>
+<p>视频流连接成功出现三维画面的时候，日志窗口会自动隐藏</p>
+<p><img src="../images/api_revision/clip_image044.gif" alt="img"></p>
+<p>如果不需要此功能，可通过接口关闭：</p>
+<p>new DigitalTwinPlayer(HostConfig.Player, 'player', HostConfig.Token, true, true);</p>
+<p>第4个参数是控制左下角“显示信息“ 按钮的可见性</p>
+<p>第5个参数控制视频流初始化过程中日志窗口的可见性，如果设置为false，则不可见，如果设置true或者未设置，则可见。</p>
+</li>
+</ul>
+<ol start="2">
+<li>
+<h5>Beam线宽修改，现在的取值范围：[0.01, 100]</h5>
+<p>下图是宽度0.2的效果：</p>
+<p><img src="../images/api_revision/clip_image046.gif" alt="img"></p>
+<p>调用 fdapi.beam.setThickness('1', 5); 将宽度设置到5后的效果：</p>
+<p><img src="../images/api_revision/clip_image048.gif" alt="img"></p>
+</li>
+<li>
+<h5>vedeo标签的样式去掉 position:absolute</h5>
+</li>
+<li>
+<h5>恢复之前的Token机制</h5>
+<p><img src="../images/api_revision/clip_image050.gif" alt="img"></p>
+</li>
+</ol>
+<br />
+<h3>2020.07.22 增加CustomObject对象</h3>
+<ol>
+<li>
+<p>增加CustomObject接口</p>
+<p><img src="../images/api_revision/clip_image052.gif" alt="img"></p>
+</li>
+</ol>
+ <br />
+<h3>2020.07.15 TileLayer增加Actor方法</h3>
+<ol>
+<li>
+<h5>TileLayer接口增加以下方法</h5>
+<p><img src="../images/api_revision/clip_image054.gif" alt="img"></p>
+<p>其中单数的方法用于对一个TileLayer Actor进行操作，复数方法可以对多个Actor操作，方法中的data是TileLayerActorData类型的数组：</p>
+<p><img src="../images/api_revision/clip_image056.gif" alt="img"></p>
+<p>TileLayerActorData构造函数接受2个参数：</p>
+<p>第1个参数是TileLayer的ID，第2个参数是Actor Name的字符串数组，可以对多个TileLayer的多个Actor进行操作。</p>
+</li>
+<li>
+<h5>增加settings接口，实现以下3个方法</h5>
+<p>setMapMode, getMapMode, setMapURL</p>
+</li>
+<li>
+<h5>配置工具增加发布VectorTile功能</h5>
+<p><img src="../images/api_revision/clip_image058.gif" alt="img"></p>
+</li>
+<li>
+<h5>修复拾取事件中的拼写错误：（TileLyaer）</h5>
+<p><img src="../images/api_revision/clip_image060.gif" alt="img"></p>
+</li>
+</ol>
+ <br />
+<h3>2020.07.10 实现可视化配置工具</h3>
+<ol>
+<li>
+<h5>实现可视化配置工具</h5>
+<p><img src="../images/api_revision/clip_image062.gif" alt="img"></p>
+</li>
+<li>
+<h5>class Explorer 改名为 DigitalTwinCloud</h5>
+</li>
+<li>
+<h5>DigitalTwinCloud和DigitalTwinPlayer两个类增加 destroy方法，</h5>
+<p>调用destroy()方法后，会断开当前的连接， 并且不会再尝试重连</p>
+<p>测试页面：int.htm, index.htm, player.htm</p>
+<p><img src="../images/api_revision/clip_image064.gif" alt="img"></p>
+</li>
+<li>
+<h5>重构Token机制， 现在Token值保存在config.json文件里，并且可以通过可视化配置工具进行设置</h5>
+<p><img src="../images/api_revision/clip_image066.gif" alt="img"></p>
+</li>
+<li>
+<h5>视频流信息窗口相关接口</h5>
+<p>DigitalTwinPlayer构造函数增加了一个参数，用来设置是否在左下角显示控制显隐信息窗口的超链接</p>
+<p><img src="../images/api_revision/clip_image068.gif" alt="img"></p>
+<p>如果这个参数设置为true， 会在左下角显示一个超链接 “显示信息”， 点击可以显示详细的视频流信息。</p>
+<p><img src="../images/api_revision/clip_image072.gif" alt="img"></p>
+</li>
+</ol>
+ <br />
+<h3>2020.07.09 实现C# SDK</h3>
+<ol>
+<li>
+<h5>【C#】实现Aircity的C# SDK，接口、方法、参数与JS基本完全一致</h5>
+<p><img src="../images/api_revision/clip_image074.gif" alt="img"></p>
+</li>
+<li>
+<h5>【C# &amp; JS】所有的focus, focusAll方法，distance都可以省略了（也可以传递0值），程序会自动定位到一个合适的位置，几种用法如下：</h5>
+<p>fdapi.tag.focus('p1');      //自动计算距离</p>
+<p>fdapi.tag.focus('p1', 200);</p>
+<p>fdapi.tag.focus('p1', 0);   //自动计算距离</p>
+<p>fdapi.tag.focus('p1', 0, ()=&gt;{</p>
+<p>​    //如果带回调函数，又想自动计算合适的距离，distance可以传递0值</p>
+<p>})</p>
+</li>
+<li>
+<h5>【C# &amp; JS】MathServer可以通过配置文件控制AircityCloud.exe的窗口大小（视频流的分辨率）了。</h5>
+<p><img src="../images/api_revision/clip_image076.gif" alt="img"></p>
+</li>
+<li>
+<h5>【JS】去掉对event的封装，直接返回服务器信息。</h5>
+<p>去掉以下类型：EventType， MouseButtonType， TagEventParam， ActorEventParam</p>
+</li>
+<li>
+<h5>【C# &amp; JS】完善Actor事件的返回的信息格式</h5>
+<p><img src="../images/api_revision/clip_image078.gif" alt="img"></p>
+</li>
+</ol>
+ <br />
+<h3>2020.07.01 接口时间戳</h3>
+<ol>
+<li>
+<h5>每个请求都加了一个参数时间戳</h5>
+<p>除了是为了计算接口调用时间，更重要的功能是为了解决客户端回调的问题，如果没有时间戳，客户端在多个地方调用同一个接口就无法正确的判断是哪次发出的请求收到的结果。</p>
+<p><img src="../images/api_revision/clip_image080.gif" alt="img"></p>
+</li>
+<li>
+<h5>丰富颜色值的设置</h5>
+<p>之前的接口只能传递一种格式的颜色值：[1,0,1,1]，现在设置颜色的参数，都可以传递以下类型的颜色值了</p>
+<p>1）RGB格式的颜色值</p>
+<p><img src="../images/api_revision/clip_image082.gif" alt="img"></p>
+<p>显示效果：</p>
+<p>​		<img src="../images/api_revision/clip_image084.gif" alt="img"></p>
+<p>2）十六进制的颜色值</p>
+<p><img src="../images/api_revision/clip_image086.gif" alt="img"></p>
+<p>显示效果</p>
+<p><img src="../images/api_revision/clip_image088.gif" alt="img"></p>
+<p>3）预定义的颜色常量</p>
+<p><img src="../images/api_revision/clip_image090.gif" alt="img"></p>
+<p>显示效果</p>
+<p><img src="../images/api_revision/clip_image092.gif" alt="img"></p>
+<p>预定义的常量值请参考：</p>
+<p>https://www.sioe.cn/yingyong/yanse-rgb-16/</p>
+</li>
+<li>
+<h5>对象重命名</h5>
+<p>Tag -&gt; TagData</p>
+<p>Beam -&gt; BeamData</p>
+<p>TileLayer -&gt; TileLayerData</p>
+<p>HighlightArea -&gt; HighlightAreaData</p>
+<p>Polygon -&gt; PolygonData</p>
+<p>Polygon3D -&gt; Polygon3DData</p>
+<p>HeatMapPoint -&gt; HeatMapPointData</p>
+<p>RadiationPoint -&gt; RadiationPointData</p>
+<p>ImageButton -&gt; ImageButtonData</p>
+<p>AnimatedImageButton -&gt; AnimatedImageButtonData</p>
+<p>LayerVisibility -&gt; LayerVisibleData</p>
+</li>
+<li>
+<h5>实现对象的get接口，例如</h5>
+<p>fdapi.tag.get( 'p1' );</p>
+<p>fdapi.tag.get( ['p1', 'p2'] );</p>
+<p>对于回调函数，如果获取的是一个对象的信息，那么回调函数的参数就是这个对象； 如果获取的是一组对象的信息，那么回调函数的参数是一个map，map的key是对象的id, value是对象的数据</p>
+<p><img src="../images/api_revision/clip_image094.gif" alt="img"></p>
+</li>
+<li>
+<h5>实现属性的set接口</h5>
+<p>拿标签对象举例：</p>
+<p><img src="../images/api_revision/clip_image096.gif" alt="img"></p>
+<p>这些set方法有两种使用方式：</p>
+<p>（1）直接调用这些set方法，会立即生效</p>
+<p>（2）在调用这些方法之前，先调用updateBegin，这些set方法会将修改临时保存，等调用updateEnd的时候，一次性的提交修改。这种方式适合一次大批量修改属性的时候用，可以大大提高性能。</p>
+<p><img src="../images/api_revision/clip_image098.gif" alt="img"></p>
+</li>
+</ol>
+ <br />
+<h3>2020.06.23 接口版本号</h3>
+<ol>
+<li>
+<h5>misc接口增加两个属性：apiVersion, sdkVersion</h5>
+<p>apiVersion：AircityCloud提供的WebSocket接口的版本号</p>
+<p>sdkVersion：javascript SDK的版本号</p>
+<p>misc接口增加一个setApiVersionReceived的方法，用户可以通过这个方法设置回调，用以判断SDK的版本是否与云渲染服务器的版本一致</p>
+<p><img src="../images/api_revision/clip_image100.gif" alt="img"></p>
+<p><img src="../images/api_revision/clip_image102.gif" alt="img"></p>
+</li>
+</ol>
+ <br />
+<h3>2020.06.16 增加focus方法</h3>
+<ol>
+<li>
+<h5>几个focus方法支持支持传递ID数组（也可以传递单个ID），影响的接口：</h5>
+<p>polygon3d.focus</p>
+<p>polygon.focus</p>
+<p>beam.focus</p>
+<p>tag.focus</p>
+<p>highlightArea.focus</p>
+<p>使用方法：</p>
+<p>(1) fdapi.tag.focus(1, 1000.0);</p>
+<p>(2) fdapi.tag.focus([1, 2, 3], 1000.0);</p>
+<p>(3) fdapi.tag.focus(&quot;1&quot;, 1000.0);</p>
+<p>(4) fdapi.tag.focus([&quot;1&quot;, &quot;2&quot;, &quot;3&quot;], 1000.0);</p>
+<p>ID可以使用数字也可以使用字符串，SDK内部统一用字符串处理。</p>
+</li>
+<li>
+<h5>接口增加新的方法：</h5>
+<p>tag接口增加以下方法：</p>
+<p>1、focusAll(distance)</p>
+<p>2、show(ids)</p>
+<p>3、hide(ids)</p>
+<p>4、showAll()</p>
+<p>5、hideAll()</p>
+<p>radiationPoint接口增加以下方法：</p>
+<p>1、focus(ids, distance)</p>
+<p>2、focusAll(distance)</p>
+<p>3、show(ids)</p>
+<p>4、hide(ids)</p>
+<p>polygon接口增加以下方法：</p>
+<p>1、show(ids)</p>
+<p>2、hide(ids)</p>
+<p>polygon3d接口增加以下方法：</p>
+<p>1、update(data)</p>
+<p>2、clear()</p>
+<p>3、focus(ids)</p>
+<p>4、show(ids)</p>
+<p>5、hide(ids)</p>
+<p>6、highlight(ids)</p>
+<p>7、glow(ids, duration)</p>
+</li>
+</ol>
+</article>
+
+</section>
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a>
+	
+		on 2026-05-28
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

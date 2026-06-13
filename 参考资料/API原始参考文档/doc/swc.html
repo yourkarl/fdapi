@@ -1,0 +1,55 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>二三维坐标转换演示</title>
+    <script defer type="text/javascript" src="../../ac.min.js"></script>
+    <script type="text/javascript" src="../../ac_conf.js"></script>
+    <script defer type="text/javascript" src="scripts/swc.js"></script>
+    <style type="text/css">
+        #player {
+            background-color: black;
+            color: white;
+        }
+
+        .info {
+            position: absolute;
+            left: 10px;
+            top: 30px;
+            width: 500px;
+            height: 20px;
+            background-color: beige;
+            z-index: 100;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 9pt;
+            display: none;
+        }
+
+        #info_s2w {
+            left: 10px;
+            top: 10px;
+        }
+
+        #pointer {
+            position: absolute;
+            left: 10px;
+            top: 100px;
+            width: 85px;
+            height: 20px;
+            color: white;
+            background-color: red;
+            font-size: 9pt;
+            z-index: 101;
+            display: none;
+        }
+    </style>
+</head>
+
+<body style="overflow: hidden; margin: 0px; background-color: black;">
+    <div class="info" id="info_s2w"></div>
+    <div class="info" id="info_w2s"></div>
+    <div id="player"></div>
+    <div id="pointer">World2Screen</div>
+</body>
+
+</html>

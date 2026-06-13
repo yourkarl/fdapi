@@ -1,0 +1,2479 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>DTS二次开发文档 Class: SettingsPanel</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.Cerulean.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html"><img class="branding-logo" src="../images/api-logo.svg"
+		alt="logo"/>DTS二次开发文档</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Antenna.html">Antenna</a></li><li><a href="BaseObject.html">BaseObject</a></li><li><a href="BattlefieldSimulation.html">BattlefieldSimulation</a></li><li><a href="Beam.html">Beam</a></li><li><a href="BoxTrigger.html">BoxTrigger</a></li><li><a href="Camera.html">Camera</a></li><li><a href="CameraTour.html">CameraTour</a></li><li><a href="CameraTourData.html">CameraTourData</a></li><li><a href="CameraTourKeyFrame.html">CameraTourKeyFrame</a></li><li><a href="Cesium3DTileset.html">Cesium3DTileset</a></li><li><a href="Coastline.html">Coastline</a></li><li><a href="Coord.html">Coord</a></li><li><a href="CustomMesh.html">CustomMesh</a></li><li><a href="CustomObject.html">CustomObject</a></li><li><a href="CustomTag.html">CustomTag</a></li><li><a href="DaHuaVideoFusion.html">DaHuaVideoFusion</a></li><li><a href="Decal.html">Decal</a></li><li><a href="DigitalTwinAPI.html">DigitalTwinAPI</a></li><li><a href="DigitalTwinPlayer.html">DigitalTwinPlayer</a></li><li><a href="Drone.html">Drone</a></li><li><a href="DynamicWater.html">DynamicWater</a></li><li><a href="EditHelper.html">EditHelper</a></li><li><a href="ExcavationAnalysis.html">ExcavationAnalysis</a></li><li><a href="FdExternal.html">FdExternal</a></li><li><a href="FiniteElement.html">FiniteElement</a></li><li><a href="FiniteElement2.html">FiniteElement2</a></li><li><a href="FloodFill.html">FloodFill</a></li><li><a href="Fluid.html">Fluid</a></li><li><a href="GaussianSplatting.html">GaussianSplatting</a></li><li><a href="GeoJSONLayer.html">GeoJSONLayer</a></li><li><a href="GlobeTerrain.html">GlobeTerrain</a></li><li><a href="GuideLine.html">GuideLine</a></li><li><a href="HeatMap.html">HeatMap</a></li><li><a href="HeatMap3D.html">HeatMap3D</a></li><li><a href="HighlightArea.html">HighlightArea</a></li><li><a href="HydroDynamic1D.html">HydroDynamic1D</a></li><li><a href="HydroDynamic2D.html">HydroDynamic2D</a></li><li><a href="HydrodynamicModel.html">HydrodynamicModel</a></li><li><a href="HydrodynamicModel2.html">HydrodynamicModel2</a></li><li><a href="ImageryLayer.html">ImageryLayer</a></li><li><a href="ImageryLayer2.html">ImageryLayer2</a></li><li><a href="InfoTree.html">InfoTree</a></li><li><a href="Light.html">Light</a></li><li><a href="Marker.html">Marker</a></li><li><a href="Marker3D.html">Marker3D</a></li><li><a href="MarkerLayer.html">MarkerLayer</a></li><li><a href="Misc.html">Misc</a></li><li><a href="OceanHeatMap.html">OceanHeatMap</a></li><li><a href="ODLine.html">ODLine</a></li><li><a href="Panorama.html">Panorama</a></li><li><a href="Plot.html">Plot</a></li><li><a href="Polygon.html">Polygon</a></li><li><a href="Polygon3D.html">Polygon3D</a></li><li><a href="Polyline.html">Polyline</a></li><li><a href="QueryOption.html">QueryOption</a></li><li><a href="RadiationPoint.html">RadiationPoint</a></li><li><a href="River.html">River</a></li><li><a href="Satellite.html">Satellite</a></li><li><a href="Settings.html">Settings</a></li><li><a href="SettingsPanel.html">SettingsPanel</a></li><li><a href="ShapeFileLayer.html">ShapeFileLayer</a></li><li><a href="SignalWave.html">SignalWave</a></li><li><a href="SmoothedParticleHydrodynamics.html">SmoothedParticleHydrodynamics</a></li><li><a href="SplineMesh.html">SplineMesh</a></li><li><a href="Tag.html">Tag</a></li><li><a href="TileLayer.html">TileLayer</a></li><li><a href="Tools.html">Tools</a></li><li><a href="TopologyLine.html">TopologyLine</a></li><li><a href="TrafficSimulation.html">TrafficSimulation</a></li><li><a href="Train.html">Train</a></li><li><a href="VectorField.html">VectorField</a></li><li><a href="Vehicle.html">Vehicle</a></li><li><a href="Vehicle2.html">Vehicle2</a></li><li><a href="VideoProjection.html">VideoProjection</a></li><li><a href="WaterFlowField.html">WaterFlowField</a></li><li><a href="WaterMesh.html">WaterMesh</a></li><li><a href="Weather.html">Weather</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="tutorial-API_AsyncCall.html">API_AsyncCall</a></li><li><a href="tutorial-API_AuthSDK.html">API_AuthSDK</a></li><li><a href="tutorial-API_Camera.html">API_Camera</a></li><li><a href="tutorial-API_Color.html">API_Color</a></li><li><a href="tutorial-API_Coordinates.html">API_Coordinates</a></li><li><a href="tutorial-API_Event.html">API_Event</a></li><li><a href="tutorial-API_FrameTick.html">API_FrameTick</a></li><li><a href="tutorial-API_Introduction.html">API_Introduction</a></li><li><a href="tutorial-API_MultiVideoInPage.html">API_MultiVideoInPage</a></li><li><a href="tutorial-API_ResourceDesc.html">API_ResourceDesc</a></li><li><a href="tutorial-API_Revision.html">API_Revision</a></li><li><a href="tutorial-Cloud.html">Cloud</a></li><li><a href="tutorial-Explorer.html">Explorer</a></li><li><a href="tutorial-Explorer_Guidline.html">Explorer_Guidline</a></li><li><a href="tutorial-HelloWorld.html">HelloWorld</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#ActionMode">ActionMode</a></li><li><a href="global.html#AnimationMask">AnimationMask</a></li><li><a href="global.html#APIErrorCode">APIErrorCode</a></li><li><a href="global.html#AssetType">AssetType</a></li><li><a href="global.html#BPFuncParamType">BPFuncParamType</a></li><li><a href="global.html#buildURL">buildURL</a></li><li><a href="global.html#CloudStatus">CloudStatus</a></li><li><a href="global.html#Color">Color</a></li><li><a href="global.html#CommandType">CommandType</a></li><li><a href="global.html#DroneTrailStyle">DroneTrailStyle</a></li><li><a href="global.html#fdapi">fdapi</a></li><li><a href="global.html#FieldType">FieldType</a></li><li><a href="global.html#ForwardAxis">ForwardAxis</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#HeatMapStyle">HeatMapStyle</a></li><li><a href="global.html#HydroDynamic2DStyle">HydroDynamic2DStyle</a></li><li><a href="global.html#MapMode">MapMode</a></li><li><a href="global.html#MeasurementMode">MeasurementMode</a></li><li><a href="global.html#MousePickMask">MousePickMask</a></li><li><a href="global.html#OceanHeatMapStyle">OceanHeatMapStyle</a></li><li><a href="global.html#PanelType">PanelType</a></li><li><a href="global.html#PlotStyle">PlotStyle</a></li><li><a href="global.html#Polygon3DStyle">Polygon3DStyle</a></li><li><a href="global.html#PolygonStyle">PolygonStyle</a></li><li><a href="global.html#PolylineStyle">PolylineStyle</a></li><li><a href="global.html#post">post</a></li><li><a href="global.html#RendererType">RendererType</a></li><li><a href="global.html#request">request</a></li><li><a href="global.html#ResetType">ResetType</a></li><li><a href="global.html#SM3">SM3</a></li><li><a href="global.html#sm3Digest">sm3Digest</a></li><li><a href="global.html#SplineMeshStyle">SplineMeshStyle</a></li><li><a href="global.html#UIPanelType">UIPanelType</a></li><li><a href="global.html#VectorFieldStyle">VectorFieldStyle</a></li><li><a href="global.html#VehicleViewMode">VehicleViewMode</a></li><li><a href="global.html#VERSION">VERSION</a></li><li><a href="global.html#Viewport">Viewport</a></li><li><a href="global.html#VisualType">VisualType</a></li><li><a href="global.html#WaterFlowFieldStyle">WaterFlowFieldStyle</a></li><li><a href="global.html#WaterMode">WaterMode</a></li><li><a href="global.html#WSErrorCode">WSErrorCode</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+			
+
+	<h1 class="page-title">Class: SettingsPanel</h1>
+<section>
+
+<header>
+    
+        <h2>
+        SettingsPanel
+        </h2>
+        
+            <div class="class-description"><p>设置面板类，提供对设置面板里的所有参数进行操作的接口<br>
+一般通过api.settingsPanel调用其方法</p></div>
+        
+    
+</header>
+
+
+<article>
+    <div class="container-overview">
+    
+        
+<hr>
+<dt>
+    <h4 class="name" id="SettingsPanel"><span class="type-signature">&lt;protected> </span>new SettingsPanel<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+	<dt class="tag-see method-doc-label method-doc-details-label">See:</dt>
+	<dd class="tag-see">
+		<ul>
+			<li><a href="DigitalTwinAPI.html#settingsPanel">DigitalTwinAPI#settingsPanel</a></li>
+			</ul>
+	</dd>
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id="getCameraMode"><span class="type-signature"></span>getCameraMode<span class="signature">(fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>获取参数 相机面板</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">返回结果示例{
+            &quot;nearClipPlane&quot;:	100.000000,//近裁距离
+            &quot;fovH&quot;:	90.000000,             //水平视角
+            &quot;minCamHeight&quot;:	-50.000000,     //最低相机高度
+            &quot;maxCamHeight&quot;: 100000,         //最大相机高度
+            &quot;darkCorners&quot;: 0.2      //暗角
+        }</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getControlMode"><span class="type-signature"></span>getControlMode<span class="signature">(fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>获取参数 控制面板</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">返回结果示例{
+            &quot;speed&quot;:	0.200000,//第一人称移动速度
+            &quot;yawSpeed&quot;:	1.000000,//视角左右旋转速度
+            &quot;rotateSelf&quot;:	1,   //是否开启自由交互右键自传
+            &quot;useFemale&quot;:	0    //是否使用第三人称使用女性角色
+        }</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getMapMode"><span class="type-signature"></span>getMapMode<span class="signature">(fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>获取地图样式</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+	<dt class="tag-see method-doc-label method-doc-details-label">See:</dt>
+	<dd class="tag-see">
+		<ul>
+			<li><a href="global.html#MapMode">MapMode</a></li>
+			</ul>
+	</dd>
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">返回地图样式{
+        &quot;mode&quot;:	2, // 地图样式，0：指南针；1：小地图；2：大地图，参见MapMode
+        &quot;coordType&quot;:	0, //坐标系类型，0：经纬度；1：本地（默认值是0）
+        &quot;mapPoint&quot;:	[0.000000, 0.000000], //同名点，取值范围：[x,y]，（默认值是[0, 0]）
+        &quot;longitude&quot;:	0.000000,//经度，取值范围：[0~180]（默认值是0.0）
+        &quot;latitude&quot;:	0.000000,//取值范围：[0~90]（默认值是0.0）
+        &quot;cache&quot;:	&quot;:memory:&quot;,//缓存路径，字符串地址，（默认值是 &quot;:memory:&quot;）
+        &quot;style&quot;:	&quot;http://192.168.1.29:82/B34兴趣点_居名点&quot;,//风格路径，字符串地址，（默认值是 &quot;mapbox://styles/mapbox/streets-v10&quot;）
+        &quot;serverURL&quot;:	[],//WMTS风格路径，二维数组，参考setMapMode参数说明
+        &quot;groundHeight&quot;:	0.000000,//地面高度，取值范围：[0~任意数值]（默认值是0.0）
+        &quot;renderMode&quot;:	0, //渲染模式，0：正常；1：透明；2：标注；3：贴地（默认值是0）
+        &quot;coordOrder&quot;:	0, //坐标顺序，0: XY; 1: YX，默认值：0
+        &quot;maxLevel&quot;: 10 // WMTS服务最大显示层级，取值范围：[0~22]，默认值：10
+        }</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getPostProcessMode"><span class="type-signature"></span>getPostProcessMode<span class="signature">(fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>获取参数 后期面板</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">返回结果示例{
+            &quot;contrast&quot;:	10, //对比度
+            &quot;saturation&quot;:	10, //饱和度
+            &quot;lensFlareIntensity&quot;:	0.000000, //光晕强度
+            &quot;ambientIntensity&quot;:	60, //环境光遮罩强度
+            &quot;bloomIntensity&quot;: 0, //泛光
+            &quot;lutMode&quot;: 0,//LUT调色模式
+            &quot;lutIntensity&quot;: 0.5,//LUT调色强度
+            &quot;screenPercentage&quot;:	125, //屏幕百分比
+            &quot;terrainGlobalAlpha&quot;:	1, //地形不透明度
+            &quot;terrainGlobalLitStatus&quot;:	1, //地形是否参与光照
+            &quot;osgbGlobalLitStatus&quot;:	0, //倾斜摄影是否参与光照
+            &quot;osgbGlobalAlpha&quot;: 1,//倾斜摄影不透明度
+            &quot;antiAliasing&quot;:	1, //是否开启反走样
+            &quot;tonemapper&quot;:	1, //是否开启色彩优化
+            &quot;postProcessEffects&quot;:	0, //滤镜效果
+            &quot;dofMode&quot;:	1, //景深效果 对焦距离
+            &quot;wireThickness&quot;:	1, //线框效果 线框大小
+            &quot;receiveDecalMode&quot;:	1 //对象贴合模式
+            ......
+        }</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="getReportMode"><span class="type-signature"></span>getReportMode<span class="signature">(fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>获取参数 汇报模式面板</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">返回结果示例{
+            &quot;alignment&quot;:1,      //汇报演示窗口位置
+            &quot;playMode&quot;:	1,      //汇报演示播放模式
+            &quot;moveInOtherView&quot;:1 //多视口相机是否联动
+        }</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="setCameraMode"><span class="type-signature"></span>setCameraMode<span class="signature">(nearClipPlane, fovH, minCameraHeight, maxCameraHeight, fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>设置参数 相机面板</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>nearClipPlane</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>近裁距离，取值范围：[0.1~100]，单位：米，默认值：1.0</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fovH</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>水平视角，取值范围：[45~134]，单位：度，默认值：90</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>minCameraHeight</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>最小相机高度，取值范围：[-100~正无穷]，单位：米，默认值：-100米</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>maxCameraHeight</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>最大相机高度，取值范围：[100000~正无穷]，单位：米，默认值：100000米，即100公里</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="setControlMode"><span class="type-signature"></span>setControlMode<span class="signature">(speed, yawSpeed, isRotateSelf, isUseMaleRole, viewType, fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>设置参数 控制面板</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>speed</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>第一人称移动速度 取值范围：[0~1.0]，值越大移动速度越快，默认值：0.2</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>yawSpeed</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>视角左右旋转速度 取值范围：[0~1.0]，值越大旋转速度越快，默认值：1.0</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isRotateSelf</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>是否开启自由交互右键自传 取值：true开启，false不开启，默认false</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isUseMaleRole</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>第三人称交互是否使用男性角色 取值：true使用男性角色，false使用女性角色，默认false</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>viewType</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>角色漫游使用第三人称或第一人称，取值范围：[0,1]，0角色漫游使用第三人称，1角色漫游使用第一人称，默认值：0</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="setMapMode"><span class="type-signature"></span>setMapMode<span class="signature">(mode, options, fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>设置地图样式</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#MapMode">MapMode</a></span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>地图样式，0：指南针；1：鹰眼图；2：大地图，参见<a href="global.html#MapMode"><code>MapMode</code></a> 注意：设置大地图模式后，不再支持设置vtpk标注，两者互斥</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>地图模式相关的参数，目前支持的选项有下面这些（如果某个参数没有设置，会使用默认值）：<br></p>
+ <li>serviceType: 服务类型，0：MVT矢量切片（默认值）； 1：WMTS(ArcGIS)； 2：WMS； 3：MapServer(ArcGIS) ； 4：Mapbox
+ <li>serviceProvider: 服务提供厂商，1：ArcGIS； 2：GeoServer； 3：SuperMap超图； 4：Mapbox；5：tianditu天地图
+ <li>coordType:   坐标系类型，0：经纬度；1：本地（默认值是0）
+ <li>mapPoint:    同名点，取值范围：[x,y]，（默认值是[0, 0]）
+ <li>longitude:   经度，取值范围：[0~180]（默认值是0.0）
+ <li>latitude:    纬度，取值范围：[0~90]（默认值是0.0）
+ <li>cache:       缓存路径，字符串地址，（默认值是 ":memory:"）
+ <li>style:       风格路径，字符串地址，（默认值是 "mapbox://styles/mapbox/streets-v10"）
+ <li>groundHeight: 地面高度，取值范围：[0~任意数值]（默认值是0.0）
+ <li>renderMode: 渲染模式，0：正常；1：透明；2：标注；3：贴地（默认值是0）
+ <li>decalMode:  大地图贴地模式下的贴合模式，0：都不接受   1：贴合所有  2：仅贴合地形；默认值：1，注意：此参数仅在renderMode设置为3时生效
+ <li>serverURL : WMTS风格路径，二维数组，元素说明：index[0]服务id，index[1]服务地址；取值示例：[['111', 'http://192.168.1.29:81'], ['222', 'http://192.168.1.29:82'], ['333', 'http://192.168.1.29:83']]
+ <li>coordOrder: 坐标顺序，0: XY;  1: YX，默认值：0
+ <li>maxLevel  : WMTS服务最大显示层级，取值范围：[0~22]，默认值：10</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="setPakFile"><span class="type-signature"></span>setPakFile<span class="signature">(pakfilePathArr, fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>设置-工程面板自定义资源挂载的pak自定义资源文件</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>pakfilePathArr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">array</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>要挂载的自定义资源文件路径或路径数组</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="setPakFolder"><span class="type-signature"></span>setPakFolder<span class="signature">(dirArr, fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>设置-工程面板下自定义资源加载的pak自定义资源文件目录</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dirArr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">array</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>要加载的自定义资源文件目录或目录数组</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="setPostProcessMode"><span class="type-signature"></span>setPostProcessMode<span class="signature">(postProcessOptions, fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>设置参数，后期面板，注意：支持设置单个参数或同时设置多个参数</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>postProcessOptions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>后期面板配置参数对象，支持以下属性</p>
+<ul>
+<li>
+<p><strong>globalIllumination</strong>     {boolean}   屏幕空间全局光照，默认值：false</p>
+</li>
+<li>
+<p><strong>tonemapper</strong>             {boolean}   是否开启色彩优化，默认值：true</p>
+</li>
+<li>
+<p><strong>contrast</strong>               {number}    对比度，取值范围：[1~2]，默认值：1</p>
+</li>
+<li>
+<p><strong>saturation</strong>             {number}    饱和度，取值范围：[1~2]，默认值：1</p>
+</li>
+<li>
+<p><strong>bloomIntensity</strong>         {number}    泛光，取值范围：[0~10.0]，默认值：0</p>
+</li>
+<li>
+<p><strong>chromaticAberration</strong>    {number}    透镜色差，取值范围：[0~5]，默认值：0</p>
+</li>
+<li>
+<p><strong>ambientIntensity</strong>       {number}    环境光遮罩强度，取值范围：[0~1]，默认值：0.6</p>
+</li>
+<li>
+<p><strong>ambientRadius</strong>          {number}    环境光遮罩半径，取值范围：[0.1~5]，单位：米，默认值：0.1</p>
+</li>
+<li>
+<p><strong>ambientFadeDistance</strong>    {number}    环境光遮罩淡出距离，取值范围：[0~20000]，单位：米，默认值：12000</p>
+</li>
+<li>
+<p><strong>exposureEnabled</strong>        {boolean}   是否开启自动曝光，默认值：false</p>
+</li>
+<li>
+<p><strong>exposureCompensation</strong>   {number}    曝光补偿，取值范围：[0~15]，默认值：0</p>
+</li>
+<li>
+<p><strong>lensFlareIntensity</strong>     {number}    镜头光晕强度 ，取值范围：[0~1.0]，默认值：0</p>
+</li>
+<li>
+<p><strong>darkCorner</strong>             {number}    镜头暗角，取值范围：[0~1]，单位：百分比，默认值：0</p>
+</li>
+<li>
+<p><strong>depthFiethSwitch</strong>       {boolean}   是否开启景深，默认值：false</p>
+</li>
+<li>
+<p><strong>focalLength</strong>            {number}    焦距，取值范围：[0~10000]，单位：米，默认值：10000</p>
+</li>
+<li>
+<p><strong>aperture</strong>               {number}    光圈，取值范围：[1~32]，默认值：4</p>
+</li>
+<li>
+<p><strong>deepBlur</strong>               {number}    深度模糊，取值范围：[0~4]，默认值：2</p>
+</li>
+<li>
+<p><strong>lutMode</strong>                {number}    LUT调色模式，取值范围：[0~30]，默认值：0（关闭调色模式），1-30对应不同LUT调色效果</p>
+</li>
+<li>
+<p><strong>lutIntensity</strong>           {number}    LUT调色强度，类型为百分比，取值范围：[0~1.0]，默认值：0，即小数对应的百分比</p>
+</li>
+<li>
+<p><strong>screenPercentage</strong>       {number}    屏幕百分比，取值范围：[50~200]，默认值：125</p>
+</li>
+<li>
+<p><strong>terrainGlobalAlpha</strong>     {number}    地形不透明度，取值范围：[0~1.0]，默认值：1.0</p>
+</li>
+<li>
+<p><strong>terrainGlobalLitStatus</strong> {boolean}   地形是否参与光照，默认值：true</p>
+</li>
+<li>
+<p><strong>osgbGlobalLitStatus</strong>    {boolean}   倾斜摄影是否参与光照，默认值：false</p>
+</li>
+<li>
+<p><strong>osgbGlobalAlpha</strong>        {number}    倾斜摄影不透明度，取值范围：[0~1.0],默认值：1.0</p>
+</li>
+<li>
+<p><strong>antiAliasing</strong>           {boolean}   是否开启反走样，默认值：true</p>
+</li>
+<li>
+<p><strong>postProcessEffects</strong>     {number}    特效(滤镜效果)，取值范围：0【默认无效果】 1【景深效果】 2【线框效果】，3【圆珠笔】，4【白框】，5【蓝图】，6【原色黑边】， 默认值：0</p>
+</li>
+<li>
+<p><strong>wireThickness</strong>          {number}    可选参数，仅在线框效果下生效，线框大小，取值范围：[1.0~3.0]，默认值：1.0</p>
+</li>
+<li>
+<p><strong>dofMode</strong>                {number}    可选参数，仅在景深效果下生效，对焦距离，取值：0【近距离0.5km】 1【中远距离2km】 2【中远距离5km】 3【远距离10km】，默认值：0</p>
+</li>
+<li>
+<p><strong>receiveDecalMode</strong>       {number}    对象贴合模式，取值：0【无】 1【所有对象】 2【仅地形】，默认值：1</p>
+</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="setReportMode"><span class="type-signature"></span>setReportMode<span class="signature">(showAlign, playMode, isLinkage, fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>设置参数 汇报模式面板</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>showAlign</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>汇报演示窗口位置   取值：0【底部】，1【居左】，2【居右】，默认0</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>playMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>汇报演示播放模式   取值： 0【单体播放】，1【单体循环】，2【整体循环】，默认0</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isLinkage</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>多视口相机是否联动 取值：联动true，不联动false，默认不联动false</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>可选的回调函数，请参考<a href="tutorial-API_AsyncCall.html">二次开发：异步接口调用方式</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a>
+	
+		on 2026-05-28
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

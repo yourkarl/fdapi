@@ -1,0 +1,79 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Cloud</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/tooltip.css">
+    <link rel="stylesheet" href="scripts/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="scripts/codemirror/theme/mdn-like.css">
+    <script type="text/javascript" src="scripts/jquery/jquery-3.7.0.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery/tooltip.js"></script>
+    <script type="text/javascript" src="scripts/codemirror/lib/codemirror.js"></script>
+    <script type="text/javascript" src="scripts/codemirror/lib/javascript.js"></script>
+    <script type="text/javascript" src="../../ac.min.js"></script>
+    <script type="text/javascript" src="../../ac_conf.js"></script>
+    <script type="text/javascript" src="scripts/int_test.js"></script>
+    <script type="text/javascript" src="scripts/main.js"></script>
+    
+
+</head>
+
+<body>
+    <table border="0" id="mainTable">
+        <tbody>
+            <tr style="position: fixed;">
+                <td width="700" height="800" align="left" valign="top">
+                    <div>
+                        <span id="spanServer">
+                            IP <input type="text" id="txtIP" size="10" onchange="onServerChanged()" />
+                            Port <input type="text" id="txtPort" size="3" onchange="onServerChanged()" />
+                            <input type="button" value="连接" id="btnConnect" onclick="connectServer()" />&emsp;
+                        </span>
+                        Version: <span id="spanVer"></span>&emsp;
+                        <a href="doc/index.html" target="_blank" class="tip-hotspot" data-tip="API开发文档">API开发文档</a>
+                    </div>
+                    <p>
+                        <input type="checkbox" name="cbNotExecute" id="cbNotExecute"><label for="cbNotExecute" title="命令点击后在编辑框显示代码，然后手动点击执行JS代码">点击不执行</label>
+                        <a href="javascript:doSendJson()" title="日志回放">执行JSON</a>&nbsp;
+                        <a href="javascript:doExecCode()">执行JS</a> &nbsp;
+                        <!-- <a href="javascript:clearCodeEditor()">清除代码 </a>&emsp; -->
+                        <a href="javascript:increaseHeight(100)">高度+ </a> &nbsp;
+                        <a href="javascript:increaseHeight(-100)">高度- </a> &emsp;
+                        &nbsp;&nbsp;
+                        <input type="checkbox" checked="checked" name="cbAutoClearLog" id="cbAutoClearLog"><label for="cbAutoClearLog" title="日志积累到一定量后自动清除，避免影响性能">自动清屏</label>
+                        <input type="checkbox" checked="checked" name="closeLog" id="closeLog"><label for="closeLog" title="关闭后可以避免日志输出太多，影响页面渲染性能">开启日志</label>
+                        &nbsp;&nbsp;
+                        <a href="javascript:clearScreen()" title="清除页面右侧的输出日志">清除日志-></a>
+                    <div id="codeEditor">
+                        <textarea id="textAreaCode"></textarea>
+                    </div>
+
+                    <p>API导航：<select id="apiNavigator">
+                        <option value="leftPanel">===请选择===</option>
+                        <optgroup id="projection_pcs" label="投影坐标系">
+
+                        </optgroup>
+
+                        <optgroup id="ellipsoid_gcs" label="球面坐标系">
+
+                        </optgroup>
+                    </select>
+                    &nbsp;&nbsp;
+                    <a id="test_ellipsoid_camera_get"  href="javascript:call(test_ellipsoid_camera_get)"><button>查询当前相机位置</button></a>
+                </p>
+                    </p>
+                    <div id="commonPageArea"> </div>
+                </td>
+                <td valign="top" align="left">
+                    <pre id="infoPanel" style="height: 368px;"></pre>
+                    <div id="player"></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

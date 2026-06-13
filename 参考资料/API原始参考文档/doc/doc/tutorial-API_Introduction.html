@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>DTS二次开发文档 Tutorial: API_Introduction</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.Cerulean.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html"><img class="branding-logo" src="../images/api-logo.svg"
+		alt="logo"/>DTS二次开发文档</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Antenna.html">Antenna</a></li><li><a href="BaseObject.html">BaseObject</a></li><li><a href="BattlefieldSimulation.html">BattlefieldSimulation</a></li><li><a href="Beam.html">Beam</a></li><li><a href="BoxTrigger.html">BoxTrigger</a></li><li><a href="Camera.html">Camera</a></li><li><a href="CameraTour.html">CameraTour</a></li><li><a href="CameraTourData.html">CameraTourData</a></li><li><a href="CameraTourKeyFrame.html">CameraTourKeyFrame</a></li><li><a href="Cesium3DTileset.html">Cesium3DTileset</a></li><li><a href="Coastline.html">Coastline</a></li><li><a href="Coord.html">Coord</a></li><li><a href="CustomMesh.html">CustomMesh</a></li><li><a href="CustomObject.html">CustomObject</a></li><li><a href="CustomTag.html">CustomTag</a></li><li><a href="DaHuaVideoFusion.html">DaHuaVideoFusion</a></li><li><a href="Decal.html">Decal</a></li><li><a href="DigitalTwinAPI.html">DigitalTwinAPI</a></li><li><a href="DigitalTwinPlayer.html">DigitalTwinPlayer</a></li><li><a href="Drone.html">Drone</a></li><li><a href="DynamicWater.html">DynamicWater</a></li><li><a href="EditHelper.html">EditHelper</a></li><li><a href="ExcavationAnalysis.html">ExcavationAnalysis</a></li><li><a href="FdExternal.html">FdExternal</a></li><li><a href="FiniteElement.html">FiniteElement</a></li><li><a href="FiniteElement2.html">FiniteElement2</a></li><li><a href="FloodFill.html">FloodFill</a></li><li><a href="Fluid.html">Fluid</a></li><li><a href="GaussianSplatting.html">GaussianSplatting</a></li><li><a href="GeoJSONLayer.html">GeoJSONLayer</a></li><li><a href="GlobeTerrain.html">GlobeTerrain</a></li><li><a href="GuideLine.html">GuideLine</a></li><li><a href="HeatMap.html">HeatMap</a></li><li><a href="HeatMap3D.html">HeatMap3D</a></li><li><a href="HighlightArea.html">HighlightArea</a></li><li><a href="HydroDynamic1D.html">HydroDynamic1D</a></li><li><a href="HydroDynamic2D.html">HydroDynamic2D</a></li><li><a href="HydrodynamicModel.html">HydrodynamicModel</a></li><li><a href="HydrodynamicModel2.html">HydrodynamicModel2</a></li><li><a href="ImageryLayer.html">ImageryLayer</a></li><li><a href="ImageryLayer2.html">ImageryLayer2</a></li><li><a href="InfoTree.html">InfoTree</a></li><li><a href="Light.html">Light</a></li><li><a href="Marker.html">Marker</a></li><li><a href="Marker3D.html">Marker3D</a></li><li><a href="MarkerLayer.html">MarkerLayer</a></li><li><a href="Misc.html">Misc</a></li><li><a href="OceanHeatMap.html">OceanHeatMap</a></li><li><a href="ODLine.html">ODLine</a></li><li><a href="Panorama.html">Panorama</a></li><li><a href="Plot.html">Plot</a></li><li><a href="Polygon.html">Polygon</a></li><li><a href="Polygon3D.html">Polygon3D</a></li><li><a href="Polyline.html">Polyline</a></li><li><a href="QueryOption.html">QueryOption</a></li><li><a href="RadiationPoint.html">RadiationPoint</a></li><li><a href="River.html">River</a></li><li><a href="Satellite.html">Satellite</a></li><li><a href="Settings.html">Settings</a></li><li><a href="SettingsPanel.html">SettingsPanel</a></li><li><a href="ShapeFileLayer.html">ShapeFileLayer</a></li><li><a href="SignalWave.html">SignalWave</a></li><li><a href="SmoothedParticleHydrodynamics.html">SmoothedParticleHydrodynamics</a></li><li><a href="SplineMesh.html">SplineMesh</a></li><li><a href="Tag.html">Tag</a></li><li><a href="TileLayer.html">TileLayer</a></li><li><a href="Tools.html">Tools</a></li><li><a href="TopologyLine.html">TopologyLine</a></li><li><a href="TrafficSimulation.html">TrafficSimulation</a></li><li><a href="Train.html">Train</a></li><li><a href="VectorField.html">VectorField</a></li><li><a href="Vehicle.html">Vehicle</a></li><li><a href="Vehicle2.html">Vehicle2</a></li><li><a href="VideoProjection.html">VideoProjection</a></li><li><a href="WaterFlowField.html">WaterFlowField</a></li><li><a href="WaterMesh.html">WaterMesh</a></li><li><a href="Weather.html">Weather</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="tutorial-API_AsyncCall.html">API_AsyncCall</a></li><li><a href="tutorial-API_AuthSDK.html">API_AuthSDK</a></li><li><a href="tutorial-API_Camera.html">API_Camera</a></li><li><a href="tutorial-API_Color.html">API_Color</a></li><li><a href="tutorial-API_Coordinates.html">API_Coordinates</a></li><li><a href="tutorial-API_Event.html">API_Event</a></li><li><a href="tutorial-API_FrameTick.html">API_FrameTick</a></li><li><a href="tutorial-API_Introduction.html">API_Introduction</a></li><li><a href="tutorial-API_MultiVideoInPage.html">API_MultiVideoInPage</a></li><li><a href="tutorial-API_ResourceDesc.html">API_ResourceDesc</a></li><li><a href="tutorial-API_Revision.html">API_Revision</a></li><li><a href="tutorial-Cloud.html">Cloud</a></li><li><a href="tutorial-Explorer.html">Explorer</a></li><li><a href="tutorial-Explorer_Guidline.html">Explorer_Guidline</a></li><li><a href="tutorial-HelloWorld.html">HelloWorld</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#ActionMode">ActionMode</a></li><li><a href="global.html#AnimationMask">AnimationMask</a></li><li><a href="global.html#APIErrorCode">APIErrorCode</a></li><li><a href="global.html#AssetType">AssetType</a></li><li><a href="global.html#BPFuncParamType">BPFuncParamType</a></li><li><a href="global.html#buildURL">buildURL</a></li><li><a href="global.html#CloudStatus">CloudStatus</a></li><li><a href="global.html#Color">Color</a></li><li><a href="global.html#CommandType">CommandType</a></li><li><a href="global.html#DroneTrailStyle">DroneTrailStyle</a></li><li><a href="global.html#fdapi">fdapi</a></li><li><a href="global.html#FieldType">FieldType</a></li><li><a href="global.html#ForwardAxis">ForwardAxis</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#HeatMapStyle">HeatMapStyle</a></li><li><a href="global.html#HydroDynamic2DStyle">HydroDynamic2DStyle</a></li><li><a href="global.html#MapMode">MapMode</a></li><li><a href="global.html#MeasurementMode">MeasurementMode</a></li><li><a href="global.html#MousePickMask">MousePickMask</a></li><li><a href="global.html#OceanHeatMapStyle">OceanHeatMapStyle</a></li><li><a href="global.html#PanelType">PanelType</a></li><li><a href="global.html#PlotStyle">PlotStyle</a></li><li><a href="global.html#Polygon3DStyle">Polygon3DStyle</a></li><li><a href="global.html#PolygonStyle">PolygonStyle</a></li><li><a href="global.html#PolylineStyle">PolylineStyle</a></li><li><a href="global.html#post">post</a></li><li><a href="global.html#RendererType">RendererType</a></li><li><a href="global.html#request">request</a></li><li><a href="global.html#ResetType">ResetType</a></li><li><a href="global.html#SM3">SM3</a></li><li><a href="global.html#sm3Digest">sm3Digest</a></li><li><a href="global.html#SplineMeshStyle">SplineMeshStyle</a></li><li><a href="global.html#UIPanelType">UIPanelType</a></li><li><a href="global.html#VectorFieldStyle">VectorFieldStyle</a></li><li><a href="global.html#VehicleViewMode">VehicleViewMode</a></li><li><a href="global.html#VERSION">VERSION</a></li><li><a href="global.html#Viewport">Viewport</a></li><li><a href="global.html#VisualType">VisualType</a></li><li><a href="global.html#WaterFlowFieldStyle">WaterFlowFieldStyle</a></li><li><a href="global.html#WaterMode">WaterMode</a></li><li><a href="global.html#WSErrorCode">WSErrorCode</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			<section class="tutorial-section">
+
+<header>
+    
+
+    <h2>API_Introduction</h2>
+</header>
+
+<article>
+    <h3>二次开发中的基础概念介绍</h3>
+<br>
+<h4>一、常见坐标解释</h4>
+<p>目前云渲染支持四类坐标系，这几种坐标系可以调用相关函数进行转换。</p>
+<ol>
+<li>
+<p><b>屏幕坐标：</b></p>
+<p>以显示器屏幕显现的位置信息构成屏幕坐标系，通常以像素为单位 。</p>
+<p>屏幕坐标系为三维坐标系，但显示屏是二维平面的，（x,y）表示位置信息，屏幕左上角为（0,0）点【原点】，X值从屏幕左侧往右侧递增，Y值从上往下递增。以1920*1080的屏幕分辨率为例，右下角为（1920,1080）.X、Y的可视值域取决于你当前显示设备的分辨率,超出视野之外依然有数值，只是不显示在场景窗口中。z值表示深度。</p>
+<p>模型的屏幕坐标：（x，y）用分辨率宽高表示。</p>
+<p>UI元素的屏幕坐标：同上。</p>
+<p>输入的鼠标位置和触摸位置，其屏幕坐标为横纵由分辨率表示，Z值默认为0.</p>
+<img src="../images/api/screencoord.png" style="width:280px;height:280px;"/>
+ <br>
+</li>
+<li>
+<p><b>场景坐标：</b></p>
+<p>以X、Y、Z值表示的空间直角坐标系。用来表示三维场景中的模型UI元素的物理位置。</p>
+<p>即东西方向为X轴，正东方向为X轴正值；南北方向为Y轴，正北方向为Y轴正值；上下方向为Z轴，上方向为Z轴正值。<br>
+如下图：<br>
+<img src="../images/api/righthand-1.png" style="width:280px;height:280px;float:left;"/></p>
+<img src="../images/api/righthand-2.png" style="width:280px;height:280px;"/>
+<p><font style="color:red;">注意：如果我们把一个相机坐标放在我们认为场景坐标系的原点上，这时候<b>相机坐标</b>就等于<b>场景坐标</b>。场景坐标也可以称作为<b>世界坐标</b>。</font></p>
+</li>
+</ol>
+  <br>
+<ol start="3">
+<li>
+<p><b>地理坐标：</b></p>
+<p>地理坐标系 (GCS) 使用三维球面来定义地球上的位置。以经度、维度、海拔高度表示的地理空间坐标系，例如WGS84、CGCS2000。<br>
+<br></p>
+</li>
+<li>
+<p><b>投影坐标：</b></p>
+<p>投影坐标系在二维平面中进行定义。与地理坐标系不同，在二维空间范围内，投影坐标系的长度、角度和面积恒定。投影坐标系始终基于地理坐标系，而后者则是基于球体或旋转椭球体的。</p>
+<p>在投影坐标系中，通过格网上的 x,y 坐标来标识位置，其原点位于格网中心。每个位置均具有两个值，这两个值是相对于该中心位置的坐标。一个指定其水平位置，另一个指定其垂直位置。这两个值称为 x 坐标和 y 坐标。采用此标记法，原点坐标是 x = 0 和 y = 0。</p>
+<p>在等间隔水平线和垂直线的格网化网络中，中央水平线称为 x 轴，而中央垂直线称为 y 轴。在 x 和 y 的整个范围内，单位保持不变且间隔相等。原点上方的水平线和原点右侧的垂直线具有正值；下方或左侧的线具有负值。四个象限分别表示正负 X 坐标和 Y 坐标的四种可能组合。</p>
+<p>投影坐标系通常也称为本地坐标系。<br>
+<br></p>
+</li>
+</ol>
+<h4>二、常见名词解释</h4>
+<p>在二次开发的过程中你可能会遇到地理信息相关的一些专业名词，请在开发前仔细阅读以下名词解释：</p>
+<ol>
+<li><b>WKT：</b>由国际组织OCG，即开放地理空间联盟制定的一种文本标记语言，全称为Well-known text，<br>
+用于表示矢量几何对象、空间参照系统之间的坐标转换，使用WKT能够很好的与其它系统进行数据交换，譬如转换地理坐标为世界坐标。目前大部分支持空间数据存储的数据库都支持这种方式。</li>
+</ol>
+  <br>
+<ol start="3">
+<li>
+<p><b>BBox：</b>即3D Bounding Box，3D物体的包围盒，用于表示三维物体坐标的取值边界，取值方法如下：<br>
+在已经渲染成功的视频流场景中坐标至少选择两个点，<br>
+例如： [ 488654.71875, 2890294.5, 5.0999999046325684 ],[ 494277.71875, 2789172, -0.0010937500046566129 ]，分别取各坐标点最小和最大的X、Y、Z值，分别再组成两个点：<br>
+&quot;BoundsMin&quot;: [ 488654.71875, 2789172, -0.0010937500046566129 ]<br>
+&quot;BoundsMax&quot;: [ 494277.71875, 2890294.5, 5.0999999046325684 ]<br>
+其中由坐标值较小的那个点即BoundsMin[minX,minY,minZ]，沿对应X、Y、Z坐标轴延伸至maxX、maxY、maxZ对应的值，延伸后的三条线组成的空间盒子就是BBox，如下图：<br>
+<img src="../images/api/bbox.png" style="width:400px;height:320px;"/><br>
+<br></p>
+</li>
+<li>
+<p><b>相机：</b>即Camera，就像大家拍照使用的相机，用来确定观察三维场景的视角。<br>
+在计算机图形学中常用来定义用户和场景的相对位置和朝向，和我们真实世界人的眼睛一样。<br>
+相机包含两个重要的位置参数：观察点（镜头位置 position）；目标点（被拍摄物体位置 target），如下图：<br>
+<img src="../images/api/camera-1.png" style="width:400px;height:320px;float:left;"/><br>
+<img src="../images/api/camera-2.png" style="width:400px;height:295px;margin-top:-10px;"/><br>
+<br></p>
+</li>
+<li>
+<p><b>观察点：</b>摄像机镜头位置的初始坐标[X,Y,Z]（眼睛位置）<br>
+<br></p>
+</li>
+<li>
+<p><b>目标点：</b>摄像机镜头对准的被观察物体的坐标位置[X,Y,Z]<br>
+<br></p>
+</li>
+<li>
+<p><b>观察点和目标点距离：</b>摄像机镜头位置距离被观察物体的距离，单位是米<br>
+<br></p>
+</li>
+<li>
+<p><b>视口：</b>即Viewport可视窗口，浏览器某块矩形绘图区域，用来展示视频流；可以对一个窗口进行切分，在同一个窗口显示分割屏幕的效果，以便显示多个可视窗口。<br>
+<br></p>
+</li>
+<li>
+<p><b>投影：</b>即Projection，生活中的物体都是三维的，但是人的眼睛只能看到正面，不能看到被遮挡的背面，三维几何体在人的眼睛中的效果就像相机拍摄的一张二维照片，你看到的是一个2D的投影图。我们在计算机中看到的3D画面其实就是计算机把三维空间中的物体从世界坐标系<br>
+通过各种复杂计算投影到屏幕坐标系并显示在视口中。投影其实就是空间几何体转化为一个二维图的过程，不同的投影方式对应不同的投影算法。<br>
+常见投影方式分正射投影和透视投影，在机械设计、工业设计领域常用正射投影（平行投影），游戏场景（AirCloud云渲染场景）常用透视投影（中心投影）。<br>
+<b>透视投影：</b>又叫中心投影，距离镜头近的物体大，距离镜头远的物体小。类似人类眼睛观察真实世界。<br>
+<b>正射投影：</b>又叫平行投影，无论距离相机镜头多远，投影后的物体大小尺寸不变。投影尺寸取决于观察角度。<br>
+<img src="../images/api/projection.png" /><br>
+<br></p>
+</li>
+<li>
+<p><b>欧拉角：</b>即Euler angles，由瑞士数学家欧拉提出，指物体绕坐标系三个坐标轴（X、Y、Z）的旋转角度，<br>
+用来表示三维物体的基本旋转，旋转分以下两种情况：<br>
+静态旋转：即绕世界坐标系的三个轴旋转，三维物体在旋转过程中坐标轴保持静止；ACP渲染的场景中的物体旋转默认为静态旋转。<br>
+动态旋转：即绕物体坐标系的三个轴旋转，三维物体在旋转过程中坐标轴随着物体一起做相同旋转，即场景视角也旋转。<br>
+想象一下飞机，Yaw指水平方向的机头航向，绕Y轴旋转；Pitch指与水平方向的夹角，绕X轴旋转；Roll指飞机的翻滚，绕Z轴旋转。如下图：<br>
+<img src="../images/api/eulerangles.png" style="width:250px;height:188px;"/></p>
+</li>
+</ol>
+<ul>
+<li>
+<p><b>俯仰-Pitch：</b>上下旋转角度，欧拉角向量的X轴，取值范围：[-90~+90]</p>
+</li>
+<li>
+<p><b>航向-Yaw：</b>左右旋转角度，欧拉角向量的Y轴，取值范围：[-180~+180]</p>
+</li>
+<li>
+<p><b>翻滚-Roll：</b>翻滚角度，欧拉角向量的Z轴</p>
+</li>
+</ul>
+<pre><code>&lt;br&gt;
+</code></pre>
+<ol start="11">
+<li>
+<p><b>WMTS服务：</b>全称OpenGIS Web Map Tile Service，即Web地图切片服务，由国际组织开放地理空间联盟(OCG)提出的一种缓存技术标准。<br>
+提供了一种采用预定义图块方法发布数字地图服务的标准化解决方案，可以通过RESTful方式访问，是WMS服务的改进版，服务端可缓存且访问性能更优。<br>
+<br></p>
+</li>
+<li>
+<p><b>MVT服务：</b>Mapbox vector tile，即Mapbox 矢量瓦片服务，是Mapbox（地图盒子）提供的一种矢量瓦片数据编码服务。<br>
+<br></p>
+</li>
+</ol>
+<h4>三、常用几何对象</h4>
+<p>以下是API中常用的几何对象，包含点、线、面、三维形状和一些标注等。<br></p>
+<ol>
+<li>
+<p><b>Polyline：</b>折线/多段线，用来创建仅包含一段或多段直线的形状。创建后的Polyline可以设置多种显示效果，以及多种应用。<br>
+<br></p>
+</li>
+<li>
+<p><b>ODline：</b>OD线，即Origin-Destination Line，用来描述起点和终点的连线，通常表示两点之间的关系，如航班线路、人口迁徙、交通流量、经济往来等。<br>
+<br></p>
+</li>
+<li>
+<p><b>Polygon：</b>多边形，用来创建包含不少于三个边的多边形。<br>
+<br></p>
+</li>
+<li>
+<p><b>3DPolygon：</b>三维多边形，三维空间的多面体。<br>
+<br></p>
+</li>
+<li>
+<p><b>TileLayer：</b>三维图层对象，即3DT文件。<br>
+<br></p>
+</li>
+<li>
+<p><b>Cesium3DTileset： </b>3D Tiles是由Cesium创立的用于流式传输大规模异构3D地理空间数据集的<a href="https://github.com/AnalyticalGraphicsInc/3d-tiles">开放规范</a>。在DTS平台中泛指为符合这种规范的数据及服务。<br>
+<br></p>
+</li>
+<li>
+<p><b>HeatMap：</b>热力图，如建筑物受力分析区域等。<br>
+<br></p>
+</li>
+<li>
+<p><b>HighlightArea：</b>高亮区域，如高亮显示建筑物某一区域等。<br>
+<br></p>
+</li>
+<li>
+<p><b>RadiationPoint：</b>辐射圈，模拟显示辐射效果，如展示一个区域的污染源影响范围等。<br>
+<br></p>
+</li>
+<li>
+<p><b>CustomMesh：</b>自定义三角网格，模拟流体等。<br>
+<br></p>
+</li>
+<li>
+<p><b>CustomObject：</b>自定义对象，可以操作TileLayer中的Actor对象，对其进行平移缩放着色等。<br>
+<br></p>
+</li>
+<li>
+<p><b>Beam：</b>光流粒子/光束，可以在场景中模拟显示车流方向等。<br>
+<br></p>
+</li>
+<li>
+<p><b>Tag：</b>标签，可以在场景中添加一个包含图像和文字的标签。（停止维护，建议使用Marker）<br>
+<br></p>
+</li>
+<li>
+<p><b>Marker：</b>标注，更加强大的标签对象，支持更多的属性设置。<br>
+<br></p>
+</li>
+<li>
+<p><b>Marker3D：</b>三维动态标注，可以在场景中添加动态标注。<br>
+<br></p>
+</li>
+<li>
+<p><b>CustomTag：</b>自定义标签，支持对Tag进行更多的样式设置。<br>
+<br></p>
+</li>
+</ol>
+<br>
+<h4>四、常用文件格式</h4>
+<p><b>ShapeFile：</b>后缀为.shp，美国环境系统研究所公司（ESRI）开发的一种空间数据文件格式，是地理信息软件界的一个开放标准，也是一种重要的数据交换格式。<br>
+可以描述几何对象，点、折线和多边形，也可以存储建筑、河流、湖泊等空间对象的属性、几何形状与位置信息。<br>
+<br></p>
+<p><b>3DT：</b>后缀为.3dt，飞渡科技DTS高渲染平台针对数字孪生体场景的特点和需求，独创了专属的标准数字孪生数据库——3D Twins Scenes Database（简称为3DT）。<br>
+3DT可以实现数据的优化和加速，增强用户在DTS高渲染平台中的操作体验。<br></p>
+<br>
+</article>
+
+</section>
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a>
+	
+		on 2026-05-28
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

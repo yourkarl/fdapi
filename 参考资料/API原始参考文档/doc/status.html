@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>LiveStatus</title>
+    <style type="text/css">
+        * {
+            background-color: rgb(246, 248, 250);
+            font-family: Verdana;
+            font-size: 9pt;
+        }
+
+        .dlg {
+            font-size: 10pt;
+            background-color: rgb(246, 248, 250) !important;
+            display: none;
+        }
+
+        #loading {
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" href="scripts/jquery/jquery-ui.css">
+    <script type="text/javascript" src="../../ac_conf.js"></script>
+    <script type="text/javascript" src="scripts/jquery/jquery-3.7.0.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery/jquery-ui.js"></script>
+    <script type="text/javascript" src="scripts/manage_common.js"></script>
+    <script type="text/javascript" src="scripts/status.js"></script>
+</head>
+
+<body>
+    <pre id="logsArea"></pre>
+
+    <div id="loading">
+        <h3>Loading...</h3>
+    </div>
+
+    <div class="dlg" id="dlgLogin" title="管理员登录">
+        <form>
+            <table border="0" cellspacing="0">
+                <tr>
+                    <td align="right" width="80" height="35">用户名:</td>
+                    <td colspan="2">&emsp;<input name="e_Login_Username" id="e_Login_Username" value="" autocomplete="off"></td>
+
+                </tr>
+                <tr>
+                    <td align="right" height="35">密码:</td>
+                    <td colspan="2">&emsp;<input name="e_Login_Password" type="text" style="-webkit-text-security:disc;" autocomplete="off" id="e_Login_Password" value=""></td>
+                </tr>
+                <tr id="captchaPanel">
+                    <td align="right" height="35">验证码:</td>
+                    <td align="left">&emsp;<input name="e_Login_Captcha" id="e_Login_Captcha" style="width:120px">
+                    </td>
+                    <td><img id="loginCode" width="70%" height="70%" title="看不清楚？点击换一张" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>

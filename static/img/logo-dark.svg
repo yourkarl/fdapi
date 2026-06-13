@@ -1,0 +1,13 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="95" fill="#030d1a" stroke="url(#grad2)" stroke-width="2"/>
+  <polygon points="100,30 160,65 160,135 100,170 40,135 40,65" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.9"/>
+  <polygon points="100,55 135,75 135,115 100,135 65,115 65,75" fill="rgba(0,180,255,0.2)" stroke="#ffffff" stroke-width="1.5"/>
+  <text x="100" y="104" text-anchor="middle" font-family="monospace" font-weight="bold" font-size="18" fill="url(#grad2)">DT</text>
+  <text x="100" y="162" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#94c8e8" letter-spacing="2">DIGITAL TWIN</text>
+</svg>

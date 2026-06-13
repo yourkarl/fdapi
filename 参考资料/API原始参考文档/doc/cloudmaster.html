@@ -1,0 +1,702 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>CloudMaster</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="scripts/jquery/jquery-ui.css">
+    <link rel="stylesheet" href="styles/cloudmaster.css">
+    <link rel="stylesheet" href="styles/tooltip.css">
+    <script type="text/javascript" src="../../ac_conf.js"></script>
+    <script type="text/javascript" src="scripts/jquery/jquery-3.7.0.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery/jquery-ui.js"></script>
+    <script type="text/javascript" src="scripts/jquery/tooltip.js"></script>
+    <script type="text/javascript" src="scripts/cloudmaster.js"></script>
+</head>
+
+<body>
+
+    <div id="pageContent" class="hidden">
+        <!-- ---------------顶部标题栏--------------- -->
+        <div id="topArea">
+            <div>
+                <h1 style="margin:10px;"><img src="images/manage/logo.png" width="48" height="48" align="center">Cloud</h1>
+            </div>
+            <div>
+                &emsp;&emsp;&emsp;&emsp;&nbsp;<a href="help.html" target="_blank">了解二次开发</a>
+                &nbsp;<a href="./manager.html" target="_blank">Cloud管理服务接口</a>
+                &nbsp;<a href="./status.html" target="_blank">实时运行状态</a>
+            </div>
+            <div>
+                &emsp;<font color="red" id="licExpReminder" style="display:none;"></font>
+            </div>
+            <div style="float:right;">
+                <span id="adminName"></span>
+                &nbsp; <a href="javascript:btnClick_ShowAccountDlg()">账号设置</a>
+                &nbsp; <a id="btnSafeLogout" href="javascript:call_logout()">安全退出</a>
+            </div>
+        </div>
+
+        <!-- ---------------功能区Tabs--------------- -->
+        <div id="tabs">
+            <ul id="tabMenu">
+                <li><a href="#tabService">服务设置</a></li>
+                <li><a href="#tabProject">工程管理</a></li>
+                <li><a href="#tabNode">渲染节点</a></li>
+                <li><a href="#tabInstance">实例管理</a></li>
+                <li><a href="#tabConnection">连接信息</a></li>
+                <li><a href="#tabSystem">系统维护</a></li>
+                <li><a href="#tabLogs">运行日志</a></li>
+            </ul>
+
+            <!-- ---------------TAB: 服务设置--------------- -->
+            <div id="tabService" class="tabPage">
+                <h2>服务选项</h2>
+                <div class="servicePanel">
+                    <p>
+                        <input name="checkAutoKick" type="checkbox" id="checkAutoKick">
+                        <label for="checkAutoKick">自动断开长时间未操作的用户&emsp;&emsp;时长</label>
+                        <input name="textKickOutInMinutes" type="text" id="textKickOutInMinutes" style="width:30px;"> 分钟
+                    </p>
+                    <p>
+                        <input name="checkRestartRegularly" type="checkbox" id="checkRestartRegularly">
+                        <label for="checkRestartRegularly">每天重启时间&emsp;</label>
+                        <select id="comboBoxRestartTime"></select>
+                    </p>
+                    <!-- <p>
+                        <a href="javascript:btnClick_ShowPGSettings()">PG数据库设置</a>
+                    </p> -->
+                </div>
+
+                <h2>服务地址</h2>
+                <div class="servicePanel">
+                    <p>
+                        地址 <input name="comboServerAddress" type="text" id="comboServerAddress" style="width:180px;" disabled>
+                    </p>
+                    <p>
+                        端口 <input name="textSSPortPlayer" type="text" id="textSSPortPlayer" style="width:50px;" disabled>
+                        <label id="lblSSPortPlayerMapping">映射→</label> <input name="textSSPortPlayerMapping" type="text" id="textSSPortPlayerMapping" style="width:50px;">
+                    </p>
+                    <p>
+                        <input name="checkUsePortMapping" type="checkbox" id="checkUsePortMapping">
+                        <label for="checkUsePortMapping">使用端口映射</label>
+                        <input name="textMappingServerIP" type="text" id="textMappingServerIP">
+                    </p>
+                </div>
+
+                <h2>中继服务</h2>
+                <div class="servicePanel">
+                    <p>
+                        模式&emsp;&nbsp;<select id="comboBoxRelayMode" style="width:180px;">
+                            <option value="0">禁用</option>
+                            <option value="1">UDP转发（默认）</option>
+                            <option value="2">TCP转发</option>
+                        </select>
+                    </p>
+                    <p>
+                        中继IP <input name="comboTurnListeningIP" type="text" id="comboTurnListeningIP" style="width:180px;">
+                    </p>
+                    <p>
+                        端口&emsp;&nbsp;<input name="textTurnPort" type="text" id="textTurnPort" style="width:50px;">
+                        <label id="lblTurnPortMapping">映射→</label> <input name="textTurnPortMapping" type="text" id="textTurnPortMapping" style="width:50px;">
+                    </p>
+                    <p>
+                        用户名 <input name="textRelayUsername" type="text" id="textRelayUsername" style="width:100px;">
+                        密码 <input name="textRelayPassword" type="text" id="textRelayPassword" style="width:100px;">
+                    </p>
+                    <p>
+                        <a href="javascript:btnClick_AddOtherRelay()">添加其他中继服务</a>
+                    </p>
+                </div>
+
+                <h2>安全设置</h2>
+                <div class="servicePanel">
+                    <!-- <p>
+                        <input name="checkEnableAuthorization" type="checkbox" id="checkEnableAuthorization">
+                        <label for="checkEnableAuthorization">启用客户端访问授权</label>
+                    </p>
+                    <p>&emsp;&emsp;授权有效期：<input name="textAuthExpirationTime" type="text" id="textAuthExpirationTime" style="width:50px;"> 分钟</p> -->
+                    <p>
+                        <a href="javascript:btnClick_ShowHttpHeaderConf()">HTTP响应头配置</a>
+                    </p>
+                    <p>
+                        <a href="javascript:btnClick_ShowHttpsConf()">HTTPS配置</a>
+                    </p>
+                </div>
+                <p>
+                    <button id="btnSaveServiceConf" class="button-8">保存配置</button>
+                </p>
+            </div>
+
+
+            <!-- ---------------TAB: 工程管理--------------- -->
+            <div id="tabProject" class="tabPage">
+                <div id="addProjectPanel">
+                    <label for="projectPath">工程文件完整路径：</label>
+                    <input name="projectPath" type="text" id="projectPath" style="width: 380px;">
+                    <font color="gray">（注意：此路径是服务器上的路径）</font>
+                    <a id="btnAddProject" href="javascript:call_addProject()">添加工程</a>
+                </div>
+
+                <table id="projectList" border="1" cellspacing="0">
+                    <tr class="tableHead">
+                        <td width="80" height="25" align="center">ID</td>
+                        <td width="200" height="25" align="center">名称</td>
+                        <td width="500" align="center">工程路径</td>
+                        <td width="100" align="center">操作</td>
+                    </tr>
+                    <tr height="25" placeholder>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- ---------------TAB: 渲染节点--------------- -->
+            <div id="tabNode" class="tabPage">
+                <div>
+                    <p><a id="btnModifyInstanceCount">修改实例数</a></p>
+                </div>
+                <table id="nodeList" border="1" cellspacing="0">
+                    <tr class="tableHead">
+                        <td width="200" height="25" align="center">ID</td>
+                        <td width="200" height="25" align="center">主机名称</td>
+                        <td width="120" align="center">IP地址</td>
+                        <td width="80" align="center">类型</td>
+                        <td width="100" align="center">显卡</td>
+                        <td width="100" align="center">支持的实例</td>
+                        <td width="100" align="center">已启动</td>
+                        <td width="200" align="center">本地存储目录</td>
+                    </tr>
+                    <tr height="25" placeholder>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- ---------------TAB: 实例管理--------------- -->
+            <div id="tabInstance" class="tabPage">
+                <div style="font-size: 10pt;">
+                    <p id="e_testPages">
+                        <a href="javascript:btnClick_ShowInstanceGeneralParams()">【通用选项】</a>&emsp;
+                        <a testpage="./player.html" href="./player.html" target="_blank">视频流测试</a> &emsp;
+                        <a testpage="./main.html" href="./main.html" target="_blank">API示例</a>&emsp;
+                        <a testpage="./samples.html" href="./samples.html" target="_blank">样例集锦</a>&emsp;
+                    </p>
+                </div>
+                <div>
+                    <table id="instList" border="1" cellspacing="0">
+                        <tr class="tableHead">
+                            <td width="160" height="25" align="center">实例标识符</td>
+                            <td width="80" align="center">运行状态</td>
+                            <td width="80" align="center">运行时长</td>
+                            <td width="100" align="center">渲染节点</td>
+                            <td width="100" align="center">分辨率</td>
+                            <td width="50" align="center">帧率</td>
+                            <td width="50" align="center">模式</td>
+                            <td width="50" align="center">连接</td>
+                            <td width="50" align="center">次数</td>
+                            <td width="50" align="center">缩放</td>
+                            <td width="50" align="center">限制</td>
+                            <td width="50" align="center">显卡</td>
+                            <td width="50" align="center">锁定</td>
+                            <td width="180" align="center">工程</td>
+                            <td width="240" align="center">操作</td>
+                        </tr>
+                        <tr height="25" placeholder>
+                        </tr>
+                    </table>
+                    <p>
+                        <font color="gray">说明：在实例列表中选中实例，点击超链接可访问指定的实例，如果没有选中实例，则自动分配。 </font>
+                    </p>
+                </div>
+            </div>
+
+            <div id="tabConnection" class="tabPage">
+                <div>
+                    <table id="connList" border="1" cellspacing="0">
+                        <tr class="tableHead">
+                            <td width="50" height="25" align="center">ID</td>
+                            <td width="100" align="center">IP地址</td>
+                            <td width="80" align="center">平台</td>
+                            <td width="180" align="center">浏览器</td>
+                            <td width="120" align="center">实例ID</td>
+                            <td width="180" align="center">连接建立时间</td>
+                            <td width="120" align="center">闲置时间</td>
+                            <td width="200" align="center">自定义信息</td>
+                            <td width="120" align="center">操作</td>
+                        </tr>
+                        <tr height="25" placeholder>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ---------------TAB: 授权信息--------------- -->
+            <div id="tabSystem" class="tabPage">
+                <div id="linuxLicense" class="hidden">
+                    <table border="1" cellspacing="0" width="400">
+                        <tr>
+                            <td colspan="2" align="center">授权信息</td>
+                        </tr>
+                        <tr>
+                            <td align="right" width="100">授权类型</td>
+                            <td id="licenseType"></td>
+                        </tr>
+                        <tr>
+                            <td align="right">到期时间</td>
+                            <td id="expireDate"></td>
+                        </tr>
+                        <tr>
+                            <td align="right">剩余天数</td>
+                            <td id="remainingDays"></td>
+                        </tr>
+                        <tr>
+                            <td align="right">节点数</td>
+                            <td id="nodesCount"></td>
+                        </tr>
+                        <tr>
+                            <td align="right">剩余节点数</td>
+                            <td id="nodesCountLeft"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="windowsLicense" class="hidden">
+                    <table border="1" cellspacing="0" width="400">
+                        <tr>
+                            <td colspan="2" align="center">授权信息</td>
+                        </tr>
+                        <tr>
+                            <td align="right" width="100">用户信息</td>
+                            <td id="textBoxUserInfo"></td>
+                        </tr>
+                        <tr>
+                            <td align="right">序列号</td>
+                            <td id="textBoxSerialNumber"></td>
+                        </tr>
+                        <tr>
+                            <td align="right">产品类别</td>
+                            <td id="textBoxProductType"></td>
+                        </tr>
+                        <tr>
+                            <td align="right">到期时间</td>
+                            <td id="textBoxExpirationDate"></td>
+                        </tr>
+                        <tr>
+                            <td align="right">剩余天数</td>
+                            <td id="textLeftDays"></td>
+                        </tr>
+                        <tr>
+                            <td align="right">许可数</td>
+                            <td id="textBoxNodes">
+                                <font color="gray">一个实例进程会占用一个许可</font>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">多语言</td>
+                            <td id="checkMultiLanguage"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <p>&nbsp;</p>
+                <p>
+                    <a target="_blank" href="https://getmypublicip.gbim.vip/ip" title="https://getmypublicip.gbim.vip/ip">查看我的公网IP</a>
+                </p>
+            </div>
+
+            <!-- ---------------TAB: 运行日志--------------- -->
+            <div id="tabLogs" class="tabPage">
+                <pre id="logsForTab"></pre>
+            </div>
+        </div>
+
+        <!-- ---------------日志区--------------- -->
+        <div>
+            <pre id="logsArea"></pre>
+        </div>
+
+        <!-- ---------------底部信息栏--------------- -->
+        <div id="footer" style="font-size: 9pt;">
+            Copyright © 2017-2024 Beijing Freedo Technology Co., Ltd. © 北京飞渡科技股份有限公司
+        </div>
+    </div>
+
+    <div id="loading">
+        <h3>Loading...</h3>
+    </div>
+
+    <!-- ---------------对话框--------------- -->
+    <div>
+        <!-- ---------------对话框：管理员登录--------------- -->
+        <div class="dlg" id="dlgLogin" title="管理员登录">
+            <form>
+                <table border="0" cellspacing="0">
+                    <tr>
+                        <td align="right" width="80" height="35">用户名:</td>
+                        <td colspan="2">&emsp;<input name="e_Login_Username" id="e_Login_Username" value="" autocomplete="off"></td>
+
+                    </tr>
+                    <tr>
+                        <td align="right" height="35">密码:</td>
+                        <td colspan="2">&emsp;<input name="e_Login_Password" type="text" style="-webkit-text-security:disc;" autocomplete="off" id="e_Login_Password" value=""></td>
+                    </tr>
+                    <tr id="captchaPanel">
+                        <td align="right" height="35">验证码:</td>
+                        <td align="left">&emsp;<input name="e_Login_Captcha" id="e_Login_Captcha" style="width:120px">
+                        </td>
+                        <td><img id="loginCode" width="70%" height="70%" title="看不清楚？点击换一张" /></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <!-- ---------------对话框：账号设置--------------- -->
+        <div class="dlg" id="dlgAccountSettings" title="账号设置">
+
+            <p>
+                <input type="checkbox" name="checkBoxEnableAdmin" id="checkBoxEnableAdmin" value="15">
+                <label for="checkBoxEnableAdmin">开启管理员验证</label>
+            </p>
+            <form>
+                <table width="500" cellspacing="0">
+                    <tr>
+                        <td align="right" height="35">用户名：</td>
+                        <td colspan="2">
+                            <input name="e_Change_Username" id="e_Change_Username" value="">
+                            <font color="gray">&nbsp;5-12个字符</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" height="35">密码：</td>
+                        <td colspan="2">
+                            <input name="e_Change_Pasword" type="password" autocomplete="off" id="e_Change_Pasword" value="------------------------------------" disabled>
+                            <input type="checkbox" name="e_Change_IncludePassword" id="e_Change_IncludePassword" value="15">
+                            <label for="e_Change_IncludePassword">修改密码</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" height="35">确认密码：</td>
+                        <td colspan="2">
+                            <input name="e_Change_Pasword2" type="password" autocomplete="off" id="e_Change_Pasword2" value="------------------------------------" disabled>
+                            <font color="gray">&nbsp;最少6个字符</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" height="35">登录有效期：</td>
+                        <td colspan="2">
+                            <input name="e_Change_Period" id="e_Change_Period" value="15" style="width:138px;">&nbsp;分钟
+                            <font color="gray">&nbsp;最小15分钟</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" height="35">验证码：</td>
+                        <td colspan="2">
+                            <input type="checkbox" name="e_Change_CaptchaRequired" id="e_Change_CaptchaRequired">
+                            <label for="e_Change_CaptchaRequired">登录需要验证码</label>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <!-- ---------------对话框：PG数据库设置--------------- -->
+        <div class="dlg" id="dlgPGSettings" title="PG数据库设置">
+            <form>
+                <table cellspacing="0">
+                    <tr>
+                        <td align="right" height="35">主机：</td>
+                        <td>
+                            <input name="pg_textBoxHost" type="text" autocomplete="off" id="pg_textBoxHost">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" height="35">端口：</td>
+                        <td>
+                            <input name="pg_textBoxPort" type="text" autocomplete="off" id="pg_textBoxPort">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" height="35">用户名：</td>
+                        <td>
+                            <input name="pg_textBoxUsername" type="text" autocomplete="off" id="pg_textBoxUsername">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" height="35">密码：</td>
+                        <td>
+                            <input name="pg_textBoxPassword" type="password" autocomplete="off" id="pg_textBoxPassword">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" height="35">数据库名：</td>
+                        <td>
+                            <input name="pg_textBoxDB" type="text" autocomplete="off" id="pg_textBoxDB">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <!-- ---------------对话框：修改实例数--------------- -->
+        <div class="dlg" id="dlgChangeInstCount" title="修改实例数">
+            <form>
+                <table cellspacing="0">
+                    <tr>
+                        <td align="right" height="35">显卡数量：</td>
+                        <td id="lblCardCount"> </td>
+                    </tr>
+                    <tr>
+                        <td align="right" height="35">最大实例数：</td>
+                        <td id="lblMaxInstance"> </td>
+                    </tr>
+                    <tr>
+                        <td align="right" height="35">设置实例个数：</td>
+                        <td>
+                            <input name="textInstanceCountSet" type="text" autocomplete="off" id="textInstanceCountSet" style="width:60px;">
+                            <span id="rangeOfInstCount" class="hidden">范围：1-3</span>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <!-- ---------------对话框：实例参数设置--------------- -->
+        <div class="dlg" id="dlgSetInstParams" title="实例参数设置">
+            <p>
+                <label for="e_iid">&nbsp;&nbsp;实例ID：</label> <input type="text" name="e_iid" id="e_iid" readonly value="" class="text ui-widget-content ui-corner-all">
+            </p>
+            <p>
+                <label for="e_project">&emsp;&emsp;工程：</label> <input type="text" name="e_project" id="e_project" value="" class="text ui-widget-content ui-corner-all tip-hotspot" style="width: 400px;" data-tip="工程文件（.acp）不需要设置，会在运行时动态设置，<br>如果想锁定该实例使用某个工程文件，可以选择一个工程文件<br>注：<br>&emsp;&emsp;此处既可以选择工程列表中已有的工程，也可以手动输入<br>实例所在机器上的工程文件绝对路径。">
+                <a href="javascript:btnClick_ResetProject()">置空</a>
+            </p>
+            <p>
+                &emsp;&emsp; &emsp;&emsp;&emsp;<input type="checkbox" name="e_checkLock" id="e_checkLock" class="text ui-widget-content ui-corner-all"><label for="e_checkLock" class="tip-hotspot" data-tip="锁定后该实例只能使用这个工程，不能再动态修改。<br>如果想让该实例自由分配工程文件，请不要勾选此复选框">锁定工程</label>
+            </p>
+            <p>
+                <br>
+                &emsp;分辨率：
+                <input type="text" name="e_width" id="e_width" value="1920" class="text ui-widget-content ui-corner-all" style="width:50px;"> X
+                <input type="text" name="e_height" id="e_height" value="1080" class="text ui-widget-content ui-corner-all" style="width:50px;">
+                &emsp; <a href="javascript:updateResolutionUI('HD')">HD</a>
+                &emsp;<a href="javascript:updateResolutionUI('FHD')">FHD</a>
+                &emsp;<a href="javascript:updateResolutionUI('2K')">2K</a>
+                &emsp;<a href="javascript:updateResolutionUI('4K')">4K</a>
+                <br><br> &emsp;&emsp;&emsp;&emsp;&emsp;<input type="checkbox" name="e_adjustResolution" id="e_adjustResolution" class="text ui-widget-content ui-corner-all"><label for="e_adjustResolution" class="tip-hotspot" data-tip="如果勾选，当客户端Video元素大小改变时，<br>会自动改变云渲染视频流的分辨率。">三维自适应客户端分辨率</label>
+                &emsp;&emsp;<input type="checkbox" name="e_limitMaxResolution" id="e_limitMaxResolution" class="text ui-widget-content ui-corner-all"><label for="e_limitMaxResolution" class="tip-hotspot" data-tip="如果勾选，在三维自适应改变分辨率时，<br>会使用上面设置的分辨率作为最大渲染分辨率。<br>限制最大分辨率的目的是为了防止由于客户端分辨率过高引起卡顿。">限制最大分辨率</label>
+            </p>
+            <p id="p_videoMode">
+                <br>
+                视频模式：
+                <label for="e_VM_HighQuality">高画质</label> <input type="radio" name="e_videoMode" id="e_VM_HighQuality">
+                <label for="e_VM_Balanced">均衡</label> <input type="radio" name="e_videoMode" id="e_VM_Balanced">
+                <label for="e_VM_Smooth">流畅</label> <input type="radio" name="e_videoMode" id="e_VM_Smooth">
+            </p>
+            <p>
+                &emsp;&emsp;&emsp;&emsp;&emsp; <input type="checkbox" name="e_keepConstBitrate" id="e_keepConstBitrate" class="text ui-widget-content ui-corner-all"><label for="e_keepConstBitrate" class="tip-hotspot" data-tip="勾选此项后，码率控制模式将始终使用CBR，<br>在视频流运行过程中，将会一直保持最大码率所设置的值。">保持恒定码率</label>
+            </p>
+            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+        </div>
+
+        <!-- ---------------对话框：实例高级参数设置--------------- -->
+        <div class="dlg" id="dlgInstAdvanceParams" title="实例高级参数">
+            <div id="tabInstAdvance">
+                <ul>
+                    <li><a href="#tabBasic">基本设置</a></li>
+                    <li><a href="#tabRTC">编码传输</a></li>
+                    <li><a href="#tabPermission">访问权限</a></li>
+                    <li><a href="#tabOther">其他设置</a></li>
+                </ul>
+
+                <div id="tabBasic">
+                    <p>
+                        <input type="checkbox" name="e_limitOneClient" id="e_limitOneClient" class="text ui-widget-content ui-corner-all"><label for="e_limitOneClient">限制一个实例只能有一个客户端连接</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" name="e_enableWebSocket" id="e_enableWebSocket" class="text ui-widget-content ui-corner-all"><label for="e_enableWebSocket">API增加对WebSocket的支持</label>
+                    </p>
+                    <p>
+                        &emsp;&emsp;WebSocket服务端口：<input type="text" name="e_websocketPort" id="e_websocketPort" class="text ui-widget-content ui-corner-all">
+                    </p>
+                    <p>
+                        &emsp;&emsp;<font color="gray">默认API调用是通过WebRTC，不需要额外的端口号。如果想同时支持WebScoket调用方式，可以勾选此功能。WebSocket调用方式一般用在非浏览器开发环境，如Java、C++、Node.JS的服务端开发等。
+                            <br>&emsp;&emsp;注意：（1）同一台机器上不同实例的端口号不可重复；
+                            <br>&emsp;&emsp;&emsp;&emsp;&emsp;（2）只能通过ws://连接，不支持wss连接。
+                        </font>
+                    </p>
+                    <p>
+                        <br>
+                        帧率设置（范围：15-60）&emsp;
+                        <a href="javascript:updateFpsUI(25)">默认值25</a>&emsp;
+                        <a href="javascript:updateFpsUI(60)">最大值60</a>
+                    </p>
+                    <div id="sliderFps" style="margin-left: 25px;margin-right: 25px;">
+                        <div id="sliderFpsText" class="ui-slider-handle"></div>
+                    </div>
+                </div>
+
+                <div id="tabRTC">
+                    <p>
+                        最大码率：<select id="e_maxBitrate" style="width:84px;"></select> Mbps
+                    </p>
+                    <p>
+                        <font color="gray">最大码率要根据实际网络带宽设置，如果设置的太低，不能充分利用带宽，
+                            如果设置的太高，超过实际网络带宽，可能会出现卡顿</font>
+                    </p>
+                </div>
+
+                <div id="tabPermission">
+                    <p>
+                        实例访问密码：<input type="text" name="e_password" id="e_password" class="text ui-widget-content ui-corner-all">
+                    </p>
+                    <p>
+                        &emsp;
+                        <button id="btnGenPassword" class=" ui-button ui-widget ui-corner-all">生成随机密码</button>
+                        <button id="btnResetPassword" class="ui-button ui-widget ui-corner-all">重置</button>
+                    </p>
+                </div>
+
+                <div id="tabOther">
+                    <p>
+                        其他附加参数：
+                    </p>
+                    <p>
+                        <textarea id="e_additionalParams" cols="56" rows="10"></textarea>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ---------------对话框：实例通用选项--------------- -->
+        <div class="dlg" id="dlgInstGeneralParams" title="实例通用选项">
+            <font color="gray">以下选项针对所有实例（注意：修改后会导致正在运行的实例重启）</font>
+
+            <h3>界面</h3>
+            <p>
+                <input type="checkbox" name="checkHideToolbar" id="checkHideToolbar"> <label for="checkHideToolbar">不显示侧边栏</label>
+            </p>
+            <p>
+                <input type="checkbox" name="checkStartFromEarth" id="checkStartFromEarth"> <label for="checkStartFromEarth">从地球模式开始</label>
+            </p>
+
+            <h3>特性</h3>
+            <p>
+                <input type="checkbox" name="checkNoCrashDialog" id="checkNoCrashDialog"> <label for="checkNoCrashDialog">崩溃时不显示提示对话框（仅支持Windows）</label>
+            </p>
+            <p>
+                <input type="checkbox" name="checkPauseWhenIdle" id="checkPauseWhenIdle"> <label for="checkPauseWhenIdle">空闲时暂停三维渲染</label>
+            </p>
+            <p>
+                <input type="checkbox" name="checkAutoResetUnresponsiveInst" id="checkAutoResetUnresponsiveInst"> <label for="checkAutoResetUnresponsiveInst">长时间无响应时自动重置 &emsp;时长</label>
+                <input type="text" name="textResetInstInMinutes" id="textResetInstInMinutes" style="width:30px;"> 分钟
+            </p>
+        </div>
+
+        <!-- ---------------对话框：HTTPS配置--------------- -->
+        <div class="dlg" id="dlgHttpsConf" title="HTTPS 配置">
+            <p>
+                <input type="checkbox" name="checkEnableSSL" id="checkEnableSSL"> <label for="checkEnableSSL">使用安全传输协议</label>
+            </p>
+            <div style="margin-left: 30px;">
+                <p>
+                    证书文件：<br>
+                    <font color="gray">支持多种格式的证书文件（DER,CER,CRT,PEM,PFX等）</font>
+                </p>
+                <p>
+                    <input type="text" name="textSSLCert" id="textSSLCert" style="width:360px;">
+                </p>
+                <p>
+                    私钥文件：<br>
+                    <font color="gray">如果证书包含私钥（如PEM、PFX、P12），不需要再选择私钥文件</font>
+                </p>
+                <p>
+                    <input type="text" name="textSSLKey" id="textSSLKey" style="width:360px;">
+                </p>
+                <p>
+                    私钥密码：<br>
+                    <font color="gray">如果证书有私钥密码保护，请输入密码。</font>
+                    <a href="javascript:" class="tip-hotspot" data-tip="SSL 证书采用公钥加密技术和对称加密技术，对客户端和服务器端之间的数据传输进行加密，<br>确保数据传输的机密性、完整性以及通信方身份真实性。SSL 证书私钥泄露会导致加密会话的密钥泄露，<br>进而造成网站数据泄露风险。SSL 证书私钥密码则是为该私钥再添加一层保护，提高并确保 SSL 证书私钥的安全性。">什么是 SSL 证书私钥密码？</a>
+                </p>
+                <p>
+                    <input type="password" name="textSSLPassphrase" id="textSSLPassphrase" style="width:300px;"> <a id="btnChangeSSLPassword" href="javascript:btnClick_ChangeSSLPassword()">修改密码</a>
+                </p>
+                <p>
+                    注意：<br>
+                    <font color="brown">修改HTTPS配置会导致服务重启。 如果切换了“使用安全传输协议”的选项，服务重启后，需要修改页面URL的协议类型（http或者https）</font>
+                </p>
+            </div>
+        </div>
+
+        <!-- ---------------对话框：HTTP响应头配置--------------- -->
+        <div class="dlg" id="dlgHttpHeaderConf" title="HTTP响应头配置">
+            <p>
+                <a href="javascript:btnAddCorsHeader()">添加跨域访问HTTP头</a> &emsp;
+                <a href="javascript:btnAddHttpHeader()">添加HTTP头</a>
+            </p>
+            <table id="httpHeaderList" border="1" cellspacing="0">
+                <tr class="tableHead">
+                    <td width="250" height="25">键</td>
+                    <td width="250">值</td>
+                    <td width="100">操作</td>
+                </tr>
+                <!-- <tr height="25" placeholder>
+                                </tr> -->
+            </table>
+        </div>
+
+        <!-- ---------------对话框：编辑HTTP响应头--------------- -->
+        <div class="dlg" id="dlgHttpHeaderEdit" title="编辑HTTP响应头">
+            <p>
+                键：<input type="text" readonly name="textHttpHeaderKey" id="textHttpHeaderKey" style="width:360px;">
+            </p>
+            <p>
+                值：<input type="text" name="textHttpHeaderValue" id="textHttpHeaderValue" style="width:360px;">
+            </p>
+        </div>
+
+        <!-- ---------------对话框：添加中继服务地址--------------- -->
+        <div class="dlg" id="dlgAddOtherRelay" title="添加中继服务地址">
+            <p>此处用于添加额外的中继服务地址</p>
+            <table>
+                <tr>
+                    <td align="left" valign="top" width="280">
+                        <p>
+                            模&emsp;式&emsp;<select id="comboBoxRelayMode2" style="width:160px;">
+                                <option value="0">禁用</option>
+                                <option value="1">UDP转发（默认）</option>
+                                <option value="2">TCP转发</option>
+                            </select>
+                        </p>
+                        <p>
+                            IP地址&emsp;<input name="comboTurnListeningIP2" type="text" id="comboTurnListeningIP2" style="width:150px;">
+                        </p>
+                        <p>
+                            端&emsp;口&emsp;<input name="textTurnPort2" type="text" id="textTurnPort2" style="width:50px;">
+                        </p>
+                        <p>
+                            用户名&emsp;<input name="textRelayUsername2" type="text" id="textRelayUsername2" style="width:150px;">
+                        </p>
+                        <p>
+                            密&emsp;码&emsp;<input name="textRelayPassword2" type="text" id="textRelayPassword2" style="width:150px;">
+                        </p>
+                        <p>&nbsp;</p>
+                        <p>
+                            <a href="javascript:btnClick_AddRelay()">添加</a>&emsp;
+                            <a href="javascript:btnClick_DeleteRelay()">删除</a>
+                        </p>
+                    </td>
+                    <td align="left" valign="top" width="180" style="border:solid 1px darkgray !important;">
+                        <ol id="selectable">
+                        </ol>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    new dts.CloudMaster('zh');
+</script>

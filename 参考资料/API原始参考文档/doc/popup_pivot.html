@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Pop-up window - calculate the center point of the model</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font: 14px/1.5 system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        .modal-video_dialog {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            background: rgba(0, 0, 0, .80);
+            overflow: hidden;
+        }
+
+        .modal-video_dialog h1 {
+            margin: 0;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 10px;
+            width: 100%;
+            font-weight: normal;
+            font-size: 18px;
+            box-sizing: border-box;
+            background: rgba(0, 0, 0, .4);
+            color: #fff;
+            text-align: left;
+        }
+
+        #main {
+            position: relative;
+            height: 600px;
+            padding: 0 5px;
+            color: #fff;
+            background: (1, 1, 1, .8);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="modal-video_dialog">
+        <h1>Model Details</h1>
+        <div id="main">
+            <table style="background: rgb(44, 43, 43);">
+                <tr>
+                    <td>Layer ID</td>
+                    <td id="tileLayerId"></td>
+                </tr>
+                <tr>
+                    <td>Layer type</td>
+                    <td id="tileLayerType">TileLayer</td>
+                </tr>
+                <tr>
+                    <td>model ID</td>
+                    <td id="actorId"></td>
+                </tr>
+                <tr>
+                    <td>Model center point</td>
+                    <td id="actorPivot"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+
+        //获取url参数并赋值
+        //var urlParmas = '?tileLayerId=' + __tileLayerCurSel.id + '&actorId=' +__tileLayerCurSel.objectId + '&actorLocation=' +  location + '&actorPivot='+actorPivot ;
+
+        var __n = 0;
+
+        window.onload = function () {
+            var urlParams = new URLSearchParams(location.search);
+
+            let tileLayerId = urlParams.get('tileLayerId');
+            let actorId = urlParams.get('actorId');
+            let actorLocation = urlParams.get('actorLocation');
+            let actorPivot = urlParams.get('actorPivot');
+
+            if (tileLayerId)
+                document.getElementById('tileLayerId').innerText = tileLayerId;
+
+            if (actorId)
+                document.getElementById('actorId').innerText = actorId;
+
+            if (actorPivot)
+                document.getElementById('actorPivot').innerText = "[" + actorPivot + "]";
+        }
+
+    </script>
+</body>
+
+</html>

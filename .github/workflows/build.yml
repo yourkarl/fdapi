@@ -1,0 +1,45 @@
+# 文档站构建检查：push / PR 时验证 docusaurus build 是否通过
+# 同时验证内容生成管线（regenerate_docs.py 等）Python 依赖可用
+name: build
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: pip install beautifulsoup4
+
+      - name: Verify generation scripts are importable
+        run: |
+          python3 -c "import bs4; print('beautifulsoup4 OK')"
+          python3 -c "
+          import ast, sys
+          for f in ['regenerate_docs.py', 'gen_sidebar.py', 'gen_real_examples.py', 'gen_dts.py']:
+            try:
+              ast.parse(open(f).read())
+              print(f, 'syntax OK')
+            except SyntaxError as e:
+              print(f'FAIL {f}:', e, file=sys.stderr)
+              sys.exit(1)
+          "
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build

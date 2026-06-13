@@ -1,0 +1,139 @@
+---
+title: EditHelper
+sidebar_label: EditHelper
+description: "EditHelper类，提供用户手动绘制接口"
+---
+
+# EditHelper
+
+EditHelper类，提供用户手动绘制接口
+
+
+
+![](/img/refdoc/api/EditHelper.Start.gif)
+
+通过 `api.editHelper` 访问。
+
+---
+
+## 方法（Methods）
+
+### `cancel(fn)`
+
+取消绘制模式
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+> 示例：Cancel
+
+```js
+fdapi.editHelper.cancel();
+```
+
+---
+
+### `finish(withOffset, fn)`
+
+绘制结束。调用此方法会结束当前的绘制，并在回调函数中返回绘制类型和坐标点，然后根据这些坐标点再创建相关的几何图形。
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `withOffset` | `boolean` | 是否计算工程中心偏移，默认值是true |
+| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+```js
+let res = await fdapi.editHelper.finish(true);
+            switch (res.buildType) {
+                case 0: {
+                    fdapi.polyline.add({
+                        id: Math.random(),
+                        coordinates: res.coordinates,
+                        color: Color.Red,
+                        style: 2,
+                        thickness: 10,
+                        intensity: 1,
+                        flowRate: 0.5,
+                    });
+                } break;
+                case 1: {
+                    fdapi.polygon.add({
+                        id: Math.random(),
+                        color: Color.Blue,
+                        coordinates: res.coordinates,
+                        frameColor: Color.Red,
+                        frameThickness: 1
+                    });
+                } break;
+            }
+```
+
+> 示例：Finish
+
+```js
+let res = await fdapi.editHelper.finish(true);
+switch (res.buildType) {
+    case 0: {
+        fdapi.polyline.add({
+            id: Math.random(),
+            coordinates: res.coordinates,
+            color: Color.Red,
+            style: 2,
+            thickness: 10,
+            intensity: 1,
+            flowRate: 0.5,
+            depthTest: false
+        });
+    } break;
+
+    case 1: {
+        fdapi.polygon.add({
+            id: Math.random(),
+            color: Color.Blue,
+            coordinates: res.coordinates,
+            frameColor: Color.Red,
+            frameThickness: 1,
+            depthTest: false
+        });
+    } break;
+}
+```
+
+---
+
+### `setParam(lineType, buildType, color, fn)`
+
+设置绘制参数
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `lineType` | `number` | 线类型，0：直线，1：曲线，默认值是0 |
+| `buildType` | `number` | 绘制类型，0：画多点线段， 1：画多边形， 默认值是0 |
+| `color` | `Color` | 颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+> 示例：SetParam
+
+```js
+let lineType = 0;           //0：直线，1：曲线
+let buildType = 1;          //0：画多点线段， 1：画多边形
+let color = Color.Red;      //绘制颜色
+fdapi.editHelper.setParam(lineType, buildType, color);
+```
+
+---
+
+### `start(fn)`
+
+进入绘制模式
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+> 示例：Start
+
+```js
+fdapi.editHelper.start();
+```
