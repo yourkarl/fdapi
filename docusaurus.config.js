@@ -73,7 +73,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialsSidebar',
             position: 'left',
-            label: '教程',
+            label: '开发教程',
           },
           {
             type: 'docSidebar',

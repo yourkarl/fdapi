@@ -1,6 +1,7 @@
 import React from 'react';
 import OriginalCodeBlock from '@theme-original/CodeBlock';
 import { useHistory } from '@docusaurus/router';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 // 包装默认 CodeBlock：JS 代码块右上角增加「在调试台运行」按钮，
 // 点击后代码经 localStorage 带入 /sandbox 在线调试台。
@@ -8,6 +9,8 @@ const RUNNABLE_LANGS = ['js', 'javascript', 'jsx', 'ts', 'typescript'];
 
 export default function CodeBlock(props) {
   const history = useHistory();
+  // baseUrl 前缀：history.push 不会自动补 basename（如 /fdapi/），需显式带上，否则跳到应用外触发 404
+  const sandboxUrl = useBaseUrl('/sandbox');
   const lang = (props.className || '').replace(/.*language-([\w-]+).*/, '$1') || props.language || '';
   const code = typeof props.children === 'string' ? props.children : '';
   const runnable = RUNNABLE_LANGS.includes(lang) && code.trim().length > 0;
@@ -16,7 +19,7 @@ export default function CodeBlock(props) {
 
   const runInSandbox = () => {
     try { window.localStorage.setItem('SbPendingCode', code.trim()); } catch (e) { /* ignore */ }
-    history.push('/sandbox');
+    history.push(sandboxUrl);
   };
 
   return (
