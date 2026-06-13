@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>DTS二次开发文档 Tutorial: API_FrameTick</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.Cerulean.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html"><img class="branding-logo" src="../images/api-logo.svg"
+		alt="logo"/>DTS二次开发文档</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Antenna.html">Antenna</a></li><li><a href="BaseObject.html">BaseObject</a></li><li><a href="BattlefieldSimulation.html">BattlefieldSimulation</a></li><li><a href="Beam.html">Beam</a></li><li><a href="BoxTrigger.html">BoxTrigger</a></li><li><a href="Camera.html">Camera</a></li><li><a href="CameraTour.html">CameraTour</a></li><li><a href="CameraTourData.html">CameraTourData</a></li><li><a href="CameraTourKeyFrame.html">CameraTourKeyFrame</a></li><li><a href="Cesium3DTileset.html">Cesium3DTileset</a></li><li><a href="Coastline.html">Coastline</a></li><li><a href="Coord.html">Coord</a></li><li><a href="CustomMesh.html">CustomMesh</a></li><li><a href="CustomObject.html">CustomObject</a></li><li><a href="CustomTag.html">CustomTag</a></li><li><a href="DaHuaVideoFusion.html">DaHuaVideoFusion</a></li><li><a href="Decal.html">Decal</a></li><li><a href="DigitalTwinAPI.html">DigitalTwinAPI</a></li><li><a href="DigitalTwinPlayer.html">DigitalTwinPlayer</a></li><li><a href="Drone.html">Drone</a></li><li><a href="DynamicWater.html">DynamicWater</a></li><li><a href="EditHelper.html">EditHelper</a></li><li><a href="ExcavationAnalysis.html">ExcavationAnalysis</a></li><li><a href="FdExternal.html">FdExternal</a></li><li><a href="FiniteElement.html">FiniteElement</a></li><li><a href="FiniteElement2.html">FiniteElement2</a></li><li><a href="FloodFill.html">FloodFill</a></li><li><a href="Fluid.html">Fluid</a></li><li><a href="GaussianSplatting.html">GaussianSplatting</a></li><li><a href="GeoJSONLayer.html">GeoJSONLayer</a></li><li><a href="GlobeTerrain.html">GlobeTerrain</a></li><li><a href="GuideLine.html">GuideLine</a></li><li><a href="HeatMap.html">HeatMap</a></li><li><a href="HeatMap3D.html">HeatMap3D</a></li><li><a href="HighlightArea.html">HighlightArea</a></li><li><a href="HydroDynamic1D.html">HydroDynamic1D</a></li><li><a href="HydroDynamic2D.html">HydroDynamic2D</a></li><li><a href="HydrodynamicModel.html">HydrodynamicModel</a></li><li><a href="HydrodynamicModel2.html">HydrodynamicModel2</a></li><li><a href="ImageryLayer.html">ImageryLayer</a></li><li><a href="ImageryLayer2.html">ImageryLayer2</a></li><li><a href="InfoTree.html">InfoTree</a></li><li><a href="Light.html">Light</a></li><li><a href="Marker.html">Marker</a></li><li><a href="Marker3D.html">Marker3D</a></li><li><a href="MarkerLayer.html">MarkerLayer</a></li><li><a href="Misc.html">Misc</a></li><li><a href="OceanHeatMap.html">OceanHeatMap</a></li><li><a href="ODLine.html">ODLine</a></li><li><a href="Panorama.html">Panorama</a></li><li><a href="Plot.html">Plot</a></li><li><a href="Polygon.html">Polygon</a></li><li><a href="Polygon3D.html">Polygon3D</a></li><li><a href="Polyline.html">Polyline</a></li><li><a href="QueryOption.html">QueryOption</a></li><li><a href="RadiationPoint.html">RadiationPoint</a></li><li><a href="River.html">River</a></li><li><a href="Satellite.html">Satellite</a></li><li><a href="Settings.html">Settings</a></li><li><a href="SettingsPanel.html">SettingsPanel</a></li><li><a href="ShapeFileLayer.html">ShapeFileLayer</a></li><li><a href="SignalWave.html">SignalWave</a></li><li><a href="SmoothedParticleHydrodynamics.html">SmoothedParticleHydrodynamics</a></li><li><a href="SplineMesh.html">SplineMesh</a></li><li><a href="Tag.html">Tag</a></li><li><a href="TileLayer.html">TileLayer</a></li><li><a href="Tools.html">Tools</a></li><li><a href="TopologyLine.html">TopologyLine</a></li><li><a href="TrafficSimulation.html">TrafficSimulation</a></li><li><a href="Train.html">Train</a></li><li><a href="VectorField.html">VectorField</a></li><li><a href="Vehicle.html">Vehicle</a></li><li><a href="Vehicle2.html">Vehicle2</a></li><li><a href="VideoProjection.html">VideoProjection</a></li><li><a href="WaterFlowField.html">WaterFlowField</a></li><li><a href="WaterMesh.html">WaterMesh</a></li><li><a href="Weather.html">Weather</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="tutorial-API_AsyncCall.html">API_AsyncCall</a></li><li><a href="tutorial-API_AuthSDK.html">API_AuthSDK</a></li><li><a href="tutorial-API_Camera.html">API_Camera</a></li><li><a href="tutorial-API_Color.html">API_Color</a></li><li><a href="tutorial-API_Coordinates.html">API_Coordinates</a></li><li><a href="tutorial-API_Event.html">API_Event</a></li><li><a href="tutorial-API_FrameTick.html">API_FrameTick</a></li><li><a href="tutorial-API_Introduction.html">API_Introduction</a></li><li><a href="tutorial-API_MultiVideoInPage.html">API_MultiVideoInPage</a></li><li><a href="tutorial-API_ResourceDesc.html">API_ResourceDesc</a></li><li><a href="tutorial-API_Revision.html">API_Revision</a></li><li><a href="tutorial-Cloud.html">Cloud</a></li><li><a href="tutorial-Explorer.html">Explorer</a></li><li><a href="tutorial-Explorer_Guidline.html">Explorer_Guidline</a></li><li><a href="tutorial-HelloWorld.html">HelloWorld</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#ActionMode">ActionMode</a></li><li><a href="global.html#AnimationMask">AnimationMask</a></li><li><a href="global.html#APIErrorCode">APIErrorCode</a></li><li><a href="global.html#AssetType">AssetType</a></li><li><a href="global.html#BPFuncParamType">BPFuncParamType</a></li><li><a href="global.html#buildURL">buildURL</a></li><li><a href="global.html#CloudStatus">CloudStatus</a></li><li><a href="global.html#Color">Color</a></li><li><a href="global.html#CommandType">CommandType</a></li><li><a href="global.html#DroneTrailStyle">DroneTrailStyle</a></li><li><a href="global.html#fdapi">fdapi</a></li><li><a href="global.html#FieldType">FieldType</a></li><li><a href="global.html#ForwardAxis">ForwardAxis</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#HeatMapStyle">HeatMapStyle</a></li><li><a href="global.html#HydroDynamic2DStyle">HydroDynamic2DStyle</a></li><li><a href="global.html#MapMode">MapMode</a></li><li><a href="global.html#MeasurementMode">MeasurementMode</a></li><li><a href="global.html#MousePickMask">MousePickMask</a></li><li><a href="global.html#OceanHeatMapStyle">OceanHeatMapStyle</a></li><li><a href="global.html#PanelType">PanelType</a></li><li><a href="global.html#PlotStyle">PlotStyle</a></li><li><a href="global.html#Polygon3DStyle">Polygon3DStyle</a></li><li><a href="global.html#PolygonStyle">PolygonStyle</a></li><li><a href="global.html#PolylineStyle">PolylineStyle</a></li><li><a href="global.html#post">post</a></li><li><a href="global.html#RendererType">RendererType</a></li><li><a href="global.html#request">request</a></li><li><a href="global.html#ResetType">ResetType</a></li><li><a href="global.html#SM3">SM3</a></li><li><a href="global.html#sm3Digest">sm3Digest</a></li><li><a href="global.html#SplineMeshStyle">SplineMeshStyle</a></li><li><a href="global.html#UIPanelType">UIPanelType</a></li><li><a href="global.html#VectorFieldStyle">VectorFieldStyle</a></li><li><a href="global.html#VehicleViewMode">VehicleViewMode</a></li><li><a href="global.html#VERSION">VERSION</a></li><li><a href="global.html#Viewport">Viewport</a></li><li><a href="global.html#VisualType">VisualType</a></li><li><a href="global.html#WaterFlowFieldStyle">WaterFlowFieldStyle</a></li><li><a href="global.html#WaterMode">WaterMode</a></li><li><a href="global.html#WSErrorCode">WSErrorCode</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			<section class="tutorial-section">
+
+<header>
+    
+
+    <h2>API_FrameTick</h2>
+</header>
+
+<article>
+    <h1>DigitalTwinAPI之tick功能使用说明</h1>
+<p>2023.03.17</p>
+<h2>一、功能简介</h2>
+<p>tick功能提供了一种高性能的DigitalTwinAPI接口调用方式。</p>
+<p>常规的DigitalTwinAPI调用流程是这样的：客户端调用DigitalTwinAPI（通过网络传输），后台渲染进程接收命令，然后进行异步处理。这样就有几个方面的延迟：</p>
+<p>（1）客户端的异步等待（命令发送后等待返回结果）</p>
+<p>（2）网络传输（通过WebRTC）</p>
+<p>（3）后台渲染进程的线程切换（接收线程收到数据后，投递到执行线程，执行线程处理后投递到发送线程）</p>
+<p>通过上面的流程可以看到如果高频率的调用接口，性能是不会太高的。为了解决这一问题，实现了tick功能。通过tick功能，可以在渲染进程的<font color=#FF0000 >每帧</font>直接<font color=#FF0000 >同步地</font>调用DigitalTwinAPI，极大的提高了调用性能。</p>
+<h2>二、实现原理</h2>
+<p>tick功能是通过渲染进程内嵌的chrome浏览器内核（cef）执行JS脚本达到目的的。</p>
+<p>调用注册接口后，进程会创建一个cef浏览器引擎，参数url将被设置为浏览器要显示的页面，在此页面内的DigitalTwinAPI调用，都是在同进程直接调用底层C++接口的，C++处理完成后，通过回调cef页面的Javascript函数来通知JS进行后续操作。 由于是在同一个进程内进行JS/C++互操作，所以性能非常高。</p>
+<h2>三、使用详解</h2>
+<h3><code>1</code>、接口说明</h3>
+<p>总共有4个方法：</p>
+<h4>registerTick</h4>
+<p><img src="../images/api_revision/image-20230105141018099.png" alt="image-20230105141018099"></p>
+<p>registerTick用于注册tick功能，注意：全局只能注册一个tick页面，多次registerTick，后面的tick功能会覆盖掉前面的。参数说明：</p>
+<ul>
+<li>
+<p><strong>url</strong></p>
+<p>tick功能是通过一个独立的html页面实现的，此参数用来设置页面的地址。注意：由于是在后台渲染进程执行，所以页面地址必须是完整的网络路径或者服务器上的本地绝对路径， 不能传递相对路径。</p>
+</li>
+<li>
+<p><strong>options</strong></p>
+<p>用来设置是否显示调试页面，由于cef调试JS比较麻烦，所以可以设置此参数，将tick页面显示出来，将调试信息在页面上显示，这样就极大的方便了代码调试。options支持以下属性（可设置一个或多个属性，未设置的属性会使用默认值）：</p>
+<ul>
+<li>
+<p>x</p>
+<p>调试窗口距离左上角的X偏移量。 默认值4</p>
+</li>
+<li>
+<p>y</p>
+<p>调试窗口距离左上角的Y偏移量。默认值4</p>
+</li>
+<li>
+<p>width</p>
+<p>调试窗口的宽度。默认值400</p>
+</li>
+<li>
+<p>height</p>
+<p>调试窗口的高度。默认值300</p>
+</li>
+<li>
+<p>visible</p>
+<p>是否可见。 默认为false（不可见）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>removeTick</h4>
+<p><img src="../images/api_revision/image-20230317181607778.png" alt="image-20230317181607778"></p>
+<p>removeTick用于移除tick功能，调用此方法后，tick功能会停止。</p>
+<h4>showTickWindow</h4>
+<p><img src="../images/api_revision/image-20230317182007372.png" alt="image-20230317182007372"></p>
+<p>showTickWindow用于显示/隐藏调试窗口。此方法既可以在客户端调用，也可以在tick页面调用。</p>
+<h4>executeJsInTickPage</h4>
+<p><img src="../images/api_revision/image-20230317182143177.png" alt="image-20230317182143177"></p>
+<p>executeJsInTickPage用于实现客户端页面与tick页面的通信，通过此方法，可以在客户端页面执行tick页面的JS代码。</p>
+<p>客户端页面和tick页面（服务器页面）之间可以双向通信，在tick页面调用<font color=blue>ue.internal.postevent(&quot;str&quot;)</font>，可以实现tick页面向客户端页面发送消息</p>
+<h3>2、tick页面说明</h3>
+<p>在tick页面里调用DigitalTwinAPI与常规调用有一些区别，主要体现在以下几个方面：</p>
+<h5>（1）DigitalTwinAPI初始化</h5>
+<pre class="prettyprint source lang-javascript"><code>var fdapi; 
+window.onload = function () {
+        fdapi = new DigitalTwinAPI();
+}
+</code></pre>
+<p>一般在onload里初始化，与常规初始化不同，tick页面里初始化DigitalTwinAPI不需要传递任何参数。注意：这里也可以使用异步操作例如：</p>
+<pre class="prettyprint source lang-javascript"><code>window.onload = async function () {
+        fdapi = new DigitalTwinAPI();        
+        await fdapi.marker.delete(id);
+        await fdapi.marker.add(data);
+}
+</code></pre>
+<h5>（2）固定回调方法</h5>
+<pre class="prettyprint source lang-javascript"><code>function tick(frameNo) {
+    //业务代码
+}
+</code></pre>
+<p>tick页面里的回调方法是被服务端执行的固定方法：tick(frameNo)。</p>
+<ul>
+<li>
+<p><strong>tick</strong></p>
+<p>参数frameNo，是当前帧序号</p>
+<p>是主页面调用registerTick后，渲染进程在每帧都会回调的方法。</p>
+</li>
+</ul>
+<p>如下示例代码：</p>
+<pre class="prettyprint source lang-javascript"><code>&lt;!doctype html>
+&lt;html>
+
+&lt;head>
+    &lt;meta charset=&quot;utf-8&quot;>
+    &lt;title>TICK-FollowVideoProjection&lt;/title>
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../../ac_conf.js&quot;>&lt;/script>
+    &lt;script type=&quot;text/javascript&quot; src=&quot;../../ac.min.js&quot;>&lt;/script>
+    &lt;style type=&quot;text/css&quot;>
+        body {
+            color: white;
+            background-color: black;
+        }
+    &lt;/style>
+&lt;/head>
+
+&lt;body>
+    Tick Test
+    &lt;hr>
+    &lt;div id=&quot;info1&quot;>&lt;/div>&lt;br>
+    &lt;div id=&quot;info2&quot;>&lt;/div>
+&lt;/body>
+
+&lt;/html>
+
+&lt;script>
+
+
+    window.onload = async function () {
+        new DigitalTwinAPI();
+    }
+
+
+    /**
+     * tick事件 监听每一帧操作
+     */
+    async function tick(frame) {
+        //获取无人机每一帧实时位置 注意：tick方法里禁止调用耗时接口 否则会导致视频流卡顿影响交互
+        let resultStr = await fdapi.customObject.get('co1');
+        //反序列化
+        let result = JSON.parse(resultStr);
+        //调试显示代码
+        //document.getElementById('info').innerText = `[Frame:${frame}] ` + JSON.stringify(result);
+        //当前每帧的车辆位置
+        let currentPos = result.data[0].location;
+        let currentRoa = result.data[0].rotation;
+        //显示无人机实时位置 朝向
+        document.getElementById('info1').innerText = &quot;无人机实时位置: \n&quot;+ currentPos;
+        document.getElementById('info2').innerText = &quot;无人机实时朝向: \n&quot;+ currentRoa;
+
+        if (result.command == CommandType.CustomObject_Get) {
+            //当前每帧的无人机位置
+            let location = result.data[0].location;
+            let rotation = result.data[0].rotation;
+            let vp1 = {
+                id: &quot;vp1&quot;,
+                location: location,
+                rotation: [rotation[0] - 45, rotation[1], rotation[2]],
+            };
+            //根据无人机位置朝向更新视频投影
+            fdapi.videoProjection.update(vp1);
+        }
+    }
+
+
+
+
+&lt;/script>
+</code></pre>
+<p>上面代码实现的功能是：每帧改变标签的值，然后获取该标签的信息，在tick页面上显示出来。代码运行效果：</p>
+<p><img src="../images/api_revision/image-20230105145621567.png" alt="image-20230105145742302"></p>
+</article>
+
+</section>
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a>
+	
+		on 2026-05-28
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

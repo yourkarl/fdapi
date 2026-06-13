@@ -1,0 +1,628 @@
+{
+  "CATEGORIES": [
+    {
+      "id": "quickstart",
+      "label": "快速上手",
+      "items": [
+        {
+          "id": "api-init",
+          "html_class": "DigitalTwinAPI",
+          "name": "SDK初始化与事件",
+          "desc": "checkApiReady/OnReady/OnEvent/OnLog"
+        },
+        {
+          "id": "api-get-started",
+          "html_class": "DigitalTwinPlayer",
+          "name": "播放器基础",
+          "desc": "场景加载/播放控制"
+        },
+        {
+          "id": "api-base",
+          "html_class": "BaseObject",
+          "name": "基础对象",
+          "desc": "BaseObject基类"
+        }
+      ]
+    },
+    {
+      "id": "camera",
+      "label": "相机操作",
+      "items": [
+        {
+          "id": "camera-control",
+          "html_class": "Camera",
+          "name": "相机控制",
+          "desc": "set/lookAt/get/flyAround/lock/enterWorld"
+        },
+        {
+          "id": "camera-tour",
+          "html_class": "CameraTour",
+          "name": "导览路线",
+          "desc": "CameraTour漫游动画"
+        },
+        {
+          "id": "camera-tour-data",
+          "html_class": "CameraTourData",
+          "name": "导览数据",
+          "desc": "CameraTour的路线数据"
+        },
+        {
+          "id": "camera-tour-key-frame",
+          "html_class": "CameraTourKeyFrame",
+          "name": "导览关键帧",
+          "desc": "CameraTour的关键帧"
+        }
+      ]
+    },
+    {
+      "id": "events",
+      "label": "事件系统",
+      "items": [
+        {
+          "id": "event-tour",
+          "html_class": "CameraTour",
+          "name": "导览事件",
+          "desc": "CameraTour回调"
+        },
+        {
+          "id": "event-draw",
+          "html_class": "EditHelper",
+          "name": "绘制事件",
+          "desc": "EditHelper绘制"
+        },
+        {
+          "id": "event-measure",
+          "html_class": "Tools",
+          "name": "测量/剖切事件",
+          "desc": "工具/测量/剖切回调"
+        }
+      ]
+    },
+    {
+      "id": "layer",
+      "label": "图层操作",
+      "items": [
+        {
+          "id": "layer-tree",
+          "html_class": "InfoTree",
+          "name": "图层树管理",
+          "desc": "查询/显隐/高亮/聚焦/蓝图"
+        },
+        {
+          "id": "layer-flatten",
+          "html_class": "TileLayer",
+          "name": "瓦片修整",
+          "desc": "压平/挖洞/样式设置"
+        },
+        {
+          "id": "layer-shp",
+          "html_class": "ShapeFileLayer",
+          "name": "矢量SHP",
+          "desc": "Shapefile图层"
+        },
+        {
+          "id": "layer-geojson",
+          "html_class": "GeoJSONLayer",
+          "name": "GeoJSON",
+          "desc": "矢量数据叠加"
+        },
+        {
+          "id": "layer-cesium",
+          "html_class": "Cesium3DTileset",
+          "name": "Cesium图层",
+          "desc": "3DTiles管理"
+        },
+        {
+          "id": "layer-ogc",
+          "html_class": "ImageryLayer",
+          "name": "OGC栅格",
+          "desc": "WMS/WMTS"
+        },
+        {
+          "id": "layer-label",
+          "html_class": "MarkerLayer",
+          "name": "标注图层",
+          "desc": "标注图层管理"
+        },
+        {
+          "id": "layer-terrain",
+          "html_class": "GlobeTerrain",
+          "name": "地形数据",
+          "desc": "全球地形"
+        },
+        {
+          "id": "layer-video-fusion",
+          "html_class": "DaHuaVideoFusion",
+          "name": "视频融合",
+          "desc": "大华视频融合"
+        },
+        {
+          "id": "imagery-layer-2",
+          "html_class": "ImageryLayer2",
+          "name": "OGC栅格图层2",
+          "desc": "新版栅格图层接口"
+        }
+      ]
+    },
+    {
+      "id": "measure",
+      "label": "测量绘制",
+      "items": [
+        {
+          "id": "measure-tool",
+          "html_class": "Tools",
+          "name": "测量工具",
+          "desc": "距离/高度/面积"
+        },
+        {
+          "id": "draw-helper",
+          "html_class": "EditHelper",
+          "name": "绘制助手",
+          "desc": "点线面交互绘制"
+        },
+        {
+          "id": "measure-plot",
+          "html_class": "Plot",
+          "name": "态势标绘",
+          "desc": "军事标绘符号"
+        },
+        {
+          "id": "measure-section",
+          "html_class": "Tools",
+          "name": "剖切",
+          "desc": "模型剖切"
+        },
+        {
+          "id": "measure-intersect",
+          "html_class": "Tools",
+          "name": "求交分析",
+          "desc": "线面/面面求交"
+        }
+      ]
+    },
+    {
+      "id": "weather",
+      "label": "环境天气",
+      "items": [
+        {
+          "id": "weather-all",
+          "html_class": "Weather",
+          "name": "天气控制",
+          "desc": "雨/雪/雾/云/昼夜/日月"
+        },
+        {
+          "id": "weather-shadow",
+          "html_class": "Settings",
+          "name": "阴影设置",
+          "desc": "阴影距离/强度/质量"
+        },
+        {
+          "id": "weather-misc",
+          "html_class": "Misc",
+          "name": "天气杂项",
+          "desc": "其他天气功能"
+        }
+      ]
+    },
+    {
+      "id": "settings",
+      "label": "系统设置",
+      "items": [
+        {
+          "id": "settings-all",
+          "html_class": "Settings",
+          "name": "场景设置",
+          "desc": "相机/交互/漫游/UI"
+        },
+        {
+          "id": "settings-panel",
+          "html_class": "SettingsPanel",
+          "name": "功能面板",
+          "desc": "系统UI/操作面板"
+        }
+      ]
+    },
+    {
+      "id": "analysis",
+      "label": "分析工具",
+      "items": [
+        {
+          "id": "analysis-tools",
+          "html_class": "Tools",
+          "name": "空间分析",
+          "desc": "天际线/坡度/可视域"
+        },
+        {
+          "id": "analysis-excavation",
+          "html_class": "ExcavationAnalysis",
+          "name": "开挖分析",
+          "desc": "土方开挖模拟"
+        },
+        {
+          "id": "analysis-query",
+          "html_class": "QueryOption",
+          "name": "查询选项",
+          "desc": "查询筛选功能"
+        }
+      ]
+    },
+    {
+      "id": "utils",
+      "label": "辅助工具",
+      "items": [
+        {
+          "id": "util-coord",
+          "html_class": "Coord",
+          "name": "坐标转换",
+          "desc": "PCS2GCS/GCS2PCS/Screen2World/射线"
+        },
+        {
+          "id": "util-fd-external",
+          "html_class": "FdExternal",
+          "name": "外部接口",
+          "desc": "对接外部系统"
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "label": "模型操作",
+      "items": [
+        {
+          "id": "model-geometry",
+          "html_class": "CustomMesh",
+          "name": "自定义几何体",
+          "desc": "基础几何形体"
+        },
+        {
+          "id": "model-object",
+          "html_class": "CustomObject",
+          "name": "自定义对象",
+          "desc": "复杂自定义对象"
+        },
+        {
+          "id": "model-gaussian",
+          "html_class": "GaussianSplatting",
+          "name": "高斯泼溅",
+          "desc": "GaussianSplatting"
+        }
+      ]
+    },
+    {
+      "id": "marker",
+      "label": "场景标记",
+      "items": [
+        {
+          "id": "marker-2d",
+          "html_class": "Marker",
+          "name": "二维标注",
+          "desc": "文字/图标/弹窗"
+        },
+        {
+          "id": "marker-complex",
+          "html_class": "CustomTag",
+          "name": "复合标注",
+          "desc": "文字+图标+牵引线"
+        },
+        {
+          "id": "marker-3d",
+          "html_class": "Marker3D",
+          "name": "三维标注",
+          "desc": "3DBillboard"
+        }
+      ]
+    },
+    {
+      "id": "vector",
+      "label": "矢量图形",
+      "items": [
+        {
+          "id": "vector-polyline",
+          "html_class": "Polyline",
+          "name": "折线",
+          "desc": "Polyline折线"
+        },
+        {
+          "id": "vector-flow",
+          "html_class": "ODLine",
+          "name": "光流/迁徙线",
+          "desc": "ODLine动态流动"
+        },
+        {
+          "id": "vector-topo",
+          "html_class": "TopologyLine",
+          "name": "拓扑线",
+          "desc": "拓扑网络线"
+        },
+        {
+          "id": "vector-polygon",
+          "html_class": "Polygon",
+          "name": "多边形",
+          "desc": "Polygon面"
+        },
+        {
+          "id": "vector-polygon3d",
+          "html_class": "Polygon3D",
+          "name": "三维多边形",
+          "desc": "3DPolygon"
+        },
+        {
+          "id": "vector-spline",
+          "html_class": "SplineMesh",
+          "name": "样条网格线",
+          "desc": "SplineMesh"
+        },
+        {
+          "id": "vector-guide",
+          "html_class": "GuideLine",
+          "name": "引导线",
+          "desc": "导航引导线"
+        },
+        {
+          "id": "vector-field",
+          "html_class": "VectorField",
+          "name": "矢量场",
+          "desc": "矢量场可视化"
+        },
+        {
+          "id": "vector-tag",
+          "html_class": "Tag",
+          "name": "标签",
+          "desc": "Tag标签管理"
+        }
+      ]
+    },
+    {
+      "id": "overlay",
+      "label": "覆盖物",
+      "items": [
+        {
+          "id": "overlay-decal",
+          "html_class": "Decal",
+          "name": "贴花",
+          "desc": "地面/模型贴花"
+        },
+        {
+          "id": "overlay-heatmap",
+          "html_class": "HeatMap",
+          "name": "热力图",
+          "desc": "HeatMap2D"
+        },
+        {
+          "id": "overlay-heatmap3d",
+          "html_class": "HeatMap3D",
+          "name": "三维热力图",
+          "desc": "HeatMap3D"
+        },
+        {
+          "id": "overlay-highlight",
+          "html_class": "HighlightArea",
+          "name": "高亮区域",
+          "desc": "HighlightArea"
+        },
+        {
+          "id": "overlay-video",
+          "html_class": "VideoProjection",
+          "name": "视频投影",
+          "desc": "VideoProjection"
+        },
+        {
+          "id": "overlay-panorama",
+          "html_class": "Panorama",
+          "name": "全景图",
+          "desc": "Panorama"
+        },
+        {
+          "id": "overlay-light",
+          "html_class": "Light",
+          "name": "光源",
+          "desc": "3D动态光源"
+        },
+        {
+          "id": "overlay-radiation",
+          "html_class": "RadiationPoint",
+          "name": "辐射圈",
+          "desc": "RadiationRing"
+        }
+      ]
+    },
+    {
+      "id": "ocean",
+      "label": "海洋气象仿真",
+      "items": [
+        {
+          "id": "ocean-heatmap",
+          "html_class": "OceanHeatMap",
+          "name": "海洋热力图",
+          "desc": "海温分布"
+        },
+        {
+          "id": "ocean-coast",
+          "html_class": "Coastline",
+          "name": "海岸线",
+          "desc": "海岸线渲染"
+        }
+      ]
+    },
+    {
+      "id": "hydro",
+      "label": "水文仿真",
+      "items": [
+        {
+          "id": "hydro-dynamic",
+          "html_class": "DynamicWater",
+          "name": "动态水",
+          "desc": "水面动态效果"
+        },
+        {
+          "id": "hydro-flood",
+          "html_class": "FloodFill",
+          "name": "水淹分析",
+          "desc": "洪水淹没模拟"
+        },
+        {
+          "id": "hydro-flow",
+          "html_class": "WaterFlowField",
+          "name": "水流场",
+          "desc": "水流矢量场"
+        },
+        {
+          "id": "hydro-water3d",
+          "html_class": "WaterMesh",
+          "name": "三维水体",
+          "desc": "3DWaterBody"
+        },
+        {
+          "id": "hydro-1d",
+          "html_class": "HydroDynamic1D",
+          "name": "一维水动力",
+          "desc": "HydroDynamic1D"
+        },
+        {
+          "id": "hydro-2d",
+          "html_class": "HydroDynamic2D",
+          "name": "二维水动力",
+          "desc": "HydroDynamic2D"
+        },
+        {
+          "id": "hydro-model",
+          "html_class": "HydrodynamicModel",
+          "name": "水动力模型",
+          "desc": "HydrodynamicModel"
+        },
+        {
+          "id": "hydro-model2",
+          "html_class": "HydrodynamicModel2",
+          "name": "水动力模型2",
+          "desc": "HydrodynamicModel2"
+        },
+        {
+          "id": "hydro-sph",
+          "html_class": "SmoothedParticleHydrodynamics",
+          "name": "SPH仿真",
+          "desc": "光滑粒子流体"
+        },
+        {
+          "id": "hydro-river",
+          "html_class": "River",
+          "name": "河道",
+          "desc": "River河道"
+        },
+        {
+          "id": "hydro-fluid",
+          "html_class": "Fluid",
+          "name": "流体",
+          "desc": "Fluid流体"
+        }
+      ]
+    },
+    {
+      "id": "signal",
+      "label": "信号仿真",
+      "items": [
+        {
+          "id": "signal-antenna",
+          "html_class": "Antenna",
+          "name": "天线方向图",
+          "desc": "AntennaPattern"
+        },
+        {
+          "id": "signal-beam",
+          "html_class": "Beam",
+          "name": "信号波束",
+          "desc": "SignalBeam"
+        },
+        {
+          "id": "signal-wave",
+          "html_class": "SignalWave",
+          "name": "信号波",
+          "desc": "信号波效果"
+        }
+      ]
+    },
+    {
+      "id": "traffic",
+      "label": "交通仿真",
+      "items": [
+        {
+          "id": "traffic-vehicle",
+          "html_class": "Vehicle",
+          "name": "微观载具",
+          "desc": "车辆路径跟随"
+        },
+        {
+          "id": "traffic-vehicle2",
+          "html_class": "Vehicle2",
+          "name": "高级载具",
+          "desc": "Vehicle2"
+        },
+        {
+          "id": "traffic-train",
+          "html_class": "Train",
+          "name": "微观高铁",
+          "desc": "列车行驶模拟"
+        },
+        {
+          "id": "traffic-drone",
+          "html_class": "Drone",
+          "name": "微观无人机",
+          "desc": "无人机路径规划"
+        },
+        {
+          "id": "traffic-city",
+          "html_class": "TrafficSimulation",
+          "name": "宏观城市交通",
+          "desc": "城市交通流"
+        },
+        {
+          "id": "traffic-satellite",
+          "html_class": "Satellite",
+          "name": "卫星仿真",
+          "desc": "卫星轨道仿真"
+        },
+        {
+          "id": "traffic-box",
+          "html_class": "BoxTrigger",
+          "name": "盒子触发器",
+          "desc": "BoxTrigger触发"
+        }
+      ]
+    },
+    {
+      "id": "fem",
+      "label": "有限元仿真",
+      "items": [
+        {
+          "id": "fem-basic",
+          "html_class": "FiniteElement",
+          "name": "有限元仿真",
+          "desc": "FiniteElement"
+        },
+        {
+          "id": "fem-enhanced",
+          "html_class": "FiniteElement2",
+          "name": "增强型有限元",
+          "desc": "EnhancedFEM"
+        }
+      ]
+    },
+    {
+      "id": "battle",
+      "label": "战场仿真",
+      "items": [
+        {
+          "id": "battle-plot",
+          "html_class": "Plot",
+          "name": "态势标绘",
+          "desc": "MilitaryPlotting"
+        },
+        {
+          "id": "battle-sim",
+          "html_class": "BattlefieldSimulation",
+          "name": "战场仿真",
+          "desc": "BattlefieldSimulation"
+        }
+      ]
+    }
+  ]
+}

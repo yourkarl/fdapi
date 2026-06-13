@@ -1,0 +1,231 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    background-color: rgb(246, 248, 250);
+    overflow: hidden;
+}
+
+select,
+input[type="text"] {
+    font-size: 10pt !important;
+}
+
+h2 {
+    font-weight: normal;
+    font-size: 13pt;
+}
+
+.servicePanel {
+    margin-left: 36px;
+    margin-bottom: 30px;
+}
+
+.servicePanel td {
+    border: none;
+}
+
+.hidden {
+    display: none;
+}
+
+#loading {
+    display: none;
+    position: fixed;
+    left: 45%;
+    top: 45%;
+}
+
+#projectList,
+#nodeList,
+#instList {
+    font-size: 10pt;
+}
+
+#logsForTab,
+#logsArea {
+    font-size: 10pt;
+    margin-top: 20px;
+    overflow: auto;
+    background-color: rgb(250, 252, 254);
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+a:link {
+    color: rgb(9, 105, 220);
+    text-decoration: none;
+}
+
+a:visited {
+    color: rgb(9, 105, 220);
+}
+
+a:hover {
+    color: green;
+}
+
+#addProjectPanel {
+    font-size: 10pt;
+    margin-bottom: 10px;
+}
+
+#selectable .ui-selecting {
+    background: #feca40;
+}
+
+#selectable .ui-selected {
+    background: #f39814;
+    color: white;
+}
+
+#selectable {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#selectable li {
+    margin: 3px;
+    padding: 0.4em;
+    height: 18px;
+}
+
+#sliderFpsText {
+    width: 3em;
+    height: 1.6em;
+    top: 50%;
+    margin-top: -0.8em;
+    text-align: center;
+    line-height: 1.6em;
+}
+
+table {
+    border-collapse: collapse;
+    border: none;
+    background-color: #fff;
+}
+
+td {
+    white-space: nowrap;
+    border: 1px solid lightgray;
+}
+
+.tableHead {
+    background-color: #eee;
+}
+
+#tabSystem td {
+    padding: 5px 10px 5px 10px;
+    font-size: 10pt;
+}
+
+.dlg {
+    font-size: 10pt;
+    background-color: rgb(246, 248, 250) !important;
+    display: none;
+}
+
+.dlg td {
+    padding: 2px 4px 2px 4px;
+    border: 0px;
+    background-color: rgb(246, 248, 250);
+}
+
+#topArea div {
+    display: inline-block;
+    font-size: 10pt;
+}
+
+#tabBasic,
+#tabRTC,
+#tabPermission,
+#tabOther {
+    height: 364px;
+}
+
+.tabPage {
+    overflow-y: auto;
+    background-color: rgb(246, 248, 250) !important;
+    font-size: 10pt;
+}
+
+.title {
+    font-size: 11pt !important;
+    color: black;
+}
+
+.subItem {
+    margin-left: 30px;
+}
+
+.numbox {
+    width: 60px;
+}
+
+#tabMenu {
+    background-color: rgb(250, 250, 252);
+}
+
+#tabMenu a {
+    width: 145px;
+    text-align: center;
+}
+
+.button-8 {
+    background-color: #e1ecf4;
+    border-radius: 3px;
+    border: 1px solid #7aa7c7;
+    color: #39739d;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
+    font-size: 10pt !important;
+    margin: 0;
+    outline: none;
+    padding: 6px 8px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+
+.button-8:hover,
+.button-8:focus {
+    background-color: #b3d3ea;
+    color: #2c5777;
+}
+
+.button-8:active {
+    background-color: #a0c7e4;
+    color: #2c5777;
+}
+
+
+#selectable .ui-selecting {
+    background: #FECA40;
+}
+
+#selectable .ui-selected {
+    background: #F39814;
+    color: white;
+}
+
+#selectable {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#selectable li {
+    margin: 3px;
+    padding: 0.4em;
+    height: 18px;
+}

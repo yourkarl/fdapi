@@ -1,0 +1,368 @@
+---
+title: Drone
+sidebar_label: Drone
+description: "Drone类，提供无人机对象相关的操作 一般通过api.Drone调用其方法"
+---
+
+# Drone
+
+Drone类，提供无人机对象相关的操作
+
+一般通过api.Drone调用其方法
+
+通过 `api.Drone` 访问。
+
+---
+
+## 方法（Methods）
+
+### `add(data, fn)`
+
+添加一个或多个无人机对象
+
+路径参数assetPath获取方法如下动图：
+
+
+
+![](/img/refdoc/api/copy_actor_path.gif)
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+> **`data` 对象属性：**
+
+| 属性 | 类型 | 说明 |
+|------|------|------|
+| `id` | `string` | 无人机对象的ID |
+| `groupId` | `string` | 可选，Group分组 |
+| `userData` | `string` | 可选，用户自定义数据 |
+| `assetPath` | `string` | 资源库无人机的路径，类似CustomObject对象的assetPath，示例值：'/AirCityPlugin/ArtResources/Drone/Drone' |
+| `coordinate` | `array` | 无人机初始位置坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
+| `coordinateType` | `number` | 可选，坐标系类型，取值：0为Projection类型，1为WGS84类型，默认值：0 |
+| `delay` | `number` | 可选，控制无人机moveTo()接口移动的延迟时间，单位：秒，默认值：0.5，设置0则不延时立刻移动 |
+| `rotation` | `array` | 可选，无人机旋转，世界坐标系旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |
+| `localOffset` | `array` | 可选，无人机基于原始位置坐标的偏移量，默认值：[0,0,0] |
+| `scale` | `array` | 可选，无人机缩放：[X,Y,Z]，数组元素类型：(number)，取值范围：[任意正整数] |
+| `visible` | `boolean` | 可选，设置无人机对象加载后是否显示，默认：true |
+| `trailType` | `DroneTrailStyle` | (`DroneTrailStyle`) 可选，轨迹线样式枚举，详情参考 `DroneTrailStyle`，默认值：0 |
+| `trailThickness` | `number` | 可选，像素线宽度，注意：仅设置像素线样式枚举时生效 |
+| `trailColor` | `Color` | 可选，轨迹线颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `trailDuration` | `number` | 可选，轨迹持续时间，单位：秒，默认值：3秒 |
+| `lightColor` | `Color` | 可选，无人机自发光灯颜色亮度，取值示例：[1, 0, 0, 10]，注意：alpha是无人机亮度，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `label` | `object` | 可选，无人机的标牌对象，默认不显示，包含可配置的参数如下： |
+| `label.visible` | `boolean` | 无人机标牌是否可见，默认值：false |
+| `label.offset` | `array` | 无人机标牌偏移，默认值：[0, 0, 0] |
+| `label.cullDistance` | `number` | 无人机标牌剔除距离，相机距离无人机的观察距离大于此阈值则屏幕显示剔除。单位：米 |
+| `label.text` | `string` | 无人机标牌显示的字符串 |
+
+> 示例：Add
+
+```js
+//设置后期 泛光 减少灯光秀光晕 关闭反走样
+fdapi.settingsPanel.setPostProcessMode({ bloomIntensity: 0.7, antiAliasing: false });
+
+//设置夜晚 展示灯光秀
+fdapi.weather.setDateTime(2025, 12, 25, 22, 10, false);
+
+//添加100架无人机
+await fdapi.drone.clear();
+let basePoint = [492548, 2491830, 200];
+let d100 = [];
+for (let i = 0; i < 100; i++) {
+    let drone = {
+        "id": "drone" + i,
+        "coordinateType": 0,
+        "coordinate": [basePoint[0] + Math.random() * 500, basePoint[1] + Math.random() * 500, 200],
+        "assetPath": "/JC_CustomAssets/UAVLibrary/Exhibition/UAV_1",
+        "rotation": [0, 0, 0],
+        "autoHeight": true,
+        "delay": 1,
+        "localOffset": [0, 0, 0],
+        "scale": [3, 3, 3], //模型缩放
+        "visible": 1, //加载后可见
+        "enableDecal": true,
+        "trailType": DroneTrailStyle.Pixel_Line1, //轨迹样式枚举
+        "trailThickness": 2, //像素线宽度，注意：仅开启像素线样式枚举时生效
+        "trailColor": [Math.random(), Math.random(), Math.random(), 1],//轨迹线颜色
+        "trailDuration": 6, //轨迹线持续时长 0表示一直显示
+        "lightColor": [Math.random(), Math.random(), Math.random(), 10],//灯光秀颜色、亮度
+        "label": {
+            "visible": true,//标牌可见性
+            "cullDistance": 100, // 无人机标牌剔除距离，相机距离无人机的观察距离大于此阈值则屏幕显示剔除。单位：米
+            "offset": [0, 0, 0],//标牌偏移
+            "text": "空A " + Math.round(Math.random() * 1000000) //标牌显示的文字
+        }
+    };
+    d100.push(drone);
+}
+fdapi.drone.add(d100);
+fdapi.drone.focus('drone5');
+```
+
+---
+
+### `clear(fn)`
+
+清空场景中所有的无人机对象
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+> 示例：Clear
+
+```js
+fdapi.drone.clear();
+```
+
+---
+
+### `delete(ids, fn)`
+
+删除一个或多个无人机对象
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `ids` | `string \| array` | 要删除的无人机对象的ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+> 示例：Delete
+
+```js
+fdapi.drone.delete('drone5');
+```
+
+---
+
+### `focus(ids, followEnable, distance, flyTime, viewPitch, viewYaw, sensitivity, offset, fn)`
+
+自动定位到合适的观察距离
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `ids` | `string \| array` | 无人机对象的ID或者ID数组 |
+| `followEnable` | `boolean` | 可选参数，是否开启相机自动跟随(开启后相机交互会被自动托管)，默认值：false |
+| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，如果设置为负值则会在模型内部，可以用来模拟无人机观察视角 |
+| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `viewPitch` | `number` | 可选参数，观察欧拉角的Pitch，取值范围：[-90~90] |
+| `viewYaw` | `number` | 可选参数，观察欧拉角的Yaw，取值范围： [-180~180] |
+| `sensitivity` | `number` | 可选参数，无人机灵敏度，取值范围： [0~1] |
+| `offset` | `array` | 可选参数，无人机视角的偏移量，单位：米，默认值：[0,0,0] |
+| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+> 示例：Focus
+
+```js
+//设置相机跟随
+fdapi.drone.focus('drone5', false, 8, 2, -45, 10, [0, 0, 0], 0.02);
+```
+
+---
+
+### `get(ids, fn)`
+
+根据ID获取无人机对象的详细信息
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `ids` | `string \| array` | 要获取的无人机对象的无人机对象的ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+```js
+CustomObject的详细信息
+[{
+            "id":"vc1",
+            "groupId": "car_main_road",
+            "userData": "car_info",
+            "coordinateType":0,
+            "coordinate":[-1499.8984375, -2804.5328125000001,1],
+            "assetPath":"/JC_CustomAssets/DroneLibrary/Exhibition/Drone",
+            "rotation":[0, -10, 0],
+        }]
+```
+
+> 示例：Get
+
+```js
+fdapi.drone.get('drone5');
+```
+
+---
+
+### `hide(ids, fn)`
+
+隐藏一个或多个无人机对象
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `ids` | `string \| array` | 无人机对象的ID或者ID数组 |
+| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+> 示例：Hide
+
+```js
+fdapi.drone.hide('drone5');
+```
+
+---
+
+### `moveTo(data, fn)`
+
+设置无人机对象飞行移动
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+> **`data` 对象属性：**
+
+| 属性 | 类型 | 说明 |
+|------|------|------|
+| `id` | `string` | 无人机对象的ID |
+| `coordinate` | `array` | 无人机对象移动目标点坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
+| `rotation` | `array` | 可选，无人机的旋转角度：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |
+| `astern` | `boolean` | 可选，是否开启倒档，默认值：false |
+| `time` | `number` | 可选，无人机对象移动目标点对应的时间戳 |
+
+> 示例：MoveTo
+
+```js
+let basePoint = [492548, 2491830, 200];
+let index = 0;
+let currTime = new Date().getTime();
+let timer = setInterval(function () {
+    if (index < 100) {
+        let time = currTime + 1000 * index;
+
+        let d10 = []
+        for (let i = 0; i < 100; i++) {
+            d10.push({
+                "id": "drone" + i,
+                "coordinate": [basePoint[0] + Math.random() * 500, basePoint[1] + Math.random() * 500, 200],
+                "time": time,
+                "rotation": [0, 0, 0]
+            });
+        }
+        fdapi.drone.moveTo(d10);
+        ++index;
+    }
+    else {
+        clearInterval(timer);
+        fdapi.camera.cancelFollow();
+    }
+}, 1000);
+//定位
+fdapi.drone.focus('drone5', false, 8, 2, -45, 10, [0, 0, 0], 0.02);
+```
+
+---
+
+### `show(ids, fn)`
+
+显示一个或多个无人机对象
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `ids` | `string \| array` | 无人机对象的ID或者ID数组 |
+| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+> 示例：Show
+
+```js
+fdapi.drone.show('drone5');
+```
+
+---
+
+### `update(data, fn)`
+
+修改一个或多个无人机对象
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `data` | `object \| array` | 无人机对象或者数组，以下属性支持更新 |
+| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+> **`data` 对象属性：**
+
+| 属性 | 类型 | 说明 |
+|------|------|------|
+| `id` | `string` | 根据无人机对象的ID更新无人机相关属性 |
+| `trailType` | `number` | (`DroneTrailStyle`) 可选，轨迹线样式枚举，详情参考 `DroneTrailStyle`，默认值：0 |
+| `trailColor` | `Color` | 可选，轨迹线颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `trailDuration` | `number` | 可选，轨迹持续时间，单位：秒，默认值：3 |
+| `trailThickness` | `number` | 可选，像素线宽度，注意：仅设置像素线样式枚举时生效 |
+| `lightColor` | `Color` | 可选，无人机自发光灯颜色亮度，取值示例：[1, 0, 0, 10]，注意：alpha是无人机亮度，支持四种格式，[取值示例](/docs/tutorials/color)，默认：关闭 |
+| `label` | `object` | 可选，无人机的标牌对象，默认不显示，包含可配置的参数如下： |
+| `label.visible` | `boolean` | 无人机标牌是否可见，默认值：false |
+| `label.offset` | `array` | 无人机标牌偏移，默认值：[0, 0, 0] |
+| `label.cullDistance` | `number` | 无人机标牌剔除距离，相机距离无人机的观察距离大于此阈值则屏幕显示剔除。单位：米 |
+| `label.text` | `string` | 无人机标牌显示的字符串 |
+
+> 示例：Update
+
+```js
+let d100 = []
+for (let i = 0; i < 100; i++) {
+    d100.push({
+        "id": "drone" + i,
+        "trailType": 0, //轨迹线样式
+        "trailColor": [1, 1, 0, 1],//轨迹线颜色
+        "trailDuration": 3, //轨迹线持续时长
+        "lightColor": [1, 0, 0, 1],//灯光秀颜色
+        "label": {
+            "visible": true,//标牌可见性
+            "cullDistance": 1000, // 无人机标牌剔除距离，相机距离无人机的观察距离大于此阈值则屏幕显示剔除。单位：米
+            "offset": [0, 0, 0],//标牌偏移
+            "text": "空A " + Math.round(Math.random() * 1000000) //标牌显示的文字
+        }
+    });
+}
+fdapi.drone.update(d100);
+```
+
+---
+
+### `updateBegin()`
+
+用于批量多次修改对象的属性
+
+
+在开始修改之前调用updateBegin，然后可以多次调用setXXX方法，最后调用updateEnd提交修改更新数据
+
+注意：
+
+updateBegin不是异步调用，不需要await，也没有回调函数参数
+
+```js
+fdapi.xxx.updateBegin();
+for (let i = 0; i < 1000; i++) {
+     fdapi.xxx.setColor(i, Color.Yellow);
+} 
+fdapi.xxx.updateEnd(function () {
+     log('update finished!');
+});
+```
+
+---
+
+### `updateEnd(fn)`
+
+用于批量多次修改对象的属性，与updateBegin配套使用
+
+注意：
+
+updateEnd是异步调用，可以用回调函数也可以await
+
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+> 示例代码如下：
+
+```js
+await fdapi.Drone.updateEnd();
+```

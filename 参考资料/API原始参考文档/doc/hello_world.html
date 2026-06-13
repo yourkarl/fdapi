@@ -1,0 +1,33 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Hello World</title>
+    <style type="text/css">
+        #player {
+            width: 1000px;
+            height: 618px;
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    <script type="text/javascript" src="../../ac.min.js"></script>
+    <script type="text/javascript" src="../../ac_conf.js"></script>
+    <script type="text/javascript" src="scripts/hello_world.js"></script>
+</head>
+
+<body>
+    <p>
+        云渲染主机IP地址：<input id="elemIP" value="127.0.0.1" />
+        端口：<input id="elemPort" value="8080" />
+        <button onclick="render()">渲染视频流</button>
+        <button onclick="setCamera()">设置相机位置</button>
+    </p>
+    <div id="player">点击“渲染视频流”按钮开始</div>
+</body>
+
+</html>

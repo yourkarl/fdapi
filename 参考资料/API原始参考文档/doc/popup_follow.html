@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>TICK-FollowSignalSource</title>
+    <script type="text/javascript" src="../../ac_conf.js"></script>
+    <script type="text/javascript" src="../../ac.min.js"></script>
+    <style type="text/css">
+        body {
+            color: white;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    Tick Test
+    <hr>
+    <div id="info"></div><br>
+    <div id="info2"></div>
+</body>
+
+</html>
+
+<script>
+
+    //当前距离车辆最近的信号源
+    let currentSource = null;
+
+    //信号源1
+    let signalSource1 = [492540.78125, 2492213.75, 9.2458667755126953];
+    //信号源2
+    let signalSource2 = [492532.5625, 2492235.25, 7.5611543655395508];
+    //信号源3
+    let signalSource3 = [492547.78125, 2492251, 7.5889630317687988];
+    //信号源4
+    let signalSource4 = [492526.65625, 2492183.5, 5.4552111625671387];
+    //信号源5
+    let signalSource5 = [492511.125, 2492188.5, 7.5469346046447754];
+
+    window.onload = async function () {
+        //初始化
+        new DigitalTwinAPI();
+    }
+
+
+    /**
+     * tick事件 监听每一帧操作
+     */
+    async function tick(frame) {
+        //获取车辆每一帧实时位置 注意：ontick方法里禁止调用耗时接口 否则会导致视频流卡顿影响交互
+        let resultStr = await fdapi.customObject.get('co1');
+        //反序列化
+        let result = JSON.parse(resultStr);
+        //调试显示查询结果
+        //document.getElementById('info').innerText = `[Frame:${frame}] ` + JSON.stringify(result);
+        //当前每帧的车辆位置
+        let currentPos = result.data[0].location;
+        //显示车辆实时位置
+        document.getElementById('info2').innerText = "车辆实时位置: \n"+ currentPos;
+
+        if (result.command == CommandType.CustomObject_Get) {
+            //车辆实时运动点距离信号源1距离
+            let dis1 = calcDistance(currentPos, signalSource1);
+            //车辆实时运动点距离信号源2距离
+            let dis2 = calcDistance(currentPos, signalSource2);
+            //车辆实时运动点距离信号源3距离
+            let dis3 = calcDistance(currentPos, signalSource3);
+            //车辆实时运动点距离信号源3距离
+            let dis4 = calcDistance(currentPos, signalSource4);
+            //车辆实时运动点距离信号源3距离
+            let dis5 = calcDistance(currentPos, signalSource5);
+
+            //距离排序
+            let disArr = [dis1, dis2, dis3, dis4, dis5];
+            disArr.sort(max);
+            //取距离信号源最近的距离
+            let minDis = disArr[0];
+            if (minDis == dis1) {
+                currentSource = signalSource1
+            }
+            if (minDis == dis2) {
+                currentSource = signalSource2
+            }
+            if (minDis == dis3) {
+                currentSource = signalSource3
+            }
+            if (minDis == dis4) {
+                currentSource = signalSource4
+            }
+            if (minDis == dis5) {
+                currentSource = signalSource5
+            }
+
+            //动态更新和信号源的连接波束对象signal_line_co
+            let eulerAngle = fdapi.camera.getEulerAngle(currentPos, currentSource);
+            fdapi.customObject.update({
+                id: 'signal_line_co',
+                location: currentSource,//位置
+                rotation: [eulerAngle[0] + 90, eulerAngle[1], eulerAngle[2]],//欧拉角 姿态
+                scale: [1, 0.5, minDis * 0.26] //缩放大小
+            });
+        }
+    }
+
+    /**
+     * 取最大值
+     */
+    function max(a, b) {
+        return a - b;
+    }
+
+    /**
+     * 计算空间两点距离
+     * @param {array} startPoint 起始点坐标数组
+     * @param {array} endPoint   结束点坐标数组
+     */
+    function calcDistance(startPoint, endPoint) {
+        let xDValue = Math.abs(endPoint[0] - startPoint[0]);
+        let yDValue = Math.abs(endPoint[1] - startPoint[1]);
+        let zDValue = Math.abs(endPoint[2] - startPoint[2]);
+        let dis = Math.sqrt(xDValue + yDValue + zDValue);
+        return dis;
+    }
+
+</script>

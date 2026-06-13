@@ -1,0 +1,87 @@
+﻿<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Demonstration of pop-up interactive operation</title>
+    <style type="text/css">
+        body {
+            background-color: black;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 12px;
+        }
+    </style>
+    <script type="text/javascript" src="../../ac.min.js"></script>
+</head>
+
+<body>
+    <button onclick="javascript:location.reload()">Reload</button>
+    <button onclick="closeWindow()">Close</button>
+    <button onclick="postEvent()">SendEvent</button>
+    <button onclick="callApi()">Call</button>
+    <p>
+        <button onclick="getCamera()">GetCamera</button>
+    </p>
+    <p>
+        <span id="info" style="background: black; color: greenyellow;"></span>
+    </p>
+</body>
+
+</html>
+
+<script>
+
+    var fdapi;
+
+    window.onload = function () {
+        fdapi = new DigitalTwinAPI();
+    }
+
+    function callApi() {
+        fdapi.settings.setMainUIVisibility(false);
+        testApi();
+    }
+
+    async function closeWindow() {
+        FdExternal.close();
+    }
+
+    function postEvent() {
+        FdExternal.postEvent('this is a message.')
+    }
+
+    function testApi() {
+        fdapi.odline.clear();
+        let o = {
+            id: 'od1',
+            color: Color.Green,
+            coordinates: [[492303.65625, 2487534.5, 4.195], [491391.5625, 2487777.5, 4.2]],
+            flowRate: 1,
+            intensity: 1,
+            bendDegree: 0.5,
+            tiling: 0.5,
+            lineThickness: 15,
+            flowPointSizeScale: 30,
+            labelSizeScale: 1000,
+            lineShape: 1,
+            lineStyle: 0,
+            flowShape: 1,
+            startPointShape: 1,
+            endPointShape: 1,
+            startLabelShape: 1,
+            endLabelShape: 1
+        };
+        fdapi.odline.add(o);
+        fdapi.odline.focus(o.id);
+    }
+
+    async function getCamera() {
+        let o = await fdapi.camera.get();
+        document.getElementById('info').innerText = JSON.stringify(o);
+    }
+
+    function callByUE() {
+        alert('called from ue')
+    }
+
+</script>

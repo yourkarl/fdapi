@@ -1,0 +1,92 @@
+﻿<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>TICK</title>
+    <script type="text/javascript" src="../../ac_conf.js"></script>
+    <script type="text/javascript" src="../../ac.min.js"></script>
+    <style type="text/css">
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 9pt;
+            background-color: rgb(199, 237, 204);
+            overflow: scroll;
+        }
+    </style>
+</head>
+
+<body>
+    <strong>Tick Debug Window</strong>&emsp;
+    &emsp;<a href="javascript:fdapi.marker.delete(id)">DeleteMarker</a>
+    &emsp;<a href="javascript:FdExternal.postEvent('test string')">PostEvent</a>
+    &emsp;<a href="javascript:fdapi.showTickWindow(false);">Close</a>
+    <hr>
+    <span id="r1"></span>
+    <hr>
+    <span id="r2"></span>
+    <hr>
+    <span id="r3"></span>
+</body>
+
+</html>
+
+<script>
+    var id = 'testMarker';
+    var i = 0;
+
+    var data = {
+        id: id,
+        coordinate: [492825.0459375,2492037.189375,22.939096679687502],
+        text: 'Marker : 0',
+        textBackgroundColor: Color.SpringGreen,//文本背景颜色
+        fontSize: 28,//字体大小
+        fontOutlineSize: 1,//字体轮廓线大小
+        fontColor: Color.White,//字体颜色
+        fontOutlineColor: Color.Black,//字体轮廓线颜色
+        displayMode: 2,
+        range: [0, 100000],
+        showLine: true,//标注点下方是否显示垂直牵引线
+        lineSize: [2, 100],//垂直牵引线宽度和高度[width, height]
+        lineColor: Color.SpringGreen,//垂直牵引线颜色
+        lineOffset: [0, 0],//垂直牵引线偏移
+    }
+
+    window.onload = function () {
+        new DigitalTwinAPI();
+        fdapi.marker.delete(id);
+        fdapi.marker.add(data, o => {
+            document.getElementById('r3').innerText = 'marker created.'
+            
+        });
+    }
+
+    async function tick(frame) {
+        
+        document.getElementById('r1').innerText = `[Frame:${frame}] ` + JSON.stringify(data);
+
+        fdapi.marker.setText(id, 'Marker : ' + (i++).toString());
+        let markerInfoStr = await fdapi.marker.get(id);
+        document.getElementById('r2').innerText = `[Frame:${frame}] ` + markerInfoStr;
+
+        let markerInfo = JSON.parse(markerInfoStr);
+    }
+
+    function clientCalled(str) {
+        document.getElementById('r3').innerText = str;
+    }
+
+    //或者采用下面then链的形式：
+    
+    // function tick(frame) {
+    //     document.getElementById('r1').innerText = `[Frame:${frame}] ` + JSON.stringify(data);
+
+    //     fdapi.marker.setText(id, 'Marker:' + (i++).toString());
+    //     fdapi.marker.get(id).then(markerInfoStr => {
+    //         document.getElementById('r2').innerText = `[Frame:${frame}] ` + markerInfoStr;
+    //         let markerInfo = JSON.parse(markerInfoStr);
+    //     });
+    // }
+
+
+</script>

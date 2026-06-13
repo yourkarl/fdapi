@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>DTS二次开发文档 Tutorial: HelloWorld</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.Cerulean.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html"><img class="branding-logo" src="../images/api-logo.svg"
+		alt="logo"/>DTS二次开发文档</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Antenna.html">Antenna</a></li><li><a href="BaseObject.html">BaseObject</a></li><li><a href="BattlefieldSimulation.html">BattlefieldSimulation</a></li><li><a href="Beam.html">Beam</a></li><li><a href="BoxTrigger.html">BoxTrigger</a></li><li><a href="Camera.html">Camera</a></li><li><a href="CameraTour.html">CameraTour</a></li><li><a href="CameraTourData.html">CameraTourData</a></li><li><a href="CameraTourKeyFrame.html">CameraTourKeyFrame</a></li><li><a href="Cesium3DTileset.html">Cesium3DTileset</a></li><li><a href="Coastline.html">Coastline</a></li><li><a href="Coord.html">Coord</a></li><li><a href="CustomMesh.html">CustomMesh</a></li><li><a href="CustomObject.html">CustomObject</a></li><li><a href="CustomTag.html">CustomTag</a></li><li><a href="DaHuaVideoFusion.html">DaHuaVideoFusion</a></li><li><a href="Decal.html">Decal</a></li><li><a href="DigitalTwinAPI.html">DigitalTwinAPI</a></li><li><a href="DigitalTwinPlayer.html">DigitalTwinPlayer</a></li><li><a href="Drone.html">Drone</a></li><li><a href="DynamicWater.html">DynamicWater</a></li><li><a href="EditHelper.html">EditHelper</a></li><li><a href="ExcavationAnalysis.html">ExcavationAnalysis</a></li><li><a href="FdExternal.html">FdExternal</a></li><li><a href="FiniteElement.html">FiniteElement</a></li><li><a href="FiniteElement2.html">FiniteElement2</a></li><li><a href="FloodFill.html">FloodFill</a></li><li><a href="Fluid.html">Fluid</a></li><li><a href="GaussianSplatting.html">GaussianSplatting</a></li><li><a href="GeoJSONLayer.html">GeoJSONLayer</a></li><li><a href="GlobeTerrain.html">GlobeTerrain</a></li><li><a href="GuideLine.html">GuideLine</a></li><li><a href="HeatMap.html">HeatMap</a></li><li><a href="HeatMap3D.html">HeatMap3D</a></li><li><a href="HighlightArea.html">HighlightArea</a></li><li><a href="HydroDynamic1D.html">HydroDynamic1D</a></li><li><a href="HydroDynamic2D.html">HydroDynamic2D</a></li><li><a href="HydrodynamicModel.html">HydrodynamicModel</a></li><li><a href="HydrodynamicModel2.html">HydrodynamicModel2</a></li><li><a href="ImageryLayer.html">ImageryLayer</a></li><li><a href="ImageryLayer2.html">ImageryLayer2</a></li><li><a href="InfoTree.html">InfoTree</a></li><li><a href="Light.html">Light</a></li><li><a href="Marker.html">Marker</a></li><li><a href="Marker3D.html">Marker3D</a></li><li><a href="MarkerLayer.html">MarkerLayer</a></li><li><a href="Misc.html">Misc</a></li><li><a href="OceanHeatMap.html">OceanHeatMap</a></li><li><a href="ODLine.html">ODLine</a></li><li><a href="Panorama.html">Panorama</a></li><li><a href="Plot.html">Plot</a></li><li><a href="Polygon.html">Polygon</a></li><li><a href="Polygon3D.html">Polygon3D</a></li><li><a href="Polyline.html">Polyline</a></li><li><a href="QueryOption.html">QueryOption</a></li><li><a href="RadiationPoint.html">RadiationPoint</a></li><li><a href="River.html">River</a></li><li><a href="Satellite.html">Satellite</a></li><li><a href="Settings.html">Settings</a></li><li><a href="SettingsPanel.html">SettingsPanel</a></li><li><a href="ShapeFileLayer.html">ShapeFileLayer</a></li><li><a href="SignalWave.html">SignalWave</a></li><li><a href="SmoothedParticleHydrodynamics.html">SmoothedParticleHydrodynamics</a></li><li><a href="SplineMesh.html">SplineMesh</a></li><li><a href="Tag.html">Tag</a></li><li><a href="TileLayer.html">TileLayer</a></li><li><a href="Tools.html">Tools</a></li><li><a href="TopologyLine.html">TopologyLine</a></li><li><a href="TrafficSimulation.html">TrafficSimulation</a></li><li><a href="Train.html">Train</a></li><li><a href="VectorField.html">VectorField</a></li><li><a href="Vehicle.html">Vehicle</a></li><li><a href="Vehicle2.html">Vehicle2</a></li><li><a href="VideoProjection.html">VideoProjection</a></li><li><a href="WaterFlowField.html">WaterFlowField</a></li><li><a href="WaterMesh.html">WaterMesh</a></li><li><a href="Weather.html">Weather</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="tutorial-API_AsyncCall.html">API_AsyncCall</a></li><li><a href="tutorial-API_AuthSDK.html">API_AuthSDK</a></li><li><a href="tutorial-API_Camera.html">API_Camera</a></li><li><a href="tutorial-API_Color.html">API_Color</a></li><li><a href="tutorial-API_Coordinates.html">API_Coordinates</a></li><li><a href="tutorial-API_Event.html">API_Event</a></li><li><a href="tutorial-API_FrameTick.html">API_FrameTick</a></li><li><a href="tutorial-API_Introduction.html">API_Introduction</a></li><li><a href="tutorial-API_MultiVideoInPage.html">API_MultiVideoInPage</a></li><li><a href="tutorial-API_ResourceDesc.html">API_ResourceDesc</a></li><li><a href="tutorial-API_Revision.html">API_Revision</a></li><li><a href="tutorial-Cloud.html">Cloud</a></li><li><a href="tutorial-Explorer.html">Explorer</a></li><li><a href="tutorial-Explorer_Guidline.html">Explorer_Guidline</a></li><li><a href="tutorial-HelloWorld.html">HelloWorld</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#ActionMode">ActionMode</a></li><li><a href="global.html#AnimationMask">AnimationMask</a></li><li><a href="global.html#APIErrorCode">APIErrorCode</a></li><li><a href="global.html#AssetType">AssetType</a></li><li><a href="global.html#BPFuncParamType">BPFuncParamType</a></li><li><a href="global.html#buildURL">buildURL</a></li><li><a href="global.html#CloudStatus">CloudStatus</a></li><li><a href="global.html#Color">Color</a></li><li><a href="global.html#CommandType">CommandType</a></li><li><a href="global.html#DroneTrailStyle">DroneTrailStyle</a></li><li><a href="global.html#fdapi">fdapi</a></li><li><a href="global.html#FieldType">FieldType</a></li><li><a href="global.html#ForwardAxis">ForwardAxis</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#HeatMapStyle">HeatMapStyle</a></li><li><a href="global.html#HydroDynamic2DStyle">HydroDynamic2DStyle</a></li><li><a href="global.html#MapMode">MapMode</a></li><li><a href="global.html#MeasurementMode">MeasurementMode</a></li><li><a href="global.html#MousePickMask">MousePickMask</a></li><li><a href="global.html#OceanHeatMapStyle">OceanHeatMapStyle</a></li><li><a href="global.html#PanelType">PanelType</a></li><li><a href="global.html#PlotStyle">PlotStyle</a></li><li><a href="global.html#Polygon3DStyle">Polygon3DStyle</a></li><li><a href="global.html#PolygonStyle">PolygonStyle</a></li><li><a href="global.html#PolylineStyle">PolylineStyle</a></li><li><a href="global.html#post">post</a></li><li><a href="global.html#RendererType">RendererType</a></li><li><a href="global.html#request">request</a></li><li><a href="global.html#ResetType">ResetType</a></li><li><a href="global.html#SM3">SM3</a></li><li><a href="global.html#sm3Digest">sm3Digest</a></li><li><a href="global.html#SplineMeshStyle">SplineMeshStyle</a></li><li><a href="global.html#UIPanelType">UIPanelType</a></li><li><a href="global.html#VectorFieldStyle">VectorFieldStyle</a></li><li><a href="global.html#VehicleViewMode">VehicleViewMode</a></li><li><a href="global.html#VERSION">VERSION</a></li><li><a href="global.html#Viewport">Viewport</a></li><li><a href="global.html#VisualType">VisualType</a></li><li><a href="global.html#WaterFlowFieldStyle">WaterFlowFieldStyle</a></li><li><a href="global.html#WaterMode">WaterMode</a></li><li><a href="global.html#WSErrorCode">WSErrorCode</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			<section class="tutorial-section">
+
+<header>
+    
+
+    <h2>HelloWorld</h2>
+</header>
+
+<article>
+    <h3>一、获取安装引用</h3>
+<h4>1.1、获取安装</h4>
+<p>点击DTS-Cloud软件右上角的链接【SDK】打开默认安装目录在SDK文件夹下，获取ac.min.js文件。</p>
+<h4>1.2、引用API方式</h4>
+<p><strong>使用HTML方式引用（推荐）</strong><br>
+在你工程的HTML页面引用下载的ac.min.js文件，推荐放入lib文件夹内，代码示例如下：</p>
+<pre class="prettyprint source lang-javascript"><code>    &lt;script src='本地工程目录/lib/ac.min.js'>&lt;/script>
+</code></pre>
+<p><strong>使用ES方式引用</strong><br>
+在你使用组件的页面中，在最开始的js代码区域填写，代码示例如下：</p>
+<pre class="prettyprint source lang-javascript"><code>    &lt;script>
+        import * as acapi from '本地工程目录/lib/ac.min';
+    &lt;/script>
+</code></pre>
+<h3>二、传统开发模式 【 <a href="../../samples/locale_zh/hello_world.html">Hello World示例</a>】</h3>
+<h4>2.1、添加视频流显示区域标签，代码示例如下：</h4>
+<pre><code>在你工程的HTML页面的 &lt;body&gt; 标签中添加 &lt;div&gt; 标签，供渲染视频流场景使用：
+</code></pre>
+<pre class="prettyprint source lang-html"><code>    &lt;div id=&quot;player&quot; style=&quot;width:800px;height:500px;&quot;>&lt;/div>
+</code></pre>
+<h4>2.2、HTML页面引用JavaScript文件，代码示例如下：</h4>
+<pre class="prettyprint source lang-javascript"><code>    &lt;script src='本地工程目录/lib/ac.min.js'>&lt;/script>
+</code></pre>
+<h4>2.3、使用API初始化视频流显示区域并加载场景</h4>
+<pre class="prettyprint source lang-javascript"><code>    function _onReady() {
+        console.info('此时可以调API了');
+    }
+
+	function _onLog(s, nnl) {
+        console.info('输出接口调用日志：');
+        var logStr = (s + (nnl ? &quot;&quot; : '\n'));
+        console.info(logStr);
+    }
+
+	function _onEvent(event) {
+        console.info('监听各类交互事件');
+        if (e.eventtype == 'LeftMouseButtonClick' && e.Type == 'TileLayer') {
+            console.info('监听图层点击事件');
+        }
+    }
+
+	//Cloud云渲染服务器地址和端口
+	var host = '192.168.1.27:8081';
+	//构造DigitalTwinPlayer对象所需的参数选项，更多参数详情请参考API开发手册里DigitalTwinPlayer对象
+    var options = {
+        //必选参数，网页显示视频流的domId
+        domId: 'player',
+        
+        //必选参数，二次开发时必须指定，否则无法进行二次开发
+        apiOptions: {
+            //必选参数，与云渲染主机通信成功后的回调函数
+            //注意：只有在onReady之后才可以调用DigitalTwinAPI接口
+            onReady: _onReady,
+            onLog: _onLog,      //可选参数，日志输出回调函数
+            onEvent: _onEvent   //可选参数，三维场景交互事件回调函数
+        },
+
+        ui: {
+            startupInfo: true,   //可选参数，是否显示页面加载详细信息，默认值false
+            statusButton: true,  //可选参数，是否显示状态按钮，默认false
+        },
+
+        events: {
+            onVideoLoaded: _onLoaded,   //可选参数，视频流加载成功回调函数
+            onConnClose: _onClose,      //可选参数，连接断开回调函数
+        },     
+
+        //可选参数，设置三维交互的键盘事件接收者
+        //注意：接收类型有视频标签(video)，网页文档(document)，空(none)
+        keyEventTarget: 'none',
+    };
+	//构造player对象
+	var demoPlayer = new DigitalTwinPlayer(host, options);
+	//构造DigitalTwinAPI对象并初始化
+	var airCityApi = demoPlayer.getAPI();
+</code></pre>
+<pre><code>注意事项：1、div需要设置长度和宽度 2、查看示例前请先修改云渲染服务器的地址和端口
+</code></pre>
+<p>加载场景成功后效果图如下：<br>
+<img src="../images/api/demo-page.png" alt=""></p>
+<h4>2.4、重置、销毁场景</h4>
+<ul>
+<li>调用__g.reset()方法将场景从当前状态重置为场景初始渲染的状态；调用__g.destroy()方法销毁场景。<br>
+销毁场景将停止视频流渲染并断开API连接，HTML页面中的视频流场景将会消失，<br>
+但HTML中的DOM元素（即上例中的id为player的div元素）将会保留。场景销毁完成后，在同一页面可以重新创建和加载场景。</li>
+</ul>
+<h4>2.5、退出云服务</h4>
+<ul>
+<li>调用__g.quit()方法将退出云服务。</li>
+</ul>
+<h3>三、SPA开发模式</h3>
+<h4>支持和Vue、React和Angular三种框架集成</h4>
+<img src="../images/api/vue.png" style="width:70px;height:70px;vertical-align:top;" />
+<img src="../images/api/react.png" style="width:70px;height:70px;vertical-align:top;" />
+<img src="../images/api/angular.png" style="width:70px;height:70px;vertical-align:top;" />
+<h4>3.1、在VUE中使用DigitalTwinAPI</h4>
+<br>
+示例代码如下：
+<pre class="prettyprint source lang-javascript"><code>//待渲染区域模板
+&lt;template>
+	&lt;div id=&quot;player&quot;>&lt;/div>
+&lt;/template>
+
+&lt;script>
+    import * as acapi from '../ac.min'  
+    export default{
+        name: 'Player',
+        data(){
+            return {
+                api:null
+            }
+        },
+        mounted(){
+            //初始化API实例并启动渲染，DigitalTwinPlayer对象的构造参数请参考API开发文档
+            this.api = new acapi.DigitalTwinPlayer(&quot;192.168.1.27:8081&quot;, { &quot;domId&quot;: &quot;player&quot;,'apiOptions': {...} }).getAPI();
+        },
+        destroyed(){
+            //关闭云渲染并释放资源
+            this.api.destroy();
+        }
+    }
+&lt;/script>
+</code></pre>
+<p><strong>上述示例代码有几处需要注意的地方：</strong></p>
+<ol>
+<li>
+<h5>需要将ac.min.js放在Vue项目的static文件夹里（ac.min.js不需要再进行打包编译）</h5>
+</li>
+<li>
+<h5>需要在mounted事件中初始化DigitalTwinPlayer对象（需要用到DOM元素）</h5>
+</li>
+<li>
+<h5>与普通的前端开发（使用script标签的方式包含ac.min.js）的区别的地方就是，所有的对象需要使用前缀acapi来引用，例如创建Tag：</h5>
+let tagData = new TagData(id, .....);<br>
+this.api.tag.add(tagData);</li>
+</ol>
+<h4>3.2、在React中使用DigitalTwinAPI</h4>
+<br>
+示例代码如下：
+<pre class="prettyprint source lang-javascript"><code>//引入API
+import * as acapi from '../ac.min'
+class Content extends React.Component {
+  constructor(props) {
+      this.api = null;
+  }
+  componentDidMount() {
+      //初始化API实例并启动渲染，DigitalTwinPlayer对象的构造参数请参考API开发文档
+      this.api = new acapi.DigitalTwinPlayer(&quot;192.168.1.27:8081&quot;, { &quot;domId&quot;: &quot;player&quot;,'apiOptions': {...} }).getAPI();
+  }
+  componentWillUnmount() {
+      //关闭云渲染并释放资源
+      this.api.destroy();
+  }
+  render() {
+      return (
+        &lt;div>
+          &lt;div id=&quot;player&quot; style=&quot;display:none;&quot;>&lt;/div>
+        &lt;/div>
+      );
+  }
+}
+</code></pre>
+<h4>3.3、在Angular中使用DigitalTwinAPI</h4>
+<br>
+示例代码如下：
+<pre class="prettyprint source lang-javascript"><code>//引入API
+import * as acapi from '../ac.min'
+@Component({
+  selector: 'app-root',
+  template: `&lt;div id=&quot;player&quot; style=&quot;display:none;&quot;>&lt;/div>`
+})
+export class AppComponent implements AfterViewInit, OnDestroy {
+  //云渲染api
+  api;
+
+  ngAfterViewInit() {
+    //初始化API实例并启动渲染，DigitalTwinPlayer对象的构造参数请参考API开发文档
+    this.api = new acapi.DigitalTwinPlayer(&quot;192.168.1.27:8081&quot;, { &quot;domId&quot;: &quot;player&quot;,'apiOptions': {...} }).getAPI();
+  }
+
+  ngOnDestroy() {
+      //关闭云渲染并释放资源
+      this.api.destroy();
+  }
+}
+</code></pre>
+</article>
+
+</section>
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a>
+	
+		on 2026-05-28
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Cloud</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script type="text/javascript" src="../../ac.min.js"></script>
+    <script type="text/javascript" src="../../ac_conf.js"></script>
+    <script type="text/javascript" src="scripts/jquery/jquery-3.7.0.min.js"></script>
+</head>
+
+<body id="player" style="margin:0px;overflow:hidden;background-color:black;">
+</body>
+
+</html>
+
+<script>
+    var fdplayer;
+    var disableResizeObserver = false;  //如果出现视频画面不断调整大小的闪烁，可设置为true
+
+    function resize() {
+        let p = document.getElementById('player');
+        p.style.height = window.innerHeight + "px";
+        p.style.width = window.innerWidth + "px";
+
+        if (disableResizeObserver)
+            fdplayer?.resize();
+    }
+
+    function init() {
+
+        let urlParams = new URLSearchParams(window.location.search);
+
+        //用户名
+        let username = urlParams.get('username');
+        if (!username) {
+            let userLoginInfo = JSON.parse(localStorage.getItem("userLoginInfo"));
+            if (userLoginInfo)
+                username = userLoginInfo.username;
+        }
+
+        //DigitalTwinPlayer
+        let options = {
+            domId: 'player',                //HTML元素ID（它将作为要创建的Video标签的父元素）
+            iid: urlParams.get('iid'),      //云渲染实例的ID
+            pid: urlParams.get('pid'),      //指定实例要加载的工程ID
+            password: urlParams.get('password'), // 实例访问密码
+            ui: {
+                statusButton: true,         //默认值为false，是否在左下角显示信息按钮（如果不需要，直接去掉此属性即可）
+                fullscreenButton: true,     //默认值为false，是否在右下角显示全屏按钮（如果不需要，直接去掉此属性即可）
+                homeButton: true,           //默认值为false，是否在左下角显示“回到初始位置”按钮（如果不需要，直接去掉此属性即可）
+                debugEventsPanel: urlParams.get('debugEventsPanel'),   //是否显示事件详细信息（仅用于调试）
+            },
+            urlExtraInfo: {
+                uid: urlParams.get('uid'),  //用于授权管理（2023.05.31）
+                username: username,         //用于用户登录（2023.12.16）
+            },
+            events: {
+                onLoginRequired: (captchaRequired) => {    //如果开启了用户系统，当需要登录的时候会调用此方法（2023.12.16）
+                    let href = 'login.html?from=player&captcha=' + (captchaRequired ? 1 : 0);
+                    if (options.pid)
+                        href += '&pid=' + options.pid;
+                    if (options.iid)
+                        href += '&iid=' + options.iid;
+                    location.href = href;
+                }
+            },
+            disableResizeObserver: disableResizeObserver  //默认值为false，可选参数
+        }
+
+        /**
+         * 2023.03.21 处理服务器连接的端口映射问题
+         *            仅用于SDK测试页面。 如果用户的网络环境是这样的：内网无法连接映射的公网IP和端口，需要进行内外网访问地址的处理
+         * 说明：
+         *      CloudMaster启动后会修改HostConfig
+         *      HostConfig.Player：内网地址
+         *      HostConfig.PlayerMapping：外网地址
+         */
+        let playerHost = HostConfig.Player;     //默认使用内网地址
+        if (location.protocol != 'file:') {     //如果是通过HTTP服务访问
+            if (HostConfig.Player.indexOf(location.hostname) == -1 && HostConfig.PlayerMapping)
+                playerHost = HostConfig.PlayerMapping;  //如果URL不是内网地址，并且开启了端口映射，则使用映射地址和端口进行WebSocket连接
+        }
+        fdplayer = new DigitalTwinPlayer(playerHost, options);
+    }
+
+
+    window.addEventListener('resize', resize, true);
+    window.addEventListener("load", init, true);
+
+</script>

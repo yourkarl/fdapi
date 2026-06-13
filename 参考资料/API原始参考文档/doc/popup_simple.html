@@ -1,0 +1,70 @@
+﻿<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CustomTag</title>
+    <style type="text/css">
+        body {
+            margin: 0px;
+            overflow: hidden;
+            /*禁止显示滚动条*/
+            font-family: Verdana;
+            background-color: rgba(255, 255, 255, 0);
+        }
+
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            color: blue;
+        }
+
+        .address {
+            font-size: 14px;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <table width="220" border="0" style="background-color:rgba(255, 255, 255, 0)">
+        <tbody>
+            <tr>
+                <td width="50" rowspan="3"><img id="icon" src="images/ctag1.png" alt="" /></td>
+                <td valign="bottom" class="title" id="title">Hotel</td>
+                <td valign="bottom" id="idVar"></td>
+            </tr>
+            <tr>
+                <td valign="top" class="address" id="address">Huayuan North Road</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
+
+<script>
+    var __n = 0;
+
+    window.onload = function () {
+        var urlParams = new URLSearchParams(location.search);
+
+        let picon = urlParams.get('icon');
+        let ptitle = urlParams.get('title');
+        let paddress = urlParams.get('address');
+
+        if (picon)
+            document.getElementById('icon').src = picon;
+
+        if (ptitle)
+            document.getElementById('title').innerText = ptitle;
+
+        if (paddress)
+            document.getElementById('address').innerText = paddress;
+
+        setInterval(function () {
+            document.getElementById('idVar').innerText = (__n++);
+        }, 100);
+    }
+
+</script>

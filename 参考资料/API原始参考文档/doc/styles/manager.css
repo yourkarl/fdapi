@@ -1,0 +1,71 @@
+* {
+    font-family: Verdana;
+}
+
+body {
+    font-size: 14px;
+    background-color: rgb(246, 248, 250);
+}
+
+#interfaceList td {
+    border: 1px solid lightgray;
+}
+
+#d_inst_update table {
+    border-collapse: collapse;
+    border: none;
+}
+
+#d_inst_update td {
+    border: 1px solid lightgray;
+    padding: 4px;
+}
+
+a:link {
+    color: royalblue;
+    text-decoration: none;
+}
+
+a:hover {
+    color: blue;
+    background-color: gainsboro;
+}
+
+a:visited {
+    color: royalblue;
+}
+
+.area {
+    border: 1px solid #eee;
+    padding: 10px;
+    margin: 10px;
+}
+
+.info {
+    color: rgb(30, 30, 30);
+    line-height: 1.5;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#logsArea {
+    position: fixed;
+    background-color: white;
+    border: 2px solid darkgrey;
+    padding: 6px;
+    height: 200px;
+    bottom: -12px;
+    left: 4px;
+    right: 4px;
+    z-index: 2;
+    display: none;
+    overflow: scroll;
+    font-size: 10pt;
+}
+
+p {
+    margin: 5px;
+}
+
+.bottom_palceholder {
+    height: 200px;
+}

@@ -1,0 +1,319 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>样例集锦</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="styles/alert.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/tooltip.css">
+    <link rel="stylesheet" href="styles/samples.css">
+    <link rel="stylesheet" href="scripts/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="scripts/codemirror/theme/mdn-like.css">
+    <script type="text/javascript" src="scripts/jquery/jquery-3.7.0.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery/jquery-timeline.js"></script>
+    <script type="text/javascript" src="scripts/jquery/tooltip.js"></script>
+    <script type="text/javascript" src="scripts/jquery/alert.js"></script>
+    <script type="text/javascript" src="scripts/codemirror/lib/codemirror.js"></script>
+    <script type="text/javascript" src="scripts/codemirror/lib/javascript.js"></script>
+    <script type="text/javascript" src="../../ac_conf.js"></script>
+    <script type="text/javascript" src="../../ac.min.js"></script>
+    <script type="text/javascript" src="scripts/int_test.js"></script>
+    <script type="text/javascript" src="../../assets/coords/data2.js"></script>
+    <script type="text/javascript" src="scripts/sample.js"></script>
+</head>
+
+<body>
+    <table border="0" id="mainTable">
+        <tr>
+            <td width="400" height="800" align="left" valign="top">
+                <input type="hidden" id="cbNotExecute" value="false" />
+                <div style="background-color:#eee;padding-top:10px;padding-bottom:10px;">
+                    <span id="spanServer">
+                        <input type="text" id="txtIP" size="10" onchange="onServerChanged()" />:<input type="text" id="txtPort" size="3" onchange="onServerChanged()" />
+                        <input type="button" value="连接" id="btnConnect" onclick="connectServer()" />
+                    </span>
+                    <span id="spanVer"></span>
+                </div>
+
+                <div id="codeEditor">
+                    <textarea id="textAreaCode"></textarea>
+                </div>
+
+                <div id="leftPanel">
+                    <div style="background-color:#eee;margin-bottom:-1px;">
+                        <input type="checkbox" checked="checked" name="cbAutoClearLog" id="cbAutoClearLog"><label for="cbAutoClearLog" title="日志积累到一定量后自动清除，避免影响性能">自动清屏</label>
+                        <input type="checkbox" checked="checked" name="closeLog" id="closeLog"><label for="closeLog" title="关闭后可以避免日志输出太多，影响页面渲染性能">开启日志</label>
+                        &nbsp;&nbsp;
+                        <a href="javascript:clearScreen()" title="清除页面右侧的输出日志">清除日志-></a>
+                    </div>
+                    <pre id="infoPanel" style="width:400px;border-bottom: 1px solid #ccc;"></pre>
+                </div>
+            </td>
+            <td valign="top" align="left">
+                <div class='TTSlider' id='TTSlider'>
+                    <div class='TTSliderTitle'>
+                        <ul>
+                            <li class='cur'>
+                                <div onmouseover="javascript:showTimeline(false);"><a href='#'>入门示例</a></div>
+                            </li>
+
+                            <li>
+                                <div onmouseover="javascript:showTimeline(false);"><a href='#'>摄像机</a></div>
+                            </li>
+
+                            <li>
+                                <div onmouseover="javascript:showTimeline(false);"><a href='#'>场景标注</a></div>
+                            </li>
+
+                            <li>
+                                <div onmouseover="javascript:showTimeline(false);"><a href='#'>空间分析</a></div>
+                            </li>
+
+                            <li>
+                                <div onmouseover="javascript:showTimeline(false);"><a href='#'>图层操作</a></div>
+                            </li>
+
+                            <li>
+                                <div onmouseover="javascript:showTimeline(false);"><a href='#'>模型操作</a></div>
+                            </li>
+
+                            <li>
+                                <div onmouseover="javascript:showTimeline(false);"><a href='#'>楼宇拆解</a></div>
+                            </li>
+
+                            <li>
+                                <div onmouseover="javascript:showTimeline(false);"><a href='#'>运动物体</a></div>
+                            </li>
+
+                            <li>
+                                <div onmouseover="javascript:showTimeline(true);"><a href='#'>水流仿真</a></div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class='TTSliderPic'>
+                        <div href='javascript:;' id='TTSliderPrevBtn' class='TTSliderPrevBtn'><a href='javascript:;'></a></div>
+                        <div href='javascript:;' id='TTSliderNextBtn' class='TTSliderNextBtn'><a href='javascript:;'></a></div>
+                        <div class='TTSliderPicList'>
+                            <ul class='show'>
+                                <li class='on' onclick="javascript:call(samples_initScene)"><a href='#'><img src='images/gif/get_camera.gif' /></a>
+                                    <p><a href="#">快速入门</a></p>
+                                </li>
+
+                                <li onclick="javascript:call(samples_eventListener1)"><a href='#'><img src='images/gif/set_camera.gif' /></a>
+                                    <p><a href="#">工程初始化</a>&nbsp;</p>
+                                </li>
+
+                                <li onclick="javascript:call(samples_eventListener2)"><a href='#'><img src='images/gif/event_listener.gif' /></a>
+                                    <p><a href="#">设置事件监听</a></p>
+                                </li>
+
+                                <!-- <li><a href='cesiumEarth.html' target="_blank"><img src='images/gif/samples_cesium.gif' /></a>
+                                    <p><a href="#">Cesium集成</a></p>
+                                </li> -->
+                            </ul>
+
+                            <ul>
+                                <li onclick="javascript:call(samples_cameraSet)"><a href='#'><img src='images/gif/set_camera.gif' /></a>
+                                    <p><a href="#">设置镜头位置</a></p>
+                                </li>
+                                <li onclick="javascript:call(samples_cameraGet)"><a href='#'><img src='images/gif/get_camera.gif' /></a>
+                                    <p><a href="#">获取镜头位置</a></p>
+                                </li>
+                                <li onclick="javascript:call(samples_cameraStartFly)"><a href='#'><img src='images/gif/start_fly.gif' /></a>
+                                    <p><a href="#">开始飞行</a></p>
+                                </li>
+                                <li onclick="javascript:call(samples_cameraStopFly)"><a href='#'><img src='images/gif/stop_fly.gif' /></a>
+                                    <p><a href="#">停止飞行</a></p>
+                                </li>
+                            </ul>
+
+                            <ul>
+                                <li onclick="javascript:call(samples_simpleMarker);"><a href='#'><img src='images/gif/simple_marker.gif' /></a>
+                                    <p><a href="#">简单标注</a></p>
+                                </li>
+
+                                <li onclick="javascript:call(samples_popMarker);"><a href='#'><img src='images/gif/pop_marker.gif' /></a>
+                                    <p><a href="#">弹窗标注</a></p>
+                                </li>
+
+                                <li onclick="javascript:call(samples_divMarker);"><a href='#'><img src='images/gif/div_marker.gif' /></a>
+                                    <p><a href="#">弹层标注</a></p>
+                                </li>
+
+                                <li onclick="javascript:call(samples_videoMarker);"><a href='#'><img src='images/gif/video_marker.gif' /></a>
+                                    <p><a href="#">视频弹窗</a></p>
+                                </li>
+                            </ul>
+
+                            <ul>
+                                <li onclick="javascript:call(samples_visibilityAnalysisLine);"><a href='#'><img src='images/gif/visibility_analysis_line.gif' /></a>
+                                    <p><a href="#">视线通视分析</a></p>
+                                </li>
+                                <!-- 
+                                    <li onclick="samples_visibilityAnalysisArea"><a href='#'><img src='images/demo2.jpg' /></a>
+                                        <p>视域通视分析</p>
+                                    </li>
+                                    -->
+
+                                <li onclick="javascript:call(samples_calcActorPivot);"><a href='#'><img src='images/gif/calc_povit.gif' /></a>
+                                    <p><a href="#">计算模型中心点</a></p>
+                                </li>
+
+                                <li onclick="javascript:call(samples_drawCircle);"><a href='#'><img src='images/gif/drawCircle.gif' /></a>
+                                    <p><a href="#">绘制圆形区域</a></p>
+                                </li>
+
+
+                                <!-- <li onclick="javascript:call(samples_heatmap3d);"><a href='#'><img src='images/gif/heatmap3d.gif' /></a>
+                                    <p><a href="#">三维热力图</a></p>
+                                </li> -->
+
+                            </ul>
+
+
+                            <ul>
+                                <li onclick="javascript:call(samples_addTileLayer);"><a href='#'><img src='images/gif/3dt_layer.gif' /></a>
+                                    <p><a href="#">创建三维图层(.3dt)</a></p>
+                                </li>
+                                <li onclick="javascript:call(samples_addShapeFileTileLayer);"><a href='#'><img src='images/gif/shp_layer.gif' /></a>
+                                    <p><a href="#">创建矢量图层(.shp)</a></p>
+                                </li>
+                                <li onclick="javascript:call(samples_add3DTilesLayer);"><a href='#'><img src='images/demo2.jpg' /></a>
+                                    <p><a title="Cesium3DTileset网络图层" href="#">创建3DTiles图层</a></p>
+                                </li>
+
+                                <li onclick="javascript:call(samples_addHole);"><a href='#'><img src='images/gif/addhole.gif' /></a>
+                                    <p><a href="#">地形基坑</a></p>
+                                </li>
+                            </ul>
+
+                            <ul>
+                                <li onclick="javascript:call(samples_initModel);"><a href='#'><img src='images/gif/init_model.gif' /></a>
+                                    <p><a href="#">初始化</a></p>
+                                </li>
+
+                                <li onclick="javascript:call(samples_highlightActor);"><a href='#'><img src='images/gif/highlight_actor.gif' /></a>
+                                    <p><a href="#">切换模型高亮</a></p>
+                                </li>
+
+                                <li onclick="javascript:call(samples_showHideActor);"><a href='#'><img src='images/gif/show_hide_actor.gif' /></a>
+                                    <p><a href="#">显示/隐藏模型</a></p>
+                                </li>
+
+                                <li onclick="javascript:call(samples_replaceActor);"><a href='#'><img src='images/gif/replace_actor.gif' /></a>
+                                    <p><a href="#">替换/还原模型</a></p>
+                                </li>
+
+                                <li onclick="javascript:call(samples_moveActor);"><a href='#'><img src='images/gif/msr_actor.gif' /></a>
+                                    <p><a href="#">旋转移动/还原模型</a></p>
+                                </li>
+
+                                <li onclick="javascript:call(samples_scaleActor);"><a href='#'><img src='images/gif/scale_actor.gif' /></a>
+                                    <p><a href="#">缩放/还原模型</a></p>
+                                </li>
+
+                                <li onclick="javascript:call(samples_copyActors);"><a href='#'><img src='images/gif/copy_actor.gif' /></a>
+                                    <p><a href="#">复制多个模型</a></p>
+                                </li>
+
+                                <li onclick="javascript:call(samples_setColorActor);"><a href='#'><img src='images/gif/set_color_actor.gif' /></a>
+                                    <p><a href="#">设置/还原模型颜色</a></p>
+                                </li>
+
+                                <li onclick="javascript:call(samples_callBluePointFunction);"><a href='#'><img src='images/gif/callbpfunction.gif' /></a>
+                                    <p><a href="#">蓝图函数</a></p>
+                                </li>
+
+                            </ul>
+
+                            <ul>
+                                <li onclick="javascript:call(samples_floorInit);"><a href='#'><img src='images/gif/moveinit.gif' /></a>
+                                    <p><a href="#">初始化</a></p>
+                                </li>
+                                <li onclick="javascript:call(samples_floorMoveUp);"><a href='#'><img src='images/gif/moveup.gif' /></a>
+                                    <p><a href="#">升起楼层</a></p>
+                                </li>
+                                <li onclick="javascript:call(samples_floorMovePull);"><a href='#'><img src='images/gif/moveout.gif' /></a>
+                                    <p><a href="#">抽出楼层</a></p>
+                                </li>
+                                <li onclick="javascript:call(samples_floorMovePush);"><a href='#'><img src='images/gif/movein.gif' /></a>
+                                    <p><a href="#">推入楼层</a></p>
+                                </li>
+                                <li onclick="javascript:call(samples_floorMoveDown);"><a href='#'><img src='images/gif/movedown.gif' /></a>
+                                    <p><a href="#">下降楼层</a></p>
+                                </li>
+                                <li onclick="javascript:call(samples_floorReset);"><a href='#'><img src='images/gif/movereset.gif' /></a>
+                                    <p><a href="#">还原楼层</a></p>
+                                </li>
+                            </ul>
+
+                            <ul>
+                                <li onclick="javascript:call(samples_initWalkManAndCar);"><a href='#'><img src='images/gif/sim_init.gif' /></a>
+                                    <p><a href="#">初始化</a></p>
+                                </li>
+
+                                <li onclick="javascript:call(samples_vehicleDriving);"><a href='#'><img src='images/gif/sim_car_move.gif' /></a>
+                                    <p><a href="#">模拟车辆行驶</a></p>
+                                </li>
+
+                                <li onclick="javascript:call(samples_vehicleStart);"><a href='#'><img src='images/gif/vehicle_sim.gif' /></a>
+                                    <p><a href="#">交通仿真</a></p>
+                                </li>
+
+                                <li onclick="javascript:call(followSignalSource);"><a href='#'><img src='images/gif/followSignalSource.gif' /></a>
+                                    <p><a href="#">跟随信号源</a></p>
+                                </li>
+
+                                <li onclick="javascript:call(followVideoProjection);"><a href='#'><img src='images/gif/followVideoProjection.gif' /></a>
+                                    <p><a href="#">跟随视频投影</a></p>
+                                </li>
+
+
+                                <li onclick="javascript:call(samples_walkman);"><a href='#'><img src='images/gif/sim_walkman.gif' /></a>
+                                    <p><a href="#">模拟人物步行</a></p>
+                                </li>
+
+                                <li onclick="javascript:call(samples_runman);"><a href='#'><img src='images/gif/sim_runman.gif' /></a>
+                                    <p><a href="#">模拟人物跑步</a></p>
+                                </li>
+
+
+
+                            </ul>
+
+                            <ul>
+
+                                <li onclick="javascript:call(samples_waterFlowField_static);"><a href='#'><img src='images/gif/waterFlowField.gif' /></a>
+                                    <p><a title="单个时间点的水流仿真" href="#">加载静态水流场</a></p>
+                                </li>
+
+                                <li onclick="javascript:call(samples_waterFlowField);"><a href='#'><img src='images/gif/waterflowfield_th.gif' /></a>
+                                    <p><a title="多个连续时间点的水流仿真" href="#">加载动态水流场</a></p>
+                                </li>
+
+                                <li onclick="javascript:call(samples_waterFlowFieldChange);"><a href='#'><img src='images/gif/waterflowfield_th_water.gif' /></a>
+                                    <p><a title="点击切换水流材质" href="#">切换材质</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 水流场的播放时间轴 -->
+                <div id="progressTime"></div>
+
+                <!-- 视频流 -->
+                <div id="player"></div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+</body>
+
+</html>

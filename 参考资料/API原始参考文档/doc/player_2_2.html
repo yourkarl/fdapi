@@ -1,0 +1,43 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>MultiWindow rendering</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+        body {
+            overflow: hidden;
+        }
+
+        #infoPanel {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 9pt;
+            height: 400px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            background-color: honeydew;
+        }
+    </style>
+    <script type="text/javascript" src="scripts/jquery/jquery-3.7.0.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery/tooltip.js"></script>
+    <script type="text/javascript" src="../../ac.min.js"></script>
+    <script type="text/javascript" src="../../ac_conf.js"></script>
+    <script type="text/javascript" src="scripts/int_test.js"></script>
+    <script type="text/javascript" src="scripts/player_2_2.js"></script>
+</head>
+
+<body>
+    <table border="1" width="100%">
+        <tr>
+            <td valign="top" id="player1" width="50%" height="400" bgcolor="black"> </td>
+            <td valign="top" id="player2" width="50%" height="400" bgcolor="black"> </td>
+        </tr>
+    </table>
+    <div style="margin-top:10px;">
+        <button onclick="callPlayer1()">Call Left</button>
+        <button onclick="callPlayer2()">Call Right</button>
+    </div>
+    <pre id="infoPanel"></pre>
+</body>
+
+</html>
