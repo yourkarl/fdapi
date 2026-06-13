@@ -2,6 +2,7 @@ import React from 'react';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
+import Head from '@docusaurus/Head';
 
 const features = [
   {
@@ -97,6 +98,10 @@ export default function Home() {
       title="DTS Cloud 数字孪生平台 API 文档"
       description="DTS Cloud 数字孪生平台 SDK v7.1 二次开发 API 完整参考文档"
     >
+      {/* 教学视频源站启用了 Referer 防盗链：跨域请求不携带 Referer 即可放行（站内请求仍正常带上） */}
+      <Head>
+        <meta name="referrer" content="same-origin" />
+      </Head>
       {/* Hero */}
       <div className="hero-banner">
         <div style={{ maxWidth: 860, margin: '0 auto', padding: '0 24px' }}>
@@ -133,7 +138,7 @@ export default function Home() {
             </div>
             <div className="stat-item">
               <div className="stat-number">55</div>
-              <div className="stat-label">教程</div>
+              <div className="stat-label">开发教程</div>
             </div>
             <div className="stat-item">
               <div className="stat-number">v7.1</div>
@@ -175,6 +180,29 @@ export default function Home() {
           <h2 style={{ color: '#00d4ff', borderLeft: '3px solid #00d4ff', paddingLeft: 12 }}>
             5 分钟接入示例
           </h2>
+          {/* 二次开发入门教学视频 */}
+          <div style={{
+            marginTop: 16,
+            marginBottom: 24,
+            borderRadius: 8,
+            overflow: 'hidden',
+            border: '1px solid rgba(0,212,255,0.15)',
+            background: '#000',
+            lineHeight: 0,
+          }}>
+            <video
+              style={{ width: '100%', display: 'block' }}
+              preload="auto"
+              controls
+              muted
+              playsInline
+              controlsList="nodownload"
+              poster="https://f.cdn-static.cn/43677_16494052861605.jpg"
+            >
+              <source src="https://dtsdata.g-bim.cn/docs/Teaching%20Video/SDK/%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8%EF%BC%88new%EF%BC%89.mp4" type="video/mp4" />
+              您的浏览器不支持 HTML5 视频播放。
+            </video>
+          </div>
           <pre style={{
             background: '#1a1f2e',
             border: '1px solid rgba(0,212,255,0.15)',
