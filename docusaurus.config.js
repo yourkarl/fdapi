@@ -8,9 +8,8 @@ const config = {
   title: 'DTS Cloud 数字孪生平台',
   tagline: '二次开发 API 文档 · Digital Twin SDK v7.1',
   favicon: 'img/favicon.ico',
-  // TODO: 部署前替换为真实站点地址
-  url: 'https://dts.example.com',
-  baseUrl: '/',
+  url: 'https://yourkarl.github.io',
+  baseUrl: '/fdapi/',
   onBrokenLinks: 'throw',
   markdown: {
     hooks: {
@@ -42,6 +41,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: 'docs',
+          editUrl: 'https://github.com/yourkarl/fdapi/edit/main/',
         },
         blog: false,
         theme: {
