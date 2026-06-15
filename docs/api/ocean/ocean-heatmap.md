@@ -34,7 +34,7 @@ description: "海洋热力图对象，基于真实海洋数据驱动生成热力
 | `userData` | `string` | 可选，用户自定义数据 |
 | `offset` | `array` | 可选，海洋热力图的整体偏移，默认值：[0, 0, 0] |
 | `collision` | `boolean` | 是否开启模型碰撞，默认：false，注意：开启后会影响加载效率 |
-| `displayMode` | `OceanHeatMapStyle` | (`OceanHeatMapStyle`) 海洋热力图的显示样式枚举，支持箭头、流场和海浪三种显示样式，取值详情参考 `OceanHeatMapStyle` |
+| `displayMode` | [`OceanHeatMapStyle`](/docs/api/types#oceanheatmapstyle) | (`OceanHeatMapStyle`) 海洋热力图的显示样式枚举，支持箭头、流场和海浪三种显示样式，取值详情参考 `OceanHeatMapStyle` |
 | `alphaMode` | `number` | 透明模式，取值：[0,1]，0 : 使用colors调色板的不透明度值 1 : 使用tif数据包含的水深字段自动控制不透明度，默认值：1 |
 | `valueFile` | `string` | 必选，海洋热力图tif数据文件路径（水深文件tif），取值示例："C:/tifFile/value.tif"，注意：水深和流速这2个tif文件分辨率必须保持一致 |
 | `flowField` | `string` | 必选，海洋热力图tif数据文件路径（流速流向uv文件tif），取值示例："C:/tifFile/uv.tif"，注意：水深和流速这2个tif文件分辨率必须保持一致 |
@@ -72,9 +72,9 @@ description: "海洋热力图对象，基于真实海洋数据驱动生成热力
 | `lods.distance` | `number` | 透明度开始衰变的相机距离 |
 | `colors` | `object` | 海洋热力图自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
 | `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | `Color` | 无效像素点的默认颜色，默认白色 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
 | `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | `Color` | 值对应的调色板颜色，注意alphaMode=0时，此颜色值的透明度生效 |
+| `colors.color` | [`Color`](/docs/api/types#color) | 值对应的调色板颜色，注意alphaMode=0时，此颜色值的透明度生效 |
 | `colors.value` | `number` | 值 |
 
 ```js

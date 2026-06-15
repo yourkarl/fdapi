@@ -50,10 +50,10 @@ new MarkerLayer()
 | `textOffset` | `array` | 文本偏移: [x, y]，默认值：[0,0] |
 | `fontSize` | `number` | 字体大小，默认值：12 |
 | `fontOutlineSize` | `number` | 字体轮廓线大小，默认值：1 |
-| `textBackgroundColor` | `Color` | (`Color`) 文本背景颜色，默认值白色[1, 1, 1, 0.85]，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `fontColor` | `Color` | (`Color`) 字体颜色，默认值：黑色Color.Black，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `fontOutlineColor` | `Color` | (`Color`) 字体轮廓线颜色，默认值：黑色Color.Black，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `popupBackgroundColor` | `Color` | (`Color`) 弹窗背景颜色， [1.0,1.0,1.0,0.1] ，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `textBackgroundColor` | [`Color`](/docs/api/types#color) | (`Color`) 文本背景颜色，默认值白色[1, 1, 1, 0.85]，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fontColor` | [`Color`](/docs/api/types#color) | (`Color`) 字体颜色，默认值：黑色Color.Black，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fontOutlineColor` | [`Color`](/docs/api/types#color) | (`Color`) 字体轮廓线颜色，默认值：黑色Color.Black，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `popupBackgroundColor` | [`Color`](/docs/api/types#color) | (`Color`) 弹窗背景颜色， [1.0,1.0,1.0,0.1] ，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `popupSize` | `array` | 弹窗大小: [width, height]，默认值：[600,400] |
 | `popupOffset` | `array` | 弹窗偏移: [x, y]，默认值：[0,0] |
 | `autoHidePopupWindow` | `boolean` | 是否自动关闭弹出窗口，默认值：true |

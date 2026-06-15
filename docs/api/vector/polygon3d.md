@@ -89,7 +89,7 @@ let params = res.data[0].params;
 | `userData` | `string` | 可选，用户自定义数据 |
 | `coordinates` | `array` | 多边形坐标数组，[取值示例](/docs/tutorials/coordinates) |
 | `coordinateType` | `number` | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
-| `color` | `Color` | 颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | 颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `height` | `number` | 3D多边形的高度，取值范围：[任意正数] |
 | `intensity` | `number` | 亮度，取值范围：[0~1000] |
 | `viewHeightRange` | `array` | 可见高度范围：[最小可见高度, 远最大可见高度]，默认值: [-1000000000, 1000000000] |
@@ -324,7 +324,7 @@ fdapi.polygon3d.get(['p3d1', 'p3d2']);
 | 属性 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | Polygon3D的ID |
-| `color` | `Color` | 闪烁的颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | 闪烁的颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `duration` | `number` | 闪烁持续时间，单位：秒，取值范围：[0.01~任意正数] |
 | `interval` | `number` | 闪烁间隔时间，单位：秒，取值范围：[0.01~任意正数]，注意：间隔时间要小于持续闪烁时间 |
 
@@ -399,7 +399,7 @@ fdapi.polygon3d.highlight('p3d1');
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | Polygon3D的ID |
-| `newColor` | `Color` | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `newColor` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例代码如下：

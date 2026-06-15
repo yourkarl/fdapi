@@ -328,7 +328,7 @@ fdapi.customObject.delete('o1');
 | `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离， 该值有以下3种情况： 1. 如果distance小于0，则是相机跟随移动模式 2. 如果distance等于0，则自动计算飞到合适的距离 3. 如果distance大于0，则是飞到指定距离的位置 |
 | `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `actionMode` | `ActionMode` | 可选参数，相机视角跟随模式枚举，注意：如果指定了rotation参数同时又指定了跟随枚举，则枚举值包含的相机欧拉角会覆盖rotation参数，若使用FollowWorldRotation则不覆盖rotation参数 |
+| `actionMode` | [`ActionMode`](/docs/api/types#actionmode) | 可选参数，相机视角跟随模式枚举，注意：如果指定了rotation参数同时又指定了跟随枚举，则枚举值包含的相机欧拉角会覆盖rotation参数，若使用FollowWorldRotation则不覆盖rotation参数 |
 | `offset` | `array` | 可选参数，相机视角的偏移量，取值示例：[X, Y, Z]，分别是三个方向的偏移量，单位：米 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
@@ -497,7 +497,7 @@ fdapi.customObject.getBPFunction(['truck']);
 | 属性 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | CustomObject对象的ID |
-| `color` | `Color` | 闪烁的颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | 闪烁的颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `duration` | `number` | 闪烁持续时间，单位：秒，取值范围：[0.01~任意正数] |
 | `interval` | `number` | 闪烁间隔时间，单位：秒，取值范围：[0.01~任意正数]，注意：间隔时间要小于持续闪烁时间 |
 
@@ -902,7 +902,7 @@ fdapi.customObject.setSmoothTime('o1', 5);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `ids` | `string \| array` | CustomObject对象的ID或者数组 |
-| `newColor` | `Color` | 新颜色值 |
+| `newColor` | [`Color`](/docs/api/types#color) | 新颜色值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例：SetTintColor
@@ -920,7 +920,7 @@ fdapi.customObject.setTintColor('o1', [0.5, 0.5, 0.5, 1]);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | CustomObject对象的ID |
-| `vp` | `Viewport` | 视口掩码（Viewport位运算） |
+| `vp` | [`Viewport`](/docs/api/types#viewport) | 视口掩码（Viewport位运算） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例：SetViewportVisible
@@ -990,7 +990,7 @@ fdapi.customObject.showByGroupId('coGroup');
 | 属性 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | CustomObject对象的ID |
-| `axis` | `ForwardAxis` | (`ForwardAxis`) 自定义模型生长动画轴朝向，取值范围：[0,1,2] 分别对应X、Y、Z三个轴，取值枚举详情参考 `ForwardAxis` |
+| `axis` | [`ForwardAxis`](/docs/api/types#forwardaxis) | (`ForwardAxis`) 自定义模型生长动画轴朝向，取值范围：[0,1,2] 分别对应X、Y、Z三个轴，取值枚举详情参考 `ForwardAxis` |
 | `ratio` | `number` | 自定义模型的生长因子，取值范围：[0~1] |
 
 > 示例：ShowGrowth

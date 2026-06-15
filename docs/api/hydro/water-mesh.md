@@ -37,7 +37,7 @@ WaterMesh类
 | `indices` | `array` | 顶点坐标的索引，用来绘制三角网格；数组元素类型：(number)；数组元素顺序：顶点索引顺序需构成三角网格且同为顺时针或逆时针方向；数组元素取值范围：[0~coordinates.length-1]，取值示例：[2, 0, 3, 0, 2, 1] |
 | `normals` | `array` | 顶点法向，[X,Y,Z]，不传则使用默认值 |
 | `waterUVRepeat` | `number` | 水流贴图的重复间隔距离，取值范围：[1，10000]，单位：米 |
-| `waterColor` | `Color` | 水流颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `waterColor` | [`Color`](/docs/api/types#color) | 水流颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `waterSpeed` | `number` | 水流速度，取值范围：[0.01~30]，单位：米/秒，默认值：3米/秒 |
 | `waterDirection` | `number` | 水流方向，取值范围：[0~1]，单位：度，此值与[0~360]按比例换算，默认值：0度 |
 | `waveScale` | `number` | 波纹强度，取值范围：[0.01~1]，单位：米，默认值：0.3米 |
@@ -248,7 +248,7 @@ await fdapi.boxTrigger.setNormals(id, newVal);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | WaterMesh唯一标识符 |
-| `newVal` | `Color` | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例代码如下：

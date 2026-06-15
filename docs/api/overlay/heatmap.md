@@ -50,9 +50,9 @@ HeatMap相关的操作
 | `blur` | `number` | style=0或1时参数生效，热力点模糊因子，默认值：0.85，注意：模糊系数越高，渐变越平滑，取值范围：[0~1.0] |
 | `colors` | `object` | 可选，默认使用标准热力配色，当style=0或1时参数生效，自定义颜色卡区间数组，包含渐变控制参数、无效点颜色和颜色数组 |
 | `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | `Color` | 无效像素点的默认颜色，默认白色 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
 | `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | `Color` | 值对应的调色板颜色 |
+| `colors.color` | [`Color`](/docs/api/types#color) | 值对应的调色板颜色 |
 | `colors.value` | `number` | 值 |
 | `blendMode` | `number` | 混合模式，取值范围：[0,1] |
 | `light` | `boolean` | 是否参与光照，布尔类型，默认值：false |
@@ -90,9 +90,9 @@ await fdapi.heatmap.addByHeatPoints(heatmap);
 | `blur` | `number` | style=0或1时参数生效，热力点模糊因子，默认值：0.85，注意：模糊系数越高，渐变越平滑，取值范围：[0~1.0] |
 | `colors` | `object` | style=0或1时参数生效，自定义颜色卡区间数组，包含渐变控制参数、无效点颜色和颜色数组 |
 | `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | `Color` | 无效像素点的默认颜色，默认白色 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
 | `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | `Color` | 值对应的调色板颜色 |
+| `colors.color` | [`Color`](/docs/api/types#color) | 值对应的调色板颜色 |
 | `colors.value` | `number` | 值 |
 | `blendMode` | `number` | 混合模式，取值范围：[0,1] |
 | `light` | `boolean` | 是否参与光照，布尔类型，默认值：false |
@@ -292,9 +292,9 @@ fdapi.heatmap.highlightPixels('heatmap6', pixelCoords);
 | `blur` | `number` | style=0或1时参数生效，热力点模糊因子，默认值：0.85，注意：模糊系数越高，渐变越平滑，取值范围：[0~1.0] |
 | `colors` | `object` | style=0或1时参数生效，自定义颜色卡区间数组，包含渐变控制参数、无效点颜色和颜色数组 |
 | `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | `Color` | 无效像素点的默认颜色，默认白色 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
 | `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | `Color` | 值对应的调色板颜色 |
+| `colors.color` | [`Color`](/docs/api/types#color) | 值对应的调色板颜色 |
 | `colors.value` | `number` | 值 |
 | `blendMode` | `number` | 混合模式，取值范围：[0,1] |
 | `light` | `boolean` | 是否参与光照，布尔类型，默认值：false |

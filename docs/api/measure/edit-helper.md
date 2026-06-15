@@ -110,7 +110,7 @@ switch (res.buildType) {
 |------|------|------|
 | `lineType` | `number` | 线类型，0：直线，1：曲线，默认值是0 |
 | `buildType` | `number` | 绘制类型，0：画多点线段， 1：画多边形， 默认值是0 |
-| `color` | `Color` | 颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | 颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例：SetParam

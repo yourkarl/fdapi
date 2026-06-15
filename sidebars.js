@@ -247,6 +247,13 @@ const sidebars = {
         'api/battle/battlefield-simulation',
       ],
     },
+    {
+      type: 'category',
+      label: '参考',
+      items: [
+        'api/types',
+      ],
+    },
   ],
 };
 

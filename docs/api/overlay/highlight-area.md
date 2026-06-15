@@ -37,7 +37,7 @@ HighlightArea(高亮区域)相关的操作
 | `groupId` | `string` | 可选，Group分组 |
 | `userData` | `string` | 可选，用户自定义数据 |
 | `coordinates` | `array` | 多边形坐标数组（二维数组），[取值示例](/docs/tutorials/coordinates) |
-| `color` | `Color` | 多边形高亮颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | 多边形高亮颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `heightRange` | `array` | 高亮染色区域高度范围：[min,max]，数组元素取值范围：[任意浮点数]，取值说明：Z坐标的区间，只有Z值这这个区间的模型才会被染色 |
 | `intensity` | `number` | 高亮颜色的强度，取值范围：[0~1000] |
 | `depthTest` | `boolean` | 是否做深度检测，默认为true（DepthTest=true会被遮挡，false的话不会被遮挡） |
@@ -176,7 +176,7 @@ fdapi.highlightArea.hide('1');
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `any` | HighlightArea对象的ID |
-| `newVal` | `Color` | 新的颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `newVal` | [`Color`](/docs/api/types#color) | 新的颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例代码如下：

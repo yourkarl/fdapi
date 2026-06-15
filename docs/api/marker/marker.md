@@ -62,16 +62,16 @@ new Marker()
 | `textOffset` | `array` | 文本偏移: [x, y]，默认值：[0,0] |
 | `fontSize` | `number` | 字体大小，默认值：12 |
 | `fontOutlineSize` | `number` | 字体轮廓线大小，默认值：1 |
-| `textBackgroundColor` | `Color` | 文本背景颜色，默认值白色[1, 1, 1, 0.85]，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `fontColor` | `Color` | 字体颜色，默认值：黑色Color.Black，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `fontOutlineColor` | `Color` | 字体轮廓线颜色，默认值：黑色Color.Black，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `popupBackgroundColor` | `Color` | 弹窗背景颜色， [1.0,1.0,1.0,0.1] ，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `textBackgroundColor` | [`Color`](/docs/api/types#color) | 文本背景颜色，默认值白色[1, 1, 1, 0.85]，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fontColor` | [`Color`](/docs/api/types#color) | 字体颜色，默认值：黑色Color.Black，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fontOutlineColor` | [`Color`](/docs/api/types#color) | 字体轮廓线颜色，默认值：黑色Color.Black，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `popupBackgroundColor` | [`Color`](/docs/api/types#color) | 弹窗背景颜色， [1.0,1.0,1.0,0.1] ，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `popupURL` | `string` | 弹窗HTML链接或者视频文件路径，也支持实时流媒体视频地址，[资源引入说明](/docs/tutorials/resources) |
 | `popupSize` | `array` | 弹窗大小: [width, height]，默认值：[600,400] |
 | `popupOffset` | `array` | 弹窗偏移: [x, y]，默认值：[0,0] |
 | `showLine` | `boolean` | 标注点下方是否显示垂直牵引线，默认不显示：false |
 | `lineSize` | `array` | 牵引线粗细[width, height]，默认值：[0,0]，如果要显示牵引线，需要将该属性设置成非0值 |
-| `lineColor` | `Color` | 牵引线颜色，默认值：白色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `lineColor` | [`Color`](/docs/api/types#color) | 牵引线颜色，默认值：白色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `lineOffset` | `array` | 牵引线偏移: [x, y]，默认值：[0,0] |
 | `autoHidePopupWindow` | `boolean` | 是否自动关闭弹出窗口，默认值：true |
 | `autoHideText` | `boolean` | 打开弹窗时是否自动隐藏文字，默认值：true |
@@ -585,7 +585,7 @@ fdapi.marker.setAutoHidePopupWindow('m1', false);
 | `imagePath` | `string` | 聚合后显示的图片磁盘路径或图片URL |
 | `imageSize` | `array` | 聚合后显示的图片尺寸宽高，示例：[20,20] |
 | `fontSize` | `string` | 聚合后显示的聚合数字的字体大小 |
-| `fontColor` | `Color` | 聚合后显示的聚合数字的字体颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fontColor` | [`Color`](/docs/api/types#color) | 聚合后显示的聚合数字的字体颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `enableAnimation` | `boolean` | 是否开启marker聚合时的透明渐变动画，默认值：true |
 
 > 示例：SetClusterStyle
@@ -629,7 +629,7 @@ fdapi.marker.focus('m1', 200, 0.2);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `Color` | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例：FontColor
@@ -647,7 +647,7 @@ fdapi.marker.setFontColor('m1', Color.Blue);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `Color` | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例代码如下：
@@ -775,7 +775,7 @@ fdapi.marker.setImageSize('m1', [64, 64]);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `Color` | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例：SetLineColor
@@ -955,7 +955,7 @@ fdapi.marker.setText('m1', '体育馆');
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `Color` | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例：TextBackgroundColor
@@ -1045,7 +1045,7 @@ fdapi.marker.setUserData('m1', '{name:\"karl\",sex:\"male\",\"age\":32}');
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | Marker对象的ID |
-| `vp` | `Viewport` | 视口掩码（Viewport位运算） |
+| `vp` | [`Viewport`](/docs/api/types#viewport) | 视口掩码（Viewport位运算） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例：SetViewportVisible

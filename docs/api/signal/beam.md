@@ -40,7 +40,7 @@ Beam相关的操作
 | `thickness` | `number` | 光流线的宽度，取值范围： [0.01~10.0]，单位：因Beam是粒子加上自发光不能精确单位,故目前按比例显示,需要精确单位的推荐使用Polyline |
 | `interval` | `number` | 光流粒子发射间隔，取值范围：[1.0~10.0]，单位：秒 |
 | `velocity` | `number` | 光流粒子的速度，取值范围：[0.1~5.0] |
-| `color` | `Color` | 光流的颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | 光流的颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `coordinates` | `array` | 光流的polyline的坐标数组 |
 
 > 示例：Add
@@ -206,7 +206,7 @@ fdapi.beam.hideAll();
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | Beam对象的ID |
-| `newVal` | `Color` | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例代码如下：

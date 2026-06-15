@@ -46,7 +46,7 @@ Vehicle类，提供车辆载具对象相关的操作
 | `delay` | `number` | 可选，控制载具moveTo()接口移动的延迟时间，单位：秒，默认值：0.5，设置0则不延时立刻移动 |
 | `rotation` | `array` | 可选，载具旋转，世界坐标系旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |
 | `colorType` | `number` | 可选，载具使用内置涂装颜色的类型，取值范围：[0~任意正整数]，默认值：0 随机使用涂装颜色，大于0则使用其他固定的涂装颜色。 |
-| `color` | `Color` | 可选，载具自定义涂装颜色，注意：若传入此颜色参数会覆盖掉内置的涂装颜色（colorType），支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | 可选，载具自定义涂装颜色，注意：若传入此颜色参数会覆盖掉内置的涂装颜色（colorType），支持四种格式，[取值示例](/docs/tutorials/color) |
 | `localOffset` | `array` | 可选，载具基于原始位置坐标的偏移量，默认值：[0,0,0] |
 | `enableDecal` | `boolean` | 可选，是否支持贴画贴合，默认值：true |
 | `visible` | `boolean` | 可选，设置载具对象加载后是否显示，默认：true |

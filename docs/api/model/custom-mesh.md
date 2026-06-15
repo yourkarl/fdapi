@@ -37,7 +37,7 @@ CustomMesh类
 | `colors` | `array` | 顶点颜色数组，数组长度要和coordinates一致。支持四种格式，[取值示例](/docs/tutorials/color) |
 | `createCollision` | `boolean` | 是否创建碰撞体，默认值：false |
 | `indices` | `array` | 顶点坐标的索引，用来绘制三角网格；数组元素类型：(number)；数组元素顺序：顶点索引顺序需构成三角网格且同为顺时针或逆时针方向；数组元素取值范围：[0~coordinates.length-1]，取值示例：[2, 0, 3, 0, 2, 1] |
-| `color` | `Color` | 颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | 颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `material` | `string` | 可选参数，替换材质的文件路径，UE工程里材质文件对应资源的相对路径，用于控制材质的不透明度和颜色等效果 |
 | `scalarParameters` | `array` | 可选参数，替换材质包含的数值参数，一般用来控制材质不透明度，包含name/value键值对的数组，其中name是字符串，value为数值 |
 | `vectorParameters` | `array` | 可选参数，替换材质包含的数组参数，一般用来控制材质颜色，包含name/value键值对的数组，其中name是字符串，value为数组 |
@@ -185,7 +185,7 @@ fdapi.customMesh.hide(['sm1', 'sm2']);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | 唯一标识符 |
-| `newVal` | `Color` | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例代码如下：

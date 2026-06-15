@@ -261,7 +261,7 @@ fdapi.removeTick();
 
 | 参数 | 类型 | 说明 |
 |------|------|------|
-| `type` | `ResetType` | 设置重置的类别，请参考 `ResetType`，如果不传此参数，默认行为是清除添加的所有对象 |
+| `type` | [`ResetType`](/docs/api/types#resettype) | 设置重置的类别，请参考 `ResetType`，如果不传此参数，默认行为是清除添加的所有对象 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例：Reset

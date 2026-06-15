@@ -97,7 +97,7 @@ await fdapi.misc.addImageButtons(data);
 | `actorTag` | `string` | 发布蓝图函数时在模型包含的Actor上添加的tag，调用前需和设计蓝图函数的开发人员确认 |
 | `objectName` | `string` | 模型包含的Actor对象的ID，可以根据__g.tileLayer.getObjectIDs(tileLayerIds)方法获取 |
 | `functionName` | `string` | 待调用的蓝图函数名称，调用前需和设计蓝图函数的开发人员确认此函数已存在 |
-| `paramType` | `BPFuncParamType` | 传入单个参数，待传入参数类型 参考`BPFuncParamType`，如果需传递对象类型参数可以把Json对象定义为StringArray类型，在蓝图函数内部自己实现反序列化解析。 |
+| `paramType` | [`BPFuncParamType`](/docs/api/types#bpfuncparamtype) | 传入单个参数，待传入参数类型 参考`BPFuncParamType`，如果需传递对象类型参数可以把Json对象定义为StringArray类型，在蓝图函数内部自己实现反序列化解析。 |
 | `paramValue` | `any` | 传入单个参数，根据参数类型设置对应参数值 |
 | `parameters` | `array` | 传入多个参数，数组类型，注意：传入多参数的顺序与类型务必与蓝图函数的参数顺序及其参数类型一致以保证执行结果符合预期。多个参数结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
 
@@ -156,7 +156,7 @@ await fdapi.misc.deleteImageButtons(ids);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `viewportMode` | `number` | 视口布局类型，取值范围：[1~7]，参考上图从上到下从左到右计数，即录制导览动画时的视口布局 |
-| `lineColor` | `Color` | 可选参数，激活后视口边框线的颜色，默认值：#DEA309，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `lineColor` | [`Color`](/docs/api/types#color) | 可选参数，激活后视口边框线的颜色，默认值：#DEA309，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `lineSize` | `number` | 可选参数，激活后视口边框线的宽度，单位：像素，默认值：2px |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 

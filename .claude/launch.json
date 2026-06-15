@@ -6,6 +6,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "start", "--", "--no-open", "--port", "3210"],
       "port": 3210
+    },
+    {
+      "name": "docusaurus-serve",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "serve", "--", "--no-open", "--port", "3212"],
+      "port": 3212
     }
   ]
 }

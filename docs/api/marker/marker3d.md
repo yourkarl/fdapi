@@ -44,9 +44,9 @@ new Marker3D()
 | `userData` | `string` | 可选，用户自定义数据 |
 | `text` | `string` | 3D标注显示文字，字符长度范围[0~100] |
 | `textSize` | `number` | 3D标注显示文字字体大小，默认值：70 |
-| `textColor` | `Color` | 3D标注显示文字颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `textColor` | [`Color`](/docs/api/types#color) | 3D标注显示文字颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `textOutlineSize` | `number` | 3D标注显示文字轮廓大小 |
-| `textOutlineColor` | `Color` | 3D标注显示文字轮廓颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `textOutlineColor` | [`Color`](/docs/api/types#color) | 3D标注显示文字轮廓颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `textFixed` | `boolean` | 3D标注显示文字是否固定文本朝向，默认值：true |
 | `fixedSize` | `boolean` | 3D标注是否使用固定尺寸，默认：false 近大远小 |
 | `textVisible` | `boolean` | 3D标注显示文字是否显示文本，默认值：true |

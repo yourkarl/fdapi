@@ -32,7 +32,7 @@ description: "拓扑线对象，提供绘制连接图层树上模型的拓扑线
 | `id` | `string` | 字符串类型的ID |
 | `groupId` | `string` | 可选，Group分组 |
 | `userData` | `string` | 可选，用户自定义数据 |
-| `color` | `Color` | 颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | 颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `objectIds` | `array` | 待连接的拓扑线的模型节点ID，即图层树上模型的ID数组，取值示例：["E78C50304F64ED20151624970CFA4FED","8ECFECA747068210E87C618F8DF0B3E5"...], |
 | `range` | `array` | 可视范围: [近裁距离, 远裁距离]，取值范围: [任意负值, 任意正值] |
 | `thickness` | `number` | 线宽，单位：米，默认值20 |
@@ -40,7 +40,7 @@ description: "拓扑线对象，提供绘制连接图层树上模型的拓扑线
 | `flowRate` | `number` | 流速，取值范围：[0~1.0]，默认值：0.5 |
 | `depthTest` | `boolean` | 是否做深度检测，默认为true，true会被遮挡，false不会被遮挡 |
 | `shape` | `number` | 样式，0：直线， 1：曲线，注意：设置为曲线坐标点多的时候会非常影响添加添加效率 |
-| `style` | `PolylineStyle` | (`PolylineStyle`) 折线样式，箭头/光流/贴地/实线/虚线等，取值范围：[0~7]，详情参考 `PolylineStyle` |
+| `style` | [`PolylineStyle`](/docs/api/types#polylinestyle) | (`PolylineStyle`) 折线样式，箭头/光流/贴地/实线/虚线等，取值范围：[0~7]，详情参考 `PolylineStyle` |
 | `tiling` | `number` | 可选参数，材质贴图平铺比例，和PolylineStyle取值有关，目前仅部分样式支持此参数，从起始位置开始平铺，超过的部分会按此比例生成新的区域，类似CSS的repeat。如果这个值 &lt;= 0 使用自动计算按Polyline长度比例平铺， &gt;0使用用户输入的值去平铺 |
 | `material` | `string` | 可选参数，自定义材质路径，即资源库PAK文件里材质文件的路径，设置自定义材质参数后style相关参数会失效 |
 | `scalarParameters` | `array` | 可选参数，仅在设置自定义材质路径后生效，自定义材质数值类型参数，包含name/value键值对的数组，其中value为数值，格式示例：[&#123;"name":"不透明度","value":0.5&#125;,&#123;"name":"UV重复","value":1.0&#125;] |

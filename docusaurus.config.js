@@ -7,7 +7,7 @@ const darkTheme = themes.dracula;
 const config = {
   title: 'DTS Cloud 数字孪生平台',
   tagline: '二次开发 API 文档 · Digital Twin SDK v7.1',
-  favicon: 'img/favicon.ico',
+  favicon: 'favicon.ico',
   url: 'https://yourkarl.github.io',
   baseUrl: '/fdapi/',
   onBrokenLinks: 'throw',
@@ -24,6 +24,10 @@ const config = {
         hashed: true,
         indexBlog: false,
         docsRouteBasePath: '/docs',
+        // 启用中文分词（jieba）：默认仅英文按空格分词，中文会整段不切，导致搜不到
+        language: ['en', 'zh'],
+        // 跳转目标页高亮命中的关键词
+        highlightSearchTermsOnTargetPage: true,
       },
     ],
   ],

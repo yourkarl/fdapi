@@ -368,7 +368,7 @@ fdapi.tools.riverCrossSectionByShp({
 
 | 参数 | 类型 | 说明 |
 |------|------|------|
-| `type` | `MeasurementMode` | 测量模式，参见`MeasurementMode`，目前支持：坐标测量、直线测量、水平测量、垂直测量、多边形测量、地表面积测量、角度测量 |
+| `type` | [`MeasurementMode`](/docs/api/types#measurementmode) | 测量模式，参见`MeasurementMode`，目前支持：坐标测量、直线测量、水平测量、垂直测量、多边形测量、地表面积测量、角度测量 |
 | `options` | `object` | 测量选项，目前支持的选项有： unitType: 可选，测量单位，0：米 1：千米 2：英尺，默认值 0 coordinates: 可选，待测量坐标数组，不传则根据交互拾取的坐标进行测量 pointSize: 可选，测量点的像素尺寸，默认值 8.0 textSize: 可选，文字大小，默认值 10.0 textColor: 可选，文字颜色，默认值 Color.Yellow pointColor: 可选，点的颜色，默认值 [0,0,1,0.3] lineColor: 可选，线的颜色，默认值 Color.Red areaColor: 可选，测量区域的颜色，默认值 [0,1,0,0.3] showCoordinateText: 可选，是否显示坐标测量的文本，默认值 false |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
@@ -556,7 +556,7 @@ fdapi.tools.startCutFillAnalysis(option);
 | `max` | `array` | 水淹分析坐标范围: [maxX, maxY]，最大X/Y坐标值 |
 | `seed` | `array` | 出水点: [X, Y]，X/Y取值需在对应的min和max范围内，注意：出水点必须在水淹分析范围内，且不能被物体遮挡，否则会无效 |
 | `elevation` | `number` | 水位高度，单位：米 |
-| `color` | `Color` | 水颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | 水颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `precision` | `number` | 水淹模拟精度 (取值范围：[0~1] 精度越高效率会降低)，默认值：0.5 |
 
 > 示例：开始水淹分析：StartFloodFill

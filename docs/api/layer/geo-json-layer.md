@@ -47,19 +47,19 @@ new GeoJSONLayer()
 | `textField` | `string` | 可选，使用Geojson的属性字段显示文字标注 |
 | `textRange` | `array` | 可选，文字标注的可视范围: [近裁距离, 远裁距离]，单位：米 |
 | `textSize` | `number` | 可选，文字标注的字体大小，默认大小：24 |
-| `textColor` | `Color` | 可选，文字标注的字体颜色，默认颜色：[1,1,1,1] |
+| `textColor` | [`Color`](/docs/api/types#color) | 可选，文字标注的字体颜色，默认颜色：[1,1,1,1] |
 | `onTerrain` | `boolean` | 可选，设置图层加载后是否贴地，默认：false |
 | `collision` | `boolean` | 是否开启碰撞，默认值：true |
 | `depthTest` | `boolean` | 是否做深度检测，默认开启：true，true会被地形遮挡，false不会被地形遮挡，注意：深度检测参数仅在反走样参数关闭时(enableAntialias=false)生效 |
 | `enableAntialias` | `boolean` | 是否开启反走样(仅对polyline类型生效)，默认开启：true |
 | `renderer` | `object` | 必选，渲染器配置对象参数如下： **注意：使用此自定义材质需单独按规范打包，具体参考相关教程。** |
-| `renderer.rendererType` | `RendererType` | (`RendererType`) 渲染器类型，包含三种：简单渲染器、唯一值渲染器、分类渲染器 |
+| `renderer.rendererType` | [`RendererType`](/docs/api/types#renderertype) | (`RendererType`) 渲染器类型，包含三种：简单渲染器、唯一值渲染器、分类渲染器 |
 | `renderer.generateTop` | `boolean` | 可选参数，是否生成顶面，默认：true |
 | `renderer.generateBottom` | `boolean` | 可选参数，是否生成底面，默认：true |
 | `renderer.style` | `-` | `Polygon3DStyle` 仅对Polygon3D渲染生效，设置Polygon3D的样式 |
-| `renderer.type` | `VisualType` | (`VisualType`) 控制显示的可视化类型枚举 |
+| `renderer.type` | [`VisualType`](/docs/api/types#visualtype) | (`VisualType`) 控制显示的可视化类型枚举 |
 | `renderer.field` | `string` | GeoJSON文件内的属性字段名称 |
-| `renderer.fieldType` | `FieldType` | (`FieldType`) GeoJSON文件内的属性字段类型，枚举支持数值类型和字符串类型 |
+| `renderer.fieldType` | [`FieldType`](/docs/api/types#fieldtype) | (`FieldType`) GeoJSON文件内的属性字段类型，枚举支持数值类型和字符串类型 |
 | `renderer.gradient` | `boolean` | 颜色是否渐变 |
 | `renderer.materials` | `array` | 可选，自定义材质配置列表，每一个材质对象包含的参数如下： |
 | `renderer.index` | `number` | 自定义材质索引 |
@@ -75,21 +75,21 @@ new GeoJSONLayer()
 | `renderer.uniqueValueInfos` | `array` | 可选，唯一值渲染器配置数组，对象结构如下： |
 | `renderer.value` | `any` | field字段对应值 |
 | `renderer.symbol` | `object` | 各唯一值对应的符号化配置对象，结构如下： |
-| `renderer.color` | `Color` | 可选，三选一，唯一值对应的颜色 |
+| `renderer.color` | [`Color`](/docs/api/types#color) | 可选，三选一，唯一值对应的颜色 |
 | `renderer.size` | `number` | 可选，三选一，唯一值对应的尺寸 |
 | `renderer.height` | `number` | 可选，三选一，唯一值对应的高度 |
 | `renderer.classBreakInfos` | `array` | 可选，分类渲染器配置数组，对象结构如下： |
 | `renderer.minValue` | `number` | 区间最小值 |
 | `renderer.maxValue` | `number` | 区间最大值 |
 | `renderer.symbol` | `object` | 不同分类的符号化配置对象，结构如下： |
-| `renderer.color` | `Color` | 可选，二选一，区间值对应的颜色 |
+| `renderer.color` | [`Color`](/docs/api/types#color) | 可选，二选一，区间值对应的颜色 |
 | `renderer.size` | `number` | 可选，二选一，区间值对应的尺寸 |
 | `renderer.height` | `number` | 可选，三选一，区间值对应的高度 |
 | `renderer.visualVariables` | `array` | 简单渲染器支持根据字段属性控制颜色、尺寸和透明度的显示，参数如下： |
 | `visibleRenderer` | `object` | 可选，要素可见性渲染器配置对象，包含的参数结构如下： |
-| `visibleRenderer.rendererType` | `RendererType` | (`RendererType`) 渲染器类型：可见性渲染器 |
+| `visibleRenderer.rendererType` | [`RendererType`](/docs/api/types#renderertype) | (`RendererType`) 渲染器类型：可见性渲染器 |
 | `visibleRenderer.field` | `string` | GeoJSON文件内的属性字段名称 |
-| `visibleRenderer.fieldType` | `FieldType` | (`FieldType`) GeoJSON文件内的属性字段类型，枚举支持数值类型和字符串类型 |
+| `visibleRenderer.fieldType` | [`FieldType`](/docs/api/types#fieldtype) | (`FieldType`) GeoJSON文件内的属性字段类型，枚举支持数值类型和字符串类型 |
 | `visibleRenderer.defaultVisible` | `boolean` | 全局要素默认是否可见，默认值：true 可见 |
 | `visibleRenderer.visibleValueInfos` | `array` | 可选，分类渲染器配置数组，对象结构如下： |
 | `visibleRenderer.value` | `any` | 可选，field字段对应类型的值 |
@@ -97,9 +97,9 @@ new GeoJSONLayer()
 | `visibleRenderer.maxValue` | `number` | 可选，区间最大值，注意：数值类型字段可以使用此属性 |
 | `visibleRenderer.visible` | `boolean` | 必选，根据字段值或区间控制要素块是否显隐 |
 | `materialRenderer` | `object` | 可选，自定义材质渲染器配置对象，包含的参数结构如下： |
-| `materialRenderer.rendererType` | `RendererType` | (`RendererType`) 渲染器类型：自定义材质渲染器 |
+| `materialRenderer.rendererType` | [`RendererType`](/docs/api/types#renderertype) | (`RendererType`) 渲染器类型：自定义材质渲染器 |
 | `materialRenderer.field` | `string` | GeoJSON文件内的属性字段名称 |
-| `materialRenderer.fieldType` | `FieldType` | (`FieldType`) GeoJSON文件内的属性字段类型，枚举支持数值类型和字符串类型 |
+| `materialRenderer.fieldType` | [`FieldType`](/docs/api/types#fieldtype) | (`FieldType`) GeoJSON文件内的属性字段类型，枚举支持数值类型和字符串类型 |
 | `materialRenderer.defaultMaterial` | `boolean` | 全局默认使用的自定义材质索引，默认值：0 |
 | `materialRenderer.materialValueInfos` | `array` | 可选，自定义材质渲染器配置数组，每一个对象结构如下： |
 | `materialRenderer.index` | `number` | 必选，根据字段值或区间控制要素块是否显隐 |

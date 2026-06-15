@@ -52,7 +52,7 @@ VideoProjection的效果图：
 | `minDistance` | `number` | 近裁距离，取值范围：[0~1000000.0]，单位：米 |
 | `depthCulling` | `boolean` | 是否背面剔除，默认值：false |
 | `frustumVisible` | `boolean` | 是否显示投影线框，默认值：false |
-| `frustumColor` | `Color` | 投影线框颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `frustumColor` | [`Color`](/docs/api/types#color) | 投影线框颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `texturePath` | `string` | 自定义投影蒙版图片路径，可以是本地路径，也支持网络路径，[资源引入说明](/docs/tutorials/resources) |
 
 > 示例：Add
@@ -265,7 +265,7 @@ fdapi.videoProjection.setFovy('vp1', 100);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | VideoProjection对象的ID |
-| `newVal` | `Color` | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例：设置投影线框颜色：SetFrustumColor

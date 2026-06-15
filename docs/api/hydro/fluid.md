@@ -42,7 +42,7 @@ new Fluid()
 | `userData` | `string` | 可选，用户自定义数据 |
 | `bbox` | `bbox` | 流体仿真的包围盒范围，格式：[minX,minY,minZ,maxX,maxY,maxZ]，数组元素类型：[任意浮点数] |
 | `style` | `number` | 流体样式，共28种水样式，取值范围：[0~27]，样式参考流体的样式预览图 |
-| `color` | `Color` | 可选，流体颜色，默认使用style样式自带颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | 可选，流体颜色，默认使用style样式自带颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `sources` | `array` | 出水点信息 |
 | `sources.id` | `string` | 出水点ID |
 | `sources.rotation` | `array` | 出水点旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值] |

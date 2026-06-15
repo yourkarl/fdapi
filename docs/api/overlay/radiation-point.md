@@ -39,7 +39,7 @@ RadiationPoint类，提供辐射圈相关的操作
 | `coordinate` | `array` | 坐标点，[取值示例](/docs/tutorials/coordinates) |
 | `radius` | `number` | 辐射圈的半径，取值范围：[0~500000]，单位：米 |
 | `rippleNumber` | `number` | 波纹数量，取值范围：[0~5]，单位：个 |
-| `color` | `Color` | 颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | 颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `intensity` | `number` | 亮度，取值范围：[0~1.0] |
 | `autoHeight` | `boolean` | 自动判断下方是否有物体，设置正确高度，默认值：false |
 
@@ -244,7 +244,7 @@ await fdapi.radiationPoint.setBrightness(id, newVal);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | RadiationPoint对象的ID |
-| `newVal` | `Color` | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例代码如下：

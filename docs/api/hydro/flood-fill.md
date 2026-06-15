@@ -42,7 +42,7 @@ new FloodFill()
 | `max` | `array` | 水淹分析范围Max：[x,y]，数组元素取值：[任意数值] |
 | `seed` | `array` | 出水点，水淹分析范围[min~max]内的任意[x,y]，数组元素取值：[任意数值] 注意：出水点必须在水淹分析范围内，且不能被物体遮挡，否则会无效 |
 | `elevation` | `number` | 水位高度，取值范围：[任意正数]，单位：米 |
-| `color` | `Color` | 水颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | 水颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `precision` | `number` | 水淹模拟精度，取值范围：[0~1] 精度越高效率会降低 |
 
 > 示例：Add
@@ -187,7 +187,7 @@ fdapi.floodFill.hideAll();
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | 字符串类型的ID |
-| `newVal` | `Color` | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例代码如下：

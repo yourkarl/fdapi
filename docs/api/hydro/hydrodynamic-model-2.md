@@ -48,9 +48,9 @@ description: "二维水动力模型对象，基于真实数据驱动生成水动
 | `valueRange` | `array` | 二维水动力模型颜色插值对应的数值区间 |
 | `colors` | `object` | 二维水动力模型自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
 | `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | `Color` | 无效像素点的默认颜色，默认白色 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
 | `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | `Color` | 值对应的调色板颜色 |
+| `colors.color` | [`Color`](/docs/api/types#color) | 值对应的调色板颜色 |
 | `colors.value` | `number` | 值 |
 
 ```js
