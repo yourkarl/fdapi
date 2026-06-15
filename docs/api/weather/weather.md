@@ -448,7 +448,7 @@ fdapi.weather.setOceanWave(options);
 | `strength` | `number` | 雨效强度（必须大于0，才会有下雨效果），取值范围:[0~1.0] |
 | `speed` | `number` | 雨效速度，取值范围:[0~1.0] |
 | `raindropSize` | `number` | 雨滴大小，取值范围:[0~1.0] |
-| `rainColor` | `Color` | 雨滴颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `rainColor` | [`Color`](/docs/api/types#color) | 雨滴颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `alignCamera` | `number` | 相机移动对齐，取值范围:[0~1.0] |
 | `overcastStrength` | `number` | 阴天程度，取值范围:[0~1.0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
@@ -562,7 +562,7 @@ fdapi.weather.setSkyVisibleMaxHeight(50000);
 | `strength` | `number` | 雪效强度（必须大于0，才会有下雪效果），取值范围:[0~1.0] |
 | `speed` | `number` | 雪效速度，取值范围:[0~1.0] |
 | `snowflakeSize` | `number` | 雪花大小，取值范围:[0~1.0] |
-| `snowColor` | `Color` | 雪花颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `snowColor` | [`Color`](/docs/api/types#color) | 雪花颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `alignCamera` | `number` | 相机移动对齐，取值范围:[0~1.0] |
 | `overcastStrength` | `number` | 阴天程度，取值范围:[0~1.0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
@@ -584,7 +584,7 @@ fdapi.weather.setSnowParam(1, 1, 1, [1, 1, 1, 1], 0.5, 0.5);
 
 | 参数 | 类型 | 说明 |
 |------|------|------|
-| `sunColor` | `Color` | 太阳颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `sunColor` | [`Color`](/docs/api/types#color) | 太阳颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例：设置太阳颜色：SetSunColor

@@ -46,11 +46,11 @@ Drone类，提供无人机对象相关的操作
 | `localOffset` | `array` | 可选，无人机基于原始位置坐标的偏移量，默认值：[0,0,0] |
 | `scale` | `array` | 可选，无人机缩放：[X,Y,Z]，数组元素类型：(number)，取值范围：[任意正整数] |
 | `visible` | `boolean` | 可选，设置无人机对象加载后是否显示，默认：true |
-| `trailType` | `DroneTrailStyle` | (`DroneTrailStyle`) 可选，轨迹线样式枚举，详情参考 `DroneTrailStyle`，默认值：0 |
+| `trailType` | [`DroneTrailStyle`](/docs/api/types#dronetrailstyle) | (`DroneTrailStyle`) 可选，轨迹线样式枚举，详情参考 `DroneTrailStyle`，默认值：0 |
 | `trailThickness` | `number` | 可选，像素线宽度，注意：仅设置像素线样式枚举时生效 |
-| `trailColor` | `Color` | 可选，轨迹线颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `trailColor` | [`Color`](/docs/api/types#color) | 可选，轨迹线颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `trailDuration` | `number` | 可选，轨迹持续时间，单位：秒，默认值：3秒 |
-| `lightColor` | `Color` | 可选，无人机自发光灯颜色亮度，取值示例：[1, 0, 0, 10]，注意：alpha是无人机亮度，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `lightColor` | [`Color`](/docs/api/types#color) | 可选，无人机自发光灯颜色亮度，取值示例：[1, 0, 0, 10]，注意：alpha是无人机亮度，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `label` | `object` | 可选，无人机的标牌对象，默认不显示，包含可配置的参数如下： |
 | `label.visible` | `boolean` | 无人机标牌是否可见，默认值：false |
 | `label.offset` | `array` | 无人机标牌偏移，默认值：[0, 0, 0] |
@@ -292,10 +292,10 @@ fdapi.drone.show('drone5');
 |------|------|------|
 | `id` | `string` | 根据无人机对象的ID更新无人机相关属性 |
 | `trailType` | `number` | (`DroneTrailStyle`) 可选，轨迹线样式枚举，详情参考 `DroneTrailStyle`，默认值：0 |
-| `trailColor` | `Color` | 可选，轨迹线颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `trailColor` | [`Color`](/docs/api/types#color) | 可选，轨迹线颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `trailDuration` | `number` | 可选，轨迹持续时间，单位：秒，默认值：3 |
 | `trailThickness` | `number` | 可选，像素线宽度，注意：仅设置像素线样式枚举时生效 |
-| `lightColor` | `Color` | 可选，无人机自发光灯颜色亮度，取值示例：[1, 0, 0, 10]，注意：alpha是无人机亮度，支持四种格式，[取值示例](/docs/tutorials/color)，默认：关闭 |
+| `lightColor` | [`Color`](/docs/api/types#color) | 可选，无人机自发光灯颜色亮度，取值示例：[1, 0, 0, 10]，注意：alpha是无人机亮度，支持四种格式，[取值示例](/docs/tutorials/color)，默认：关闭 |
 | `label` | `object` | 可选，无人机的标牌对象，默认不显示，包含可配置的参数如下： |
 | `label.visible` | `boolean` | 无人机标牌是否可见，默认值：false |
 | `label.offset` | `array` | 无人机标牌偏移，默认值：[0, 0, 0] |

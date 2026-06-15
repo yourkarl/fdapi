@@ -47,20 +47,20 @@ description: "二维水动力模型对象，基于真实数据驱动生成水动
 | `dem` | `string` | 可选，二维水动力模型bin数据文件路径（河道DEM的bin或tif），取值示例："C:/binFile/xxx3.bin" 或"C:/tifFile/xxx3.tif"，注意：waterDepth、flowField和dem的三个tif文件分辨率必须保持一致 |
 | `collision` | `boolean` | 是否开启模型碰撞，默认：false，注意：开启后会影响加载效率 |
 | `displayMode` | `number` | 显示样式，取值范围：[0,1]，0水体样式（默认值），1热力样式 |
-| `waterColor` | `Color` | 水体颜色和透明度，注意：仅在displayMode=0时生效，支持四种格式，[取值示例](/docs/tutorials/color) . |
+| `waterColor` | [`Color`](/docs/api/types#color) | 水体颜色和透明度，注意：仅在displayMode=0时生效，支持四种格式，[取值示例](/docs/tutorials/color) . |
 | `waveBrightness` | `number` | 水波纹的显示亮度，取值范围：[0,10000]，值越大亮度越高水波纹越明显 |
 | `alphaMode` | `number` | 透明模式，取值：[0,1]，0 : 使用colors调色板的不透明度值 1 : 使用系统默认值 |
 | `alphaComposite` | `boolean` | 是否使用混合透明度，默认：true |
-| `arrowColor` | `Color` | 箭头颜色和透明度，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `arrowColor` | [`Color`](/docs/api/types#color) | 箭头颜色和透明度，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `arrowTiling` | `number` | 箭头平铺系数 |
 | `rippleDensity` | `number` | 辐射强度 |
 | `rippleTiling` | `number` | 辐射平铺系数 |
 | `speedFactor` | `number` | 速度因子 |
 | `colors` | `object` | 二维水动力模型自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
 | `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | `Color` | 无效像素点的默认颜色，默认白色 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
 | `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | `Color` | 值对应的调色板颜色 |
+| `colors.color` | [`Color`](/docs/api/types#color) | 值对应的调色板颜色 |
 | `colors.value` | `number` | 值 |
 
 ```js

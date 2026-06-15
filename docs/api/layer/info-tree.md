@@ -119,7 +119,7 @@ await fdapi.infoTree.disableXRay(ids);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `ids` | `string \| array` | 待启用X光的图层ID（支持单个ID或ID数组） |
-| `color` | `Color` | 颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | 颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例代码如下：

@@ -40,16 +40,16 @@ Tag已停止更新，推荐使用功能更丰富的标注对象Marker
 | `imagePath` | `string` | 图片路径，支持本地路径和网络路径，[资源引入说明](/docs/tutorials/resources) |
 | `imageSize` | `array` | 图片尺寸[width,height]，取值范围：[0~任意正数] |
 | `url` | `string` | 鼠标点击标签后弹出的网页的URL，也可以是本地视频文件，鼠标点击标签后会弹出视频播放窗口，[资源引入说明](/docs/tutorials/resources) |
-| `popupBackgroundColor` | `Color` | 弹窗背景色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `popupBackgroundColor` | [`Color`](/docs/api/types#color) | 弹窗背景色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `popupPos` | `array` | 弹窗位置: [x, y]，数组元素类型：(number)，数组元素取值范围：[任意正整数] |
 | `popupSize` | `array` | 弹窗尺寸：[width, height]，数组元素类型：(number)，数组元素取值范围：[任意正整数] |
 | `range` | `array` | 标签的可见范围 [Min,Max]，Min和Max指摄像机相对于标签的最小和最大距离，在此范围内标签才可见，类型均为浮点数，元素取值范围：[1.0~100000.0]，单位：米 |
 | `text` | `string` | 标签显示的文字 |
 | `textRange` | `number` | 文字的可见范围，取值范围：[1.0~100000.0]，单位：米 |
 | `textSize` | `number` | 文字大小，取值范围：[0~任意正整数] |
-| `textColor` | `Color` | 文字颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `textBorderColor` | `Color` | 文字边框颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `textBackgroundColor` | `Color` | 文本背景颜色，默认值白色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `textColor` | [`Color`](/docs/api/types#color) | 文字颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `textBorderColor` | [`Color`](/docs/api/types#color) | 文字边框颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `textBackgroundColor` | [`Color`](/docs/api/types#color) | 文本背景颜色，默认值白色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `showLine` | `boolean` | 标签下方是否显示垂直牵引线，默认值：true |
 | `hoverImagePath` | `string` | 鼠标悬停时显示的图片路径，[资源引入说明](/docs/tutorials/resources) |
 | `autoHidePopupWindow` | `boolean` | 是否自动关闭弹出窗口，默认值：true，失去焦点后会自动关闭 |
@@ -472,7 +472,7 @@ fdapi.tag.setText('p1', 'Welcome!');
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | 标签的唯一标识符ID |
-| `newVal` | `Color` | 新的颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `newVal` | [`Color`](/docs/api/types#color) | 新的颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例：TextBackgroundColor
@@ -490,7 +490,7 @@ fdapi.tag.setTextBackgroundColor('p1', Color.Yellow);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | 标签的唯一标识符ID |
-| `newVal` | `Color` | 新的颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `newVal` | [`Color`](/docs/api/types#color) | 新的颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例：TextBorderColor
@@ -508,7 +508,7 @@ fdapi.tag.setTextBorderColor('p1', Color.White);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | 标签的唯一标识符ID |
-| `newVal` | `Color` | 新的颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `newVal` | [`Color`](/docs/api/types#color) | 新的颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例：TextColor

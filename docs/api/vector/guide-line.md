@@ -363,7 +363,7 @@ await fdapi.guideLine.setDepthTest(id, newVal);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | 字符串类型的ID |
-| `newVal` | `Color` | 新的引导对象大小 |
+| `newVal` | [`Color`](/docs/api/types#color) | 新的引导对象大小 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例代码如下：

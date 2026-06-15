@@ -42,15 +42,15 @@ River类 等价于一维水动力模型Hydrodynamic1D类
 | `collision` | `boolean` | 是否开启模型碰撞，默认：false，注意：开启后会影响加载效率 |
 | `displayMode` | `number` | 显示模式，取值范围：[0,1]，0水样式（默认值），1热力样式 |
 | `waterMode` | `number` | 水面显示模式，取值范围：[0,1]，0表示动画水面，1表示仿真水面 |
-| `waterColor` | `Color` | 水面颜色和透明度，注意：仅在displayMode=0时生效，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `waterColor` | [`Color`](/docs/api/types#color) | 水面颜色和透明度，注意：仅在displayMode=0时生效，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `arrowDisplayMode` | `number` | 箭头显示模式，取值范围：[0,1]，0默认样式（受arrowColor参数影响），1热力样式（受arrowColors调色板参数影响） |
 | `arrowAlphaMode` | `number` | 箭头透明度模式，仅在arrowDisplayMode=0时生效，取值：[0,1]，0使用arrowColor的透明度，1使用调色板的透明度 |
-| `arrowColor` | `Color` | 箭头颜色和透明度，仅在arrowDisplayMode=0时生效，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `arrowColor` | [`Color`](/docs/api/types#color) | 箭头颜色和透明度，仅在arrowDisplayMode=0时生效，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `arrowColors` | `object` | 箭头颜色调色板，仅在arrowDisplayMode=1时生效，河道箭头热力样式下的调色板配色对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
 | `arrowColors.gradient` | `boolean` | 是否渐变 |
-| `arrowColors.invalidColor` | `Color` | 无效像素点的默认颜色，默认白色 |
+| `arrowColors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
 | `arrowColors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `arrowColors.color` | `Color` | 值对应的调色板颜色 |
+| `arrowColors.color` | [`Color`](/docs/api/types#color) | 值对应的调色板颜色 |
 | `arrowColors.value` | `number` | 值 |
 | `arrowTiling` | `number` | 箭头平铺方式 |
 | `speedFactor` | `number` | 速度因子 |
@@ -66,9 +66,9 @@ River类 等价于一维水动力模型Hydrodynamic1D类
 | `valueRange` | `array` | 河道热力值的范围，取值示例：[heatValueMin, heatValueMax] |
 | `colors` | `object` | 河道热力样式下的调色板配色对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
 | `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | `Color` | 无效像素点的默认颜色，默认白色 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
 | `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | `Color` | 值对应的调色板颜色 |
+| `colors.color` | [`Color`](/docs/api/types#color) | 值对应的调色板颜色 |
 | `colors.value` | `number` | 值 |
 
 > 示例代码如下：

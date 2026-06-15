@@ -50,9 +50,9 @@ new SmoothedParticleHydrodynamics()
 | `particle.radius` | `number` | 每个粒子的默认半径，默认值：15米 |
 | `colors` | `object` | 热力样式下的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
 | `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | `Color` | 无效值对应的默认颜色，默认白色 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效值对应的默认颜色，默认白色 |
 | `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | `Color` | 热力值对应的调色板颜色 |
+| `colors.color` | [`Color`](/docs/api/types#color) | 热力值对应的调色板颜色 |
 | `colors.value` | `number` | 热力值 |
 
 ```js
@@ -176,9 +176,9 @@ new SmoothedParticleHydrodynamics()
 | `particle.radius` | `number` | 每个粒子的默认半径，默认值：15米 |
 | `colors` | `object` | 热力样式下的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
 | `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | `Color` | 无效值对应的默认颜色，默认白色 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效值对应的默认颜色，默认白色 |
 | `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | `Color` | 热力值对应的调色板颜色 |
+| `colors.color` | [`Color`](/docs/api/types#color) | 热力值对应的调色板颜色 |
 | `colors.value` | `number` | 热力值 |
 
 > 示例代码如下：
@@ -313,9 +313,9 @@ fdapi.smoothedParticleHydrodynamics.show('sph');
 | `particle.radius` | `number` | 每个粒子的默认半径，默认值：15米 |
 | `colors` | `object` | 可选，热力样式下的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
 | `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | `Color` | 无效值对应的默认颜色，默认白色 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效值对应的默认颜色，默认白色 |
 | `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | `Color` | 热力值对应的调色板颜色 |
+| `colors.color` | [`Color`](/docs/api/types#color) | 热力值对应的调色板颜色 |
 | `colors.value` | `number` | 热力值 |
 
 > 示例：Update

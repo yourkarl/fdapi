@@ -58,7 +58,7 @@ new FiniteElement()
 | `valueRange` | `array` | 有限元分析结果对应值的范围：[min,max]，数组元素类型：[任意浮点数] |
 | `characteristicLine` | `object` | 有限元对象的特征线对象，包含以下参数： |
 | `characteristicLine.filePath` | `string` | 包含特征线信息的文件路径 |
-| `characteristicLine.color` | `Color` | 特征线的颜色 |
+| `characteristicLine.color` | [`Color`](/docs/api/types#color) | 特征线的颜色 |
 | `showLine` | `boolean` | 是否显示等值线，默认值：false |
 | `showColorLine` | `boolean` | 是否显示等值线颜色，默认值：false |
 | `contourParams` | `array` | 控制有限元分析对象热力效果，从valueRange的min/max分割而来，二维数组，取值示例：[[min,max],[min,max],[min,max]...] |
@@ -68,9 +68,9 @@ new FiniteElement()
 | `colors` | `object` | 有限元分析对象的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
 | `colors.size` | `number` | 调色板图片尺寸 |
 | `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | `Color` | 无效像素点的默认颜色，默认白色 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
 | `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | `Color` | 值对应的调色板颜色 |
+| `colors.color` | [`Color`](/docs/api/types#color) | 值对应的调色板颜色 |
 | `colors.value` | `number` | 值 |
 
 ```js

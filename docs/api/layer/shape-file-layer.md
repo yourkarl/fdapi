@@ -35,7 +35,7 @@ ShapeFileLayer矢量图层对象相关的操作
 | `file` | `String` | ShapeFileLayer的文件路径，支持本地路径和网络路径 |
 | `offset` | `array` | 偏移量：[X,Y,Z]，数组元素类型：(number)，默认值[0.000000, 0.000000, 0.000000] |
 | `rotation` | `array` | 旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值[0.000000, 0.000000, 0.000000] |
-| `defaultColor` | `Color` | 支持四种格式，[取值示例](/docs/tutorials/color) 默认颜色：[0.000000, 0.000000, 1.000000, 1.000000] RGBA |
+| `defaultColor` | [`Color`](/docs/api/types#color) | 支持四种格式，[取值示例](/docs/tutorials/color) 默认颜色：[0.000000, 0.000000, 1.000000, 1.000000] RGBA |
 | `polygonColorFieldName` | `String` | 当type==Polygon时此属性可选，多边形颜色字段 |
 | `polygonHeightFieldName` | `String` | 当type==Polygon时此属性可选，多边形高度字段 |
 | `polygonGroundHeightFieldName` | `String` | 当type==Polygon时此属性可选，底面高度字段 |
@@ -50,9 +50,9 @@ ShapeFileLayer矢量图层对象相关的操作
 | `pointImage` | `String` | 当type==Point时此属性可选，图片路径 |
 | `pointContentRange` | `number` | 当type==Point时此属性可选，文本可见距离，单位米 |
 | `pointRange` | `array` | 当type==Point时此属性可选，可见距离（米）点坐标：[X,Y] |
-| `pointFontColor` | `Color` | 当type==Point时此属性可选，字体颜色 ，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `pointFontOutlineColor` | `Color` | 当type==Point时此属性可选，字体轮廓颜色 ，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `pointBackgroundColor` | `Color` | 当type==Point时此属性可选，字体背景颜色 ，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `pointFontColor` | [`Color`](/docs/api/types#color) | 当type==Point时此属性可选，字体颜色 ，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `pointFontOutlineColor` | [`Color`](/docs/api/types#color) | 当type==Point时此属性可选，字体轮廓颜色 ，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `pointBackgroundColor` | [`Color`](/docs/api/types#color) | 当type==Point时此属性可选，字体背景颜色 ，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `pointShowLine` | `boolean` | 当type==Point时此属性可选，是否显示线 默认false |
 | `pointOcclusionCull` | `boolean` | 当type==Point时此属性可选，是否参与遮挡 默认true |
 
@@ -502,7 +502,7 @@ await fdapi.shapeFileLayer.unHighlightFeatures(data);
 | `userData` | `string` | 可选，用户自定义数据 |
 | `offset` | `array` | 偏移量：[X,Y,Z]，数组元素类型：(number)，默认值[0.000000, 0.000000, 0.000000] |
 | `rotation` | `array` | 旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值[0.000000, 0.000000, 0.000000] |
-| `defaultColor` | `Color` | 支持四种格式，[取值示例](/docs/tutorials/color) 默认颜色：[0.000000, 0.000000, 1.000000, 1.000000] RGBA |
+| `defaultColor` | [`Color`](/docs/api/types#color) | 支持四种格式，[取值示例](/docs/tutorials/color) 默认颜色：[0.000000, 0.000000, 1.000000, 1.000000] RGBA |
 | `polygonColorFieldName` | `String` | 当type==Polygon时此属性可选，多边形颜色字段 |
 | `polygonHeightFieldName` | `String` | 当type==Polygon时此属性可选，多边形高度字段 |
 | `polygonGroundHeightFieldName` | `String` | 当type==Polygon时此属性可选，底面高度字段 |
@@ -516,9 +516,9 @@ await fdapi.shapeFileLayer.unHighlightFeatures(data);
 | `pointImage` | `String` | 当type==Point时此属性可选，图片路径 |
 | `pointContentRange` | `number` | 当type==Point时此属性可选，文本可见距离，单位米 |
 | `pointRange` | `array` | 当type==Point时此属性可选，可见距离（米）点坐标：[X,Y] |
-| `pointFontColor` | `Color` | 当type==Point时此属性可选，字体颜色 ，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `pointFontOutlineColor` | `Color` | 当type==Point时此属性可选，字体轮廓颜色 ，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `pointBackgroundColor` | `Color` | 当type==Point时此属性可选，字体背景颜色 ，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `pointFontColor` | [`Color`](/docs/api/types#color) | 当type==Point时此属性可选，字体颜色 ，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `pointFontOutlineColor` | [`Color`](/docs/api/types#color) | 当type==Point时此属性可选，字体轮廓颜色 ，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `pointBackgroundColor` | [`Color`](/docs/api/types#color) | 当type==Point时此属性可选，字体背景颜色 ，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `pointShowLine` | `boolean` | 当type==Point时此属性可选，是否显示线 默认false |
 | `pointOcclusionCull` | `boolean` | 当type==Point时此属性可选，是否参与遮挡 默认true |
 

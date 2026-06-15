@@ -32,12 +32,12 @@ description: "军事态势标绘对象，提供绘制作战态势图标的相关
 | `id` | `string` | Plot对象唯一标识符ID |
 | `groupId` | `string` | 可选，Group分组 |
 | `userData` | `string` | 可选，用户自定义数据 |
-| `style` | `PlotStyle` | (`PlotStyle`) 态势标绘的图形类型，取值范围：[0~16]，详情参考 `PlotStyle` |
+| `style` | [`PlotStyle`](/docs/api/types#plotstyle) | (`PlotStyle`) 态势标绘的图形类型，取值范围：[0~16]，详情参考 `PlotStyle` |
 | `range` | `array` | 可视范围: [近裁距离, 远裁距离]，取值范围: [任意负值, 任意正值] |
 | `coordinates` | `array` | 标绘区域包含锚点对应的坐标点数组，[取值示例](/docs/tutorials/coordinates) |
 | `coordinateType` | `number` | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
-| `lineColor` | `Color` | 边框线的颜色，默认值：白色，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `fillColor` | `Color` | 填充区域颜色，默认值：红色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `lineColor` | [`Color`](/docs/api/types#color) | 边框线的颜色，默认值：白色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fillColor` | [`Color`](/docs/api/types#color) | 填充区域颜色，默认值：红色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `thickness` | `number` | 线宽，默认值：3px，单位：像素，注意：仅部分样式下生效 |
 | `onTerrain` | `boolean` | 可选，绘制后是否贴地，默认值：true |
 | `depthTest` | `boolean` | 可选，是否做深度检测，默认值：true，true会被遮挡，false不会被遮挡 |
@@ -705,11 +705,11 @@ fdapi.plot.showAll();
 | `id` | `string` | Plot对象唯一标识符ID |
 | `groupId` | `string` | 可选，Group分组 |
 | `userData` | `string` | 可选，用户自定义数据 |
-| `style` | `PlotStyle` | (`PlotStyle`) 态势标绘的图形类型，取值范围：[0~16]，详情参考 `PlotStyle` |
+| `style` | [`PlotStyle`](/docs/api/types#plotstyle) | (`PlotStyle`) 态势标绘的图形类型，取值范围：[0~16]，详情参考 `PlotStyle` |
 | `range` | `array` | 可视范围: [近裁距离, 远裁距离]，取值范围: [任意负值, 任意正值] |
 | `coordinateType` | `number` | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
-| `lineColor` | `Color` | 边框线的颜色，默认值：白色，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `fillColor` | `Color` | 填充区域颜色，默认值：红色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `lineColor` | [`Color`](/docs/api/types#color) | 边框线的颜色，默认值：白色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fillColor` | [`Color`](/docs/api/types#color) | 填充区域颜色，默认值：红色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `thickness` | `number` | 线宽，默认值：3px，单位：像素，注意：仅部分样式下生效 |
 | `onTerrain` | `boolean` | 可选，绘制后是否贴地，默认值：true |
 | `depthTest` | `boolean` | 可选，是否做深度检测，默认值：true，true会被遮挡，false不会被遮挡 |

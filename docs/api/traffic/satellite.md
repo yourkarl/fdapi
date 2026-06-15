@@ -43,7 +43,7 @@ new Satellite()
 | `assetPath` | `string` | 蓝图Actor在UE工程的资源引用目录（相对路径），注意：模型必须是蓝图Actor类，即在使用UE打包pak文件时此自定义对象在UE工程内的相对路径 |
 | `coordinate` | `array` | 卫星的坐标位置 |
 | `pointSize` | `number` | 卫星像素点的像素尺寸，单位：像素 |
-| `color` | `Color` | 卫星像素点的显示颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | 卫星像素点的显示颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `imagePath` | `number` | 可选，卫星缩略图的文件路径，注意：参数配置的各缩略图的分辨率大小必须相同，[资源引入说明](/docs/tutorials/resources) |
 | `imageSize` | `array` | 可选，卫星的缩略图尺寸，宽高取值：[width, height]，默认使用图片尺寸 |
 | `modelRotation` | `array` | 可选，卫星的旋转姿态，世界坐标系旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |
@@ -253,7 +253,7 @@ let timer = setInterval(function () {
 | `startId` | `string` | 卫星连接线起始点绑定的卫星ID |
 | `endId` | `string` | 卫星连接线结束点绑定的卫星ID |
 | `thickness` | `number` | 卫星连接线的线宽，单位：米，默认值：5 |
-| `color` | `Color` | 卫星连接线的颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | 卫星连接线的颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 
 > **`materials` 对象属性：**
 
@@ -742,7 +742,7 @@ await fdapi.coastline.updateEnd();
 | `startId` | `string` | 卫星连接线起始点绑定的卫星ID |
 | `endId` | `string` | 卫星连接线结束点绑定的卫星ID |
 | `thickness` | `number` | 卫星连接线的线宽，单位：米，默认值：5 |
-| `color` | `Color` | 卫星连接线的颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | 卫星连接线的颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 
 > **`materials` 对象属性：**
 

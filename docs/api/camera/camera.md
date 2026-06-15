@@ -79,7 +79,7 @@ fdapi.camera.exitWorld();
 | `orthoWidth` | `number` | 导出正交投影图片的景深长度，单位：米 |
 | `location` | `array` | 相机位置：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
 | `rotation` | `array` | 相机朝向欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0]，默认值：[0,90,0] |
-| `backGroundColor` | `Color` | 导出正交投影图片的背景颜色，默认值：黑色[0, 0, 0, 1]，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `backGroundColor` | [`Color`](/docs/api/types#color) | 导出正交投影图片的背景颜色，默认值：黑色[0, 0, 0, 1]，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例：导出正交投影图片：ExportOrthoImage

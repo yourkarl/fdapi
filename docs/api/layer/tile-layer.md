@@ -443,7 +443,7 @@ await fdapi.tileLayer.enableImageLayerDecal(data);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `ids` | `number \| array` | TileLayer的ID或者ID数组 |
-| `color` | `Color` | 颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | 颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例：启用X光效果：EnableXRay
@@ -874,7 +874,7 @@ await fdapi.tileLayer.highlightActors(data);
 |------|------|------|
 | `id` | `string` | TileLayer的ID |
 | `objectIds` | `array` | TileLayer里的Actor的ObjectID（单个或者数组） |
-| `color` | `Color` | Actor的高亮颜色，默认值:Color.Blue，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | Actor的高亮颜色，默认值:Color.Blue，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `bWireframe` | `boolean` | 高亮时是否使用线框模式，默认值：true，设置为false则是填充模式 |
 
 > 示例代码如下：
@@ -893,7 +893,7 @@ await fdapi.tileLayer.highlightActorsWithColor(data);
 |------|------|------|
 | `id` | `string` | TileLayer的ID |
 | `objectId` | `string` | Actor的ID |
-| `color` | `Color` | Actor的高亮颜色，默认值:Color.Blue，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | Actor的高亮颜色，默认值:Color.Blue，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `bWireframe` | `boolean` | 高亮时是否使用线框模式，默认值：true，设置为false则是填充模式 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
@@ -923,7 +923,7 @@ await fdapi.tileLayer.highlightActorWithColor(id, objectId, color, bWireframe);
 | `values` | `array` | 点云图层包含的字段名称对应的取值数组，支持高亮多个匹配到的值 |
 | `glow` | `boolean` | 高亮时是否闪烁，默认值：true |
 | `bCustomColor` | `boolean` | 是否开启自定义颜色，默认值：false |
-| `color` | `Color` | 自定义颜色值，仅当bCustomColor开启后自定义颜色生效，默认值:Color.White，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | 自定义颜色值，仅当bCustomColor开启后自定义颜色生效，默认值:Color.White，支持四种格式，[取值示例](/docs/tutorials/color) |
 
 > 示例：高亮点云对应的特征值点(仅对点云模型生效)：HighlightPoints
 
@@ -1109,9 +1109,9 @@ fdapi.tileLayer.setPointCloudSize('pcs', 1);
 | `id` | `string` | 点云图层的Id |
 | `collision` | `boolean` | 是否开启碰撞 |
 | `renderer` | `object` | 必选，渲染器配置对象参数如下： |
-| `renderer.rendererType` | `RendererType` | (`RendererType`) 渲染器类型，包含三种：简单渲染器、唯一值渲染器、分类渲染器 |
+| `renderer.rendererType` | [`RendererType`](/docs/api/types#renderertype) | (`RendererType`) 渲染器类型，包含三种：简单渲染器、唯一值渲染器、分类渲染器 |
 | `renderer.materialType` | `number` | 渲染材质类型，取值：[0,1,2]，分别对应三种：X光、Mask不透明、半透明 |
-| `renderer.type` | `VisualType` | (`VisualType`) 控制显示的可视化类型枚举 |
+| `renderer.type` | [`VisualType`](/docs/api/types#visualtype) | (`VisualType`) 控制显示的可视化类型枚举 |
 | `renderer.renderBox` | `number` | 是否开启盒子模式渲染，取值：[0,1]，默认值：0 |
 | `renderer.boxSize` | `array` | 盒子模式下体块的尺寸，即长宽高[X,Y,Z]，单位：米 |
 | `renderer.renderBoxWireframe` | `number` | 盒子模式下是否显示线框，取值：[0,1,2]，0不显示 1显示 2仅显示线框（隐藏面） |
@@ -1123,7 +1123,7 @@ fdapi.tileLayer.setPointCloudSize('pcs', 1);
 | `renderer.splitFactor` | `number` | 点云裂分因子，值越大绘制精度越低，值越小绘制精度则越高（会更消耗显卡资源），取值范围：[0,任意正数] |
 | `renderer.autoScaleDepth` | `number` | 盒子模式下，盒子尺寸自动缩放的相机临界深度，取值范围：[0,任意正数] |
 | `renderer.field` | `string` | 点云图层包含的属性字段名称 |
-| `renderer.fieldType` | `FieldType` | (`FieldType`) 点云图层包含的属性字段类型，枚举支持数值类型和字符串类型 |
+| `renderer.fieldType` | [`FieldType`](/docs/api/types#fieldtype) | (`FieldType`) 点云图层包含的属性字段类型，枚举支持数值类型和字符串类型 |
 | `renderer.gradient` | `boolean` | 颜色是否差值渐变 |
 | `renderer.defaultSymbol` | `object` | 必选，默认符号化配置参数如下： |
 | `renderer.symbolType` | `number` | 符号化类型，0 simple-marker圆形点填充 1 simple-line线填充(注意：目前仅支持1px的线宽) 2 simple-fill面填充 3 polygon3d填充 |
@@ -1134,7 +1134,7 @@ fdapi.tileLayer.setPointCloudSize('pcs', 1);
 | `renderer.uniqueValueInfos` | `array` | 可选，唯一值渲染器配置数组，对象结构如下： |
 | `renderer.value` | `any` | field字段对应值 |
 | `renderer.symbol` | `object` | 各唯一值对应的符号化配置对象，结构如下： |
-| `renderer.color` | `Color` | 可选，三选一，唯一值对应的颜色 |
+| `renderer.color` | [`Color`](/docs/api/types#color) | 可选，三选一，唯一值对应的颜色 |
 | `renderer.size` | `number` | 可选，三选一，唯一值对应的尺寸 |
 | `renderer.height` | `number` | 可选，三选一，唯一值对应的高度 |
 
@@ -1249,7 +1249,7 @@ await fdapi.tileLayer.setScale(id, newVal);
 |------|------|------|
 | `tileLayerIds` | `string \| array` | TileLayer的ID或ID数组 |
 | `style` | `number` | 样式， 0：默认；1：X光；2：纯色；3：水晶体；4：暗黑；5：科幻；6：扩散 |
-| `color` | `Color` | 颜色，默认值:Color.White，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | 颜色，默认值:Color.White，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `saturation` | `number` | 饱和度，仅在默认样式0下生效，取值范围：[0~2]，默认值：1.0 |
 | `brightness` | `number` | 亮度 ，仅在默认样式0下生效，取值范围：[0.1~10]，默认值：1.0 |
 | `contrast` | `number` | 对比度，仅在默认样式0下生效，取值范围：[0.2~5]，默认值：1.0 |
@@ -1292,7 +1292,7 @@ fdapi.tileLayer.setViewHeightRange(villaId, 1, 100);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | TileLayer唯一标识符 |
-| `vp` | `Viewport` | 视口掩码（Viewport位运算） |
+| `vp` | [`Viewport`](/docs/api/types#viewport) | 视口掩码（Viewport位运算） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例：设置图层在多视口下可见性：SetViewportVisible

@@ -89,18 +89,18 @@ let params = res.data[0].params;
 | `id` | `string` | 字符串类型的ID |
 | `groupId` | `string` | 可选，Group分组 |
 | `userData` | `string` | 可选，用户自定义数据 |
-| `color` | `Color` | 颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | 颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `coordinates` | `array` | 多边形坐标数组，[取值示例](/docs/tutorials/coordinates) |
 | `coordinateType` | `number` | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
 | `arcType` | `number` | 球面地形下绘制多边形贴地弧线的类型，0：劣弧 1：优弧，默认值：0 |
 | `range` | `array` | 可视范围: [近裁距离, 远裁距离]，取值范围: [任意负值, 任意正值] |
 | `viewHeightRange` | `array` | 可见高度范围：[最小可见高度, 远最大可见高度]，默认值: [-1000000000, 1000000000] |
 | `priority` | `number` | 设置Polygon显示的优先级，值越大越靠上，取值范围：[-1000,1000] |
-| `frameColor` | `Color` | 边框颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `frameColor` | [`Color`](/docs/api/types#color) | 边框颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `frameThickness` | `number` | 边框厚度，单位：米。（当frameThickness设置为0的时候，不创建轮廓） |
 | `depthTest` | `boolean` | 是否做深度检测，默认为true，true会被遮挡，false不会被遮挡 |
 | `intensity` | `number` | 亮度，取值范围：[0~1000]，注：目前仅单色模式下生效[style:PolygonStyle.SingleColor] |
-| `style` | `PolygonStyle` | (`PolygonStyle`) 多边形样式，单色/圆点/体积/渐变/波纹/贴地等，取值范围：[0~10]，详情参考 `PolygonStyle`，注意：如果设置贴地模式，有环的polygon对象内环方向需要与外环方向相反，否则贴地时内环会不显示 |
+| `style` | [`PolygonStyle`](/docs/api/types#polygonstyle) | (`PolygonStyle`) 多边形样式，单色/圆点/体积/渐变/波纹/贴地等，取值范围：[0~10]，详情参考 `PolygonStyle`，注意：如果设置贴地模式，有环的polygon对象内环方向需要与外环方向相反，否则贴地时内环会不显示 |
 | `gradualWidth` | `number` | 多边形填充的透明度渐变的间隔宽度，单位：米，默认值：10，注意：此参数仅当style样式设置为AlphaGradualBorder时生效 |
 | `outerAlpha` | `number` | 多边形填充的透明度渐变的起始值，取值范围：[0~1]，默认值：0.3，注意：此参数仅当style样式设置为AlphaGradualBorder时生效 |
 | `innerAlpha` | `number` | 多边形填充的透明度渐变的结束值，取值范围：[0~1]，默认值：1，注意：此参数仅当style样式设置为AlphaGradualBorder时生效 |
@@ -306,7 +306,7 @@ fdapi.polygon.highlight(ids);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | Polygon的ID |
-| `newVal` | `Color` | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例代码如下：

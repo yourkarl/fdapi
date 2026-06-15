@@ -43,9 +43,9 @@ TrafficSimulation类，提供城市级交通仿真对象相关的操作，支持
 | `heatmap.blur` | `number` | 热力图模糊因子，默认值：0.85，注意：模糊系数越高，渐变越平滑，取值范围：[0~1.0] |
 | `heatmap.heatRadiusScale` | `number` | 热力点影像半径，单位：米，取值范围：[任意数值] |
 | `heatmap.gradient` | `boolean` | 是否渐变 |
-| `heatmap.invalidColor` | `Color` | 无效像素点的默认颜色，默认白色 |
+| `heatmap.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
 | `heatmap.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `heatmap.color` | `Color` | 值对应的调色板颜色 |
+| `heatmap.color` | [`Color`](/docs/api/types#color) | 值对应的调色板颜色 |
 | `heatmap.value` | `number` | 值 |
 | `models` | `array` | 交通仿真包含的车辆模型类型数组，注意：只需要在add()方法执行时配置，每一个数组元素对象包含属性如下： |
 | `models.type` | `number` | 车辆类型，注意这个数值会写入更新方法使用的.dat文件内。 |
@@ -467,9 +467,9 @@ fdapi.trafficSimulation.unHighlight("traffic");
 | `heatmap.blur` | `number` | 热力图模糊因子，默认值：0.85，注意：模糊系数越高，渐变越平滑，取值范围：[0~1.0] |
 | `heatmap.heatRadiusScale` | `number` | 热力点影像半径，单位：米，取值范围：[任意数值] |
 | `heatmap.gradient` | `boolean` | 是否渐变 |
-| `heatmap.invalidColor` | `Color` | 无效像素点的默认颜色，默认白色 |
+| `heatmap.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
 | `heatmap.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `heatmap.color` | `Color` | 值对应的调色板颜色 |
+| `heatmap.color` | [`Color`](/docs/api/types#color) | 值对应的调色板颜色 |
 | `heatmap.value` | `number` | 值 |
 
 ```js

@@ -102,7 +102,7 @@ tif文件结构描述：
 | `particleMaxNumber` | `number` | 粒子最大数量限制 |
 | `speedPower` | `number` | 粒子速度的幂次方，小于1则粒子速度变小，大于1则粒子速度变大。默认值：1，注意：场内粒子的速度差距比较大时才需要设置此参数 |
 | `colorStops` | `array` | 颜色插值对象数组，支持按速度显示对应颜色，每一个对象都有以下属性： |
-| `colorStops.color` | `Color` | 速度值对应的图例颜色 |
+| `colorStops.color` | [`Color`](/docs/api/types#color) | 速度值对应的图例颜色 |
 | `colorStops.value` | `number` | 速度值 |
 | `opacityStops` | `array` | 不透明度插值对象数组，支持按速度显示对应的不透明度，每一个对象都有以下属性： |
 | `opacityStops.opacity` | `number` | 速度值对应的不透明度，取值范围：[0~1] |
@@ -321,7 +321,7 @@ fdapi.vectorField.hide('typhoon');
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | VectorField对象ID |
-| `vp` | `Viewport` | 视口掩码（Viewport位运算） |
+| `vp` | [`Viewport`](/docs/api/types#viewport) | 视口掩码（Viewport位运算） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例：SetViewportVisible

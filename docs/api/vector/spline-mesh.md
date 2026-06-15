@@ -40,7 +40,7 @@ SplineMesh类，提供绘制路径模型对象相关的操作
 | `userData` | `string` | 可选，用户自定义数据 |
 | `coordinateType` | `number` | 可选，坐标系类型，取值：0为Projection类型，1为WGS84类型，默认值：0 |
 | `coordinates` | `array` | 必选，路径模型的轨迹坐标数组，取值示例：[取值示例](/docs/tutorials/coordinates) |
-| `style` | `SplineMeshStyle` | (`SplineMeshStyle`) 可选(二选一)，路径模型内置样式枚举，取值详情参考 `SplineMeshStyle` |
+| `style` | [`SplineMeshStyle`](/docs/api/types#splinemeshstyle) | (`SplineMeshStyle`) 可选(二选一)，路径模型内置样式枚举，取值详情参考 `SplineMeshStyle` |
 | `meshPath` | `string` | 可选(二选一)，路径模型自定义样式的打包路径，注意：若传入此路径会自动覆盖style样式 |
 | `range` | `array` | 可选，可视范围: [近裁距离, 远裁距离]，取值范围: [任意负值, 任意正值] |
 | `scale` | `number` | 可选，路径模型的整体缩放，默认值：1 |
@@ -439,7 +439,7 @@ fdapi.splineMesh.showByGroupId('group_sm');
 | `range` | `array` | 可视范围: [近裁距离, 远裁距离]，取值范围: [任意负值, 任意正值] |
 | `forwardAxis` | `number` | 路径模型的轴朝向，取值范围：[0,1,2] 分别对应X、Y、Z三个轴 |
 | `scale` | `number` | 路径模型轴朝向的缩放值，默认值：1 |
-| `style` | `SplineMeshStyle` | (`SplineMeshStyle`) 路径模型样式枚举，取值详情参考 `SplineMeshStyle` |
+| `style` | [`SplineMeshStyle`](/docs/api/types#splinemeshstyle) | (`SplineMeshStyle`) 路径模型样式枚举，取值详情参考 `SplineMeshStyle` |
 
 > 示例：Update
 

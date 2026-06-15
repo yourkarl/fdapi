@@ -36,22 +36,22 @@ description: "二维水动力模型对象，基于真实数据驱动生成水动
 | `userData` | `string` | 可选，用户自定义数据 |
 | `offset` | `array` | 可选，二维水动力模型的整体偏移，默认值：[0, 0, 0] |
 | `collision` | `boolean` | 是否开启模型碰撞，默认值：false，注意：开启后会影响加载效率 |
-| `displayMode` | `HydroDynamic2DStyle` | (`HydroDynamic2DStyle`) 二维水动力模型的显示样式，取值范围：[0,1,2]，0真实水样式（默认值），1热力图样式,2流场样式 |
-| `waterMode` | `WaterMode` | (`WaterMode`) 真实水样式的水面材质类型，取值范围：[0,1,2]，默认值：0，注意：水面材质支持和热力图样式叠加 |
-| `waterColor` | `Color` | 可选，水面颜色和透明度，注意：仅在displayMode=0时生效，支持四种格式，[取值示例](/docs/tutorials/color) ，注意：此参数仅在displayMode设置为真实水样式时生效，如果不传则使用waterMode自带水材质颜色 |
+| `displayMode` | [`HydroDynamic2DStyle`](/docs/api/types#hydrodynamic2dstyle) | (`HydroDynamic2DStyle`) 二维水动力模型的显示样式，取值范围：[0,1,2]，0真实水样式（默认值），1热力图样式,2流场样式 |
+| `waterMode` | [`WaterMode`](/docs/api/types#watermode) | (`WaterMode`) 真实水样式的水面材质类型，取值范围：[0,1,2]，默认值：0，注意：水面材质支持和热力图样式叠加 |
+| `waterColor` | [`Color`](/docs/api/types#color) | 可选，水面颜色和透明度，注意：仅在displayMode=0时生效，支持四种格式，[取值示例](/docs/tutorials/color) ，注意：此参数仅在displayMode设置为真实水样式时生效，如果不传则使用waterMode自带水材质颜色 |
 | `waveBrightness` | `number` | 可选，水波纹的显示亮度，取值范围：[0~1000]，值越大亮度越高水波纹越明显，默认值：1 |
 | `depthRange` | `array` | 可选，二维水动力模型水深对应的数值区间，如果不传则系统会自动计算并使用dat数据的水深范围 |
 | `alphaMode` | `number` | 透明模式，取值：[0,1]，0 : 使用colors调色板的不透明度值 1 : 使用dat数据包含的水深字段自动控制不透明度，默认值：1 |
 | `alphaGradientDepthRange` | `array` | 边缘羽化的水深范围，默认值：[0,2]，单位：米，对应的alpha区间为[0,1]，注意：仅在alphaMode=1时生效 |
-| `arrowColor` | `Color` | 箭头颜色和透明度，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `arrowColor` | [`Color`](/docs/api/types#color) | 箭头颜色和透明度，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `arrowTiling` | `number` | 箭头平铺系数 |
 | `arrowDisplayMode` | `number` | 箭头显示模式，取值范围：[0,1]，0默认样式（受arrowColor参数影响），1热力样式（受arrowColors调色板参数影响），默认值：0 |
 | `arrowAlphaMode` | `number` | 箭头透明度模式，仅在arrowDisplayMode=0时生效，取值：[0,1]，0使用arrowColor的透明度，1使用调色板的透明度，默认值：0 |
 | `arrowColors` | `object` | 箭头颜色调色板，仅在arrowDisplayMode=1时生效，河道箭头热力样式下的调色板配色对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
 | `arrowColors.gradient` | `boolean` | 是否渐变 |
-| `arrowColors.invalidColor` | `Color` | 无效像素点的默认颜色，默认白色 |
+| `arrowColors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
 | `arrowColors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `arrowColors.color` | `Color` | 流速UV值对应的调色板颜色，注意arrowDisplayMode=1时，此颜色值的透明度生效 |
+| `arrowColors.color` | [`Color`](/docs/api/types#color) | 流速UV值对应的调色板颜色，注意arrowDisplayMode=1时，此颜色值的透明度生效 |
 | `arrowColors.value` | `number` | 流速UV值 |
 | `alphaComposite` | `boolean` | 是否使用混合透明度，默认：true |
 | `rippleDensity` | `number` | 可选，水波纹辐射强度，默认值：1 |
@@ -70,9 +70,9 @@ description: "二维水动力模型对象，基于真实数据驱动生成水动
 | `dynamicArrow.sizeScale` | `number` | 尺寸缩放因子 |
 | `colors` | `object` | 二维水动力模型自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
 | `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | `Color` | 无效像素点的默认颜色，默认白色 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
 | `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | `Color` | 水深值对应的调色板颜色，注意alphaMode=0时，此颜色值的透明度生效 |
+| `colors.color` | [`Color`](/docs/api/types#color) | 水深值对应的调色板颜色，注意alphaMode=0时，此颜色值的透明度生效 |
 | `colors.value` | `number` | 水深值 |
 
 > 示例代码如下：
@@ -107,22 +107,22 @@ await fdapi.hydrodynamic2d.addByShp(data);
 | `flowField` | `string` | 可选，二维水动力模型tif数据文件路径（流速流向文件tif），取值示例："C:/tifFile/xxx2.tif"，注意：waterDepth、flowField和dem的三个tif文件分辨率必须保持一致 |
 | `dem` | `string` | 可选，二维水动力模型tif数据文件路径（河道DEM文件tif），取值示例："C:/tifFile/xxx3.tif"，注意：waterDepth、flowField和dem的三个tif文件分辨率必须保持一致 |
 | `collision` | `boolean` | 是否开启模型碰撞，默认：false，注意：开启后会影响加载效率 |
-| `displayMode` | `HydroDynamic2DStyle` | (`HydroDynamic2DStyle`) 二维水动力模型的显示样式，取值范围：[0,1,2]，0真实水样式（默认值），1热力图样式，2流场样式 |
-| `waterMode` | `WaterMode` | (`WaterMode`) 真实水样式的水面材质类型，取值范围：[0,1,2]，默认值：0，注意：水面材质支持和热力图样式叠加 |
-| `waterColor` | `Color` | 可选，水面颜色和透明度，注意：仅在displayMode=0时生效，支持四种格式，[取值示例](/docs/tutorials/color) ，注意：此参数仅在displayMode设置为真实水样式时生效，如果不传则使用waterMode自带水材质颜色 |
+| `displayMode` | [`HydroDynamic2DStyle`](/docs/api/types#hydrodynamic2dstyle) | (`HydroDynamic2DStyle`) 二维水动力模型的显示样式，取值范围：[0,1,2]，0真实水样式（默认值），1热力图样式，2流场样式 |
+| `waterMode` | [`WaterMode`](/docs/api/types#watermode) | (`WaterMode`) 真实水样式的水面材质类型，取值范围：[0,1,2]，默认值：0，注意：水面材质支持和热力图样式叠加 |
+| `waterColor` | [`Color`](/docs/api/types#color) | 可选，水面颜色和透明度，注意：仅在displayMode=0时生效，支持四种格式，[取值示例](/docs/tutorials/color) ，注意：此参数仅在displayMode设置为真实水样式时生效，如果不传则使用waterMode自带水材质颜色 |
 | `waveBrightness` | `number` | 可选，水波纹的显示亮度，取值范围：[0~1000]，值越大亮度越高水波纹越明显，默认值：1 |
 | `depthRange` | `array` | 可选，二维水动力模型水深对应的数值区间，如果不传则系统会自动计算并使用tif数据的水深范围 |
 | `alphaGradientDepthRange` | `array` | 边缘羽化的水深范围，默认值：[0,2]，单位：米，对应的alpha区间为[0,1]，注意：仅在alphaMode=1时生效 |
 | `alphaMode` | `number` | 透明模式，取值：[0,1]，0 : 使用colors调色板的不透明度值 1 : 使用tif数据包含的水深字段自动控制不透明度，默认值：1 |
-| `arrowColor` | `Color` | 箭头颜色和透明度，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `arrowColor` | [`Color`](/docs/api/types#color) | 箭头颜色和透明度，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `arrowTiling` | `number` | 箭头平铺系数 |
 | `arrowDisplayMode` | `number` | 箭头显示模式，取值范围：[0,1]，0默认样式（受arrowColor参数影响），1热力样式（受arrowColors调色板参数影响），默认值：0 |
 | `arrowAlphaMode` | `number` | 箭头透明度模式，仅在arrowDisplayMode=0时生效，取值：[0,1]，0使用arrowColor的透明度，1使用调色板的透明度，默认值：0 |
 | `arrowColors` | `object` | 箭头颜色调色板，仅在arrowDisplayMode=1时生效，河道箭头热力样式下的调色板配色对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
 | `arrowColors.gradient` | `boolean` | 是否渐变 |
-| `arrowColors.invalidColor` | `Color` | 无效像素点的默认颜色，默认白色 |
+| `arrowColors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
 | `arrowColors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `arrowColors.color` | `Color` | 流速UV值对应的调色板颜色，注意arrowDisplayMode=1时，此颜色值的透明度生效 |
+| `arrowColors.color` | [`Color`](/docs/api/types#color) | 流速UV值对应的调色板颜色，注意arrowDisplayMode=1时，此颜色值的透明度生效 |
 | `arrowColors.value` | `number` | 流速UV值 |
 | `rippleDensity` | `number` | 可选，水波纹辐射强度，默认值：1 |
 | `rippleTiling` | `number` | 可选，水波纹辐射平铺系数，默认值：1 |
@@ -132,9 +132,9 @@ await fdapi.hydrodynamic2d.addByShp(data);
 | `crestWaterSpeedRange` | `array` | 可选，水浪漫延效果产生的流速区间，默认值：[0.2, 0.6]，注意：和深度区间表现为叠加的效果，区间内的水流速度值越大浪头越来越明显，如果流速大于区间最大值则和最大值的浪头效果一致。 |
 | `colors` | `object` | 二维水动力模型自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
 | `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | `Color` | 无效像素点的默认颜色，默认白色 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
 | `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | `Color` | 水深值对应的调色板颜色，注意alphaMode=0时，此颜色值的透明度生效 |
+| `colors.color` | [`Color`](/docs/api/types#color) | 水深值对应的调色板颜色，注意alphaMode=0时，此颜色值的透明度生效 |
 | `colors.value` | `number` | 水深值 |
 
 ```js

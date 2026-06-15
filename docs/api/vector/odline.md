@@ -50,7 +50,7 @@ new ODLine()
 | `id` | `string` | 字符串类型的ID |
 | `groupId` | `string` | 可选，Group分组 |
 | `userData` | `string` | 可选，用户自定义数据 |
-| `color` | `Color` | 颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `color` | [`Color`](/docs/api/types#color) | 颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `coordinates` | `array` | 坐标点数组，只有2个元素，第1个元素是起点坐标，第2个元素是终点坐标 |
 | `coordinateType` | `number` | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
 | `flowRate` | `number` | 流速，取值范围：[0~1.0]，默认值：0.5 |
@@ -315,7 +315,7 @@ await fdapi.odline.setBrightness(id, newVal);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | 字符串类型的ID |
-| `newVal` | `Color` | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例代码如下：

@@ -40,11 +40,11 @@ WaterFlowField流场类对象，用于精确控制水流单个网格的方向速
 | `alphas` | `array` | 流场内运动的采样点渲染区域不透明度数组，一维数组，数组元素：数值，范围：[0~1]，其中alphas数组必须和points和uvs保持对应关系且长度一致 |
 | `validUVRange` | `array` | 流速有效范围，流速小于min的区域会显示蓝色，min到max之间的区域会从蓝色过渡到红色显示热力图的颜色变化效果，流速大于max的显示红色，[min,max]，数组元素min/max的取值范围：[0~任意正数]，默认值：[0,max]，数组元素单位：米/秒 |
 | `uvRangeMapping` | `array` | 流速重映射范围，为了突出流动效果，可以对流速有效范围进行一个映射，把ValidUVRange的min和max映射到一个新的min和max，方便看出流向，[mapMin,mapMax]，即validUVRange范围的对应数值映射的新范围，用来增加流速从而调整渲染效果。 |
-| `displayMode` | `WaterFlowFieldStyle` | 流场的材质样式，参考 `WaterFlowFieldStyle`，0为热力值材质，1为水流材质，2为光流粒子材质，默认取值：0 |
+| `displayMode` | [`WaterFlowFieldStyle`](/docs/api/types#waterflowfieldstyle) | 流场的材质样式，参考 `WaterFlowFieldStyle`，0为热力值材质，1为水流材质，2为光流粒子材质，默认取值：0 |
 | `heatValues` | `array` | 可选，热值数组，一维数组，数组元素为数值，仅displayMode参数为0时生效，heatValues数组长度必须和points/uvs保持对应关系且长度一致 |
 | `colorLookUpArray` | `array` | 可选，热值显示对应的颜色数组，二维数组，数组元素为[r,g,b,a]颜色数组，rgba取值范围：[0~1]，即各颜色值除于255，仅displayMode参数为0时生效，数组长度大于2 |
 | `heatValueRange` | `array` | 可选，热值取值范围数组，仅displayMode参数为0时生效，取值示例：[min,max]，数组元素min/max的取值范围：[0~1000]，默认值：[0,1] |
-| `waterColor` | `Color` | 水流材质的颜色，仅displayMode=1时生效，默认值：[0.0, 0.325, 0.223, 1.00]，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `waterColor` | [`Color`](/docs/api/types#color) | 水流材质的颜色，仅displayMode=1时生效，默认值：[0.0, 0.325, 0.223, 1.00]，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `particleScale` | `number` | 水流粒子缩放大小，取值范围：[1~30]，默认值：1 |
 | `traceFactor` | `number` | 光流轨迹保持因子，仅在displayMode=2生效，取值范围：[0~100] 值越大粒子轨迹越长，注意：水流场的采样点越稀疏，因子值就要设置越大 |
 
@@ -221,7 +221,7 @@ fdapi.waterFlowField.hide('flowField1');
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `id` | `string` | WaterFlowField对象ID |
-| `vp` | `Viewport` | 视口掩码（Viewport位运算） |
+| `vp` | [`Viewport`](/docs/api/types#viewport) | 视口掩码（Viewport位运算） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > 示例：SetViewportVisible
