@@ -37,25 +37,25 @@ HighlightArea 根据多边形坐标在三维场景中对指定区域内的模型
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 添加一个或多个HighlightArea对象 | 向场景批量添加对象 |
-| `clear` | 删除场景中所有的HighlightArea | 清空全部对象，重置图层 |
-| `delete` | 删除一个或多个HighlightArea对象 | 按 ID 移除指定对象 |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `get` | 根据ID获取HighlightArea的详细信息 | 查询对象信息，用于业务联动 |
-| `hide` | 隐藏HighlightArea | 按业务条件隐藏对象 |
-| `setColor` | 设置颜色 |  |
-| `setCoordinates` | 设置坐标 |  |
-| `setDepthTest` | 设置是否做深度检测 |  |
-| `setHeightRange` | 设置高度范围 |  |
-| `setIntensity` | 设置亮度 |  |
-| `show` | 显示HighlightArea | 按业务条件显示对象 |
-| `update` | 修改一个或多个HighlightArea对象 | 运行时动态更新对象属性/状态 |
-| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
-| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+| [`add`](#add) | 添加一个或多个HighlightArea对象 | 向场景批量添加对象 |
+| [`clear`](#clear) | 删除场景中所有的HighlightArea | 清空全部对象，重置图层 |
+| [`delete`](#delete) | 删除一个或多个HighlightArea对象 | 按 ID 移除指定对象 |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`get`](#get) | 根据ID获取HighlightArea的详细信息 | 查询对象信息，用于业务联动 |
+| [`hide`](#hide) | 隐藏HighlightArea | 按业务条件隐藏对象 |
+| [`setColor`](#setColor) | 设置颜色 |  |
+| [`setCoordinates`](#setCoordinates) | 设置坐标 |  |
+| [`setDepthTest`](#setDepthTest) | 设置是否做深度检测 |  |
+| [`setHeightRange`](#setHeightRange) | 设置高度范围 |  |
+| [`setIntensity`](#setIntensity) | 设置亮度 |  |
+| [`show`](#show) | 显示HighlightArea | 按业务条件显示对象 |
+| [`update`](#update) | 修改一个或多个HighlightArea对象 | 运行时动态更新对象属性/状态 |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
 
 ## 方法（Methods）
 
-### `add(data, fn)`
+### `add(data, fn)` {#add}
 
 添加一个或多个HighlightArea对象
 
@@ -106,7 +106,7 @@ fdapi.highlightArea.focus(o.id);
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 删除场景中所有的HighlightArea
 
@@ -122,7 +122,7 @@ fdapi.highlightArea.clear();
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个HighlightArea对象
 
@@ -139,7 +139,7 @@ fdapi.highlightArea.delete('1');
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -159,7 +159,7 @@ fdapi.highlightArea.focus('1', 600);
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据ID获取HighlightArea的详细信息
 
@@ -187,7 +187,7 @@ fdapi.highlightArea.get('1');
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏HighlightArea
 
@@ -204,7 +204,7 @@ fdapi.highlightArea.hide('1');
 
 ---
 
-### `setColor(id, newVal, fn)`
+### `setColor(id, newVal, fn)` {#setColor}
 
 设置颜色
 
@@ -222,7 +222,7 @@ await fdapi.highlightArea.setColor(id, newVal);
 
 ---
 
-### `setCoordinates(id, newVal, fn)`
+### `setCoordinates(id, newVal, fn)` {#setCoordinates}
 
 设置坐标
 
@@ -240,7 +240,7 @@ await fdapi.highlightArea.setCoordinates(id, newVal);
 
 ---
 
-### `setDepthTest(id, newVal, fn)`
+### `setDepthTest(id, newVal, fn)` {#setDepthTest}
 
 设置是否做深度检测
 
@@ -258,7 +258,7 @@ await fdapi.highlightArea.setDepthTest(id, newVal);
 
 ---
 
-### `setHeightRange(id, newVal, fn)`
+### `setHeightRange(id, newVal, fn)` {#setHeightRange}
 
 设置高度范围
 
@@ -276,7 +276,7 @@ await fdapi.highlightArea.setHeightRange(id, newVal);
 
 ---
 
-### `setIntensity(id, newVal, fn)`
+### `setIntensity(id, newVal, fn)` {#setIntensity}
 
 设置亮度
 
@@ -294,7 +294,7 @@ await fdapi.highlightArea.setIntensity(id, newVal);
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示HighlightArea
 
@@ -311,7 +311,7 @@ fdapi.highlightArea.show('1');
 
 ---
 
-### `update(data, fn)`
+### `update(data, fn)` {#update}
 
 修改一个或多个HighlightArea对象
 
@@ -343,7 +343,7 @@ fdapi.highlightArea.focus(o.id);
 
 ---
 
-### `updateBegin()`
+### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
 
@@ -366,7 +366,7 @@ fdapi.xxx.updateEnd(function () {
 
 ---
 
-### `updateEnd(fn)`
+### `updateEnd(fn)` {#updateEnd}
 
 用于批量多次修改对象的属性，与updateBegin配套使用
 

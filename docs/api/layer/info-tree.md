@@ -32,23 +32,23 @@ description: "管理场景图层树（目录树），提供对树上对象的定
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `callBPFunction` | 调用图层树上对象包含的多个蓝图函数， |  |
-| `deleteByGroupId` | 通过GroupId删除各类API创建的对象 |  |
-| `disableXRay` | 禁用X光 |  |
-| `enableXRay` | 启用X光 |  |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `get` | 获取图层树信息 | 查询对象信息，用于业务联动 |
-| `getBPFunction` | 根据图层树对象ID查询其包含的蓝图函数信息， |  |
-| `hide` | 隐藏图层 | 按业务条件隐藏对象 |
-| `hideByGroupId` | 通过GroupId隐藏各类API创建的对象 |  |
-| `highlightByGroupId` | 通过GroupId高亮各类API创建的对象 |  |
-| `setVisibility` | 设置图层的可见性 | 控制对象显隐 |
-| `show` | 显示图层 | 按业务条件显示对象 |
-| `showByGroupId` | 通过GroupId显示各类API创建的对象 |  |
+| [`callBPFunction`](#callBPFunction) | 调用图层树上对象包含的多个蓝图函数， |  |
+| [`deleteByGroupId`](#deleteByGroupId) | 通过GroupId删除各类API创建的对象 |  |
+| [`disableXRay`](#disableXRay) | 禁用X光 |  |
+| [`enableXRay`](#enableXRay) | 启用X光 |  |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`get`](#get) | 获取图层树信息 | 查询对象信息，用于业务联动 |
+| [`getBPFunction`](#getBPFunction) | 根据图层树对象ID查询其包含的蓝图函数信息， |  |
+| [`hide`](#hide) | 隐藏图层 | 按业务条件隐藏对象 |
+| [`hideByGroupId`](#hideByGroupId) | 通过GroupId隐藏各类API创建的对象 |  |
+| [`highlightByGroupId`](#highlightByGroupId) | 通过GroupId高亮各类API创建的对象 |  |
+| [`setVisibility`](#setVisibility) | 设置图层的可见性 | 控制对象显隐 |
+| [`show`](#show) | 显示图层 | 按业务条件显示对象 |
+| [`showByGroupId`](#showByGroupId) | 通过GroupId显示各类API创建的对象 |  |
 
 ## 方法（Methods）
 
-### `callBPFunction(data, fn)`
+### `callBPFunction(data, fn)` {#callBPFunction}
 
 调用图层树上对象包含的多个蓝图函数，注意：可以根据图层树上的对象id查询包含的所有蓝图函数 fdapi.misc.getBPFunction(id);
 
@@ -110,7 +110,7 @@ fdapi.infoTree.callBPFunction([
 
 ---
 
-### `deleteByGroupId(groupId, fn)`
+### `deleteByGroupId(groupId, fn)` {#deleteByGroupId}
 
 通过GroupId删除各类API创建的对象
 
@@ -127,7 +127,7 @@ await fdapi.infoTree.deleteByGroupId(groupId);
 
 ---
 
-### `disableXRay(ids, fn)`
+### `disableXRay(ids, fn)` {#disableXRay}
 
 禁用X光
 
@@ -144,7 +144,7 @@ await fdapi.infoTree.disableXRay(ids);
 
 ---
 
-### `enableXRay(ids, color, fn)`
+### `enableXRay(ids, color, fn)` {#enableXRay}
 
 启用X光
 
@@ -162,7 +162,7 @@ await fdapi.infoTree.enableXRay(ids, color);
 
 ---
 
-### `focus(ids, fn)`
+### `focus(ids, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -179,7 +179,7 @@ fdapi.infoTree.focus('979A4C034E29728F8A2635AD747B72A3');
 
 ---
 
-### `get(fn)`
+### `get(fn)` {#get}
 
 获取图层树信息
 
@@ -236,7 +236,7 @@ console.log(JSON.stringify(res.infotree));
 
 ---
 
-### `getBPFunction(ids, fn)`
+### `getBPFunction(ids, fn)` {#getBPFunction}
 
 根据图层树对象ID查询其包含的蓝图函数信息，注意：支持批量查询
 
@@ -253,7 +253,7 @@ fdapi.infoTree.getBPFunction('2BC267114D436EA43BF695AC98DA4E08')
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏图层
 
@@ -275,7 +275,7 @@ fdapi.infoTree.hide(['979A4C034E29728F8A2635AD747B72A3']);
 
 ---
 
-### `hideByGroupId(groupId, fn)`
+### `hideByGroupId(groupId, fn)` {#hideByGroupId}
 
 通过GroupId隐藏各类API创建的对象
 
@@ -292,7 +292,7 @@ await fdapi.infoTree.hideByGroupId(groupId);
 
 ---
 
-### `highlightByGroupId(groupId, fn)`
+### `highlightByGroupId(groupId, fn)` {#highlightByGroupId}
 
 通过GroupId高亮各类API创建的对象
 
@@ -309,7 +309,7 @@ await fdapi.infoTree.highlightByGroupId(groupId);
 
 ---
 
-### `setVisibility(data, fn)`
+### `setVisibility(data, fn)` {#setVisibility}
 
 设置图层的可见性
 
@@ -333,7 +333,7 @@ await fdapi.infoTree.setVisibility(data);
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示图层
 
@@ -355,7 +355,7 @@ fdapi.infoTree.show('979A4C034E29728F8A2635AD747B72A3');
 
 ---
 
-### `showByGroupId(groupId, fn)`
+### `showByGroupId(groupId, fn)` {#showByGroupId}
 
 通过GroupId显示各类API创建的对象
 

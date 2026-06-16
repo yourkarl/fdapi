@@ -39,31 +39,31 @@ HeatMap 效果图如下：
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `addByHeatPoints` | 根据热力点绘制热力图 |  |
-| `addByTif` | 根据tif文件加载热力图 |  |
-| `addPoints` | 为HeatMap添加热力点 |  |
-| `clear` | 删除场景中所有的HeatMap | 清空全部对象，重置图层 |
-| `delete` | 删除一个或多个HeatMap对象 | 按 ID 移除指定对象 |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `get` | 根据ID获取HeatMap的详细信息 | 查询对象信息，用于业务联动 |
-| `hide` | 隐藏HeatMap | 按业务条件隐藏对象 |
-| `highlightPixels` | 高亮通过Tif文件加载的热力图中指定的像素点， |  |
-| `load` | 预加载的热力图动画，包含多个Tif文件，加载后可以使用play()方法进行播放。 |  |
-| `pause` | 暂停播放热力图动画 | 暂停播放 |
-| `play` | 播放预加载的热力图动画 | 播放动画/导览 |
-| `removePoints` | 为HeatMap移除热力点 |  |
-| `setBBox` | 设置BoundingBox 热力点坐标的范围 |  |
-| `setRange` | 设置热力值的范围 |  |
-| `setTime` | 从第几秒开始播放 |  |
-| `show` | 显示HeatMap | 按业务条件显示对象 |
-| `unHighlightAllPixels` | 取消热力图内所有像素点高亮 |  |
-| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
-| `updateByHeatPoints` | 更新热力图 |  |
-| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+| [`addByHeatPoints`](#addByHeatPoints) | 根据热力点绘制热力图 |  |
+| [`addByTif`](#addByTif) | 根据tif文件加载热力图 |  |
+| [`addPoints`](#addPoints) | 为HeatMap添加热力点 |  |
+| [`clear`](#clear) | 删除场景中所有的HeatMap | 清空全部对象，重置图层 |
+| [`delete`](#delete) | 删除一个或多个HeatMap对象 | 按 ID 移除指定对象 |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`get`](#get) | 根据ID获取HeatMap的详细信息 | 查询对象信息，用于业务联动 |
+| [`hide`](#hide) | 隐藏HeatMap | 按业务条件隐藏对象 |
+| [`highlightPixels`](#highlightPixels) | 高亮通过Tif文件加载的热力图中指定的像素点， |  |
+| [`load`](#load) | 预加载的热力图动画，包含多个Tif文件，加载后可以使用play()方法进行播放。 |  |
+| [`pause`](#pause) | 暂停播放热力图动画 | 暂停播放 |
+| [`play`](#play) | 播放预加载的热力图动画 | 播放动画/导览 |
+| [`removePoints`](#removePoints) | 为HeatMap移除热力点 |  |
+| [`setBBox`](#setBBox) | 设置BoundingBox 热力点坐标的范围 |  |
+| [`setRange`](#setRange) | 设置热力值的范围 |  |
+| [`setTime`](#setTime) | 从第几秒开始播放 |  |
+| [`show`](#show) | 显示HeatMap | 按业务条件显示对象 |
+| [`unHighlightAllPixels`](#unHighlightAllPixels) | 取消热力图内所有像素点高亮 |  |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| [`updateByHeatPoints`](#updateByHeatPoints) | 更新热力图 |  |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
 
 ## 方法（Methods）
 
-### `addByHeatPoints(heatmap, fn)`
+### `addByHeatPoints(heatmap, fn)` {#addByHeatPoints}
 
 根据热力点绘制热力图
 
@@ -110,7 +110,7 @@ await fdapi.heatmap.addByHeatPoints(heatmap);
 
 ---
 
-### `addByTif(heatmap, fn)`
+### `addByTif(heatmap, fn)` {#addByTif}
 
 根据tif文件加载热力图
 
@@ -153,7 +153,7 @@ await fdapi.heatmap.addByTif(heatmap);
 
 ---
 
-### `addPoints(id, data, fn)`
+### `addPoints(id, data, fn)` {#addPoints}
 
 为HeatMap添加热力点
 
@@ -183,7 +183,7 @@ await fdapi.heatmap.addPoints("heatmap1", newPoints);
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 删除场景中所有的HeatMap
 
@@ -200,7 +200,7 @@ fdapi.heatmap.clear();
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个HeatMap对象
 
@@ -218,7 +218,7 @@ fdapi.heatmap.delete('heatmap1');
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -238,7 +238,7 @@ fdapi.heatmap.focus('heatmap1', 100);
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据ID获取HeatMap的详细信息
 
@@ -267,7 +267,7 @@ fdapi.heatmap.get('heatmap1');
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏HeatMap
 
@@ -284,7 +284,7 @@ fdapi.heatmap.hide('heatmap1');
 
 ---
 
-### `highlightPixels(id, pixelCoords, fn)`
+### `highlightPixels(id, pixelCoords, fn)` {#highlightPixels}
 
 高亮通过Tif文件加载的热力图中指定的像素点，注意：像素点数组的取值范围必须在Tif文件分辨率内
 
@@ -311,7 +311,7 @@ fdapi.heatmap.highlightPixels('heatmap6', pixelCoords);
 
 ---
 
-### `load(heatmap, fn)`
+### `load(heatmap, fn)` {#load}
 
 预加载的热力图动画，包含多个Tif文件，加载后可以使用play()方法进行播放。
 
@@ -357,7 +357,7 @@ await fdapi.heatmap.load(heatmap);
 
 ---
 
-### `pause(id, fn)`
+### `pause(id, fn)` {#pause}
 
 暂停播放热力图动画
 
@@ -374,7 +374,7 @@ await fdapi.heatmap.pause(id);
 
 ---
 
-### `play(id, fn)`
+### `play(id, fn)` {#play}
 
 播放预加载的热力图动画
 
@@ -391,7 +391,7 @@ await fdapi.heatmap.play(id);
 
 ---
 
-### `removePoints(id, pointIds, fn)`
+### `removePoints(id, pointIds, fn)` {#removePoints}
 
 为HeatMap移除热力点
 
@@ -409,7 +409,7 @@ await fdapi.heatmap.removePoints(id, pointIds);
 
 ---
 
-### `setBBox(id, newVal, fn)`
+### `setBBox(id, newVal, fn)` {#setBBox}
 
 设置BoundingBox 热力点坐标的范围
 
@@ -427,7 +427,7 @@ await fdapi.heatmap.setBBox(id, newVal);
 
 ---
 
-### `setRange(id, newVal, fn)`
+### `setRange(id, newVal, fn)` {#setRange}
 
 设置热力值的范围
 
@@ -445,7 +445,7 @@ await fdapi.heatmap.setRange(id, newVal);
 
 ---
 
-### `setTime(id, startTime, fn)`
+### `setTime(id, startTime, fn)` {#setTime}
 
 从第几秒开始播放
 
@@ -463,7 +463,7 @@ await fdapi.heatmap.setTime(id, startTime);
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示HeatMap
 
@@ -480,7 +480,7 @@ fdapi.heatmap.show('heatmap1');
 
 ---
 
-### `unHighlightAllPixels(id, fn)`
+### `unHighlightAllPixels(id, fn)` {#unHighlightAllPixels}
 
 取消热力图内所有像素点高亮
 
@@ -498,7 +498,7 @@ fdapi.heatmap.unHighlightAllPixels('heatmap6');
 
 ---
 
-### `updateBegin()`
+### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
 
@@ -521,7 +521,7 @@ fdapi.xxx.updateEnd(function () {
 
 ---
 
-### `updateByHeatPoints(heatmap, fn)`
+### `updateByHeatPoints(heatmap, fn)` {#updateByHeatPoints}
 
 更新热力图
 
@@ -538,7 +538,7 @@ await fdapi.heatmap.updateByHeatPoints(heatmap);
 
 ---
 
-### `updateEnd(fn)`
+### `updateEnd(fn)` {#updateEnd}
 
 用于批量多次修改对象的属性，与updateBegin配套使用
 

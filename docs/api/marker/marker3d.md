@@ -44,29 +44,29 @@ new Marker3D()
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 添加一个或多个动态标记 | 向场景批量添加对象 |
-| `attachObject` | 设置Marke3D贴合模型对象CustomObject对象，设置后Marker3D会跟随… |  |
-| `callBPFunction` | 调用Marker3D对象包含的多个蓝图函数， |  |
-| `clear` | 清空场景中所有的3D标注 | 清空全部对象，重置图层 |
-| `delete` | 删除一个或多个3D标注对象 | 按 ID 移除指定对象 |
-| `deleteByGroupId` | 根据分组ID删除动态标注 |  |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `get` | 根据ID获取3D标注的详细信息 | 查询对象信息，用于业务联动 |
-| `getBPFunction` | 根据marker3d对象的id查询其包含的蓝图函数信息 |  |
-| `hide` | 隐藏3D标注 | 按业务条件隐藏对象 |
-| `hideAll` | 隐藏所有3D标注 | 一键隐藏全部对象 |
-| `hideByGroupId` | 根据分组ID隐藏动态标注 |  |
-| `setViewHeightRange` | 设置Marker3D对象的可视高度范围 |  |
-| `show` | 显示3D标注 | 按业务条件显示对象 |
-| `showAll` | 显示所有3D标注 | 一键显示全部对象 |
-| `showByGroupId` | 根据分组ID显示动态标注 |  |
-| `update` | 修改一个或多个3D标注对象 | 运行时动态更新对象属性/状态 |
-| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
-| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+| [`add`](#add) | 添加一个或多个动态标记 | 向场景批量添加对象 |
+| [`attachObject`](#attachObject) | 设置Marke3D贴合模型对象CustomObject对象，设置后Marker3D会跟随… |  |
+| [`callBPFunction`](#callBPFunction) | 调用Marker3D对象包含的多个蓝图函数， |  |
+| [`clear`](#clear) | 清空场景中所有的3D标注 | 清空全部对象，重置图层 |
+| [`delete`](#delete) | 删除一个或多个3D标注对象 | 按 ID 移除指定对象 |
+| [`deleteByGroupId`](#deleteByGroupId) | 根据分组ID删除动态标注 |  |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`get`](#get) | 根据ID获取3D标注的详细信息 | 查询对象信息，用于业务联动 |
+| [`getBPFunction`](#getBPFunction) | 根据marker3d对象的id查询其包含的蓝图函数信息 |  |
+| [`hide`](#hide) | 隐藏3D标注 | 按业务条件隐藏对象 |
+| [`hideAll`](#hideAll) | 隐藏所有3D标注 | 一键隐藏全部对象 |
+| [`hideByGroupId`](#hideByGroupId) | 根据分组ID隐藏动态标注 |  |
+| [`setViewHeightRange`](#setViewHeightRange) | 设置Marker3D对象的可视高度范围 |  |
+| [`show`](#show) | 显示3D标注 | 按业务条件显示对象 |
+| [`showAll`](#showAll) | 显示所有3D标注 | 一键显示全部对象 |
+| [`showByGroupId`](#showByGroupId) | 根据分组ID显示动态标注 |  |
+| [`update`](#update) | 修改一个或多个3D标注对象 | 运行时动态更新对象属性/状态 |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
 
 ## 方法（Methods）
 
-### `add(data, fn)`
+### `add(data, fn)` {#add}
 
 添加一个或多个动态标记
 
@@ -236,7 +236,7 @@ fdapi.marker3d.callBPFunction([
 
 ---
 
-### `attachObject(data, fn)`
+### `attachObject(data, fn)` {#attachObject}
 
 设置Marke3D贴合模型对象CustomObject对象，设置后Marker3D会跟随模型运动
 
@@ -261,7 +261,7 @@ await fdapi.marker3d.attachObject(data);
 
 ---
 
-### `callBPFunction(data, fn)`
+### `callBPFunction(data, fn)` {#callBPFunction}
 
 调用Marker3D对象包含的多个蓝图函数，注意：可以根据marker3d的对象id查询包含的所有蓝图函数 fdapi.misc.getBPFunction(id);
 
@@ -304,7 +304,7 @@ await fdapi.marker3d.attachObject(data);
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 清空场景中所有的3D标注
 
@@ -320,7 +320,7 @@ fdapi.marker3d.clear();
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个3D标注对象
 
@@ -337,7 +337,7 @@ fdapi.marker3d.delete(['m1', 'm2']);
 
 ---
 
-### `deleteByGroupId(groupId, fn)`
+### `deleteByGroupId(groupId, fn)` {#deleteByGroupId}
 
 根据分组ID删除动态标注
 
@@ -354,7 +354,7 @@ fdapi.marker3d.deleteByGroupId('marker3dTest');
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -374,7 +374,7 @@ fdapi.marker3d.focus('m1', 100, 0.2);
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据ID获取3D标注的详细信息
 
@@ -413,7 +413,7 @@ fdapi.marker3d.get(['m1', 'm2']);
 
 ---
 
-### `getBPFunction(ids, fn)`
+### `getBPFunction(ids, fn)` {#getBPFunction}
 
 根据marker3d对象的id查询其包含的蓝图函数信息
 
@@ -430,7 +430,7 @@ fdapi.marker3d.getBPFunction(['m1', 'm2']);
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏3D标注
 
@@ -447,7 +447,7 @@ fdapi.marker3d.hide(['m1']);
 
 ---
 
-### `hideAll(fn)`
+### `hideAll(fn)` {#hideAll}
 
 隐藏所有3D标注
 
@@ -463,7 +463,7 @@ fdapi.marker3d.hideAll();
 
 ---
 
-### `hideByGroupId(groupId, fn)`
+### `hideByGroupId(groupId, fn)` {#hideByGroupId}
 
 根据分组ID隐藏动态标注
 
@@ -480,7 +480,7 @@ fdapi.marker3d.hideByGroupId('marker3dTest');
 
 ---
 
-### `setViewHeightRange(id, minVisibleHeight, maxVisibleHeight, fn)`
+### `setViewHeightRange(id, minVisibleHeight, maxVisibleHeight, fn)` {#setViewHeightRange}
 
 设置Marker3D对象的可视高度范围
 
@@ -499,7 +499,7 @@ fdapi.marker3d.setViewHeightRange('m1', 1, 1000);
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示3D标注
 
@@ -516,7 +516,7 @@ fdapi.marker3d.show('m1');
 
 ---
 
-### `showAll(fn)`
+### `showAll(fn)` {#showAll}
 
 显示所有3D标注
 
@@ -532,7 +532,7 @@ fdapi.marker3d.showAll();
 
 ---
 
-### `showByGroupId(groupId, fn)`
+### `showByGroupId(groupId, fn)` {#showByGroupId}
 
 根据分组ID显示动态标注
 
@@ -549,7 +549,7 @@ fdapi.marker3d.showByGroupId('marker3dTest');
 
 ---
 
-### `update(data, fn)`
+### `update(data, fn)` {#update}
 
 修改一个或多个3D标注对象
 
@@ -575,7 +575,7 @@ fdapi.marker3d.focus(o.id);
 
 ---
 
-### `updateBegin()`
+### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
 
@@ -598,7 +598,7 @@ fdapi.xxx.updateEnd(function () {
 
 ---
 
-### `updateEnd(fn)`
+### `updateEnd(fn)` {#updateEnd}
 
 用于批量多次修改对象的属性，与updateBegin配套使用
 

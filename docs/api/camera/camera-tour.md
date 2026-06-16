@@ -33,26 +33,26 @@ CameraTour 是相机导览（漫游）动画对象，用于按关键帧序列驱
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 创建一个或多个CameraTour对象 | 向场景批量添加对象 |
-| `delete` | 删除一个或多个CameraTour对象 | 按 ID 移除指定对象 |
-| `exportVideo` | 根据CameraTour的ID导出视频文件， |  |
-| `pause` | 暂停播放导览动画 | 暂停播放 |
-| `play` | 开始播放导览动画 | 播放动画/导览 |
-| `resume` | 恢复播放导览动画 | 恢复播放 |
-| `setDuration` | 设置时间长度 |  |
-| `setKeyFrames` | 设置导览动画关键帧 |  |
-| `setMouseClickToPause` | 设置播放导览时点击鼠标是否暂停 |  |
-| `setName` | 设置名称 |  |
-| `setTime` | 设置导览从某时刻开始播放 |  |
-| `setUserData` | 设置用户数据 |  |
-| `stop` | 停止播放导览动画 | 停止播放 |
-| `update` | 修改一个或多个CameraTour对象 | 运行时动态更新对象属性/状态 |
-| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
-| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+| [`add`](#add) | 创建一个或多个CameraTour对象 | 向场景批量添加对象 |
+| [`delete`](#delete) | 删除一个或多个CameraTour对象 | 按 ID 移除指定对象 |
+| [`exportVideo`](#exportVideo) | 根据CameraTour的ID导出视频文件， |  |
+| [`pause`](#pause) | 暂停播放导览动画 | 暂停播放 |
+| [`play`](#play) | 开始播放导览动画 | 播放动画/导览 |
+| [`resume`](#resume) | 恢复播放导览动画 | 恢复播放 |
+| [`setDuration`](#setDuration) | 设置时间长度 |  |
+| [`setKeyFrames`](#setKeyFrames) | 设置导览动画关键帧 |  |
+| [`setMouseClickToPause`](#setMouseClickToPause) | 设置播放导览时点击鼠标是否暂停 |  |
+| [`setName`](#setName) | 设置名称 |  |
+| [`setTime`](#setTime) | 设置导览从某时刻开始播放 |  |
+| [`setUserData`](#setUserData) | 设置用户数据 |  |
+| [`stop`](#stop) | 停止播放导览动画 | 停止播放 |
+| [`update`](#update) | 修改一个或多个CameraTour对象 | 运行时动态更新对象属性/状态 |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
 
 ## 方法（Methods）
 
-### `add(data, fn)`
+### `add(data, fn)` {#add}
 
 创建一个或多个CameraTour对象
 
@@ -81,7 +81,7 @@ fdapi.cameraTour.play('1');
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个CameraTour对象
 
@@ -98,7 +98,7 @@ fdapi.cameraTour.delete('1');
 
 ---
 
-### `exportVideo(id, path)`
+### `exportVideo(id, path)` {#exportVideo}
 
 根据CameraTour的ID导出视频文件，注意：导出的视频文件默认格式为*.mp4，分辨率：1920X1080，帧速率：30
 
@@ -109,7 +109,7 @@ fdapi.cameraTour.delete('1');
 
 ---
 
-### `pause()`
+### `pause()` {#pause}
 
 暂停播放导览动画
 
@@ -121,7 +121,7 @@ fdapi.cameraTour.pause();
 
 ---
 
-### `play(id, fn)`
+### `play(id, fn)` {#play}
 
 开始播放导览动画
 
@@ -138,7 +138,7 @@ fdapi.cameraTour.play('1');
 
 ---
 
-### `resume()`
+### `resume()` {#resume}
 
 恢复播放导览动画
 
@@ -150,7 +150,7 @@ fdapi.cameraTour.resume();
 
 ---
 
-### `setDuration(id, val, fn)`
+### `setDuration(id, val, fn)` {#setDuration}
 
 设置时间长度
 
@@ -162,7 +162,7 @@ fdapi.cameraTour.resume();
 
 ---
 
-### `setKeyFrames(id, val, fn)`
+### `setKeyFrames(id, val, fn)` {#setKeyFrames}
 
 设置导览动画关键帧
 
@@ -174,7 +174,7 @@ fdapi.cameraTour.resume();
 
 ---
 
-### `setMouseClickToPause(id, bool, fn)`
+### `setMouseClickToPause(id, bool, fn)` {#setMouseClickToPause}
 
 设置播放导览时点击鼠标是否暂停
 
@@ -192,7 +192,7 @@ fdapi.cameraTour.setMouseClickToPause('1', false);
 
 ---
 
-### `setName(id, val, fn)`
+### `setName(id, val, fn)` {#setName}
 
 设置名称
 
@@ -204,7 +204,7 @@ fdapi.cameraTour.setMouseClickToPause('1', false);
 
 ---
 
-### `setTime(id, time, fn)`
+### `setTime(id, time, fn)` {#setTime}
 
 设置导览从某时刻开始播放
 
@@ -222,7 +222,7 @@ fdapi.cameraTour.setTime('1', 3);
 
 ---
 
-### `setUserData(id, val, fn)`
+### `setUserData(id, val, fn)` {#setUserData}
 
 设置用户数据
 
@@ -234,7 +234,7 @@ fdapi.cameraTour.setTime('1', 3);
 
 ---
 
-### `stop(fn)`
+### `stop(fn)` {#stop}
 
 停止播放导览动画
 
@@ -250,7 +250,7 @@ fdapi.cameraTour.stop();
 
 ---
 
-### `update(data, fn)`
+### `update(data, fn)` {#update}
 
 修改一个或多个CameraTour对象
 
@@ -276,7 +276,7 @@ fdapi.cameraTour.play('1');
 
 ---
 
-### `updateBegin()`
+### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
 
@@ -299,7 +299,7 @@ fdapi.xxx.updateEnd(function () {
 
 ---
 
-### `updateEnd(fn)`
+### `updateEnd(fn)` {#updateEnd}
 
 用于批量多次修改对象的属性，与updateBegin配套使用
 

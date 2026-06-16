@@ -34,22 +34,22 @@ SettingsPanel 提供对内置设置面板里各项参数进行读写操作的接
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `getCameraMode` | 获取参数 相机面板 |  |
-| `getControlMode` | 获取参数 控制面板 |  |
-| `getMapMode` | 获取地图样式 |  |
-| `getPostProcessMode` | 获取参数 后期面板 |  |
-| `getReportMode` | 获取参数 汇报模式面板 |  |
-| `setCameraMode` | 设置参数 相机面板 |  |
-| `setControlMode` | 设置参数 控制面板 |  |
-| `setMapMode` | 设置地图样式 |  |
-| `setPakFile` | 设置-工程面板自定义资源挂载的pak自定义资源文件 |  |
-| `setPakFolder` | 设置-工程面板下自定义资源加载的pak自定义资源文件目录 |  |
-| `setPostProcessMode` | 设置参数，后期面板， |  |
-| `setReportMode` | 设置参数 汇报模式面板 |  |
+| [`getCameraMode`](#getCameraMode) | 获取参数 相机面板 |  |
+| [`getControlMode`](#getControlMode) | 获取参数 控制面板 |  |
+| [`getMapMode`](#getMapMode) | 获取地图样式 |  |
+| [`getPostProcessMode`](#getPostProcessMode) | 获取参数 后期面板 |  |
+| [`getReportMode`](#getReportMode) | 获取参数 汇报模式面板 |  |
+| [`setCameraMode`](#setCameraMode) | 设置参数 相机面板 |  |
+| [`setControlMode`](#setControlMode) | 设置参数 控制面板 |  |
+| [`setMapMode`](#setMapMode) | 设置地图样式 |  |
+| [`setPakFile`](#setPakFile) | 设置-工程面板自定义资源挂载的pak自定义资源文件 |  |
+| [`setPakFolder`](#setPakFolder) | 设置-工程面板下自定义资源加载的pak自定义资源文件目录 |  |
+| [`setPostProcessMode`](#setPostProcessMode) | 设置参数，后期面板， |  |
+| [`setReportMode`](#setReportMode) | 设置参数 汇报模式面板 |  |
 
 ## 方法（Methods）
 
-### `getCameraMode(fn)`
+### `getCameraMode(fn)` {#getCameraMode}
 
 获取参数 相机面板
 
@@ -75,7 +75,7 @@ fdapi.settingsPanel.getCameraMode();
 
 ---
 
-### `getControlMode(fn)`
+### `getControlMode(fn)` {#getControlMode}
 
 获取参数 控制面板
 
@@ -100,7 +100,7 @@ fdapi.settingsPanel.getControlMode();
 
 ---
 
-### `getMapMode(fn)`
+### `getMapMode(fn)` {#getMapMode}
 
 获取地图样式
 
@@ -134,7 +134,7 @@ fdapi.settingsPanel.getMapMode();
 
 ---
 
-### `getPostProcessMode(fn)`
+### `getPostProcessMode(fn)` {#getPostProcessMode}
 
 获取参数 后期面板
 
@@ -174,7 +174,7 @@ fdapi.settingsPanel.getPostProcessMode();
 
 ---
 
-### `getReportMode(fn)`
+### `getReportMode(fn)` {#getReportMode}
 
 获取参数 汇报模式面板
 
@@ -198,7 +198,7 @@ fdapi.settingsPanel.getReportMode();
 
 ---
 
-### `setCameraMode(nearClipPlane, fovH, minCameraHeight, maxCameraHeight, fn)`
+### `setCameraMode(nearClipPlane, fovH, minCameraHeight, maxCameraHeight, fn)` {#setCameraMode}
 
 设置参数 相机面板
 
@@ -228,7 +228,7 @@ fdapi.settingsPanel.setCameraMode(nearClipPlane, fovH, minCameraHeight, maxCamer
 
 ---
 
-### `setControlMode(speed, yawSpeed, isRotateSelf, isUseMaleRole, viewType, fn)`
+### `setControlMode(speed, yawSpeed, isRotateSelf, isUseMaleRole, viewType, fn)` {#setControlMode}
 
 设置参数 控制面板
 
@@ -256,7 +256,7 @@ fdapi.settingsPanel.setControlMode(0.5, 0.5, true, true, 1);
 
 ---
 
-### `setMapMode(mode, options, fn)`
+### `setMapMode(mode, options, fn)` {#setMapMode}
 
 设置地图样式
 
@@ -305,7 +305,7 @@ fdapi.settingsPanel.setMapMode(MapMode.BigMap, {
 
 ---
 
-### `setPakFile(pakfilePathArr, fn)`
+### `setPakFile(pakfilePathArr, fn)` {#setPakFile}
 
 设置-工程面板自定义资源挂载的pak自定义资源文件
 
@@ -322,7 +322,7 @@ await fdapi.settingsPanel.setPakFile(pakfilePathArr);
 
 ---
 
-### `setPakFolder(dirArr, fn)`
+### `setPakFolder(dirArr, fn)` {#setPakFolder}
 
 设置-工程面板下自定义资源加载的pak自定义资源文件目录
 
@@ -339,7 +339,7 @@ await fdapi.settingsPanel.setPakFolder(dirArr);
 
 ---
 
-### `setPostProcessMode(postProcessOptions, fn)`
+### `setPostProcessMode(postProcessOptions, fn)` {#setPostProcessMode}
 
 设置参数，后期面板，注意：支持设置单个参数或同时设置多个参数
 
@@ -428,7 +428,7 @@ fdapi.settingsPanel.setPostProcessMode({ terrainGlobalAlpha: 0.6 });
 
 ---
 
-### `setReportMode(showAlign, playMode, isLinkage, fn)`
+### `setReportMode(showAlign, playMode, isLinkage, fn)` {#setReportMode}
 
 设置参数 汇报模式面板
 

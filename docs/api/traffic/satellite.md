@@ -1,14 +1,14 @@
 ---
 title: Satellite
 sidebar_label: Satellite
-description: "Satellite 用于在大尺度空间场景中加载与表现卫星对象，支持像素点、缩略图与三维模型的多级可视化（按相机距离切换），并可设置标签文字、姿态旋转，用于卫星在轨与星座的可视化仿真。"
+description: "Satellite 用于球面坐标系场景中加载与表现卫星对象，支持像素点、缩略图与三维模型的多级可视化（按相机距离切换），并可设置标签文字、姿态旋转，用于卫星在轨与星座的可视化仿真。支持卫星按轨道运动，相机跟随运动，实现卫星运动伴随地球自转的晨昏线效果。支持使用卫星模型的蓝图函数实现打开关闭太阳帆，支持高亮闪烁像素点和缩略图。"
 ---
 
 # Satellite
 
-Satellite 用于在大尺度空间场景中加载与表现卫星对象，支持像素点、缩略图与三维模型的多级可视化（按相机距离切换），并可设置标签文字、姿态旋转，用于卫星在轨与星座的可视化仿真。
+Satellite 用于在球面坐标系场景中加载与表现卫星对象，支持像素点、缩略图与三维模型的多级可视化（按相机距离切换），并可设置标签文字、姿态旋转，用于卫星在轨与星座的可视化仿真。支持卫星按轨道运动，相机跟随运动，实现卫星运动伴随地球自转的晨昏线效果。支持使用卫星模型的蓝图函数实现打开关闭太阳帆，支持高亮闪烁像素点和缩略图。
 
-通过 `api.coastline` 访问。
+通过 `api.satellite` 访问。
 
 ## 业务场景 Skill
 
@@ -38,34 +38,34 @@ new Satellite()
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 添加一个或多个Satellite对象 | 向场景批量添加对象 |
-| `addLinkage` | 在两颗卫星之间添加连接线，卫星运动时连接线会跟随同步运动 |  |
-| `callBPFunction` | 调用卫星模型包含的多个蓝图函数， |  |
-| `clear` | 清空场景中所有的Satellite | 清空全部对象，重置图层 |
-| `clearLinkage` | 清空场景中所有的卫星连接线 |  |
-| `deleteLinkage` | 根据卫星连接线的ID删除连接线 |  |
-| `deleteSatellite` | 删除一个或多个卫星模型和其对应的文字标签 |  |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `get` | 根据卫星模型的ID获取卫星的实时位置信息 | 查询对象信息，用于业务联动 |
-| `getBPFunction` | 根据卫星模型ID查询其包含的蓝图函数信息， |  |
-| `hideModel` | 隐藏一个或多个卫星模型 |  |
-| `hideSatellite` | 隐藏一个或多个卫星模型和其对应的文字标签 |  |
-| `hideText` | 隐藏一个或多个卫星的文字标签 |  |
-| `highlight` | 打开指定卫星的缩略图的高亮效果 |  |
-| `setFollow` | 设置卫星运动时自动跟随相机 |  |
-| `showModel` | 显示一个或多个卫星模型 |  |
-| `showSatellite` | 显示一个或多个卫星模型和其对应的文字标签 |  |
-| `showText` | 显示一个或多个卫星的文字标签 |  |
-| `unHighlight` | 取消指定卫星缩略图的高亮效果 |  |
-| `unHighlightAll` | 取消所有卫星缩略图的高亮效果 |  |
-| `update` | 修改一个或多个Satellite对象 | 运行时动态更新对象属性/状态 |
-| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
-| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
-| `updateLinkage` | 更新卫星之间连接线 |  |
+| [`add`](#add) | 添加一个或多个Satellite对象 | 向场景批量添加对象 |
+| [`addLinkage`](#addLinkage) | 在两颗卫星之间添加连接线，卫星运动时连接线会跟随同步运动 |  |
+| [`callBPFunction`](#callBPFunction) | 调用卫星模型包含的多个蓝图函数， |  |
+| [`clear`](#clear) | 清空场景中所有的Satellite | 清空全部对象，重置图层 |
+| [`clearLinkage`](#clearLinkage) | 清空场景中所有的卫星连接线 |  |
+| [`deleteLinkage`](#deleteLinkage) | 根据卫星连接线的ID删除连接线 |  |
+| [`deleteSatellite`](#deleteSatellite) | 删除一个或多个卫星模型和其对应的文字标签 |  |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`get`](#get) | 根据卫星模型的ID获取卫星的实时位置信息 | 查询对象信息，用于业务联动 |
+| [`getBPFunction`](#getBPFunction) | 根据卫星模型ID查询其包含的蓝图函数信息， |  |
+| [`hideModel`](#hideModel) | 隐藏一个或多个卫星模型 |  |
+| [`hideSatellite`](#hideSatellite) | 隐藏一个或多个卫星模型和其对应的文字标签 |  |
+| [`hideText`](#hideText) | 隐藏一个或多个卫星的文字标签 |  |
+| [`highlight`](#highlight) | 打开指定卫星的缩略图的高亮效果 |  |
+| [`setFollow`](#setFollow) | 设置卫星运动时自动跟随相机 |  |
+| [`showModel`](#showModel) | 显示一个或多个卫星模型 |  |
+| [`showSatellite`](#showSatellite) | 显示一个或多个卫星模型和其对应的文字标签 |  |
+| [`showText`](#showText) | 显示一个或多个卫星的文字标签 |  |
+| [`unHighlight`](#unHighlight) | 取消指定卫星缩略图的高亮效果 |  |
+| [`unHighlightAll`](#unHighlightAll) | 取消所有卫星缩略图的高亮效果 |  |
+| [`update`](#update) | 修改一个或多个Satellite对象 | 运行时动态更新对象属性/状态 |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+| [`updateLinkage`](#updateLinkage) | 更新卫星之间连接线 |  |
 
 ## 方法（Methods）
 
-### `add(data, textRange, modelRange, imageVisibleDistance, fn)`
+### `add(data, textRange, modelRange, imageVisibleDistance, fn)` {#add}
 
 添加一个或多个Satellite对象
 
@@ -277,7 +277,7 @@ let timer = setInterval(function () {
 
 ---
 
-### `addLinkage(data, materials, fn)`
+### `addLinkage(data, materials, fn)` {#addLinkage}
 
 在两颗卫星之间添加连接线，卫星运动时连接线会跟随同步运动
 
@@ -340,7 +340,7 @@ await fdapi.satellite.addLinkage(linkArr,[{
 
 ---
 
-### `callBPFunction(data, fn)`
+### `callBPFunction(data, fn)` {#callBPFunction}
 
 调用卫星模型包含的多个蓝图函数，注意：调用前请使用getBPFunction()函数来查询当前卫星模型包含的蓝图函数参数信息
 
@@ -391,7 +391,7 @@ fdapi.satellite.callBPFunction(bpFunctionArr);
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 清空场景中所有的Satellite
 
@@ -407,7 +407,7 @@ fdapi.satellite.clear();
 
 ---
 
-### `clearLinkage(fn)`
+### `clearLinkage(fn)` {#clearLinkage}
 
 清空场景中所有的卫星连接线
 
@@ -423,7 +423,7 @@ fdapi.satellite.clearLinkage();
 
 ---
 
-### `deleteLinkage(ids, fn)`
+### `deleteLinkage(ids, fn)` {#deleteLinkage}
 
 根据卫星连接线的ID删除连接线
 
@@ -440,7 +440,7 @@ fdapi.satellite.deleteLinkage(["linkage_1","linkage_2","linkage_3"]);
 
 ---
 
-### `deleteSatellite(ids, fn)`
+### `deleteSatellite(ids, fn)` {#deleteSatellite}
 
 删除一个或多个卫星模型和其对应的文字标签
 
@@ -457,7 +457,7 @@ fdapi.satellite.deleteSatellite(["500","501","502"]);
 
 ---
 
-### `focus(ids, distance, flyTime, pitch, yaw, sensitivity, offset, fn)`
+### `focus(ids, distance, flyTime, pitch, yaw, sensitivity, offset, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -480,7 +480,7 @@ fdapi.satellite.focus(["500"], 20, 0, -29, -30);
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据卫星模型的ID获取卫星的实时位置信息
 
@@ -497,7 +497,7 @@ fdapi.satellite.get(["500","501","502"]);
 
 ---
 
-### `getBPFunction(ids, fn)`
+### `getBPFunction(ids, fn)` {#getBPFunction}
 
 根据卫星模型ID查询其包含的蓝图函数信息，注意：支持批量查询
 
@@ -514,7 +514,7 @@ fdapi.satellite.getBPFunction(["500","501","502"]);
 
 ---
 
-### `hideModel(ids, fn)`
+### `hideModel(ids, fn)` {#hideModel}
 
 隐藏一个或多个卫星模型
 
@@ -531,7 +531,7 @@ fdapi.satellite.hideModel(["500","501","502"]);
 
 ---
 
-### `hideSatellite(ids, fn)`
+### `hideSatellite(ids, fn)` {#hideSatellite}
 
 隐藏一个或多个卫星模型和其对应的文字标签
 
@@ -548,7 +548,7 @@ fdapi.satellite.hideSatellite(["500","501","502"]);
 
 ---
 
-### `hideText(ids, fn)`
+### `hideText(ids, fn)` {#hideText}
 
 隐藏一个或多个卫星的文字标签
 
@@ -565,7 +565,7 @@ fdapi.satellite.hideText(["500","501","502"]);
 
 ---
 
-### `highlight(ids, speed, scaleRange, alphaRange, intensityRange, fn)`
+### `highlight(ids, speed, scaleRange, alphaRange, intensityRange, fn)` {#highlight}
 
 打开指定卫星的缩略图的高亮效果
 
@@ -592,7 +592,7 @@ fdapi.satellite.highlight(idsArr, 2, [0.5, 2], [0.5, 1], [0.5, 3]);
 
 ---
 
-### `setFollow(ids, distance, pitch, yaw, fn)`
+### `setFollow(ids, distance, pitch, yaw, fn)` {#setFollow}
 
 设置卫星运动时自动跟随相机
 
@@ -613,7 +613,7 @@ fdapi.satellite.setFollow(["500"], 20, -29, -30);
 
 ---
 
-### `showModel(ids, fn)`
+### `showModel(ids, fn)` {#showModel}
 
 显示一个或多个卫星模型
 
@@ -630,7 +630,7 @@ fdapi.satellite.showModel(["500","501","502"]);
 
 ---
 
-### `showSatellite(ids, fn)`
+### `showSatellite(ids, fn)` {#showSatellite}
 
 显示一个或多个卫星模型和其对应的文字标签
 
@@ -647,7 +647,7 @@ fdapi.satellite.showSatellite(["500","501","502"]);
 
 ---
 
-### `showText(ids, fn)`
+### `showText(ids, fn)` {#showText}
 
 显示一个或多个卫星的文字标签
 
@@ -664,7 +664,7 @@ fdapi.satellite.showText(["500","501","502"]);
 
 ---
 
-### `unHighlight(ids, fn)`
+### `unHighlight(ids, fn)` {#unHighlight}
 
 取消指定卫星缩略图的高亮效果
 
@@ -687,7 +687,7 @@ fdapi.satellite.unHighlight(idsArr);
 
 ---
 
-### `unHighlightAll(ids, fn)`
+### `unHighlightAll(ids, fn)` {#unHighlightAll}
 
 取消所有卫星缩略图的高亮效果
 
@@ -705,7 +705,7 @@ fdapi.satellite.unHighlightAll();
 
 ---
 
-### `update(data, duration, fn)`
+### `update(data, duration, fn)` {#update}
 
 修改一个或多个Satellite对象
 
@@ -723,7 +723,7 @@ await fdapi.coastline.update(data, duration);
 
 ---
 
-### `updateBegin()`
+### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
 
@@ -746,7 +746,7 @@ fdapi.xxx.updateEnd(function () {
 
 ---
 
-### `updateEnd(fn)`
+### `updateEnd(fn)` {#updateEnd}
 
 用于批量多次修改对象的属性，与updateBegin配套使用
 
@@ -766,7 +766,7 @@ await fdapi.coastline.updateEnd();
 
 ---
 
-### `updateLinkage(data, materials, fn)`
+### `updateLinkage(data, materials, fn)` {#updateLinkage}
 
 更新卫星之间连接线
 

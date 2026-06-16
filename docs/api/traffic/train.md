@@ -31,24 +31,24 @@ description: "在三维场景中加载并沿指定轨迹运行的列车对象，
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 添加一个或多个Train对象 | 向场景批量添加对象 |
-| `clear` | 清空场景中所有的Train对象 | 清空全部对象，重置图层 |
-| `delete` | 删除一个或多个Train对象 | 按 ID 移除指定对象 |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `get` | 根据ID获取Train对象的详细信息 | 查询对象信息，用于业务联动 |
-| `hide` | 隐藏一个或多个Train对象 | 按业务条件隐藏对象 |
-| `moveTo` | 火车按时间和里程移动 | 驱动对象移动到目标位置 |
-| `pause` | 根据火车ID暂停火车 | 暂停播放 |
-| `resume` | 根据火车ID恢复火车移动 | 恢复播放 |
-| `setFollow` | 设置火车行驶时自动跟随相机 |  |
-| `show` | 显示一个或多个Train对象 | 按业务条件显示对象 |
-| `update` | 修改一个或多个Train对象 | 运行时动态更新对象属性/状态 |
-| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
-| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+| [`add`](#add) | 添加一个或多个Train对象 | 向场景批量添加对象 |
+| [`clear`](#clear) | 清空场景中所有的Train对象 | 清空全部对象，重置图层 |
+| [`delete`](#delete) | 删除一个或多个Train对象 | 按 ID 移除指定对象 |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`get`](#get) | 根据ID获取Train对象的详细信息 | 查询对象信息，用于业务联动 |
+| [`hide`](#hide) | 隐藏一个或多个Train对象 | 按业务条件隐藏对象 |
+| [`moveTo`](#moveTo) | 火车按时间和里程移动 | 驱动对象移动到目标位置 |
+| [`pause`](#pause) | 根据火车ID暂停火车 | 暂停播放 |
+| [`resume`](#resume) | 根据火车ID恢复火车移动 | 恢复播放 |
+| [`setFollow`](#setFollow) | 设置火车行驶时自动跟随相机 |  |
+| [`show`](#show) | 显示一个或多个Train对象 | 按业务条件显示对象 |
+| [`update`](#update) | 修改一个或多个Train对象 | 运行时动态更新对象属性/状态 |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
 
 ## 方法（Methods）
 
-### `add(data, fn)`
+### `add(data, fn)` {#add}
 
 添加一个或多个Train对象
 
@@ -141,7 +141,7 @@ fdapi.train.focus('train', 10);
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 清空场景中所有的Train对象
 
@@ -157,7 +157,7 @@ fdapi.train.clear();
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个Train对象
 
@@ -174,7 +174,7 @@ fdapi.train.delete('train');
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, offset, fn)`
+### `focus(ids, distance, flyTime, rotation, offset, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -195,7 +195,7 @@ fdapi.train.focus('train', 100, 2, [0, 0, 0], [0, 0, 0]);
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据ID获取Train对象的详细信息
 
@@ -233,7 +233,7 @@ fdapi.train.get('train');
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏一个或多个Train对象
 
@@ -250,7 +250,7 @@ fdapi.train.hide('train');
 
 ---
 
-### `moveTo(data, fn)`
+### `moveTo(data, fn)` {#moveTo}
 
 火车按时间和里程移动
 
@@ -279,7 +279,7 @@ fdapi.train.moveTo({
 
 ---
 
-### `pause(ids, fn)`
+### `pause(ids, fn)` {#pause}
 
 根据火车ID暂停火车
 
@@ -296,7 +296,7 @@ fdapi.train.pause('train');
 
 ---
 
-### `resume(ids, fn)`
+### `resume(ids, fn)` {#resume}
 
 根据火车ID恢复火车移动
 
@@ -313,7 +313,7 @@ fdapi.train.resume('train');
 
 ---
 
-### `setFollow(ids, distance, flyTime, pitch, yaw, sensitivity, fn)`
+### `setFollow(ids, distance, flyTime, pitch, yaw, sensitivity, fn)` {#setFollow}
 
 设置火车行驶时自动跟随相机
 
@@ -335,7 +335,7 @@ fdapi.train.setFollow('train', 100, 2, 0, 0, [0, 0, 0]);
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示一个或多个Train对象
 
@@ -352,7 +352,7 @@ fdapi.train.show('train');
 
 ---
 
-### `update(data, fn)`
+### `update(data, fn)` {#update}
 
 修改一个或多个Train对象
 
@@ -369,7 +369,7 @@ await fdapi.train.update(data);
 
 ---
 
-### `updateBegin()`
+### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
 
@@ -392,7 +392,7 @@ fdapi.xxx.updateEnd(function () {
 
 ---
 
-### `updateEnd(fn)`
+### `updateEnd(fn)` {#updateEnd}
 
 用于批量多次修改对象的属性，与updateBegin配套使用
 

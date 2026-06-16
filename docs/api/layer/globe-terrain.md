@@ -39,23 +39,23 @@ new GlobeTerrain()
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `addImageryLayer` | 在Cesium球面上添加图层服务，支持的服务类型包含WMTS、WMS、MVT和TMS |  |
-| `addImageryLayerBySchemaParams` | 根据自定义参数添加球面网络地图服务，如WMTS/WMS/MVT/TMS服务等网络图层服务 |  |
-| `clearImageryLayer` | 清空Cesium球面上添加的所有图层服务 |  |
-| `deleteImageryLayer` | 删除Cesium球面上指定的图层服务 |  |
-| `destroy` | 销毁Cesium球面的地形和影像 |  |
-| `hide` | 隐藏Cesium球面的地形和影像 | 按业务条件隐藏对象 |
-| `init` | 初始化Cesium球面的地形和影像 |  |
-| `setImagery` | 设置更新初始化加载的影像服务 |  |
-| `setImageryBySchemaParams` | 根据自定义参数的图层服务来更新初始化球面加载的影像服务， |  |
-| `setImageryLayerDrawOrder` | 设置Cesium球面上添加的图层服务的绘制顺序，即移动当前图层到目标图层的上方位置显示 |  |
-| `show` | 显示Cesium球面的地形和影像 | 按业务条件显示对象 |
-| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
-| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+| [`addImageryLayer`](#addImageryLayer) | 在Cesium球面上添加图层服务，支持的服务类型包含WMTS、WMS、MVT和TMS |  |
+| [`addImageryLayerBySchemaParams`](#addImageryLayerBySchemaParams) | 根据自定义参数添加球面网络地图服务，如WMTS/WMS/MVT/TMS服务等网络图层服务 |  |
+| [`clearImageryLayer`](#clearImageryLayer) | 清空Cesium球面上添加的所有图层服务 |  |
+| [`deleteImageryLayer`](#deleteImageryLayer) | 删除Cesium球面上指定的图层服务 |  |
+| [`destroy`](#destroy) | 销毁Cesium球面的地形和影像 |  |
+| [`hide`](#hide) | 隐藏Cesium球面的地形和影像 | 按业务条件隐藏对象 |
+| [`init`](#init) | 初始化Cesium球面的地形和影像 |  |
+| [`setImagery`](#setImagery) | 设置更新初始化加载的影像服务 |  |
+| [`setImageryBySchemaParams`](#setImageryBySchemaParams) | 根据自定义参数的图层服务来更新初始化球面加载的影像服务， |  |
+| [`setImageryLayerDrawOrder`](#setImageryLayerDrawOrder) | 设置Cesium球面上添加的图层服务的绘制顺序，即移动当前图层到目标图层的上方位置显示 |  |
+| [`show`](#show) | 显示Cesium球面的地形和影像 | 按业务条件显示对象 |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
 
 ## 方法（Methods）
 
-### `addImageryLayer(option, fn)`
+### `addImageryLayer(option, fn)` {#addImageryLayer}
 
 在Cesium球面上添加图层服务，支持的服务类型包含WMTS、WMS、MVT和TMS
 
@@ -103,7 +103,7 @@ fdapi.globeTerrain.addImageryLayer({
 
 ---
 
-### `addImageryLayerBySchemaParams(obj, fn)`
+### `addImageryLayerBySchemaParams(obj, fn)` {#addImageryLayerBySchemaParams}
 
 根据自定义参数添加球面网络地图服务，如WMTS/WMS/MVT/TMS服务等网络图层服务
 
@@ -159,7 +159,7 @@ fdapi.globeTerrain.addImageryLayerBySchemaParams({
 
 ---
 
-### `clearImageryLayer(fn)`
+### `clearImageryLayer(fn)` {#clearImageryLayer}
 
 清空Cesium球面上添加的所有图层服务
 
@@ -175,7 +175,7 @@ fdapi.globeTerrain.clearImageryLayer();
 
 ---
 
-### `deleteImageryLayer(ids, fn)`
+### `deleteImageryLayer(ids, fn)` {#deleteImageryLayer}
 
 删除Cesium球面上指定的图层服务
 
@@ -192,7 +192,7 @@ fdapi.globeTerrain.deleteImageryLayer(["wmts2", "wmts1"]);
 
 ---
 
-### `destroy(fn)`
+### `destroy(fn)` {#destroy}
 
 销毁Cesium球面的地形和影像
 
@@ -208,7 +208,7 @@ fdapi.globeTerrain.destroy();
 
 ---
 
-### `hide(fn)`
+### `hide(fn)` {#hide}
 
 隐藏Cesium球面的地形和影像
 
@@ -224,7 +224,7 @@ fdapi.globeTerrain.hide();
 
 ---
 
-### `init(terrainUrl, imageryUrl, imageryResourceUrl, alpha, bConvertSRGB, fn)`
+### `init(terrainUrl, imageryUrl, imageryResourceUrl, alpha, bConvertSRGB, fn)` {#init}
 
 初始化Cesium球面的地形和影像
 
@@ -252,7 +252,7 @@ fdapi.globeTerrain.init(terrainUrl, imageryUrl, imageryResourceUrl,1,true);
 
 ---
 
-### `setImagery(imageryUrl, imageryResourceUrl, fn)`
+### `setImagery(imageryUrl, imageryResourceUrl, fn)` {#setImagery}
 
 设置更新初始化加载的影像服务
 
@@ -270,7 +270,7 @@ await fdapi.globeTerrain.setImagery(imageryUrl, imageryResourceUrl);
 
 ---
 
-### `setImageryBySchemaParams(option, fn)`
+### `setImageryBySchemaParams(option, fn)` {#setImageryBySchemaParams}
 
 根据自定义参数的图层服务来更新初始化球面加载的影像服务，注意：替换初始化的影像服务应是全球影像服务地址
 
@@ -321,7 +321,7 @@ fdapi.globeTerrain.setImageryBySchemaParams({
 
 ---
 
-### `setImageryLayerDrawOrder(currentLayerId, targetLayerId, fn)`
+### `setImageryLayerDrawOrder(currentLayerId, targetLayerId, fn)` {#setImageryLayerDrawOrder}
 
 设置Cesium球面上添加的图层服务的绘制顺序，即移动当前图层到目标图层的上方位置显示
 
@@ -340,7 +340,7 @@ fdapi.globeTerrain.setImageryLayerDrawOrder("wmts1", "wmts2");
 
 ---
 
-### `show(fn)`
+### `show(fn)` {#show}
 
 显示Cesium球面的地形和影像
 
@@ -356,7 +356,7 @@ fdapi.globeTerrain.show();
 
 ---
 
-### `updateBegin()`
+### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
 
@@ -379,7 +379,7 @@ fdapi.xxx.updateEnd(function () {
 
 ---
 
-### `updateEnd(fn)`
+### `updateEnd(fn)` {#updateEnd}
 
 用于批量多次修改对象的属性，与updateBegin配套使用
 

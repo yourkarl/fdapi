@@ -33,27 +33,27 @@ description: "沿坐标轨迹放样生成带截面体量的三维路径模型，
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 添加一个或多个SplineMesh对象，绘制路径模型 | 向场景批量添加对象 |
-| `callBPFunction` | 调用splineMesh对象包含的多个蓝图函数 |  |
-| `clear` | 清空场景中所有的SplineMesh对象 | 清空全部对象，重置图层 |
-| `delete` | 删除一个或多个SplineMesh对象 | 按 ID 移除指定对象 |
-| `deleteByGroupId` | 根据分组ID删除SplineMesh |  |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `get` | 根据ID获取SplineMesh对象的详细信息 | 查询对象信息，用于业务联动 |
-| `getBPFunction` | 根据splineMesh对象的id查询其包含的蓝图函数信息 |  |
-| `hide` | 隐藏一个或多个SplineMesh对象 | 按业务条件隐藏对象 |
-| `hideAll` | 隐藏所有SplineMesh对象 | 一键隐藏全部对象 |
-| `hideByGroupId` | 根据分组ID隐藏SplineMesh |  |
-| `show` | 显示一个或多个SplineMesh对象 | 按业务条件显示对象 |
-| `showAll` | 显示所有SplineMesh对象 | 一键显示全部对象 |
-| `showByGroupId` | 根据分组ID显示SplineMesh |  |
-| `update` | 修改一个或多个SplineMesh对象 | 运行时动态更新对象属性/状态 |
-| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
-| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+| [`add`](#add) | 添加一个或多个SplineMesh对象，绘制路径模型 | 向场景批量添加对象 |
+| [`callBPFunction`](#callBPFunction) | 调用splineMesh对象包含的多个蓝图函数 |  |
+| [`clear`](#clear) | 清空场景中所有的SplineMesh对象 | 清空全部对象，重置图层 |
+| [`delete`](#delete) | 删除一个或多个SplineMesh对象 | 按 ID 移除指定对象 |
+| [`deleteByGroupId`](#deleteByGroupId) | 根据分组ID删除SplineMesh |  |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`get`](#get) | 根据ID获取SplineMesh对象的详细信息 | 查询对象信息，用于业务联动 |
+| [`getBPFunction`](#getBPFunction) | 根据splineMesh对象的id查询其包含的蓝图函数信息 |  |
+| [`hide`](#hide) | 隐藏一个或多个SplineMesh对象 | 按业务条件隐藏对象 |
+| [`hideAll`](#hideAll) | 隐藏所有SplineMesh对象 | 一键隐藏全部对象 |
+| [`hideByGroupId`](#hideByGroupId) | 根据分组ID隐藏SplineMesh |  |
+| [`show`](#show) | 显示一个或多个SplineMesh对象 | 按业务条件显示对象 |
+| [`showAll`](#showAll) | 显示所有SplineMesh对象 | 一键显示全部对象 |
+| [`showByGroupId`](#showByGroupId) | 根据分组ID显示SplineMesh |  |
+| [`update`](#update) | 修改一个或多个SplineMesh对象 | 运行时动态更新对象属性/状态 |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
 
 ## 方法（Methods）
 
-### `add(data, fn)`
+### `add(data, fn)` {#add}
 
 添加一个或多个SplineMesh对象，绘制路径模型
 
@@ -184,7 +184,7 @@ fdapi.splineMesh.callBPFunction([
 
 ---
 
-### `callBPFunction(data, fn)`
+### `callBPFunction(data, fn)` {#callBPFunction}
 
 调用splineMesh对象包含的多个蓝图函数
 
@@ -243,7 +243,7 @@ fdapi.splineMesh.callBPFunction([
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 清空场景中所有的SplineMesh对象
 
@@ -259,7 +259,7 @@ fdapi.splineMesh.clear();
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个SplineMesh对象
 
@@ -276,7 +276,7 @@ fdapi.splineMesh.delete(['splineMesh1', 'splineMesh2']);
 
 ---
 
-### `deleteByGroupId(groupId, fn)`
+### `deleteByGroupId(groupId, fn)` {#deleteByGroupId}
 
 根据分组ID删除SplineMesh
 
@@ -293,7 +293,7 @@ fdapi.splineMesh.deleteByGroupId('group_sm');
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -313,7 +313,7 @@ fdapi.splineMesh.focus('splineMesh1', 100);
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据ID获取SplineMesh对象的详细信息
 
@@ -339,7 +339,7 @@ fdapi.splineMesh.get(['splineMesh1', 'splineMesh2']);
 
 ---
 
-### `getBPFunction(ids, fn)`
+### `getBPFunction(ids, fn)` {#getBPFunction}
 
 根据splineMesh对象的id查询其包含的蓝图函数信息
 
@@ -356,7 +356,7 @@ fdapi.splineMesh.getBPFunction(['splineMesh1']);
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏一个或多个SplineMesh对象
 
@@ -373,7 +373,7 @@ fdapi.splineMesh.hide(['splineMesh1', 'splineMesh2']);
 
 ---
 
-### `hideAll(fn)`
+### `hideAll(fn)` {#hideAll}
 
 隐藏所有SplineMesh对象
 
@@ -389,7 +389,7 @@ fdapi.splineMesh.hideAll();
 
 ---
 
-### `hideByGroupId(groupId, fn)`
+### `hideByGroupId(groupId, fn)` {#hideByGroupId}
 
 根据分组ID隐藏SplineMesh
 
@@ -406,7 +406,7 @@ fdapi.splineMesh.hideByGroupId('group_sm');
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示一个或多个SplineMesh对象
 
@@ -423,7 +423,7 @@ fdapi.splineMesh.show(['splineMesh1', 'splineMesh2']);
 
 ---
 
-### `showAll(fn)`
+### `showAll(fn)` {#showAll}
 
 显示所有SplineMesh对象
 
@@ -439,7 +439,7 @@ fdapi.splineMesh.showAll();
 
 ---
 
-### `showByGroupId(groupId, fn)`
+### `showByGroupId(groupId, fn)` {#showByGroupId}
 
 根据分组ID显示SplineMesh
 
@@ -456,7 +456,7 @@ fdapi.splineMesh.showByGroupId('group_sm');
 
 ---
 
-### `update(data, fn)`
+### `update(data, fn)` {#update}
 
 修改一个或多个SplineMesh对象
 
@@ -530,7 +530,7 @@ fdapi.splineMesh.callBPFunction([
 
 ---
 
-### `updateBegin()`
+### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
 
@@ -553,7 +553,7 @@ fdapi.xxx.updateEnd(function () {
 
 ---
 
-### `updateEnd(fn)`
+### `updateEnd(fn)` {#updateEnd}
 
 用于批量多次修改对象的属性，与updateBegin配套使用
 

@@ -8,7 +8,7 @@ description: "在三维场景中加载与驱动无人机模型，支持坐标定
 
 在三维场景中加载与驱动无人机模型，支持坐标定位、姿态旋转、moveTo 移动、轨迹线、自发光灯与标牌，模拟无人机的飞行与巡检过程。
 
-通过 `api.Drone` 访问。
+通过 `api.drone` 访问。
 
 ---
 ## 业务场景 Skill
@@ -31,21 +31,21 @@ description: "在三维场景中加载与驱动无人机模型，支持坐标定
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 添加一个或多个无人机对象 | 向场景批量添加对象 |
-| `clear` | 清空场景中所有的无人机对象 | 清空全部对象，重置图层 |
-| `delete` | 删除一个或多个无人机对象 | 按 ID 移除指定对象 |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `get` | 根据ID获取无人机对象的详细信息 | 查询对象信息，用于业务联动 |
-| `hide` | 隐藏一个或多个无人机对象 | 按业务条件隐藏对象 |
-| `moveTo` | 设置无人机对象飞行移动 | 驱动对象移动到目标位置 |
-| `show` | 显示一个或多个无人机对象 | 按业务条件显示对象 |
-| `update` | 修改一个或多个无人机对象 | 运行时动态更新对象属性/状态 |
-| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
-| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+| [`add`](#add) | 添加一个或多个无人机对象 | 向场景批量添加对象 |
+| [`clear`](#clear) | 清空场景中所有的无人机对象 | 清空全部对象，重置图层 |
+| [`delete`](#delete) | 删除一个或多个无人机对象 | 按 ID 移除指定对象 |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`get`](#get) | 根据ID获取无人机对象的详细信息 | 查询对象信息，用于业务联动 |
+| [`hide`](#hide) | 隐藏一个或多个无人机对象 | 按业务条件隐藏对象 |
+| [`moveTo`](#moveTo) | 设置无人机对象飞行移动 | 驱动对象移动到目标位置 |
+| [`show`](#show) | 显示一个或多个无人机对象 | 按业务条件显示对象 |
+| [`update`](#update) | 修改一个或多个无人机对象 | 运行时动态更新对象属性/状态 |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
 
 ## 方法（Methods）
 
-### `add(data, fn)`
+### `add(data, fn)` {#add}
 
 添加一个或多个无人机对象
 
@@ -132,7 +132,7 @@ fdapi.drone.focus('drone5');
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 清空场景中所有的无人机对象
 
@@ -148,7 +148,7 @@ fdapi.drone.clear();
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个无人机对象
 
@@ -165,7 +165,7 @@ fdapi.drone.delete('drone5');
 
 ---
 
-### `focus(ids, followEnable, distance, flyTime, viewPitch, viewYaw, sensitivity, offset, fn)`
+### `focus(ids, followEnable, distance, flyTime, viewPitch, viewYaw, sensitivity, offset, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -190,7 +190,7 @@ fdapi.drone.focus('drone5', false, 8, 2, -45, 10, [0, 0, 0], 0.02);
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据ID获取无人机对象的详细信息
 
@@ -220,7 +220,7 @@ fdapi.drone.get('drone5');
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏一个或多个无人机对象
 
@@ -237,7 +237,7 @@ fdapi.drone.hide('drone5');
 
 ---
 
-### `moveTo(data, fn)`
+### `moveTo(data, fn)` {#moveTo}
 
 设置无人机对象飞行移动
 
@@ -289,7 +289,7 @@ fdapi.drone.focus('drone5', false, 8, 2, -45, 10, [0, 0, 0], 0.02);
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示一个或多个无人机对象
 
@@ -306,7 +306,7 @@ fdapi.drone.show('drone5');
 
 ---
 
-### `update(data, fn)`
+### `update(data, fn)` {#update}
 
 修改一个或多个无人机对象
 
@@ -355,7 +355,7 @@ fdapi.drone.update(d100);
 
 ---
 
-### `updateBegin()`
+### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
 
@@ -378,7 +378,7 @@ fdapi.xxx.updateEnd(function () {
 
 ---
 
-### `updateEnd(fn)`
+### `updateEnd(fn)` {#updateEnd}
 
 用于批量多次修改对象的属性，与updateBegin配套使用
 

@@ -34,20 +34,20 @@ GaussianSplatting类对象，提供3D高斯泼溅相关操作
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 添加一个GaussianSplatting对象 | 向场景批量添加对象 |
-| `clear` | 删除场景中所有的GaussianSplatting | 清空全部对象，重置图层 |
-| `delete` | 删除一个或多个GaussianSplatting对象 | 按 ID 移除指定对象 |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `get` | 根据ID获取GaussianSplatting的详细信息 | 查询对象信息，用于业务联动 |
-| `hide` | 隐藏GaussianSplatting对象 | 按业务条件隐藏对象 |
-| `show` | 显示GaussianSplatting对象 | 按业务条件显示对象 |
-| `update` | 修改一个GaussianSplatting对象 | 运行时动态更新对象属性/状态 |
-| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
-| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+| [`add`](#add) | 添加一个GaussianSplatting对象 | 向场景批量添加对象 |
+| [`clear`](#clear) | 删除场景中所有的GaussianSplatting | 清空全部对象，重置图层 |
+| [`delete`](#delete) | 删除一个或多个GaussianSplatting对象 | 按 ID 移除指定对象 |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`get`](#get) | 根据ID获取GaussianSplatting的详细信息 | 查询对象信息，用于业务联动 |
+| [`hide`](#hide) | 隐藏GaussianSplatting对象 | 按业务条件隐藏对象 |
+| [`show`](#show) | 显示GaussianSplatting对象 | 按业务条件显示对象 |
+| [`update`](#update) | 修改一个GaussianSplatting对象 | 运行时动态更新对象属性/状态 |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
 
 ## 方法（Methods）
 
-### `add(gaussianSplatting, fn)`
+### `add(gaussianSplatting, fn)` {#add}
 
 添加一个GaussianSplatting对象
 
@@ -98,7 +98,7 @@ fdapi.gaussianSplatting.focus('gs3d');
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 删除场景中所有的GaussianSplatting
 
@@ -114,7 +114,7 @@ fdapi.gaussianSplatting.clear();
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个GaussianSplatting对象
 
@@ -131,7 +131,7 @@ fdapi.gaussianSplatting.delete('gs3d');
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -151,7 +151,7 @@ fdapi.gaussianSplatting.focus('gs3d');
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据ID获取GaussianSplatting的详细信息
 
@@ -182,7 +182,7 @@ fdapi.gaussianSplatting.get('gs3d');
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏GaussianSplatting对象
 
@@ -199,7 +199,7 @@ fdapi.gaussianSplatting.hide('gs3d');
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示GaussianSplatting对象
 
@@ -216,7 +216,7 @@ fdapi.gaussianSplatting.show('gs3d');
 
 ---
 
-### `update(gaussianSplatting, fn)`
+### `update(gaussianSplatting, fn)` {#update}
 
 修改一个GaussianSplatting对象
 
@@ -248,7 +248,7 @@ fdapi.gaussianSplatting.focus('gs3d');
 
 ---
 
-### `updateBegin()`
+### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
 
@@ -271,7 +271,7 @@ fdapi.xxx.updateEnd(function () {
 
 ---
 
-### `updateEnd(fn)`
+### `updateEnd(fn)` {#updateEnd}
 
 用于批量多次修改对象的属性，与updateBegin配套使用
 

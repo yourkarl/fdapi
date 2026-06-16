@@ -39,38 +39,38 @@ Tag已停止更新，推荐使用功能更丰富的标注对象Marker
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 添加一个或多个Tag对象 | 向场景批量添加对象 |
-| `clear` | 删除场景中所有的Tag | 清空全部对象，重置图层 |
-| `delete` | 删除一个或多个Tag对象 | 按 ID 移除指定对象 |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `focusAll` | 自动定位到能观察所有Tag对象的合适距离 | 相机定位到全部对象的合适视角 |
-| `get` | 根据ID获取Tag的详细信息 | 查询对象信息，用于业务联动 |
-| `hide` | 隐藏Tag | 按业务条件隐藏对象 |
-| `hideAll` | 隐藏所有Tag | 一键隐藏全部对象 |
-| `hideAllPopupWindow` | 隐藏所有标签的弹出窗口 |  |
-| `hidePopupWindow` | 隐藏指定标签的弹出窗口 |  |
-| `setAutoHidePopupWindow` | 设置是否自动关闭标签的弹出窗口 |  |
-| `setCoordinate` | 设置标签的位置 |  |
-| `setImagePath` | 设置标签的图片 |  |
-| `setImageSize` | 设置标签图片的大小 |  |
-| `setRange` | 设置标签的可见范围 |  |
-| `setShowLine` | 设置标签是否显示垂直牵引线 |  |
-| `setText` | 设置标签的文本 |  |
-| `setTextBackgroundColor` | 设置标签文本的背景颜色 |  |
-| `setTextBorderColor` | 设置标签文本的边框颜色 |  |
-| `setTextColor` | 设置标签文本颜色 |  |
-| `setURL` | 设置标签的URL |  |
-| `show` | 显示Tag | 按业务条件显示对象 |
-| `showAll` | 显示所有Tag | 一键显示全部对象 |
-| `showAllPopupWindow` | 显示所有标签的弹出窗口 |  |
-| `showPopupWindow` | 显示指定标签的弹出窗口 |  |
-| `update` | 修改一个或多个Tag对象 | 运行时动态更新对象属性/状态 |
-| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
-| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+| [`add`](#add) | 添加一个或多个Tag对象 | 向场景批量添加对象 |
+| [`clear`](#clear) | 删除场景中所有的Tag | 清空全部对象，重置图层 |
+| [`delete`](#delete) | 删除一个或多个Tag对象 | 按 ID 移除指定对象 |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`focusAll`](#focusAll) | 自动定位到能观察所有Tag对象的合适距离 | 相机定位到全部对象的合适视角 |
+| [`get`](#get) | 根据ID获取Tag的详细信息 | 查询对象信息，用于业务联动 |
+| [`hide`](#hide) | 隐藏Tag | 按业务条件隐藏对象 |
+| [`hideAll`](#hideAll) | 隐藏所有Tag | 一键隐藏全部对象 |
+| [`hideAllPopupWindow`](#hideAllPopupWindow) | 隐藏所有标签的弹出窗口 |  |
+| [`hidePopupWindow`](#hidePopupWindow) | 隐藏指定标签的弹出窗口 |  |
+| [`setAutoHidePopupWindow`](#setAutoHidePopupWindow) | 设置是否自动关闭标签的弹出窗口 |  |
+| [`setCoordinate`](#setCoordinate) | 设置标签的位置 |  |
+| [`setImagePath`](#setImagePath) | 设置标签的图片 |  |
+| [`setImageSize`](#setImageSize) | 设置标签图片的大小 |  |
+| [`setRange`](#setRange) | 设置标签的可见范围 |  |
+| [`setShowLine`](#setShowLine) | 设置标签是否显示垂直牵引线 |  |
+| [`setText`](#setText) | 设置标签的文本 |  |
+| [`setTextBackgroundColor`](#setTextBackgroundColor) | 设置标签文本的背景颜色 |  |
+| [`setTextBorderColor`](#setTextBorderColor) | 设置标签文本的边框颜色 |  |
+| [`setTextColor`](#setTextColor) | 设置标签文本颜色 |  |
+| [`setURL`](#setURL) | 设置标签的URL |  |
+| [`show`](#show) | 显示Tag | 按业务条件显示对象 |
+| [`showAll`](#showAll) | 显示所有Tag | 一键显示全部对象 |
+| [`showAllPopupWindow`](#showAllPopupWindow) | 显示所有标签的弹出窗口 |  |
+| [`showPopupWindow`](#showPopupWindow) | 显示指定标签的弹出窗口 |  |
+| [`update`](#update) | 修改一个或多个Tag对象 | 运行时动态更新对象属性/状态 |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
 
 ## 方法（Methods）
 
-### `add(data, fn)`
+### `add(data, fn)` {#add}
 
 添加一个或多个Tag对象
 
@@ -204,7 +204,7 @@ img.onload = () => {
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 删除场景中所有的Tag
 
@@ -220,7 +220,7 @@ fdapi.tag.clear();
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个Tag对象
 
@@ -237,7 +237,7 @@ fdapi.tag.delete(['p1', 'p2']);
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -257,7 +257,7 @@ fdapi.tag.focus('p1', 200, 0.2);
 
 ---
 
-### `focusAll(distance, flyTime, rotation, fn)`
+### `focusAll(distance, flyTime, rotation, fn)` {#focusAll}
 
 自动定位到能观察所有Tag对象的合适距离
 
@@ -276,7 +276,7 @@ fdapi.tag.focusAll(200, 0.2);
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据ID获取Tag的详细信息
 
@@ -321,7 +321,7 @@ log(`Get tags: \n id: ${o.id} \n text: ${o.text}`);
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏Tag
 
@@ -338,7 +338,7 @@ fdapi.tag.hide(['p1']);
 
 ---
 
-### `hideAll(fn)`
+### `hideAll(fn)` {#hideAll}
 
 隐藏所有Tag
 
@@ -354,7 +354,7 @@ fdapi.tag.hideAll();
 
 ---
 
-### `hideAllPopupWindow(fn)`
+### `hideAllPopupWindow(fn)` {#hideAllPopupWindow}
 
 隐藏所有标签的弹出窗口
 
@@ -370,7 +370,7 @@ fdapi.tag.hideAllPopupWindow();
 
 ---
 
-### `hidePopupWindow(ids, fn)`
+### `hidePopupWindow(ids, fn)` {#hidePopupWindow}
 
 隐藏指定标签的弹出窗口
 
@@ -387,7 +387,7 @@ fdapi.tag.hidePopupWindow('p1');
 
 ---
 
-### `setAutoHidePopupWindow(id, newVal, fn)`
+### `setAutoHidePopupWindow(id, newVal, fn)` {#setAutoHidePopupWindow}
 
 设置是否自动关闭标签的弹出窗口
 
@@ -405,7 +405,7 @@ await fdapi.tag.setAutoHidePopupWindow(id, newVal);
 
 ---
 
-### `setCoordinate(id, newVal, fn)`
+### `setCoordinate(id, newVal, fn)` {#setCoordinate}
 
 设置标签的位置
 
@@ -424,7 +424,7 @@ fdapi.tag.focus('p1', 200, 0.2);
 
 ---
 
-### `setImagePath(id, newVal, fn)`
+### `setImagePath(id, newVal, fn)` {#setImagePath}
 
 设置标签的图片
 
@@ -443,7 +443,7 @@ fdapi.tag.setImagePath('p1', path);
 
 ---
 
-### `setImageSize(id, newVal, fn)`
+### `setImageSize(id, newVal, fn)` {#setImageSize}
 
 设置标签图片的大小
 
@@ -461,7 +461,7 @@ fdapi.tag.setImageSize('p1', [64, 64]);
 
 ---
 
-### `setRange(id, newVal, fn)`
+### `setRange(id, newVal, fn)` {#setRange}
 
 设置标签的可见范围
 
@@ -479,7 +479,7 @@ fdapi.tag.setRange('p1', [1, 800]);
 
 ---
 
-### `setShowLine(id, newVal, fn)`
+### `setShowLine(id, newVal, fn)` {#setShowLine}
 
 设置标签是否显示垂直牵引线
 
@@ -497,7 +497,7 @@ fdapi.tag.setShowLine('p1', false);
 
 ---
 
-### `setText(id, newVal, fn)`
+### `setText(id, newVal, fn)` {#setText}
 
 设置标签的文本
 
@@ -515,7 +515,7 @@ fdapi.tag.setText('p1', 'Welcome!');
 
 ---
 
-### `setTextBackgroundColor(id, newVal, fn)`
+### `setTextBackgroundColor(id, newVal, fn)` {#setTextBackgroundColor}
 
 设置标签文本的背景颜色
 
@@ -533,7 +533,7 @@ fdapi.tag.setTextBackgroundColor('p1', Color.Yellow);
 
 ---
 
-### `setTextBorderColor(id, newVal, fn)`
+### `setTextBorderColor(id, newVal, fn)` {#setTextBorderColor}
 
 设置标签文本的边框颜色
 
@@ -551,7 +551,7 @@ fdapi.tag.setTextBorderColor('p1', Color.White);
 
 ---
 
-### `setTextColor(id, newVal, fn)`
+### `setTextColor(id, newVal, fn)` {#setTextColor}
 
 设置标签文本颜色
 
@@ -569,7 +569,7 @@ fdapi.tag.setTextColor('p1', Color.Blue);
 
 ---
 
-### `setURL(id, newVal, fn)`
+### `setURL(id, newVal, fn)` {#setURL}
 
 设置标签的URL
 
@@ -587,7 +587,7 @@ fdapi.tag.setURL('p1', 'http://www.163.com');
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示Tag
 
@@ -604,7 +604,7 @@ fdapi.tag.show('p1');
 
 ---
 
-### `showAll(fn)`
+### `showAll(fn)` {#showAll}
 
 显示所有Tag
 
@@ -620,7 +620,7 @@ fdapi.tag.showAll();
 
 ---
 
-### `showAllPopupWindow(fn)`
+### `showAllPopupWindow(fn)` {#showAllPopupWindow}
 
 显示所有标签的弹出窗口
 
@@ -636,7 +636,7 @@ fdapi.tag.showAllPopupWindow();
 
 ---
 
-### `showPopupWindow(ids, fn)`
+### `showPopupWindow(ids, fn)` {#showPopupWindow}
 
 显示指定标签的弹出窗口
 
@@ -653,7 +653,7 @@ fdapi.tag.showPopupWindow('p1');
 
 ---
 
-### `update(data, fn)`
+### `update(data, fn)` {#update}
 
 修改一个或多个Tag对象
 
@@ -683,7 +683,7 @@ fdapi.tag.focus('p1', 200, 0);
 
 ---
 
-### `updateBegin()`
+### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
 
@@ -706,7 +706,7 @@ fdapi.xxx.updateEnd(function () {
 
 ---
 
-### `updateEnd(fn)`
+### `updateEnd(fn)` {#updateEnd}
 
 用于批量多次修改对象的属性，与updateBegin配套使用
 

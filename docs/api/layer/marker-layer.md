@@ -41,23 +41,23 @@ new MarkerLayer()
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 添加一个或多个标注图层服务对象 | 向场景批量添加对象 |
-| `clear` | 删除场景中所有的标注图层对象 | 清空全部对象，重置图层 |
-| `delete` | 删除一个或多个标注图层对象 | 按 ID 移除指定对象 |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `focusByMarkerId` | 自动定位到内部标记点合适的观察距离 |  |
-| `hide` | 隐藏标注图层对象 | 按业务条件隐藏对象 |
-| `hideAll` | 隐藏所有标注图层对象 | 一键隐藏全部对象 |
-| `setViewHeightRange` | 设置标注图层对象的可视高度范围 |  |
-| `show` | 显示标注图层对象 | 按业务条件显示对象 |
-| `showAll` | 显示所有标注图层对象 | 一键显示全部对象 |
-| `update` | 修改一个或多个标注图层对象 | 运行时动态更新对象属性/状态 |
-| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
-| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+| [`add`](#add) | 添加一个或多个标注图层服务对象 | 向场景批量添加对象 |
+| [`clear`](#clear) | 删除场景中所有的标注图层对象 | 清空全部对象，重置图层 |
+| [`delete`](#delete) | 删除一个或多个标注图层对象 | 按 ID 移除指定对象 |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`focusByMarkerId`](#focusByMarkerId) | 自动定位到内部标记点合适的观察距离 |  |
+| [`hide`](#hide) | 隐藏标注图层对象 | 按业务条件隐藏对象 |
+| [`hideAll`](#hideAll) | 隐藏所有标注图层对象 | 一键隐藏全部对象 |
+| [`setViewHeightRange`](#setViewHeightRange) | 设置标注图层对象的可视高度范围 |  |
+| [`show`](#show) | 显示标注图层对象 | 按业务条件显示对象 |
+| [`showAll`](#showAll) | 显示所有标注图层对象 | 一键显示全部对象 |
+| [`update`](#update) | 修改一个或多个标注图层对象 | 运行时动态更新对象属性/状态 |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
 
 ## 方法（Methods）
 
-### `add(data, fn)`
+### `add(data, fn)` {#add}
 
 添加一个或多个标注图层服务对象
 
@@ -164,7 +164,7 @@ fdapi.markerLayer.add(markerLayer);
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 删除场景中所有的标注图层对象
 
@@ -180,7 +180,7 @@ fdapi.markerLayer.clear();
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个标注图层对象
 
@@ -197,7 +197,7 @@ fdapi.markerLayer.delete(['markerLayer1']);
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -223,7 +223,7 @@ fdapi.markerLayer.focusByMarkerId('markerLayer1', 'marker_100');
 
 ---
 
-### `focusByMarkerId(id, markerId, distance, flyTime, rotation, fn)`
+### `focusByMarkerId(id, markerId, distance, flyTime, rotation, fn)` {#focusByMarkerId}
 
 自动定位到内部标记点合适的观察距离
 
@@ -244,7 +244,7 @@ await fdapi.markerLayer.focusByMarkerId(id, markerId, distance, flyTime, rotatio
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏标注图层对象
 
@@ -261,7 +261,7 @@ fdapi.markerLayer.hide(['markerLayer1']);
 
 ---
 
-### `hideAll(fn)`
+### `hideAll(fn)` {#hideAll}
 
 隐藏所有标注图层对象
 
@@ -277,7 +277,7 @@ fdapi.markerLayer.hideAll();
 
 ---
 
-### `setViewHeightRange(id, minViewHeight, maxViewHeight, fn)`
+### `setViewHeightRange(id, minViewHeight, maxViewHeight, fn)` {#setViewHeightRange}
 
 设置标注图层对象的可视高度范围
 
@@ -296,7 +296,7 @@ fdapi.markerLayer.setViewHeightRange("markerLayer1", 100, 1000);
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示标注图层对象
 
@@ -313,7 +313,7 @@ fdapi.markerLayer.show('markerLayer1');
 
 ---
 
-### `showAll(fn)`
+### `showAll(fn)` {#showAll}
 
 显示所有标注图层对象
 
@@ -329,7 +329,7 @@ fdapi.markerLayer.showAll();
 
 ---
 
-### `update(data, fn)`
+### `update(data, fn)` {#update}
 
 修改一个或多个标注图层对象
 
@@ -394,7 +394,7 @@ fdapi.markerLayer.update(markerLayer);
 
 ---
 
-### `updateBegin()`
+### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
 
@@ -417,7 +417,7 @@ fdapi.xxx.updateEnd(function () {
 
 ---
 
-### `updateEnd(fn)`
+### `updateEnd(fn)` {#updateEnd}
 
 用于批量多次修改对象的属性，与updateBegin配套使用
 

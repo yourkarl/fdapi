@@ -42,32 +42,32 @@ new Polyline()
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 添加一个或多个Polyline对象 | 向场景批量添加对象 |
-| `attachObject` | 设置一个或多个Polyline对象的起点和终点跟随对应的模型移动 |  |
-| `clear` | 删除场景中所有的Polyline | 清空全部对象，重置图层 |
-| `delete` | 删除一个或多个Polyline对象 | 按 ID 移除指定对象 |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `get` | 根据ID获取Polyline的详细信息 | 查询对象信息，用于业务联动 |
-| `hide` | 隐藏Polyline | 按业务条件隐藏对象 |
-| `hideAll` | 隐藏所有Polyline | 一键隐藏全部对象 |
-| `setBrightness` | 设置新的亮度 |  |
-| `setColor` | 设置新的颜色值 |  |
-| `setCoordinates` | 设置坐标值 |  |
-| `setDepthTest` | 设置是否做深度检测 |  |
-| `setFlowRate` | 设置新的流速 |  |
-| `setShape` | 设置shape新的样式 |  |
-| `setStyle` | 设置新的样式 |  |
-| `setThickness` | 设置新的厚度 |  |
-| `setViewHeightRange` | 设置Polyline对象的可视高度范围， |  |
-| `show` | 显示Polyline | 按业务条件显示对象 |
-| `showAll` | 显示所有Polyline | 一键显示全部对象 |
-| `update` | 修改一个或多个Polyline对象 | 运行时动态更新对象属性/状态 |
-| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
-| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+| [`add`](#add) | 添加一个或多个Polyline对象 | 向场景批量添加对象 |
+| [`attachObject`](#attachObject) | 设置一个或多个Polyline对象的起点和终点跟随对应的模型移动 |  |
+| [`clear`](#clear) | 删除场景中所有的Polyline | 清空全部对象，重置图层 |
+| [`delete`](#delete) | 删除一个或多个Polyline对象 | 按 ID 移除指定对象 |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`get`](#get) | 根据ID获取Polyline的详细信息 | 查询对象信息，用于业务联动 |
+| [`hide`](#hide) | 隐藏Polyline | 按业务条件隐藏对象 |
+| [`hideAll`](#hideAll) | 隐藏所有Polyline | 一键隐藏全部对象 |
+| [`setBrightness`](#setBrightness) | 设置新的亮度 |  |
+| [`setColor`](#setColor) | 设置新的颜色值 |  |
+| [`setCoordinates`](#setCoordinates) | 设置坐标值 |  |
+| [`setDepthTest`](#setDepthTest) | 设置是否做深度检测 |  |
+| [`setFlowRate`](#setFlowRate) | 设置新的流速 |  |
+| [`setShape`](#setShape) | 设置shape新的样式 |  |
+| [`setStyle`](#setStyle) | 设置新的样式 |  |
+| [`setThickness`](#setThickness) | 设置新的厚度 |  |
+| [`setViewHeightRange`](#setViewHeightRange) | 设置Polyline对象的可视高度范围， |  |
+| [`show`](#show) | 显示Polyline | 按业务条件显示对象 |
+| [`showAll`](#showAll) | 显示所有Polyline | 一键显示全部对象 |
+| [`update`](#update) | 修改一个或多个Polyline对象 | 运行时动态更新对象属性/状态 |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
 
 ## 方法（Methods）
 
-### `add(data, fn)`
+### `add(data, fn)` {#add}
 
 添加一个或多个Polyline对象
 
@@ -180,7 +180,7 @@ fdapi.polyline.focus(p1.id, 50);
 
 ---
 
-### `attachObject(data, fn)`
+### `attachObject(data, fn)` {#attachObject}
 
 设置一个或多个Polyline对象的起点和终点跟随对应的模型移动
 
@@ -236,7 +236,7 @@ fdapi.polyline.attachObject([
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 删除场景中所有的Polyline
 
@@ -252,7 +252,7 @@ fdapi.polyline.clear();
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个Polyline对象
 
@@ -269,7 +269,7 @@ fdapi.polyline.delete('p1');
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -289,7 +289,7 @@ fdapi.polyline.focus('p1', 880, 1);
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据ID获取Polyline的详细信息
 
@@ -324,7 +324,7 @@ fdapi.polyline.get('p1');
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏Polyline
 
@@ -341,7 +341,7 @@ fdapi.polyline.hide('p1');
 
 ---
 
-### `hideAll(fn)`
+### `hideAll(fn)` {#hideAll}
 
 隐藏所有Polyline
 
@@ -357,7 +357,7 @@ fdapi.polyline.hideAll();
 
 ---
 
-### `setBrightness(id, newVal, fn)`
+### `setBrightness(id, newVal, fn)` {#setBrightness}
 
 设置新的亮度
 
@@ -375,7 +375,7 @@ fdapi.polyline.setBrightness("p1", 2);
 
 ---
 
-### `setColor(id, newVal, fn)`
+### `setColor(id, newVal, fn)` {#setColor}
 
 设置新的颜色值
 
@@ -393,7 +393,7 @@ fdapi.polyline.setColor("p1", [0, 1, 0, 0.5]);
 
 ---
 
-### `setCoordinates(id, newVal, fn)`
+### `setCoordinates(id, newVal, fn)` {#setCoordinates}
 
 设置坐标值
 
@@ -417,7 +417,7 @@ fdapi.polyline.setCoordinates("p1", [
 
 ---
 
-### `setDepthTest(id, newVal, fn)`
+### `setDepthTest(id, newVal, fn)` {#setDepthTest}
 
 设置是否做深度检测
 
@@ -436,7 +436,7 @@ fdapi.polyline.setDepthTest("p1", false);
 
 ---
 
-### `setFlowRate(id, newVal, fn)`
+### `setFlowRate(id, newVal, fn)` {#setFlowRate}
 
 设置新的流速
 
@@ -454,7 +454,7 @@ fdapi.polyline.setFlowRate("p1", 2);
 
 ---
 
-### `setShape(id, newVal, fn)`
+### `setShape(id, newVal, fn)` {#setShape}
 
 设置shape新的样式
 
@@ -472,7 +472,7 @@ fdapi.polyline.setShape("p1", 1);
 
 ---
 
-### `setStyle(id, newVal, fn)`
+### `setStyle(id, newVal, fn)` {#setStyle}
 
 设置新的样式
 
@@ -491,7 +491,7 @@ fdapi.polyline.setStyle("p1", PolylineStyle.Arrow);
 
 ---
 
-### `setThickness(id, newVal, fn)`
+### `setThickness(id, newVal, fn)` {#setThickness}
 
 设置新的厚度
 
@@ -509,7 +509,7 @@ fdapi.polyline.setThickness("p1", 60);
 
 ---
 
-### `setViewHeightRange(id, minViewHeight, maxViewHeight, fn)`
+### `setViewHeightRange(id, minViewHeight, maxViewHeight, fn)` {#setViewHeightRange}
 
 设置Polyline对象的可视高度范围，注意：当Polyline对象使用贴地模式时，此方法会失效
 
@@ -528,7 +528,7 @@ fdapi.polyline.setViewHeightRange("p1", 0, 1000);
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示Polyline
 
@@ -545,7 +545,7 @@ fdapi.polyline.show('p1');
 
 ---
 
-### `showAll(fn)`
+### `showAll(fn)` {#showAll}
 
 显示所有Polyline
 
@@ -561,7 +561,7 @@ fdapi.polyline.showAll();
 
 ---
 
-### `update(data, fn)`
+### `update(data, fn)` {#update}
 
 修改一个或多个Polyline对象
 
@@ -585,7 +585,7 @@ fdapi.polyline.updateEnd();
 
 ---
 
-### `updateBegin()`
+### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
 
@@ -608,7 +608,7 @@ fdapi.xxx.updateEnd(function () {
 
 ---
 
-### `updateEnd(fn)`
+### `updateEnd(fn)` {#updateEnd}
 
 用于批量多次修改对象的属性，与updateBegin配套使用
 

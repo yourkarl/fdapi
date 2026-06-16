@@ -34,19 +34,19 @@ WaterFlowField流场类对象，用于精确控制水流单个网格的方向速
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 添加一个或多个WaterFlowField对象 | 向场景批量添加对象 |
-| `clear` | 清空场景中所有的WaterFlowField对象 | 清空全部对象，重置图层 |
-| `delete` | 删除一个或多个WaterFlowField对象 | 按 ID 移除指定对象 |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `get` | 根据ID获取WaterFlowField对象的详细信息 | 查询对象信息，用于业务联动 |
-| `hide` | 隐藏WaterFlowField对象 | 按业务条件隐藏对象 |
-| `setViewportVisible` | 设置水流场对象在进入多视口状态下视口可见性 |  |
-| `show` | 显示WaterFlowField对象 | 按业务条件显示对象 |
-| `update` | 修改一个或多个WaterFlowField对象 | 运行时动态更新对象属性/状态 |
+| [`add`](#add) | 添加一个或多个WaterFlowField对象 | 向场景批量添加对象 |
+| [`clear`](#clear) | 清空场景中所有的WaterFlowField对象 | 清空全部对象，重置图层 |
+| [`delete`](#delete) | 删除一个或多个WaterFlowField对象 | 按 ID 移除指定对象 |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`get`](#get) | 根据ID获取WaterFlowField对象的详细信息 | 查询对象信息，用于业务联动 |
+| [`hide`](#hide) | 隐藏WaterFlowField对象 | 按业务条件隐藏对象 |
+| [`setViewportVisible`](#setViewportVisible) | 设置水流场对象在进入多视口状态下视口可见性 |  |
+| [`show`](#show) | 显示WaterFlowField对象 | 按业务条件显示对象 |
+| [`update`](#update) | 修改一个或多个WaterFlowField对象 | 运行时动态更新对象属性/状态 |
 
 ## 方法（Methods）
 
-### `add(data, fn)`
+### `add(data, fn)` {#add}
 
 添加一个或多个WaterFlowField对象
 
@@ -141,7 +141,7 @@ fdapi.waterFlowField.focus('flowField1', 1000);
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 清空场景中所有的WaterFlowField对象
 
@@ -157,7 +157,7 @@ fdapi.waterFlowField.clear();
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个WaterFlowField对象
 
@@ -174,7 +174,7 @@ fdapi.waterFlowField.delete('flowField1');
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -194,7 +194,7 @@ fdapi.waterFlowField.focus('flowField1', 1000);
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据ID获取WaterFlowField对象的详细信息
 
@@ -227,7 +227,7 @@ fdapi.waterFlowField.get('flowField1');
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏WaterFlowField对象
 
@@ -244,7 +244,7 @@ fdapi.waterFlowField.hide('flowField1');
 
 ---
 
-### `setViewportVisible(id, vp, fn)`
+### `setViewportVisible(id, vp, fn)` {#setViewportVisible}
 
 设置水流场对象在进入多视口状态下视口可见性
 
@@ -271,7 +271,7 @@ fdapi.waterFlowField.setViewportVisible('flowField1', Viewport.V1 | Viewport.V3)
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示WaterFlowField对象
 
@@ -288,7 +288,7 @@ fdapi.waterFlowField.show('flowField1');
 
 ---
 
-### `update(data, fn)`
+### `update(data, fn)` {#update}
 
 修改一个或多个WaterFlowField对象
 

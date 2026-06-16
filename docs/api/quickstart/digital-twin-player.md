@@ -97,26 +97,26 @@ new DigitalTwinPlayer(host, option)
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `destroy` | 销毁 |  |
-| `getAPI` | 获取DigitalTwinAPI接口 |  |
-| `getHost` | 获取服务器的地址（ip:port） |  |
-| `getInstanceInfo` | 获取当前所连接的实例信息 |  |
-| `getVideoElement` | 获取用于播放Cloud视频流的video元素 |  |
-| `getVideoElementSize` | 获取Video元素的尺寸 |  |
-| `getVideoSize` | :::caution 已废弃 |  |
-| `getVideoStreamSize` | 获取视频流的尺寸 |  |
-| `resize` | 重新调整布局 |  |
-| `screen2World` | 屏幕坐标转为投影坐标 |  |
-| `setActionEventEnabled` | 设置是否开启键盘、鼠标交互事件的回调功能 |  |
-| `setEnableEventSync` | 用于开关交互事件同步功能 |  |
-| `setInstanceOptions` | 设置实例选项，调用此接口可以实现在不刷新页面的情况下切换使用的实例或工程文件 |  |
-| `setKeyEventTarget` | 设置键盘交互事件的目标对象 |  |
-| `setResolution` | 设置视频流的尺寸，如果云渲染后台启用了自适应，那么视频流的分辨率也会自动调整。 如果没有… |  |
-| `world2Screen` | 投影坐标转为屏幕坐标 |  |
+| [`destroy`](#destroy) | 销毁 |  |
+| [`getAPI`](#getAPI) | 获取DigitalTwinAPI接口 |  |
+| [`getHost`](#getHost) | 获取服务器的地址（ip:port） |  |
+| [`getInstanceInfo`](#getInstanceInfo) | 获取当前所连接的实例信息 |  |
+| [`getVideoElement`](#getVideoElement) | 获取用于播放Cloud视频流的video元素 |  |
+| [`getVideoElementSize`](#getVideoElementSize) | 获取Video元素的尺寸 |  |
+| [`getVideoSize`](#getVideoSize) | :::caution 已废弃 |  |
+| [`getVideoStreamSize`](#getVideoStreamSize) | 获取视频流的尺寸 |  |
+| [`resize`](#resize) | 重新调整布局 |  |
+| [`screen2World`](#screen2World) | 屏幕坐标转为投影坐标 |  |
+| [`setActionEventEnabled`](#setActionEventEnabled) | 设置是否开启键盘、鼠标交互事件的回调功能 |  |
+| [`setEnableEventSync`](#setEnableEventSync) | 用于开关交互事件同步功能 |  |
+| [`setInstanceOptions`](#setInstanceOptions) | 设置实例选项，调用此接口可以实现在不刷新页面的情况下切换使用的实例或工程文件 |  |
+| [`setKeyEventTarget`](#setKeyEventTarget) | 设置键盘交互事件的目标对象 |  |
+| [`setResolution`](#setResolution) | 设置视频流的尺寸，如果云渲染后台启用了自适应，那么视频流的分辨率也会自动调整。 如果没有… |  |
+| [`world2Screen`](#world2Screen) | 投影坐标转为屏幕坐标 |  |
 
 ## 方法（Methods）
 
-### `destroy(reason)`
+### `destroy(reason)` {#destroy}
 
 销毁
 
@@ -132,7 +132,7 @@ await fdplayer.destroy(reason);
 
 ---
 
-### `getAPI()`
+### `getAPI()` {#getAPI}
 
 获取DigitalTwinAPI接口
 
@@ -144,7 +144,7 @@ await fdplayer.getAPI();
 
 ---
 
-### `getHost()`
+### `getHost()` {#getHost}
 
 获取服务器的地址（ip:port）
 
@@ -156,7 +156,7 @@ await fdplayer.getHost();
 
 ---
 
-### `getInstanceInfo()`
+### `getInstanceInfo()` {#getInstanceInfo}
 
 获取当前所连接的实例信息
 
@@ -168,7 +168,7 @@ await fdplayer.getInstanceInfo();
 
 ---
 
-### `getVideoElement()`
+### `getVideoElement()` {#getVideoElement}
 
 获取用于播放Cloud视频流的video元素
 
@@ -182,7 +182,7 @@ await fdplayer.getVideoElement();
 
 ---
 
-### `getVideoElementSize()`
+### `getVideoElementSize()` {#getVideoElementSize}
 
 获取Video元素的尺寸
 
@@ -196,7 +196,7 @@ await fdplayer.getVideoElementSize();
 
 ---
 
-### `getVideoSize()`
+### `getVideoSize()` {#getVideoSize}
 
 :::caution 已废弃
 
@@ -212,7 +212,7 @@ await fdplayer.getVideoSize();
 
 ---
 
-### `getVideoStreamSize()`
+### `getVideoStreamSize()` {#getVideoStreamSize}
 
 获取视频流的尺寸
 
@@ -226,7 +226,7 @@ await fdplayer.getVideoStreamSize();
 
 ---
 
-### `resize()`
+### `resize()` {#resize}
 
 重新调整布局
 
@@ -238,7 +238,7 @@ await fdplayer.resize();
 
 ---
 
-### `screen2World(x, y, fn)`
+### `screen2World(x, y, fn)` {#screen2World}
 
 屏幕坐标转为投影坐标 请参考[二次开发：四种坐标的区别](/docs/tutorials/introduction)。
 
@@ -259,7 +259,7 @@ await fdplayer.screen2World(x, y);
 
 ---
 
-### `setActionEventEnabled(bEnable)`
+### `setActionEventEnabled(bEnable)` {#setActionEventEnabled}
 
 设置是否开启键盘、鼠标交互事件的回调功能
 
@@ -275,7 +275,7 @@ await fdplayer.setActionEventEnabled(bEnable);
 
 ---
 
-### `setEnableEventSync(bEnabled)`
+### `setEnableEventSync(bEnabled)` {#setEnableEventSync}
 
 用于开关交互事件同步功能
 
@@ -291,7 +291,7 @@ await fdplayer.setEnableEventSync(bEnabled);
 
 ---
 
-### `setInstanceOptions(o)`
+### `setInstanceOptions(o)` {#setInstanceOptions}
 
 设置实例选项，调用此接口可以实现在不刷新页面的情况下切换使用的实例或工程文件
 
@@ -312,7 +312,7 @@ fdplayer.setInstanceOptions({
 
 ---
 
-### `setKeyEventTarget(newVal)`
+### `setKeyEventTarget(newVal)` {#setKeyEventTarget}
 
 设置键盘交互事件的目标对象
 
@@ -328,7 +328,7 @@ await fdplayer.setKeyEventTarget(newVal);
 
 ---
 
-### `setResolution(w, h)`
+### `setResolution(w, h)` {#setResolution}
 
 设置视频流的尺寸，如果云渲染后台启用了自适应，那么视频流的分辨率也会自动调整。 如果没有启用自适应，则调用不起作用。
 
@@ -352,7 +352,7 @@ await fdplayer.setResolution(w, h);
 
 ---
 
-### `world2Screen(x, y, z, fn)`
+### `world2Screen(x, y, z, fn)` {#world2Screen}
 
 投影坐标转为屏幕坐标 请参考[二次开发：四种坐标的区别](/docs/tutorials/introduction)
 

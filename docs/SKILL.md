@@ -53,7 +53,7 @@ const fdapi  = player.getAPI();                       // API 总入口
 |------|------|
 | 快速开始 Hello World | `tutorials/hello-world.md` |
 | 接入方式与 SDK 说明 | `tutorials/introduction.md` |
-| 核心概念与架构总览 | `tutorials/architecture.md` |
+| 架构概览 | `tutorials/architecture.md` |
 | 异步调用方式 | `tutorials/async-call.md` |
 | 事件系统 | `tutorials/event.md` |
 | 帧同步 / FrameTick | `tutorials/frame-tick.md` |

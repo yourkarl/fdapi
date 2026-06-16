@@ -33,19 +33,19 @@ description: "HydroDynamic2D 是现行的二维水动力模型对象，基于真
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `addByShp` | 添加一个或多个HydroDynamic2D二维水动力模型对象，添加的数据源为(.shp)… |  |
-| `addByTif` | 添加一个或多个HydroDynamic2D二维水动力模型对象，数据源为.tif文件。 |  |
-| `clear` | 删除场景中所有的HydroDynamic2D | 清空全部对象，重置图层 |
-| `delete` | 删除一个或多个HydroDynamic2D对象 | 按 ID 移除指定对象 |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `get` | 根据ID获取HydroDynamic2D的详细信息 | 查询对象信息，用于业务联动 |
-| `hide` | 隐藏HydroDynamic2D | 按业务条件隐藏对象 |
-| `show` | 显示HydroDynamic2D | 按业务条件显示对象 |
-| `update` | 修改一个或多个HydroDynamic2D对象 | 运行时动态更新对象属性/状态 |
+| [`addByShp`](#addByShp) | 添加一个或多个HydroDynamic2D二维水动力模型对象，添加的数据源为(.shp)… |  |
+| [`addByTif`](#addByTif) | 添加一个或多个HydroDynamic2D二维水动力模型对象，数据源为.tif文件。 |  |
+| [`clear`](#clear) | 删除场景中所有的HydroDynamic2D | 清空全部对象，重置图层 |
+| [`delete`](#delete) | 删除一个或多个HydroDynamic2D对象 | 按 ID 移除指定对象 |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`get`](#get) | 根据ID获取HydroDynamic2D的详细信息 | 查询对象信息，用于业务联动 |
+| [`hide`](#hide) | 隐藏HydroDynamic2D | 按业务条件隐藏对象 |
+| [`show`](#show) | 显示HydroDynamic2D | 按业务条件显示对象 |
+| [`update`](#update) | 修改一个或多个HydroDynamic2D对象 | 运行时动态更新对象属性/状态 |
 
 ## 方法（Methods）
 
-### `addByShp(data, fn)`
+### `addByShp(data, fn)` {#addByShp}
 
 添加一个或多个HydroDynamic2D二维水动力模型对象，添加的数据源为(.shp)文件，注意：SHP文件必需是投影坐标系（PCS），同时单位是米。
 
@@ -112,7 +112,7 @@ await fdapi.hydrodynamic2d.addByShp(data);
 
 ---
 
-### `addByTif(data, fn)`
+### `addByTif(data, fn)` {#addByTif}
 
 添加一个或多个HydroDynamic2D二维水动力模型对象，数据源为.tif文件。
 
@@ -207,7 +207,7 @@ await fdapi.hydrodynamic2d.addByShp(data);
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 删除场景中所有的HydroDynamic2D
 
@@ -223,7 +223,7 @@ fdapi.hydrodynamic2d.clear();
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个HydroDynamic2D对象
 
@@ -240,7 +240,7 @@ fdapi.hydrodynamic2d.delete('hdm_shp_clip');
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -260,7 +260,7 @@ fdapi.hydrodynamic2d.focus('hdm_shp_clip', 100);
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据ID获取HydroDynamic2D的详细信息
 
@@ -277,7 +277,7 @@ fdapi.hydrodynamic2d.get('hdm_shp_clip');
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏HydroDynamic2D
 
@@ -294,7 +294,7 @@ fdapi.hydrodynamic2d.hide('hdm_shp_clip');
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示HydroDynamic2D
 
@@ -311,7 +311,7 @@ fdapi.hydrodynamic2d.show('hdm_shp_clip');
 
 ---
 
-### `update(data, fn)`
+### `update(data, fn)` {#update}
 
 修改一个或多个HydroDynamic2D对象
 

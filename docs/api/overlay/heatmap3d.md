@@ -47,32 +47,32 @@ HeatMap3D 效果图如下：
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `addByHeatPoints` | 根据空间离散点和对应热力值构建三维热力图 |  |
-| `addByImages` | 根据16张空间图片构建三维热力图 |  |
-| `addBySparseVoxels` | 根据稀疏体素构建三维热力图 |  |
-| `addByTif` | 根据tif文件构建三维热力图 |  |
-| `addByVoxels` | 根据纯热力值构建三维热力图 |  |
-| `addHeatPoints` | 动态往HeatMap3D对象内添加离散热力点， |  |
-| `clear` | 清空场景中所有的HeatMap3D | 清空全部对象，重置图层 |
-| `delete` | 删除一个或多个HeatMap3D对象 | 按 ID 移除指定对象 |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `get` | 根据ID获取HeatMap3D的详细信息 | 查询对象信息，用于业务联动 |
-| `hide` | 隐藏HeatMap3D | 按业务条件隐藏对象 |
-| `load` | 预加载的三维热力图动画，包含多个Tif文件，加载后可以使用play()方法播放三维热力图… |  |
-| `pause` | 暂停播放三维热力图动画 | 暂停播放 |
-| `play` | 播放预加载的三维热力图动画 | 播放动画/导览 |
-| `queryVoxel` | 根据ID和坐标位置获取对应HeatMap3D对象包含体素块的详细信息 |  |
-| `setDisplayMode` | 设置三维热力图的显示模式 |  |
-| `setTime` | 从第几秒开始播放三维热力图动画 |  |
-| `setViewportVisible` | 设置HeatMap3D对象在进入多视口状态下视口可见性 |  |
-| `show` | 显示HeatMap3D | 按业务条件显示对象 |
-| `update` | 修改HeatMap3D | 运行时动态更新对象属性/状态 |
-| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
-| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+| [`addByHeatPoints`](#addByHeatPoints) | 根据空间离散点和对应热力值构建三维热力图 |  |
+| [`addByImages`](#addByImages) | 根据16张空间图片构建三维热力图 |  |
+| [`addBySparseVoxels`](#addBySparseVoxels) | 根据稀疏体素构建三维热力图 |  |
+| [`addByTif`](#addByTif) | 根据tif文件构建三维热力图 |  |
+| [`addByVoxels`](#addByVoxels) | 根据纯热力值构建三维热力图 |  |
+| [`addHeatPoints`](#addHeatPoints) | 动态往HeatMap3D对象内添加离散热力点， |  |
+| [`clear`](#clear) | 清空场景中所有的HeatMap3D | 清空全部对象，重置图层 |
+| [`delete`](#delete) | 删除一个或多个HeatMap3D对象 | 按 ID 移除指定对象 |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`get`](#get) | 根据ID获取HeatMap3D的详细信息 | 查询对象信息，用于业务联动 |
+| [`hide`](#hide) | 隐藏HeatMap3D | 按业务条件隐藏对象 |
+| [`load`](#load) | 预加载的三维热力图动画，包含多个Tif文件，加载后可以使用play()方法播放三维热力图… |  |
+| [`pause`](#pause) | 暂停播放三维热力图动画 | 暂停播放 |
+| [`play`](#play) | 播放预加载的三维热力图动画 | 播放动画/导览 |
+| [`queryVoxel`](#queryVoxel) | 根据ID和坐标位置获取对应HeatMap3D对象包含体素块的详细信息 |  |
+| [`setDisplayMode`](#setDisplayMode) | 设置三维热力图的显示模式 |  |
+| [`setTime`](#setTime) | 从第几秒开始播放三维热力图动画 |  |
+| [`setViewportVisible`](#setViewportVisible) | 设置HeatMap3D对象在进入多视口状态下视口可见性 |  |
+| [`show`](#show) | 显示HeatMap3D | 按业务条件显示对象 |
+| [`update`](#update) | 修改HeatMap3D | 运行时动态更新对象属性/状态 |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
 
 ## 方法（Methods）
 
-### `addByHeatPoints(data, fn)`
+### `addByHeatPoints(data, fn)` {#addByHeatPoints}
 
 根据空间离散点和对应热力值构建三维热力图
 
@@ -228,7 +228,7 @@ fdapi.heatmap3d.focus('heatmap3d_byHeatPoints', 50);
 
 ---
 
-### `addByImages(data, fn)`
+### `addByImages(data, fn)` {#addByImages}
 
 根据16张空间图片构建三维热力图
 
@@ -295,7 +295,7 @@ fdapi.heatmap3d.focus('heatmap3d_byImages');
 
 ---
 
-### `addBySparseVoxels(data, fn)`
+### `addBySparseVoxels(data, fn)` {#addBySparseVoxels}
 
 根据稀疏体素构建三维热力图
 
@@ -398,7 +398,7 @@ fdapi.heatmap3d.focus('heatmap3dBySparseVoxels', 10);
 
 ---
 
-### `addByTif(data, fn)`
+### `addByTif(data, fn)` {#addByTif}
 
 根据tif文件构建三维热力图
 
@@ -456,7 +456,7 @@ await fdapi.heatmap3d.addByTif(data);
 
 ---
 
-### `addByVoxels(data, fn)`
+### `addByVoxels(data, fn)` {#addByVoxels}
 
 根据纯热力值构建三维热力图
 
@@ -583,7 +583,7 @@ fdapi.heatmap3d.focus('heatmap3d_byHeatValues');
 
 ---
 
-### `addHeatPoints(data, fn)`
+### `addHeatPoints(data, fn)` {#addHeatPoints}
 
 动态往HeatMap3D对象内添加离散热力点，注意：仅支持空间离散点构造方法addByHeatPoints()
 
@@ -666,7 +666,7 @@ fdapi.heatmap3d.focus('heatmap3d_byHeatValues');
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 清空场景中所有的HeatMap3D
 
@@ -682,7 +682,7 @@ fdapi.heatmap3d.clear();
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个HeatMap3D对象
 
@@ -699,7 +699,7 @@ fdapi.heatmap3d.delete('heatmap3d_byImages');
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -719,7 +719,7 @@ fdapi.heatmap3d.focus('heatmap3d_byImages', 100);
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据ID获取HeatMap3D的详细信息
 
@@ -767,7 +767,7 @@ fdapi.heatmap3d.get('heatmap3d_byImages');
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏HeatMap3D
 
@@ -784,7 +784,7 @@ fdapi.heatmap3d.hide('heatmap3d_byImages');
 
 ---
 
-### `load(data, fn)`
+### `load(data, fn)` {#load}
 
 预加载的三维热力图动画，包含多个Tif文件，加载后可以使用play()方法播放三维热力图动画。
 
@@ -1430,7 +1430,7 @@ fdapi.camera.set(8687397.494102, 8426718.222344, 10390890.88, -62.999722, 33.423
 
 ---
 
-### `pause(id, fn)`
+### `pause(id, fn)` {#pause}
 
 暂停播放三维热力图动画
 
@@ -1447,7 +1447,7 @@ fdapi.heatmap3d.pause("heatmap3d-anima");
 
 ---
 
-### `play(id, fn)`
+### `play(id, fn)` {#play}
 
 播放预加载的三维热力图动画
 
@@ -1464,7 +1464,7 @@ fdapi.heatmap3d.play("heatmap3d-anima");
 
 ---
 
-### `queryVoxel(id, coordinate, fn)`
+### `queryVoxel(id, coordinate, fn)` {#queryVoxel}
 
 根据ID和坐标位置获取对应HeatMap3D对象包含体素块的详细信息
 
@@ -1483,7 +1483,7 @@ fdapi.heatmap3d.queryVoxel('heatmap3dBySparseVoxels', [493071.401875, 2492076.96
 
 ---
 
-### `setDisplayMode(id, displayMode, fn)`
+### `setDisplayMode(id, displayMode, fn)` {#setDisplayMode}
 
 设置三维热力图的显示模式
 
@@ -1501,7 +1501,7 @@ await fdapi.heatmap3d.setDisplayMode(id, displayMode);
 
 ---
 
-### `setTime(id, startTime, fn)`
+### `setTime(id, startTime, fn)` {#setTime}
 
 从第几秒开始播放三维热力图动画
 
@@ -1519,7 +1519,7 @@ fdapi.heatmap3d.setTime("heatmap3d-anima", 5);
 
 ---
 
-### `setViewportVisible(id, vp, fn)`
+### `setViewportVisible(id, vp, fn)` {#setViewportVisible}
 
 设置HeatMap3D对象在进入多视口状态下视口可见性
 
@@ -1546,7 +1546,7 @@ fdapi.heatmap3d.setViewportVisible('heatmap3d_byHeatPoints', Viewport.V1 | Viewp
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示HeatMap3D
 
@@ -1563,7 +1563,7 @@ fdapi.heatmap3d.show('heatmap3d_byImages');
 
 ---
 
-### `update(data, fn)`
+### `update(data, fn)` {#update}
 
 修改HeatMap3D
 
@@ -1597,7 +1597,7 @@ fdapi.heatmap3d.focus('heatmap3d_byImages');
 
 ---
 
-### `updateBegin()`
+### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
 
@@ -1620,7 +1620,7 @@ fdapi.xxx.updateEnd(function () {
 
 ---
 
-### `updateEnd(fn)`
+### `updateEnd(fn)` {#updateEnd}
 
 用于批量多次修改对象的属性，与updateBegin配套使用
 
