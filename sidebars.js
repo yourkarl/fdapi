@@ -71,15 +71,6 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: '事件系统',
-      items: [
-        'api/events/edit-helper',
-        'api/events/tools',
-        'api/events/camera-tour',
-      ],
-    },
-    {
-      type: 'category',
       label: '图层操作',
       items: [
         'api/layer/info-tree',
@@ -96,7 +87,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: '测量绘制',
+      label: '绘制助手',
       items: [
         'api/measure/plot',
         'api/measure/edit-helper',
@@ -107,8 +98,6 @@ const sidebars = {
       label: '环境天气',
       items: [
         'api/weather/weather',
-        'api/weather/settings',
-        'api/weather/misc',
       ],
     },
     {
@@ -121,11 +110,10 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: '分析工具',
+      label: '测量分析剖切',
       items: [
         'api/analysis/tools',
         'api/analysis/excavation-analysis',
-        'api/analysis/query-option',
       ],
     },
     {
@@ -134,6 +122,8 @@ const sidebars = {
       items: [
         'api/utils/coord',
         'api/utils/fd-external',
+        'api/analysis/query-option',
+        'api/weather/misc',
       ],
     },
     {
@@ -143,6 +133,7 @@ const sidebars = {
         'api/model/custom-mesh',
         'api/model/custom-object',
         'api/model/gaussian-splatting',
+        'api/vector/spline-mesh',
       ],
     },
     {
@@ -152,6 +143,7 @@ const sidebars = {
         'api/marker/marker',
         'api/marker/custom-tag',
         'api/marker/marker3d',
+        'api/vector/tag',
       ],
     },
     {
@@ -163,10 +155,7 @@ const sidebars = {
         'api/vector/topology-line',
         'api/vector/polygon',
         'api/vector/polygon3d',
-        'api/vector/spline-mesh',
         'api/vector/guide-line',
-        'api/vector/vector-field',
-        'api/vector/tag',
       ],
     },
     {
@@ -185,10 +174,11 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: '海洋气象仿真',
+      label: '海洋仿真',
       items: [
         'api/ocean/ocean-heatmap',
         'api/ocean/coastline',
+        'api/vector/vector-field',
       ],
     },
     {
@@ -248,7 +238,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: '参考',
+      label: '参考枚举',
       items: [
         'api/types',
       ],
