@@ -1,16 +1,30 @@
 ---
 title: GlobeTerrain
 sidebar_label: GlobeTerrain
-description: "GlobeTerrain类，包含球面坐标系下Cesium球面地形影像服务的相关操作方法 一般通过api.globeTerrain调用其方法"
+description: "球面坐标系下管理 Cesium 球面地形与影像服务的对象，可在数字地球上叠加 WMTS、WMS、MVT、TMS 等 OGC 网络图层服务，构建全球/大范围三维球面底图与地形。"
 ---
 
 # GlobeTerrain
 
-GlobeTerrain类，包含球面坐标系下Cesium球面地形影像服务的相关操作方法
-
-一般通过api.globeTerrain调用其方法
+球面坐标系下管理 Cesium 球面地形与影像服务的对象，可在数字地球上叠加 WMTS、WMS、MVT、TMS 等 OGC 网络图层服务，构建全球/大范围三维球面底图与地形。
 
 通过 `api.globeTerrain` 访问。
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：球面坐标系下管理 Cesium 球面地形与影像服务的对象，可在数字地球上叠加 WMTS、WMS、MVT、TMS 等 OGC 网络图层服务，构建全球/大范围三维球面底图与地形。
+- **别名 / 不同行业叫法**：球面地形 / 数字地球地形 / Cesium 地形影像 / 球面底图。
+- **适用行业**：海洋气象、国防军事、测绘 GIS、应急管理、智慧水利。
+- **使用场景**：
+  - 在数字地球球面上叠加天地图等地形注记、晕渲与影像底图，构建全球/全国级三维底图。
+  - 海洋气象、流域等大范围场景下加载球面地形与多源 OGC 影像服务。
+  - 国防、应急等需全球态势展示的场景中叠加多层球面图层服务。
+- **注意事项**：
+  - 仅适用于球面坐标系工程；平面投影工程请使用 ImageryLayer 等对象。
+  - 依赖标准 OGC 服务的 Capabilities（xmlPath）与瓦片请求模板（resourceURL），需确保服务可访问且模板变量正确。
+  - 多层影像叠加时通过 alpha 控制透明度与压盖关系，注意 SRGB 颜色转换（bConvertSRGB）对显示效果的影响。
 
 ## 构造函数
 
@@ -372,5 +386,4 @@ await fdapi.globeTerrain.updateEnd();
 ```js
 let imageryUrl = "http://t0.tianditu.gov.cn/cva_c/wmts?request=GetCapabilities&service=wmts&tk=5ac8367eada4f94bec03cefffa6ff03b";
 let imageryResourceUrl =  "http://t0.tianditu.gov.cn/cva_c/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=c&FORMAT=tiles&TILEMATRIX={TileMatrix}&TILEROW={TileRow}&TILECOL={TileCol}&tk=5ac8367eada4f94bec03cefffa6ff03b";
-fdapi.globeTerrain.setImagery(imageryUrl, imageryResourceUrl);
-```
+fdapi.g

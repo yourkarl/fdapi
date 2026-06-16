@@ -1,14 +1,12 @@
 ---
 title: HydrodynamicModel2
 sidebar_label: HydrodynamicModel2
-description: "二维水动力模型对象，基于真实数据驱动生成水动力模型（过时版本待移除，推荐使用HydrodynamicModel对象） 一般通过api.HydrodynamicModel2调用其方法"
+description: "HydrodynamicModel2 是早期的二维水动力模型对象，基于 JSON 数据文件驱动，按时序播放水深/流速等结果并以调色板着色，用于在三维场景中回放二维水动力计算成果。**该对象已废弃、待移除，新项目请改用 HydroDynamic2D 对象。**"
 ---
 
 # HydrodynamicModel2
 
 二维水动力模型对象，基于真实数据驱动生成水动力模型（过时版本待移除，推荐使用HydrodynamicModel对象）
-
-一般通过api.HydrodynamicModel2调用其方法
 
 :::caution 已废弃
 
@@ -19,6 +17,20 @@ description: "二维水动力模型对象，基于真实数据驱动生成水动
 通过 `api.HydrodynamicModel2` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：HydrodynamicModel2 是早期的二维水动力模型对象，基于 JSON 数据文件驱动，按时序播放水深/流速等结果并以调色板着色，用于在三维场景中回放二维水动力计算成果。**该对象已废弃、待移除，新项目请改用 HydroDynamic2D 对象。**
+- **别名 / 不同行业叫法**：二维水动力模型（旧版）/ 2D 水动力仿真 / 二维洪水演进模型；本对象为过时版本，等同能力请参考 HydroDynamic2D。
+- **适用行业**：智慧水利、应急管理（仅遗留项目维护）。
+- **使用场景**：
+  - 仅用于维护使用旧版 JSON 数据格式的存量水动力回放工程，不建议新建场景采用。
+  - 历史项目中二维水动力计算结果（JSON）的时序播放与着色展示。
+- **注意事项**：
+  - 该对象已标记废弃、待移除，请勿在新项目中使用，统一迁移到 HydroDynamic2D（支持 tif 栅格与 shp 矢量数据源）。
+  - 依赖外部 JSON 数据文件路径，需保证文件可访问；坐标系类型 coordinateType 须与数据一致。
 
 ## 方法（Methods）
 
@@ -363,10 +375,4 @@ await fdapi.HydrodynamicModel2.stopPlay(data);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `data` | `object \| array` | 构造二维水动力模型对象HydrodynamicModel2的数据对象，参考add方法 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
-
-> 示例代码如下：
-
-```js
-await fdapi.HydrodynamicModel2.update(data);
-```
+| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutori

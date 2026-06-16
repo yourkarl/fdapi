@@ -1,18 +1,33 @@
 ---
 title: WaterMesh
 sidebar_label: WaterMesh
-description: "WaterMesh类 一般通过api.waterMesh调用其方法"
+description: "WaterMesh 以自定义网格构建水面/水体，控制其形态、材质与水流表现，作为流场与波纹效果的载体。"
 ---
 
 # WaterMesh
 
-WaterMesh类
-
-一般通过api.waterMesh调用其方法
+WaterMesh 以自定义网格构建水面/水体，控制其形态、材质与水流表现，作为流场与波纹效果的载体。
 
 通过 `api.boxTrigger` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：WaterMesh 以自定义网格构建水面/水体，控制其形态、材质与水流表现，作为流场与波纹效果的载体。
+- **别名 / 不同行业叫法**：水面网格 / 水体网格 / 自定义水面 / 水面 Mesh。
+- **适用行业**：智慧水利、景观水系、海洋、城市内河、水电
+- **使用场景**：
+  - 不规则水域（河段/湖库/景观水系）的水面构建
+  - 承载流场、波纹效果的水体载体
+  - 动态水位下的水面表现
+- **注意事项**：
+  - 网格精度与范围影响性能
+  - 需与 WaterFlowField、DynamicWater 等配合
+  - 水面需与地形贴合、坐标一致
+
 
 ## 方法（Methods）
 
@@ -378,8 +393,4 @@ await fdapi.boxTrigger.showAll();
 ```js
 await fdapi.waterMesh.update({
     id: 'watermesh1',
-    waterColor: [0.0, 0.325, 0.223, 1.0],
-    waterSpeed: 0.8
-});
-fdapi.waterMesh.focus('watermesh1', 100);
-```
+    waterColor: [0.0, 0.325, 0.223, 1.0]

@@ -1,18 +1,32 @@
 ---
 title: HydroDynamic2D
 sidebar_label: HydroDynamic2D
-description: "二维水动力模型对象，基于真实数据驱动生成水动力模型，支持2种格式数据源：.tif文件（栅格） | .shp文件（矢量） 一般通过api.hydrodynamic2d调用其方法"
+description: "HydroDynamic2D 是现行的二维水动力模型对象，基于真实数据驱动，支持 tif 栅格与 shp 矢量两类数据源，可按时序回放水深、流速流向，提供真实水样式、热力图样式、流场样式及流向箭头，是面状洪水演进与淹没动态展示的核心对象。"
 ---
 
 # HydroDynamic2D
 
 二维水动力模型对象，基于真实数据驱动生成水动力模型，支持2种格式数据源：.tif文件（栅格） | .shp文件（矢量）
 
-一般通过api.hydrodynamic2d调用其方法
-
 通过 `api.hydrodynamic2d` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：HydroDynamic2D 是现行的二维水动力模型对象，基于真实数据驱动，支持 tif 栅格与 shp 矢量两类数据源，可按时序回放水深、流速流向，提供真实水样式、热力图样式、流场样式及流向箭头，是面状洪水演进与淹没动态展示的核心对象。
+- **别名 / 不同行业叫法**：二维水动力 / 2D 水动力仿真 / 二维洪水演进模型 / 漫滩淹没仿真；本对象为 HydrodynamicModel/HydrodynamicModel2 的现行替代。
+- **适用行业**：智慧水利、应急管理、智慧城市（防洪排涝）、能源电力（库区/电站）、海洋气象（风暴潮/漫滩）。
+- **使用场景**：
+  - 流域、城区面状洪水演进的时序回放，动态展示水深扩散与流速流向变化。
+  - 溃坝、超标洪水的淹没过程仿真与受淹范围演示，支撑应急研判与撤离决策。
+  - 河道行洪、漫滩淹没的流场样式/热力图样式展示，配合调色板表达水深或流速分布。
+- **注意事项**：
+  - shp 方式要求投影坐标系（PCS）且单位为米；update() 更新用 .dat 文件，且只含有水网格面以减小文件、提升更新效率。
+  - 真实水样式（displayMode=0）下 waterColor 生效，热力/流场样式需配置 depthRange/speedRange 与调色板；开启 collision 会影响加载效率。
+  - 数据量大时注意分辨率与时序文件规模对加载与播放性能的影响；新项目请优先用本对象而非已废弃的 HydrodynamicModel 系列。
 
 ## 方法（Methods）
 
@@ -543,6 +557,4 @@ let hydrodynamic2d_add = {
     }
 };
 fdapi.hydrodynamic2d.addByTif(hydrodynamic2d_add);
-//fdapi.hydrodynamic2d.focus('hdm_tif', 1000);
-fdapi.camera.set(431187.23375, 4415879.210312, 48.861699, -31.722942, 40.740395, 0);
-```
+//fdapi.hydrodynamic2d.focus('hdm_

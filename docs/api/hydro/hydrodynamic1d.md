@@ -1,18 +1,32 @@
 ---
 title: HydroDynamic1D
 sidebar_label: HydroDynamic1D
-description: "HydroDynamic1D类 一般通过api.hydrodynamic1d调用其方法"
+description: "HydroDynamic1D 是一维水动力模型对象，沿河道中心线以采样点（坐标、河道宽度、流速、热力值）描述河道，生成带流向箭头与水面/热力样式的动态河道，可用 shp 文件裁切河道范围，适合表达带状河流的水流与水文属性。"
 ---
 
 # HydroDynamic1D
 
 HydroDynamic1D类
 
-一般通过api.hydrodynamic1d调用其方法
-
 通过 `api.hydrodynamic1d` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：HydroDynamic1D 是一维水动力模型对象，沿河道中心线以采样点（坐标、河道宽度、流速、热力值）描述河道，生成带流向箭头与水面/热力样式的动态河道，可用 shp 文件裁切河道范围，适合表达带状河流的水流与水文属性。
+- **别名 / 不同行业叫法**：一维水动力 / 河道仿真 / 河网演进 / 一维河道模型；旧版等价对象为 River 类。
+- **适用行业**：智慧水利、应急管理、智慧城市（河道治理）、智慧交通（航道/桥梁河段）、生态环境。
+- **使用场景**：
+  - 河道、河网的流速流向动态可视化，配合采样点 speed 展示沿程流速变化。
+  - 防汛中干支流河道水流演进与流向箭头展示，辅助研判行洪态势。
+  - 河道水文属性（热力值）沿程分布的热力样式展示，如流速、水位等指标着色。
+- **注意事项**：
+  - 通过 points 采样点（coordinate/width/speed）定义河道，需保证采样点顺序沿河道走向、宽度合理，避免河道扭曲。
+  - 可用 shpFilePath 对河道采样点做裁切，注意坐标系类型 coordinateType 与数据一致；开启 collision 会影响加载效率。
+  - 属于一维带状河道模型，面状大范围淹没/漫滩应使用 HydroDynamic2D；River 为本对象旧版，新项目优先用 HydroDynamic1D。
 
 ## 方法（Methods）
 
@@ -387,13 +401,4 @@ if (riverPoints) {
             }
 
         };
-        fdapi.hydrodynamic1d.update(hydrodynamic1d);
-
-        //停止定时器
-        if (startIndex == riverPoints.length) {
-            clearInterval(myTimeinterval);
-            myTimeinterval = null;
-        }
-    }, 2000);
-}
-```
+        fdapi.

@@ -1,16 +1,29 @@
 ---
 title: ImageryLayer2
 sidebar_label: ImageryLayer2
-description: "ImageryLayer2 球面坐标系下加载网络图层服务 目前支持WMTS、WMS、MVT和TMS 一般通过api.ImageryLayer2调用其方法"
+description: "球面坐标系下通过自定义切片参数加载 WMTS、WMS、MVT、TMS 等网络图层服务，可指定原点、瓦片尺寸、层级范围与 extent 等，适配各厂商服务规则。"
 ---
 
 # ImageryLayer2
 
 ImageryLayer2 球面坐标系下加载网络图层服务 目前支持WMTS、WMS、MVT和TMS
 
-一般通过api.ImageryLayer2调用其方法
-
 通过 `api.imageryLayer2` 访问。
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：球面坐标系下通过自定义切片参数加载 WMTS、WMS、MVT、TMS 等网络图层服务，可精细指定切片起始原点、瓦片尺寸、层级范围、范围 extent、scaleDenominator 与 DPI 等参数，适配各厂商发布的服务规则。
+- **别名 / 不同行业叫法**：影像图层（球面/参数化）/ 底图服务 / 卫星影像图层 / OGC 网络图层 / 自定义切片图层。
+- **适用行业**：测绘 GIS、智慧城市、海洋气象、应急管理、智慧水利。
+- **使用场景**：
+  - 当标准能力文档无法自动解析时，按厂商发布的切片方案手动配置参数加载球面影像/电子地图。
+  - 加载 ArcGIS、天地图、超图等不同 DPI 与切片规则的 OGC 服务作为球面底图。
+  - 叠加 MVT 矢量瓦片并通过 style 文件实现球面矢量底图渲染。
+- **注意事项**：
+  - 仅适用于球面坐标系；参数化加载要求准确知道服务的切片原点、瓦片尺寸与 scaleDenominator/DPI，配置错误会导致瓦片错位或不显示。
+  - WMS(type=1) 或 MVT(type=2) 等类型按说明仅需传 extent 等必要参数；MVT 用 style 内容时需将 bResourceURL 设为 true。
+  - 需确认服务坐标系 epsg 与工程一致，注意 SRGB 颜色转换对底图色彩的影响。
 
 ## 构造函数
 

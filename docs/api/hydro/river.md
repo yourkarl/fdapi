@@ -1,14 +1,12 @@
 ---
 title: River
 sidebar_label: River
-description: "River类 等价于一维水动力模型Hydrodynamic1D类 一般通过api.river调用其方法"
+description: "River（等价于一维水动力模型 Hydrodynamic1D）模拟河道水位、流量、流速的沿程演进，可视化河道水流过程。"
 ---
 
 # River
 
 River类 等价于一维水动力模型Hydrodynamic1D类
-
-一般通过api.river调用其方法
 
 :::caution 已废弃
 
@@ -19,6 +17,23 @@ River类 等价于一维水动力模型Hydrodynamic1D类
 通过 `api.river` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：River（等价于一维水动力模型 Hydrodynamic1D）模拟河道水位、流量、流速的沿程演进，可视化河道水流过程。
+- **别名 / 不同行业叫法**：河道 / 河网 / 河流仿真 / 一维水动力 / 明渠水流 / 河道演进。
+- **适用行业**：智慧水利、防洪减灾、应急管理、水电、生态水利
+- **使用场景**：
+  - 河道洪水演进与水位预报的可视化
+  - 闸坝调度对河道水流影响的推演
+  - 河网联排联调的过程展示
+- **注意事项**：
+  - 依赖断面、糙率等水文参数
+  - 一维模型不反映横向漫滩，需配合二维/淹没分析
+  - 时序数据需与调度方案对齐
+
 
 ## 方法（Methods）
 
@@ -194,6 +209,4 @@ await fdapi.river.show(ids);
 
 > 示例代码如下：
 
-```js
-await fdapi.river.update(data);
-```
+`

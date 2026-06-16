@@ -2,16 +2,33 @@
 slug: /api/weather/weather
 title: Weather
 sidebar_label: Weather
-description: "Weather类，提供天气相关的参数设置和获取接口"
+description: "Weather 设置与获取场景的天气/气象效果（晴雨雪雾、时间、光照等环境特效）。"
 ---
 
 # Weather
 
-Weather类，提供天气相关的参数设置和获取接口
+Weather 设置与获取场景的天气/气象效果（晴雨雪雾、时间、光照等环境特效）。
 
 通过 `api.weather` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：Weather 设置与获取场景的天气/气象效果（晴雨雪雾、时间、光照等环境特效）。
+- **别名 / 不同行业叫法**：天气 / 气象 / 环境特效 / 天气系统 / 晴雨雪雾。
+- **适用行业**：智慧城市、应急（恶劣天气演练）、智慧交通、文旅、智慧水利
+- **使用场景**：
+  - 场景昼夜与天气切换以增强真实感
+  - 暴雨、大雾等恶劣天气下的业务演练
+  - 时间与光照联动的场景氛围
+- **注意事项**：
+  - 雨雪雾等特效有性能开销
+  - 与后期、光照设置相互影响
+  - 过强特效会影响业务要素的辨识
+
 
 ## 方法（Methods）
 
@@ -673,5 +690,3 @@ fdapi.weather.simulateTime(9, 15, 10);
 > 设置大气环境的瑞利散射系数：SetRayleighScatter
 
 ```js
-fdapi.weather.setRayleighScatter(0.5);
-```

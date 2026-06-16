@@ -1,16 +1,31 @@
 ---
 title: Cesium3DTileset
 sidebar_label: Cesium3DTileset
-description: "Cesium3DTileset 相关的操作 一般通过api.cesium3DTileset调用其方法"
+description: "加载、定位与管理 Cesium 3D Tiles（3DTiles）服务图层，通过服务 URL 流式加载海量三维瓦片数据，支持位置偏移与是否参与光照等控制。"
 ---
 
 # Cesium3DTileset
 
-Cesium3DTileset 相关的操作
-
-一般通过api.cesium3DTileset调用其方法
+加载、定位与管理 Cesium 3D Tiles（3DTiles）服务图层，通过服务 URL 流式加载海量三维瓦片数据，支持位置偏移与是否参与光照等控制。
 
 通过 `api.cesium3DTileset` 访问。
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：Cesimu3DTileset接口可以用来添加3dtiles服务，3dtiles服务是cesium推出的一个服务标准，同时也已纳入OGC标准规范，跟Arcgis的I3S和超图的S3M类似，是目前主流的三维GIS数据的服务标准。谷歌通过Google Maps Platform 的 Map Tiles API​ 正式提供 Photorealistic 3D Tiles，格式也是OGC 3D Tiles标准。用于加载、定位与管理 Cesium 3D Tiles（3DTiles）服务图层，通过服务 URL 流式加载海量三维瓦片数据，支持位置偏移与是否参与光照等控制。
+- **别名 / 不同行业叫法**：3DTiles 图层 / 三维瓦片图层 / b3dm 倾斜模型服务 / Cesium 三维服务图层。
+- **适用行业**：智慧城市、测绘 GIS、智慧园区、应急管理、智慧交通。
+- **使用场景**：
+  - 加载大范围城市级倾斜摄影或精模三维瓦片服务，构建城市数字底座。
+  - 接入第三方厂商或自建切片服务发布的 3DTiles 数据，实现跨平台三维数据共享。
+  - 通过 offset 偏移微调三维瓦片与地形、底图的空间套合。
+- **注意事项**：
+  - 数据通过网络流式加载，add 方法存在加载耗时，focus/定位等操作建议在加载完成后或延时执行。
+  - 海量瓦片对显存与带宽要求较高，注意控制同屏加载的服务数量与可见层级。
+  - 需关注服务发布坐标系与工程坐标系是否一致，必要时通过偏移与重投影对齐。
+  - 坐标系：3dtiles服务默认是wgs84地理坐标系，如果当前工程也是地理坐标系（wgs84或cgs2000）可以直接加载，如果工程坐标系是PCS投影坐标系，也可以加载，系统会自动完成实时重投影，但是如果工程没有指定坐标系，或者说是Unknown坐标系，则无法加载。
+  - 目前支持3dtiles的版本包括6.x和7.x版本
 
 ## 构造函数
 

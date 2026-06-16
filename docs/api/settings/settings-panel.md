@@ -1,18 +1,33 @@
 ---
 title: SettingsPanel
 sidebar_label: SettingsPanel
-description: "设置面板类，提供对设置面板里的所有参数进行操作的接口 一般通过api.settingsPanel调用其方法"
+description: "SettingsPanel 提供对内置设置面板里各项参数进行读写操作的接口对象。"
 ---
 
 # SettingsPanel
 
-设置面板类，提供对设置面板里的所有参数进行操作的接口
-
-一般通过api.settingsPanel调用其方法
+SettingsPanel 提供对内置设置面板里各项参数进行读写操作的接口对象。
 
 通过 `api.settingsPanel` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：SettingsPanel 提供对内置设置面板里各项参数进行读写操作的接口对象。
+- **别名 / 不同行业叫法**：设置面板 / 参数面板 / 配置面板（无明显行业别称）。
+- **适用行业**：通用（各行业项目的场景设置）
+- **使用场景**：
+  - 程序化调整画质、特效、显示项
+  - 按业务预设切换面板参数
+  - 联动业务流程的场景配置
+- **注意事项**：
+  - 面板项随版本/工程而异
+  - 部分设置为全局影响
+  - 与 Settings 接口区分（面板 UI vs 参数）
+
 
 ## 方法（Methods）
 

@@ -1,16 +1,31 @@
 ---
 title: SmoothedParticleHydrodynamics
 sidebar_label: SmoothedParticleHydrodynamics
-description: "光滑粒子流体动力学仿真对象，实现对光滑粒子流体动力学仿真对象的操作 一般通过api.smoothedParticleHydrodynamics调用其方法"
+description: "SmoothedParticleHydrodynamics（SPH）基于光滑粒子流体动力学模拟自由表面流体（溃坝、喷溅、漫流）的粒子级运动。"
 ---
 
 # SmoothedParticleHydrodynamics
 
 光滑粒子流体动力学仿真对象，实现对光滑粒子流体动力学仿真对象的操作
 
-一般通过api.smoothedParticleHydrodynamics调用其方法
-
 通过 `api.smoothedParticleHydrodynamics` 访问。
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：SmoothedParticleHydrodynamics（SPH）基于光滑粒子流体动力学模拟自由表面流体（溃坝、喷溅、漫流）的粒子级运动。
+- **别名 / 不同行业叫法**：SPH / 光滑粒子流体 / 无网格流体 / 溃坝粒子仿真 / 流体喷溅仿真。
+- **适用行业**：智慧水利（溃坝）、应急管理、水电、科研仿真
+- **使用场景**：
+  - 溃坝/漫坝洪水演进的粒子级模拟
+  - 闸门泄流、喷溅过程的可视化
+  - 强非线性自由表面流体过程展示
+- **注意事项**：
+  - 粒子数量直接决定精度与性能，需权衡
+  - 计算资源消耗大
+  - 适合局部强动态场景，不适合大范围长历时模拟
+
 
 ## 构造函数
 

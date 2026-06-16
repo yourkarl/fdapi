@@ -1,14 +1,12 @@
 ---
 title: CustomObject
 sidebar_label: CustomObject
-description: "CustomObject类，提供用户自定义对象相关的操作 一般通过api.customObject调用其方法"
+description: "CustomObject 加载用户自定义三维模型并控制其位置、姿态、动画、跟随与交互，是通用的“动态实体”载体。"
 ---
 
 # CustomObject
 
-CustomObject类，提供用户自定义对象相关的操作
-
-一般通过api.customObject调用其方法
+CustomObject 加载用户自定义三维模型并控制其位置、姿态、动画、跟随与交互，是通用的“动态实体”载体。
 
 
 
@@ -17,6 +15,24 @@ CustomObject类，提供用户自定义对象相关的操作
 通过 `api.customObject` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：CustomObject 加载用户自定义三维模型并控制其位置、姿态、动画、跟随与交互，是通用的“动态实体”载体。
+- **别名 / 不同行业叫法**：自定义对象 / 动态模型 / 三维实体 / 设备模型 / 可动模型 / Actor。
+- **适用行业**：智慧城市、智慧园区、能源电力、智慧交通、国防、工业
+- **使用场景**：
+  - 设备、车辆、人员等实体模型的上图与驱动
+  - 按实时数据更新模型位姿
+  - 模型点选联动业务弹窗与详情
+- **注意事项**：
+  - 模型面数与数量影响性能，建议使用 LOD
+  - 动画与跟随需注意时序
+  - 注意资源路径与坐标系一致
+  - 从图层actor复制为customObject对象时需要注意性能
+
 
 ## 方法（Methods）
 
@@ -1278,7 +1294,4 @@ fdapi.customObject.focus('o1', -1);
 fdapi.customObject.updateBegin();
 fdapi.customObject.setSmoothMotion('o1', 1);
 fdapi.customObject.setLocation('o1', [493181.4375, 2492026.5, 2]);
-//设置移动插值时间为5秒
-fdapi.customObject.setSmoothTime('o1', 5);
-fdapi.customObject.updateEnd();
-```
+//设置移动

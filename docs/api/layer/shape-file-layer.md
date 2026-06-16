@@ -1,16 +1,33 @@
 ---
 title: ShapeFileLayer
 sidebar_label: ShapeFileLayer
-description: "ShapeFileLayer矢量图层对象相关的操作"
+description: "ShapeFileLayer 加载并管理 Shapefile 矢量数据（点/线/面），在三维场景中按样式渲染与查询。"
 ---
 
 # ShapeFileLayer
 
-ShapeFileLayer矢量图层对象相关的操作
+ShapeFileLayer 加载并管理 Shapefile 矢量数据（点/线/面），在三维场景中按样式渲染与查询。
 
 通过 `api.shapeFileLayer` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：ShapeFileLayer 加载并管理 Shapefile 矢量数据（点/线/面），在三维场景中按样式渲染与查询。
+- **别名 / 不同行业叫法**：SHP 图层 / 矢量图层 / Shapefile 图层 / GIS 矢量数据。
+- **适用行业**：GIS 与规划、智慧城市、智慧水利、国土、测绘
+- **使用场景**：
+  - 行政区划、地块、路网等矢量底图加载
+  - 专题要素按属性着色与分级
+  - 矢量数据的空间与属性查询
+- **注意事项**：
+  - SHP 需带正确投影(.prj)，坐标系须一致
+  - 要素量大时需简化或分级显示
+  - 中文属性注意编码格式（避免乱码）
+
 
 ## 方法（Methods）
 
@@ -591,5 +608,4 @@ fdapi.shapeFileLayer.unHighlightFeature('sp3', 13);
 > 取消高亮ShapeFileLayer内部多个要素区域：UnHighlightFeatures
 
 ```js
-fdapi.shapeFileLayer.unHighlightFeatures([{ "shpId": "sp3", "featureIds": [13, 12, 21] }]);
-```
+fdapi.shapeFileLayer.unHi

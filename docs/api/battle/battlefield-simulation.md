@@ -1,18 +1,33 @@
 ---
 title: BattlefieldSimulation
 sidebar_label: BattlefieldSimulation
-description: "BattlefieldSimulation类，提供军事领域战场仿真对象相关的操作，包含装甲车、坦克、无人机、士兵等作战单元 一般通过api.battlefieldSimulation调用其方法"
+description: "BattlefieldSimulation 加载并驱动装甲车、坦克、无人机、士兵等作战单元，模拟战场机动、编队与态势演进。"
 ---
 
 # BattlefieldSimulation
 
-BattlefieldSimulation类，提供军事领域战场仿真对象相关的操作，包含装甲车、坦克、无人机、士兵等作战单元
-
-一般通过api.battlefieldSimulation调用其方法
+BattlefieldSimulation 加载并驱动装甲车、坦克、无人机、士兵等作战单元，模拟战场机动、编队与态势演进。
 
 通过 `api.battlefieldSimulation` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：BattlefieldSimulation 加载并驱动装甲车、坦克、无人机、士兵等作战单元，模拟战场机动、编队与态势演进。
+- **别名 / 不同行业叫法**：战场仿真 / 兵棋推演 / 态势推演 / 军事仿真 / 作战模拟。
+- **适用行业**：国防军事、军事训练、应急演练（可类比）、安防推演
+- **使用场景**：
+  - 作战方案推演与多兵种协同机动的可视化
+  - 训练复盘与战场态势回放
+  - 红蓝对抗与力量部署演示
+- **注意事项**：
+  - 作战单元数量大时需关注性能与 LOD
+  - 机动轨迹与时序数据须规范
+  - 通常与态势标绘(Plot)、波束(Beam)等配合呈现完整态势
+
 
 ## 方法（Methods）
 

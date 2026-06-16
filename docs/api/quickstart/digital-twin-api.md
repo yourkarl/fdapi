@@ -1,15 +1,15 @@
 ---
 title: DigitalTwinAPI
 sidebar_label: DigitalTwinAPI
-description: "JS SDK的总类 一般通过全局变量 fdapi 来调用其接口。 注意事项： 只有new DigitalTwinAPI以后，全局变量 fdapi 才是有效的。 如果在一个页面上创建了多个视频流窗口，那么 fdapi 始终指向最后一次创建的DigitalTwinAPI对象，对于这种情况的解决方案，请参"
+description: "DigitalTwinAPI 是 JS SDK 的总类与 API 总入口，new 之后通过全局变量 fdapi 调用所有接口，是连接与调用的核心对象。"
 ---
 
 # DigitalTwinAPI
 
-JS SDK的总类
+DigitalTwinAPI 是 JS SDK 的总类与 API 总入口，new 之后通过全局变量 fdapi 调用所有接口，是连接与调用的核心对象。
 
 
-一般通过全局变量 fdapi 来调用其接口。
+通过全局变量 fdapi 来调用其接口。
 
 注意事项：
 
@@ -17,6 +17,23 @@ JS SDK的总类
 - 如果在一个页面上创建了多个视频流窗口，那么 fdapi 始终指向最后一次创建的DigitalTwinAPI对象，对于这种情况的解决方案，请参考SDK文件夹的player_2_2.html
 
 通过 `fdapi` 访问。
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：DigitalTwinAPI 是 JS SDK 的总类与 API 总入口，new 之后通过全局变量 fdapi 调用所有接口，是连接与调用的核心对象。
+- **别名 / 不同行业叫法**：API 入口 / SDK 总类 / fdapi / 接口入口（无明显行业别称）。
+- **适用行业**：基础设施类，贯穿所有行业（无特定行业）
+- **使用场景**：
+  - 初始化与服务连接
+  - 统一调用各功能模块接口
+  - 多窗口场景下的实例管理
+- **注意事项**：
+  - 必须 new DigitalTwinAPI 后全局 fdapi 才有效
+  - 多视频流窗口时 fdapi 指向最后创建的实例，需注意实例引用
+  - 接口调用需在场景就绪后进行
+
 
 ## 构造函数
 

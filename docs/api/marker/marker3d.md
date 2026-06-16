@@ -1,20 +1,35 @@
 ---
 title: Marker3D
 sidebar_label: Marker3D
-description: "动态标记，实现对3D标注对象的操作 一般通过api.marker3d调用其方法"
+description: "在三维场景中放置带特效的立体标注（动态标记），相较于二维 Marker 具有三维朝向、缩放、旋转与粒子/光效等表现力，并可叠加三维文字，用于强调重点目标或营造动态告警效果。"
 ---
 
 # Marker3D
 
 动态标记，实现对3D标注对象的操作
 
-一般通过api.marker3d调用其方法
-
 
 
 ![](/img/refdoc/api/marker3d_style.gif)
 
 通过 `api.marker3d` 访问。
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：在三维场景中放置带特效的立体标注（动态标记），相较于二维 Marker 具有三维朝向、缩放、旋转与粒子/光效等表现力，并可叠加三维文字，用于强调重点目标或营造动态告警效果。
+- **别名 / 不同行业叫法**：三维标注、立体标牌、3D标注点、动态标记、立体告警点。
+- **适用行业**：智慧城市、应急指挥、智慧交通、能源电力、智慧园区、国防/通信。
+- **使用场景**：
+  - 重点目标/重要设施的三维高亮标注与动态特效提示
+  - 应急告警点位的立体闪烁、光柱等醒目动态表现
+  - 带三维文字标牌的目标标识，文字可固定朝向或随视角变化
+- **注意事项**：
+  - pointName 特效名称需取自 Explorer 资源面板「动态标记」下的显示名称，否则无法显示；
+  - 三维标注带特效，渲染开销高于普通 Marker，海量场景应控制数量；
+  - 注意 coordinateType 坐标系与场景一致，pointScale/textScale 取值需合理；
+  - 文字长度限制 [0~100]，超长会被截断。
 
 ## 构造函数
 
@@ -670,9 +685,4 @@ fdapi.marker3d.callBPFunction([
     {
         id: 'm1',
         functionName: 'H_自定义图标',
-        parameters: [
-            { "name": "图标路径", "paramType": 17, "paramValue": HostConfig.Path + "/locale/zh/images/tag.png" },
-        ]
-    }
-]);
-```
+        parameter

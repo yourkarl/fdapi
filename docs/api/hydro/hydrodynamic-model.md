@@ -1,14 +1,12 @@
 ---
 title: HydrodynamicModel
 sidebar_label: HydrodynamicModel
-description: "二维水动力模型对象，基于真实数据驱动生成水动力模型 一般通过api.HydrodynamicModel调用其方法"
+description: "早期版本的二维水动力模型对象，基于真实数据（水深、流速流向、河道 DEM）驱动生成，支持水体/热力样式与流向着色；该对象已废弃，新项目请改用 HydroDynamic2D。"
 ---
 
 # HydrodynamicModel
 
 二维水动力模型对象，基于真实数据驱动生成水动力模型
-
-一般通过api.HydrodynamicModel调用其方法
 
 :::caution 已废弃
 
@@ -19,6 +17,19 @@ description: "二维水动力模型对象，基于真实数据驱动生成水动
 通过 `api.HydrodynamicModel` 访问。
 
 ---
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：HydrodynamicModel 是早期版本的二维水动力模型对象，基于真实数据（水深、流速流向、河道 DEM 的 bin/tif 文件）驱动，支持水体样式与热力样式、流向箭头与调色板着色。**该对象已废弃，新项目请改用 HydroDynamic2D 类。**
+- **别名 / 不同行业叫法**：二维水动力模型（旧版）/ 2D 水动力仿真 / 二维洪水演进；等同能力的现行对象为 HydroDynamic2D。
+- **适用行业**：智慧水利、应急管理（仅遗留项目维护）。
+- **使用场景**：
+  - 维护采用 bin/tif 三件套（waterDepth、flowField、dem）数据格式的存量二维水动力工程。
+  - 历史项目中二维洪水演进、流场结果的时序回放与水深/热力可视化。
+- **注意事项**：
+  - 该对象已标记废弃，请迁移到 HydroDynamic2D；waterDepth、flowField、dem 三个 tif 文件分辨率必须一致。
+  - 开启 collision 碰撞会影响加载效率；displayMode=0 时 waterColor 生效，热力样式下应配置 colors 调色板与 valueRange。
 
 ## 方法（Methods）
 

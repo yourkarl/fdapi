@@ -1,16 +1,31 @@
 ---
 title: FiniteElement2
 sidebar_label: FiniteElement2
-description: "FiniteElement2有限元仿真对象，实现对有限元仿真对象的操作 一般通过api.finiteElement2调用其方法"
+description: "FiniteElement2 是有限元仿真对象（增强版），在结果云图基础上支持更复杂/大规模的有限元仿真过程与动态演示。"
 ---
 
 # FiniteElement2
 
 FiniteElement2有限元仿真对象，实现对有限元仿真对象的操作
 
-一般通过api.finiteElement2调用其方法
-
 通过 `api.finiteElement2` 访问。
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：FiniteElement2 是有限元仿真对象（增强版），在结果云图基础上支持更复杂/大规模的有限元仿真过程与动态演示。
+- **别名 / 不同行业叫法**：有限元仿真 / FEM(增强) / 结构动态仿真 / 形变演示 / CAE 仿真可视化。
+- **适用行业**：土木工程、水利水电、桥梁隧道、机械与装备、能源电力
+- **使用场景**：
+  - 复杂结构在时序荷载下的动态仿真演示
+  - 大规模有限元结果的云图与形变可视化
+  - 多工况对比与安全评估
+- **注意事项**：
+  - 相比 FiniteElement 数据与计算量更大，更需 LOD 与分级加载
+  - 时序结果需统一时间基准
+  - 色带/量纲映射与坐标对齐须正确
+
 
 ## 构造函数
 
@@ -736,5 +751,4 @@ updateEnd是异步调用，可以用回调函数也可以await
 > 示例代码如下：
 
 ```js
-await fdapi.finiteElement2.updateEnd();
-```
+await fdapi.finiteElement

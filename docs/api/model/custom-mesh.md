@@ -1,18 +1,33 @@
 ---
 title: CustomMesh
 sidebar_label: CustomMesh
-description: "CustomMesh类 一般通过api.customMesh调用其方法"
+description: "CustomMesh 通过顶点/索引自定义三维网格几何体并着色，构建非标准的面片/体对象。"
 ---
 
 # CustomMesh
 
-CustomMesh类
-
-一般通过api.customMesh调用其方法
+CustomMesh 通过顶点/索引自定义三维网格几何体并着色，构建非标准的面片/体对象。
 
 通过 `api.customMesh` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：CustomMesh 通过顶点/索引自定义三维网格几何体并着色，构建非标准的面片/体对象。
+- **别名 / 不同行业叫法**：自定义网格 / 几何体 / Mesh / 面片 / 程序化模型。
+- **适用行业**：工业仿真、能源、科研可视化、智慧城市、BIM
+- **使用场景**：
+  - 程序化生成不规则几何（管片、地质体、异形构件）
+  - 自定义分析结果面/等值面
+  - 特殊形状的标识体或包络体
+- **注意事项**：
+  - 顶点/索引须正确，法线与缠绕方向影响正反面显隐
+  - 大网格注意性能
+  - 坐标需与场景一致
+
 
 ## 方法（Methods）
 
@@ -263,7 +278,4 @@ fdapi.customMesh.show(['sm1', 'sm2']);
 ```js
 await fdapi.customMesh.update({
     id: 'sm1',
-    color: [0.2, 0.5, 0.7, 1]
-});
-fdapi.customMesh.focus('sm1');
-```
+    color: [0.2, 0.5,

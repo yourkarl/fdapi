@@ -2,18 +2,32 @@
 slug: /api/camera/camera
 title: Camera
 sidebar_label: Camera
-description: "Camera, 相机相关的操作 一般通过api.camera调用其方法"
+description: "Camera 是三维场景的相机（视角）控制核心，负责观察位置、朝向、飞行进入/退出场景、定位到目标、以及对 CustomObject、Vehicle、Train 等对象的自动跟随。"
 ---
 
 # Camera
 
-Camera, 相机相关的操作
-
-一般通过api.camera调用其方法
+Camera 是三维场景的相机（视角）控制核心，负责观察位置、朝向、飞行进入/退出场景、定位到目标、以及对 CustomObject、Vehicle、Train 等对象的自动跟随。
 
 通过 `api.camera` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：Camera 是三维场景的相机（视角）控制核心，负责观察位置、朝向、飞行进入/退出场景、定位到目标、以及对 CustomObject、Vehicle、Train 等对象的自动跟随。
+- **别名 / 不同行业叫法**：相机 / 视角 / 视点 / 镜头 / 摄像机；汇报演示中也常称“看点”“机位”。
+- **适用行业**：智慧城市、应急指挥、智慧交通、能源（电力/油气）、智慧园区、展厅汇报。
+- **使用场景**：
+  - 大屏汇报时一键飞入场景并定位到重点区域、楼宇或设备。
+  - 应急/交通调度中相机跟随移动目标（车辆、列车、无人机）实时观察。
+  - 联动业务事件，自动切换到告警点或热点位置形成视角聚焦。
+- **注意事项**：
+  - 坐标与朝向需与工程坐标系（Projection/WGS84 等）保持一致，否则定位偏移。
+  - 设置飞行时间（flyTime）可获得平滑过渡，避免视角生硬跳变影响演示连贯性。
+  - 跟随结束后需调用 cancelFollow 取消，避免与后续手动操作或漫游冲突。
 
 ## 方法（Methods）
 
@@ -706,12 +720,4 @@ await fdapi.camera.useOldDataFormat(bUse);
 
 ```js
 //限制相机交互范围
-let bbox = [492552.837539, 2492211.111875, 0, 492597.469727, 2492256.456250, 20]
-fdapi.camera.lockByBBox(bbox);
-```
-
-> 解锁相机交互范围：UnLock
-
-```js
-fdapi.camera.unlock();
-```
+let bbox = [492552.837539, 2492211.111875, 0, 492597.46972

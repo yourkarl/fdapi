@@ -1,18 +1,33 @@
 ---
 title: WaterFlowField
 sidebar_label: WaterFlowField
-description: "WaterFlowField流场类对象，用于精确控制水流单个网格的方向速度等 一般通过api.waterFlowField调用其方法"
+description: "WaterFlowField 精确控制水面各网格的流向与流速，构建可控的水流流场效果。"
 ---
 
 # WaterFlowField
 
 WaterFlowField流场类对象，用于精确控制水流单个网格的方向速度等
 
-一般通过api.waterFlowField调用其方法
-
 通过 `api.waterFlowField` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：WaterFlowField 精确控制水面各网格的流向与流速，构建可控的水流流场效果。
+- **别名 / 不同行业叫法**：流场 / 水流场 / 流速场 / 水动力流场。
+- **适用行业**：智慧水利、海洋、生态环境、水电、景观水系
+- **使用场景**：
+  - 河道、湖库表面水流流向流速的可视化
+  - 潮流、环流方向的动态展示
+  - 景观水系的动态流动效果
+- **注意事项**：
+  - 网格分辨率影响细腻度与性能
+  - 流场数据需规范采样
+  - 通常与 WaterMesh、动态水面配合使用
+
 
 ## 方法（Methods）
 
