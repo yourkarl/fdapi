@@ -40,24 +40,24 @@ CustomTag已停止更新，推荐使用功能更丰富的标注对象Marker
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 添加一个或多个CustomTag对象 | 向场景批量添加对象 |
-| `clear` | 删除场景中所有的CustomTag | 清空全部对象，重置图层 |
-| `delete` | 删除一个或多个CustomTag对象 | 按 ID 移除指定对象 |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `focusAll` | 自动定位到能观察所有CustomTag对象的合适距离 | 相机定位到全部对象的合适视角 |
-| `get` | 根据ID获取CustomTag的详细信息 | 查询对象信息，用于业务联动 |
-| `hide` | 隐藏CustomTag | 按业务条件隐藏对象 |
-| `hideAll` | 隐藏所有CustomTag | 一键隐藏全部对象 |
-| `setAutoHidePopupWindow` | 设置是否自动关闭标签的弹出窗口 |  |
-| `show` | 显示CustomTag | 按业务条件显示对象 |
-| `showAll` | 显示所有CustomTag | 一键显示全部对象 |
-| `update` | 修改一个或多个CustomTag对象 | 运行时动态更新对象属性/状态 |
-| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
-| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+| [`add`](#add) | 添加一个或多个CustomTag对象 | 向场景批量添加对象 |
+| [`clear`](#clear) | 删除场景中所有的CustomTag | 清空全部对象，重置图层 |
+| [`delete`](#delete) | 删除一个或多个CustomTag对象 | 按 ID 移除指定对象 |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`focusAll`](#focusAll) | 自动定位到能观察所有CustomTag对象的合适距离 | 相机定位到全部对象的合适视角 |
+| [`get`](#get) | 根据ID获取CustomTag的详细信息 | 查询对象信息，用于业务联动 |
+| [`hide`](#hide) | 隐藏CustomTag | 按业务条件隐藏对象 |
+| [`hideAll`](#hideAll) | 隐藏所有CustomTag | 一键隐藏全部对象 |
+| [`setAutoHidePopupWindow`](#setAutoHidePopupWindow) | 设置是否自动关闭标签的弹出窗口 |  |
+| [`show`](#show) | 显示CustomTag | 按业务条件显示对象 |
+| [`showAll`](#showAll) | 显示所有CustomTag | 一键显示全部对象 |
+| [`update`](#update) | 修改一个或多个CustomTag对象 | 运行时动态更新对象属性/状态 |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
 
 ## 方法（Methods）
 
-### `add(data, fn)`
+### `add(data, fn)` {#add}
 
 添加一个或多个CustomTag对象
 
@@ -123,7 +123,7 @@ fdapi.customTag.focus(o.id, 50, 0.2);
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 删除场景中所有的CustomTag
 
@@ -139,7 +139,7 @@ fdapi.customTag.clear();
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个CustomTag对象
 
@@ -156,7 +156,7 @@ fdapi.customTag.delete('ct1');
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -176,7 +176,7 @@ fdapi.customTag.focus('ct1', 50, 0.1);
 
 ---
 
-### `focusAll(distance, flyTime, rotation, fn)`
+### `focusAll(distance, flyTime, rotation, fn)` {#focusAll}
 
 自动定位到能观察所有CustomTag对象的合适距离
 
@@ -195,7 +195,7 @@ await fdapi.customTag.focusAll(distance, flyTime, rotation);
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据ID获取CustomTag的详细信息
 
@@ -229,7 +229,7 @@ fdapi.customTag.get('ct1');
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏CustomTag
 
@@ -246,7 +246,7 @@ fdapi.customTag.hide('ct1');
 
 ---
 
-### `hideAll(fn)`
+### `hideAll(fn)` {#hideAll}
 
 隐藏所有CustomTag
 
@@ -262,7 +262,7 @@ fdapi.customTag.hideAll();
 
 ---
 
-### `setAutoHidePopupWindow(id, newVal, fn)`
+### `setAutoHidePopupWindow(id, newVal, fn)` {#setAutoHidePopupWindow}
 
 设置是否自动关闭标签的弹出窗口
 
@@ -280,7 +280,7 @@ await fdapi.customTag.setAutoHidePopupWindow(id, newVal);
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示CustomTag
 
@@ -297,7 +297,7 @@ fdapi.customTag.show('ct1');
 
 ---
 
-### `showAll(fn)`
+### `showAll(fn)` {#showAll}
 
 显示所有CustomTag
 
@@ -313,7 +313,7 @@ fdapi.customTag.showAll();
 
 ---
 
-### `update(data, fn)`
+### `update(data, fn)` {#update}
 
 修改一个或多个CustomTag对象
 
@@ -341,7 +341,7 @@ fdapi.customTag.focus(o.id, 50, 0.2);
 
 ---
 
-### `updateBegin()`
+### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
 
@@ -364,7 +364,7 @@ fdapi.xxx.updateEnd(function () {
 
 ---
 
-### `updateEnd(fn)`
+### `updateEnd(fn)` {#updateEnd}
 
 用于批量多次修改对象的属性，与updateBegin配套使用
 

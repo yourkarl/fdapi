@@ -121,7 +121,7 @@ export default function SpatialTools() {
 
           <p style={{ textAlign: 'center', color: '#6b8ca8', marginTop: 40, fontSize: '0.9rem' }}>
             需要先部署 DTS 云渲染服务并准备好工程。更多接入细节见{' '}
-            <Link to="/docs/tutorials/architecture">核心概念与架构总览</Link>。
+            <Link to="/docs/tutorials/architecture">架构概览</Link>。
           </p>
         </div>
       </main>

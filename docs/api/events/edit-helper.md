@@ -36,14 +36,14 @@ description: "在三维场景中手动绘制点/线/面/体的交互工具，并
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `cancel` | 取消绘制模式 |  |
-| `finish` | 绘制结束。调用此方法会结束当前的绘制，并在回调函数中返回绘制类型和坐标点，然后根据这些坐… |  |
-| `setParam` | 设置绘制参数 |  |
-| `start` | 进入绘制模式 | 启动该功能/交互 |
+| [`cancel`](#cancel) | 取消绘制模式 |  |
+| [`finish`](#finish) | 绘制结束。调用此方法会结束当前的绘制，并在回调函数中返回绘制类型和坐标点，然后根据这些坐… |  |
+| [`setParam`](#setParam) | 设置绘制参数 |  |
+| [`start`](#start) | 进入绘制模式 | 启动该功能/交互 |
 
 ## 方法（Methods）
 
-### `cancel(fn)`
+### `cancel(fn)` {#cancel}
 
 取消绘制模式
 
@@ -59,7 +59,7 @@ fdapi.editHelper.cancel();
 
 ---
 
-### `finish(withOffset, fn)`
+### `finish(withOffset, fn)` {#finish}
 
 绘制结束。调用此方法会结束当前的绘制，并在回调函数中返回绘制类型和坐标点，然后根据这些坐标点再创建相关的几何图形。
 
@@ -127,7 +127,7 @@ switch (res.buildType) {
 
 ---
 
-### `setParam(lineType, buildType, color, fn)`
+### `setParam(lineType, buildType, color, fn)` {#setParam}
 
 设置绘制参数
 
@@ -149,7 +149,7 @@ fdapi.editHelper.setParam(lineType, buildType, color);
 
 ---
 
-### `start(fn)`
+### `start(fn)` {#start}
 
 进入绘制模式
 

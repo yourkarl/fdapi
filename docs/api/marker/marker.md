@@ -48,59 +48,59 @@ new Marker()
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 添加一个或多个标注点  调用时 | 向场景批量添加对象 |
-| `attachObject` | 设置Marker贴合模型对象进行移动，设置贴合后Marker会跟随模型一起平滑运动，支持… |  |
-| `clear` | 删除场景中所有的标注 | 清空全部对象，重置图层 |
-| `delete` | 删除一个或多个标注对象 | 按 ID 移除指定对象 |
-| `deleteByGroupId` | 根据分组ID删除Marker |  |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `focusAll` | 自动定位到能观察所有Marker对象的合适距离 | 相机定位到全部对象的合适视角 |
-| `get` | 根据ID获取标注的详细信息 | 查询对象信息，用于业务联动 |
-| `hide` | 隐藏标注 | 按业务条件隐藏对象 |
-| `hideAll` | 隐藏所有标注 | 一键隐藏全部对象 |
-| `hideAllPopupWindow` | 隐藏所有标注的弹出窗口 |  |
-| `hideByGroupId` | 根据分组ID隐藏Marker |  |
-| `hidePopupWindow` | 隐藏指定标注的弹出窗口 |  |
-| `setAnchors` | 设置标注的整体偏移量（修改锚点） |  |
-| `setAutoHidePopupWindow` | 设置是否自动关闭标注的弹出窗口 |  |
-| `setClusterStyle` | 设置marker聚合样式 |  |
-| `setCoordinate` | 设置标注的位置 |  |
-| `setFontColor` | 设置标注文本颜色 |  |
-| `setFontOutlineColor` | 设置字体轮廓线颜色 |  |
-| `setFontOutlineSize` | 设置字体轮廓线大小 |  |
-| `setFontSize` | 设置字体大小 |  |
-| `setGroupId` | 设置分组 |  |
-| `setHoverImagePath` | 设置鼠标悬停时显示的图片路径 |  |
-| `setImagePath` | 设置标注的图片 |  |
-| `setImageSize` | 设置标注图片的大小 |  |
-| `setLineColor` | 设置LineColor |  |
-| `setLineOffset` | 设置LineOffset |  |
-| `setLineSize` | 设置LineSize |  |
-| `setOcclusionCull` | 设置是否参与遮挡剔除 |  |
-| `setPopupOffset` | 设置弹窗偏移: [x, y] |  |
-| `setPopupSize` | 设置弹窗大小: [width, height] |  |
-| `setPopupURL` | 设置弹窗HTML链接 |  |
-| `setPriority` | 设置避让优先级 |  |
-| `setRange` | 设置标注的可见范围 |  |
-| `setText` | 设置标注的文本 |  |
-| `setTextBackgroundColor` | 设置标注文本的背景颜色 |  |
-| `setTextOffset` | 设置文本偏移 |  |
-| `setTextRange` | 设置文本可视范围: [近裁距离, 远裁距离] |  |
-| `setURL` | 设置标注的URL |  |
-| `setUserData` | 设置用户数据 |  |
-| `setViewportVisible` | 多视口状态下，设置Marker对象在各视口的可见性 |  |
-| `show` | 显示标注 | 按业务条件显示对象 |
-| `showAll` | 显示所有标注 | 一键显示全部对象 |
-| `showAllPopupWindow` | 显示所有标注的弹出窗口 |  |
-| `showByGroupId` | 根据分组ID显示Marker |  |
-| `showPopupWindow` | 显示指定标注的弹出窗口 |  |
-| `update` | 修改一个或多个标注对象 | 运行时动态更新对象属性/状态 |
-| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
-| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+| [`add`](#add) | 添加一个或多个标注点  调用时 | 向场景批量添加对象 |
+| [`attachObject`](#attachObject) | 设置Marker贴合模型对象进行移动，设置贴合后Marker会跟随模型一起平滑运动，支持… |  |
+| [`clear`](#clear) | 删除场景中所有的标注 | 清空全部对象，重置图层 |
+| [`delete`](#delete) | 删除一个或多个标注对象 | 按 ID 移除指定对象 |
+| [`deleteByGroupId`](#deleteByGroupId) | 根据分组ID删除Marker |  |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`focusAll`](#focusAll) | 自动定位到能观察所有Marker对象的合适距离 | 相机定位到全部对象的合适视角 |
+| [`get`](#get) | 根据ID获取标注的详细信息 | 查询对象信息，用于业务联动 |
+| [`hide`](#hide) | 隐藏标注 | 按业务条件隐藏对象 |
+| [`hideAll`](#hideAll) | 隐藏所有标注 | 一键隐藏全部对象 |
+| [`hideAllPopupWindow`](#hideAllPopupWindow) | 隐藏所有标注的弹出窗口 |  |
+| [`hideByGroupId`](#hideByGroupId) | 根据分组ID隐藏Marker |  |
+| [`hidePopupWindow`](#hidePopupWindow) | 隐藏指定标注的弹出窗口 |  |
+| [`setAnchors`](#setAnchors) | 设置标注的整体偏移量（修改锚点） |  |
+| [`setAutoHidePopupWindow`](#setAutoHidePopupWindow) | 设置是否自动关闭标注的弹出窗口 |  |
+| [`setClusterStyle`](#setClusterStyle) | 设置marker聚合样式 |  |
+| [`setCoordinate`](#setCoordinate) | 设置标注的位置 |  |
+| [`setFontColor`](#setFontColor) | 设置标注文本颜色 |  |
+| [`setFontOutlineColor`](#setFontOutlineColor) | 设置字体轮廓线颜色 |  |
+| [`setFontOutlineSize`](#setFontOutlineSize) | 设置字体轮廓线大小 |  |
+| [`setFontSize`](#setFontSize) | 设置字体大小 |  |
+| [`setGroupId`](#setGroupId) | 设置分组 |  |
+| [`setHoverImagePath`](#setHoverImagePath) | 设置鼠标悬停时显示的图片路径 |  |
+| [`setImagePath`](#setImagePath) | 设置标注的图片 |  |
+| [`setImageSize`](#setImageSize) | 设置标注图片的大小 |  |
+| [`setLineColor`](#setLineColor) | 设置LineColor |  |
+| [`setLineOffset`](#setLineOffset) | 设置LineOffset |  |
+| [`setLineSize`](#setLineSize) | 设置LineSize |  |
+| [`setOcclusionCull`](#setOcclusionCull) | 设置是否参与遮挡剔除 |  |
+| [`setPopupOffset`](#setPopupOffset) | 设置弹窗偏移: [x, y] |  |
+| [`setPopupSize`](#setPopupSize) | 设置弹窗大小: [width, height] |  |
+| [`setPopupURL`](#setPopupURL) | 设置弹窗HTML链接 |  |
+| [`setPriority`](#setPriority) | 设置避让优先级 |  |
+| [`setRange`](#setRange) | 设置标注的可见范围 |  |
+| [`setText`](#setText) | 设置标注的文本 |  |
+| [`setTextBackgroundColor`](#setTextBackgroundColor) | 设置标注文本的背景颜色 |  |
+| [`setTextOffset`](#setTextOffset) | 设置文本偏移 |  |
+| [`setTextRange`](#setTextRange) | 设置文本可视范围: [近裁距离, 远裁距离] |  |
+| [`setURL`](#setURL) | 设置标注的URL |  |
+| [`setUserData`](#setUserData) | 设置用户数据 |  |
+| [`setViewportVisible`](#setViewportVisible) | 多视口状态下，设置Marker对象在各视口的可见性 |  |
+| [`show`](#show) | 显示标注 | 按业务条件显示对象 |
+| [`showAll`](#showAll) | 显示所有标注 | 一键显示全部对象 |
+| [`showAllPopupWindow`](#showAllPopupWindow) | 显示所有标注的弹出窗口 |  |
+| [`showByGroupId`](#showByGroupId) | 根据分组ID显示Marker |  |
+| [`showPopupWindow`](#showPopupWindow) | 显示指定标注的弹出窗口 |  |
+| [`update`](#update) | 修改一个或多个标注对象 | 运行时动态更新对象属性/状态 |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
 
 ## 方法（Methods）
 
-### `add(data, fn)`
+### `add(data, fn)` {#add}
 
 添加一个或多个标注点  调用时注意：单次创建的Marker对象数量不要超过5000个，在一个工程内创建的Marker对象总数量不要超过20万个。
 
@@ -349,7 +349,7 @@ img.onload = () => {
 
 ---
 
-### `attachObject(data, fn)`
+### `attachObject(data, fn)` {#attachObject}
 
 设置Marker贴合模型对象进行移动，设置贴合后Marker会跟随模型一起平滑运动，支持的对象类型：CustomObject、Vehicle、Vehicle2、Train、Drone
 
@@ -374,7 +374,7 @@ await fdapi.marker.attachObject(data);
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 删除场景中所有的标注
 
@@ -390,7 +390,7 @@ fdapi.marker.clear();
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个标注对象
 
@@ -407,7 +407,7 @@ fdapi.marker.delete(['m1', 'm2']);
 
 ---
 
-### `deleteByGroupId(groupIds, fn)`
+### `deleteByGroupId(groupIds, fn)` {#deleteByGroupId}
 
 根据分组ID删除Marker
 
@@ -424,7 +424,7 @@ fdapi.marker.deleteByGroupId('markerAdd');
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -444,7 +444,7 @@ fdapi.marker.focus('m1', 200, 0.2);
 
 ---
 
-### `focusAll(distance, flyTime, rotation, fn)`
+### `focusAll(distance, flyTime, rotation, fn)` {#focusAll}
 
 自动定位到能观察所有Marker对象的合适距离
 
@@ -463,7 +463,7 @@ fdapi.marker.focusAll(200, 0.2);
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据ID获取标注的详细信息
 
@@ -519,7 +519,7 @@ log(`获取标注：\n id: ${o.id} \n text: ${o.text}`);
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏标注
 
@@ -536,7 +536,7 @@ fdapi.marker.hide(['m1']);
 
 ---
 
-### `hideAll(fn)`
+### `hideAll(fn)` {#hideAll}
 
 隐藏所有标注
 
@@ -552,7 +552,7 @@ fdapi.marker.hideAll();
 
 ---
 
-### `hideAllPopupWindow(fn)`
+### `hideAllPopupWindow(fn)` {#hideAllPopupWindow}
 
 隐藏所有标注的弹出窗口
 
@@ -568,7 +568,7 @@ fdapi.marker.hideAllPopupWindow();
 
 ---
 
-### `hideByGroupId(groupIds, fn)`
+### `hideByGroupId(groupIds, fn)` {#hideByGroupId}
 
 根据分组ID隐藏Marker
 
@@ -585,7 +585,7 @@ fdapi.marker.hideByGroupId('markerAdd');
 
 ---
 
-### `hidePopupWindow(ids, fn)`
+### `hidePopupWindow(ids, fn)` {#hidePopupWindow}
 
 隐藏指定标注的弹出窗口
 
@@ -602,7 +602,7 @@ fdapi.marker.hidePopupWindow('m1');
 
 ---
 
-### `setAnchors(id, newVal, fn)`
+### `setAnchors(id, newVal, fn)` {#setAnchors}
 
 设置标注的整体偏移量（修改锚点）
 
@@ -622,7 +622,7 @@ fdapi.marker.focus('m1', 100, 1);
 
 ---
 
-### `setAutoHidePopupWindow(id, newVal, fn)`
+### `setAutoHidePopupWindow(id, newVal, fn)` {#setAutoHidePopupWindow}
 
 设置是否自动关闭标注的弹出窗口
 
@@ -640,7 +640,7 @@ fdapi.marker.setAutoHidePopupWindow('m1', false);
 
 ---
 
-### `setClusterStyle(style, fn)`
+### `setClusterStyle(style, fn)` {#setClusterStyle}
 
 设置marker聚合样式
 
@@ -674,7 +674,7 @@ fdapi.marker.setClusterStyle(style);
 
 ---
 
-### `setCoordinate(id, newVal, fn)`
+### `setCoordinate(id, newVal, fn)` {#setCoordinate}
 
 设置标注的位置
 
@@ -693,7 +693,7 @@ fdapi.marker.focus('m1', 200, 0.2);
 
 ---
 
-### `setFontColor(id, newVal, fn)`
+### `setFontColor(id, newVal, fn)` {#setFontColor}
 
 设置标注文本颜色
 
@@ -711,7 +711,7 @@ fdapi.marker.setFontColor('m1', Color.Blue);
 
 ---
 
-### `setFontOutlineColor(id, newVal, fn)`
+### `setFontOutlineColor(id, newVal, fn)` {#setFontOutlineColor}
 
 设置字体轮廓线颜色
 
@@ -729,7 +729,7 @@ await fdapi.marker.setFontOutlineColor(id, newVal);
 
 ---
 
-### `setFontOutlineSize(id, newVal, fn)`
+### `setFontOutlineSize(id, newVal, fn)` {#setFontOutlineSize}
 
 设置字体轮廓线大小
 
@@ -747,7 +747,7 @@ fdapi.marker.setFontOutlineSize('m1', 2);
 
 ---
 
-### `setFontSize(id, newVal, fn)`
+### `setFontSize(id, newVal, fn)` {#setFontSize}
 
 设置字体大小
 
@@ -765,7 +765,7 @@ fdapi.marker.setFontSize('m1', 30);
 
 ---
 
-### `setGroupId(id, newVal, fn)`
+### `setGroupId(id, newVal, fn)` {#setGroupId}
 
 设置分组
 
@@ -783,7 +783,7 @@ fdapi.marker.setGroupId('m1', 'groupMarker2');
 
 ---
 
-### `setHoverImagePath(id, newVal, fn)`
+### `setHoverImagePath(id, newVal, fn)` {#setHoverImagePath}
 
 设置鼠标悬停时显示的图片路径
 
@@ -802,7 +802,7 @@ fdapi.marker.setHoverImagePath('m1', hoverImagePath);
 
 ---
 
-### `setImagePath(id, newVal, fn)`
+### `setImagePath(id, newVal, fn)` {#setImagePath}
 
 设置标注的图片
 
@@ -821,7 +821,7 @@ fdapi.marker.setImagePath('m1', path);
 
 ---
 
-### `setImageSize(id, newVal, fn)`
+### `setImageSize(id, newVal, fn)` {#setImageSize}
 
 设置标注图片的大小
 
@@ -839,7 +839,7 @@ fdapi.marker.setImageSize('m1', [64, 64]);
 
 ---
 
-### `setLineColor(id, newVal, fn)`
+### `setLineColor(id, newVal, fn)` {#setLineColor}
 
 设置LineColor
 
@@ -857,7 +857,7 @@ fdapi.marker.setLineColor('m1', Color.Red);
 
 ---
 
-### `setLineOffset(id, newVal, fn)`
+### `setLineOffset(id, newVal, fn)` {#setLineOffset}
 
 设置LineOffset
 
@@ -875,7 +875,7 @@ fdapi.marker.setLineOffset('m1', [10, 10]);
 
 ---
 
-### `setLineSize(id, newVal, fn)`
+### `setLineSize(id, newVal, fn)` {#setLineSize}
 
 设置LineSize
 
@@ -893,7 +893,7 @@ fdapi.marker.setLineSize('m1', [0.5, 50]);
 
 ---
 
-### `setOcclusionCull(id, newVal, fn)`
+### `setOcclusionCull(id, newVal, fn)` {#setOcclusionCull}
 
 设置是否参与遮挡剔除
 
@@ -911,7 +911,7 @@ fdapi.marker.setOcclusionCull('m1', true);
 
 ---
 
-### `setPopupOffset(id, newVal, fn)`
+### `setPopupOffset(id, newVal, fn)` {#setPopupOffset}
 
 设置弹窗偏移: [x, y]
 
@@ -929,7 +929,7 @@ fdapi.marker.setPopupOffset('m1', [20, 20]);
 
 ---
 
-### `setPopupSize(id, newVal, fn)`
+### `setPopupSize(id, newVal, fn)` {#setPopupSize}
 
 设置弹窗大小: [width, height]
 
@@ -947,7 +947,7 @@ fdapi.marker.setPopupSize('m1', [400, 600]);
 
 ---
 
-### `setPopupURL(id, newVal, fn)`
+### `setPopupURL(id, newVal, fn)` {#setPopupURL}
 
 设置弹窗HTML链接
 
@@ -965,7 +965,7 @@ await fdapi.marker.setPopupURL(id, newVal);
 
 ---
 
-### `setPriority(id, newVal, fn)`
+### `setPriority(id, newVal, fn)` {#setPriority}
 
 设置避让优先级
 
@@ -983,7 +983,7 @@ fdapi.marker.setPriority('m1', 1);
 
 ---
 
-### `setRange(id, newVal, fn)`
+### `setRange(id, newVal, fn)` {#setRange}
 
 设置标注的可见范围
 
@@ -1001,7 +1001,7 @@ fdapi.marker.setRange('m1', [1, 800]);
 
 ---
 
-### `setText(id, newVal, fn)`
+### `setText(id, newVal, fn)` {#setText}
 
 设置标注的文本
 
@@ -1019,7 +1019,7 @@ fdapi.marker.setText('m1', '体育馆');
 
 ---
 
-### `setTextBackgroundColor(id, newVal, fn)`
+### `setTextBackgroundColor(id, newVal, fn)` {#setTextBackgroundColor}
 
 设置标注文本的背景颜色
 
@@ -1037,7 +1037,7 @@ fdapi.marker.setTextBackgroundColor('m1', Color.Yellow);
 
 ---
 
-### `setTextOffset(id, newVal, fn)`
+### `setTextOffset(id, newVal, fn)` {#setTextOffset}
 
 设置文本偏移
 
@@ -1055,7 +1055,7 @@ fdapi.marker.setTextOffset('m1', [10, 10]);
 
 ---
 
-### `setTextRange(id, newVal, fn)`
+### `setTextRange(id, newVal, fn)` {#setTextRange}
 
 设置文本可视范围: [近裁距离, 远裁距离]
 
@@ -1073,7 +1073,7 @@ fdapi.marker.setTextRange('m1', [0, 100]);
 
 ---
 
-### `setURL(id, newVal, fn)`
+### `setURL(id, newVal, fn)` {#setURL}
 
 设置标注的URL
 
@@ -1091,7 +1091,7 @@ fdapi.marker.setURL('m1', 'http://www.baidu.com');
 
 ---
 
-### `setUserData(id, newVal, fn)`
+### `setUserData(id, newVal, fn)` {#setUserData}
 
 设置用户数据
 
@@ -1109,7 +1109,7 @@ fdapi.marker.setUserData('m1', '{name:\"karl\",sex:\"male\",\"age\":32}');
 
 ---
 
-### `setViewportVisible(id, vp, fn)`
+### `setViewportVisible(id, vp, fn)` {#setViewportVisible}
 
 多视口状态下，设置Marker对象在各视口的可见性
 
@@ -1136,7 +1136,7 @@ fdapi.marker.setViewportVisible('m1', Viewport.V1 | Viewport.V3);
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示标注
 
@@ -1153,7 +1153,7 @@ fdapi.marker.show('m1');
 
 ---
 
-### `showAll(fn)`
+### `showAll(fn)` {#showAll}
 
 显示所有标注
 
@@ -1169,7 +1169,7 @@ fdapi.marker.showAll();
 
 ---
 
-### `showAllPopupWindow(fn)`
+### `showAllPopupWindow(fn)` {#showAllPopupWindow}
 
 显示所有标注的弹出窗口
 
@@ -1185,7 +1185,7 @@ fdapi.marker.showAllPopupWindow();
 
 ---
 
-### `showByGroupId(groupIds, fn)`
+### `showByGroupId(groupIds, fn)` {#showByGroupId}
 
 根据分组ID显示Marker
 
@@ -1202,7 +1202,7 @@ fdapi.marker.showByGroupId('markerAdd');
 
 ---
 
-### `showPopupWindow(ids, fn)`
+### `showPopupWindow(ids, fn)` {#showPopupWindow}
 
 显示指定标注的弹出窗口
 
@@ -1219,7 +1219,7 @@ fdapi.marker.showPopupWindow('m1');
 
 ---
 
-### `update(data, fn)`
+### `update(data, fn)` {#update}
 
 修改一个或多个标注对象
 
@@ -1246,7 +1246,7 @@ fdapi.marker.focus(o.id, 200, 0);
 
 ---
 
-### `updateBegin()`
+### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
 
@@ -1269,7 +1269,7 @@ fdapi.xxx.updateEnd(function () {
 
 ---
 
-### `updateEnd(fn)`
+### `updateEnd(fn)` {#updateEnd}
 
 用于批量多次修改对象的属性，与updateBegin配套使用
 

@@ -78,37 +78,37 @@ let coords2 = [
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 添加一个或多个Polygon3D对象 | 向场景批量添加对象 |
-| `clear` | 删除场景中所有的3DPolygon | 清空全部对象，重置图层 |
-| `delete` | 删除一个或多个3DPolygon对象 | 按 ID 移除指定对象 |
-| `disableClip` | 禁止Polygon3D参与剖切 |  |
-| `enableClip` | 设置Polygon3D参与剖切 |  |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `get` | 根据ID获取3DPolygon的详细信息 | 查询对象信息，用于业务联动 |
-| `glow` | 闪烁 |  |
-| `hide` | 隐藏3DPolygon | 按业务条件隐藏对象 |
-| `hideAll` | 隐藏所有3DPolygon | 一键隐藏全部对象 |
-| `highlight` | 高亮，目前仅部分样式支持高亮，和材质有关 |  |
-| `setColor` | 设置颜色 |  |
-| `setCoordinates` | 设置坐标 |  |
-| `setDepthTest` | 设置是否做深度检测 |  |
-| `setHeight` | 设置高度 |  |
-| `setIntensity` | 设置亮度 |  |
-| `setStyle` | 设置样式 |  |
-| `setTillingX` | 设置TillingX |  |
-| `setTillingY` | 设置TillingY |  |
-| `setViewHeightRange` | 设置Polygon3D对象的可视高度范围 |  |
-| `show` | 显示3DPolygon | 按业务条件显示对象 |
-| `showAll` | 显示所有3DPolygon | 一键显示全部对象 |
-| `stopGlow` | 停止闪烁 |  |
-| `unHighlight` | 停止高亮 |  |
-| `update` | 修改一个或多个3DPolygon对象 | 运行时动态更新对象属性/状态 |
-| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
-| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+| [`add`](#add) | 添加一个或多个Polygon3D对象 | 向场景批量添加对象 |
+| [`clear`](#clear) | 删除场景中所有的3DPolygon | 清空全部对象，重置图层 |
+| [`delete`](#delete) | 删除一个或多个3DPolygon对象 | 按 ID 移除指定对象 |
+| [`disableClip`](#disableClip) | 禁止Polygon3D参与剖切 |  |
+| [`enableClip`](#enableClip) | 设置Polygon3D参与剖切 |  |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`get`](#get) | 根据ID获取3DPolygon的详细信息 | 查询对象信息，用于业务联动 |
+| [`glow`](#glow) | 闪烁 |  |
+| [`hide`](#hide) | 隐藏3DPolygon | 按业务条件隐藏对象 |
+| [`hideAll`](#hideAll) | 隐藏所有3DPolygon | 一键隐藏全部对象 |
+| [`highlight`](#highlight) | 高亮，目前仅部分样式支持高亮，和材质有关 |  |
+| [`setColor`](#setColor) | 设置颜色 |  |
+| [`setCoordinates`](#setCoordinates) | 设置坐标 |  |
+| [`setDepthTest`](#setDepthTest) | 设置是否做深度检测 |  |
+| [`setHeight`](#setHeight) | 设置高度 |  |
+| [`setIntensity`](#setIntensity) | 设置亮度 |  |
+| [`setStyle`](#setStyle) | 设置样式 |  |
+| [`setTillingX`](#setTillingX) | 设置TillingX |  |
+| [`setTillingY`](#setTillingY) | 设置TillingY |  |
+| [`setViewHeightRange`](#setViewHeightRange) | 设置Polygon3D对象的可视高度范围 |  |
+| [`show`](#show) | 显示3DPolygon | 按业务条件显示对象 |
+| [`showAll`](#showAll) | 显示所有3DPolygon | 一键显示全部对象 |
+| [`stopGlow`](#stopGlow) | 停止闪烁 |  |
+| [`unHighlight`](#unHighlight) | 停止高亮 |  |
+| [`update`](#update) | 修改一个或多个3DPolygon对象 | 运行时动态更新对象属性/状态 |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
 
 ## 方法（Methods）
 
-### `add(data, fn)`
+### `add(data, fn)` {#add}
 
 添加一个或多个Polygon3D对象
 
@@ -244,7 +244,7 @@ fdapi.polygon3d.focus('p3d1', 50);
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 删除场景中所有的3DPolygon
 
@@ -260,7 +260,7 @@ fdapi.polygon3d.clear();
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个3DPolygon对象
 
@@ -277,7 +277,7 @@ fdapi.polygon3d.delete(['p3d1', 'p3d2']);
 
 ---
 
-### `disableClip(ids, fn)`
+### `disableClip(ids, fn)` {#disableClip}
 
 禁止Polygon3D参与剖切
 
@@ -294,7 +294,7 @@ fdapi.polygon3d.disableClip(['p3d1', 'p3d2']);
 
 ---
 
-### `enableClip(ids, fn)`
+### `enableClip(ids, fn)` {#enableClip}
 
 设置Polygon3D参与剖切
 
@@ -311,7 +311,7 @@ fdapi.polygon3d.enableClip(['p3d1', 'p3d2']);
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -331,7 +331,7 @@ fdapi.polygon3d.focus('p3d1', 10);
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据ID获取3DPolygon的详细信息
 
@@ -360,7 +360,7 @@ fdapi.polygon3d.get(['p3d1', 'p3d2']);
 
 ---
 
-### `glow(data)`
+### `glow(data)` {#glow}
 
 闪烁
 
@@ -390,7 +390,7 @@ fdapi.polygon3d.glow([{
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏3DPolygon
 
@@ -407,7 +407,7 @@ fdapi.polygon3d.hide(['p3d1', 'p3d2']);
 
 ---
 
-### `hideAll(fn)`
+### `hideAll(fn)` {#hideAll}
 
 隐藏所有3DPolygon
 
@@ -423,7 +423,7 @@ fdapi.polygon3d.hideAll();
 
 ---
 
-### `highlight(ids, fn)`
+### `highlight(ids, fn)` {#highlight}
 
 高亮，目前仅部分样式支持高亮，和材质有关
 
@@ -441,7 +441,7 @@ fdapi.polygon3d.highlight('p3d1');
 
 ---
 
-### `setColor(id, newColor, fn)`
+### `setColor(id, newColor, fn)` {#setColor}
 
 设置颜色
 
@@ -459,7 +459,7 @@ await fdapi.polygon3d.setColor(id, newColor);
 
 ---
 
-### `setCoordinates(id, newVal, fn)`
+### `setCoordinates(id, newVal, fn)` {#setCoordinates}
 
 设置坐标
 
@@ -477,7 +477,7 @@ await fdapi.polygon3d.setCoordinates(id, newVal);
 
 ---
 
-### `setDepthTest(id, newVal, fn)`
+### `setDepthTest(id, newVal, fn)` {#setDepthTest}
 
 设置是否做深度检测
 
@@ -495,7 +495,7 @@ await fdapi.polygon3d.setDepthTest(id, newVal);
 
 ---
 
-### `setHeight(id, newVal, fn)`
+### `setHeight(id, newVal, fn)` {#setHeight}
 
 设置高度
 
@@ -513,7 +513,7 @@ await fdapi.polygon3d.setHeight(id, newVal);
 
 ---
 
-### `setIntensity(id, newVal, fn)`
+### `setIntensity(id, newVal, fn)` {#setIntensity}
 
 设置亮度
 
@@ -531,7 +531,7 @@ await fdapi.polygon3d.setIntensity(id, newVal);
 
 ---
 
-### `setStyle(id, newVal, fn)`
+### `setStyle(id, newVal, fn)` {#setStyle}
 
 设置样式
 
@@ -549,7 +549,7 @@ await fdapi.polygon3d.setStyle(id, newVal);
 
 ---
 
-### `setTillingX(id, newVal, fn)`
+### `setTillingX(id, newVal, fn)` {#setTillingX}
 
 设置TillingX
 
@@ -567,7 +567,7 @@ await fdapi.polygon3d.setTillingX(id, newVal);
 
 ---
 
-### `setTillingY(id, newVal, fn)`
+### `setTillingY(id, newVal, fn)` {#setTillingY}
 
 设置TillingY
 
@@ -585,7 +585,7 @@ await fdapi.polygon3d.setTillingY(id, newVal);
 
 ---
 
-### `setViewHeightRange(id, minViewHeight, maxViewHeight, fn)`
+### `setViewHeightRange(id, minViewHeight, maxViewHeight, fn)` {#setViewHeightRange}
 
 设置Polygon3D对象的可视高度范围
 
@@ -604,7 +604,7 @@ fdapi.polygon3d.setViewHeightRange('p3d1', 1, 1000);
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示3DPolygon
 
@@ -621,7 +621,7 @@ fdapi.polygon3d.show(['p3d1', 'p3d2']);
 
 ---
 
-### `showAll(fn)`
+### `showAll(fn)` {#showAll}
 
 显示所有3DPolygon
 
@@ -637,7 +637,7 @@ fdapi.polygon3d.showAll();
 
 ---
 
-### `stopGlow(ids, fn)`
+### `stopGlow(ids, fn)` {#stopGlow}
 
 停止闪烁
 
@@ -654,7 +654,7 @@ fdapi.polygon3d.stopGlow('p3d1');
 
 ---
 
-### `unHighlight(ids, fn)`
+### `unHighlight(ids, fn)` {#unHighlight}
 
 停止高亮
 
@@ -671,7 +671,7 @@ await fdapi.polygon3d.unHighlight(ids);
 
 ---
 
-### `update(data, fn)`
+### `update(data, fn)` {#update}
 
 修改一个或多个3DPolygon对象
 
@@ -702,7 +702,7 @@ fdapi.polygon3d.focus(o.id);
 
 ---
 
-### `updateBegin()`
+### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
 
@@ -725,7 +725,7 @@ fdapi.xxx.updateEnd(function () {
 
 ---
 
-### `updateEnd(fn)`
+### `updateEnd(fn)` {#updateEnd}
 
 用于批量多次修改对象的属性，与updateBegin配套使用
 

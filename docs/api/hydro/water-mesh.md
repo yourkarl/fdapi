@@ -34,28 +34,28 @@ WaterMesh 以自定义网格构建水面/水体，控制其形态、材质与水
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 添加一个或多个WaterMesh对象 | 向场景批量添加对象 |
-| `clear` | 删除场景中所有的WaterMesh | 清空全部对象，重置图层 |
-| `delete` | 删除一个或多个WaterMesh对象 | 按 ID 移除指定对象 |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `get` | 根据ID获取WaterMesh的详细信息 | 查询对象信息，用于业务联动 |
-| `hide` | 隐藏WaterMesh | 按业务条件隐藏对象 |
-| `hideAll` | 隐藏所有WaterMesh | 一键隐藏全部对象 |
-| `setCoordinates` | 设置WaterMesh顶点坐标 |  |
-| `setIndices` | 设置WaterMesh顶点坐标索引 |  |
-| `setNormals` | 设置WaterMesh法向 |  |
-| `setWaterColor` | 设置颜色 |  |
-| `setWaterDirection` | 设置水流方向 |  |
-| `setWaterSpeed` | 设置水流速度 |  |
-| `setWaterUVRepeat` | 设置水流贴图重复间隔距离 |  |
-| `setWaterWaveScale` | 设置水波纹大小 |  |
-| `show` | 显示WaterMesh | 按业务条件显示对象 |
-| `showAll` | 显示所有WaterMesh | 一键显示全部对象 |
-| `update` | 修改一个或多个WaterMesh对象 | 运行时动态更新对象属性/状态 |
+| [`add`](#add) | 添加一个或多个WaterMesh对象 | 向场景批量添加对象 |
+| [`clear`](#clear) | 删除场景中所有的WaterMesh | 清空全部对象，重置图层 |
+| [`delete`](#delete) | 删除一个或多个WaterMesh对象 | 按 ID 移除指定对象 |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`get`](#get) | 根据ID获取WaterMesh的详细信息 | 查询对象信息，用于业务联动 |
+| [`hide`](#hide) | 隐藏WaterMesh | 按业务条件隐藏对象 |
+| [`hideAll`](#hideAll) | 隐藏所有WaterMesh | 一键隐藏全部对象 |
+| [`setCoordinates`](#setCoordinates) | 设置WaterMesh顶点坐标 |  |
+| [`setIndices`](#setIndices) | 设置WaterMesh顶点坐标索引 |  |
+| [`setNormals`](#setNormals) | 设置WaterMesh法向 |  |
+| [`setWaterColor`](#setWaterColor) | 设置颜色 |  |
+| [`setWaterDirection`](#setWaterDirection) | 设置水流方向 |  |
+| [`setWaterSpeed`](#setWaterSpeed) | 设置水流速度 |  |
+| [`setWaterUVRepeat`](#setWaterUVRepeat) | 设置水流贴图重复间隔距离 |  |
+| [`setWaterWaveScale`](#setWaterWaveScale) | 设置水波纹大小 |  |
+| [`show`](#show) | 显示WaterMesh | 按业务条件显示对象 |
+| [`showAll`](#showAll) | 显示所有WaterMesh | 一键显示全部对象 |
+| [`update`](#update) | 修改一个或多个WaterMesh对象 | 运行时动态更新对象属性/状态 |
 
 ## 方法（Methods）
 
-### `add(data, fn)`
+### `add(data, fn)` {#add}
 
 添加一个或多个WaterMesh对象
 
@@ -109,7 +109,7 @@ fdapi.waterMesh.focus('watermesh1', 100);
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 删除场景中所有的WaterMesh
 
@@ -125,7 +125,7 @@ fdapi.waterMesh.clear();
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个WaterMesh对象
 
@@ -142,7 +142,7 @@ fdapi.waterMesh.delete('watermesh1');
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -162,7 +162,7 @@ fdapi.waterMesh.focus('watermesh1', 10);
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据ID获取WaterMesh的详细信息
 
@@ -193,7 +193,7 @@ fdapi.waterMesh.get('watermesh1');
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏WaterMesh
 
@@ -210,7 +210,7 @@ fdapi.waterMesh.hide('watermesh1');
 
 ---
 
-### `hideAll(fn)`
+### `hideAll(fn)` {#hideAll}
 
 隐藏所有WaterMesh
 
@@ -226,7 +226,7 @@ await fdapi.boxTrigger.hideAll();
 
 ---
 
-### `setCoordinates(id, newVal, fn)`
+### `setCoordinates(id, newVal, fn)` {#setCoordinates}
 
 设置WaterMesh顶点坐标
 
@@ -244,7 +244,7 @@ await fdapi.boxTrigger.setCoordinates(id, newVal);
 
 ---
 
-### `setIndices(id, newVal, fn)`
+### `setIndices(id, newVal, fn)` {#setIndices}
 
 设置WaterMesh顶点坐标索引
 
@@ -262,7 +262,7 @@ await fdapi.boxTrigger.setIndices(id, newVal);
 
 ---
 
-### `setNormals(id, newVal, fn)`
+### `setNormals(id, newVal, fn)` {#setNormals}
 
 设置WaterMesh法向
 
@@ -280,7 +280,7 @@ await fdapi.boxTrigger.setNormals(id, newVal);
 
 ---
 
-### `setWaterColor(id, newVal, fn)`
+### `setWaterColor(id, newVal, fn)` {#setWaterColor}
 
 设置颜色
 
@@ -298,7 +298,7 @@ await fdapi.boxTrigger.setWaterColor(id, newVal);
 
 ---
 
-### `setWaterDirection(id, newVal, fn)`
+### `setWaterDirection(id, newVal, fn)` {#setWaterDirection}
 
 设置水流方向
 
@@ -316,7 +316,7 @@ await fdapi.boxTrigger.setWaterDirection(id, newVal);
 
 ---
 
-### `setWaterSpeed(id, newVal, fn)`
+### `setWaterSpeed(id, newVal, fn)` {#setWaterSpeed}
 
 设置水流速度
 
@@ -334,7 +334,7 @@ await fdapi.boxTrigger.setWaterSpeed(id, newVal);
 
 ---
 
-### `setWaterUVRepeat(id, newVal, fn)`
+### `setWaterUVRepeat(id, newVal, fn)` {#setWaterUVRepeat}
 
 设置水流贴图重复间隔距离
 
@@ -352,7 +352,7 @@ await fdapi.boxTrigger.setWaterUVRepeat(id, newVal);
 
 ---
 
-### `setWaterWaveScale(id, newVal, fn)`
+### `setWaterWaveScale(id, newVal, fn)` {#setWaterWaveScale}
 
 设置水波纹大小
 
@@ -370,7 +370,7 @@ await fdapi.boxTrigger.setWaterWaveScale(id, newVal);
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示WaterMesh
 
@@ -387,7 +387,7 @@ fdapi.waterMesh.show('watermesh1');
 
 ---
 
-### `showAll(fn)`
+### `showAll(fn)` {#showAll}
 
 显示所有WaterMesh
 
@@ -403,7 +403,7 @@ await fdapi.boxTrigger.showAll();
 
 ---
 
-### `update(data, fn)`
+### `update(data, fn)` {#update}
 
 修改一个或多个WaterMesh对象
 

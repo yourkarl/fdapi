@@ -39,24 +39,24 @@ new ImageryLayer()
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 添加一个或多个网络地图服务，如WMTS/WMS服务等网络图层服务 | 向场景批量添加对象 |
-| `addVTPK` | 给图层服务叠加显示对应VTPK标注 |  |
-| `delete` | 删除一个或多个ImageryLayer图层对象 | 按 ID 移除指定对象 |
-| `deleteVTPK` | 删除叠加的VTPK标注 |  |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `hide` | 隐藏一个或多个ImageryLayer图层对象 | 按业务条件隐藏对象 |
-| `init` | 添加图层服务前需要先初始化相关参数 |  |
-| `setDrawBottom` | 设置ImageryLayer图层置底显示 |  |
-| `setDrawOrder` | 设置两个ImageryLayer图层的绘制顺序，即移动当前ImageryLayer图层到… |  |
-| `setDrawTop` | 设置ImageryLayer图层置顶显示 |  |
-| `setVTPKVisable` | 设置叠加的VTPK标注可见性 |  |
-| `show` | 显示一个或多个ImageryLayer图层对象 | 按业务条件显示对象 |
-| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
-| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+| [`add`](#add) | 添加一个或多个网络地图服务，如WMTS/WMS服务等网络图层服务 | 向场景批量添加对象 |
+| [`addVTPK`](#addVTPK) | 给图层服务叠加显示对应VTPK标注 |  |
+| [`delete`](#delete) | 删除一个或多个ImageryLayer图层对象 | 按 ID 移除指定对象 |
+| [`deleteVTPK`](#deleteVTPK) | 删除叠加的VTPK标注 |  |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`hide`](#hide) | 隐藏一个或多个ImageryLayer图层对象 | 按业务条件隐藏对象 |
+| [`init`](#init) | 添加图层服务前需要先初始化相关参数 |  |
+| [`setDrawBottom`](#setDrawBottom) | 设置ImageryLayer图层置底显示 |  |
+| [`setDrawOrder`](#setDrawOrder) | 设置两个ImageryLayer图层的绘制顺序，即移动当前ImageryLayer图层到… |  |
+| [`setDrawTop`](#setDrawTop) | 设置ImageryLayer图层置顶显示 |  |
+| [`setVTPKVisable`](#setVTPKVisable) | 设置叠加的VTPK标注可见性 |  |
+| [`show`](#show) | 显示一个或多个ImageryLayer图层对象 | 按业务条件显示对象 |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
 
 ## 方法（Methods）
 
-### `add(data, fn)`
+### `add(data, fn)` {#add}
 
 添加一个或多个网络地图服务，如WMTS/WMS服务等网络图层服务
 
@@ -108,7 +108,7 @@ let wmts3 = {
 
 ---
 
-### `addVTPK(tileLayerId, fn)`
+### `addVTPK(tileLayerId, fn)` {#addVTPK}
 
 给图层服务叠加显示对应VTPK标注
 
@@ -127,7 +127,7 @@ let tileLayerId = "";
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个ImageryLayer图层对象
 
@@ -144,7 +144,7 @@ fdapi.imageryLayer.delete(['wmts1', 'wmts2']);
 
 ---
 
-### `deleteVTPK(tileLayerId, fn)`
+### `deleteVTPK(tileLayerId, fn)` {#deleteVTPK}
 
 删除叠加的VTPK标注
 
@@ -163,7 +163,7 @@ let tileLayerId = "";
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -183,7 +183,7 @@ fdapi.imageryLayer.focus('wmts1');
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏一个或多个ImageryLayer图层对象
 
@@ -200,7 +200,7 @@ fdapi.imageryLayer.hide(['wmts1', 'wmts2']);
 
 ---
 
-### `init(option, fn)`
+### `init(option, fn)` {#init}
 
 添加图层服务前需要先初始化相关参数
 
@@ -238,7 +238,7 @@ let option = {
 
 ---
 
-### `setDrawBottom(id, fn)`
+### `setDrawBottom(id, fn)` {#setDrawBottom}
 
 设置ImageryLayer图层置底显示
 
@@ -255,7 +255,7 @@ fdapi.imageryLayer.setDrawBottom("wmts1");
 
 ---
 
-### `setDrawOrder(currentLayerId, targetLayerId, fn)`
+### `setDrawOrder(currentLayerId, targetLayerId, fn)` {#setDrawOrder}
 
 设置两个ImageryLayer图层的绘制顺序，即移动当前ImageryLayer图层到目标ImageryLayer图层的上方位置显示
 
@@ -273,7 +273,7 @@ fdapi.imageryLayer.setDrawOrder("wmts3", "wmts1");
 
 ---
 
-### `setDrawTop(id, fn)`
+### `setDrawTop(id, fn)` {#setDrawTop}
 
 设置ImageryLayer图层置顶显示
 
@@ -290,7 +290,7 @@ fdapi.imageryLayer.setDrawTop("wmts2");
 
 ---
 
-### `setVTPKVisable(tileLayerId, visible, fn)`
+### `setVTPKVisable(tileLayerId, visible, fn)` {#setVTPKVisable}
 
 设置叠加的VTPK标注可见性
 
@@ -310,7 +310,7 @@ let tileLayerId = "";
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示一个或多个ImageryLayer图层对象
 
@@ -327,7 +327,7 @@ fdapi.imageryLayer.show(['wmts1', 'wmts2']);
 
 ---
 
-### `updateBegin()`
+### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
 
@@ -350,7 +350,7 @@ fdapi.xxx.updateEnd(function () {
 
 ---
 
-### `updateEnd(fn)`
+### `updateEnd(fn)` {#updateEnd}
 
 用于批量多次修改对象的属性，与updateBegin配套使用
 

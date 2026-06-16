@@ -50,38 +50,38 @@ new ODLine()
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 添加一个或多个ODLine对象 | 向场景批量添加对象 |
-| `clear` | 删除场景中所有的ODLine | 清空全部对象，重置图层 |
-| `delete` | 删除一个或多个ODLine对象 | 按 ID 移除指定对象 |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `get` | 根据ID获取ODLine的详细信息 | 查询对象信息，用于业务联动 |
-| `hide` | 隐藏ODLine | 按业务条件隐藏对象 |
-| `hideAll` | 隐藏所有ODLine | 一键隐藏全部对象 |
-| `setBendDegree` | 设置新的弯曲度 |  |
-| `setBrightness` | 设置新的亮度 |  |
-| `setColor` | 设置新的颜色值 |  |
-| `setCoordinates` | 设置坐标值 |  |
-| `setEndLabelShape` | 设置EndLabel样式 |  |
-| `setEndPointShape` | 设置EndPoint样式 |  |
-| `setflowPointSizeScale` | 设置运动点的缩放 |  |
-| `setFlowRate` | 设置新的流速 |  |
-| `setFlowShape` | 设置ODLine发光点样式 |  |
-| `setLabelSizeScale` | 设置两端点的缩放值 |  |
-| `setLineShape` | 设置ODLine模型样式 |  |
-| `setLineStyle` | 设置ODLine材质样式 |  |
-| `setLineThickness` | 设置线的厚度 |  |
-| `setStartLabelShape` | 设置StartLabel样式 |  |
-| `setStartPointShape` | 设置StartPoint样式 |  |
-| `setTiling` | 设置材质贴图平铺 |  |
-| `show` | 显示ODLine | 按业务条件显示对象 |
-| `showAll` | 显示所有ODLine | 一键显示全部对象 |
-| `update` | 修改一个或多个ODLine对象 | 运行时动态更新对象属性/状态 |
-| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
-| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+| [`add`](#add) | 添加一个或多个ODLine对象 | 向场景批量添加对象 |
+| [`clear`](#clear) | 删除场景中所有的ODLine | 清空全部对象，重置图层 |
+| [`delete`](#delete) | 删除一个或多个ODLine对象 | 按 ID 移除指定对象 |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`get`](#get) | 根据ID获取ODLine的详细信息 | 查询对象信息，用于业务联动 |
+| [`hide`](#hide) | 隐藏ODLine | 按业务条件隐藏对象 |
+| [`hideAll`](#hideAll) | 隐藏所有ODLine | 一键隐藏全部对象 |
+| [`setBendDegree`](#setBendDegree) | 设置新的弯曲度 |  |
+| [`setBrightness`](#setBrightness) | 设置新的亮度 |  |
+| [`setColor`](#setColor) | 设置新的颜色值 |  |
+| [`setCoordinates`](#setCoordinates) | 设置坐标值 |  |
+| [`setEndLabelShape`](#setEndLabelShape) | 设置EndLabel样式 |  |
+| [`setEndPointShape`](#setEndPointShape) | 设置EndPoint样式 |  |
+| [`setflowPointSizeScale`](#setflowPointSizeScale) | 设置运动点的缩放 |  |
+| [`setFlowRate`](#setFlowRate) | 设置新的流速 |  |
+| [`setFlowShape`](#setFlowShape) | 设置ODLine发光点样式 |  |
+| [`setLabelSizeScale`](#setLabelSizeScale) | 设置两端点的缩放值 |  |
+| [`setLineShape`](#setLineShape) | 设置ODLine模型样式 |  |
+| [`setLineStyle`](#setLineStyle) | 设置ODLine材质样式 |  |
+| [`setLineThickness`](#setLineThickness) | 设置线的厚度 |  |
+| [`setStartLabelShape`](#setStartLabelShape) | 设置StartLabel样式 |  |
+| [`setStartPointShape`](#setStartPointShape) | 设置StartPoint样式 |  |
+| [`setTiling`](#setTiling) | 设置材质贴图平铺 |  |
+| [`show`](#show) | 显示ODLine | 按业务条件显示对象 |
+| [`showAll`](#showAll) | 显示所有ODLine | 一键显示全部对象 |
+| [`update`](#update) | 修改一个或多个ODLine对象 | 运行时动态更新对象属性/状态 |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
 
 ## 方法（Methods）
 
-### `add(data, fn)`
+### `add(data, fn)` {#add}
 
 添加一个或多个ODLine对象
 
@@ -186,7 +186,7 @@ fdapi.odline.focus(od1.id);
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 删除场景中所有的ODLine
 
@@ -202,7 +202,7 @@ fdapi.odline.clear();
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个ODLine对象
 
@@ -219,7 +219,7 @@ fdapi.odline.delete('od1');
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -239,7 +239,7 @@ fdapi.odline.focus('od1', 600, 1);
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据ID获取ODLine的详细信息
 
@@ -286,7 +286,7 @@ fdapi.odline.get('od1');
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏ODLine
 
@@ -303,7 +303,7 @@ fdapi.odline.hide('od1');
 
 ---
 
-### `hideAll(fn)`
+### `hideAll(fn)` {#hideAll}
 
 隐藏所有ODLine
 
@@ -319,7 +319,7 @@ fdapi.odline.hideAll();
 
 ---
 
-### `setBendDegree(id, newVal, fn)`
+### `setBendDegree(id, newVal, fn)` {#setBendDegree}
 
 设置新的弯曲度
 
@@ -337,7 +337,7 @@ await fdapi.odline.setBendDegree(id, newVal);
 
 ---
 
-### `setBrightness(id, newVal, fn)`
+### `setBrightness(id, newVal, fn)` {#setBrightness}
 
 设置新的亮度
 
@@ -355,7 +355,7 @@ await fdapi.odline.setBrightness(id, newVal);
 
 ---
 
-### `setColor(id, newVal, fn)`
+### `setColor(id, newVal, fn)` {#setColor}
 
 设置新的颜色值
 
@@ -373,7 +373,7 @@ await fdapi.odline.setColor(id, newVal);
 
 ---
 
-### `setCoordinates(id, newVal, fn)`
+### `setCoordinates(id, newVal, fn)` {#setCoordinates}
 
 设置坐标值
 
@@ -391,7 +391,7 @@ await fdapi.odline.setCoordinates(id, newVal);
 
 ---
 
-### `setEndLabelShape(id, newVal, fn)`
+### `setEndLabelShape(id, newVal, fn)` {#setEndLabelShape}
 
 设置EndLabel样式
 
@@ -409,7 +409,7 @@ await fdapi.odline.setEndLabelShape(id, newVal);
 
 ---
 
-### `setEndPointShape(id, newVal, fn)`
+### `setEndPointShape(id, newVal, fn)` {#setEndPointShape}
 
 设置EndPoint样式
 
@@ -427,7 +427,7 @@ await fdapi.odline.setEndPointShape(id, newVal);
 
 ---
 
-### `setflowPointSizeScale(id, newVal, fn)`
+### `setflowPointSizeScale(id, newVal, fn)` {#setflowPointSizeScale}
 
 设置运动点的缩放
 
@@ -445,7 +445,7 @@ await fdapi.odline.setflowPointSizeScale(id, newVal);
 
 ---
 
-### `setFlowRate(id, newVal, fn)`
+### `setFlowRate(id, newVal, fn)` {#setFlowRate}
 
 设置新的流速
 
@@ -463,7 +463,7 @@ await fdapi.odline.setFlowRate(id, newVal);
 
 ---
 
-### `setFlowShape(id, newVal, fn)`
+### `setFlowShape(id, newVal, fn)` {#setFlowShape}
 
 设置ODLine发光点样式
 
@@ -481,7 +481,7 @@ await fdapi.odline.setFlowShape(id, newVal);
 
 ---
 
-### `setLabelSizeScale(id, newVal, fn)`
+### `setLabelSizeScale(id, newVal, fn)` {#setLabelSizeScale}
 
 设置两端点的缩放值
 
@@ -499,7 +499,7 @@ await fdapi.odline.setLabelSizeScale(id, newVal);
 
 ---
 
-### `setLineShape(id, newVal, fn)`
+### `setLineShape(id, newVal, fn)` {#setLineShape}
 
 设置ODLine模型样式
 
@@ -517,7 +517,7 @@ await fdapi.odline.setLineShape(id, newVal);
 
 ---
 
-### `setLineStyle(id, newVal, fn)`
+### `setLineStyle(id, newVal, fn)` {#setLineStyle}
 
 设置ODLine材质样式
 
@@ -535,7 +535,7 @@ await fdapi.odline.setLineStyle(id, newVal);
 
 ---
 
-### `setLineThickness(id, newVal, fn)`
+### `setLineThickness(id, newVal, fn)` {#setLineThickness}
 
 设置线的厚度
 
@@ -553,7 +553,7 @@ await fdapi.odline.setLineThickness(id, newVal);
 
 ---
 
-### `setStartLabelShape(id, newVal, fn)`
+### `setStartLabelShape(id, newVal, fn)` {#setStartLabelShape}
 
 设置StartLabel样式
 
@@ -571,7 +571,7 @@ await fdapi.odline.setStartLabelShape(id, newVal);
 
 ---
 
-### `setStartPointShape(id, newVal, fn)`
+### `setStartPointShape(id, newVal, fn)` {#setStartPointShape}
 
 设置StartPoint样式
 
@@ -589,7 +589,7 @@ await fdapi.odline.setStartPointShape(id, newVal);
 
 ---
 
-### `setTiling(id, newVal, fn)`
+### `setTiling(id, newVal, fn)` {#setTiling}
 
 设置材质贴图平铺
 
@@ -607,7 +607,7 @@ await fdapi.odline.setTiling(id, newVal);
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示ODLine
 
@@ -624,7 +624,7 @@ fdapi.odline.show('od1');
 
 ---
 
-### `showAll(fn)`
+### `showAll(fn)` {#showAll}
 
 显示所有ODLine
 
@@ -640,7 +640,7 @@ fdapi.odline.showAll();
 
 ---
 
-### `update(data, fn)`
+### `update(data, fn)` {#update}
 
 修改一个或多个ODLine对象
 
@@ -662,7 +662,7 @@ fdapi.odline.focus(o.id);
 
 ---
 
-### `updateBegin()`
+### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
 
@@ -685,7 +685,7 @@ fdapi.xxx.updateEnd(function () {
 
 ---
 
-### `updateEnd(fn)`
+### `updateEnd(fn)` {#updateEnd}
 
 用于批量多次修改对象的属性，与updateBegin配套使用
 

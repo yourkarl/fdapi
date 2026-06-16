@@ -138,25 +138,25 @@ new DigitalTwinAPI(host, options)
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `checkApiReady` | 检查API调用是否就绪 |  |
-| `destroy` | 关闭WebSocket连接 |  |
-| `executeJsInTickPage` | 在tick页面里执行Javascript代码 |  |
-| `getPlayer` | 获取DigitalTwinAPI所关联的DigitalTwinPlayer对象，如果只是… |  |
-| `getProjectInfo` | 获取工程信息 |  |
-| `getVersion` | 获取SDK的完整版本号，例如：5.3.0413 |  |
-| `registerSyncObjects` | 注册要进行同步的对象 |  |
-| `registerTick` | 注册每帧渲染时要执行的JS脚本 |  |
-| `removeTick` | 移除每帧渲染时执行的JS脚本 |  |
-| `reset` | 对三维场景执行重置操作 |  |
-| `saveProject` | 保存场景（只保存场景设置，不保存接口创建的对象） |  |
-| `setEnableAliases` | 开启接口别名（不建议使用） |  |
-| `setEventCallback` | 设置三维事件（例如相机飞行开始、结束、Actor的点击等）的回调函数 |  |
-| `setHost` | 设置主机地址 |  |
-| `showTickWindow` | 显示/隐藏tick调试窗口。 该方法既可以在客户端调用，也可以在tick调试窗口调用 |  |
+| [`checkApiReady`](#checkApiReady) | 检查API调用是否就绪 |  |
+| [`destroy`](#destroy) | 关闭WebSocket连接 |  |
+| [`executeJsInTickPage`](#executeJsInTickPage) | 在tick页面里执行Javascript代码 |  |
+| [`getPlayer`](#getPlayer) | 获取DigitalTwinAPI所关联的DigitalTwinPlayer对象，如果只是… |  |
+| [`getProjectInfo`](#getProjectInfo) | 获取工程信息 |  |
+| [`getVersion`](#getVersion) | 获取SDK的完整版本号，例如：5.3.0413 |  |
+| [`registerSyncObjects`](#registerSyncObjects) | 注册要进行同步的对象 |  |
+| [`registerTick`](#registerTick) | 注册每帧渲染时要执行的JS脚本 |  |
+| [`removeTick`](#removeTick) | 移除每帧渲染时执行的JS脚本 |  |
+| [`reset`](#reset) | 对三维场景执行重置操作 |  |
+| [`saveProject`](#saveProject) | 保存场景（只保存场景设置，不保存接口创建的对象） |  |
+| [`setEnableAliases`](#setEnableAliases) | 开启接口别名（不建议使用） |  |
+| [`setEventCallback`](#setEventCallback) | 设置三维事件（例如相机飞行开始、结束、Actor的点击等）的回调函数 |  |
+| [`setHost`](#setHost) | 设置主机地址 |  |
+| [`showTickWindow`](#showTickWindow) | 显示/隐藏tick调试窗口。 该方法既可以在客户端调用，也可以在tick调试窗口调用 |  |
 
 ## 方法（Methods）
 
-### `checkApiReady()`
+### `checkApiReady()` {#checkApiReady}
 
 检查API调用是否就绪
 
@@ -168,7 +168,7 @@ await fdapi.checkApiReady();
 
 ---
 
-### `destroy()`
+### `destroy()` {#destroy}
 
 关闭WebSocket连接
 
@@ -180,7 +180,7 @@ fdapi.destroy();
 
 ---
 
-### `executeJsInTickPage(code, fn)`
+### `executeJsInTickPage(code, fn)` {#executeJsInTickPage}
 
 在tick页面里执行Javascript代码
 
@@ -198,7 +198,7 @@ fdapi.executeJsInTickPage(code);
 
 ---
 
-### `getPlayer()`
+### `getPlayer()` {#getPlayer}
 
 获取DigitalTwinAPI所关联的DigitalTwinPlayer对象，如果只是纯接口调用，则返回null.
 
@@ -212,7 +212,7 @@ await fdapi.getPlayer();
 
 ---
 
-### `getProjectInfo()`
+### `getProjectInfo()` {#getProjectInfo}
 
 获取工程信息
 
@@ -224,7 +224,7 @@ fdapi.getProjectInfo();
 
 ---
 
-### `getVersion()`
+### `getVersion()` {#getVersion}
 
 获取SDK的完整版本号，例如：5.3.0413
 
@@ -238,7 +238,7 @@ log("SDK Version: " + fdapi.getVersion())
 
 ---
 
-### `registerSyncObjects()`
+### `registerSyncObjects()` {#registerSyncObjects}
 
 注册要进行同步的对象
 
@@ -250,7 +250,7 @@ await fdapi.registerSyncObjects();
 
 ---
 
-### `registerTick(url, options, fn)`
+### `registerTick(url, options, fn)` {#registerTick}
 
 注册每帧渲染时要执行的JS脚本
 
@@ -277,7 +277,7 @@ fdapi.camera.set(492816.259375, 2491967.416875, 78.772134, -32.735394, -86.55907
 
 ---
 
-### `removeTick(fn)`
+### `removeTick(fn)` {#removeTick}
 
 移除每帧渲染时执行的JS脚本
 
@@ -293,7 +293,7 @@ fdapi.removeTick();
 
 ---
 
-### `reset(type, fn)`
+### `reset(type, fn)` {#reset}
 
 对三维场景执行重置操作
 
@@ -319,7 +319,7 @@ fdapi.reset();
 
 ---
 
-### `saveProject(fn)`
+### `saveProject(fn)` {#saveProject}
 
 保存场景（只保存场景设置，不保存接口创建的对象）
 
@@ -337,7 +337,7 @@ fdapi.saveProject();
 
 ---
 
-### `setEnableAliases()`
+### `setEnableAliases()` {#setEnableAliases}
 
 开启接口别名（不建议使用）
 
@@ -349,7 +349,7 @@ await fdapi.setEnableAliases();
 
 ---
 
-### `setEventCallback(fn)`
+### `setEventCallback(fn)` {#setEventCallback}
 
 设置三维事件（例如相机飞行开始、结束、Actor的点击等）的回调函数
 
@@ -365,7 +365,7 @@ await fdapi.setEventCallback();
 
 ---
 
-### `setHost(ip, port)`
+### `setHost(ip, port)` {#setHost}
 
 设置主机地址
 
@@ -382,7 +382,7 @@ await fdapi.setHost(ip, port);
 
 ---
 
-### `showTickWindow(visible, fn)`
+### `showTickWindow(visible, fn)` {#showTickWindow}
 
 显示/隐藏tick调试窗口。 该方法既可以在客户端调用，也可以在tick调试窗口调用
 

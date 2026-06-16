@@ -39,27 +39,27 @@ new FloodFill()
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 添加一个或多个FloodFill对象， | 向场景批量添加对象 |
-| `clear` | 删除场景中所有的FloodFill | 清空全部对象，重置图层 |
-| `delete` | 删除一个或多个FloodFill对象 | 按 ID 移除指定对象 |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `get` | 根据ID获取FloodFill的详细信息 | 查询对象信息，用于业务联动 |
-| `hide` | 隐藏FloodFill | 按业务条件隐藏对象 |
-| `hideAll` | 隐藏所有FloodFill | 一键隐藏全部对象 |
-| `setColor` | 设置水颜色 |  |
-| `setElevation` | 设置水位高度 |  |
-| `setPrecision` | 设置水淹模拟精度 |  |
-| `setRange` | 设置水淹分析范围 |  |
-| `setSeed` | 设置出水点 |  |
-| `show` | 显示FloodFill | 按业务条件显示对象 |
-| `showAll` | 显示所有FloodFill | 一键显示全部对象 |
-| `update` | 修改一个或多个FloodFill对象 | 运行时动态更新对象属性/状态 |
-| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
-| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+| [`add`](#add) | 添加一个或多个FloodFill对象， | 向场景批量添加对象 |
+| [`clear`](#clear) | 删除场景中所有的FloodFill | 清空全部对象，重置图层 |
+| [`delete`](#delete) | 删除一个或多个FloodFill对象 | 按 ID 移除指定对象 |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`get`](#get) | 根据ID获取FloodFill的详细信息 | 查询对象信息，用于业务联动 |
+| [`hide`](#hide) | 隐藏FloodFill | 按业务条件隐藏对象 |
+| [`hideAll`](#hideAll) | 隐藏所有FloodFill | 一键隐藏全部对象 |
+| [`setColor`](#setColor) | 设置水颜色 |  |
+| [`setElevation`](#setElevation) | 设置水位高度 |  |
+| [`setPrecision`](#setPrecision) | 设置水淹模拟精度 |  |
+| [`setRange`](#setRange) | 设置水淹分析范围 |  |
+| [`setSeed`](#setSeed) | 设置出水点 |  |
+| [`show`](#show) | 显示FloodFill | 按业务条件显示对象 |
+| [`showAll`](#showAll) | 显示所有FloodFill | 一键显示全部对象 |
+| [`update`](#update) | 修改一个或多个FloodFill对象 | 运行时动态更新对象属性/状态 |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
 
 ## 方法（Methods）
 
-### `add(data, fn)`
+### `add(data, fn)` {#add}
 
 添加一个或多个FloodFill对象，
 
@@ -101,7 +101,7 @@ fdapi.floodFill.focus(o.id);
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 删除场景中所有的FloodFill
 
@@ -117,7 +117,7 @@ fdapi.floodFill.clear();
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个FloodFill对象
 
@@ -134,7 +134,7 @@ fdapi.floodFill.delete('fd1');
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -154,7 +154,7 @@ fdapi.floodFill.focus('fd1', 100);
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据ID获取FloodFill的详细信息
 
@@ -184,7 +184,7 @@ fdapi.floodFill.get('fd1');
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏FloodFill
 
@@ -201,7 +201,7 @@ fdapi.floodFill.hide('fd1');
 
 ---
 
-### `hideAll(fn)`
+### `hideAll(fn)` {#hideAll}
 
 隐藏所有FloodFill
 
@@ -217,7 +217,7 @@ fdapi.floodFill.hideAll();
 
 ---
 
-### `setColor(id, newVal, fn)`
+### `setColor(id, newVal, fn)` {#setColor}
 
 设置水颜色
 
@@ -235,7 +235,7 @@ await fdapi.floodFill.setColor(id, newVal);
 
 ---
 
-### `setElevation(id, newVal, fn)`
+### `setElevation(id, newVal, fn)` {#setElevation}
 
 设置水位高度
 
@@ -253,7 +253,7 @@ await fdapi.floodFill.setElevation(id, newVal);
 
 ---
 
-### `setPrecision(id, newVal, fn)`
+### `setPrecision(id, newVal, fn)` {#setPrecision}
 
 设置水淹模拟精度
 
@@ -271,7 +271,7 @@ await fdapi.floodFill.setPrecision(id, newVal);
 
 ---
 
-### `setRange(id, minArr, maxArr, fn)`
+### `setRange(id, minArr, maxArr, fn)` {#setRange}
 
 设置水淹分析范围 注意：出水点[x,y]一定要在新设置的水淹分析范围[min~max]内
 
@@ -290,7 +290,7 @@ await fdapi.floodFill.setRange(id, minArr, maxArr);
 
 ---
 
-### `setSeed(id, newVal, fn)`
+### `setSeed(id, newVal, fn)` {#setSeed}
 
 设置出水点
 
@@ -308,7 +308,7 @@ await fdapi.floodFill.setSeed(id, newVal);
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示FloodFill
 
@@ -325,7 +325,7 @@ fdapi.floodFill.show('fd1');
 
 ---
 
-### `showAll(fn)`
+### `showAll(fn)` {#showAll}
 
 显示所有FloodFill
 
@@ -341,7 +341,7 @@ fdapi.floodFill.showAll();
 
 ---
 
-### `update(data, fn)`
+### `update(data, fn)` {#update}
 
 修改一个或多个FloodFill对象
 
@@ -368,7 +368,7 @@ fdapi.floodFill.focus(o.id);
 
 ---
 
-### `updateBegin()`
+### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
 
@@ -391,7 +391,7 @@ fdapi.xxx.updateEnd(function () {
 
 ---
 
-### `updateEnd(fn)`
+### `updateEnd(fn)` {#updateEnd}
 
 用于批量多次修改对象的属性，与updateBegin配套使用
 

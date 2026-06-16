@@ -33,18 +33,18 @@ HydroDynamic1D类
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 添加一个或多个HydroDynamic1D对象 | 向场景批量添加对象 |
-| `clear` | 删除场景中所有的HydroDynamic1D | 清空全部对象，重置图层 |
-| `delete` | 删除一个或多个HydroDynamic1D对象 | 按 ID 移除指定对象 |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `get` | 根据ID获取HydroDynamic1D的详细信息 | 查询对象信息，用于业务联动 |
-| `hide` | 隐藏HydroDynamic1D | 按业务条件隐藏对象 |
-| `show` | 显示HydroDynamic1D | 按业务条件显示对象 |
-| `update` | 修改一个或多个HydroDynamic1D对象 | 运行时动态更新对象属性/状态 |
+| [`add`](#add) | 添加一个或多个HydroDynamic1D对象 | 向场景批量添加对象 |
+| [`clear`](#clear) | 删除场景中所有的HydroDynamic1D | 清空全部对象，重置图层 |
+| [`delete`](#delete) | 删除一个或多个HydroDynamic1D对象 | 按 ID 移除指定对象 |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`get`](#get) | 根据ID获取HydroDynamic1D的详细信息 | 查询对象信息，用于业务联动 |
+| [`hide`](#hide) | 隐藏HydroDynamic1D | 按业务条件隐藏对象 |
+| [`show`](#show) | 显示HydroDynamic1D | 按业务条件显示对象 |
+| [`update`](#update) | 修改一个或多个HydroDynamic1D对象 | 运行时动态更新对象属性/状态 |
 
 ## 方法（Methods）
 
-### `add(data, fn)`
+### `add(data, fn)` {#add}
 
 添加一个或多个HydroDynamic1D对象
 
@@ -185,7 +185,7 @@ queryUrl(url).then(res => {
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 删除场景中所有的HydroDynamic1D
 
@@ -201,7 +201,7 @@ fdapi.hydrodynamic1d.clear();
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个HydroDynamic1D对象
 
@@ -218,7 +218,7 @@ fdapi.hydrodynamic1d.delete('hydrodynamic1d');
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -238,7 +238,7 @@ fdapi.hydrodynamic1d.focus('hydrodynamic1d', 12000, 2);
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据ID获取HydroDynamic1D的详细信息
 
@@ -255,7 +255,7 @@ fdapi.hydrodynamic1d.get('hydrodynamic1d');
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏HydroDynamic1D
 
@@ -272,7 +272,7 @@ fdapi.hydrodynamic1d.hide('hydrodynamic1d');
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示HydroDynamic1D
 
@@ -289,7 +289,7 @@ fdapi.hydrodynamic1d.show('hydrodynamic1d');
 
 ---
 
-### `update(data, fn)`
+### `update(data, fn)` {#update}
 
 修改一个或多个HydroDynamic1D对象
 

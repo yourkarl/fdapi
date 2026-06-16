@@ -47,25 +47,25 @@ new Fluid()
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 添加一个或多个流体仿真对象 | 向场景批量添加对象 |
-| `addSource` | 添加一个或多个流体仿真对象的源数据 |  |
-| `clear` | 清空场景中所有的流体仿真对象 | 清空全部对象，重置图层 |
-| `continue` | 继续流体仿真 |  |
-| `continueSource` | 继续仿真 |  |
-| `delete` | 删除一个或多个流体仿真对象 | 按 ID 移除指定对象 |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `get` | 根据流体仿真ID获取流体仿真的详细信息 | 查询对象信息，用于业务联动 |
-| `hide` | 隐藏流体仿真 | 按业务条件隐藏对象 |
-| `pause` | 暂停流体仿真 | 暂停播放 |
-| `removeSource` | 移除一个或多个流体仿真对象的源数据 |  |
-| `reset` | 重置流体仿真 |  |
-| `show` | 显示流体仿真 | 按业务条件显示对象 |
-| `stopSource` | 停止仿真 |  |
-| `update` | 修改一个或多个流体仿真对象 | 运行时动态更新对象属性/状态 |
+| [`add`](#add) | 添加一个或多个流体仿真对象 | 向场景批量添加对象 |
+| [`addSource`](#addSource) | 添加一个或多个流体仿真对象的源数据 |  |
+| [`clear`](#clear) | 清空场景中所有的流体仿真对象 | 清空全部对象，重置图层 |
+| [`continue`](#continue) | 继续流体仿真 |  |
+| [`continueSource`](#continueSource) | 继续仿真 |  |
+| [`delete`](#delete) | 删除一个或多个流体仿真对象 | 按 ID 移除指定对象 |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`get`](#get) | 根据流体仿真ID获取流体仿真的详细信息 | 查询对象信息，用于业务联动 |
+| [`hide`](#hide) | 隐藏流体仿真 | 按业务条件隐藏对象 |
+| [`pause`](#pause) | 暂停流体仿真 | 暂停播放 |
+| [`removeSource`](#removeSource) | 移除一个或多个流体仿真对象的源数据 |  |
+| [`reset`](#reset) | 重置流体仿真 |  |
+| [`show`](#show) | 显示流体仿真 | 按业务条件显示对象 |
+| [`stopSource`](#stopSource) | 停止仿真 |  |
+| [`update`](#update) | 修改一个或多个流体仿真对象 | 运行时动态更新对象属性/状态 |
 
 ## 方法（Methods）
 
-### `add(data, fn)`
+### `add(data, fn)` {#add}
 
 添加一个或多个流体仿真对象
 
@@ -169,7 +169,7 @@ fdapi.fluid.continueSource(data);
 
 ---
 
-### `addSource(data, fn)`
+### `addSource(data, fn)` {#addSource}
 
 添加一个或多个流体仿真对象的源数据
 
@@ -254,7 +254,7 @@ fdapi.fluid.continueSource(sourcePlay);
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 清空场景中所有的流体仿真对象
 
@@ -270,7 +270,7 @@ fdapi.fluid.clear();
 
 ---
 
-### `continue(ids, fn)`
+### `continue(ids, fn)` {#continue}
 
 继续流体仿真
 
@@ -287,7 +287,7 @@ fdapi.fluid.continue('ff');
 
 ---
 
-### `continueSource(data, fn)`
+### `continueSource(data, fn)` {#continueSource}
 
 继续仿真
 
@@ -323,7 +323,7 @@ fdapi.fluid.continueSource(data);
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个流体仿真对象
 
@@ -340,7 +340,7 @@ fdapi.fluid.delete('ff');
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -360,7 +360,7 @@ fdapi.fluid.focus('ff');
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据流体仿真ID获取流体仿真的详细信息
 
@@ -412,7 +412,7 @@ fdapi.fluid.get('ff');
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏流体仿真
 
@@ -429,7 +429,7 @@ fdapi.fluid.hide('ff');
 
 ---
 
-### `pause(ids, fn)`
+### `pause(ids, fn)` {#pause}
 
 暂停流体仿真
 
@@ -446,7 +446,7 @@ fdapi.fluid.pause('ff');
 
 ---
 
-### `removeSource(data, fn)`
+### `removeSource(data, fn)` {#removeSource}
 
 移除一个或多个流体仿真对象的源数据
 
@@ -482,7 +482,7 @@ fdapi.fluid.removeSource(data);
 
 ---
 
-### `reset(ids, fn)`
+### `reset(ids, fn)` {#reset}
 
 重置流体仿真
 
@@ -499,7 +499,7 @@ fdapi.fluid.reset('ff');
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示流体仿真
 
@@ -516,7 +516,7 @@ fdapi.fluid.show('ff');
 
 ---
 
-### `stopSource(data, fn)`
+### `stopSource(data, fn)` {#stopSource}
 
 停止仿真
 
@@ -553,7 +553,7 @@ fdapi.fluid.stopSource(data);
 
 ---
 
-### `update(data, fn)`
+### `update(data, fn)` {#update}
 
 修改一个或多个流体仿真对象
 

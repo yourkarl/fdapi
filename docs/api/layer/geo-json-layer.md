@@ -39,28 +39,28 @@ new GeoJSONLayer()
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 从GeoJSON文件或者url下载链接加载GeoJSON并进行符号化展示 | 向场景批量添加对象 |
-| `clear` | 清空场景中所有的GeoJSONLayer图层对象 | 清空全部对象，重置图层 |
-| `delete` | 删除一个或多个GeoJSONLayer图层对象 | 按 ID 移除指定对象 |
-| `focus` | 自动定位到GeoJSONLayer图层对象 | 相机定位到目标，点击联动跳转 |
-| `focusFeature` | 定位到GeoJSONLayer图层的某一块要素区域 |  |
-| `hide` | 隐藏一个或多个GeoJSONLayer图层对象 | 按业务条件隐藏对象 |
-| `highlightFeature` | 高亮GeoJSONLayer图层对象内部的某一块要素区域 |  |
-| `highlightFeatureByProperty` | 根据要素包含的属性字段名称和对应的值来高亮GeoJSONLayer图层对象内部对应的要素区域 |  |
-| `highlightFeatures` | 高亮GeoJSONLayer图层对象内部的多块要素区域 |  |
-| `setViewHeightRange` | 设置GeoJSONLayer对象的可视高度范围， |  |
-| `show` | 显示一个或多个GeoJSONLayer图层对象 | 按业务条件显示对象 |
-| `unHighlightAllFeaturesById` | 取消高亮一个或者多个GeoJSONLayer图层的所有高亮要素区域 |  |
-| `unHighlightFeature` | 取消高亮GeoJSONLayer图层对象内部的某一块要素区域 |  |
-| `unHighlightFeatureByProperty` | 根据要素包含的属性字段名称和对应的值来取消高亮GeoJSONLayer图层对象内部对应的… |  |
-| `unHighlightFeatures` | 取消高亮GeoJSONLayer图层对象内部的多块要素区域 |  |
-| `update` | 更新GeoJSONLayer图层对象的符号化显示效果 | 运行时动态更新对象属性/状态 |
-| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
-| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+| [`add`](#add) | 从GeoJSON文件或者url下载链接加载GeoJSON并进行符号化展示 | 向场景批量添加对象 |
+| [`clear`](#clear) | 清空场景中所有的GeoJSONLayer图层对象 | 清空全部对象，重置图层 |
+| [`delete`](#delete) | 删除一个或多个GeoJSONLayer图层对象 | 按 ID 移除指定对象 |
+| [`focus`](#focus) | 自动定位到GeoJSONLayer图层对象 | 相机定位到目标，点击联动跳转 |
+| [`focusFeature`](#focusFeature) | 定位到GeoJSONLayer图层的某一块要素区域 |  |
+| [`hide`](#hide) | 隐藏一个或多个GeoJSONLayer图层对象 | 按业务条件隐藏对象 |
+| [`highlightFeature`](#highlightFeature) | 高亮GeoJSONLayer图层对象内部的某一块要素区域 |  |
+| [`highlightFeatureByProperty`](#highlightFeatureByProperty) | 根据要素包含的属性字段名称和对应的值来高亮GeoJSONLayer图层对象内部对应的要素区域 |  |
+| [`highlightFeatures`](#highlightFeatures) | 高亮GeoJSONLayer图层对象内部的多块要素区域 |  |
+| [`setViewHeightRange`](#setViewHeightRange) | 设置GeoJSONLayer对象的可视高度范围， |  |
+| [`show`](#show) | 显示一个或多个GeoJSONLayer图层对象 | 按业务条件显示对象 |
+| [`unHighlightAllFeaturesById`](#unHighlightAllFeaturesById) | 取消高亮一个或者多个GeoJSONLayer图层的所有高亮要素区域 |  |
+| [`unHighlightFeature`](#unHighlightFeature) | 取消高亮GeoJSONLayer图层对象内部的某一块要素区域 |  |
+| [`unHighlightFeatureByProperty`](#unHighlightFeatureByProperty) | 根据要素包含的属性字段名称和对应的值来取消高亮GeoJSONLayer图层对象内部对应的… |  |
+| [`unHighlightFeatures`](#unHighlightFeatures) | 取消高亮GeoJSONLayer图层对象内部的多块要素区域 |  |
+| [`update`](#update) | 更新GeoJSONLayer图层对象的符号化显示效果 | 运行时动态更新对象属性/状态 |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
 
 ## 方法（Methods）
 
-### `add(option, fn)`
+### `add(option, fn)` {#add}
 
 从GeoJSON文件或者url下载链接加载GeoJSON并进行符号化展示
 
@@ -300,7 +300,7 @@ new GeoJSONLayer()
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 清空场景中所有的GeoJSONLayer图层对象
 
@@ -316,7 +316,7 @@ fdapi.geoJSONLayer.clear();
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个GeoJSONLayer图层对象
 
@@ -333,7 +333,7 @@ fdapi.geoJSONLayer.delete(['layer1', 'layer2', 'layer3', 'layer4', 'layer5', 'la
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到GeoJSONLayer图层对象
 
@@ -353,7 +353,7 @@ fdapi.geoJSONLayer.focus("layer1", 100);
 
 ---
 
-### `focusFeature(id, featureId, distance, flyTime, rotation, fn)`
+### `focusFeature(id, featureId, distance, flyTime, rotation, fn)` {#focusFeature}
 
 定位到GeoJSONLayer图层的某一块要素区域
 
@@ -375,7 +375,7 @@ fdapi.geoJSONLayer.focusFeature("layer3", 3, 100, 1);
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏一个或多个GeoJSONLayer图层对象
 
@@ -392,7 +392,7 @@ fdapi.geoJSONLayer.hide(['layer1', 'layer2', 'layer3', 'layer4', 'layer5', 'laye
 
 ---
 
-### `highlightFeature(id, featureId, fn)`
+### `highlightFeature(id, featureId, fn)` {#highlightFeature}
 
 高亮GeoJSONLayer图层对象内部的某一块要素区域
 
@@ -413,7 +413,7 @@ fdapi.geoJSONLayer.highlightFeature('layer3', 1);
 
 ---
 
-### `highlightFeatureByProperty(object, fn)`
+### `highlightFeatureByProperty(object, fn)` {#highlightFeatureByProperty}
 
 根据要素包含的属性字段名称和对应的值来高亮GeoJSONLayer图层对象内部对应的要素区域
 
@@ -447,7 +447,7 @@ fdapi.geoJSONLayer.highlightFeatureByProperty({
 
 ---
 
-### `highlightFeatures(data, fn)`
+### `highlightFeatures(data, fn)` {#highlightFeatures}
 
 高亮GeoJSONLayer图层对象内部的多块要素区域
 
@@ -473,7 +473,7 @@ fdapi.geoJSONLayer.highlightFeatures([{ "id": "layer3", "featureIds": [1, 2, 3] 
 
 ---
 
-### `setViewHeightRange(id, minViewHeight, maxViewHeight, fn)`
+### `setViewHeightRange(id, minViewHeight, maxViewHeight, fn)` {#setViewHeightRange}
 
 设置GeoJSONLayer对象的可视高度范围，注意：当GeoJSONLayer使用贴地模式时，此方法会失效
 
@@ -492,7 +492,7 @@ fdapi.geoJSONLayer.setViewHeightRange('layer5', 1, 1000);
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示一个或多个GeoJSONLayer图层对象
 
@@ -509,7 +509,7 @@ fdapi.geoJSONLayer.show(['layer1', 'layer2', 'layer3', 'layer4', 'layer5', 'laye
 
 ---
 
-### `unHighlightAllFeaturesById(ids, fn)`
+### `unHighlightAllFeaturesById(ids, fn)` {#unHighlightAllFeaturesById}
 
 取消高亮一个或者多个GeoJSONLayer图层的所有高亮要素区域
 
@@ -526,7 +526,7 @@ await fdapi.geoJSONLayer.unHighlightAllFeaturesById(ids);
 
 ---
 
-### `unHighlightFeature(id, featureId, fn)`
+### `unHighlightFeature(id, featureId, fn)` {#unHighlightFeature}
 
 取消高亮GeoJSONLayer图层对象内部的某一块要素区域
 
@@ -544,7 +544,7 @@ await fdapi.geoJSONLayer.unHighlightFeature(id, featureId);
 
 ---
 
-### `unHighlightFeatureByProperty(object, fn)`
+### `unHighlightFeatureByProperty(object, fn)` {#unHighlightFeatureByProperty}
 
 根据要素包含的属性字段名称和对应的值来取消高亮GeoJSONLayer图层对象内部对应的要素区域
 
@@ -576,7 +576,7 @@ fdapi.geoJSONLayer.unHighlightFeatureByProperty({
 
 ---
 
-### `unHighlightFeatures(data, fn)`
+### `unHighlightFeatures(data, fn)` {#unHighlightFeatures}
 
 取消高亮GeoJSONLayer图层对象内部的多块要素区域
 
@@ -600,7 +600,7 @@ await fdapi.geoJSONLayer.unHighlightFeatures(data);
 
 ---
 
-### `update(option, fn)`
+### `update(option, fn)` {#update}
 
 更新GeoJSONLayer图层对象的符号化显示效果
 
@@ -658,7 +658,7 @@ setTimeout(function () {
 
 ---
 
-### `updateBegin()`
+### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
 
@@ -681,7 +681,7 @@ fdapi.xxx.updateEnd(function () {
 
 ---
 
-### `updateEnd(fn)`
+### `updateEnd(fn)` {#updateEnd}
 
 用于批量多次修改对象的属性，与updateBegin配套使用
 

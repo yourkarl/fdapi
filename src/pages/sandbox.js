@@ -661,13 +661,13 @@ export default function Sandbox() {
         .sb-cat-count { font-size:0.64rem; color:var(--faint); }
         .sb-cat-arrow { font-size:0.58rem; color:var(--faint); transition:transform .2s; }
         .sb-cat-arrow.open { transform:rotate(90deg); }
-        .sb-class { padding:5px 8px 5px 28px; cursor:pointer; user-select:none; border-left:2px solid transparent; border-radius:0 6px 6px 0; }
+        .sb-class { padding:5px 8px 5px 42px; cursor:pointer; user-select:none; border-left:2px solid transparent; border-radius:0 6px 6px 0; }
         .sb-class:hover { background:rgba(148,163,184,0.05); }
         .sb-class.open { border-left-color:var(--accent); }
-        .sb-class-name { font-size:0.75rem; color:var(--muted); font-weight:500; }
+        .sb-class-name { font-size:0.75rem; color:#cdd8e4; font-weight:500; }
         .sb-class.open .sb-class-name { color:var(--accent); }
-        .sb-class-desc { font-size:0.64rem; color:var(--faint); margin-top:1px; }
-        .sb-method { padding:3px 8px 3px 44px; cursor:pointer; font-size:0.72rem; color:var(--muted); border-left:2px solid transparent; border-radius:0 6px 6px 0; }
+        .sb-class-desc { font-size:0.64rem; color:#869584; margin-top:1px; }
+        .sb-method { padding:3px 8px 3px 60px; cursor:pointer; font-size:0.72rem; color:#b8c5d4; border-left:2px solid transparent; border-radius:0 6px 6px 0; }
         .sb-method:hover { color:var(--accent); }
         .sb-method.active { color:var(--accent); border-left-color:var(--accent); background:rgba(34,211,238,0.06); }
         .sb-footer { border-top:1px solid var(--line); padding:6px 14px; font-size:0.7rem; color:var(--faint); flex-shrink:0; white-space:nowrap; overflow:hidden; }

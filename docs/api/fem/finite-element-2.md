@@ -40,28 +40,28 @@ new FiniteElement2()
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 根据VTK文件添加一个或多个有限元仿真对象 | 向场景批量添加对象 |
-| `applyBoxClipFilter` | 盒子过滤器 |  |
-| `applyContourFilter` | 根据等值线对应的数值添加过滤器并展示过滤后的有限元模型分析结果 |  |
-| `applyCylinderClipFilter` | 圆柱过滤器 |  |
-| `applyPlaneClipFilter` | 切面过滤器 |  |
-| `applySphereClipFilter` | 球型过滤器 |  |
-| `applyThresholdFilter` | 根据模型属性字段对应的区间值添加过滤器并展示过滤后的有限元模型分析结果 |  |
-| `clear` | 清空场景中所有的有限元仿真对象 | 清空全部对象，重置图层 |
-| `clearFilter` | 清空指定的有限元模型对象添加的所有过滤器 |  |
-| `delete` | 删除一个或多个有限元仿真对象 | 按 ID 移除指定对象 |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `get` | 根据有限元分析ID获取有限元分析的详细信息 | 查询对象信息，用于业务联动 |
-| `hide` | 隐藏有限元分析 | 按业务条件隐藏对象 |
-| `removeFilter` | 移除指定的有限元模型对象添加的相关过滤器 |  |
-| `show` | 显示有限元分析 | 按业务条件显示对象 |
-| `update` | 修改一个或多个有限元仿真对象 | 运行时动态更新对象属性/状态 |
-| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
-| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+| [`add`](#add) | 根据VTK文件添加一个或多个有限元仿真对象 | 向场景批量添加对象 |
+| [`applyBoxClipFilter`](#applyBoxClipFilter) | 盒子过滤器 |  |
+| [`applyContourFilter`](#applyContourFilter) | 根据等值线对应的数值添加过滤器并展示过滤后的有限元模型分析结果 |  |
+| [`applyCylinderClipFilter`](#applyCylinderClipFilter) | 圆柱过滤器 |  |
+| [`applyPlaneClipFilter`](#applyPlaneClipFilter) | 切面过滤器 |  |
+| [`applySphereClipFilter`](#applySphereClipFilter) | 球型过滤器 |  |
+| [`applyThresholdFilter`](#applyThresholdFilter) | 根据模型属性字段对应的区间值添加过滤器并展示过滤后的有限元模型分析结果 |  |
+| [`clear`](#clear) | 清空场景中所有的有限元仿真对象 | 清空全部对象，重置图层 |
+| [`clearFilter`](#clearFilter) | 清空指定的有限元模型对象添加的所有过滤器 |  |
+| [`delete`](#delete) | 删除一个或多个有限元仿真对象 | 按 ID 移除指定对象 |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`get`](#get) | 根据有限元分析ID获取有限元分析的详细信息 | 查询对象信息，用于业务联动 |
+| [`hide`](#hide) | 隐藏有限元分析 | 按业务条件隐藏对象 |
+| [`removeFilter`](#removeFilter) | 移除指定的有限元模型对象添加的相关过滤器 |  |
+| [`show`](#show) | 显示有限元分析 | 按业务条件显示对象 |
+| [`update`](#update) | 修改一个或多个有限元仿真对象 | 运行时动态更新对象属性/状态 |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
 
 ## 方法（Methods）
 
-### `add(data, fn)`
+### `add(data, fn)` {#add}
 
 根据VTK文件添加一个或多个有限元仿真对象
 
@@ -301,7 +301,7 @@ setTimeout(function () {
 
 ---
 
-### `applyBoxClipFilter(data, fn)`
+### `applyBoxClipFilter(data, fn)` {#applyBoxClipFilter}
 
 盒子过滤器
 
@@ -339,7 +339,7 @@ fdapi.finiteElement2.applyBoxClipFilter({
 
 ---
 
-### `applyContourFilter(data, fn)`
+### `applyContourFilter(data, fn)` {#applyContourFilter}
 
 根据等值线对应的数值添加过滤器并展示过滤后的有限元模型分析结果
 
@@ -373,7 +373,7 @@ fdapi.finiteElement2.applyContourFilter({
 
 ---
 
-### `applyCylinderClipFilter(data, fn)`
+### `applyCylinderClipFilter(data, fn)` {#applyCylinderClipFilter}
 
 圆柱过滤器
 
@@ -413,7 +413,7 @@ fdapi.finiteElement2.applyCylinderClipFilter({
 
 ---
 
-### `applyPlaneClipFilter(data, fn)`
+### `applyPlaneClipFilter(data, fn)` {#applyPlaneClipFilter}
 
 切面过滤器
 
@@ -451,7 +451,7 @@ fdapi.finiteElement2.applyPlaneClipFilter({
 
 ---
 
-### `applySphereClipFilter(data, fn)`
+### `applySphereClipFilter(data, fn)` {#applySphereClipFilter}
 
 球型过滤器
 
@@ -489,7 +489,7 @@ fdapi.finiteElement2.applySphereClipFilter({
 
 ---
 
-### `applyThresholdFilter(data, fn)`
+### `applyThresholdFilter(data, fn)` {#applyThresholdFilter}
 
 根据模型属性字段对应的区间值添加过滤器并展示过滤后的有限元模型分析结果
 
@@ -525,7 +525,7 @@ fdapi.finiteElement2.applyThresholdFilter({
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 清空场景中所有的有限元仿真对象
 
@@ -541,7 +541,7 @@ fdapi.finiteElement2.clear();
 
 ---
 
-### `clearFilter(ids, fn)`
+### `clearFilter(ids, fn)` {#clearFilter}
 
 清空指定的有限元模型对象添加的所有过滤器
 
@@ -558,7 +558,7 @@ fdapi.finiteElement2.clearFilter("fe_2");
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个有限元仿真对象
 
@@ -575,7 +575,7 @@ fdapi.finiteElement2.delete(['fe_2']);
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -595,7 +595,7 @@ fdapi.finiteElement2.focus('fe_2');
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据有限元分析ID获取有限元分析的详细信息
 
@@ -652,7 +652,7 @@ fdapi.finiteElement2.get(['fe_2']);
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏有限元分析
 
@@ -669,7 +669,7 @@ fdapi.finiteElement2.hide(['fe_2']);
 
 ---
 
-### `removeFilter(data, fn)`
+### `removeFilter(data, fn)` {#removeFilter}
 
 移除指定的有限元模型对象添加的相关过滤器
 
@@ -693,7 +693,7 @@ fdapi.finiteElement2.removeFilter({ id: "fe_2", filterIds: ["filter1", "filter2"
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示有限元分析
 
@@ -710,7 +710,7 @@ fdapi.finiteElement2.show(['fe_2']);
 
 ---
 
-### `update(data, fn)`
+### `update(data, fn)` {#update}
 
 修改一个或多个有限元仿真对象
 
@@ -737,7 +737,7 @@ await fdapi.finiteElement2.update(fe2);
 
 ---
 
-### `updateBegin()`
+### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
 
@@ -760,7 +760,7 @@ fdapi.xxx.updateEnd(function () {
 
 ---
 
-### `updateEnd(fn)`
+### `updateEnd(fn)` {#updateEnd}
 
 用于批量多次修改对象的属性，与updateBegin配套使用
 

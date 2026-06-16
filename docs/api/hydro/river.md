@@ -40,18 +40,18 @@ River类 等价于一维水动力模型Hydrodynamic1D类
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
-| `add` | 添加一个或多个River对象 | 向场景批量添加对象 |
-| `clear` | 删除场景中所有的River | 清空全部对象，重置图层 |
-| `delete` | 删除一个或多个River对象 | 按 ID 移除指定对象 |
-| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
-| `get` | 根据ID获取River的详细信息 | 查询对象信息，用于业务联动 |
-| `hide` | 隐藏River | 按业务条件隐藏对象 |
-| `show` | 显示River | 按业务条件显示对象 |
-| `update` | 修改一个或多个River对象 | 运行时动态更新对象属性/状态 |
+| [`add`](#add) | 添加一个或多个River对象 | 向场景批量添加对象 |
+| [`clear`](#clear) | 删除场景中所有的River | 清空全部对象，重置图层 |
+| [`delete`](#delete) | 删除一个或多个River对象 | 按 ID 移除指定对象 |
+| [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| [`get`](#get) | 根据ID获取River的详细信息 | 查询对象信息，用于业务联动 |
+| [`hide`](#hide) | 隐藏River | 按业务条件隐藏对象 |
+| [`show`](#show) | 显示River | 按业务条件显示对象 |
+| [`update`](#update) | 修改一个或多个River对象 | 运行时动态更新对象属性/状态 |
 
 ## 方法（Methods）
 
-### `add(data, fn)`
+### `add(data, fn)` {#add}
 
 添加一个或多个River对象
 
@@ -108,7 +108,7 @@ await fdapi.river.add(data);
 
 ---
 
-### `clear(fn)`
+### `clear(fn)` {#clear}
 
 删除场景中所有的River
 
@@ -124,7 +124,7 @@ await fdapi.river.clear();
 
 ---
 
-### `delete(ids, fn)`
+### `delete(ids, fn)` {#delete}
 
 删除一个或多个River对象
 
@@ -141,7 +141,7 @@ await fdapi.river.delete(ids);
 
 ---
 
-### `focus(ids, distance, flyTime, rotation, fn)`
+### `focus(ids, distance, flyTime, rotation, fn)` {#focus}
 
 自动定位到合适的观察距离
 
@@ -161,7 +161,7 @@ await fdapi.river.focus(ids, distance, flyTime, rotation);
 
 ---
 
-### `get(ids, fn)`
+### `get(ids, fn)` {#get}
 
 根据ID获取River的详细信息
 
@@ -178,7 +178,7 @@ await fdapi.river.get(ids);
 
 ---
 
-### `hide(ids, fn)`
+### `hide(ids, fn)` {#hide}
 
 隐藏River
 
@@ -195,7 +195,7 @@ await fdapi.river.hide(ids);
 
 ---
 
-### `show(ids, fn)`
+### `show(ids, fn)` {#show}
 
 显示River
 
@@ -212,7 +212,7 @@ await fdapi.river.show(ids);
 
 ---
 
-### `update(data, fn)`
+### `update(data, fn)` {#update}
 
 修改一个或多个River对象
 

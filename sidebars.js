@@ -37,6 +37,7 @@ const sidebars = {
       items: [
         'tutorials/multi-video',
         'tutorials/framework-integration',
+        'tutorials/performance',
         'tutorials/explorer',
         'tutorials/explorer-guideline',
         'tutorials/cloud-deploy',
@@ -48,6 +49,7 @@ const sidebars = {
       label: '帮助',
       collapsible: false,
       items: [
+        'tutorials/troubleshooting',
         'tutorials/faq',
       ],
     },
@@ -55,7 +57,7 @@ const sidebars = {
   tutorialSidebar: [
     {
       type: 'category',
-      label: '快速上手',
+      label: '核心对象',
       items: [
         'api/quickstart/digital-twin-api',
         'api/quickstart/digital-twin-player',
@@ -95,6 +97,14 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: '测量分析',
+      items: [
+        'api/analysis/tools',
+        'api/analysis/excavation-analysis',
+      ],
+    },
+    {
+      type: 'category',
       label: '环境天气',
       items: [
         'api/weather/weather',
@@ -106,14 +116,6 @@ const sidebars = {
       items: [
         'api/settings/settings',
         'api/settings/settings-panel',
-      ],
-    },
-    {
-      type: 'category',
-      label: '测量分析剖切',
-      items: [
-        'api/analysis/tools',
-        'api/analysis/excavation-analysis',
       ],
     },
     {
@@ -156,6 +158,7 @@ const sidebars = {
         'api/vector/polygon',
         'api/vector/polygon3d',
         'api/vector/guide-line',
+        'api/signal/beam',
       ],
     },
     {
@@ -203,7 +206,6 @@ const sidebars = {
       label: '信号仿真',
       items: [
         'api/signal/antenna',
-        'api/signal/beam',
         'api/signal/signal-wave',
       ],
     },
@@ -216,8 +218,14 @@ const sidebars = {
         'api/traffic/train',
         'api/traffic/drone',
         'api/traffic/traffic-simulation',
-        'api/traffic/satellite',
         'api/traffic/box-trigger',
+      ],
+    },
+    {
+      type: 'category',
+      label: '卫星仿真',
+      items: [
+        'api/traffic/satellite'
       ],
     },
     {
