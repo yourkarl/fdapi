@@ -1,16 +1,31 @@
 ---
 title: FiniteElement
 sidebar_label: FiniteElement
-description: "FiniteElement有限元分析对象，实现对有限元分析对象的操作 一般通过api.finiteElement调用其方法"
+description: "FiniteElement 加载有限元网格与计算结果（应力/应变/位移/温度等），以云图着色与形变动画三维呈现分析结果。"
 ---
 
 # FiniteElement
 
 FiniteElement有限元分析对象，实现对有限元分析对象的操作
 
-一般通过api.finiteElement调用其方法
-
 通过 `api.finiteElement` 访问。
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：FiniteElement 加载有限元网格与计算结果（应力/应变/位移/温度等），以云图着色与形变动画三维呈现分析结果。
+- **别名 / 不同行业叫法**：有限元 / FEM / 结构仿真 / 应力分析 / 形变分析 / CAE 结果可视化。
+- **适用行业**：土木工程、桥梁隧道、水利水电（大坝/闸门）、机械装备、能源电力
+- **使用场景**：
+  - 大坝、桥梁等结构的应力应变云图展示
+  - 荷载作用下的结构形变动画
+  - 结构安全评估与隐患部位可视化
+- **注意事项**：
+  - 网格与结果数据量大，需分级加载并关注性能
+  - 色带与量纲须正确映射
+  - 模型坐标需与工程坐标对齐
+
 
 ## 构造函数
 
@@ -395,5 +410,4 @@ updateEnd是异步调用，可以用回调函数也可以await
 > 示例代码如下：
 
 ```js
-await fdapi.finiteElement.updateEnd();
-```
+await fdapi.finiteElemen

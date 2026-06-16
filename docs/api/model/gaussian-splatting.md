@@ -1,18 +1,33 @@
 ---
 title: GaussianSplatting
 sidebar_label: GaussianSplatting
-description: "GaussianSplatting类对象，提供3D高斯泼溅相关操作 一般通过api.gaussianSplatting调用其方法"
+description: "GaussianSplatting 加载并渲染 3D 高斯泼溅(3DGS)重建成果，呈现照片级实景三维。"
 ---
 
 # GaussianSplatting
 
 GaussianSplatting类对象，提供3D高斯泼溅相关操作
 
-一般通过api.gaussianSplatting调用其方法
-
 通过 `api.gaussianSplatting` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：GaussianSplatting 加载并渲染 3D 高斯泼溅(3DGS)重建成果，呈现照片级实景三维。
+- **别名 / 不同行业叫法**：高斯泼溅 / 3DGS / 高斯溅射 / 实景重建 / 照片级实景 / 辐射场重建。
+- **适用行业**：实景三维、文博文旅、智慧城市、应急测绘、工业巡检
+- **使用场景**：
+  - 文物、设备、事故现场等小场景的高保真实景还原
+  - 实景与传统模型混合展示
+  - 高真实感的汇报与展示
+- **注意事项**：
+  - 3DGS 数据体量大，对显存敏感
+  - 适合局部高保真，不适合大范围铺设
+  - 与传统模型混排时注意遮挡与深度关系
+
 
 ## 方法（Methods）
 

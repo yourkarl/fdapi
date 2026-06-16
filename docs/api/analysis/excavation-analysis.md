@@ -1,18 +1,33 @@
 ---
 title: ExcavationAnalysis
 sidebar_label: ExcavationAnalysis
-description: "超欠挖分析类对象，提供超挖欠挖分析相关操作 一般通过api.excavationAnalysis调用其方法"
+description: "ExcavationAnalysis 对比设计面与实际开挖/实测面，计算超挖、欠挖的体积与分布，并以三维云图着色呈现开挖偏差。"
 ---
 
 # ExcavationAnalysis
 
 超欠挖分析类对象，提供超挖欠挖分析相关操作
 
-一般通过api.excavationAnalysis调用其方法
-
 通过 `api.excavationAnalysis` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：ExcavationAnalysis 对比设计面与实际开挖/实测面，计算超挖、欠挖的体积与分布，并以三维云图着色呈现开挖偏差。
+- **别名 / 不同行业叫法**：超欠挖分析 / 开挖分析 / 土方分析 / 基坑分析；隧道领域称“掌子面超欠挖”，矿山称“采剥超挖控制”。
+- **适用行业**：隧道与地下工程、矿山、土木基建、智慧水利（渠道/基坑）、市政工程
+- **使用场景**：
+  - 隧道掘进中掌子面的超挖/欠挖检测与进尺质量评估
+  - 基坑、边坡开挖的土方量核算与偏差着色
+  - 矿山采剥进度与超挖控制可视化
+- **注意事项**：
+  - 依赖高精度设计面与实测面（点云/DEM）且需配准对齐
+  - 设计面与实测面坐标系、高程基准须一致
+  - 大范围高精度计算开销较大，注意范围与精度的平衡
+
 
 ## 方法（Methods）
 
@@ -259,5 +274,4 @@ updateEnd是异步调用，可以用回调函数也可以await
 > 示例代码如下：
 
 ```js
-await fdapi.excavationAnalysis.updateEnd();
-```
+await fdapi.excava

@@ -2,14 +2,12 @@
 slug: /api/marker/marker
 title: Marker
 sidebar_label: Marker
-description: "标注点，实现对标注对象的操作 一般通过api.marker调用其方法 Marker标注点的效果图："
+description: "在三维场景指定坐标处放置带图标与文字的标注点，是最常用的点位标记对象，支持图标、悬停图片、文字、可视范围、分组及交互事件，用于标识地物、设备、事件等关键点位。"
 ---
 
 # Marker
 
 标注点，实现对标注对象的操作
-
-一般通过api.marker调用其方法
 
 Marker标注点的效果图：
 
@@ -18,6 +16,24 @@ Marker标注点的效果图：
 ![](/img/refdoc/api/show_marker.gif)
 
 通过 `api.marker` 访问。
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：在三维场景指定坐标处放置带图标与文字的标注点，是最常用的点位标记对象，支持图标、悬停图片、文字、可视范围、分组及交互事件，用于标识地物、设备、事件等关键点位。
+- **别名 / 不同行业叫法**：标注点、标牌、POI、兴趣点、告警点、点位、图标点、报警点。
+- **适用行业**：智慧城市、应急指挥、智慧交通、能源电力、智慧园区、文博展陈。
+- **使用场景**：
+  - 在地图/场景上批量标注监控点、传感器、消防栓、摄像头等设备点位
+  - 应急场景下标注告警点、事故点、风险源并叠加状态图标与文字
+  - 园区/楼宇的资产点位标识与点击查看详情交互
+- **注意事项**：
+  - 单次创建的 Marker 数量不要超过 5000 个，单工程内总量不要超过 20 万个，超量会影响性能；
+  - 通过 range / textRange / viewHeightRange 控制可视范围，避免海量标注同屏堆叠；
+  - 注意 coordinateType 坐标系（Projection/WGS84/GCJ02/BD09）与场景一致；
+  - 图标资源需按资源引入说明加载，支持 gif 动图但应控制资源大小。
+  - 支持样式包括纯文字标签、图标、文字+图片片、自定义html弹窗、视频弹窗
 
 ## 构造函数
 
@@ -1304,16 +1320,4 @@ let timerId = setInterval(async () => {
     if (++index > pathArr.length)
         index = 0;
     let pos = pathArr[index];
-    fdapi.customObject.setLocation(co.id, pos)
-}, 1000);
-//清除定时器
-window.setTimeout(function () {
-    window.clearInterval(timerId)
-}, 10000);
-```
-
-> SetFontOutlineColor
-
-```js
-fdapi.marker.setFontOutlineColor('m1', Color.Red);
-```
+    fdapi.customOb

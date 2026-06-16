@@ -1,18 +1,31 @@
 ---
 title: TrafficSimulation
 sidebar_label: TrafficSimulation
-description: "TrafficSimulation类，提供城市级交通仿真对象相关的操作，支持十万级别的城市车辆交通仿真。 一般通过api.trafficSimulation调用其方法"
+description: "TrafficSimulation 提供城市级交通仿真能力，支持十万级别车辆的微观交通仿真，可通过 .dat 数据驱动大批量车辆按时间/定时器移动，并内置交通热力图模式与多车型配置。"
 ---
 
 # TrafficSimulation
 
-TrafficSimulation类，提供城市级交通仿真对象相关的操作，支持十万级别的城市车辆交通仿真。
-
-一般通过api.trafficSimulation调用其方法
+TrafficSimulation 提供城市级交通仿真能力，支持十万级别车辆的微观交通仿真，可通过 .dat 数据驱动大批量车辆按时间/定时器移动，并内置交通热力图模式与多车型配置。
 
 通过 `api.trafficSimulation` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：TrafficSimulation 提供城市级交通仿真能力，支持十万级别车辆的微观交通仿真，可通过 .dat 数据驱动大批量车辆按时间/定时器移动，并内置交通热力图模式与多车型配置。
+- **别名 / 不同行业叫法**：交通仿真 / 车流仿真 / 微观交通 / 交通流仿真 / 城市级车流模拟 / 交通态势仿真。
+- **适用行业**：智慧交通、智慧城市、应急、园区、能源（路网调度）。
+- **使用场景**：
+  - 城市级路网车流推演、拥堵分析与信号配时/交通组织优化评估。
+  - 重大活动、突发事件下的交通疏散与应急通行方案仿真。
+  - 区域交通态势热力展示与城市数字孪生中的车流底座呈现。
+- **注意事项**：
+  - 面向超大规模车辆（十万级），对硬件与渲染性能要求高，应控制可视范围与车型数量；车型 `models` 仅在 add() 时配置，`type` 需与 .dat 数据字段对应。
+  - `timer` 决定按数据时间字段还是定时器间隔驱动；热力图 `bbox`、坐标依赖 `coordinateType`（Projection/WGS84），需与路网数据坐标系一致。
 
 ## 方法（Methods）
 
@@ -578,5 +591,4 @@ updateEnd是异步调用，可以用回调函数也可以await
 > 示例代码如下：
 
 ```js
-await fdapi.trafficSimulation.updateEnd();
-```
+a

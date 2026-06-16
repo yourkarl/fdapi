@@ -1,16 +1,30 @@
 ---
 title: GeoJSONLayer
 sidebar_label: GeoJSONLayer
-description: "GeoJSONLayer图层类，提供操作GeoJSONLayert图层符号化加载和操作相关的方法 一般通过api.geoJSONLayer调用其方法"
+description: "从本地文件或 URL 加载标准 GeoJSON 矢量数据并进行符号化渲染，支持点、线、面（含 Polygon3D 拉伸体块）多种可视化类型与渲染器，可配合文字标注、贴地与可视范围控制。"
 ---
 
 # GeoJSONLayer
 
-GeoJSONLayer图层类，提供操作GeoJSONLayert图层符号化加载和操作相关的方法
-
-一般通过api.geoJSONLayer调用其方法
+从本地文件或 URL 加载标准 GeoJSON 矢量数据并进行符号化渲染，支持点、线、面（含 Polygon3D 拉伸体块）多种可视化类型与渲染器，可配合文字标注、贴地与可视范围控制。
 
 通过 `api.geoJSONLayer` 访问。
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：从本地文件或 URL 加载标准 GeoJSON 矢量数据并进行符号化渲染，支持点、线、面（含 Polygon3D 拉伸体块）多种可视化类型与渲染器，可配合文字标注、贴地与可视范围控制。
+- **别名 / 不同行业叫法**：GeoJSON 矢量图层 / GeoJSON 图层 / 矢量数据图层 / 业务专题图层。
+- **适用行业**：智慧城市、智慧水利、应急管理、测绘 GIS、智慧园区、智慧交通。
+- **使用场景**：
+  - 加载行政区划、地块、管线、路网等矢量数据并按属性字段做唯一值/分类专题渲染。
+  - 用 Polygon3D 体块按属性高度拉伸展示楼栋、地块容积或淹没/积水范围等专题分析结果。
+  - 加载点位数据并用属性字段做文字标注，展示监测站、事件点等业务图层。
+- **注意事项**：
+  - 大体量 GeoJSON 会显著影响加载与渲染性能，建议精简要素或分层加载。
+  - needProject 控制是否做投影转换，需结合源数据坐标系与工程坐标系正确设置以保证套合。
+  - depthTest 与 enableAntialias 存在互斥关系（深度检测仅在反走样关闭时生效），贴地/遮挡效果需按需配置；自定义材质渲染器须按规范单独打包。
 
 ## 构造函数
 
@@ -1519,5 +1533,4 @@ fdapi.geoJSONLayer.unHighlightFeatures([{ "id": "layer3", "featureIds": [1, 2, 3
 > 取消高亮GeoJSONLayer内部所有要素区域：UnHighlightAllFeaturesById
 
 ```js
-fdapi.geoJSONLayer.unHighlightAllFeaturesById(["layer1", "layer2", "layer3"]);
-```
+f

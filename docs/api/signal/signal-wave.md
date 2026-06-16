@@ -1,18 +1,33 @@
 ---
 title: SignalWave
 sidebar_label: SignalWave
-description: "信号波束SignalWave对象相关的操作 一般通过api.signalWave调用其方法"
+description: "SignalWave 以波/涟漪扩散形式表达信号或电磁波的传播与覆盖。"
 ---
 
 # SignalWave
 
-信号波束SignalWave对象相关的操作
-
-一般通过api.signalWave调用其方法
+SignalWave 以波/涟漪扩散形式表达信号或电磁波的传播与覆盖。
 
 通过 `api.signalWave` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：SignalWave 以波/涟漪扩散形式表达信号或电磁波的传播与覆盖。
+- **别名 / 不同行业叫法**：信号波 / 电磁波 / 信号覆盖 / 传播波 / 涟漪波 / 扩散波。
+- **适用行业**：通信、国防、物联网、应急通信、广电
+- **使用场景**：
+  - 信号源覆盖扩散的动态表达
+  - 通信/广播传播示意
+  - 事件信号传播的可视化
+- **注意事项**：
+  - 为示意性可视化，非精确传播模型
+  - 扩散参数需结合业务设定
+  - 与 Antenna、Beam 配合使用
+
 
 ## 方法（Methods）
 

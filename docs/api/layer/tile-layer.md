@@ -1,18 +1,33 @@
 ---
 title: TileLayer
 sidebar_label: TileLayer
-description: "TileLayer增、删、改、查相关的操作 一般通过api.tileLayer调用其方法"
+description: "TileLayer 加载3dt图层模型（倾斜摄影、BIM、人工模型），支持增删改查、单体化高亮、样式与剖切等。"
 ---
 
 # TileLayer
 
-TileLayer增、删、改、查相关的操作
-
-一般通过api.tileLayer调用其方法
+TileLayer 加载3dt图层模型（倾斜摄影、BIM、人工模型），支持增删改查、单体化高亮、样式与剖切等。
 
 通过 `api.tileLayer` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：TileLayer 加载3dt图层模型（倾斜摄影、BIM、人工模型），支持增删改查、单体化高亮、样式与剖切等。
+- **别名 / 不同行业叫法**：3DTiles / 倾斜摄影模型 / 实景三维 / 白模 / BIM 图层 / 瓦片模型。
+- **适用行业**：智慧城市与实景三维、智慧园区、规划设计、智慧水利、能源
+- **使用场景**：
+  - 城市级实景三维底座的加载与浏览
+  - 建筑/部件单体化与点选高亮
+  - 专题样式着色与剖切分析
+- **注意事项**：
+  - 海量瓦片依赖 LOD 与缓存，注意带宽与显存
+  - 坐标与高程基准需对齐
+  - 单体化能力取决于数据是否已切分
+
 
 ## 方法（Methods）
 
@@ -2159,5 +2174,4 @@ fdapi.tileLayer.deleteHole("hole1", 'E637D8FE42335EE96C58A1840BCAD0CE');
 
 ```js
 //清空
-fdapi.tileLayer.clearHole('E637D8FE42335EE96C58A1840BCAD0CE');
-```
+fdapi.tileLayer.clearHole('E637D8FE42335E

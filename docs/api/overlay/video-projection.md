@@ -1,14 +1,12 @@
 ---
 title: VideoProjection
 sidebar_label: VideoProjection
-description: "VideoProjection类，提供视频投影对象相关的操作 一般通过api.videoProjection调用其方法 VideoProjection的效果图："
+description: "VideoProjection 将视频/实时流以投影方式贴合到三维场景表面，实现视频与三维的融合。"
 ---
 
 # VideoProjection
 
-VideoProjection类，提供视频投影对象相关的操作
-
-一般通过api.videoProjection调用其方法 
+VideoProjection 将视频/实时流以投影方式贴合到三维场景表面，实现视频与三维的融合。
 
 
 VideoProjection的效果图：
@@ -20,6 +18,23 @@ VideoProjection的效果图：
 通过 `api.videoProjection` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：VideoProjection 将视频/实时流以投影方式贴合到三维场景表面，实现视频与三维的融合。
+- **别名 / 不同行业叫法**：视频投影 / 视频融合 / 实景融合 / 视频上图 / AR 融合。
+- **适用行业**：安防监控、智慧城市、智慧园区、智慧交通、智慧水利
+- **使用场景**：
+  - 监控视频投射到对应建筑/路口，实现“一张图看实景”
+  - 重点区域的视频融合监看
+  - 指挥大屏的实景增强
+- **注意事项**：
+  - 投影面与相机参数需标定对齐，否则画面错位
+  - 多路视频流注意带宽与解码性能
+  - 流地址需鉴权与时效管理
+
 
 ## 方法（Methods）
 

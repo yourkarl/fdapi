@@ -1,16 +1,30 @@
 ---
 title: ImageryLayer
 sidebar_label: ImageryLayer
-description: "ImageryLayer 网络图层相关的操作方法，包含WMS、WMTS、MapServer等服务类型 一般通过api.imageryLayer调用其方法"
+description: "加载与管理 WMTS、WMS、MapServer 等网络地图服务图层，将卫星影像、电子地图等作为场景底图叠加，可批量添加并支持坐标系、切片方案等参数配置。"
 ---
 
 # ImageryLayer
 
 ImageryLayer 网络图层相关的操作方法，包含WMS、WMTS、MapServer等服务类型
 
-一般通过api.imageryLayer调用其方法
-
 通过 `api.imageryLayer` 访问。
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：加载与管理 WMTS、WMS、MapServer 等网络地图服务图层，将卫星影像、电子地图等作为场景底图叠加，可批量添加并支持坐标系、切片方案等参数配置。
+- **别名 / 不同行业叫法**：影像图层 / 底图 / 卫星影像 / 电子地图底图 / OGC 网络图层 / 瓦片地图服务。
+- **适用行业**：智慧城市、测绘 GIS、智慧交通、应急管理、智慧水利。
+- **使用场景**：
+  - 加载 ArcGIS MapServer、天地图等服务作为城市三维场景的二维影像/电子地图底图。
+  - 同时叠加多个影像与注记服务，构建影像+矢量注记的复合底图。
+  - 为业务专题图层提供地理参考背景底图。
+- **注意事项**：
+  - 适用于平面投影坐标系工程；球面坐标系下应使用 ImageryLayer2 / GlobeTerrain。
+  - url 模板需正确包含 \{TileMatrix\}\{TileRow\}\{TileCol\} 等变量，xmlPath、layerName、坐标系等不传时会尝试从 init() 自动获取。
+  - 需确保服务坐标系（ogcEPSG）与工程坐标系一致，避免底图错位。
 
 ## 构造函数
 
@@ -328,8 +342,4 @@ updateEnd是异步调用，可以用回调函数也可以await
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-> 示例代码如下：
-
-```js
-await fdapi.imageryLayer.updateEnd();
-```
+> 示例代码如下

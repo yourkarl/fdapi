@@ -1,14 +1,12 @@
 ---
 title: HighlightArea
 sidebar_label: HighlightArea
-description: "HighlightArea(高亮区域)相关的操作 一般通过api.highlightArea调用其方法"
+description: "HighlightArea 根据多边形坐标在三维场景中对指定区域内的模型进行高亮染色，并可通过高度范围限定染色的 Z 区间，用于突出强调某一空间范围。"
 ---
 
 # HighlightArea
 
-HighlightArea(高亮区域)相关的操作
-
-一般通过api.highlightArea调用其方法
+HighlightArea 根据多边形坐标在三维场景中对指定区域内的模型进行高亮染色，并可通过高度范围限定染色的 Z 区间，用于突出强调某一空间范围。
 
 
 
@@ -17,6 +15,22 @@ HighlightArea(高亮区域)相关的操作
 通过 `api.highlightArea` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：HighlightArea 根据多边形坐标在三维场景中对指定区域内的模型进行高亮染色，并可通过高度范围限定染色的 Z 区间，用于突出强调某一空间范围。
+- **别名 / 不同行业叫法**：高亮区域、热区、责任区、网格、管辖范围、染色区、圈层、重点区域。
+- **适用行业**：智慧城市、应急管理、园区、智慧水利、安防、交通。
+- **使用场景**：
+  - 应急 / 城市管理：高亮事件影响范围、风险责任区、网格化管理单元，配合调度指挥。
+  - 园区 / 安防：突出显示重点防护区域、权属地块、围栏内建筑。
+  - 水利行业：淹没范围、防洪责任段、河湖管理范围的区域强调。
+- **注意事项**：
+  - `heightRange` 用于限定染色的 Z 坐标区间，只有处于该区间的模型才会被染色，需结合实际高程设置。
+  - `depthTest` 为 true 时高亮会被前方物体遮挡，需穿透显示时设为 false。
+  - 多边形 `coordinates` 应保证闭合且无自相交，避免染色异常。
 
 ## 方法（Methods）
 
@@ -341,10 +355,4 @@ updateEnd是异步调用，可以用回调函数也可以await
 
 | 参数 | 类型 | 说明 |
 |------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
-
-> 示例代码如下：
-
-```js
-await fdapi.highlightArea.updateEnd();
-```
+| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/t

@@ -1,16 +1,29 @@
 ---
 title: Satellite
 sidebar_label: Satellite
-description: "Satellite 卫星仿真对象相关的操作 一般通过api.satellite调用其方法，效果图如下："
+description: "Satellite 用于在大尺度空间场景中加载与表现卫星对象，支持像素点、缩略图与三维模型的多级可视化（按相机距离切换），并可设置标签文字、姿态旋转，用于卫星在轨与星座的可视化仿真。"
 ---
 
 # Satellite
 
-Satellite 卫星仿真对象相关的操作
-
-一般通过api.satellite调用其方法，效果图如下：
+Satellite 用于在大尺度空间场景中加载与表现卫星对象，支持像素点、缩略图与三维模型的多级可视化（按相机距离切换），并可设置标签文字、姿态旋转，用于卫星在轨与星座的可视化仿真。
 
 通过 `api.coastline` 访问。
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：Satellite 用于在大尺度空间场景中加载与表现卫星对象，支持像素点、缩略图与三维模型的多级可视化（按相机距离切换），并可设置标签文字、姿态旋转，用于卫星在轨与星座的可视化仿真。
+- **别名 / 不同行业叫法**：卫星 / 在轨卫星 / 星座 / 遥感卫星 / 空间目标 / 在轨目标。
+- **适用行业**：国防军事、智慧城市（空天信息）、应急、低空经济、能源。
+- **使用场景**：
+  - 卫星星座组网与在轨运行态势的全球尺度可视化展示。
+  - 遥感/导航卫星过境、覆盖范围与对地观测任务的态势推演。
+  - 空间目标监视、空天一体作战与应急通信保障的态势呈现。
+- **注意事项**：
+  - 卫星位于超大尺度空间，需配合相机模式（如 `setCameraMode` 设置 maxCameraHeight 至数十万公里）才能正常观察；`textRange`/`modelRange`/`imageVisibleDistance` 控制不同表现形式的可视距离。
+  - 缩略图 `imagePath` 各分辨率需保持一致；`coordinate` 为大数值坐标，注意与坐标系及单位匹配，避免位置异常。
 
 ## 构造函数
 
@@ -774,16 +787,4 @@ await fdapi.satellite.updateLinkage(linkArr,[{
             {"paramName": "PointBrightness","paramValue": 10}
         ],
         "vectorParameters": [
-            {"paramName": "debug","paramValue": [0.1,0.2,0.3,0.4]}
-        ],
-}]);
-```
-
-
-## 更多示例
-
-> CancelFollow
-
-```js
-fdapi.camera.cancelFollow();
-```
+            {"param

@@ -1,18 +1,32 @@
 ---
 title: Coastline
 sidebar_label: Coastline
-description: "Coastline类，提供海岸线相关的操作 一般通过api.coastline调用其方法"
+description: "用于在指定包围盒范围内模拟与渲染海岸线效果，包含海浪拍打沙滩、海风驱动的海面波动，并支持海平面水位逐级抬升的水淹推演。"
 ---
 
 # Coastline
 
-Coastline类，提供海岸线相关的操作
-
-一般通过api.coastline调用其方法
+用于在指定包围盒范围内模拟与渲染海岸线效果，包含海浪拍打沙滩、海风驱动的海面波动，并支持海平面水位逐级抬升的水淹推演。
 
 通过 `api.coastline` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：用于在指定包围盒范围内模拟与渲染海岸线效果，包含海浪拍打沙滩、海风驱动的海面波动，并支持海平面水位逐级抬升的水淹推演。
+- **别名 / 不同行业叫法**：海岸线 / 岸线 / 潮间带 / 海陆交界带 / 滩涂带。
+- **适用行业**：海洋气象、智慧水利、应急管理、城市治理（沿海城市）、海岸工程。
+- **使用场景**：
+  - 沿海风暴潮、海平面上升情景下的水淹淹没范围动态推演与可视化。
+  - 海洋气象数字孪生中海岸带海浪、海风环境效果的实景还原。
+  - 滨海城市、港口、滩涂区域的海陆交界景观展示与防灾科普展示。
+- **注意事项**：
+  - `bbox` 决定模拟范围，范围过大会增加渲染与计算开销，应结合实际关注区域设定。
+  - 水淹推演由 `enableFloodFill`、`seaLevelTimeInterval`、`seaLevelIncrement`、`seaLevelMaxElevation` 共同控制，参数需与真实潮位/水文数据匹配，避免淹没结果失真。
+  - `seaLevelOffset` 基于 bbox 中心 Z 偏移，使用前需确认坐标系与高程基准一致。
 
 ## 方法（Methods）
 
@@ -231,12 +245,4 @@ fdapi.coastline.hide('coastline');
 
 > HideAll
 
-```js
-fdapi.coastline.hideAll();
-```
-
-> ShowAll
-
-```js
-fdapi.coastline.showAll();
-```
+`

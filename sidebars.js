@@ -8,10 +8,12 @@ const sidebars = {
       label: '入门指南',
       collapsible: false,
       items: [
+        'tutorials/architecture',
         'tutorials/introduction',
         'tutorials/hello-world',
         'tutorials/auth',
         'tutorials/async-call',
+        'tutorials/recipes',
       ],
     },
     {
@@ -57,7 +59,6 @@ const sidebars = {
       items: [
         'api/quickstart/digital-twin-api',
         'api/quickstart/digital-twin-player',
-        'api/quickstart/base-object',
       ],
     },
     {
@@ -66,8 +67,6 @@ const sidebars = {
       items: [
         'api/camera/camera',
         'api/camera/camera-tour',
-        'api/camera/camera-tour-data',
-        'api/camera/camera-tour-key-frame',
       ],
     },
     {

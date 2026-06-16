@@ -1,18 +1,31 @@
 ---
 title: BoxTrigger
 sidebar_label: BoxTrigger
-description: "BoxTrigger类的对象，提供当CustomObject对象或相机Camera对象进入和退出盒子热区范围触发事件相关的操作 一般通过api.BoxTrigger调用其方法"
+description: "BoxTrigger 用于在三维场景中绘制一个长方体盒子热区，当 CustomObject 自定义对象或 Camera 相机进入/退出该范围时自动触发回调事件，是一种基于空间包围盒的进出检测机制。"
 ---
 
 # BoxTrigger
 
-BoxTrigger类的对象，提供当CustomObject对象或相机Camera对象进入和退出盒子热区范围触发事件相关的操作
-
-一般通过api.BoxTrigger调用其方法
+BoxTrigger 用于在三维场景中绘制一个长方体盒子热区，当 CustomObject 自定义对象或 Camera 相机进入/退出该范围时自动触发回调事件，是一种基于空间包围盒的进出检测机制。
 
 通过 `api.BoxTrigger` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：BoxTrigger 用于在三维场景中绘制一个长方体盒子热区，当 CustomObject 自定义对象或 Camera 相机进入/退出该范围时自动触发回调事件，是一种基于空间包围盒的进出检测机制。
+- **别名 / 不同行业叫法**：盒子触发器 / 电子围栏 / 触发区 / 检测框 / 空间感应区 / 越界检测区。
+- **适用行业**：智慧交通、智慧城市、应急、国防军事、低空经济、园区。
+- **使用场景**：
+  - 园区/重点设施周界安防：人员或车辆越界进入禁区时自动告警联动。
+  - 智慧交通卡口/隧道/收费站区域检测：车辆进出特定路段或检测断面触发统计与事件上报。
+  - 应急与军事禁飞/警戒区：目标进入危险区或警戒空域时触发预警与处置流程。
+- **注意事项**：
+  - 通过 `bbox`（[minX,minY,minZ,maxX,maxY,maxZ]）定义热区，需与 `coordinateType` 坐标系（Projection/WGS84/GCJ02/BD09）一致，避免热区错位。
+  - 仅对 CustomObject 与 Camera 进出生效；触发的是离散的进入/退出事件而非连续判定，盒子数量过多会增加检测开销，应合理规划区域粒度。
 
 ## 方法（Methods）
 
@@ -220,6 +233,4 @@ updateEnd是异步调用，可以用回调函数也可以await
 
 > 示例代码如下：
 
-```js
-await fdapi.BoxTrigger.updateEnd();
-```
+`

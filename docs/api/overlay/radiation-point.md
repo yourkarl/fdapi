@@ -1,14 +1,12 @@
 ---
 title: RadiationPoint
 sidebar_label: RadiationPoint
-description: "RadiationPoint类，提供辐射圈相关的操作 一般通过api.radiationPoint调用其方法"
+description: "RadiationPoint 以辐射圈/扩散圈形式表达从某点向外扩散、强度逐渐衰减的影响范围。"
 ---
 
 # RadiationPoint
 
-RadiationPoint类，提供辐射圈相关的操作
-
-一般通过api.radiationPoint调用其方法
+RadiationPoint 以辐射圈/扩散圈形式表达从某点向外扩散、强度逐渐衰减的影响范围。
 
 
 
@@ -17,6 +15,23 @@ RadiationPoint类，提供辐射圈相关的操作
 通过 `api.radiationPoint` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：RadiationPoint 以辐射圈/扩散圈形式表达从某点向外扩散、强度逐渐衰减的影响范围。
+- **别名 / 不同行业叫法**：辐射点 / 辐射圈 / 扩散圈 / 影响范围 / 污染扩散 / 信号覆盖圈 / 预警圈。
+- **适用行业**：应急（污染/危化扩散）、环保、安防、通信、城市治理
+- **使用场景**：
+  - 污染源、危化品泄漏的扩散范围示意
+  - 事件影响半径与预警圈表达
+  - 信号/服务覆盖范围的示意
+- **注意事项**：
+  - 为示意性表达，非精确扩散模型
+  - 半径与衰减参数需结合业务设定
+  - 常与告警点、标注配合使用
+
 
 ## 方法（Methods）
 
@@ -407,5 +422,4 @@ updateEnd是异步调用，可以用回调函数也可以await
 > 示例代码如下：
 
 ```js
-await fdapi.radiationPoint.updateEnd();
-```
+await fdapi.radiationPoint.updateEnd(

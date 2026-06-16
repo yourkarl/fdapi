@@ -1,16 +1,33 @@
 ---
 title: DigitalTwinPlayer
 sidebar_label: DigitalTwinPlayer
-description: "云渲染视频流对象 用于在页面上创建和显示三维视频流，并进行键盘、鼠标、触摸屏等交互操作。"
+description: "DigitalTwinPlayer 是云渲染视频流对象，在网页上创建并显示三维视频流，并承载键盘、鼠标、触摸等交互。"
 ---
 
 # DigitalTwinPlayer
 
-云渲染视频流对象
+DigitalTwinPlayer 是云渲染视频流对象，在网页上创建并显示三维视频流，并承载键盘、鼠标、触摸等交互。
 
 用于在页面上创建和显示三维视频流，并进行键盘、鼠标、触摸屏等交互操作。
 
 通过 `fdplayer` 访问。
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：DigitalTwinPlayer 是云渲染视频流对象，在网页上创建并显示三维视频流，并承载键盘、鼠标、触摸等交互。
+- **别名 / 不同行业叫法**：播放器 / 云渲染 / 视频流 / 像素流 / 串流窗口 / WebRTC 播放器。
+- **适用行业**：云渲染交付基础，贯穿所有行业
+- **使用场景**：
+  - 网页端嵌入三维场景视频流
+  - 多窗口/多场景的串流展示
+  - 移动端轻量接入三维场景
+- **注意事项**：
+  - 依赖云渲染服务可达与网络带宽
+  - 交互延迟与网络质量相关
+  - 多实例时注意资源占用与 fdapi 指向
+
 
 ## 构造函数
 
@@ -338,5 +355,4 @@ await fdplayer.world2Screen(x, y, z);
 > 全屏显示：Fullscreen
 
 ```js
-fdplayer.fullscreen = !fdplayer.fullscreen;
-```
+fdplayer.fullscreen = !fdplayer.fullscre

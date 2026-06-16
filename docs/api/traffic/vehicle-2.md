@@ -1,18 +1,33 @@
 ---
 title: Vehicle2
 sidebar_label: Vehicle2
-description: "高级载具类，提供高级载具的相关的操作 一般通过api.Vehicle2调用其方法"
+description: "Vehicle2 是高级载具对象，在 Vehicle 基础上提供更丰富的车辆驱动、外观与行为控制。"
 ---
 
 # Vehicle2
 
-高级载具类，提供高级载具的相关的操作
-
-一般通过api.Vehicle2调用其方法
+Vehicle2 是高级载具对象，在 Vehicle 基础上提供更丰富的车辆驱动、外观与行为控制。
 
 通过 `api.vehicle2` 访问。
 
 ---
+
+## 业务场景 Skill
+
+> 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
+
+- **功能介绍**：Vehicle2 是高级载具对象，在 Vehicle 基础上提供更丰富的车辆驱动、外观与行为控制。
+- **别名 / 不同行业叫法**：高级载具 / 车辆(增强) / 智能车 / 车流 / 载具。
+- **适用行业**：智慧交通、自动驾驶仿真、智慧城市、智慧园区、物流
+- **使用场景**：
+  - 复杂车辆行为与外观的精细仿真
+  - 自动驾驶、车路协同的演示
+  - 高拟真车流场景
+- **注意事项**：
+  - 功能更全但开销高于 Vehicle
+  - 大规模车流需 LOD 与实例化
+  - 路网与轨迹数据须规范
+
 
 ## 方法（Methods）
 
@@ -391,5 +406,4 @@ await fdapi.vehicle2.updateEnd();
 
 ```js
 //取消相机跟随
-fdapi.camera.cancelFollow();
-```
+fdapi.camera.cancelFol
