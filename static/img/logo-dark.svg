@@ -1,13 +1,14 @@
-<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<svg id="AppIcon_SDK" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="128" viewBox="0 0 512 512">
   <defs>
-    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#93bc42"/>
+      <stop offset="1" stop-color="#4a5e21"/>
     </linearGradient>
   </defs>
-  <circle cx="100" cy="100" r="95" fill="#030d1a" stroke="url(#grad2)" stroke-width="2"/>
-  <polygon points="100,30 160,65 160,135 100,170 40,135 40,65" fill="none" stroke="url(#grad2)" stroke-width="2" opacity="0.9"/>
-  <polygon points="100,55 135,75 135,115 100,135 65,115 65,75" fill="rgba(0,180,255,0.2)" stroke="#ffffff" stroke-width="1.5"/>
-  <text x="100" y="104" text-anchor="middle" font-family="monospace" font-weight="bold" font-size="18" fill="url(#grad2)">DT</text>
-  <text x="100" y="162" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#94c8e8" letter-spacing="2">DIGITAL TWIN</text>
+  <rect id="BG" width="512" height="512" fill="none"/>
+  <path id="Path_46" data-name="Path 46" d="M2027.855,1296.087l-65.833,39.5a10,10,0,0,0-4.855,8.575v79.676a10,10,0,0,0,4.855,8.575l65.833,39.5a10,10,0,0,0,10.29,0l65.833-39.5a10,10,0,0,0,4.855-8.575v-79.676a10,10,0,0,0-4.855-8.575l-65.833-39.5A10,10,0,0,0,2027.855,1296.087Z" transform="translate(-1776.941 -1127.662)" fill="#129948"/>
+  <path id="Path_47" data-name="Path 47" d="M2233,1362v-92.338a10,10,0,0,0-4.855-8.575l-103.587-62.152a4,4,0,0,0-6.058,3.43v85.273a10,10,0,0,0,4.855,8.575l19.79,11.874a10,10,0,0,1,4.855,8.575v121.676a10,10,0,0,1-4.855,8.575l-19.79,11.874a10,10,0,0,0-4.855,8.575v98.273a4,4,0,0,0,6.058,3.43l103.587-62.152a10,10,0,0,0,4.855-8.575V1393l20.117-12.07a4,4,0,0,0,0-6.86Z" transform="translate(-1776.941 -1127.662)" fill="url(#linear-gradient)"/>
+  <path id="Path_48" data-name="Path 48" d="M1833,1269.662V1362l-20.117,12.07a4,4,0,0,0,0,6.86L1833,1393v105.338a10,10,0,0,0,4.855,8.575l104.087,62.452a4,4,0,0,0,6.058-3.43v-98.273a10,10,0,0,0-4.855-8.575l-20.29-12.174a10,10,0,0,1-4.855-8.575V1316.662a10,10,0,0,1,4.855-8.575l20.29-12.174a10,10,0,0,0,4.855-8.575v-85.273a4,4,0,0,0-6.058-3.43l-104.087,62.452A10,10,0,0,0,1833,1269.662Z" transform="translate(-1776.941 -1127.662)" fill="url(#linear-gradient)"/>
+  <path id="Path_49" data-name="Path 49" d="M2027.855,1147.087l-45,27a10,10,0,0,0-4.855,8.575v85.273a4,4,0,0,0,6.058,3.43l43.8-26.278a10,10,0,0,1,10.29,0l44.3,26.578a4,4,0,0,0,6.058-3.43v-85.273a10,10,0,0,0-4.855-8.575l-45.5-27.3A10,10,0,0,0,2027.855,1147.087Z" transform="translate(-1776.941 -1127.662)" fill="#d6e5b7" opacity="0.5"/>
+  <path id="Path_50" data-name="Path 50" d="M2027.855,1509.913l-43.8-26.278a4,4,0,0,0-6.058,3.43v98.273a10,10,0,0,0,4.855,8.575l45.524,26.775a10,10,0,0,0,10.215-.044l45.051-27.031a10,10,0,0,0,4.855-8.575v-98.273a4,4,0,0,0-6.058-3.43l-44.3,26.578A10,10,0,0,1,2027.855,1509.913Z" transform="translate(-1776.941 -1127.662)" fill="#d6e5b7" opacity="0.5"/>
 </svg>

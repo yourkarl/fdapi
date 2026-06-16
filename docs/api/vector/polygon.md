@@ -75,6 +75,29 @@ let coords3 = [
   - 为贴地二维面，表达有高度的立体体块（如建筑、围墙、淹没水体）应使用 Polygon3D。
   - 顶点数量过多或多边形数量庞大时注意性能，建议简化边界点位。
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `add` | 添加一个或多个Polygon对象 | 向场景批量添加对象 |
+| `clear` | 删除场景中所有的Polygon | 清空全部对象，重置图层 |
+| `delete` | 删除一个或多个Polygon对象 | 按 ID 移除指定对象 |
+| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| `get` | 根据ID获取Polygon的详细信息 | 查询对象信息，用于业务联动 |
+| `glow` | 闪烁 |  |
+| `hide` | 隐藏Polygon | 按业务条件隐藏对象 |
+| `highlight` | 高亮 |  |
+| `setColor` | 设置颜色 |  |
+| `setCoordinates` | 设置坐标 |  |
+| `setDepthTest` | 设置是否做深度检测 |  |
+| `setViewHeightRange` | 设置Polygon对象的可视高度范围， |  |
+| `show` | 显示Polygon | 按业务条件显示对象 |
+| `unHighlight` | 停止高亮 |  |
+| `update` | 修改一个或多个Polygon对象 | 运行时动态更新对象属性/状态 |
+| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+
 ## 方法（Methods）
 
 ### `add(data, fn)`

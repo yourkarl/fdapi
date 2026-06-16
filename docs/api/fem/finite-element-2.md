@@ -35,6 +35,30 @@ new FiniteElement2()
 
 ---
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `add` | 根据VTK文件添加一个或多个有限元仿真对象 | 向场景批量添加对象 |
+| `applyBoxClipFilter` | 盒子过滤器 |  |
+| `applyContourFilter` | 根据等值线对应的数值添加过滤器并展示过滤后的有限元模型分析结果 |  |
+| `applyCylinderClipFilter` | 圆柱过滤器 |  |
+| `applyPlaneClipFilter` | 切面过滤器 |  |
+| `applySphereClipFilter` | 球型过滤器 |  |
+| `applyThresholdFilter` | 根据模型属性字段对应的区间值添加过滤器并展示过滤后的有限元模型分析结果 |  |
+| `clear` | 清空场景中所有的有限元仿真对象 | 清空全部对象，重置图层 |
+| `clearFilter` | 清空指定的有限元模型对象添加的所有过滤器 |  |
+| `delete` | 删除一个或多个有限元仿真对象 | 按 ID 移除指定对象 |
+| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| `get` | 根据有限元分析ID获取有限元分析的详细信息 | 查询对象信息，用于业务联动 |
+| `hide` | 隐藏有限元分析 | 按业务条件隐藏对象 |
+| `removeFilter` | 移除指定的有限元模型对象添加的相关过滤器 |  |
+| `show` | 显示有限元分析 | 按业务条件显示对象 |
+| `update` | 修改一个或多个有限元仿真对象 | 运行时动态更新对象属性/状态 |
+| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+
 ## 方法（Methods）
 
 ### `add(data, fn)`

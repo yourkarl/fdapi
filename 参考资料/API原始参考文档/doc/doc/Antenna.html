@@ -90,7 +90,7 @@
         </h2>
         
             <div class="class-description"><p>天线方向图对象，提供Antenna对象的操作方法<br>
-一般通过api.antenna调用</p></div>
+通过api.antenna调用</p></div>
         
     
 </header>
@@ -401,7 +401,9 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">请求代码示例{
+    <pre class="sunlight-highlight-javascript">请求代码示例
+
+{
             &quot;id&quot;: &quot;radiationPattern&quot;,
             &quot;coordinate&quot;: [
                 494479.71875,
@@ -1159,7 +1161,8 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">返回天线方向图的详细信息 属性详情参见add方法参数{
+    <pre class="sunlight-highlight-javascript">返回天线方向图的详细信息 属性详情参见add方法参数
+{
             &quot;id&quot;:	&quot;Antenna_1&quot;,
             &quot;groupId&quot;:	&quot;&quot;,
             &quot;userData&quot;:	&quot;&quot;,
@@ -1735,7 +1738,13 @@ updateBegin不是异步调用，不需要await，也没有回调函数参数</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();for (let i = 0; i &lt; 1000; i++) {     fdapi.xxx.setColor(i, Color.Yellow);} fdapi.xxx.updateEnd(function () {     log(&#x27;update finished!&#x27;);});</pre>
+    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();
+for (let i = 0; i &lt; 1000; i++) {
+     fdapi.xxx.setColor(i, Color.Yellow);
+} 
+fdapi.xxx.updateEnd(function () {
+     log(&#x27;update finished!&#x27;);
+});</pre>
 
 
     

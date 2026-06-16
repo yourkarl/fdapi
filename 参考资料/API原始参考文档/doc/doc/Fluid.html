@@ -90,7 +90,7 @@
         </h2>
         
             <div class="class-description"><p>Fluid流体仿真对象，实现对流体仿真对象的操作<br>
-一般通过api.fluid调用其方法</p>
+通过api.fluid调用其方法</p>
 <img src="../images/api/fluid.png" width="300px"></div>
         
     
@@ -393,7 +393,9 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">示例数据结构：[{
+    <pre class="sunlight-highlight-javascript">示例数据结构：
+
+[{
             &quot;id&quot;: &quot;ff&quot;,
             &quot;bbox&quot;: [
                 -100,
@@ -599,7 +601,9 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">示例数据结构：[{
+    <pre class="sunlight-highlight-javascript">示例数据结构：
+
+[{
             &quot;id&quot;: &quot;ff&quot;,
             &quot;sources&quot;: [
                 {
@@ -1608,7 +1612,9 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">返回Fluid的详细信息 属性详情参见add方法参数[{
+    <pre class="sunlight-highlight-javascript">返回Fluid的详细信息 属性详情参见add方法参数
+
+[{
             &quot;id&quot;: &quot;ff&quot;,
             &quot;bbox&quot;: [
                 -100,
@@ -2116,7 +2122,11 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">示例数据：[{     id: &quot;ff&quot;,     sourceIds: [&quot;f1&quot;,&quot;f2&quot;,&quot;f3&quot;]}]</pre>
+    <pre class="sunlight-highlight-javascript">示例数据：
+[{
+     id: &quot;ff&quot;,
+     sourceIds: [&quot;f1&quot;,&quot;f2&quot;,&quot;f3&quot;]
+}]</pre>
 
 
     
@@ -2859,7 +2869,13 @@ updateBegin不是异步调用，不需要await，也没有回调函数参数</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();for (let i = 0; i &lt; 1000; i++) {     fdapi.xxx.setColor(i, Color.Yellow);} fdapi.xxx.updateEnd(function () {     log(&#x27;update finished!&#x27;);});</pre>
+    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();
+for (let i = 0; i &lt; 1000; i++) {
+     fdapi.xxx.setColor(i, Color.Yellow);
+} 
+fdapi.xxx.updateEnd(function () {
+     log(&#x27;update finished!&#x27;);
+});</pre>
 
 
     

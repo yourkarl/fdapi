@@ -31,9 +31,9 @@ const features = [
   },
   {
     icon: '📏',
-    title: '测量绘制',
+    title: '绘制助手',
     desc: '距离/面积/高度测量、交互式点线面绘制、态势标绘符号、模型剖切、求交分析。',
-    link: '/docs/api/events/tools',
+    link: '/docs/api/measure/edit-helper',
   },
   {
     icon: '🎯',
@@ -57,13 +57,13 @@ const features = [
     icon: '🔬',
     title: '分析工具',
     desc: '天际线 / 坡度 / 可视域分析、开挖模拟、查询筛选 — 一行代码启动专业空间分析。',
-    link: '/docs/api/events/tools',
+    link: '/docs/api/analysis/tools',
   },
   {
     icon: '⚙️',
     title: '场景设置',
     desc: '27+ 后处理效果、相机参数、UI 控制、交互模式、人物漫游、高级渲染配置。',
-    link: '/docs/api/weather/settings',
+    link: '/docs/api/settings/settings',
   },
   {
     icon: '🧩',
@@ -220,8 +220,8 @@ export default function Home() {
 <div id="dts-player" style="width:100%;height:600px"></div>
 
 <script>
-// 3. 创建播放器
-const player = new DigitalTwinPlayer('192.168.1.1:8080', {
+// 3. 创建视频流播放器
+const player = new DigitalTwinPlayer('192.168.1.8:8080', {
   domId: 'dts-player',
   events: {
     onVideoLoaded: () => console.log('视频流已加载'),

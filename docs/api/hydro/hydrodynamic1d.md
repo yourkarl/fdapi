@@ -28,6 +28,20 @@ HydroDynamic1D类
   - 可用 shpFilePath 对河道采样点做裁切，注意坐标系类型 coordinateType 与数据一致；开启 collision 会影响加载效率。
   - 属于一维带状河道模型，面状大范围淹没/漫滩应使用 HydroDynamic2D；River 为本对象旧版，新项目优先用 HydroDynamic1D。
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `add` | 添加一个或多个HydroDynamic1D对象 | 向场景批量添加对象 |
+| `clear` | 删除场景中所有的HydroDynamic1D | 清空全部对象，重置图层 |
+| `delete` | 删除一个或多个HydroDynamic1D对象 | 按 ID 移除指定对象 |
+| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| `get` | 根据ID获取HydroDynamic1D的详细信息 | 查询对象信息，用于业务联动 |
+| `hide` | 隐藏HydroDynamic1D | 按业务条件隐藏对象 |
+| `show` | 显示HydroDynamic1D | 按业务条件显示对象 |
+| `update` | 修改一个或多个HydroDynamic1D对象 | 运行时动态更新对象属性/状态 |
+
 ## 方法（Methods）
 
 ### `add(data, fn)`

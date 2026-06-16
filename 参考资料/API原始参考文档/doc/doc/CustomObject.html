@@ -90,7 +90,7 @@
         </h2>
         
             <div class="class-description"><p>CustomObject类，提供用户自定义对象相关的操作<br>
-一般通过api.customObject调用其方法<br>
+通过api.customObject调用其方法<br>
 <img src="../images/api/CustomObject.Update.gif" alt=""></p></div>
         
     
@@ -776,7 +776,8 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">蓝图函数调用示例代码 注意：被调用函数传入的参数类型、参数顺序都必须和蓝图函数的参数类型、顺序完全保持一致！     fdapi.customObject.callBPFunction([
+    <pre class="sunlight-highlight-javascript">蓝图函数调用示例代码 注意：被调用函数传入的参数类型、参数顺序都必须和蓝图函数的参数类型、顺序完全保持一致！
+     fdapi.customObject.callBPFunction([
                 {
                     id: &#x27;truck&#x27;,
                     functionName: &#x27;状态&#x27;,
@@ -1092,7 +1093,9 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">代码结构示例如下： {
+    <pre class="sunlight-highlight-javascript">代码结构示例如下：
+
+ {
             id: &quot;building_001&quot;,
             hideOriginal: false,
             floors: [
@@ -1699,7 +1702,8 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">CustomObject的详细信息[{
+    <pre class="sunlight-highlight-javascript">CustomObject的详细信息
+[{
             &quot;id&quot;:	&quot;o1&quot;,
             &quot;groupId&quot;:	&quot;&quot;,
             &quot;userdata&quot;:	&quot;&quot;,
@@ -1870,7 +1874,9 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">返回结果示例：[{
+    <pre class="sunlight-highlight-javascript">返回结果示例：
+
+[{
             &quot;idOrPath&quot;:	&quot;co1&quot;,
             &quot;objectType&quot;:	&quot;Actor&quot;,
             &quot;params&quot;:	[{
@@ -2732,7 +2738,14 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">请求参数结构示例[{     &quot;id&quot;:&quot;co1&quot;,     &quot;location&quot;:[2768.1734375,-2264.37375,6.5],     &quot;rotation&quot;:[0,90,0],     &quot;smoothTime&quot;:5}]</pre>
+    <pre class="sunlight-highlight-javascript">请求参数结构示例
+
+[{
+     &quot;id&quot;:&quot;co1&quot;,
+     &quot;location&quot;:[2768.1734375,-2264.37375,6.5],
+     &quot;rotation&quot;:[0,90,0],
+     &quot;smoothTime&quot;:5
+}]</pre>
 
 
     
@@ -2907,7 +2920,27 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">请求参数调用说明构造请求参数须知：1、如果不传入material参数，注意：不传入material参数的前提是已经用对应材质执行过当前overrideMaterial()方法，   则需要传入材质对应的scalarParameters或vectorParameters参数，才会执行对应的材质参数进行替换；2、如果只传入material参数，不传入对应的scalarParameters或vectorParameters参数，则会使用替换材质包含的默认材质参数；3、如果同时传入material、scalarParameters、vectorParameters参数，则使用指定的材质和指定的材质参数进行材质替换请求参数示例：[{     &quot;id&quot;:&quot;o1&quot;,     &quot;material&quot;:&quot;/Game/Temp/MaterialA&quot;,     &quot;scalarParameters&quot;:[{&quot;name&quot;:&quot;scalar1&quot;,&quot;value&quot;:1.0},{&quot;name&quot;:&quot;scalar2&quot;,&quot;value&quot;:2.0}],     &quot;vectorParameters&quot;:[{&quot;name&quot;:&quot;vector1&quot;,&quot;value&quot;:[1,1,1,1]},{&quot;name&quot;:&quot;vector2&quot;,&quot;value&quot;:[2,2,2,2]}] },{     &quot;id&quot;:&quot;o2&quot;,     &quot;material&quot;:&quot;/Game/Temp/MaterialB&quot;,     &quot;scalarParameters&quot;:[{&quot;name&quot;:&quot;Param1&quot;,&quot;value&quot;:3.0},{&quot;name&quot;:&quot;Param2&quot;,&quot;value&quot;:4.0}],     &quot;vectorParameters&quot;:[{&quot;name&quot;:&quot;Param3&quot;,&quot;value&quot;:[3,3,1,3]},{&quot;name&quot;:&quot;Param4&quot;,&quot;value&quot;:[4,2,2,2]}]}]</pre>
+    <pre class="sunlight-highlight-javascript">请求参数调用说明
+
+构造请求参数须知：
+1、如果不传入material参数，注意：不传入material参数的前提是已经用对应材质执行过当前overrideMaterial()方法，
+   则需要传入材质对应的scalarParameters或vectorParameters参数，才会执行对应的材质参数进行替换；
+2、如果只传入material参数，不传入对应的scalarParameters或vectorParameters参数，则会使用替换材质包含的默认材质参数；
+3、如果同时传入material、scalarParameters、vectorParameters参数，则使用指定的材质和指定的材质参数进行材质替换
+
+请求参数示例：
+[{
+     &quot;id&quot;:&quot;o1&quot;,
+     &quot;material&quot;:&quot;/Game/Temp/MaterialA&quot;,
+     &quot;scalarParameters&quot;:[{&quot;name&quot;:&quot;scalar1&quot;,&quot;value&quot;:1.0},{&quot;name&quot;:&quot;scalar2&quot;,&quot;value&quot;:2.0}],
+     &quot;vectorParameters&quot;:[{&quot;name&quot;:&quot;vector1&quot;,&quot;value&quot;:[1,1,1,1]},{&quot;name&quot;:&quot;vector2&quot;,&quot;value&quot;:[2,2,2,2]}]
+ },
+{
+     &quot;id&quot;:&quot;o2&quot;,
+     &quot;material&quot;:&quot;/Game/Temp/MaterialB&quot;,
+     &quot;scalarParameters&quot;:[{&quot;name&quot;:&quot;Param1&quot;,&quot;value&quot;:3.0},{&quot;name&quot;:&quot;Param2&quot;,&quot;value&quot;:4.0}],
+     &quot;vectorParameters&quot;:[{&quot;name&quot;:&quot;Param3&quot;,&quot;value&quot;:[3,3,1,3]},{&quot;name&quot;:&quot;Param4&quot;,&quot;value&quot;:[4,2,2,2]}]
+}]</pre>
 
 
     
@@ -5657,7 +5690,10 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">请求参数pathDataArr示例说明其中：time表示到达时间，即从当前轨迹点移动到下一个轨迹点花费时间为（time2-time1）。[
+    <pre class="sunlight-highlight-javascript">请求参数pathDataArr示例说明
+
+其中：time表示到达时间，即从当前轨迹点移动到下一个轨迹点花费时间为（time2-time1）。
+[
             {&quot;time&quot;:0,&quot;coordinate&quot;:[ -15726.0537109375, 7340.0205078125, 0 ],&quot;rotation&quot;: [0,90,0]},//注意：时间起点默认值必须为0
             {&quot;time&quot;:0.5,&quot;coordinate&quot;:[ -15700.7431640625, 7308.4287109375, 0 ],&quot;rotation&quot;: [0,90,0]},
             {&quot;time&quot;:1,&quot;coordinate&quot;:[ -15682.779296875, 7345.14697265625, 0 ],&quot;rotation&quot;: [0,90,0]},
@@ -6424,7 +6460,13 @@ updateBegin不是异步调用，不需要await，也没有回调函数参数</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();for (let i = 0; i &lt; 1000; i++) {     fdapi.xxx.setColor(i, Color.Yellow);} fdapi.xxx.updateEnd(function () {     log(&#x27;update finished!&#x27;);});</pre>
+    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();
+for (let i = 0; i &lt; 1000; i++) {
+     fdapi.xxx.setColor(i, Color.Yellow);
+} 
+fdapi.xxx.updateEnd(function () {
+     log(&#x27;update finished!&#x27;);
+});</pre>
 
 
     

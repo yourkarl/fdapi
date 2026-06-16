@@ -90,7 +90,7 @@
         </h2>
         
             <div class="class-description"><p>Panorama类，提供全景图相关的操作<br>
-一般通过api.panorama调用其方法<br>
+通过api.panorama调用其方法<br>
 <img src="../images/api/Panorama.Add.gif" alt=""></p></div>
         
     
@@ -1335,7 +1335,8 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">Panorama的详细信息[{
+    <pre class="sunlight-highlight-javascript">Panorama的详细信息
+[{
             &quot;id&quot;:	&quot;p1&quot;,
             &quot;groupId&quot;:	&quot;&quot;,
             &quot;userData&quot;:	&quot;&quot;,
@@ -1726,7 +1727,13 @@ updateBegin不是异步调用，不需要await，也没有回调函数参数</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();for (let i = 0; i &lt; 1000; i++) {     fdapi.xxx.setColor(i, Color.Yellow);} fdapi.xxx.updateEnd(function () {     log(&#x27;update finished!&#x27;);});</pre>
+    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();
+for (let i = 0; i &lt; 1000; i++) {
+     fdapi.xxx.setColor(i, Color.Yellow);
+} 
+fdapi.xxx.updateEnd(function () {
+     log(&#x27;update finished!&#x27;);
+});</pre>
 
 
     

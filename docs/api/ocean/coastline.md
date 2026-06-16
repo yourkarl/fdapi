@@ -28,6 +28,20 @@ description: "用于在指定包围盒范围内模拟与渲染海岸线效果，
   - 水淹推演由 `enableFloodFill`、`seaLevelTimeInterval`、`seaLevelIncrement`、`seaLevelMaxElevation` 共同控制，参数需与真实潮位/水文数据匹配，避免淹没结果失真。
   - `seaLevelOffset` 基于 bbox 中心 Z 偏移，使用前需确认坐标系与高程基准一致。
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `add` | 添加一个或多个Coastline对象 | 向场景批量添加对象 |
+| `clear` | 删除场景中所有的Coastline | 清空全部对象，重置图层 |
+| `delete` | 删除一个或多个Coastline对象 | 按 ID 移除指定对象 |
+| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| `get` | 根据ID获取Coastline的详细信息 | 查询对象信息，用于业务联动 |
+| `update` | 修改一个或多个Coastline对象 | 运行时动态更新对象属性/状态 |
+| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+
 ## 方法（Methods）
 
 ### `add(data, fn)`

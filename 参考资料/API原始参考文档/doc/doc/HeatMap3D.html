@@ -94,7 +94,7 @@
 2、根据空间离散点和对应的热力值构建 addByHeatPoints()<br>
 3、根据三维体素的热力值构建  addByVoxels()<br>
 4、根据稀疏体素构建      addBySparseVoxels()</p>
-<p>一般通过api.heatmap3d调用其方法。 HeatMap3D效果图如下：<br>
+<p>通过api.heatmap3d调用其方法。 HeatMap3D效果图如下：<br>
 <img src="../images/api/HeatMap3D.gif" alt=""></p></div>
         
     
@@ -1504,7 +1504,8 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">参数结构示例[
+    <pre class="sunlight-highlight-javascript">参数结构示例
+[
             {
                 &quot;id&quot;: &quot;heatmap3d_v1&quot;,
                 &quot;voxels&quot;: [
@@ -2230,7 +2231,8 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">HeatMap3D的详细信息[{
+    <pre class="sunlight-highlight-javascript">HeatMap3D的详细信息
+[{
             &quot;id&quot;:   &quot;heatmap3d&quot;,
             &quot;groupId&quot;:  &quot;&quot;,
             &quot;userData&quot;: &quot;&quot;,
@@ -4036,7 +4038,13 @@ updateBegin不是异步调用，不需要await，也没有回调函数参数</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();for (let i = 0; i &lt; 1000; i++) {     fdapi.xxx.setColor(i, Color.Yellow);} fdapi.xxx.updateEnd(function () {     log(&#x27;update finished!&#x27;);});</pre>
+    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();
+for (let i = 0; i &lt; 1000; i++) {
+     fdapi.xxx.setColor(i, Color.Yellow);
+} 
+fdapi.xxx.updateEnd(function () {
+     log(&#x27;update finished!&#x27;);
+});</pre>
 
 
     

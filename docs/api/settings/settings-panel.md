@@ -29,6 +29,24 @@ SettingsPanel 提供对内置设置面板里各项参数进行读写操作的接
   - 与 Settings 接口区分（面板 UI vs 参数）
 
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `getCameraMode` | 获取参数 相机面板 |  |
+| `getControlMode` | 获取参数 控制面板 |  |
+| `getMapMode` | 获取地图样式 |  |
+| `getPostProcessMode` | 获取参数 后期面板 |  |
+| `getReportMode` | 获取参数 汇报模式面板 |  |
+| `setCameraMode` | 设置参数 相机面板 |  |
+| `setControlMode` | 设置参数 控制面板 |  |
+| `setMapMode` | 设置地图样式 |  |
+| `setPakFile` | 设置-工程面板自定义资源挂载的pak自定义资源文件 |  |
+| `setPakFolder` | 设置-工程面板下自定义资源加载的pak自定义资源文件目录 |  |
+| `setPostProcessMode` | 设置参数，后期面板， |  |
+| `setReportMode` | 设置参数 汇报模式面板 |  |
+
 ## 方法（Methods）
 
 ### `getCameraMode(fn)`

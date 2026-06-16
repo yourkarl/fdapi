@@ -90,7 +90,7 @@
         </h2>
         
             <div class="class-description"><p>Layers, 图层树相关的操作<br>
-一般通过api.infoTree调用其方法</p></div>
+通过api.infoTree调用其方法</p></div>
         
     
 </header>
@@ -363,7 +363,8 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">蓝图函数调用示例代码 注意：被调用函数传入的参数类型、参数顺序都必须和蓝图函数的参数类型、顺序完全保持一致！     fdapi.infoTree.callBPFunction([
+    <pre class="sunlight-highlight-javascript">蓝图函数调用示例代码 注意：被调用函数传入的参数类型、参数顺序都必须和蓝图函数的参数类型、顺序完全保持一致！
+     fdapi.infoTree.callBPFunction([
             {
                 id: &#x27;2BC267114D436EA43BF695AC98DA4E08&#x27;,
                 functionName: &#x27;颜色&#x27;,
@@ -1155,7 +1156,44 @@
         
         <p class="code-caption">图层树数据结构</p>
     
-    <pre class="sunlight-highlight-javascript">[{		&quot;iD&quot;:	&quot;ProjectTree_Root&quot;,		&quot;index&quot;:	0,		&quot;parentIndex&quot;:	-1,		&quot;name&quot;:	&quot;世界&quot;,		&quot;visiblity&quot;:	true,		&quot;type&quot;:	&quot;EPT_Folder&quot;}]图层返回type字段说明：  文件夹：EPT_Folder  场景：EPT_Scene  场景模型：EPT_ModelActor  测量：EPT_Measurement  剖切体：EPT_Cut  动态水：EPT_DynamicWater  车辆：EPT_Vehicle  标签：EPT_Tag  灯光：EPT_Light  贴花：EPT_Decal  光流：EPT_LightBeam  辐射圈：EPT_RadiationPoint  面：EPT_Surface  点Shape：EPT_ShpPoint  折线Shape：EPT_ShpPolyline  多边形Shape：EPT_ShpPolygon  折线：EPT_Polyline  视频投影：EPT_VideoProjector  全景图：EPT_Panoramic  压平：EPT_FlattenModifier  Cesium3DTileset：EPT_Cesium  挖洞：EPT_CutPolygonModifier  动态标记：EPT_EffectPoint  S3M Layer：EPT_S3MLayer  粒子：EPT_ParticleActor  角色：EPT_RoleActor </pre>
+    <pre class="sunlight-highlight-javascript">[{
+		&quot;iD&quot;:	&quot;ProjectTree_Root&quot;,
+		&quot;index&quot;:	0,
+		&quot;parentIndex&quot;:	-1,
+		&quot;name&quot;:	&quot;世界&quot;,
+		&quot;visiblity&quot;:	true,
+		&quot;type&quot;:	&quot;EPT_Folder&quot;
+}]
+
+图层返回type字段说明：
+
+  文件夹：EPT_Folder
+  场景：EPT_Scene
+  场景模型：EPT_ModelActor
+  测量：EPT_Measurement
+  剖切体：EPT_Cut
+  动态水：EPT_DynamicWater
+  车辆：EPT_Vehicle
+  标签：EPT_Tag
+  灯光：EPT_Light
+  贴花：EPT_Decal
+  光流：EPT_LightBeam
+  辐射圈：EPT_RadiationPoint
+  面：EPT_Surface
+  点Shape：EPT_ShpPoint
+  折线Shape：EPT_ShpPolyline
+  多边形Shape：EPT_ShpPolygon
+  折线：EPT_Polyline
+  视频投影：EPT_VideoProjector
+  全景图：EPT_Panoramic
+  压平：EPT_FlattenModifier
+  Cesium3DTileset：EPT_Cesium
+  挖洞：EPT_CutPolygonModifier
+  动态标记：EPT_EffectPoint
+  S3M Layer：EPT_S3MLayer
+  粒子：EPT_ParticleActor
+  角色：EPT_RoleActor
+ </pre>
 
 
     

@@ -123,6 +123,8 @@ export default function Sandbox() {
   const logTimesRef = useRef(0);
   const codeRef = useRef(code);
   codeRef.current = code;
+  // 文档「亲自试一试」带入代码后，待连接就绪自动执行（立即执行开启时）
+  const pendingAutoRunRef = useRef(false);
   const flagsRef = useRef({});
   flagsRef.current = { autoClear, logEnabled, notExecute };
   const playerPanelRef = useRef(null);
@@ -202,6 +204,17 @@ export default function Sandbox() {
         setCoordType(String(coordSystemType ?? '0'));
         setCoordSel(String(coordSystemType ?? '0'));
         writeLog('✅ 工程已就绪，可以调用 API（坐标系类型：' + (String(coordSystemType) === '1' ? '球面' : '投影') + '）', false, 'green');
+        if (pendingAutoRunRef.current && !flagsRef.current.notExecute) {
+          pendingAutoRunRef.current = false;
+          setTimeout(() => {
+            try {
+              window.eval('(async ()=>{' + codeRef.current + '})()');
+              writeLog('▶ 已自动执行文档示例代码', false, 'green');
+            } catch (err) {
+              writeLog(err.message, false, 'red');
+            }
+          }, 300);
+        }
       },
       onApiVersion: () => {
         const fdapi = window.fdapi;
@@ -368,7 +381,18 @@ export default function Sandbox() {
       if (pending) {
         window.localStorage.removeItem('SbPendingCode');
         setCode(pending);
-        writeLog('📄 已载入文档示例代码，点击「执行JS」运行', false, 'green');
+        if (!flagsRef.current.notExecute) {
+          pendingAutoRunRef.current = true;
+          if (window.fdapi) {
+            pendingAutoRunRef.current = false;
+            setTimeout(() => doExecCode(), 200);
+            writeLog('📄 已载入文档示例代码，正在自动执行…', false, 'green');
+          } else {
+            writeLog('📄 已载入文档示例代码，连接就绪后将自动执行', false, 'green');
+          }
+        } else {
+          writeLog('📄 已载入文档示例代码，点击「执行JS」运行', false, 'green');
+        }
         return;
       }
       const saved = window.localStorage.getItem('SbSavedCode');

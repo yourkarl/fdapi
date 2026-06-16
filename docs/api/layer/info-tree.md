@@ -27,6 +27,25 @@ description: "管理场景图层树（目录树），提供对树上对象的定
   - 操作依赖图层树上对象的真实 id，需先确保对象已在工程中预置并具有正确节点结构。
   - 主要面向工程内置场景对象，与运行时通过各图层对象动态添加的数据需区分管理。
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `callBPFunction` | 调用图层树上对象包含的多个蓝图函数， |  |
+| `deleteByGroupId` | 通过GroupId删除各类API创建的对象 |  |
+| `disableXRay` | 禁用X光 |  |
+| `enableXRay` | 启用X光 |  |
+| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| `get` | 获取图层树信息 | 查询对象信息，用于业务联动 |
+| `getBPFunction` | 根据图层树对象ID查询其包含的蓝图函数信息， |  |
+| `hide` | 隐藏图层 | 按业务条件隐藏对象 |
+| `hideByGroupId` | 通过GroupId隐藏各类API创建的对象 |  |
+| `highlightByGroupId` | 通过GroupId高亮各类API创建的对象 |  |
+| `setVisibility` | 设置图层的可见性 | 控制对象显隐 |
+| `show` | 显示图层 | 按业务条件显示对象 |
+| `showByGroupId` | 通过GroupId显示各类API创建的对象 |  |
+
 ## 方法（Methods）
 
 ### `callBPFunction(data, fn)`

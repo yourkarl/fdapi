@@ -86,6 +86,12 @@ const config = {
             label: 'API 文档',
           },
           {
+            to: '/spatial-tools',
+            label: '空间智能工具',
+            position: 'left',
+            className: 'navbar-new',
+          },
+          {
             to: '/sandbox',
             label: '🧪 在线调试',
             position: 'left',

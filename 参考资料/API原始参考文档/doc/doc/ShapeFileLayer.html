@@ -109,7 +109,7 @@
 
     
     <div class="description">
-        <p>一般通过api.ShapeFileLayer调用其方法</p>
+        <p>通过api.ShapeFileLayer调用其方法</p>
     </div>
     
 
@@ -1363,7 +1363,8 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">返回ShapeFileLayer的详细信息{
+    <pre class="sunlight-highlight-javascript">返回ShapeFileLayer的详细信息
+{
             &quot;id&quot;:	&quot;sp1&quot;,
             &quot;groupId&quot;:	&quot;&quot;,
             &quot;userData&quot;:	&quot;&quot;,
@@ -1548,7 +1549,8 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">ShapeFileLayer内部要素区域的详细信息	{
+    <pre class="sunlight-highlight-javascript">ShapeFileLayer内部要素区域的详细信息
+	{
         &quot;sp1&quot;:	{
             &quot;29&quot;:	{
                 &quot;Type&quot;:	&quot;shapefilelayer&quot;,
@@ -2379,7 +2381,8 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">返回模型包含的所有属性{ &quot;fieldName&quot;:	[&quot;CMColor&quot;, &quot;SLColor&quot;, &quot;RGB&quot;]	}</pre>
+    <pre class="sunlight-highlight-javascript">返回模型包含的所有属性
+{ &quot;fieldName&quot;:	[&quot;CMColor&quot;, &quot;SLColor&quot;, &quot;RGB&quot;]	}</pre>
 
 
     
@@ -3334,7 +3337,13 @@ updateBegin不是异步调用，不需要await，也没有回调函数参数</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();for (let i = 0; i &lt; 1000; i++) {     fdapi.xxx.setColor(i, Color.Yellow);} fdapi.xxx.updateEnd(function () {     log(&#x27;update finished!&#x27;);});</pre>
+    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();
+for (let i = 0; i &lt; 1000; i++) {
+     fdapi.xxx.setColor(i, Color.Yellow);
+} 
+fdapi.xxx.updateEnd(function () {
+     log(&#x27;update finished!&#x27;);
+});</pre>
 
 
     

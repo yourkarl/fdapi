@@ -92,6 +92,28 @@ new DigitalTwinPlayer(host, option)
 
 ---
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `destroy` | 销毁 |  |
+| `getAPI` | 获取DigitalTwinAPI接口 |  |
+| `getHost` | 获取服务器的地址（ip:port） |  |
+| `getInstanceInfo` | 获取当前所连接的实例信息 |  |
+| `getVideoElement` | 获取用于播放Cloud视频流的video元素 |  |
+| `getVideoElementSize` | 获取Video元素的尺寸 |  |
+| `getVideoSize` | :::caution 已废弃 |  |
+| `getVideoStreamSize` | 获取视频流的尺寸 |  |
+| `resize` | 重新调整布局 |  |
+| `screen2World` | 屏幕坐标转为投影坐标 |  |
+| `setActionEventEnabled` | 设置是否开启键盘、鼠标交互事件的回调功能 |  |
+| `setEnableEventSync` | 用于开关交互事件同步功能 |  |
+| `setInstanceOptions` | 设置实例选项，调用此接口可以实现在不刷新页面的情况下切换使用的实例或工程文件 |  |
+| `setKeyEventTarget` | 设置键盘交互事件的目标对象 |  |
+| `setResolution` | 设置视频流的尺寸，如果云渲染后台启用了自适应，那么视频流的分辨率也会自动调整。 如果没有… |  |
+| `world2Screen` | 投影坐标转为屏幕坐标 |  |
+
 ## 方法（Methods）
 
 ### `destroy(reason)`

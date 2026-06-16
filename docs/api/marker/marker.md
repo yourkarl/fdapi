@@ -43,6 +43,61 @@ new Marker()
 
 ---
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `add` | 添加一个或多个标注点  调用时 | 向场景批量添加对象 |
+| `attachObject` | 设置Marker贴合模型对象进行移动，设置贴合后Marker会跟随模型一起平滑运动，支持… |  |
+| `clear` | 删除场景中所有的标注 | 清空全部对象，重置图层 |
+| `delete` | 删除一个或多个标注对象 | 按 ID 移除指定对象 |
+| `deleteByGroupId` | 根据分组ID删除Marker |  |
+| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| `focusAll` | 自动定位到能观察所有Marker对象的合适距离 | 相机定位到全部对象的合适视角 |
+| `get` | 根据ID获取标注的详细信息 | 查询对象信息，用于业务联动 |
+| `hide` | 隐藏标注 | 按业务条件隐藏对象 |
+| `hideAll` | 隐藏所有标注 | 一键隐藏全部对象 |
+| `hideAllPopupWindow` | 隐藏所有标注的弹出窗口 |  |
+| `hideByGroupId` | 根据分组ID隐藏Marker |  |
+| `hidePopupWindow` | 隐藏指定标注的弹出窗口 |  |
+| `setAnchors` | 设置标注的整体偏移量（修改锚点） |  |
+| `setAutoHidePopupWindow` | 设置是否自动关闭标注的弹出窗口 |  |
+| `setClusterStyle` | 设置marker聚合样式 |  |
+| `setCoordinate` | 设置标注的位置 |  |
+| `setFontColor` | 设置标注文本颜色 |  |
+| `setFontOutlineColor` | 设置字体轮廓线颜色 |  |
+| `setFontOutlineSize` | 设置字体轮廓线大小 |  |
+| `setFontSize` | 设置字体大小 |  |
+| `setGroupId` | 设置分组 |  |
+| `setHoverImagePath` | 设置鼠标悬停时显示的图片路径 |  |
+| `setImagePath` | 设置标注的图片 |  |
+| `setImageSize` | 设置标注图片的大小 |  |
+| `setLineColor` | 设置LineColor |  |
+| `setLineOffset` | 设置LineOffset |  |
+| `setLineSize` | 设置LineSize |  |
+| `setOcclusionCull` | 设置是否参与遮挡剔除 |  |
+| `setPopupOffset` | 设置弹窗偏移: [x, y] |  |
+| `setPopupSize` | 设置弹窗大小: [width, height] |  |
+| `setPopupURL` | 设置弹窗HTML链接 |  |
+| `setPriority` | 设置避让优先级 |  |
+| `setRange` | 设置标注的可见范围 |  |
+| `setText` | 设置标注的文本 |  |
+| `setTextBackgroundColor` | 设置标注文本的背景颜色 |  |
+| `setTextOffset` | 设置文本偏移 |  |
+| `setTextRange` | 设置文本可视范围: [近裁距离, 远裁距离] |  |
+| `setURL` | 设置标注的URL |  |
+| `setUserData` | 设置用户数据 |  |
+| `setViewportVisible` | 多视口状态下，设置Marker对象在各视口的可见性 |  |
+| `show` | 显示标注 | 按业务条件显示对象 |
+| `showAll` | 显示所有标注 | 一键显示全部对象 |
+| `showAllPopupWindow` | 显示所有标注的弹出窗口 |  |
+| `showByGroupId` | 根据分组ID显示Marker |  |
+| `showPopupWindow` | 显示指定标注的弹出窗口 |  |
+| `update` | 修改一个或多个标注对象 | 运行时动态更新对象属性/状态 |
+| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+
 ## 方法（Methods）
 
 ### `add(data, fn)`

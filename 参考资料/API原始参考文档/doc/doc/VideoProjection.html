@@ -90,7 +90,7 @@
         </h2>
         
             <div class="class-description"><p>VideoProjection类，提供视频投影对象相关的操作<br>
-一般通过api.videoProjection调用其方法 <br><br>
+通过api.videoProjection调用其方法 <br><br>
 VideoProjection的效果图：<br>
 <img src="../images/api/VideoProjection.jpg" alt=""></p></div>
         
@@ -1086,7 +1086,8 @@ VideoProjection的效果图：<br>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">VideoProjection的详细信息[{
+    <pre class="sunlight-highlight-javascript">VideoProjection的详细信息
+[{
             &quot;id&quot;:	&quot;vp1&quot;,
             &quot;groupId&quot;:	&quot;&quot;,
             &quot;videoURL&quot;:	&quot;C:\\Users\\Administrator\\AppData\\Roaming\\Cloud\\SDK/media/video/video2.mov&quot;,
@@ -3072,7 +3073,13 @@ updateBegin不是异步调用，不需要await，也没有回调函数参数</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();for (let i = 0; i &lt; 1000; i++) {     fdapi.xxx.setColor(i, Color.Yellow);} fdapi.xxx.updateEnd(function () {     log(&#x27;update finished!&#x27;);});</pre>
+    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();
+for (let i = 0; i &lt; 1000; i++) {
+     fdapi.xxx.setColor(i, Color.Yellow);
+} 
+fdapi.xxx.updateEnd(function () {
+     log(&#x27;update finished!&#x27;);
+});</pre>
 
 
     

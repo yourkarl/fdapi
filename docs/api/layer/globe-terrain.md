@@ -34,6 +34,25 @@ new GlobeTerrain()
 
 ---
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `addImageryLayer` | 在Cesium球面上添加图层服务，支持的服务类型包含WMTS、WMS、MVT和TMS |  |
+| `addImageryLayerBySchemaParams` | 根据自定义参数添加球面网络地图服务，如WMTS/WMS/MVT/TMS服务等网络图层服务 |  |
+| `clearImageryLayer` | 清空Cesium球面上添加的所有图层服务 |  |
+| `deleteImageryLayer` | 删除Cesium球面上指定的图层服务 |  |
+| `destroy` | 销毁Cesium球面的地形和影像 |  |
+| `hide` | 隐藏Cesium球面的地形和影像 | 按业务条件隐藏对象 |
+| `init` | 初始化Cesium球面的地形和影像 |  |
+| `setImagery` | 设置更新初始化加载的影像服务 |  |
+| `setImageryBySchemaParams` | 根据自定义参数的图层服务来更新初始化球面加载的影像服务， |  |
+| `setImageryLayerDrawOrder` | 设置Cesium球面上添加的图层服务的绘制顺序，即移动当前图层到目标图层的上方位置显示 |  |
+| `show` | 显示Cesium球面的地形和影像 | 按业务条件显示对象 |
+| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+
 ## 方法（Methods）
 
 ### `addImageryLayer(option, fn)`

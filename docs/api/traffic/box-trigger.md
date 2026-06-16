@@ -27,6 +27,17 @@ BoxTrigger 用于在三维场景中绘制一个长方体盒子热区，当 Custo
   - 通过 `bbox`（[minX,minY,minZ,maxX,maxY,maxZ]）定义热区，需与 `coordinateType` 坐标系（Projection/WGS84/GCJ02/BD09）一致，避免热区错位。
   - 仅对 CustomObject 与 Camera 进出生效；触发的是离散的进入/退出事件而非连续判定，盒子数量过多会增加检测开销，应合理规划区域粒度。
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `add` | 添加一个或多个BoxTrigger对象，当CustomObject对象或相机Camera… | 向场景批量添加对象 |
+| `clear` | 清空场景中所有的BoxTrigger对象 | 清空全部对象，重置图层 |
+| `delete` | 删除一个或多个BoxTrigger对象， | 按 ID 移除指定对象 |
+| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+
 ## 方法（Methods）
 
 ### `add(data, fn)`

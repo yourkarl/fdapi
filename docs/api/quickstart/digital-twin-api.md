@@ -133,6 +133,27 @@ new DigitalTwinAPI(host, options)
 
 ---
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `checkApiReady` | 检查API调用是否就绪 |  |
+| `destroy` | 关闭WebSocket连接 |  |
+| `executeJsInTickPage` | 在tick页面里执行Javascript代码 |  |
+| `getPlayer` | 获取DigitalTwinAPI所关联的DigitalTwinPlayer对象，如果只是… |  |
+| `getProjectInfo` | 获取工程信息 |  |
+| `getVersion` | 获取SDK的完整版本号，例如：5.3.0413 |  |
+| `registerSyncObjects` | 注册要进行同步的对象 |  |
+| `registerTick` | 注册每帧渲染时要执行的JS脚本 |  |
+| `removeTick` | 移除每帧渲染时执行的JS脚本 |  |
+| `reset` | 对三维场景执行重置操作 |  |
+| `saveProject` | 保存场景（只保存场景设置，不保存接口创建的对象） |  |
+| `setEnableAliases` | 开启接口别名（不建议使用） |  |
+| `setEventCallback` | 设置三维事件（例如相机飞行开始、结束、Actor的点击等）的回调函数 |  |
+| `setHost` | 设置主机地址 |  |
+| `showTickWindow` | 显示/隐藏tick调试窗口。 该方法既可以在客户端调用，也可以在tick调试窗口调用 |  |
+
 ## 方法（Methods）
 
 ### `checkApiReady()`

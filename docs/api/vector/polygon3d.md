@@ -73,6 +73,39 @@ let coords2 = [
   - 坐标按"外环+内环(洞)"及多 Part 的层级数组组织，注意嵌套结构与拉伸高度参数。
   - 大量体块或高顶点数会增加渲染开销，建议控制数量并简化边界。
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `add` | 添加一个或多个Polygon3D对象 | 向场景批量添加对象 |
+| `clear` | 删除场景中所有的3DPolygon | 清空全部对象，重置图层 |
+| `delete` | 删除一个或多个3DPolygon对象 | 按 ID 移除指定对象 |
+| `disableClip` | 禁止Polygon3D参与剖切 |  |
+| `enableClip` | 设置Polygon3D参与剖切 |  |
+| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| `get` | 根据ID获取3DPolygon的详细信息 | 查询对象信息，用于业务联动 |
+| `glow` | 闪烁 |  |
+| `hide` | 隐藏3DPolygon | 按业务条件隐藏对象 |
+| `hideAll` | 隐藏所有3DPolygon | 一键隐藏全部对象 |
+| `highlight` | 高亮，目前仅部分样式支持高亮，和材质有关 |  |
+| `setColor` | 设置颜色 |  |
+| `setCoordinates` | 设置坐标 |  |
+| `setDepthTest` | 设置是否做深度检测 |  |
+| `setHeight` | 设置高度 |  |
+| `setIntensity` | 设置亮度 |  |
+| `setStyle` | 设置样式 |  |
+| `setTillingX` | 设置TillingX |  |
+| `setTillingY` | 设置TillingY |  |
+| `setViewHeightRange` | 设置Polygon3D对象的可视高度范围 |  |
+| `show` | 显示3DPolygon | 按业务条件显示对象 |
+| `showAll` | 显示所有3DPolygon | 一键显示全部对象 |
+| `stopGlow` | 停止闪烁 |  |
+| `unHighlight` | 停止高亮 |  |
+| `update` | 修改一个或多个3DPolygon对象 | 运行时动态更新对象属性/状态 |
+| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+
 ## 方法（Methods）
 
 ### `add(data, fn)`

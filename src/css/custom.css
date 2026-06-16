@@ -552,3 +552,146 @@
   padding-bottom: 52px;
   min-height: 84px;
 }
+
+/* ── 导航下拉项「NEW」角标（空间智能模型开发工具）────────────────── */
+.navbar-new {
+  display: flex;
+  align-items: center;
+}
+.navbar-new::after {
+  content: 'NEW';
+  margin-left: 8px;
+  padding: 1px 6px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+  color: #fff;
+  background: linear-gradient(135deg, #4f8cff, #2e6bff);
+  border-radius: 8px;
+}
+
+/* ── 空间智能工具下载页 ─────────────────────────────────────── */
+.spatial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 24px;
+  margin-top: 8px;
+}
+.spatial-card {
+  position: relative;
+  background: linear-gradient(160deg, #141b27 0%, #0e141d 100%);
+  border: 1px solid rgba(0, 212, 255, 0.18);
+  border-radius: 16px;
+  padding: 28px 28px 24px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.spatial-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 212, 255, 0.5);
+  box-shadow: 0 12px 40px rgba(0, 212, 255, 0.12);
+}
+.spatial-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.spatial-card-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+.spatial-card-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #00d4ff;
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  border-radius: 6px;
+  padding: 2px 8px;
+}
+.spatial-card-new { margin-left: auto; }
+.spatial-card-title {
+  color: #e6f0ff;
+  font-size: 1.35rem;
+  margin: 0 0 10px;
+}
+.spatial-card-desc {
+  color: #9fb3c8;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+.spatial-card-points {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 22px;
+}
+.spatial-card-points li {
+  position: relative;
+  padding-left: 22px;
+  color: #c9d6e3;
+  font-size: 0.9rem;
+  line-height: 1.9;
+}
+.spatial-card-points li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #00d4ff;
+  font-weight: 700;
+}
+.spatial-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.spatial-btn-primary {
+  flex: 1;
+  text-align: center;
+  background: linear-gradient(135deg, #00d4ff, #2e6bff);
+  color: #04121d !important;
+  font-weight: 700;
+  padding: 11px 18px;
+  border-radius: 10px;
+  text-decoration: none !important;
+  transition: filter 0.2s ease;
+  white-space: nowrap;
+}
+.spatial-btn-primary:hover { filter: brightness(1.08); }
+.spatial-btn-secondary {
+  text-align: center;
+  color: #aecbe0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 11px 18px;
+  border-radius: 10px;
+  text-decoration: none !important;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.spatial-btn-secondary:hover { border-color: #00d4ff; color: #e6f0ff !important; }
+
+.spatial-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+.spatial-step {
+  background: #121925;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 24px;
+  text-align: center;
+}
+.spatial-step-no {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: rgba(0, 212, 255, 0.12);
+  color: #00d4ff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 40px;
+}
+.spatial-step-title { color: #e6f0ff; font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
+.spatial-step-desc { color: #8ba3ba; font-size: 0.88rem; line-height: 1.7; }

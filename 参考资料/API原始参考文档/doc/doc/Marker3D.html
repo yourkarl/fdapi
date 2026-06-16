@@ -90,7 +90,7 @@
         </h2>
         
             <div class="class-description"><p>动态标记，实现对3D标注对象的操作<br>
-一般通过api.marker3d调用其方法<br>
+通过api.marker3d调用其方法<br>
 <img src="../images/api/marker3d_style.gif" style="width:90%;" /></p></div>
         
     
@@ -767,7 +767,8 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">蓝图函数调用的示例代码 注意：被调用函数传入的参数类型、参数顺序都必须和蓝图函数的参数类型、顺序完全保持一致！ fdapi.marker3d.callBPFunction([
+    <pre class="sunlight-highlight-javascript">蓝图函数调用的示例代码 注意：被调用函数传入的参数类型、参数顺序都必须和蓝图函数的参数类型、顺序完全保持一致！
+ fdapi.marker3d.callBPFunction([
             {
                 id: &#x27;m1&#x27;,
                 functionName: &#x27;文字&#x27;,
@@ -1609,7 +1610,8 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">返回3DMarker的详细信息{
+    <pre class="sunlight-highlight-javascript">返回3DMarker的详细信息
+{
         &quot;id&quot;: &quot;m1&quot;,
         &quot;text&quot;: &quot;3DMarker-Add&quot;,//3D标注显示文字
         &quot;textSize&quot; : 18,//3D标注显示文字大小
@@ -3106,7 +3108,13 @@ updateBegin不是异步调用，不需要await，也没有回调函数参数</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();for (let i = 0; i &lt; 1000; i++) {     fdapi.xxx.setColor(i, Color.Yellow);} fdapi.xxx.updateEnd(function () {     log(&#x27;update finished!&#x27;);});</pre>
+    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();
+for (let i = 0; i &lt; 1000; i++) {
+     fdapi.xxx.setColor(i, Color.Yellow);
+} 
+fdapi.xxx.updateEnd(function () {
+     log(&#x27;update finished!&#x27;);
+});</pre>
 
 
     

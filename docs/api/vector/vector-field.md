@@ -53,6 +53,21 @@ tif文件结构描述：
   - 坐标与时序需统一
 
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `add` | 添加一个或多个VectorField向量场对象 | 向场景批量添加对象 |
+| `clear` | 清空场景中所有的VectorField对象 | 清空全部对象，重置图层 |
+| `delete` | 删除一个或多个VectorField对象 | 按 ID 移除指定对象 |
+| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| `get` | 根据ID获取VectorField对象的详细信息 | 查询对象信息，用于业务联动 |
+| `hide` | 隐藏VectorField对象 | 按业务条件隐藏对象 |
+| `setViewportVisible` | 设置向量场对象在进入多视口状态下视口可见性 |  |
+| `show` | 显示VectorField对象 | 按业务条件显示对象 |
+| `update` | 修改一个或多个VectorField对象 | 运行时动态更新对象属性/状态 |
+
 ## 方法（Methods）
 
 ### `add(data, fn)`

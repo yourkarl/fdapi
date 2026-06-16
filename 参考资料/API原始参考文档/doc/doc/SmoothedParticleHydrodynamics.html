@@ -90,7 +90,7 @@
         </h2>
         
             <div class="class-description"><p>光滑粒子流体动力学仿真对象，实现对光滑粒子流体动力学仿真对象的操作<br>
-一般通过api.smoothedParticleHydrodynamics调用其方法</p></div>
+通过api.smoothedParticleHydrodynamics调用其方法</p></div>
         
     
 </header>
@@ -408,7 +408,9 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">生成bin文件和读取bin文件的Java代码示例：
+    <pre class="sunlight-highlight-javascript">生成bin文件和读取bin文件的Java代码示例：
+
+
         public static void writeBinFile(){
             //二进制文件生成路径
             String binPath = &quot;C:\\bin\\&quot;;
@@ -491,7 +493,9 @@
                 //输出字段值
                 System.out.println(&quot;x y z value : [&quot;+  x + &quot;,&quot;+ y + &quot;,&quot; + z + &quot;,&quot; + value +&quot;]&quot;);
             }
-        } </pre>
+        }
+
+ </pre>
 
 
     
@@ -1956,7 +1960,13 @@ updateBegin不是异步调用，不需要await，也没有回调函数参数</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();for (let i = 0; i &lt; 1000; i++) {     fdapi.xxx.setColor(i, Color.Yellow);} fdapi.xxx.updateEnd(function () {     log(&#x27;update finished!&#x27;);});</pre>
+    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();
+for (let i = 0; i &lt; 1000; i++) {
+     fdapi.xxx.setColor(i, Color.Yellow);
+} 
+fdapi.xxx.updateEnd(function () {
+     log(&#x27;update finished!&#x27;);
+});</pre>
 
 
     

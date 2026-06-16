@@ -3,6 +3,7 @@
 // 运行：node gen_types.js
 const fs = require('fs');
 const path = require('path');
+const { atomicWrite } = require('./gen_utils');
 
 const ROOT = __dirname;
 const SRC = path.join(ROOT, '参考资料', 'API原始参考文档', 'doc', 'doc', 'global.html');
@@ -70,8 +71,8 @@ function main() {
   const html = fs.readFileSync(SRC, 'utf8');
   const consts = parseConstants(html);
   if (!consts.length) { console.error('未解析到任何 constant typedef，检查正则/HTML 结构'); process.exit(1); }
-  fs.writeFileSync(OUT, toMarkdown(consts), 'utf8');
-  fs.writeFileSync(NAMES_OUT, JSON.stringify(consts.map((c) => c.name)), 'utf8');
+  atomicWrite(OUT, toMarkdown(consts));
+  atomicWrite(NAMES_OUT, JSON.stringify(consts.map((c) => c.name)));
   console.log('解析常量类型数量:', consts.length);
   console.log('类型名:', consts.map((c) => c.name + '(' + c.members.length + ')').join(', '));
   console.log('输出:', OUT);

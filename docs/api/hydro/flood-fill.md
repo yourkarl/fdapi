@@ -34,6 +34,29 @@ new FloodFill()
 
 ---
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `add` | 添加一个或多个FloodFill对象， | 向场景批量添加对象 |
+| `clear` | 删除场景中所有的FloodFill | 清空全部对象，重置图层 |
+| `delete` | 删除一个或多个FloodFill对象 | 按 ID 移除指定对象 |
+| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| `get` | 根据ID获取FloodFill的详细信息 | 查询对象信息，用于业务联动 |
+| `hide` | 隐藏FloodFill | 按业务条件隐藏对象 |
+| `hideAll` | 隐藏所有FloodFill | 一键隐藏全部对象 |
+| `setColor` | 设置水颜色 |  |
+| `setElevation` | 设置水位高度 |  |
+| `setPrecision` | 设置水淹模拟精度 |  |
+| `setRange` | 设置水淹分析范围 |  |
+| `setSeed` | 设置出水点 |  |
+| `show` | 显示FloodFill | 按业务条件显示对象 |
+| `showAll` | 显示所有FloodFill | 一键显示全部对象 |
+| `update` | 修改一个或多个FloodFill对象 | 运行时动态更新对象属性/状态 |
+| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+
 ## 方法（Methods）
 
 ### `add(data, fn)`
