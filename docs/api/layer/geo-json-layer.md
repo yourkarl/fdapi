@@ -34,6 +34,30 @@ new GeoJSONLayer()
 
 ---
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `add` | 从GeoJSON文件或者url下载链接加载GeoJSON并进行符号化展示 | 向场景批量添加对象 |
+| `clear` | 清空场景中所有的GeoJSONLayer图层对象 | 清空全部对象，重置图层 |
+| `delete` | 删除一个或多个GeoJSONLayer图层对象 | 按 ID 移除指定对象 |
+| `focus` | 自动定位到GeoJSONLayer图层对象 | 相机定位到目标，点击联动跳转 |
+| `focusFeature` | 定位到GeoJSONLayer图层的某一块要素区域 |  |
+| `hide` | 隐藏一个或多个GeoJSONLayer图层对象 | 按业务条件隐藏对象 |
+| `highlightFeature` | 高亮GeoJSONLayer图层对象内部的某一块要素区域 |  |
+| `highlightFeatureByProperty` | 根据要素包含的属性字段名称和对应的值来高亮GeoJSONLayer图层对象内部对应的要素区域 |  |
+| `highlightFeatures` | 高亮GeoJSONLayer图层对象内部的多块要素区域 |  |
+| `setViewHeightRange` | 设置GeoJSONLayer对象的可视高度范围， |  |
+| `show` | 显示一个或多个GeoJSONLayer图层对象 | 按业务条件显示对象 |
+| `unHighlightAllFeaturesById` | 取消高亮一个或者多个GeoJSONLayer图层的所有高亮要素区域 |  |
+| `unHighlightFeature` | 取消高亮GeoJSONLayer图层对象内部的某一块要素区域 |  |
+| `unHighlightFeatureByProperty` | 根据要素包含的属性字段名称和对应的值来取消高亮GeoJSONLayer图层对象内部对应的… |  |
+| `unHighlightFeatures` | 取消高亮GeoJSONLayer图层对象内部的多块要素区域 |  |
+| `update` | 更新GeoJSONLayer图层对象的符号化显示效果 | 运行时动态更新对象属性/状态 |
+| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+
 ## 方法（Methods）
 
 ### `add(option, fn)`

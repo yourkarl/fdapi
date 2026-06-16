@@ -5,6 +5,7 @@
 用法：python3 gen_dts.py
 """
 import re, json, glob
+from gen_utils import atomic_write
 
 TYPE_MAP = {
     'string': 'string', 'number': 'number', 'boolean': 'boolean', 'bool': 'boolean',
@@ -108,7 +109,7 @@ out.append('declare const HostConfig: { API: string; Player: string; PlayerMappi
 out.append('declare function log(msg: any, noLineBreak?: boolean, color?: string): void;')
 out.append('declare function sleep(ms: number): Promise<void>;')
 out.append('')
-open('static/dts-sdk.d.ts', 'w', encoding='utf-8').write('\n'.join(out))
+atomic_write('static/dts-sdk.d.ts', '\n'.join(out))
 
 # ---------- 生成补全数据 ----------
 comp = {'root': [], 'ns': {}}
@@ -120,7 +121,7 @@ for ns in sorted(k for k in namespaces if k):
 js = ('// 自动生成：调试台 fdapi 自动补全数据（python3 gen_dts.py）\n'
       '/* eslint-disable */\n'
       'export const API_COMPLETIONS = ' + json.dumps(comp, ensure_ascii=False) + ';\n')
-open('src/data/api-completions.js', 'w', encoding='utf-8').write(js)
+atomic_write('src/data/api-completions.js', js)
 
 n_ns = len([k for k in namespaces if k])
 n_m = sum(len(e['methods']) for e in namespaces.values())

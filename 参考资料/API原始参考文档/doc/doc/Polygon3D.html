@@ -89,7 +89,7 @@
         Polygon3D
         </h2>
         
-            <div class="class-description"><p>Polygon3D类， 提供三维多边形相关的操作， 一般通过api.polygon3d调用其方法，效果图：</p>
+            <div class="class-description"><p>Polygon3D类， 提供三维多边形相关的操作， 通过api.polygon3d调用其方法，效果图：</p>
 <p><img src="../images/api/3DPolugon.Update.gif" alt=""></p>
 <p><br><br><br>
 <strong>下面Example代码的运行效果图：</strong></p>
@@ -458,7 +458,9 @@ let params = res.data[0].params;</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">polygon3d对象示例 let polygon3d = {
+    <pre class="sunlight-highlight-javascript">polygon3d对象示例
+
+ let polygon3d = {
         id: &#x27;polygon3d&#x27;,
         coordinates: coordinates,
         coordinateType: 0,
@@ -1457,7 +1459,8 @@ let params = res.data[0].params;</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">3DPolygon的详细信息{
+    <pre class="sunlight-highlight-javascript">3DPolygon的详细信息
+{
             &quot;id&quot;:	&quot;1&quot;,
             &quot;groupId&quot;:	&quot;&quot;,
             &quot;style&quot;:	10,
@@ -4504,7 +4507,13 @@ updateBegin不是异步调用，不需要await，也没有回调函数参数</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();for (let i = 0; i &lt; 1000; i++) {     fdapi.xxx.setColor(i, Color.Yellow);} fdapi.xxx.updateEnd(function () {     log(&#x27;update finished!&#x27;);});</pre>
+    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();
+for (let i = 0; i &lt; 1000; i++) {
+     fdapi.xxx.setColor(i, Color.Yellow);
+} 
+fdapi.xxx.updateEnd(function () {
+     log(&#x27;update finished!&#x27;);
+});</pre>
 
 
     

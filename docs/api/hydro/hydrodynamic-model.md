@@ -31,6 +31,20 @@ description: "早期版本的二维水动力模型对象，基于真实数据（
   - 该对象已标记废弃，请迁移到 HydroDynamic2D；waterDepth、flowField、dem 三个 tif 文件分辨率必须一致。
   - 开启 collision 碰撞会影响加载效率；displayMode=0 时 waterColor 生效，热力样式下应配置 colors 调色板与 valueRange。
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `add` | 添加一个或多个HydrodynamicModel二维水动力模型对象 | 向场景批量添加对象 |
+| `clear` | 删除场景中所有的HydrodynamicModel | 清空全部对象，重置图层 |
+| `delete` | 删除一个或多个HydrodynamicModel对象 | 按 ID 移除指定对象 |
+| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| `get` | 根据ID获取HydrodynamicModel的详细信息 | 查询对象信息，用于业务联动 |
+| `hide` | 隐藏HydrodynamicModel | 按业务条件隐藏对象 |
+| `show` | 显示HydrodynamicModel | 按业务条件显示对象 |
+| `update` | 修改一个或多个HydrodynamicModel对象 | 运行时动态更新对象属性/状态 |
+
 ## 方法（Methods）
 
 ### `add(data, fn)`

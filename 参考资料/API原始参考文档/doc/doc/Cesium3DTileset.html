@@ -90,7 +90,7 @@
         </h2>
         
             <div class="class-description"><p>Cesium3DTileset 相关的操作<br>
-一般通过api.cesium3DTileset调用其方法</p></div>
+通过api.cesium3DTileset调用其方法</p></div>
         
     
 </header>
@@ -1052,7 +1052,8 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">Cesium3DTileset的详细信息{
+    <pre class="sunlight-highlight-javascript">Cesium3DTileset的详细信息
+{
         id: &#x27;fd1&#x27;,
         tileURL: &#x27;&#x27;
         }</pre>
@@ -2053,7 +2054,13 @@ updateBegin不是异步调用，不需要await，也没有回调函数参数</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();for (let i = 0; i &lt; 1000; i++) {     fdapi.xxx.setColor(i, Color.Yellow);} fdapi.xxx.updateEnd(function () {     log(&#x27;update finished!&#x27;);});</pre>
+    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();
+for (let i = 0; i &lt; 1000; i++) {
+     fdapi.xxx.setColor(i, Color.Yellow);
+} 
+fdapi.xxx.updateEnd(function () {
+     log(&#x27;update finished!&#x27;);
+});</pre>
 
 
     

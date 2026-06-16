@@ -6,6 +6,7 @@
 重新生成：python gen_param_meta.py
 """
 import os, re, json, glob
+from gen_utils import atomic_write
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DOCS = os.path.join(ROOT, 'docs', 'api')
@@ -139,9 +140,7 @@ def main():
     js = ('// 自动生成：python gen_param_meta.py —— 解析 docs/api 参数表\n'
           '/* eslint-disable */\n'
           'export const PARAM_META = ' + json.dumps(data, ensure_ascii=False, separators=(',', ':')) + ';\n')
-    os.makedirs(os.path.dirname(OUT), exist_ok=True)
-    with open(OUT, 'w', encoding='utf-8') as f:
-        f.write(js)
+    atomic_write(OUT, js)
     nf = sum(len(v['fields']) for v in by_ns.values())
     print('namespaces:', len(by_ns), ' fields(byNs):', nf, ' global fields:', len(global_fields))
     print('output:', OUT, round(len(js) / 1024, 1), 'KB')

@@ -1,4 +1,5 @@
 import json
+from gen_utils import atomic_write
 
 nav = json.load(open('nav_data.json', encoding='utf-8'))['CATEGORIES']
 
@@ -58,6 +59,5 @@ lines.append('};')
 lines.append('')
 lines.append('module.exports = sidebars;')
 
-with open('sidebars.js', 'w', encoding='utf-8') as f:
-    f.write('\n'.join(lines))
+atomic_write('sidebars.js', '\n'.join(lines))
 print('sidebars.js regenerated')

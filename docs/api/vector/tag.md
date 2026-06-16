@@ -34,6 +34,40 @@ Tag已停止更新，推荐使用功能更丰富的标注对象Marker
   - 通过 range/textRange 控制标签与文字的可见距离，避免远距离海量标签同时显示导致性能下降与画面拥挤。
   - 注意 coordinateType 与场景坐标系一致，autoHeight 可自动贴合下方物体高度。
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `add` | 添加一个或多个Tag对象 | 向场景批量添加对象 |
+| `clear` | 删除场景中所有的Tag | 清空全部对象，重置图层 |
+| `delete` | 删除一个或多个Tag对象 | 按 ID 移除指定对象 |
+| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| `focusAll` | 自动定位到能观察所有Tag对象的合适距离 | 相机定位到全部对象的合适视角 |
+| `get` | 根据ID获取Tag的详细信息 | 查询对象信息，用于业务联动 |
+| `hide` | 隐藏Tag | 按业务条件隐藏对象 |
+| `hideAll` | 隐藏所有Tag | 一键隐藏全部对象 |
+| `hideAllPopupWindow` | 隐藏所有标签的弹出窗口 |  |
+| `hidePopupWindow` | 隐藏指定标签的弹出窗口 |  |
+| `setAutoHidePopupWindow` | 设置是否自动关闭标签的弹出窗口 |  |
+| `setCoordinate` | 设置标签的位置 |  |
+| `setImagePath` | 设置标签的图片 |  |
+| `setImageSize` | 设置标签图片的大小 |  |
+| `setRange` | 设置标签的可见范围 |  |
+| `setShowLine` | 设置标签是否显示垂直牵引线 |  |
+| `setText` | 设置标签的文本 |  |
+| `setTextBackgroundColor` | 设置标签文本的背景颜色 |  |
+| `setTextBorderColor` | 设置标签文本的边框颜色 |  |
+| `setTextColor` | 设置标签文本颜色 |  |
+| `setURL` | 设置标签的URL |  |
+| `show` | 显示Tag | 按业务条件显示对象 |
+| `showAll` | 显示所有Tag | 一键显示全部对象 |
+| `showAllPopupWindow` | 显示所有标签的弹出窗口 |  |
+| `showPopupWindow` | 显示指定标签的弹出窗口 |  |
+| `update` | 修改一个或多个Tag对象 | 运行时动态更新对象属性/状态 |
+| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+
 ## 方法（Methods）
 
 ### `add(data, fn)`

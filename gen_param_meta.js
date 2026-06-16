@@ -2,6 +2,7 @@
 // 与 gen_param_meta.py 等价的 Node 版本（本机无 Python 环境时使用）：node gen_param_meta.js
 const fs = require('fs');
 const path = require('path');
+const { atomicWrite } = require('./gen_utils');
 
 const ROOT = __dirname;
 const DOCS = path.join(ROOT, 'docs', 'api');
@@ -116,8 +117,7 @@ function main() {
   const js = '// 自动生成：node gen_param_meta.js（等价 gen_param_meta.py）—— 解析 docs/api 参数表\n'
     + '/* eslint-disable */\n'
     + 'export const PARAM_META = ' + JSON.stringify(data) + ';\n';
-  fs.mkdirSync(path.dirname(OUT), { recursive: true });
-  fs.writeFileSync(OUT, js, 'utf8');
+  atomicWrite(OUT, js);
   const nf = Object.values(byNs).reduce((s, v) => s + Object.keys(v.fields).length, 0);
   console.log('namespaces:', Object.keys(byNs).length, ' fields(byNs):', nf, ' global:', Object.keys(globalFields).length);
   console.log('output:', OUT, (js.length / 1024).toFixed(1), 'KB');

@@ -90,7 +90,7 @@
         </h2>
         
             <div class="class-description"><p>TileLayer增、删、改、查相关的操作<br>
-一般通过api.tileLayer调用其方法</p></div>
+通过api.tileLayer调用其方法</p></div>
         
     
 </header>
@@ -4296,7 +4296,8 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">返回TileLayer的详细信息{
+    <pre class="sunlight-highlight-javascript">返回TileLayer的详细信息
+{
             &quot;id&quot;:	&quot;1&quot;,
             &quot;groupId&quot;:	&quot;&quot;,
             &quot;userData&quot;:	&quot;&quot;,
@@ -4474,7 +4475,8 @@
     
         <h5>Examples</h5>
         
-    <pre class="sunlight-highlight-javascript">请求代码示例fdapi.tileLayer.getActorInfo({
+    <pre class="sunlight-highlight-javascript">请求代码示例
+fdapi.tileLayer.getActorInfo({
             id: 1,
             objectIds: [&quot;SM_outdoor_wall_01_2&quot;]
         });</pre>
@@ -4652,7 +4654,9 @@
     
         <h5>Examples</h5>
         
-    <pre class="sunlight-highlight-javascript">请求代码示例    //getActorInfoFromDB方法的参数可以是object或者array			fdapi.tileLayer.getActorInfoFromDB([{ &quot;tileLayerId&quot;: &quot;91B748AB429AF0823D12EEBFA6334EBF&quot;, &quot;objectIds&quot;:[&quot;SM1&quot;,&quot;SM2&quot;,&quot;SM3&quot;] },{ &quot;tileLayerId&quot;: &quot;6388C5CC461B85523F69C2B04144BF2E&quot;, &quot;objectIds&quot;:[&quot;Floor1&quot;,&quot;Floor2&quot;] }]);</pre>
+    <pre class="sunlight-highlight-javascript">请求代码示例
+    //getActorInfoFromDB方法的参数可以是object或者array
+			fdapi.tileLayer.getActorInfoFromDB([{ &quot;tileLayerId&quot;: &quot;91B748AB429AF0823D12EEBFA6334EBF&quot;, &quot;objectIds&quot;:[&quot;SM1&quot;,&quot;SM2&quot;,&quot;SM3&quot;] },{ &quot;tileLayerId&quot;: &quot;6388C5CC461B85523F69C2B04144BF2E&quot;, &quot;objectIds&quot;:[&quot;Floor1&quot;,&quot;Floor2&quot;] }]);</pre>
 
     <pre class="sunlight-highlight-javascript">函数返回对象结构详细信息示例
      [{
@@ -4846,7 +4850,8 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">返回所有TileLayer是否支持压平[{
+    <pre class="sunlight-highlight-javascript">返回所有TileLayer是否支持压平
+[{
             &quot;id&quot;:	&quot;0&quot;,
             &quot;bFlattenSupported&quot;:	0 //不支持压平
         },{
@@ -5016,7 +5021,8 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">返回数据示例：[{
+    <pre class="sunlight-highlight-javascript">返回数据示例：
+[{
             &quot;id&quot;:	&quot;E637D8FE42335EE96C58A1840BCAD0CE&quot;,
             &quot;enabled&quot;:	1,
             &quot;mouseInteract&quot;:	1,
@@ -5366,7 +5372,8 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">返回TileLayer的所有ObjectID信息结构示例[{
+    <pre class="sunlight-highlight-javascript">返回TileLayer的所有ObjectID信息结构示例
+[{
             &quot;id&quot;:	&quot;1&quot;,
             &quot;objectIds&quot;:	[&quot;WorldSettings&quot;, &quot;Brush_0&quot;, &quot;SM_colum_02_2&quot;, &quot;SM_colum_3&quot;, &quot;SM_floor_130&quot;, &quot;SM_floor_195&quot;, &quot;SM_floor_313&quot;, &quot;SM_floor_352&quot;, &quot;SM_colum_24&quot;, &quot;SM_colum_25&quot;, &quot;SM_floor_399&quot;, &quot;SM_Road_04_5&quot;, &quot;SM_Road_05_8&quot;, &quot;SM_Road_5&quot;, &quot;SM_Road_6&quot;, &quot;SM_floor_400&quot;, &quot;SM_floor_401&quot;, &quot;SM_floor_402&quot;, &quot;SM_floor_403&quot;, &quot;SM_entrance_roof_01_11&quot;, &quot;P_raunfall2&quot;, &quot;P_raunfall4&quot;, &quot;SM_pot_4&quot;, &quot;SM_pot_9&quot;, &quot;PointLight13&quot;, &quot;PointLight14&quot;, &quot;SM_wall_30&quot;, &quot;SM_main_door_02_2&quot;, &quot;SM_main_door_3&quot;, &quot;SM_wall_51&quot;, &quot;SM_outdoor_wall_01_2&quot;, &quot;SM_column_04_2&quot;, &quot;SM_column_24&quot;, &quot;SM_column_29&quot;, &quot;SM_column_35&quot;, &quot;SM_ATM_4&quot;, &quot;SM_wall_140&quot;, &quot;SM_wall_141&quot;, &quot;SM_wall_142&quot;, &quot;SM_floor_01_28&quot;, &quot;SM_floor_2&quot;, &quot;SM_floor_3&quot;, &quot;SM_floor_4&quot;, &quot;SM_floor_5&quot;, &quot;SM_floor_6&quot;, &quot;SM_floor_7&quot;, &quot;SM_floor_8&quot;, &quot;SM_floor_9&quot;, &quot;SM_floor_10&quot;, &quot;SM_floor_11&quot;, &quot;SM_floor_12&quot;, &quot;SM_floor_03_414&quot;, &quot;SM_floor_05_15&quot;, &quot;SM_floor_06_57&quot;, &quot;SM_sofa_3&quot;, &quot;SM_sofa_4&quot;, &quot;Palm_01_30&quot;, &quot;Palm_02_33&quot;, &quot;Palm_04_36&quot;, &quot;Palm_03_39&quot;, &quot;SM_pot_5&quot;, &quot;SM_pot_6&quot;, &quot;SM_pot_7&quot;, &quot;SM_pot_8&quot;, &quot;SM_reception_01_2&quot;, &quot;PointLight22&quot;, &quot;PointLight23&quot;, &quot;PointLight24&quot;, &quot;PointLight27&quot;, &quot;SM_column_03_17&quot;, &quot;SM_column_4&quot;, &quot;SM_column_5&quot;, &quot;SM_wall_55&quot;, &quot;SM_wall_56&quot;, &quot;SM_wall_57&quot;, &quot;PointLight38&quot;, &quot;PointLight69&quot;, &quot;SM_elevator_glass_fence_31&quot;, &quot;SM_colum_13&quot;, &quot;SM_colum_20&quot;, &quot;SM_glass_window_01_4&quot;, &quot;SM_glass_window_2&quot;, &quot;SM_glass_window_3&quot;, &quot;SM_glass_window_4&quot;, &quot;SM_glass_window_5&quot;, &quot;SM_elevator_wall_03_15&quot;, &quot;SM_table_3&quot;, &quot;SM_table_4&quot;, &quot;SM_bed_6&quot;, &quot;SM_bed_7&quot;, &quot;SM_ATM_01_2&quot;, &quot;DecalActor75_2&quot;, &quot;DecalActor77&quot;, &quot;SM_wall_352&quot;, &quot;SM_ATM_6&quot;, &quot;EmergencyRoom_C_3&quot;]
         }]</pre>
@@ -11031,7 +11038,13 @@ updateBegin不是异步调用，不需要await，也没有回调函数参数</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();for (let i = 0; i &lt; 1000; i++) {     fdapi.xxx.setColor(i, Color.Yellow);} fdapi.xxx.updateEnd(function () {     log(&#x27;update finished!&#x27;);});</pre>
+    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();
+for (let i = 0; i &lt; 1000; i++) {
+     fdapi.xxx.setColor(i, Color.Yellow);
+} 
+fdapi.xxx.updateEnd(function () {
+     log(&#x27;update finished!&#x27;);
+});</pre>
 
 
     

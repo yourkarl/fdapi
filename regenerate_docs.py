@@ -8,6 +8,7 @@
 """
 import os, re, json, argparse, textwrap, shutil
 from bs4 import BeautifulSoup, NavigableString
+from gen_utils import atomic_write
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 _ap = argparse.ArgumentParser()
@@ -610,7 +611,7 @@ def main():
         # Docusaurus 3 bug: filename == parent dir → route 不注册，需加显式 slug
         if fname_stem == cat_id and 'slug:' not in md[:200]:
             md = md.replace('---\n', '---\nslug: /api/%s/%s\n' % (cat_id, fname_stem), 1)
-        open(os.path.join(out_dir, fname), 'w', encoding='utf-8').write(md)
+        atomic_write(os.path.join(out_dir, fname), md)
         ok += 1
     print('生成 %d 个，缺失 %d 个' % (ok, miss))
 

@@ -33,7 +33,7 @@ declare namespace fdapi {
   /** 显示/隐藏tick调试窗口。 该方法既可以在客户端调用，也可以在tick调试窗口调用 */
   function showTickWindow(visible?: boolean, fn?: (...args: any[]) => void): Promise<any>;
 
-  /** BoxTrigger类的对象，提供当CustomObject对象或相机Camera对象进入和退出盒子热区范围触发事件相关的操作 一般通过api.BoxTrigger调用其方法 */
+  /** BoxTrigger 用于在三维场景中绘制一个长方体盒子热区，当 CustomObject 自定义对象或 Camera 相机进入/退出该范围时自动触发回调事件，是一种基于空间包围盒的进出检测机制。 */
   namespace BoxTrigger {
     /** 添加一个或多个BoxTrigger对象，当CustomObject对象或相机Camera对象进入和退出盒子热区范围触发事件相关的操作 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -93,7 +93,7 @@ declare namespace fdapi {
     function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** 二维水动力模型对象，基于真实数据驱动生成水动力模型（过时版本待移除，推荐使用HydrodynamicModel对象） 一般通过api.HydrodynamicModel2调用其方法 */
+  /** HydrodynamicModel2 是早期的二维水动力模型对象，基于 JSON 数据文件驱动，按时序播放水深/流速等结果并以调色板着色，用于在三维场景中回放二维水动力计算成果。**该对象已废弃、待移除，新项目请改用 HydroDynamic2D 对象。** */
   namespace HydrodynamicModel2 {
     /** 添加一个或多个HydrodynamicModel2二维水动力模型对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -123,7 +123,7 @@ declare namespace fdapi {
     function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** 天线方向图对象，提供Antenna对象的操作方法 一般通过api.antenna调用 */
+  /** Antenna 以方向图形式可视化天线的辐射/增益方向特性。 */
   namespace antenna {
     /** 添加一个或多个天线方向图对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -147,7 +147,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** BattlefieldSimulation类，提供军事领域战场仿真对象相关的操作，包含装甲车、坦克、无人机、士兵等作战单元 一般通过api.battlefieldSimulation调用其方法 */
+  /** BattlefieldSimulation 加载并驱动装甲车、坦克、无人机、士兵等作战单元，模拟战场机动、编队与态势演进。 */
   namespace battlefieldSimulation {
     /** 初始化一个BattlefieldSimulation对象 */
     function add(battlefieldSimulation?: Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
@@ -163,7 +163,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** Beam相关的操作 一般通过api.beam调用其方法 */
+  /** Beam 可视化雷达/通信波束的指向、形状与扫描，表达探测/覆盖扇区。 */
   namespace beam {
     /** 添加一个或多个Beam对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -203,7 +203,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** WaterMesh类 一般通过api.waterMesh调用其方法 */
+  /** WaterMesh 以自定义网格构建水面/水体，控制其形态、材质与水流表现，作为流场与波纹效果的载体。 */
   namespace boxTrigger {
     /** 添加一个或多个WaterMesh对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -243,7 +243,7 @@ declare namespace fdapi {
     function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** Camera, 相机相关的操作 一般通过api.camera调用其方法 */
+  /** Camera 是三维场景的相机（视角）控制核心，负责观察位置、朝向、飞行进入/退出场景、定位到目标、以及对 CustomObject、Vehicle、Train 等对象的自动跟随。 */
   namespace camera {
     /** 取消相机自动跟随，支持取消CustomObject、Vehicle、Vehicle2、Train等对象的自动跟随 */
     function cancelFollow(fn?: (...args: any[]) => void): Promise<any>;
@@ -307,7 +307,7 @@ declare namespace fdapi {
     function useOldDataFormat(bUse?: boolean): Promise<any>;
   }
 
-  /** 相机导览动画对象 */
+  /** CameraTour 是相机导览（漫游）动画对象，用于按关键帧序列驱动相机沿预设路线自动飞行、播放、暂停与停止，实现自动巡游展示。 */
   namespace cameraTour {
     /** 创建一个或多个CameraTour对象 */
     function add(data?: any | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -340,7 +340,7 @@ declare namespace fdapi {
     /** 用于批量多次修改对象的属性 */
     function updateBegin(): Promise<any>;
     /** 用于批量多次修改对象的属性，与updateBegin配套使用 */
-    function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
+    function updateEnd(fn?: any): Promise<any>;
   }
 
   /** Cesium3DTileset 相关的操作 一般通过api.cesium3DTileset调用其方法 */
@@ -373,7 +373,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** Coastline类，提供海岸线相关的操作 一般通过api.coastline调用其方法 */
+  /** 用于在指定包围盒范围内模拟与渲染海岸线效果，包含海浪拍打沙滩、海风驱动的海面波动，并支持海平面水位逐级抬升的水淹推演。 */
   namespace coastline {
     /** 添加一个或多个Coastline对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -427,7 +427,7 @@ declare namespace fdapi {
     function updateLinkage(data?: Record<string, any> | any[], materials?: any[] | Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** Coord, 坐标转换相关的操作 一般通过api.coord调用其方法 */
+  /** Coord 提供坐标系之间的转换工具（投影、经纬度、场景坐标互转等）。 */
   namespace coord {
     /** 地理坐标转投影坐标 请参考[二次开发：四种坐标的区别](/docs/tutorials/introduction) */
     function gcs2pcs(coordinates?: any[], coordinateType?: number, fn?: (...args: any[]) => void): Promise<any>;
@@ -439,7 +439,7 @@ declare namespace fdapi {
     function world2Screen(x?: number, y?: number, z?: number, fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** CustomMesh类 一般通过api.customMesh调用其方法 */
+  /** CustomMesh 通过顶点/索引自定义三维网格几何体并着色，构建非标准的面片/体对象。 */
   namespace customMesh {
     /** 添加一个或多个CustomMesh对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -465,7 +465,7 @@ declare namespace fdapi {
     function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** CustomObject类，提供用户自定义对象相关的操作 一般通过api.customObject调用其方法 */
+  /** CustomObject 加载用户自定义三维模型并控制其位置、姿态、动画、跟随与交互，是通用的“动态实体”载体。 */
   namespace customObject {
     /** 添加一个或多个CustomObject对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -543,7 +543,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** CustomTag已停止更新，推荐使用功能更丰富的标注对象Marker */
+  /** 用于在三维场景中加载基于网页（HTML）的自定义标签，将外部网页内容贴合到指定坐标点，可承载富文本、图表、视频等网页化信息展示。该对象已停止更新，新项目推荐使用功能更丰富的 Marker 对象。 */
   namespace customTag {
     /** 添加一个或多个CustomTag对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -572,10 +572,10 @@ declare namespace fdapi {
     /** 用于批量多次修改对象的属性 */
     function updateBegin(): Promise<any>;
     /** 用于批量多次修改对象的属性，与updateBegin配套使用 */
-    function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
+    function updateEnd(fn?: any): Promise<any>;
   }
 
-  /** 大华视频融合对象，提供DaHuaVideoFusion对象的操作方法 一般通过api.daHuaVideoFusion调用 */
+  /** 对接大华 ICC 开放平台的视频融合对象，将实时摄像头视频流投射融合到三维场景中，并提供可点击定位的摄像头标签。 */
   namespace daHuaVideoFusion {
     /** 添加一个或多个大华视频融合对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -599,7 +599,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** Decal类，提供贴花相关的操作 一般通过api.decal调用其方法 */
+  /** Decal 用于将一张贴图沿包围盒投影“喷涂”到三维场景的地表、模型或建筑表面，使图案自然贴合起伏地形与曲面，常用于在实景三维上叠加平面图形信息。 */
   namespace decal {
     /** 添加一个或多个Decal对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -621,7 +621,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** Vehicle类，提供车辆载具对象相关的操作 一般通过api.vehicle调用其方法 */
+  /** Vehicle 加载车辆模型并沿路径行驶，模拟交通流与车辆运动。 */
   namespace drone {
     /** 添加一个或多个Vehicle对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -659,7 +659,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** DynamicWater类，提供动态水面相关的操作 一般通过api.dynamicWater调用其方法 */
+  /** DynamicWater 用于在三维场景中按坐标多边形快速生成带波纹流动效果的动态水面，提供深蓝、蓝、湖水三种预设样式。它是一种轻量的“视觉级”水体表达，不依赖真实水动力计算，主要用于把河湖库等水域“点亮”为动态可视效果。 */
   namespace dynamicWater {
     /** 添加一个或多个DynamicWater对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -682,7 +682,7 @@ declare namespace fdapi {
     /** 用于批量多次修改对象的属性 */
     function updateBegin(): Promise<any>;
     /** 用于批量多次修改对象的属性，与updateBegin配套使用 */
-    function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
+    function updateEnd(fn?: any): Promise<any>;
   }
 
   /** EditHelper类，提供用户手动绘制接口 */
@@ -697,7 +697,7 @@ declare namespace fdapi {
     function start(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** 超欠挖分析类对象，提供超挖欠挖分析相关操作 一般通过api.excavationAnalysis调用其方法 */
+  /** ExcavationAnalysis 对比设计面与实际开挖/实测面，计算超挖、欠挖的体积与分布，并以三维云图着色呈现开挖偏差。 */
   namespace excavationAnalysis {
     /** 添加一个ExcavationAnalysis对象 */
     function add(excavationAnalysis?: Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
@@ -721,7 +721,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** FiniteElement有限元分析对象，实现对有限元分析对象的操作 一般通过api.finiteElement调用其方法 */
+  /** FiniteElement 加载有限元网格与计算结果（应力/应变/位移/温度等），以云图着色与形变动画三维呈现分析结果。 */
   namespace finiteElement {
     /** 添加一个或多个有限元分析对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -745,7 +745,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** FiniteElement2有限元仿真对象，实现对有限元仿真对象的操作 一般通过api.finiteElement2调用其方法 */
+  /** FiniteElement2 是有限元仿真对象（增强版），在结果云图基础上支持更复杂/大规模的有限元仿真过程与动态演示。 */
   namespace finiteElement2 {
     /** 根据VTK文件添加一个或多个有限元仿真对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -785,7 +785,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** FloodFill 水淹分析相关的操作 一般通过api.floodFill调用其方法 */
+  /** FloodFill 基于给定出水点（seed）和水位高度（elevation），在指定范围内沿地形进行漫延式的淹没计算与填充，模拟“给定水位下哪些区域会被淹没”，并以指定颜色渲染淹没范围与水面。 */
   namespace floodFill {
     /** 添加一个或多个FloodFill对象， */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -823,7 +823,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** Fluid流体仿真对象，实现对流体仿真对象的操作 一般通过api.fluid调用其方法 */
+  /** Fluid 在指定包围盒（bbox）内进行实时流体仿真，通过出水点（sources）的位置、流速流向、形状与持续时间驱动水体流动，内置 28 种水样式，用于表达喷涌、漫流、注水等动态流体效果。 */
   namespace fluid {
     /** 添加一个或多个流体仿真对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -861,7 +861,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** GaussianSplatting类对象，提供3D高斯泼溅相关操作 一般通过api.gaussianSplatting调用其方法 */
+  /** GaussianSplatting 加载并渲染 3D 高斯泼溅(3DGS)重建成果，呈现照片级实景三维。 */
   namespace gaussianSplatting {
     /** 添加一个GaussianSplatting对象 */
     function add(gaussianSplatting?: Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
@@ -885,7 +885,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** GeoJSONLayer图层类，提供操作GeoJSONLayert图层符号化加载和操作相关的方法 一般通过api.geoJSONLayer调用其方法 */
+  /** 从本地文件或 URL 加载标准 GeoJSON 矢量数据并进行符号化渲染，支持点、线、面（含 Polygon3D 拉伸体块）多种可视化类型与渲染器，可配合文字标注、贴地与可视范围控制。 */
   namespace geoJSONLayer {
     /** 从GeoJSON文件或者url下载链接加载GeoJSON并进行符号化展示 */
     function add(option?: Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
@@ -925,7 +925,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** GlobeTerrain类，包含球面坐标系下Cesium球面地形影像服务的相关操作方法 一般通过api.globeTerrain调用其方法 */
+  /** 球面坐标系下管理 Cesium 球面地形与影像服务的对象，可在数字地球上叠加 WMTS、WMS、MVT、TMS 等 OGC 网络图层服务，构建全球/大范围三维球面底图与地形。 */
   namespace globeTerrain {
     /** 在Cesium球面上添加图层服务，支持的服务类型包含WMTS、WMS、MVT和TMS */
     function addImageryLayer(option?: Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
@@ -995,7 +995,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** HeatMap相关的操作 一般通过api.heatmap调用其方法。 HeatMap效果图如下： */
+  /** HeatMap 根据离散热力点及其热力值，在地表生成二维平面热力图，通过颜色梯度直观表达数据在空间上的密度、强度或聚集分布。 */
   namespace heatmap {
     /** 根据热力点绘制热力图 */
     function addByHeatPoints(heatmap?: Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
@@ -1041,7 +1041,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** HeatMap3D三维热力图相关的操作，三维热力图有以下几种构建方式： 1、根据16张空间图片构建 addByImages() 2、根据空间离散点和对应的热力值构建 addByHeatPoints() 3、根据三维体素的热力值构建 addByVoxels() 4、根据稀疏体素构建 addBySpar */
+  /** HeatMap3D 在三维空间内构建体热力图，支持空间图片、离散点、体素、稀疏体素等多种构建方式，以体积雾、体素、盒子或贴花等显示模式表达数据在三维空间中的分布与浓度。 */
   namespace heatmap3d {
     /** 根据空间离散点和对应热力值构建三维热力图 */
     function addByHeatPoints(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1089,7 +1089,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** HighlightArea(高亮区域)相关的操作 一般通过api.highlightArea调用其方法 */
+  /** HighlightArea 根据多边形坐标在三维场景中对指定区域内的模型进行高亮染色，并可通过高度范围限定染色的 Z 区间，用于突出强调某一空间范围。 */
   namespace highlightArea {
     /** 添加一个或多个HighlightArea对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1123,7 +1123,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** HydroDynamic1D类 一般通过api.hydrodynamic1d调用其方法 */
+  /** HydroDynamic1D 是一维水动力模型对象，沿河道中心线以采样点（坐标、河道宽度、流速、热力值）描述河道，生成带流向箭头与水面/热力样式的动态河道，可用 shp 文件裁切河道范围，适合表达带状河流的水流与水文属性。 */
   namespace hydrodynamic1d {
     /** 添加一个或多个HydroDynamic1D对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1143,7 +1143,7 @@ declare namespace fdapi {
     function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** 二维水动力模型对象，基于真实数据驱动生成水动力模型，支持2种格式数据源：.tif文件（栅格） | .shp文件（矢量） 一般通过api.hydrodynamic2d调用其方法 */
+  /** HydroDynamic2D 是现行的二维水动力模型对象，基于真实数据驱动，支持 tif 栅格与 shp 矢量两类数据源，可按时序回放水深、流速流向，提供真实水样式、热力图样式、流场样式及流向箭头，是面状洪水演进与淹没动态展示的核心对象。 */
   namespace hydrodynamic2d {
     /** 添加一个或多个HydroDynamic2D二维水动力模型对象，添加的数据源为(.shp)文件，注意：SHP文件必需是投影坐标系（PCS），同时单位是米。 */
     function addByShp(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1165,7 +1165,7 @@ declare namespace fdapi {
     function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** ImageryLayer 网络图层相关的操作方法，包含WMS、WMTS、MapServer等服务类型 一般通过api.imageryLayer调用其方法 */
+  /** 加载与管理 WMTS、WMS、MapServer 等网络地图服务图层，将卫星影像、电子地图等作为场景底图叠加，可批量添加并支持坐标系、切片方案等参数配置。 */
   namespace imageryLayer {
     /** 添加一个或多个网络地图服务，如WMTS/WMS服务等网络图层服务 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1253,7 +1253,7 @@ declare namespace fdapi {
     function showByGroupId(groupId?: string, fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** Light光源对象，实现对光源对象的操作 一般通过api.light调用其方法 */
+  /** Light 用于在三维场景中添加点光源、聚光源、矩形光源等动态光源，可设置颜色、亮度、衰减、阴影并支持按系统时间自动开关，营造真实的照明与夜景氛围。 */
   namespace light {
     /** 添加一个或多个光源对象  注意：当批量添加多个光源时，渲染阴影效果会非常耗性能，建议默认关闭 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1281,7 +1281,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** 标注点，实现对标注对象的操作 一般通过api.marker调用其方法 Marker标注点的效果图： */
+  /** 在三维场景指定坐标处放置带图标与文字的标注点，是最常用的点位标记对象，支持图标、悬停图片、文字、可视范围、分组及交互事件，用于标识地物、设备、事件等关键点位。 */
   namespace marker {
     /** 添加一个或多个标注点  调用时注意：单次创建的Marker对象数量不要超过5000个，在一个工程内创建的Marker对象总数量不要超过20万个。 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1383,7 +1383,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** 动态标记，实现对3D标注对象的操作 一般通过api.marker3d调用其方法 */
+  /** 在三维场景中放置带特效的立体标注（动态标记），相较于二维 Marker 具有三维朝向、缩放、旋转与粒子/光效等表现力，并可叠加三维文字，用于强调重点目标或营造动态告警效果。 */
   namespace marker3d {
     /** 添加一个或多个动态标记 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1425,7 +1425,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** 标注图层对象：一共分三个层级，第三层级为圆形标记点，第二层级为标记图片，第一层级为标注Marker 一般通过api.markerLayer调用其方法 MarkerLayer标注点的效果图： */
+  /** 标注图层对象，按相机距离分三个层级（圆形标记点、标记图片、Marker 标注）自适应展示点位，支持文字、图标、弹窗、多种坐标系与可视范围控制，用于在三维场景中海量标注业务点位。 */
   namespace markerLayer {
     /** 添加一个或多个标注图层服务对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1455,7 +1455,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** Misc类，提供一些杂项功能 一般通过api.misc调用其方法 */
+  /** Misc 提供一些杂项/辅助功能接口（如图片按钮、提示等通用辅助能力，具体以方法为准）。 */
   namespace misc {
     /** 添加动画按钮 */
     function addAnimatedImageButtons(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1521,7 +1521,7 @@ declare namespace fdapi {
     function switchShortcutKey(onOff?: boolean, fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** 海洋热力图对象，基于真实海洋数据驱动生成热力图，数据源格式：.tif文件 一般通过api.oceanHeatmap调用其方法 */
+  /** OceanHeatMap 基于真实海洋数据(.tif)生成海面要素热力图，呈现海温、叶绿素等场量的空间分布。 */
   namespace oceanHeatmap {
     /** 添加一个或多个OceanHeatMap海洋热力图对象，数据源为.tif文件。 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1601,7 +1601,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** Panorama类，提供全景图相关的操作 一般通过api.panorama调用其方法 */
+  /** Panorama 在三维场景的指定坐标处加载并展示 360° 全景照片，使用户可在该点位沉浸式查看真实环境，实现三维模型与实景全景的融合浏览。 */
   namespace panorama {
     /** 添加一个或多个Panorama全景图对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1627,7 +1627,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** 军事态势标绘对象，提供绘制作战态势图标的相关操作 一般通过api.plot调用其方法 */
+  /** Plot 用于绘制点/线/面态势图标与军标，支持态势标绘与编辑，是指挥与态势图层的标号载体。 */
   namespace plot {
     /** 添加一个Plot对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1661,7 +1661,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** Polygon 相关的操作， 一般通过api.polygon调用其方法 下面Example代码的运行效果图： 1. 最简单的Polygon let coords1 = [[872.16, -9485.86, 5.8], [864.77, -9196.58, 5.7], [624.34, -9209. */
+  /** 绘制贴地的二维多边形面，用于表达区域、地块与范围，支持多边形带洞（孔洞）及多 Part 复合多边形，可填充颜色表达分区属性。 */
   namespace polygon {
     /** 添加一个或多个Polygon对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1699,7 +1699,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** Polygon3D类， 提供三维多边形相关的操作， 一般通过api.polygon3d调用其方法，效果图： 下面Example代码的运行效果图： 1. 最简单的Polygon3D let coords1 = [[872.16, -9485.86, 5.8], [864.77, -9196.58, 5 */
+  /** 在二维多边形基础上拉伸出高度，绘制三维体块面，用于表达有体量的区域，如建筑体块、围墙、立体淹没水体等，支持带洞与多 Part 复合多边形。 */
   namespace polygon3d {
     /** 添加一个或多个Polygon3D对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1805,7 +1805,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** RadiationPoint类，提供辐射圈相关的操作 一般通过api.radiationPoint调用其方法 */
+  /** RadiationPoint 以辐射圈/扩散圈形式表达从某点向外扩散、强度逐渐衰减的影响范围。 */
   namespace radiationPoint {
     /** 添加一个或多个RadiationPoint对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1847,7 +1847,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** River类 等价于一维水动力模型Hydrodynamic1D类 一般通过api.river调用其方法 */
+  /** River（等价于一维水动力模型 Hydrodynamic1D）模拟河道水位、流量、流速的沿程演进，可视化河道水流过程。 */
   namespace river {
     /** 添加一个或多个River对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1867,7 +1867,7 @@ declare namespace fdapi {
     function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** Settings类，设置面板参数设置相关的接口 一般通过api.settings调用其方法 */
+  /** Settings 提供场景全局参数设置接口（画质、后期、显示、特效等）。 */
   namespace settings {
     /** 控制鼠标右键的点击拾取，默认关闭 */
     function enableRightClickMousePick(enable?: boolean, fn?: (...args: any[]) => void): Promise<any>;
@@ -2029,7 +2029,7 @@ declare namespace fdapi {
     function showPropertiesPanel(id?: string, fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** 设置面板类，提供对设置面板里的所有参数进行操作的接口 一般通过api.settingsPanel调用其方法 */
+  /** SettingsPanel 提供对内置设置面板里各项参数进行读写操作的接口对象。 */
   namespace settingsPanel {
     /** 获取参数 相机面板 */
     function getCameraMode(fn?: (...args: any[]) => void): Promise<any>;
@@ -2057,7 +2057,7 @@ declare namespace fdapi {
     function setReportMode(showAlign?: number, playMode?: number, isLinkage?: boolean, fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** ShapeFileLayer矢量图层对象相关的操作 */
+  /** ShapeFileLayer 加载并管理 Shapefile 矢量数据（点/线/面），在三维场景中按样式渲染与查询。 */
   namespace shapeFileLayer {
     /** 添加一个或多个ShapeFileLayer对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -2099,7 +2099,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** 信号波束SignalWave对象相关的操作 一般通过api.signalWave调用其方法 */
+  /** SignalWave 以波/涟漪扩散形式表达信号或电磁波的传播与覆盖。 */
   namespace signalWave {
     /** 添加一个或多个SignalWave波束对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -2123,7 +2123,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** 光滑粒子流体动力学仿真对象，实现对光滑粒子流体动力学仿真对象的操作 一般通过api.smoothedParticleHydrodynamics调用其方法 */
+  /** SmoothedParticleHydrodynamics（SPH）基于光滑粒子流体动力学模拟自由表面流体（溃坝、喷溅、漫流）的粒子级运动。 */
   namespace smoothedParticleHydrodynamics {
     /** 根据bin时序文件添加一个或多个光滑粒子流体动力学仿真对象 */
     function addByBin(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -2149,7 +2149,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** SplineMesh类，提供绘制路径模型对象相关的操作 一般通过api.splineMesh调用其方法 */
+  /** 沿坐标轨迹放样生成带截面体量的三维路径模型，将模型沿样条曲线延展，用于表达具有真实粗细的管道、线缆、管廊等线状实体，支持内置样式或自定义模型路径。 */
   namespace splineMesh {
     /** 添加一个或多个SplineMesh对象，绘制路径模型 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -2187,7 +2187,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** Tag已停止更新，推荐使用功能更丰富的标注对象Marker */
+  /** 在三维场景指定坐标处放置图文标签，支持图片、文字、牵引线及点击弹出网页/视频窗口，用于对场景要素进行注记与信息标注。（注意：Tag 已停止更新，推荐使用功能更丰富的 Marker。） */
   namespace tag {
     /** 添加一个或多个Tag对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -2244,10 +2244,10 @@ declare namespace fdapi {
     /** 用于批量多次修改对象的属性 */
     function updateBegin(): Promise<any>;
     /** 用于批量多次修改对象的属性，与updateBegin配套使用 */
-    function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
+    function updateEnd(fn?: any): Promise<any>;
   }
 
-  /** TileLayer增、删、改、查相关的操作 一般通过api.tileLayer调用其方法 */
+  /** TileLayer 加载3dt图层模型（倾斜摄影、BIM、人工模型），支持增删改查、单体化高亮、样式与剖切等。 */
   namespace tileLayer {
     /** 添加一个或多个TileLayer对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -2385,7 +2385,7 @@ declare namespace fdapi {
     function updateRecord(id?: string, newValMap?: Record<string, any>, where?: string, fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** 工具类 一般通过api.tools调用其方法 */
+  /** Tools 提供量算与空间分析等通用工具能力（如测距、测面、天际线、通视、坡度、剖切、河道断面等，具体以方法为准）。 */
   namespace tools {
     /** 导出天际线分析图片，注意：需先执行开始天际线分析并在页面交互出现天际线图片后才可以执行导出方法exportSkyline */
     function exportSkyline(path?: string, size?: any[], options?: Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
@@ -2479,7 +2479,7 @@ declare namespace fdapi {
     function updateVolumeClip(bbox?: any[], direction?: number, isShowBBox?: boolean, isEditable?: boolean, rotation?: any[], fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** 拓扑线对象，提供绘制连接图层树上模型的拓扑线的相关操作方法 一般通过api.topologyLine调用其方法 */
+  /** TopologyLine 绘制连接图层树上模型/对象之间的拓扑连接线，表达对象间的关系与连接。 */
   namespace topologyLine {
     /** 添加一个或多个TopologyLine对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -2507,7 +2507,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** TrafficSimulation类，提供城市级交通仿真对象相关的操作，支持十万级别的城市车辆交通仿真。 一般通过api.trafficSimulation调用其方法 */
+  /** TrafficSimulation 提供城市级交通仿真能力，支持十万级别车辆的微观交通仿真，可通过 .dat 数据驱动大批量车辆按时间/定时器移动，并内置交通热力图模式与多车型配置。 */
   namespace trafficSimulation {
     /** 初始化一个TrafficSimulation对象，支持十万级别的城市交通车辆仿真模拟 */
     function add(trafficSimulation?: Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
@@ -2573,7 +2573,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** 向量场类对象，基于真实数据对风场、波浪、洋流、河流、箭头、烟雾的场数据形态进行仿真，支持tif和bin格式 一般通过api.vectorField调用其方法 数据格式参考以下说明： 流场数据最终提供给程序使用是以三维纹理的方式用于渲染，所以要求在三个维度上采样均匀，也就是采样点间隔均匀，否则会变形甚 */
+  /** VectorField 基于真实数据(tif/bin)对风场、波浪、洋流、河流等场数据进行向量场/箭头/烟雾形态的仿真。 */
   namespace vectorField {
     /** 添加一个或多个VectorField向量场对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -2595,7 +2595,7 @@ declare namespace fdapi {
     function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** 高级载具类，提供高级载具的相关的操作 一般通过api.Vehicle2调用其方法 */
+  /** Vehicle2 是高级载具对象，在 Vehicle 基础上提供更丰富的车辆驱动、外观与行为控制。 */
   namespace vehicle2 {
     /** 添加一个或多个Vehicle2对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -2625,7 +2625,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** VideoProjection类，提供视频投影对象相关的操作 一般通过api.videoProjection调用其方法 VideoProjection的效果图： */
+  /** VideoProjection 将视频/实时流以投影方式贴合到三维场景表面，实现视频与三维的融合。 */
   namespace videoProjection {
     /** 添加一个或多个VideoProjection对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -2665,7 +2665,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** WaterFlowField流场类对象，用于精确控制水流单个网格的方向速度等 一般通过api.waterFlowField调用其方法 */
+  /** WaterFlowField 精确控制水面各网格的流向与流速，构建可控的水流流场效果。 */
   namespace waterFlowField {
     /** 添加一个或多个WaterFlowField对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -2687,7 +2687,7 @@ declare namespace fdapi {
     function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** Weather类，提供天气相关的参数设置和获取接口 */
+  /** Weather 设置与获取场景的天气/气象效果（晴雨雪雾、时间、光照等环境特效）。 */
   namespace weather {
     /** 关闭雨雪效果 */
     function disableRainSnow(fn?: (...args: any[]) => void): Promise<any>;

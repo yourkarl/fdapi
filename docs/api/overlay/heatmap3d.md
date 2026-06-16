@@ -42,6 +42,34 @@ HeatMap3D 效果图如下：
   - `displayMode` 为 0/1（体积雾/体素）时与全局剖切方法联动，模式 2（盒子）需自行传入 `clipBox`。
   - 体素分辨率（`voxelSize`/`voxelGridSize`）与纹理尺寸直接影响显存与性能，海量数据需控制规模。
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `addByHeatPoints` | 根据空间离散点和对应热力值构建三维热力图 |  |
+| `addByImages` | 根据16张空间图片构建三维热力图 |  |
+| `addBySparseVoxels` | 根据稀疏体素构建三维热力图 |  |
+| `addByTif` | 根据tif文件构建三维热力图 |  |
+| `addByVoxels` | 根据纯热力值构建三维热力图 |  |
+| `addHeatPoints` | 动态往HeatMap3D对象内添加离散热力点， |  |
+| `clear` | 清空场景中所有的HeatMap3D | 清空全部对象，重置图层 |
+| `delete` | 删除一个或多个HeatMap3D对象 | 按 ID 移除指定对象 |
+| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| `get` | 根据ID获取HeatMap3D的详细信息 | 查询对象信息，用于业务联动 |
+| `hide` | 隐藏HeatMap3D | 按业务条件隐藏对象 |
+| `load` | 预加载的三维热力图动画，包含多个Tif文件，加载后可以使用play()方法播放三维热力图… |  |
+| `pause` | 暂停播放三维热力图动画 | 暂停播放 |
+| `play` | 播放预加载的三维热力图动画 | 播放动画/导览 |
+| `queryVoxel` | 根据ID和坐标位置获取对应HeatMap3D对象包含体素块的详细信息 |  |
+| `setDisplayMode` | 设置三维热力图的显示模式 |  |
+| `setTime` | 从第几秒开始播放三维热力图动画 |  |
+| `setViewportVisible` | 设置HeatMap3D对象在进入多视口状态下视口可见性 |  |
+| `show` | 显示HeatMap3D | 按业务条件显示对象 |
+| `update` | 修改HeatMap3D | 运行时动态更新对象属性/状态 |
+| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+
 ## 方法（Methods）
 
 ### `addByHeatPoints(data, fn)`

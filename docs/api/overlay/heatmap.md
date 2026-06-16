@@ -34,6 +34,33 @@ HeatMap 效果图如下：
   - `textureSize` 越大热力图越清晰但生成越耗时，海量热力点时应权衡纹理尺寸与性能。
   - 本对象为二维平面热力图，若需表达空间体积内的三维分布请使用 HeatMap3D。
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `addByHeatPoints` | 根据热力点绘制热力图 |  |
+| `addByTif` | 根据tif文件加载热力图 |  |
+| `addPoints` | 为HeatMap添加热力点 |  |
+| `clear` | 删除场景中所有的HeatMap | 清空全部对象，重置图层 |
+| `delete` | 删除一个或多个HeatMap对象 | 按 ID 移除指定对象 |
+| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| `get` | 根据ID获取HeatMap的详细信息 | 查询对象信息，用于业务联动 |
+| `hide` | 隐藏HeatMap | 按业务条件隐藏对象 |
+| `highlightPixels` | 高亮通过Tif文件加载的热力图中指定的像素点， |  |
+| `load` | 预加载的热力图动画，包含多个Tif文件，加载后可以使用play()方法进行播放。 |  |
+| `pause` | 暂停播放热力图动画 | 暂停播放 |
+| `play` | 播放预加载的热力图动画 | 播放动画/导览 |
+| `removePoints` | 为HeatMap移除热力点 |  |
+| `setBBox` | 设置BoundingBox 热力点坐标的范围 |  |
+| `setRange` | 设置热力值的范围 |  |
+| `setTime` | 从第几秒开始播放 |  |
+| `show` | 显示HeatMap | 按业务条件显示对象 |
+| `unHighlightAllPixels` | 取消热力图内所有像素点高亮 |  |
+| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| `updateByHeatPoints` | 更新热力图 |  |
+| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+
 ## 方法（Methods）
 
 ### `addByHeatPoints(heatmap, fn)`

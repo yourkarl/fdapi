@@ -32,6 +32,27 @@ HighlightArea 根据多边形坐标在三维场景中对指定区域内的模型
   - `depthTest` 为 true 时高亮会被前方物体遮挡，需穿透显示时设为 false。
   - 多边形 `coordinates` 应保证闭合且无自相交，避免染色异常。
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `add` | 添加一个或多个HighlightArea对象 | 向场景批量添加对象 |
+| `clear` | 删除场景中所有的HighlightArea | 清空全部对象，重置图层 |
+| `delete` | 删除一个或多个HighlightArea对象 | 按 ID 移除指定对象 |
+| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| `get` | 根据ID获取HighlightArea的详细信息 | 查询对象信息，用于业务联动 |
+| `hide` | 隐藏HighlightArea | 按业务条件隐藏对象 |
+| `setColor` | 设置颜色 |  |
+| `setCoordinates` | 设置坐标 |  |
+| `setDepthTest` | 设置是否做深度检测 |  |
+| `setHeightRange` | 设置高度范围 |  |
+| `setIntensity` | 设置亮度 |  |
+| `show` | 显示HighlightArea | 按业务条件显示对象 |
+| `update` | 修改一个或多个HighlightArea对象 | 运行时动态更新对象属性/状态 |
+| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+
 ## 方法（Methods）
 
 ### `add(data, fn)`

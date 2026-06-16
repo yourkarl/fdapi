@@ -1,5 +1,5 @@
 # 文档站构建检查：push / PR 时验证 docusaurus build 是否通过
-# 同时验证内容生成管线（regenerate_docs.py 等）Python 依赖可用
+# 同时验证内容生成管线 Python 依赖可用，并执行内容完整性检查（杜绝半截写入损坏入库）
 name: build
 
 on:
@@ -19,14 +19,14 @@ jobs:
           python-version: '3.11'
 
       - name: Install Python dependencies
-        run: pip install beautifulsoup4
+        run: pip install beautifulsoup4 pyyaml
 
       - name: Verify generation scripts are importable
         run: |
           python3 -c "import bs4; print('beautifulsoup4 OK')"
           python3 -c "
           import ast, sys
-          for f in ['regenerate_docs.py', 'gen_sidebar.py', 'gen_real_examples.py', 'gen_dts.py']:
+          for f in ['regenerate_docs.py', 'gen_sidebar.py', 'gen_real_examples.py', 'gen_dts.py', 'gen_param_meta.py', 'check_docs_integrity.py']:
             try:
               ast.parse(open(f).read())
               print(f, 'syntax OK')
@@ -34,6 +34,11 @@ jobs:
               print(f'FAIL {f}:', e, file=sys.stderr)
               sys.exit(1)
           "
+
+      # 内容完整性门禁：UTF-8 合法性 / 无 NUL 空字节 / front matter YAML 可解析
+      # 拦截「写了一半」的损坏文件（曾出现：尾部空字节、汉字被截断、引号未转义）
+      - name: Content integrity check
+        run: python3 check_docs_integrity.py
 
       - uses: actions/setup-node@v4
         with:

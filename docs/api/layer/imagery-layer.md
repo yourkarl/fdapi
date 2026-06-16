@@ -34,6 +34,26 @@ new ImageryLayer()
 
 ---
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `add` | 添加一个或多个网络地图服务，如WMTS/WMS服务等网络图层服务 | 向场景批量添加对象 |
+| `addVTPK` | 给图层服务叠加显示对应VTPK标注 |  |
+| `delete` | 删除一个或多个ImageryLayer图层对象 | 按 ID 移除指定对象 |
+| `deleteVTPK` | 删除叠加的VTPK标注 |  |
+| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| `hide` | 隐藏一个或多个ImageryLayer图层对象 | 按业务条件隐藏对象 |
+| `init` | 添加图层服务前需要先初始化相关参数 |  |
+| `setDrawBottom` | 设置ImageryLayer图层置底显示 |  |
+| `setDrawOrder` | 设置两个ImageryLayer图层的绘制顺序，即移动当前ImageryLayer图层到… |  |
+| `setDrawTop` | 设置ImageryLayer图层置顶显示 |  |
+| `setVTPKVisable` | 设置叠加的VTPK标注可见性 |  |
+| `show` | 显示一个或多个ImageryLayer图层对象 | 按业务条件显示对象 |
+| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+
 ## 方法（Methods）
 
 ### `add(data, fn)`

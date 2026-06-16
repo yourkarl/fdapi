@@ -139,7 +139,7 @@
 	
     <dd>
         <ul class="dummy">
-            <li>用户自定义标签类 一般通过api.customTag调用其方法<br></li>
+            <li>用户自定义标签类 通过api.customTag调用其方法<br></li>
         </ul>
     </dd>
     
@@ -1292,7 +1292,8 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">CustomTag的详细信息{
+    <pre class="sunlight-highlight-javascript">CustomTag的详细信息
+{
             &quot;id&quot;:	&quot;ct1&quot;,
             &quot;groupId&quot;:	&quot;&quot;,
             &quot;userData&quot;:	&quot;&quot;,
@@ -2302,7 +2303,13 @@ updateBegin不是异步调用，不需要await，也没有回调函数参数</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();for (let i = 0; i &lt; 1000; i++) {     fdapi.xxx.setColor(i, Color.Yellow);} fdapi.xxx.updateEnd(function () {     log(&#x27;update finished!&#x27;);});</pre>
+    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();
+for (let i = 0; i &lt; 1000; i++) {
+     fdapi.xxx.setColor(i, Color.Yellow);
+} 
+fdapi.xxx.updateEnd(function () {
+     log(&#x27;update finished!&#x27;);
+});</pre>
 
 
     

@@ -26,6 +26,26 @@ description: "在三维场景中加载并沿指定轨迹运行的列车对象，
   - 列车沿 `coordinates` 轨迹坐标行驶，坐标需贴合实际轨道线形并与 `coordinateType`（Projection/WGS84）一致，否则会出现脱轨或抖动。
   - `carriageNum`/`carriageStyle` 决定车厢编组与模型，`maxSpeed`、`acceleration` 控制运行节奏；`doubleLocomotive`、`direction` 用于设置车头与运行方向。
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `add` | 添加一个或多个Train对象 | 向场景批量添加对象 |
+| `clear` | 清空场景中所有的Train对象 | 清空全部对象，重置图层 |
+| `delete` | 删除一个或多个Train对象 | 按 ID 移除指定对象 |
+| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| `get` | 根据ID获取Train对象的详细信息 | 查询对象信息，用于业务联动 |
+| `hide` | 隐藏一个或多个Train对象 | 按业务条件隐藏对象 |
+| `moveTo` | 火车按时间和里程移动 | 驱动对象移动到目标位置 |
+| `pause` | 根据火车ID暂停火车 | 暂停播放 |
+| `resume` | 根据火车ID恢复火车移动 | 恢复播放 |
+| `setFollow` | 设置火车行驶时自动跟随相机 |  |
+| `show` | 显示一个或多个Train对象 | 按业务条件显示对象 |
+| `update` | 修改一个或多个Train对象 | 运行时动态更新对象属性/状态 |
+| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+
 ## 方法（Methods）
 
 ### `add(data, fn)`

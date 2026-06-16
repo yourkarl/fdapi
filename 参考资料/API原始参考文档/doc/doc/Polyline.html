@@ -90,7 +90,7 @@
         </h2>
         
             <div class="class-description"><p>Polyline 相关的操作<br>
-一般通过api.polyline调用其方法<br>
+通过api.polyline调用其方法<br>
 <img src="../images/api/Polyline.Update.gif" alt=""></p></div>
         
     
@@ -599,7 +599,9 @@ let params = res.data[0].params;</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">示例代码：fdapi.polyline.attachObject([
+    <pre class="sunlight-highlight-javascript">示例代码：
+
+fdapi.polyline.attachObject([
             {
                 polylineId: &quot;line1&quot;,
                 startObjectId: &quot;satellite1&quot;,
@@ -1281,7 +1283,8 @@ let params = res.data[0].params;</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">Polyline的详细信息{
+    <pre class="sunlight-highlight-javascript">Polyline的详细信息
+{
             &quot;id&quot;:	&quot;p1&quot;,
             &quot;groupId&quot;:	&quot;&quot;,
             &quot;userData&quot;:	&quot;&quot;,
@@ -3724,7 +3727,13 @@ updateBegin不是异步调用，不需要await，也没有回调函数参数</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();for (let i = 0; i &lt; 1000; i++) {     fdapi.xxx.setColor(i, Color.Yellow);} fdapi.xxx.updateEnd(function () {     log(&#x27;update finished!&#x27;);});</pre>
+    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();
+for (let i = 0; i &lt; 1000; i++) {
+     fdapi.xxx.setColor(i, Color.Yellow);
+} 
+fdapi.xxx.updateEnd(function () {
+     log(&#x27;update finished!&#x27;);
+});</pre>
 
 
     

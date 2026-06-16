@@ -90,7 +90,7 @@
         </h2>
         
             <div class="class-description"><p>工具类<br>
-一般通过api.tools调用其方法</p></div>
+通过api.tools调用其方法</p></div>
         
     
 </header>
@@ -411,7 +411,23 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">示例代码如下：let options = {     skylineColor: Color.Green,     backgroundColor: Color.Gray};//示例一：导出图片至cloud服务器上对应路径fdapi.tools.exportSkyline(&quot;d:\\skyline.png&quot;, [400, 200], options);//示例二：返回base64字符串fdapi.tools.exportSkyline(&quot;base64&quot;, [400, 200], options).then(result=&gt;{      //设置base64类型图片      document.getElementById(&quot;img1&quot;).setAttribute(&quot;src&quot;,result.image);});&lt;br&gt;</pre>
+    <pre class="sunlight-highlight-javascript">示例代码如下：
+
+let options = {
+     skylineColor: Color.Green,
+     backgroundColor: Color.Gray
+};
+//示例一：导出图片至cloud服务器上对应路径
+fdapi.tools.exportSkyline(&quot;d:\\skyline.png&quot;, [400, 200], options);
+
+//示例二：返回base64字符串
+fdapi.tools.exportSkyline(&quot;base64&quot;, [400, 200], options).then(result=&gt;{
+      //设置base64类型图片
+      document.getElementById(&quot;img1&quot;).setAttribute(&quot;src&quot;,result.image);
+});
+
+
+&lt;br&gt;</pre>
 
 
     
@@ -898,7 +914,8 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">返回距离折线起点位置最近的对象信息{
+    <pre class="sunlight-highlight-javascript">返回距离折线起点位置最近的对象信息
+{
         &quot;Id&quot;:	&quot;8198F86D439A3782739C1EBD9440AFC7&quot;, // 图层树上对象唯一标识id
         &quot;ObjectID&quot;:	&quot;Shape027&quot;,  // Actor对象ID
         &quot;Type&quot;:	&quot;TileLayer&quot;, // 对象类型
@@ -1119,7 +1136,11 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">返回距离折线起点位置最近的对象信息数组返回数据格式示例：[{
+    <pre class="sunlight-highlight-javascript">返回距离折线起点位置最近的对象信息数组
+
+
+返回数据格式示例：
+[{
         &quot;Id&quot;:	&quot;8198F86D439A3782739C1EBD9440AFC7&quot;, // 图层树上对象唯一标识id
         &quot;Type&quot;:	&quot;TileLayer&quot;, // 对象类型
         &quot;ObjectID&quot;:	&quot;Shape027&quot;,  // Actor对象ID

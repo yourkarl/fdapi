@@ -90,7 +90,7 @@
         </h2>
         
             <div class="class-description"><p>FiniteElement2有限元仿真对象，实现对有限元仿真对象的操作<br>
-一般通过api.finiteElement2调用其方法</p></div>
+通过api.finiteElement2调用其方法</p></div>
         
     
 </header>
@@ -419,7 +419,9 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">对象结构示例：let fe2 = {
+    <pre class="sunlight-highlight-javascript">对象结构示例：
+
+let fe2 = {
             &quot;id&quot;:&quot;fe_2&quot;,
             &quot;filePath&quot;:&quot;C:/HHKBZ.vtk&quot;,
             &quot;location&quot;:[2209.658125,22.4936328125,8.699999389648437],
@@ -2332,7 +2334,9 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">返回FiniteElement的详细信息{
+    <pre class="sunlight-highlight-javascript">返回FiniteElement的详细信息
+
+{
             &quot;id&quot;:&quot;fe_2&quot;,
             &quot;filePath&quot;:&quot;C:/HHKBZ.vtk&quot;,
             &quot;location&quot;:[2209.658125,22.4936328125,8.699999389648437],
@@ -3095,7 +3099,13 @@ updateBegin不是异步调用，不需要await，也没有回调函数参数</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();for (let i = 0; i &lt; 1000; i++) {     fdapi.xxx.setColor(i, Color.Yellow);} fdapi.xxx.updateEnd(function () {     log(&#x27;update finished!&#x27;);});</pre>
+    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();
+for (let i = 0; i &lt; 1000; i++) {
+     fdapi.xxx.setColor(i, Color.Yellow);
+} 
+fdapi.xxx.updateEnd(function () {
+     log(&#x27;update finished!&#x27;);
+});</pre>
 
 
     

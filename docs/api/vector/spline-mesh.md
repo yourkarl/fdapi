@@ -28,6 +28,29 @@ description: "沿坐标轨迹放样生成带截面体量的三维路径模型，
   - curveType 与 segment 控制曲线插值类型与分段数，分段过密会增加面数、影响性能。
   - style 与 meshPath 二选一，传入 meshPath 自定义样式会自动覆盖内置 style。
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `add` | 添加一个或多个SplineMesh对象，绘制路径模型 | 向场景批量添加对象 |
+| `callBPFunction` | 调用splineMesh对象包含的多个蓝图函数 |  |
+| `clear` | 清空场景中所有的SplineMesh对象 | 清空全部对象，重置图层 |
+| `delete` | 删除一个或多个SplineMesh对象 | 按 ID 移除指定对象 |
+| `deleteByGroupId` | 根据分组ID删除SplineMesh |  |
+| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| `get` | 根据ID获取SplineMesh对象的详细信息 | 查询对象信息，用于业务联动 |
+| `getBPFunction` | 根据splineMesh对象的id查询其包含的蓝图函数信息 |  |
+| `hide` | 隐藏一个或多个SplineMesh对象 | 按业务条件隐藏对象 |
+| `hideAll` | 隐藏所有SplineMesh对象 | 一键隐藏全部对象 |
+| `hideByGroupId` | 根据分组ID隐藏SplineMesh |  |
+| `show` | 显示一个或多个SplineMesh对象 | 按业务条件显示对象 |
+| `showAll` | 显示所有SplineMesh对象 | 一键显示全部对象 |
+| `showByGroupId` | 根据分组ID显示SplineMesh |  |
+| `update` | 修改一个或多个SplineMesh对象 | 运行时动态更新对象属性/状态 |
+| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+
 ## 方法（Methods）
 
 ### `add(data, fn)`

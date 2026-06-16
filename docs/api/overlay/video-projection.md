@@ -36,6 +36,30 @@ VideoProjection的效果图：
   - 流地址需鉴权与时效管理
 
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `add` | 添加一个或多个VideoProjection对象 | 向场景批量添加对象 |
+| `clear` | 删除场景中所有的VideoProjection对象 | 清空全部对象，重置图层 |
+| `delete` | 删除一个或多个VideoProjection对象 | 按 ID 移除指定对象 |
+| `focus` | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
+| `get` | 根据ID获取VideoProjection的详细信息 | 查询对象信息，用于业务联动 |
+| `hide` | 隐藏VideoProjection | 按业务条件隐藏对象 |
+| `setAspectRatio` | 设置纵横比 |  |
+| `setDepthCulling` | 设置是否背面剔除 |  |
+| `setDistance` | 设置距离 |  |
+| `setFovy` | 设置垂直夹角 |  |
+| `setFrustumColor` | 设置投影线框颜色 |  |
+| `setLocation` | 设置位置 |  |
+| `setRotation` | 设置旋转值 |  |
+| `setVideoURL` | 设置视频地址 |  |
+| `show` | 显示VideoProjection | 按业务条件显示对象 |
+| `update` | 修改一个或多个VideoProjection对象 | 运行时动态更新对象属性/状态 |
+| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+
 ## 方法（Methods）
 
 ### `add(data, fn)`

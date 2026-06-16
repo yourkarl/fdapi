@@ -33,6 +33,23 @@ new ImageryLayer2()
 
 ---
 
+
+## 方法列表
+
+| 方法 | 说明 | 适用业务场景 |
+|------|------|------------|
+| `addBySchemaParams` | 根据图层服务的自定义参数添加一个或多个球面网络地图服务，如WMTS/WMS/MVT/TM… |  |
+| `addByUrl` | 根据图层服务url包含的切片方案xmlPath添加一个或多个球面网络地图服务，如WMTS… |  |
+| `clear` | 清除场景中所有的网络图层对象 | 清空全部对象，重置图层 |
+| `delete` | 删除一个或多个ImageryLayer2图层对象 | 按 ID 移除指定对象 |
+| `hide` | 隐藏一个或多个ImageryLayer2图层对象 | 按业务条件隐藏对象 |
+| `hideAll` | 隐藏所有ImageryLayer2图层对象 | 一键隐藏全部对象 |
+| `setDrawOrder` | 设置两个ImageryLayer2图层的绘制顺序，即移动当前ImageryLayer2图… |  |
+| `show` | 显示一个或多个ImageryLayer2图层对象 | 按业务条件显示对象 |
+| `showAll` | 显示所有ImageryLayer2图层对象 | 一键显示全部对象 |
+| `updateBegin` | 用于批量多次修改对象的属性 | 批量修改前调用，合并提交提升性能 |
+| `updateEnd` | 用于批量多次修改对象的属性，与updateBegin配套使用 | 批量修改后提交，与 updateBegin 配套 |
+
 ## 方法（Methods）
 
 ### `addBySchemaParams(data, fn)`

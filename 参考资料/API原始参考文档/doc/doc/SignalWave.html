@@ -90,7 +90,7 @@
         </h2>
         
             <div class="class-description"><p>信号波束SignalWave对象相关的操作<br>
-一般通过api.signalWave调用其方法<br>
+通过api.signalWave调用其方法<br>
 <img src="../images/api/SignalWave.Add.gif" alt=""></p></div>
         
     
@@ -1067,7 +1067,8 @@
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">结构示例[
+    <pre class="sunlight-highlight-javascript">结构示例
+[
         {
             &quot;id&quot;: &quot;signalWave&quot;,
             &quot;groupId&quot;: &quot;group1&quot;,
@@ -1674,7 +1675,13 @@ updateBegin不是异步调用，不需要await，也没有回调函数参数</p>
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();for (let i = 0; i &lt; 1000; i++) {     fdapi.xxx.setColor(i, Color.Yellow);} fdapi.xxx.updateEnd(function () {     log(&#x27;update finished!&#x27;);});</pre>
+    <pre class="sunlight-highlight-javascript">fdapi.xxx.updateBegin();
+for (let i = 0; i &lt; 1000; i++) {
+     fdapi.xxx.setColor(i, Color.Yellow);
+} 
+fdapi.xxx.updateEnd(function () {
+     log(&#x27;update finished!&#x27;);
+});</pre>
 
 
     
