@@ -1,6 +1,6 @@
 ---
-title: 接入方式与 SDK 说明
-sidebar_label: 接入说明
+title: 基本概念
+sidebar_label: 基本概念
 description: "DTS Cloud SDK 的架构说明、接入方式、云渲染原理介绍"
 ---
 
