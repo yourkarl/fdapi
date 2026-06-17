@@ -71,7 +71,7 @@ INFO = {k: parse_section(v) for k, v in SECTIONS.items()}
 # ---------- 3. 导航设计（来自 API样例导航结构设计.md） ----------
 # 选择器：'Class:*' 取该类全部示例；'suffix' 精确函数名(去 test_/test_ellipsoid_ 前缀)；'prefix*' 前缀匹配
 NAV = [
-('快速上手', '🚀', [
+('核心对象', '🚀', [
   ('产品概览', ['ac_getVersion', 'ac_getProjectInfo', 'ac_reset', 'ac_saveProject', 'ac_destroy']),
   ('安装引用', ['DigitalTwinPlayer:*']),
   ('事件监听（Tick/JS注入）', ['ac_registerTick', 'ac_removeTick', 'ac_showTickWindow', 'ac_executeJsInTickPage']),
@@ -87,16 +87,43 @@ NAV = [
   ('多视口', ['misc_enterMultiViewportMode', 'misc_setMultiviewportInteractSync', 'misc_setActiveViewport',
             'misc_getActiveViewport', 'misc_exitMultiViewportMode']),
 ]),
-('事件系统', '⚡', [
-  ('绘制事件（EditHelper）', ['EditHelper:*']),
+('图层操作', '🗂️', [
+  ('显隐对象', ['tileLayer_actor_hide', 'tileLayer_actor_show', 'tileLayer_actors_hide', 'tileLayer_actors_show',
+            'tileLayer_actor_hideAllActors', 'tileLayer_actor_showAllActors', 'tileLayer_hide', 'tileLayer_show']),
+  ('显隐文件夹', ['layers_show', 'layers_hide']),
+  ('定位对象', ['layers_focus', 'tileLayer_focus', 'tileLayer_actor_focus', 'tileLayer_actors_focus']),
+  ('查询图层树', ['layers_get']),
+  ('查询蓝图函数', ['layers_getBPFunction', 'misc_getBPFunction']),
+  ('调用蓝图函数', ['layers_callBPFunction', 'misc_callBPFunction']),
+  ('三维图层（TileLayer）', ['TileLayer:*']),
+  ('压平挖洞', ['tileLayer_modifier_*', 'tileLayer_hole_*']),
+  ('矢量SHP图层', ['ShapeFileLayer:*']),
+  ('GeoJSON图层', ['GeoJSONLayer:*']),
+  ('Cesium图层', ['Cesium3DTileset:*']),
+  ('OGC栅格图层', ['ImageryLayer:*', 'ImageryLayer2:*']),
+  ('地球地形（GlobeTerrain）', ['GlobeTerrain:*']),
+  ('标注图层', ['MarkerLayer:*']),
+  ('大华视频融合', ['DaHuaVideoFusion:*']),
 ]),
-('测量绘制', '📏', [
-  ('测量工具', ['tools_startMeasurement', 'tools_startMeasurement1', 'tools_stopMeasurement', 'tools_showMeasurePanel']),
-  ('绘制助手', ['tools_startGeometryEdit', 'tools_stopGeometryEdit']),
+('绘制助手', '✏️', [
+  ('绘制事件（EditHelper）', ['EditHelper:*']),
+  ('交互绘制', ['tools_startGeometryEdit', 'tools_stopGeometryEdit']),
   ('态势标绘', ['Plot:*']),
+]),
+('测量分析', '📏', [
+  ('测量工具', ['tools_startMeasurement', 'tools_startMeasurement1', 'tools_stopMeasurement', 'tools_showMeasurePanel']),
   ('剖切', ['tools_startPolygonClip', 'tools_stopPolygonClip', 'tools_startPlaneClip', 'tools_stopPlaneClip',
           'tools_startVolumeClip', 'tools_updateVolumeClip', 'tools_stopVolumeClip', 'tools_showClipPanel']),
   ('求交', ['tools_lineIntersect', 'tools_linesIntersect']),
+  ('天际线分析', ['tools_startSkylineAnalysis', 'tools_stopSkylineAnalysis', 'tools_exportSkyline']),
+  ('坡度坡向分析', ['tools_startTerrainSlopeAnalysis', 'tools_stopTerrainSlopeAnalysis',
+               'tools_startContourLineAnalysis', 'tools_stopContourLineAnalysis']),
+  ('可视域分析', ['tools_startViewshedAnalysis', 'tools_stopViewshedAnalysis', 'tools_startVisiblityAnalysis',
+             'tools_stopVisiblityAnalysis', 'tools_startViewDomeAnalysis', 'tools_stopViewDomeAnalysis']),
+  ('日照分析', ['tools_startSunshineAnalysis', 'tools_stopSunshineAnalysis']),
+  ('填挖方分析', ['tools_startCutFillAnalysis', 'tools_stopCutFillAnalysis']),
+  ('河道断面', ['tools_riverCrossSectionByShp', 'tools_riverCrossSection']),
+  ('超欠挖分析', ['ExcavationAnalysis:*']),
 ]),
 ('环境天气', '🌤️', [
   ('昼夜模拟', ['weather_setDateTime', 'weather_getDateTime', 'weather_simulateTime']),
@@ -136,16 +163,6 @@ NAV = [
                'settings_setTerrainGlobal*', 'settings_setOsgbGlobal*', 'settings_setReceiveDecalMode']),
   ('功能面板', ['SettingsPanel:*']),
 ]),
-('分析工具', '🔍', [
-  ('天际线分析', ['tools_startSkylineAnalysis', 'tools_stopSkylineAnalysis', 'tools_exportSkyline']),
-  ('坡度坡向分析', ['tools_startTerrainSlopeAnalysis', 'tools_stopTerrainSlopeAnalysis',
-               'tools_startContourLineAnalysis', 'tools_stopContourLineAnalysis']),
-  ('可视域分析', ['tools_startViewshedAnalysis', 'tools_stopViewshedAnalysis', 'tools_startVisiblityAnalysis',
-             'tools_stopVisiblityAnalysis', 'tools_startViewDomeAnalysis', 'tools_stopViewDomeAnalysis']),
-  ('日照分析', ['tools_startSunshineAnalysis', 'tools_stopSunshineAnalysis']),
-  ('填挖方分析', ['tools_startCutFillAnalysis', 'tools_stopCutFillAnalysis']),
-  ('河道断面', ['tools_riverCrossSectionByShp', 'tools_riverCrossSection']),
-]),
 ('辅助工具', '🧰', [
   ('坐标转换', ['Coord:*']),
   ('射线求交', ['tools_lineIntersect', 'tools_linesIntersect']),
@@ -155,27 +172,11 @@ NAV = [
   ('其他工具', ['misc_getConvexPolygon', 'misc_getMaterial', 'misc_hideAllFoliages', 'misc_showAllFoliages',
             'misc_projectCount', 'misc_projectCountAll', 'misc_reloadPak']),
 ]),
-('图层操作', '🗂️', [
-  ('显隐对象', ['tileLayer_actor_hide', 'tileLayer_actor_show', 'tileLayer_actors_hide', 'tileLayer_actors_show',
-            'tileLayer_actor_hideAllActors', 'tileLayer_actor_showAllActors', 'tileLayer_hide', 'tileLayer_show']),
-  ('显隐文件夹', ['layers_show', 'layers_hide']),
-  ('定位对象', ['layers_focus', 'tileLayer_focus', 'tileLayer_actor_focus', 'tileLayer_actors_focus']),
-  ('查询图层树', ['layers_get']),
-  ('查询蓝图函数', ['layers_getBPFunction', 'misc_getBPFunction']),
-  ('调用蓝图函数', ['layers_callBPFunction', 'misc_callBPFunction']),
-  ('三维图层（TileLayer）', ['TileLayer:*']),
-  ('压平挖洞', ['tileLayer_modifier_*', 'tileLayer_hole_*']),
-  ('矢量SHP图层', ['ShapeFileLayer:*']),
-  ('GeoJSON图层', ['GeoJSONLayer:*']),
-  ('Cesium图层', ['Cesium3DTileset:*']),
-  ('OGC栅格图层', ['ImageryLayer:*', 'ImageryLayer2:*']),
-  ('地球地形（GlobeTerrain）', ['GlobeTerrain:*']),
-  ('标注图层', ['MarkerLayer:*']),
-]),
 ('模型操作', '🧊', [
   ('自定义模型', ['CustomObject:*']),
+  ('自定义网格', ['CustomMesh:*']),
+  ('路径模型（样条网格线）', ['SplineMesh:*']),
   ('高斯泼溅模型', ['GaussianSplatting:*']),
-  ('超欠挖分析模型', ['ExcavationAnalysis:*']),
 ]),
 ('场景标记', '📍', [
   ('文字标签（Tag）', ['Tag:*']),
@@ -193,8 +194,7 @@ NAV = [
   ('拓扑线', ['TopologyLine:*']),
   ('多边形', ['Polygon:*']),
   ('三维多边形', ['Polygon3D:*']),
-  ('自定义网格', ['CustomMesh:*']),
-  ('路径模型（样条网格线）', ['SplineMesh:*']),
+  ('信号波束（Beam）', ['Beam:*']),
 ]),
 ('覆盖物', '🎨', [
   ('贴花', ['Decal:*']),
@@ -202,17 +202,15 @@ NAV = [
   ('三维热力图', ['HeatMap3D:*']),
   ('高亮区域', ['HighlightArea:*']),
   ('视频投影', ['VideoProjection:*']),
-  ('大华视频融合', ['DaHuaVideoFusion:*']),
   ('全景图', ['Panorama:*']),
   ('光源', ['Light:*']),
   ('辐射圈', ['RadiationPoint:*']),
 ]),
-('海洋气象仿真', '🌊', [
+('海洋仿真', '🌊', [
   ('波浪', ['oceanHeatmap_add_wave', 'weather_setOceanWave', 'weather_getOceanWave']),
   ('洋流', ['oceanHeatmap_add_flow']),
   ('城市/箭头风场', ['oceanHeatmap_add_arrow']),
   ('向量场（风场/洋流/海浪）', ['VectorField:*']),
-  ('烟雾场（流体）', ['Fluid:*']),
   ('海洋热力图', ['oceanHeatmap_update_new', 'oceanHeatmap_delete_new', 'oceanHeatmap_clear_new', 'oceanHeatmap_focus_new',
              'oceanHeatmap_show_new', 'oceanHeatmap_hide_new', 'oceanHeatmap_get_new']),
   ('海岸线', ['Coastline:*']),
@@ -225,10 +223,10 @@ NAV = [
   ('一维水动力模型', ['HydroDynamic1D:*']),
   ('二维水动力模型', ['HydroDynamic2D:*']),
   ('光滑粒子流体动力学仿真', ['SmoothedParticleHydrodynamics:*']),
+  ('烟雾场（流体）', ['Fluid:*']),
 ]),
 ('信号仿真', '📡', [
   ('天线方向图', ['Antenna:*']),
-  ('信号波束', ['Beam:*']),
   ('信号波', ['SignalWave:*']),
 ]),
 ('交通仿真', '🚦', [
@@ -237,8 +235,10 @@ NAV = [
   ('微观-高铁', ['Train:*']),
   ('微观-无人机', ['Drone:*']),
   ('宏观-城市交通', ['TrafficSimulation:*']),
-  ('卫星（Satellite）', ['Satellite:*']),
   ('触发器（BoxTrigger）', ['BoxTrigger:*']),
+]),
+('卫星仿真', '🛰️', [
+  ('卫星（Satellite）', ['Satellite:*']),
 ]),
 ('有限元仿真', '🧮', [
   ('有限元仿真', ['FiniteElement:*']),
@@ -252,7 +252,6 @@ NAV = [
   ('压力测试', ['压力测试:*']),
 ]),
 ]
-
 # ---------- 4. 组装两套树 ----------
 def build(prefix):
     labels, classfns = INFO[prefix]
