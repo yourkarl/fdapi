@@ -817,4 +817,16 @@ await fdapi.satellite.updateLinkage(linkArr,[{
             {"paramName": "PointBrightness","paramValue": 10}
         ],
         "vectorParameters": [
-            {"param
+            {"paramName": "debug","paramValue": [0.1,0.2,0.3,0.4]}
+        ],
+}]);
+```
+
+
+## 更多示例
+
+> CancelFollow
+
+```js
+fdapi.camera.cancelFollow();
+```

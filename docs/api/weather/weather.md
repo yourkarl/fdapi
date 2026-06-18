@@ -727,3 +727,5 @@ fdapi.weather.simulateTime(9, 15, 10);
 > 设置大气环境的瑞利散射系数：SetRayleighScatter
 
 ```js
+fdapi.weather.setRayleighScatter(0.5);
+```

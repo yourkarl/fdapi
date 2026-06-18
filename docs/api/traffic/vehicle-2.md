@@ -425,4 +425,5 @@ await fdapi.vehicle2.updateEnd();
 
 ```js
 //取消相机跟随
-fdapi.camera.cancelFol
+fdapi.camera.cancelFollow();
+```

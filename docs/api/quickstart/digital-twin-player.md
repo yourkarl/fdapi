@@ -377,4 +377,5 @@ await fdplayer.world2Screen(x, y, z);
 > 全屏显示：Fullscreen
 
 ```js
-fdplayer.fullscreen = !fdplayer.fullscre
+fdplayer.fullscreen = !fdplayer.fullscreen;
+```

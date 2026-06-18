@@ -376,4 +376,10 @@ updateEnd是异步调用，可以用回调函数也可以await
 
 | 参数 | 类型 | 说明 |
 |------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/t
+| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+> 示例代码如下：
+
+```js
+await fdapi.highlightArea.updateEnd();
+```

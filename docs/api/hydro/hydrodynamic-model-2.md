@@ -394,4 +394,10 @@ await fdapi.HydrodynamicModel2.stopPlay(data);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `data` | `object \| array` | 构造二维水动力模型对象HydrodynamicModel2的数据对象，参考add方法 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutori
+| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+> 示例代码如下：
+
+```js
+await fdapi.HydrodynamicModel2.update(data);
+```

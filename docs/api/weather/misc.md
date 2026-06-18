@@ -946,4 +946,5 @@ fdapi.misc.projectAssetCountAll();
 
 ```js
 //统计3dt信息
-fdapi.misc.
+fdapi.misc.projectAssetCount(AssetType.EPT_Scene);
+```

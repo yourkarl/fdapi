@@ -2247,4 +2247,5 @@ fdapi.tileLayer.deleteHole("hole1", 'E637D8FE42335EE96C58A1840BCAD0CE');
 
 ```js
 //清空
-fdapi.tileLayer.clearHole('E637D8FE42335E
+fdapi.tileLayer.clearHole('E637D8FE42335EE96C58A1840BCAD0CE');
+```

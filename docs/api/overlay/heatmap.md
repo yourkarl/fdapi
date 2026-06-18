@@ -879,4 +879,37 @@ let heatmap6 = {
         ]
     }
 };
-await fdap
+await fdapi.heatmap.addByTif(heatmap5);
+fdapi.heatmap.focus('heatmap5', 60, 1);
+```
+
+> AddByTif(tifFile-onTerrain)
+
+```js
+await fdapi.heatmap.clear();
+let heatmap6 = {
+    "id": "heatmap6",
+    "range": [-1, 1],
+    "light": true,
+    "style": HeatMapStyle.CustomColor, //设置贴地样式 1
+    "opacityMode": 0,
+    "blendMode": 1,
+    "tifFile": {
+        "minHeight": -10,//设置贴地模式时 地形高度要在此范围内 [-10~50]
+        "maxHeight": 50,//设置贴地模式时 地形高度要在此范围内 [-10~50]
+        "file": HostConfig.Path + "/assets/tif/T2.tif"
+    },
+    "colors": {
+        "gradient": true,
+        "invalidColor": [0, 0, 0, 1],
+        "colorStops": [
+            { "value": -1, "color": [0, 0, 1, 1] },
+            { "value": 0.25, "color": [0, 1, 0, 1] },
+            { "value": 0.5, "color": [1, 1, 0, 1] },
+            { "value": 1, "color": [1, 0, 0, 1] },
+        ]
+    }
+};
+await fdapi.heatmap.addByTif(heatmap6);
+fdapi.heatmap.focus('heatmap6', 60, 1);
+```

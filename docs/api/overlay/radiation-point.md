@@ -447,4 +447,5 @@ updateEnd是异步调用，可以用回调函数也可以await
 > 示例代码如下：
 
 ```js
-await fdapi.radiationPoint.updateEnd(
+await fdapi.radiationPoint.updateEnd();
+```

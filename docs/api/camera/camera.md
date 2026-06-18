@@ -756,4 +756,12 @@ await fdapi.camera.useOldDataFormat(bUse);
 
 ```js
 //限制相机交互范围
-let bbox = [492552.837539, 2492211.111875, 0, 492597.46972
+let bbox = [492552.837539, 2492211.111875, 0, 492597.469727, 2492256.456250, 20]
+fdapi.camera.lockByBBox(bbox);
+```
+
+> 解锁相机交互范围：UnLock
+
+```js
+fdapi.camera.unlock();
+```

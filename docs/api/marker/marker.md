@@ -1375,4 +1375,16 @@ let timerId = setInterval(async () => {
     if (++index > pathArr.length)
         index = 0;
     let pos = pathArr[index];
-    fdapi.customOb
+    fdapi.customObject.setLocation(co.id, pos)
+}, 1000);
+//清除定时器
+window.setTimeout(function () {
+    window.clearInterval(timerId)
+}, 10000);
+```
+
+> SetFontOutlineColor
+
+```js
+fdapi.marker.setFontOutlineColor('m1', Color.Red);
+```

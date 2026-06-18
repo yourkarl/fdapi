@@ -141,4 +141,5 @@ fdapi.camera.set(492616.92625, 2492173.455781, 69.874717, -54.843128, -90.117546
 
 //投影坐标转屏幕坐标
 let res = await fdapi.coord.world2Screen(492577.2846875, 2492224.9596875003, 2.7180029296875);
-log('World2Screen Result: ' + res.scree
+log('World2Screen Result: ' + res.screenPosition);
+```

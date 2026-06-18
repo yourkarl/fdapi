@@ -1,10 +1,10 @@
 ---
-title: 空间智能 Skill 使用说明
+title: DTS 空间智能 Skill 使用说明
 slug: /skill-guide
-description: "面向 AI 助手的飞渡 DTS Cloud 数字孪生 SDK 技能包（Skill）的安装与使用说明。"
+description: "DTS 空间智能技能包（Skill）的安装与使用说明。"
 ---
 
-# ddts — 飞渡 DTS Cloud 数字孪生 SDK Skill
+# DTS 空间智能 Skill
 
 一个面向 AI 助手的 **飞渡 DTS（Digital Twin System）Cloud** 二次开发知识库 Skill。它把云渲染数字孪生平台的 SDK 文档拆分到「类 / 方法 / 教程 / 类型」级别，让 AI 在你开发时按需查阅、给出准确的 `fdapi` 调用代码。
 
