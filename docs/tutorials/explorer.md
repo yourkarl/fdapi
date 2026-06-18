@@ -1,12 +1,12 @@
 ---
-title: Explorer 浏览器
+title: DTS Explorer 桌面端
 sidebar_label: Explorer
 description: "DTS Explorer 桌面端的功能介绍与二次开发接入说明"
 ---
 
-## Explorer 简介
+## DTS Explorer 桌面端简介
 
-DTS Explorer 是 DTS 平台的**桌面端渲染浏览器**，相对于云渲染版本（DTS Cloud），Explorer 在本地运行渲染引擎，适用于对网络带宽有限制、或需要本地高性能渲染的场景。
+DTS Explorer 是 DTS 平台的**桌面端渲染**，相对于云渲染版本（DTS Cloud），Explorer 在本地运行渲染引擎，适用于对网络带宽有限制、或需要本地高性能渲染的场景。
 
 | 对比项 | DTS Cloud（云渲染） | DTS Explorer（本地） |
 |--------|-------------------|----------------------|

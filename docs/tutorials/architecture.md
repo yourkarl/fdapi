@@ -16,15 +16,15 @@ DTS Cloud 是**云渲染**数字孪生平台——三维场景并不在浏览器
 - 你的 JavaScript 通过 SDK 把**指令（JSON 命令）**经 WebSocket 发给云端，云端执行后改变场景，再把新画面回传。
 
 ```text
-        浏览器（网页）                              云端高渲染服务
- ┌──────────────────────────┐                 ┌──────────────────────────┐
- │  fdplayer  视频流画面       │ ◀──── 视频流 ───── │                          │
- │  (DigitalTwinPlayer)     │      像素流       │   三维场景（3DT 工程）       │
- │                          │                 │   相机 / 模型 / 图层 / ...   │
- │  fdapi   接口调用          │ ─── JSON 命令 ──▶ │   云端 GPU 实时渲染          │
- │  (DigitalTwinAPI)        │     WebSocket    │                          │
- └──────────────────────────┘                 └──────────────────────────┘
-        鼠标 / 键盘 / 触摸交互 ──────────────────────────▶
+   浏览器（网页）                                云端高渲染服务
+ ┌──────────────────────┐                       ┌──────────────────────┐
+ │ fdplayer  视频流画面 │ ◀──── 视频流 ─────    │                      │
+ │ (DigitalTwinPlayer)  │ 像素流                │ 三维场景（3DT 工程） │
+ │                      │                       │ 相机 / 模型 / 图层   │
+ │ fdapi   接口调用     │ ──── JSON 命令 ───▶   │ 云端 GPU 实时渲染    │
+ │ (DigitalTwinAPI)     │ WebSocket / WebRTC    │                      │
+ └──────────────────────┘                       └──────────────────────┘
+   鼠标 / 键盘 / 触摸交互 ────────────────────▶
 ```
 
 这套架构带来三个推论，贯穿全部 API：
@@ -107,6 +107,6 @@ fdapi.xxx.updateEnd(function () {     // 提交，异步
 | 搞懂异步三种写法 | [异步调用方式](/docs/tutorials/async-call) |
 | 坐标系与转换 | [坐标系与坐标转换](/docs/tutorials/coordinates) |
 | 监听鼠标/相机/绘制事件 | [事件系统](/docs/tutorials/event) |
-| 接入与权限认证 | [权限认证 SDK](/docs/tutorials/auth) |
+| 高级接口授权 | [SDK 高级接口授权](/docs/tutorials/auth) |
 | TypeScript 类型提示 | [TypeScript 类型支持](/docs/tutorials/typescript) |
-| 在线试跑 API | [在线调试台](/sandbox) |
+| 在线试跑 API | [在线调试台](/sandbox) 

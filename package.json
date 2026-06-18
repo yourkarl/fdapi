@@ -13,8 +13,7 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "check": "python3 check_docs_integrity.py",
-    "gen": "python3 gen_dts.py && python3 gen_param_meta.py && python3 gen_real_examples.py && python3 check_docs_integrity.py",
-    "gen:rebuild": "python3 regenerate_docs.py && node gen_types.js && node insert_skills.js && node linkify_types.js && npm run gen"
+    "gen": "python3 gen_dts.py && python3 gen_param_meta.py && python3 gen_real_examples.py && python3 check_docs_integrity.py"
   },
   "dependencies": {
     "@codemirror/lang-javascript": "^6.2.5",

@@ -710,4 +710,9 @@ fdapi.marker3d.callBPFunction([
     {
         id: 'm1',
         functionName: 'H_自定义图标',
-        parameter
+        parameters: [
+            { "name": "图标路径", "paramType": 17, "paramValue": HostConfig.Path + "/locale/zh/images/tag.png" },
+        ]
+    }
+]);
+```

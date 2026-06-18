@@ -405,4 +405,5 @@ await fdapi.globeTerrain.updateEnd();
 ```js
 let imageryUrl = "http://t0.tianditu.gov.cn/cva_c/wmts?request=GetCapabilities&service=wmts&tk=5ac8367eada4f94bec03cefffa6ff03b";
 let imageryResourceUrl =  "http://t0.tianditu.gov.cn/cva_c/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=c&FORMAT=tiles&TILEMATRIX={TileMatrix}&TILEROW={TileRow}&TILECOL={TileCol}&tk=5ac8367eada4f94bec03cefffa6ff03b";
-fdapi.g
+fdapi.globeTerrain.setImagery(imageryUrl, imageryResourceUrl);
+```

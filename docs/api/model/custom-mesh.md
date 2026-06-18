@@ -295,4 +295,7 @@ fdapi.customMesh.show(['sm1', 'sm2']);
 ```js
 await fdapi.customMesh.update({
     id: 'sm1',
-    color: [0.2, 0.5,
+    color: [0.2, 0.5, 0.7, 1]
+});
+fdapi.customMesh.focus('sm1');
+```

@@ -1375,4 +1375,6 @@ fdapi.camera.set(494188.212969, 2489127.357422, 3717.1875, -50.044331, -177.0790
  * @param {array}   rotation bbox的欧拉角，[Pitch,Yaw,Roll]，设置包围盒的旋转，注意：只支持更新Yaw
  * @param {function} fn 可选的回调函数，请参考[二次开发：异步接口调用方式]{@tutorial API_AsyncCall}
  */
-let bbox = [488670.75, 2488
+let bbox = [488670.75, 2488165, -200, 491659.59375, 2490987.5, 800];
+fdapi.tools.updateVolumeClip(bbox, 0, true, false, [0, 40, 0]);
+```

@@ -572,4 +572,6 @@ let hydrodynamic2d_add = {
     }
 };
 fdapi.hydrodynamic2d.addByTif(hydrodynamic2d_add);
-//fdapi.hydrodynamic2d.focus('hdm_
+//fdapi.hydrodynamic2d.focus('hdm_tif', 1000);
+fdapi.camera.set(431187.23375, 4415879.210312, 48.861699, -31.722942, 40.740395, 0);
+```

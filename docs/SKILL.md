@@ -1,5 +1,8 @@
 ---
 name: ddts
+display_name: DTS Cloud 数字孪生 SDK —— fdapi 二次开发与 API 查询
+version: '7.1'
+homepage: https://yourkarl.github.io/fdapi/
 description: 飞渡 DTS Cloud（DigitalTwin）数字孪生 SDK 开发与 API 查询工具。涵盖云渲染初始化、异步调用、事件、坐标/颜色约定，以及 fdapi 全部类与方法（相机、标注、图层、矢量、模型、水利/海洋、交通、信号、战场、有限元、天气、分析量算等）。在用户进行 DTS 二次开发，或查询 fdapi / DigitalTwinAPI / DigitalTwinPlayer / 某个类或方法、需要标注/相机/图层/仿真等示例代码时使用。
 ---
 
@@ -20,7 +23,8 @@ description: 飞渡 DTS Cloud（DigitalTwin）数字孪生 SDK 开发与 API 查
 ## 初始化模板
 
 ```javascript
-// 前置：页面引入云渲染脚本 ac.min.js（推荐放入 lib/ 目录）
+// 前置：页面引入云渲染脚本 ac.min.js。推荐直接引用云端（升级后自动最新，免拷贝）：
+// <script src="http://<IP:Port>/libac"></script>（或 /ac.min.js）；详见 tutorials/hello-world.md
 const host = '127.0.0.1:8080'; // 云渲染服务 IP:Port，端口见 CloudMaster→服务设置→服务地址
 const options = {
   domId: 'player',            // 必选：承载视频流的 DOM 元素 id（不设则只调 API、无视频流）
@@ -52,7 +56,7 @@ const fdapi  = player.getAPI();                       // API 总入口
 | 主题 | 文件 |
 |------|------|
 | 快速开始 Hello World | `tutorials/hello-world.md` |
-| 接入方式与 SDK 说明 | `tutorials/introduction.md` |
+| 基本概念（坐标/名词/几何/SDK 类总览） | `tutorials/introduction.md` |
 | 架构概览 | `tutorials/architecture.md` |
 | 异步调用方式 | `tutorials/async-call.md` |
 | 事件系统 | `tutorials/event.md` |
@@ -61,13 +65,15 @@ const fdapi  = player.getAPI();                       // API 总入口
 | 坐标系与坐标转换 | `tutorials/coordinates.md` |
 | 颜色与 Color 对象 | `tutorials/color.md` |
 | 资源描述与引用 | `tutorials/resources.md` |
-| 权限认证 SDK | `tutorials/auth.md` |
+| 高级接口授权（付费接口/授权模块清单） | `tutorials/auth.md` |
 | 云端部署说明 | `tutorials/cloud-deploy.md` |
 | 框架集成指南 | `tutorials/framework-integration.md` |
 | TypeScript 类型支持 | `tutorials/typescript.md` |
 | 多视频同屏渲染 | `tutorials/multi-video.md` |
 | Explorer 浏览器 / 使用指南 | `tutorials/explorer.md` / `tutorials/explorer-guideline.md` |
 | 实战配方 | `tutorials/recipes.md` |
+| 性能最佳实践（含接口调用注意事项） | `tutorials/performance.md` |
+| 排错与常见报错 | `tutorials/troubleshooting.md` |
 | 常见问题 FAQ | `tutorials/faq.md` |
 | 版本更新记录 | `tutorials/revision-history.md` |
 
@@ -284,6 +290,15 @@ fdapi.polygon.update({ id: 'p2', color: [0, 1, 0, 0.5] });
 fdapi.polygon.updateEnd(() => console.log('更新完成'));
 ```
 
+## 最佳实践
+
+1. **先就绪后调用**：所有 API 调用置于 `onReady` 回调之后；工程未就绪即调用有崩溃风险。
+2. **批量优先**：大量增改用 `add(数组)` 或 `updateBegin()` … `updateEnd()`，减少命令往返（详见 `tutorials/performance.md`，含「接口调用注意事项」清单）。
+3. **资源释放**：对象用完及时 `delete` / `clear`；切换场景或卸载组件调用 `fdapi.destroy()` / `fdplayer.destroy()`；跟随/动画结束调用 `cancelFollow` / `stopAnimation`。
+4. **坐标一致**：标注与相机坐标须与场景坐标系（投影 / 球面）一致，否则定位偏移（详见 `tutorials/coordinates.md`、排错见 `tutorials/troubleshooting.md`）。
+5. **异步不混用**：同一函数体内回调 / `.then()` / `await` 三选一（`tutorials/async-call.md`）。
+6. **版本匹配**：`ac.min.js` 须与云渲染服务端版本一致，推荐云端引用 `http://<IP:Port>/libac` 免拷贝（`tutorials/hello-world.md`）。
+
 ## 文件路径速查
 | 内容 | 路径 |
 |------|------|
@@ -292,5 +307,19 @@ fdapi.polygon.updateEnd(() => console.log('更新完成'));
 | 入门与概念教程 | `tutorials/<主题>.md`（见上方教程索引） |
 | 事件回调说明 | `api/events/<文件>.md` |
 
+## 使用本 Skill 的规范
+
+1. **校验生成代码**：生成的 `fdapi` 代码必须自检——方法名、参数顺序与类型须与对应类文档（`api/<分类>/<文件>.md` 的「方法列表」与参数表）一致；**禁止臆造不存在的接口或参数**，不确定的参数留 `// TODO` 注释而非编造。
+2. **照文档用法**：能在「实战配方」或类文档中找到的用法优先照用，不要自创调用方式。
+3. **占位需替换**：示例中的坐标、`id`、资源路径均为占位值，须提示用户替换为真实工程值；坐标系（投影 / 经纬度）以用户场景为准。
+
+## 如何使用
+
+1. 先按用户意图在「查询路由」/「实战配方（`tutorials/recipes.md`）」定位最相近的场景；
+2. 阅读该场景涉及的**类文档**（`api/<分类>/<文件>.md`，含方法列表、参数表与示例）；
+3. 结合「调用约定」与「初始化模板」完成代码；
+4. **完成前再次核对**所用 API 的方法名与参数是否与文档一致（见上方「使用本 Skill 的规范」第 1 条）。
+
 ## 与其他 Skill 协作
+
 - 欢迎大家补充各自垂直业务的skill

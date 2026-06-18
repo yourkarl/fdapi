@@ -45,7 +45,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: 'docs',
-          editUrl: 'https://github.com/yourkarl/fdapi/edit/main/',
+          editUrl: 'https://github.com/yourkarl/fdapi/edit/master/',
         },
         blog: false,
         theme: {

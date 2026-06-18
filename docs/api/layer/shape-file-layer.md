@@ -633,4 +633,5 @@ fdapi.shapeFileLayer.unHighlightFeature('sp3', 13);
 > 取消高亮ShapeFileLayer内部多个要素区域：UnHighlightFeatures
 
 ```js
-fdapi.shapeFileLayer.unHi
+fdapi.shapeFileLayer.unHighlightFeatures([{ "shpId": "sp3", "featureIds": [13, 12, 21] }]);
+```

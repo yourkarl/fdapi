@@ -417,4 +417,8 @@ await fdapi.boxTrigger.showAll();
 ```js
 await fdapi.waterMesh.update({
     id: 'watermesh1',
-    waterColor: [0.0, 0.325, 0.223, 1.0]
+    waterColor: [0.0, 0.325, 0.223, 1.0],
+    waterSpeed: 0.8
+});
+fdapi.waterMesh.focus('watermesh1', 100);
+```

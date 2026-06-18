@@ -42,14 +42,17 @@ npm run serve      # 预览构建产物
 >
 > **`sidebars.js` 为手工维护**，不再由脚本生成：它含两个侧边栏（`tutorialsSidebar` 开发教程 + `tutorialSidebar` API 文档）、若干跨分类重复挂载的条目及类型参考页 `api/types`，这些是 `nav_data.json` 无法表达的人工编排。新增/调整文档时直接编辑 `sidebars.js`。（旧脚本 `gen_sidebar.py` 仅生成 API 侧边栏且会丢失上述编排，已从管线移除。）
 
-### `npm run gen:rebuild` —— 从原始 HTML 全量重建（破坏性，慎用）
+### `docs/api/` 为手工维护源（重要）
 
-会**覆盖 `docs/api/*.md`**，依次执行后再自动跑一遍 `npm run gen`：
+`docs/api/*.md` **不再由脚本生成，是手工维护的源文件**。除从原始 jsdoc HTML 抽取的基础内容外，它们还累积了大量人工 / 一次性脚本增强，且这些增强**无法由现有脚本完整复现**：
 
-1. `regenerate_docs.py` — 从原始 jsdoc HTML（默认 `参考资料/API原始参考文档/doc/doc`，可用 `--doc-dir` 或环境变量 `DTS_DOC_DIR` 指定）+ 真实示例，重建 `docs/api/*.md` 与 `static/img/refdoc/` 图片；依赖 `pip install beautifulsoup4`
-2. `gen_types.js` — 从 `global.html` 提取枚举/类型，生成 `docs/api/types.md` + `src/data/type-names.json`
-3. `insert_skills.js` — 向文档插入「业务场景 Skill」段落。**⚠️ 该脚本仅内置 41 篇的内容，其余文档的 Skill 段落为人工维护；全量重建会丢失它们，需手动补回，故请勿盲目执行本命令。**
-4. `linkify_types.js` — 给参数表「类型列」的已知类型名加类型页链接（幂等）
+- 「业务场景 Skill」段落、参数表「类型列」的类型页链接
+- 「方法列表」表格与方法锚点（`### 方法() {#id}`）
+- `description`、正文开场白的优化与内部腔清理
+
+> ⚠️ **请勿运行 `regenerate_docs.py`（及 `gen_types.js` / `insert_skills.js` / `linkify_types.js`）。** 它们会覆盖 `docs/api/*.md`、抹掉上述全部增强且无法自动还原。这套"从原始 HTML 全量重建"的脚本已**封存**——不再挂在任何 npm 命令中，仅当确需从零重建、且明确接受会丢失人工增强时，由维护者手动谨慎执行。
+
+新增 / 修改 API 文档时，**直接编辑 `docs/api/` 下的 markdown**；改完按需运行 `npm run gen` 刷新派生数据（TS 类型声明 / 编辑器补全 / 调试台示例库）。
 
 > CI（`.github/workflows/build.yml`）在构建前会运行 `check_docs_integrity.py`，
 > 拦截「写了一半」的损坏文件（历史上曾出现尾部空字节、汉字被截断、front matter 引号未转义）。

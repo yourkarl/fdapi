@@ -1557,4 +1557,5 @@ fdapi.geoJSONLayer.unHighlightFeatures([{ "id": "layer3", "featureIds": [1, 2, 3
 > 取消高亮GeoJSONLayer内部所有要素区域：UnHighlightAllFeaturesById
 
 ```js
-f
+fdapi.geoJSONLayer.unHighlightAllFeaturesById(["layer1", "layer2", "layer3"]);
+```

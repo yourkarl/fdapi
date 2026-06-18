@@ -19,6 +19,32 @@ const COLOR_NAMES = {
   Tomato: '#ff6347', Coral: '#ff7f50', Violet: '#ee82ee', Indigo: '#4b0082', Aqua: '#00ffff',
 };
 
+// 参数名 -> 简洁中文标签（无行内注释时使用；通用 + 天气/相机等高频项）
+const PARAM_CN = {
+  id: '编号', groupId: '分组', userData: '自定义数据', name: '名称', text: '文字',
+  coordinate: '坐标', coordinateType: '坐标类型', location: '位置', position: '观察点', target: '目标点',
+  rotation: '旋转', scale: '缩放', offset: '偏移', anchors: '锚点', order: '层级',
+  color: '颜色', fontColor: '字体颜色', backgroundColor: '背景色', fontSize: '字号',
+  imagePath: '图片路径', imageSize: '图片尺寸', url: '链接', path: '路径', filePath: '文件路径', fileName: '文件名',
+  size: '尺寸', radius: '半径', height: '高度', width: '宽度', length: '长度',
+  opacity: '透明度', visible: '是否可见', range: '可视范围', distance: '距离', flyTime: '飞行时间',
+  speed: '速度', time: '时间', duration: '时长', count: '数量', index: '索引',
+  pitch: '俯仰', yaw: '航向', roll: '翻滚', enable: '启用', mode: '模式',
+  strength: '强度', intensity: '强度', density: '密度',
+  // 天气 / 雨雪雾云
+  cloudThickness: '云层厚度', cloudDensity: '云层密度', raindropSize: '雨滴大小', rainColor: '雨滴颜色',
+  alignCamera: '相机对齐', overcastStrength: '阴沉程度', snowSize: '雪花大小', fogDensity: '雾浓度',
+};
+
+// 方法名 -> 简洁中文（分组标题）
+const METHOD_CN = {
+  add: '添加', update: '更新', delete: '删除', clear: '清空', get: '查询',
+  focus: '定位', show: '显示', hide: '隐藏', setVisible: '显隐',
+  set: '设置相机', lookAt: '相机定位', flyAround: '相机环绕', playAnimation: '播放动画',
+  setRainParam: '雨效', setSnowParam: '雪效', setFogParam: '雾效', setCloudParam: '云效',
+  setCloudThickness: '云层厚度', setCloudDensity: '云层密度', setDateTime: '日期时间',
+};
+
 const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
 const to2 = (n) => Math.round(n).toString(16).padStart(2, '0');
 
@@ -54,6 +80,24 @@ function findPrimaryCall(code) {
     return { ns, method, open, close, argsStart: open + 1, argsText: code.slice(open + 1, close) };
   }
   return null;
+}
+
+// 找出全部 fdapi/fdplayer/api 调用（跳过嵌套），用于多调用分组展示
+function findAllCalls(code) {
+  const re = /(?:fdapi|fdplayer|api)\.([\w$]+)(?:\.([\w$]+))?\s*\(/g;
+  let m; const calls = [];
+  while ((m = re.exec(code))) {
+    const open = re.lastIndex - 1;
+    const close = matchParen(code, open);
+    if (close < 0) continue;
+    re.lastIndex = close + 1;            // 跳过本次调用范围，避免重复匹配其参数内的嵌套调用
+    const inner = code.slice(open + 1, close).trim();
+    if (!inner) continue;
+    const ns = m[2] ? m[1] : null;
+    const method = m[2] || m[1];
+    calls.push({ ns, method, open, close, argsStart: open + 1, argsText: code.slice(open + 1, close) });
+  }
+  return calls;
 }
 
 // 返回与 code[open]=='(' 匹配的 ')' 下标
@@ -166,7 +210,7 @@ function buildControl(entry, ns) {
   const meta = (PARAM_META.byNs[ns] && PARAM_META.byNs[ns].fields[entry.key]) || PARAM_META.fields[entry.key] || {};
   const pv = parseValue(entry.valueText);
   // 标签优先用行内注释（通常简洁），否则用字段名；完整文档说明作为 tooltip
-  const ctrl = { key: entry.key, label: entry.comment || entry.key, start: entry.start, end: entry.end, raw: entry.valueText, tip: meta.desc || entry.comment };
+  const ctrl = { key: entry.key, label: entry.comment || PARAM_CN[entry.key] || entry.key, start: entry.start, end: entry.end, raw: entry.valueText, tip: meta.desc || entry.comment };
 
   // 枚举（文档声明 + 当前值是数值/字符串）
   if (meta.t === 'enum' && meta.enum && (pv.kind === 'number' || pv.kind === 'string')) {
@@ -228,25 +272,30 @@ export default function ParamPanel({ code, onTweak }) {
 
   const parsed = useMemo(() => {
     try {
-      const call = findPrimaryCall(code || '');
-      if (!call) return null;
-      const objStart = call.argsText.indexOf('{');
-      let entries;
-      if (objStart >= 0 && objStart < 3) {
-        entries = parseObject(call.argsText, call.argsStart);
-      } else {
-        const params = (PARAM_META.byNs[call.ns] && PARAM_META.byNs[call.ns].methods[call.method]
-          && PARAM_META.byNs[call.ns].methods[call.method].params) || [];
-        entries = splitTopLevel(call.argsText, call.argsStart).map((seg, i) => ({
-          key: params[i] && params[i] !== 'fn' ? params[i] : 'arg' + i,
-          valueText: seg.text, start: seg.start, end: seg.end, comment: '',
-        }));
+      const calls = findAllCalls(code || '');
+      if (!calls.length) return null;
+      const groups = [];
+      for (const call of calls) {
+        const objStart = call.argsText.indexOf('{');
+        let entries;
+        if (objStart >= 0 && objStart < 3) {
+          entries = parseObject(call.argsText, call.argsStart);
+        } else {
+          const params = (PARAM_META.byNs[call.ns] && PARAM_META.byNs[call.ns].methods[call.method]
+            && PARAM_META.byNs[call.ns].methods[call.method].params) || [];
+          entries = splitTopLevel(call.argsText, call.argsStart).map((seg, i) => ({
+            key: params[i] && params[i] !== 'fn' ? params[i] : 'arg' + i,
+            valueText: seg.text, start: seg.start, end: seg.end, comment: '',
+          }));
+        }
+        if (!entries || !entries.length) continue;
+        const controls = entries.map((e) => buildControl(e, call.ns)).filter((c) => c.kind !== 'expr');
+        if (!controls.length) continue;
+        groups.push({ title: METHOD_CN[call.method] || ((call.ns ? call.ns + '.' : '') + call.method), controls });
       }
-      if (!entries || !entries.length) return null;
-      const controls = entries.map((e) => buildControl(e, call.ns)).filter((c) => c.kind !== 'expr');
-      if (!controls.length) return null;
-      const title = (call.ns ? call.ns + '.' : '') + call.method;
-      return { title, controls };
+      if (!groups.length) return null;
+      const total = groups.reduce((s, g) => s + g.controls.length, 0);
+      return { groups, total };
     } catch (e) {
       return null;
     }
@@ -300,23 +349,32 @@ export default function ParamPanel({ code, onTweak }) {
         .lilgui-color { flex:0 0 34px; height:18px; padding:0; border:1px solid rgba(148,163,184,0.25);
           border-radius:4px; background:none; cursor:pointer; }
         .lilgui-hex { flex:1; min-width:0; }
+        .lilgui-group { padding:6px 10px 2px; font-size:0.64rem; font-weight:600; color:#22d3ee; }
+        .lilgui-group code { font-family:'JetBrains Mono',Consolas,monospace; }
         .lilgui-foot { padding:6px 10px; border-top:1px solid rgba(148,163,184,0.10); font-size:0.6rem; color:#5c6b7e; flex-shrink:0; }
       `}</style>
 
       <div className="lilgui-hdr" onClick={() => setCollapsed((c) => !c)} title="点击折叠/展开参数面板">
         <span className={'lilgui-arrow' + (collapsed ? '' : ' open')}>▶</span>
-        <span className="lilgui-ttl">⚙ <code>{parsed.title}</code></span>
-        <span className="lilgui-count">{parsed.controls.length}</span>
+        <span className="lilgui-ttl">⚙ {parsed.groups.length === 1 ? <code>{parsed.groups[0].title}</code> : '参数面板'}</span>
+        <span className="lilgui-count">{parsed.total}</span>
       </div>
 
       {!collapsed && (
         <>
           <div className="lilgui-body">
-            {parsed.controls.map((c, i) => (
-              <div className="lilgui-row" key={c.key + i} title={c.tip || c.key}>
-                <span className="lilgui-lbl">{c.label}</span>
-                <span className="lilgui-ctl"><Control ctrl={c} onChange={(v) => applyChange(c, v)} /></span>
-              </div>
+            {parsed.groups.map((g, gi) => (
+              <React.Fragment key={g.title + gi}>
+                {parsed.groups.length > 1 && (
+                  <div className="lilgui-group"><code>{g.title}</code></div>
+                )}
+                {g.controls.map((c, i) => (
+                  <div className="lilgui-row" key={c.key + '-' + gi + '-' + i} title={c.tip || c.key}>
+                    <span className="lilgui-lbl">{c.label}</span>
+                    <span className="lilgui-ctl"><Control ctrl={c} onChange={(v) => applyChange(c, v)} /></span>
+                  </div>
+                ))}
+              </React.Fragment>
             ))}
           </div>
           <div className="lilgui-foot">调节即写回代码 · 「立即执行」开启时实时生效</div>
