@@ -104,6 +104,8 @@ description: "HydroDynamic2D 是现行的二维水动力模型对象，基于真
 | `colors.color` | [`Color`](/docs/api/types#color) | 水深值对应的调色板颜色，注意alphaMode=0时，此颜色值的透明度生效 |
 | `colors.value` | `number` | 水深值 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -166,6 +168,8 @@ await fdapi.hydrodynamic2d.addByShp(data);
 | `colors.color` | [`Color`](/docs/api/types#color) | 水深值对应的调色板颜色，注意alphaMode=0时，此颜色值的透明度生效 |
 | `colors.value` | `number` | 水深值 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 ```js
 请求数据结构示例 
         [{
@@ -215,6 +219,8 @@ await fdapi.hydrodynamic2d.addByShp(data);
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Clear
 
 ```js
@@ -231,6 +237,8 @@ fdapi.hydrodynamic2d.clear();
 |------|------|------|
 | `ids` | `string \| array` | 要删除的HydroDynamic2D对象的ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Delete
 
@@ -252,6 +260,8 @@ fdapi.hydrodynamic2d.delete('hdm_shp_clip');
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Focus
 
 ```js
@@ -268,6 +278,8 @@ fdapi.hydrodynamic2d.focus('hdm_shp_clip', 100);
 |------|------|------|
 | `ids` | `string \| array` | 要获取的HydroDynamic2D对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
 > 示例：Get
 
@@ -286,6 +298,8 @@ fdapi.hydrodynamic2d.get('hdm_shp_clip');
 | `ids` | `string \| array` | HydroDynamic2D对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -302,6 +316,8 @@ fdapi.hydrodynamic2d.hide('hdm_shp_clip');
 |------|------|------|
 | `ids` | `string \| array` | HydroDynamic2D对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Show
 
@@ -328,6 +344,8 @@ fdapi.hydrodynamic2d.show('hdm_shp_clip');
 | `vertexWaterDepth` | `boolean` | 是否根据顶点水深插值，默认值：true，设置为false使用网格面插值 |
 | `updateTime` | `number` | 更新动画的插值时间，注意：仅update()更新方法执行时生效，默认值：1s |
 | `shpDataFilePath` | `string` | 更新二维水动力模型时包含水面网格的dat类型文件路径，取值示例："C:/datFile/xxx.dat"。注意：dat文件是一种二进制文件，它提取了某一时刻包含的所有水面网格的信息，并把这些信息依次写入了二进制文件dat，一个水面网格信息包含如下一组四个值：id,h,u,v。id对应shp属性表ID字段（int类型），h是网格对应的水深（double类型，单位是米），uv是流速和流向（double类型，单位米/秒，u朝东，v朝北）。id h u v四个字段分别对应4+8+8+8字节数据，id是int类型，其他double，按小端字节顺序（ByteOrder.LITTLE_ENDIAN）写入二进制dat文件 |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 ```js
 读取和写入dat文件的Java示例代码如下：

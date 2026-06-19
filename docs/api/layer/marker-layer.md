@@ -105,6 +105,8 @@ new MarkerLayer()
 | `markers.hoverImagePath` | `string` | 鼠标悬停时显示的图片路径，支持gif动图，支持本地路径和网络路径，[资源引入说明](/docs/tutorials/resources) |
 | `markers.hoverImageSize` | `array` | 鼠标悬停时显示的图片尺寸: [width, height]， 默认值：[0,0] 使用图片自身的尺寸，注意：如果设置的值比imageSize尺寸小，则默认使用imageSize的尺寸。 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Add
 
 ```js
@@ -172,6 +174,8 @@ fdapi.markerLayer.add(markerLayer);
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Clear
 
 ```js
@@ -188,6 +192,8 @@ fdapi.markerLayer.clear();
 |------|------|------|
 | `ids` | `string \| array` | 要删除的标注图层对象的ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Delete
 
@@ -208,6 +214,8 @@ fdapi.markerLayer.delete(['markerLayer1']);
 | `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Focus
 
@@ -236,6 +244,8 @@ fdapi.markerLayer.focusByMarkerId('markerLayer1', 'marker_100');
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -253,6 +263,8 @@ await fdapi.markerLayer.focusByMarkerId(id, markerId, distance, flyTime, rotatio
 | `ids` | `string \| array` | 标注图层对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -268,6 +280,8 @@ fdapi.markerLayer.hide(['markerLayer1']);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：HideAll
 
@@ -288,6 +302,8 @@ fdapi.markerLayer.hideAll();
 | `maxViewHeight` | `number` | 可视高度范围最大值，取值范围：[任意负数~任意正数]，单位：米 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：SetViewHeightRange
 
 ```js
@@ -305,6 +321,8 @@ fdapi.markerLayer.setViewHeightRange("markerLayer1", 100, 1000);
 | `ids` | `string \| array` | 标注图层对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Show
 
 ```js
@@ -320,6 +338,8 @@ fdapi.markerLayer.show('markerLayer1');
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：ShowAll
 
@@ -337,6 +357,8 @@ fdapi.markerLayer.showAll();
 |------|------|------|
 | `data` | `data \| array` | 标注图层对象包含的数据结构，参考add方法 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Update
 
@@ -405,6 +427,8 @@ fdapi.markerLayer.update(markerLayer);
 
 updateBegin不是异步调用，不需要await，也没有回调函数参数
 
+**返回：** 无返回值。
+
 ```js
 fdapi.xxx.updateBegin();
 for (let i = 0; i < 1000; i++) {
@@ -428,6 +452,8 @@ updateEnd是异步调用，可以用回调函数也可以await
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 

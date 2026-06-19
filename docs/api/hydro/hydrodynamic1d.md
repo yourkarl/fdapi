@@ -96,6 +96,8 @@ HydroDynamic1D类
 | `colors.color` | [`Color`](/docs/api/types#color) | 值对应的调色板颜色 |
 | `colors.value` | `number` | 值 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Add
 
 ```js
@@ -193,6 +195,8 @@ queryUrl(url).then(res => {
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Clear
 
 ```js
@@ -209,6 +213,8 @@ fdapi.hydrodynamic1d.clear();
 |------|------|------|
 | `ids` | `string \| array` | 要删除的HydroDynamic1D对象的ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Delete
 
@@ -230,6 +236,8 @@ fdapi.hydrodynamic1d.delete('hydrodynamic1d');
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Focus
 
 ```js
@@ -246,6 +254,8 @@ fdapi.hydrodynamic1d.focus('hydrodynamic1d', 12000, 2);
 |------|------|------|
 | `ids` | `string \| array` | 要获取的HydroDynamic1D对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
 > 示例：Get
 
@@ -264,6 +274,8 @@ fdapi.hydrodynamic1d.get('hydrodynamic1d');
 | `ids` | `string \| array` | HydroDynamic1D对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -280,6 +292,8 @@ fdapi.hydrodynamic1d.hide('hydrodynamic1d');
 |------|------|------|
 | `ids` | `string \| array` | HydroDynamic1D对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Show
 
@@ -338,6 +352,8 @@ fdapi.hydrodynamic1d.show('hydrodynamic1d');
 | `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
 | `colors.color` | [`Color`](/docs/api/types#color) | 值对应的调色板颜色 |
 | `colors.value` | `number` | 值 |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Update
 
@@ -431,6 +447,8 @@ if (riverPoints) {
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Clear
 
 ```js
@@ -447,6 +465,8 @@ fdapi.hydrodynamic1d.clear();
 |------|------|------|
 | `ids` | `string \| array` | 要删除的HydroDynamic1D对象的ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Delete
 
@@ -468,6 +488,8 @@ fdapi.hydrodynamic1d.delete('hydrodynamic1d');
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Focus
 
 ```js
@@ -484,6 +506,8 @@ fdapi.hydrodynamic1d.focus('hydrodynamic1d', 12000, 2);
 |------|------|------|
 | `ids` | `string \| array` | 要获取的HydroDynamic1D对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
 > 示例：Get
 
@@ -502,6 +526,8 @@ fdapi.hydrodynamic1d.get('hydrodynamic1d');
 | `ids` | `string \| array` | HydroDynamic1D对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -518,6 +544,8 @@ fdapi.hydrodynamic1d.hide('hydrodynamic1d');
 |------|------|------|
 | `ids` | `string \| array` | HydroDynamic1D对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Show
 
@@ -576,6 +604,8 @@ fdapi.hydrodynamic1d.show('hydrodynamic1d');
 | `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
 | `colors.color` | `Color` | 值对应的调色板颜色 |
 | `colors.value` | `number` | 值 |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Update
 

@@ -112,6 +112,8 @@ let params = res.data[0].params;
 | `scalarParameters` | `array` | 可选参数，仅在设置自定义材质路径后生效，自定义材质数值类型参数，包含name/value键值对的数组，其中value为数值，格式示例：[&#123;"name":"不透明度","value":0.5&#125;,&#123;"name":"UV重复","value":1.0&#125;] |
 | `vectorParameters` | `array` | 可选参数，仅在设置自定义材质路径后生效，自定义材质矢量类型参数，包含name/value键值对的数组，其中value为数组，格式示例：[&#123;"name":"color1","value":[1,1,1,1]&#125;,&#123;"name":"color2","value":[1,0,0,1]&#125;] |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Add
 
 ```js
@@ -199,6 +201,8 @@ fdapi.polyline.focus(p1.id, 50);
 | `startObjectId` | `string` | Polyline起点跟随移动对应的模型ID |
 | `endObjectId` | `string` | Polyline终点跟随移动对应的模型ID |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 ```js
 示例代码：
 
@@ -244,6 +248,8 @@ fdapi.polyline.attachObject([
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Clear
 
 ```js
@@ -260,6 +266,8 @@ fdapi.polyline.clear();
 |------|------|------|
 | `ids` | `string \| array` | 要删除的Polyline对象的ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Delete
 
@@ -281,6 +289,8 @@ fdapi.polyline.delete('p1');
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Focus
 
 ```js
@@ -297,6 +307,10 @@ fdapi.polyline.focus('p1', 880, 1);
 |------|------|------|
 | `ids` | `string \| array` | 要获取的Polyline对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
 
 ```js
 Polyline的详细信息
@@ -333,6 +347,8 @@ fdapi.polyline.get('p1');
 | `ids` | `string \| array` | Polyline对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -348,6 +364,8 @@ fdapi.polyline.hide('p1');
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：HideAll
 
@@ -367,6 +385,8 @@ fdapi.polyline.hideAll();
 | `newVal` | `number` | 新值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：设置新的亮度：SetBrightness
 
 ```js
@@ -385,6 +405,8 @@ fdapi.polyline.setBrightness("p1", 2);
 | `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：设置新的颜色值：SetColor
 
 ```js
@@ -402,6 +424,8 @@ fdapi.polyline.setColor("p1", [0, 1, 0, 0.5]);
 | `id` | `string` | 字符串类型的ID |
 | `newVal` | `array` | 新坐标值，[取值示例](/docs/tutorials/coordinates) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：设置坐标值：SetCoordinates
 
@@ -427,6 +451,8 @@ fdapi.polyline.setCoordinates("p1", [
 | `newVal` | `boolean` | 是否做深度检测 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：设置是否做深度检测：SetDepthTest
 
 ```js
@@ -446,6 +472,8 @@ fdapi.polyline.setDepthTest("p1", false);
 | `newVal` | `number` | 新值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：设置新的流速：SetFlowRate
 
 ```js
@@ -464,6 +492,8 @@ fdapi.polyline.setFlowRate("p1", 2);
 | `newVal` | `number` | 新值， 0： 直线， 1： 曲线 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：设置新的形状：SetShape
 
 ```js
@@ -481,6 +511,8 @@ fdapi.polyline.setShape("p1", 1);
 | `id` | `string` | 字符串类型的ID |
 | `newVal` | `number` | PolylineStyle新样式，取值范围：[0~5]，参考 `PolylineStyle` |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：设置新的样式：SetStyle
 
@@ -501,6 +533,8 @@ fdapi.polyline.setStyle("p1", PolylineStyle.Arrow);
 | `newVal` | `number` | 新值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：设置新的厚度：SetThickness
 
 ```js
@@ -520,6 +554,8 @@ fdapi.polyline.setThickness("p1", 60);
 | `maxViewHeight` | `number` | 可视高度范围最大值，取值范围：[任意负数~任意正数]，单位：米 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：设置可视高度范围：SetViewHeightRange
 
 ```js
@@ -537,6 +573,8 @@ fdapi.polyline.setViewHeightRange("p1", 0, 1000);
 | `ids` | `string \| array` | Polyline对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Show
 
 ```js
@@ -552,6 +590,8 @@ fdapi.polyline.show('p1');
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：ShowAll
 
@@ -569,6 +609,8 @@ fdapi.polyline.showAll();
 |------|------|------|
 | `data` | `object \| array` | 数据结构，请参考add方法 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Update
 
@@ -596,6 +638,8 @@ fdapi.polyline.updateEnd();
 
 updateBegin不是异步调用，不需要await，也没有回调函数参数
 
+**返回：** 无返回值。
+
 ```js
 fdapi.xxx.updateBegin();
 for (let i = 0; i < 1000; i++) {
@@ -619,6 +663,8 @@ updateEnd是异步调用，可以用回调函数也可以await
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 

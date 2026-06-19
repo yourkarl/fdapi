@@ -59,6 +59,8 @@ BoxTrigger 用于在三维场景中绘制一个长方体盒子热区，当 Custo
 | `coordinateType` | `number` | 可选，坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
 | `bbox` | `array` | 绘制触发热区的包围盒范围，格式：[minX,minY,minZ,maxX,maxY,maxZ]，数组元素类型：[任意浮点数] |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 ```js
 以下为当CustomObject对象或者Camera相机对象进入或退出创建的盒子热区范围内触发返回的事件对象结构
 
@@ -182,6 +184,8 @@ fdapi.customObject.startMove('o1', 0, pathPointArr);
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Clear
 
 ```js
@@ -198,6 +202,8 @@ fdapi.boxTrigger.clear();
 |------|------|------|
 | `ids` | `string \| array` | 要删除的BoxTrigger对象的ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Delete
 
@@ -217,6 +223,8 @@ fdapi.boxTrigger.delete('boxTrigger1');
 注意：
 
 updateBegin不是异步调用，不需要await，也没有回调函数参数
+
+**返回：** 无返回值。
 
 ```js
 fdapi.xxx.updateBegin();
@@ -241,6 +249,8 @@ updateEnd是异步调用，可以用回调函数也可以await
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 

@@ -154,6 +154,8 @@ let params = res.data[0].params;
 | `bClip` | `boolean` | 可选参数，是否参与剖切，默认：false |
 | `depthTest` | `boolean` | 是否做深度检测，默认为true，true会被遮挡，false不会被遮挡，注意：非半透明材质不支持深度检测 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 ```js
 polygon3d对象示例
 
@@ -252,6 +254,8 @@ fdapi.polygon3d.focus('p3d1', 50);
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Clear
 
 ```js
@@ -268,6 +272,8 @@ fdapi.polygon3d.clear();
 |------|------|------|
 | `ids` | `string \| array` | 要删除的3DPolygon对象的ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Delete
 
@@ -286,6 +292,8 @@ fdapi.polygon3d.delete(['p3d1', 'p3d2']);
 | `ids` | `number \| array` | Polygon3D对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：DisableClip
 
 ```js
@@ -302,6 +310,8 @@ fdapi.polygon3d.disableClip(['p3d1', 'p3d2']);
 |------|------|------|
 | `ids` | `number \| array` | Polygon3D对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：EnableClip
 
@@ -323,6 +333,8 @@ fdapi.polygon3d.enableClip(['p3d1', 'p3d2']);
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Focus
 
 ```js
@@ -339,6 +351,10 @@ fdapi.polygon3d.focus('p3d1', 10);
 |------|------|------|
 | `ids` | `string \| array` | 要获取的3DPolygon对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
 
 ```js
 3DPolygon的详细信息
@@ -377,6 +393,8 @@ fdapi.polygon3d.get(['p3d1', 'p3d2']);
 | `duration` | `number` | 闪烁持续时间，单位：秒，取值范围：[0.01~任意正数] |
 | `interval` | `number` | 闪烁间隔时间，单位：秒，取值范围：[0.01~任意正数]，注意：间隔时间要小于持续闪烁时间 |
 
+**返回：** 无返回值。
+
 > 示例：Glow
 
 ```js
@@ -399,6 +417,8 @@ fdapi.polygon3d.glow([{
 | `ids` | `string \| array` | 3DPolygon对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -414,6 +434,8 @@ fdapi.polygon3d.hide(['p3d1', 'p3d2']);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：HideAll
 
@@ -431,6 +453,8 @@ fdapi.polygon3d.hideAll();
 |------|------|------|
 | `ids` | `string \| array` | Polygon3D的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Highlight
 
@@ -451,6 +475,8 @@ fdapi.polygon3d.highlight('p3d1');
 | `newColor` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -468,6 +494,8 @@ await fdapi.polygon3d.setColor(id, newColor);
 | `id` | `string` | Polygon3D的ID |
 | `newVal` | `array` | 新坐标值，[取值示例](/docs/tutorials/coordinates) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
@@ -487,6 +515,8 @@ await fdapi.polygon3d.setCoordinates(id, newVal);
 | `newVal` | `boolean` | 是否做深度检测 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -504,6 +534,8 @@ await fdapi.polygon3d.setDepthTest(id, newVal);
 | `id` | `string` | Polygon3D的ID |
 | `newVal` | `number` | 新值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
@@ -523,6 +555,8 @@ await fdapi.polygon3d.setHeight(id, newVal);
 | `newVal` | `number` | 新值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -540,6 +574,8 @@ await fdapi.polygon3d.setIntensity(id, newVal);
 | `id` | `string` | Polygon3D的ID |
 | `newVal` | `number` | 新3DPolygon的样式，参考 `Polygon3DStyle` |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
@@ -559,6 +595,8 @@ await fdapi.polygon3d.setStyle(id, newVal);
 | `newVal` | `number` | 新值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -576,6 +614,8 @@ await fdapi.polygon3d.setTillingX(id, newVal);
 | `id` | `string` | Polygon3D的ID |
 | `newVal` | `number` | 新值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
@@ -596,6 +636,8 @@ await fdapi.polygon3d.setTillingY(id, newVal);
 | `maxViewHeight` | `number` | 可视高度范围最大值，取值范围：[任意负数~任意正数]，单位：米 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：SetViewHeightRange
 
 ```js
@@ -613,6 +655,8 @@ fdapi.polygon3d.setViewHeightRange('p3d1', 1, 1000);
 | `ids` | `string \| array` | 3DPolygon对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Show
 
 ```js
@@ -628,6 +672,8 @@ fdapi.polygon3d.show(['p3d1', 'p3d2']);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：ShowAll
 
@@ -646,6 +692,8 @@ fdapi.polygon3d.showAll();
 | `ids` | `string \| array` | Polygon3D的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：StopGlow
 
 ```js
@@ -663,6 +711,8 @@ fdapi.polygon3d.stopGlow('p3d1');
 | `ids` | `string \| array` | Polygon3D的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -679,6 +729,8 @@ await fdapi.polygon3d.unHighlight(ids);
 |------|------|------|
 | `data` | `object \| array` | 数据结构，请参考add方法 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Update
 
@@ -713,6 +765,8 @@ fdapi.polygon3d.focus(o.id);
 
 updateBegin不是异步调用，不需要await，也没有回调函数参数
 
+**返回：** 无返回值。
+
 ```js
 fdapi.xxx.updateBegin();
 for (let i = 0; i < 1000; i++) {
@@ -736,6 +790,8 @@ updateEnd是异步调用，可以用回调函数也可以await
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 

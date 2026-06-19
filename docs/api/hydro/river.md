@@ -100,6 +100,8 @@ River类 等价于一维水动力模型Hydrodynamic1D类
 | `colors.color` | [`Color`](/docs/api/types#color) | 值对应的调色板颜色 |
 | `colors.value` | `number` | 值 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -115,6 +117,8 @@ await fdapi.river.add(data);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
@@ -132,6 +136,8 @@ await fdapi.river.clear();
 |------|------|------|
 | `ids` | `string \| array` | 要删除的River对象的ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
@@ -153,6 +159,8 @@ await fdapi.river.delete(ids);
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -169,6 +177,8 @@ await fdapi.river.focus(ids, distance, flyTime, rotation);
 |------|------|------|
 | `ids` | `string \| array` | 要获取的River对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
 > 示例代码如下：
 
@@ -187,6 +197,8 @@ await fdapi.river.get(ids);
 | `ids` | `string \| array` | River对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -204,6 +216,8 @@ await fdapi.river.hide(ids);
 | `ids` | `string \| array` | River对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -220,6 +234,8 @@ await fdapi.river.show(ids);
 |------|------|------|
 | `data` | `object \| array` | River数据，参考add方法 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 

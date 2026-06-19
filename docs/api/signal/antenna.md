@@ -84,6 +84,8 @@ new Antenna()
 | `colors.invalidColor` | `array` | 无效像素点的默认颜色，默认白色 |
 | `colors.colorStops` | `array` | 色卡数组，包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;] |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 ```js
 {
             "id": "radiationPattern",
@@ -273,6 +275,8 @@ fdapi.antenna.focus('ap_1', 100, 1);
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Clear
 
 ```js
@@ -289,6 +293,8 @@ fdapi.antenna.clear();
 |------|------|------|
 | `ids` | `string \| array` | 要删除的天线方向图对象ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Delete
 
@@ -310,6 +316,8 @@ fdapi.antenna.delete('ap_1');
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Focus
 
 ```js
@@ -326,6 +334,10 @@ fdapi.antenna.focus('ap_1', 100, 1);
 |------|------|------|
 | `ids` | `string \| array` | 要获取的天线方向图对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
 
 ```js
 返回天线方向图的详细信息 属性详情参见add方法参数
@@ -359,6 +371,8 @@ fdapi.antenna.get('ap_1');
 | `ids` | `string \| array` | 天线方向图对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -376,6 +390,8 @@ fdapi.antenna.hide('ap_1');
 | `ids` | `string \| array` | 天线方向图对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Show
 
 ```js
@@ -392,6 +408,8 @@ fdapi.antenna.show('ap_1');
 |------|------|------|
 | `data` | `object \| array` | 天线方向图对象或对象数组，参考add方法 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Update
 
@@ -419,6 +437,8 @@ fdapi.antenna.focus('ap_1', 100, 1);
 
 updateBegin不是异步调用，不需要await，也没有回调函数参数
 
+**返回：** 无返回值。
+
 ```js
 fdapi.xxx.updateBegin();
 for (let i = 0; i < 1000; i++) {
@@ -442,6 +462,8 @@ updateEnd是异步调用，可以用回调函数也可以await
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 

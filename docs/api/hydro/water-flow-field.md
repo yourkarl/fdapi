@@ -78,6 +78,8 @@ WaterFlowField流场类对象，用于精确控制水流单个网格的方向速
 | `particleScale` | `number` | 水流粒子缩放大小，取值范围：[1~30]，默认值：1 |
 | `traceFactor` | `number` | 光流轨迹保持因子，仅在displayMode=2生效，取值范围：[0~100] 值越大粒子轨迹越长，注意：水流场的采样点越稀疏，因子值就要设置越大 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 ```js
 请求数据结构示例 
         [{
@@ -149,6 +151,8 @@ fdapi.waterFlowField.focus('flowField1', 1000);
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Clear
 
 ```js
@@ -165,6 +169,8 @@ fdapi.waterFlowField.clear();
 |------|------|------|
 | `ids` | `string \| array` | 要删除的WaterFlowField对象的ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Delete
 
@@ -186,6 +192,8 @@ fdapi.waterFlowField.delete('flowField1');
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Focus
 
 ```js
@@ -202,6 +210,10 @@ fdapi.waterFlowField.focus('flowField1', 1000);
 |------|------|------|
 | `ids` | `string \| array` | 要获取的WaterFlowField对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
 
 ```js
 WaterFlowField的详细信息
@@ -236,6 +248,8 @@ fdapi.waterFlowField.get('flowField1');
 | `ids` | `string \| array` | WaterFlowField对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -253,6 +267,8 @@ fdapi.waterFlowField.hide('flowField1');
 | `id` | `string` | WaterFlowField对象ID |
 | `vp` | [`Viewport`](/docs/api/types#viewport) | 视口掩码（Viewport位运算） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：SetViewportVisible
 
@@ -280,6 +296,8 @@ fdapi.waterFlowField.setViewportVisible('flowField1', Viewport.V1 | Viewport.V3)
 | `ids` | `string \| array` | WaterFlowField对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Show
 
 ```js
@@ -296,6 +314,8 @@ fdapi.waterFlowField.show('flowField1');
 |------|------|------|
 | `data` | `object \| array` | WaterFlowField数据，支持单个对象和对象数组，结构参考add方法 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Update
 

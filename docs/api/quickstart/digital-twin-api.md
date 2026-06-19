@@ -160,6 +160,8 @@ new DigitalTwinAPI(host, options)
 
 检查API调用是否就绪
 
+**返回：** 返回查询结果。
+
 > 示例代码如下：
 
 ```js
@@ -171,6 +173,8 @@ await fdapi.checkApiReady();
 ### `destroy()` {#destroy}
 
 关闭WebSocket连接
+
+**返回：** 无返回值。
 
 > 示例：Destroy
 
@@ -188,6 +192,8 @@ fdapi.destroy();
 |------|------|------|
 | `code` | `string` | JS代码 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：ExecuteJsInTickPage
 
@@ -216,6 +222,8 @@ await fdapi.getPlayer();
 
 获取工程信息
 
+**返回：** 返回查询结果。
+
 > 示例：GetProjectInfo
 
 ```js
@@ -230,6 +238,8 @@ fdapi.getProjectInfo();
 
 注：通过AcApiVersion或者acapi.VERSION获取到的是SDK的大版本号，例如：5.3，而通过此方法获取到的是完整版本号
 
+**返回：** 返回查询结果。
+
 > 示例：GetVersion
 
 ```js
@@ -241,6 +251,8 @@ log("SDK Version: " + fdapi.getVersion())
 ### `registerSyncObjects()` {#registerSyncObjects}
 
 注册要进行同步的对象
+
+**返回：** 无返回值。
 
 > 示例代码如下：
 
@@ -261,6 +273,8 @@ await fdapi.registerSyncObjects();
 | `url` | `string` | 在渲染程序里运行的HTML页面 |
 | `options` | `boolean` | 用于调试的选项。 可设置调试窗口的位置、大小和可见性。 属性如下：x, y, width, height, visible |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：RegisterTick
 
@@ -285,6 +299,8 @@ fdapi.camera.set(492816.259375, 2491967.416875, 78.772134, -32.735394, -86.55907
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：RemoveTick
 
 ```js
@@ -301,6 +317,8 @@ fdapi.removeTick();
 |------|------|------|
 | `type` | [`ResetType`](/docs/api/types#resettype) | 设置重置的类别，请参考 `ResetType`，如果不传此参数，默认行为是清除添加的所有对象 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Reset
 
@@ -329,6 +347,8 @@ fdapi.reset();
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：SaveProject
 
 ```js
@@ -340,6 +360,8 @@ fdapi.saveProject();
 ### `setEnableAliases()` {#setEnableAliases}
 
 开启接口别名（不建议使用）
+
+**返回：** 无返回值。
 
 > 示例代码如下：
 
@@ -356,6 +378,8 @@ await fdapi.setEnableAliases();
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 事件回调函数 |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
@@ -374,6 +398,8 @@ await fdapi.setEventCallback();
 | `ip` | `string` | IP地址或者主机名 |
 | `port` | `number` | WebSocket服务的端口号 |
 
+**返回：** 无返回值。
+
 > 示例代码如下：
 
 ```js
@@ -390,6 +416,8 @@ await fdapi.setHost(ip, port);
 |------|------|------|
 | `visible` | `boolean` | 是否可见 |
 | `fn` | `function` | 可选的回调函数，仅在客户端调用时有效。 |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：ShowTickWindow
 

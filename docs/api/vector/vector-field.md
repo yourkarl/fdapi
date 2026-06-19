@@ -157,6 +157,8 @@ tif文件结构描述：
 | `subFields.lifeTimeMinScale` | `number` | 子场粒子生命周期的缩放因子范围的最小值 |
 | `subFields.lifeTimeMaxScale` | `number` | 子场粒子生命周期的缩放因子范围的最大值 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 ```js
 请求数据结构示例 
         [{
@@ -253,6 +255,8 @@ fdapi.camera.set(12632340.389977, 2689776.08445, 10794963.2, -85.981941, -91.865
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Clear
 
 ```js
@@ -269,6 +273,8 @@ fdapi.vectorField.clear();
 |------|------|------|
 | `ids` | `string \| array` | 要删除的VectorField对象的ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Delete
 
@@ -290,6 +296,8 @@ fdapi.vectorField.delete('typhoon');
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Focus
 
 ```js
@@ -306,6 +314,10 @@ fdapi.vectorField.focus('typhoon', 10000000);
 |------|------|------|
 | `ids` | `string \| array` | 要获取的VectorField对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
 
 ```js
 VectorField的详细信息
@@ -336,6 +348,8 @@ fdapi.vectorField.get('typhoon');
 | `ids` | `string \| array` | VectorField对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -353,6 +367,8 @@ fdapi.vectorField.hide('typhoon');
 | `id` | `string` | VectorField对象ID |
 | `vp` | [`Viewport`](/docs/api/types#viewport) | 视口掩码（Viewport位运算） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：SetViewportVisible
 
@@ -379,6 +395,8 @@ fdapi.vectorField.setViewportVisible('typhoon', Viewport.V1 | Viewport.V3);
 |------|------|------|
 | `ids` | `string \| array` | VectorField对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Show
 
@@ -416,6 +434,8 @@ fdapi.vectorField.show('typhoon');
 | `opacityStops.opacity` | `number` | 速度值对应的不透明度，取值范围：[0~1] |
 | `opacityStops.value` | `number` | 速度值 |
 | `fenceThickness` | `number` | 向量场栅栏宽度，默认值：1 |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Update
 

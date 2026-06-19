@@ -154,6 +154,8 @@ new Marker()
 | `priority` | `number` | 避让优先级，默认值：0，注意：值越大显示越靠上 |
 | `occlusionCull` | `boolean` | 是否参与遮挡剔除，注意：仅displayMode设置为0或1时，遮挡剔除才会生效 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Add
 
 ```js
@@ -366,6 +368,8 @@ img.onload = () => {
 | `objectId` | `string` | 被贴合的对象id，支持的对象类型：CustomObject、Vehicle、Vehicle2、Train、Drone |
 | `offset` | `array` | 贴合的偏移量，[X,Y,Z]，[取值示例](/docs/tutorials/coordinates) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -381,6 +385,8 @@ await fdapi.marker.attachObject(data);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Clear
 
@@ -399,6 +405,8 @@ fdapi.marker.clear();
 | `ids` | `string \| array` | 要删除的标注对象的ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Delete
 
 ```js
@@ -415,6 +423,8 @@ fdapi.marker.delete(['m1', 'm2']);
 |------|------|------|
 | `groupIds` | `string \| array` | Marker创建时指定的分组ID或ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：DeleteByGroupId
 
@@ -436,6 +446,8 @@ fdapi.marker.deleteByGroupId('markerAdd');
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Focus
 
 ```js
@@ -455,6 +467,8 @@ fdapi.marker.focus('m1', 200, 0.2);
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：FocusAll
 
 ```js
@@ -471,6 +485,10 @@ fdapi.marker.focusAll(200, 0.2);
 |------|------|------|
 | `ids` | `string \| array` | 要获取的标注对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
 
 ```js
 返回Marker的详细信息
@@ -528,6 +546,8 @@ log(`获取标注：\n id: ${o.id} \n text: ${o.text}`);
 | `ids` | `string \| array` | 标注对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -544,6 +564,8 @@ fdapi.marker.hide(['m1']);
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：HideAll
 
 ```js
@@ -559,6 +581,8 @@ fdapi.marker.hideAll();
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：隐藏所有弹出窗口：HideAllPopupWindow
 
@@ -577,6 +601,8 @@ fdapi.marker.hideAllPopupWindow();
 | `groupIds` | `string \| array` | Marker创建时指定的分组ID或ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：HideByGroupId
 
 ```js
@@ -593,6 +619,8 @@ fdapi.marker.hideByGroupId('markerAdd');
 |------|------|------|
 | `ids` | `string \| array` | 标注对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：隐藏标注的弹出窗口：HidePopupWindow
 
@@ -611,6 +639,8 @@ fdapi.marker.hidePopupWindow('m1');
 | `id` | `string` | 标注的唯一标识符ID |
 | `newVal` | `array` | 锚点新值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Anchors
 
@@ -631,6 +661,8 @@ fdapi.marker.focus('m1', 100, 1);
 | `id` | `string` | 标注的唯一标识符ID |
 | `newVal` | `boolean` | 是否显示垂直牵引线 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：SetAutoHidePopupWindow
 
@@ -659,6 +691,8 @@ fdapi.marker.setAutoHidePopupWindow('m1', false);
 | `fontColor` | [`Color`](/docs/api/types#color) | 聚合后显示的聚合数字的字体颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `enableAnimation` | `boolean` | 是否开启marker聚合时的透明渐变动画，默认值：true |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：SetClusterStyle
 
 ```js
@@ -684,6 +718,8 @@ fdapi.marker.setClusterStyle(style);
 | `newVal` | `array` | 新值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Coordinate
 
 ```js
@@ -703,6 +739,8 @@ fdapi.marker.focus('m1', 200, 0.2);
 | `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：FontColor
 
 ```js
@@ -720,6 +758,8 @@ fdapi.marker.setFontColor('m1', Color.Blue);
 | `id` | `string` | 标注的唯一标识符ID |
 | `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
@@ -739,6 +779,8 @@ await fdapi.marker.setFontOutlineColor(id, newVal);
 | `newVal` | `number` | 新值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：SetFontOutlineSize
 
 ```js
@@ -756,6 +798,8 @@ fdapi.marker.setFontOutlineSize('m1', 2);
 | `id` | `string` | 标注的唯一标识符ID |
 | `newVal` | `number` | 新值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：SetFontSize
 
@@ -775,6 +819,8 @@ fdapi.marker.setFontSize('m1', 30);
 | `newVal` | `string` | 新值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：SetGroupId
 
 ```js
@@ -792,6 +838,8 @@ fdapi.marker.setGroupId('m1', 'groupMarker2');
 | `id` | `string` | 标注的唯一标识符ID |
 | `newVal` | `string` | 新值，[资源引入说明](/docs/tutorials/resources) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：SetHoverImagePath
 
@@ -812,6 +860,8 @@ fdapi.marker.setHoverImagePath('m1', hoverImagePath);
 | `newVal` | `string` | 新值，[资源引入说明](/docs/tutorials/resources) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：ImagePath
 
 ```js
@@ -831,6 +881,8 @@ fdapi.marker.setImagePath('m1', path);
 | `newVal` | `array` | 新的尺寸 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：ImageSize
 
 ```js
@@ -848,6 +900,8 @@ fdapi.marker.setImageSize('m1', [64, 64]);
 | `id` | `string` | 标注的唯一标识符ID |
 | `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：SetLineColor
 
@@ -867,6 +921,8 @@ fdapi.marker.setLineColor('m1', Color.Red);
 | `newVal` | `array` | 新值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：SetLineOffset
 
 ```js
@@ -884,6 +940,8 @@ fdapi.marker.setLineOffset('m1', [10, 10]);
 | `id` | `string` | 标注的唯一标识符ID |
 | `newVal` | `array` | 新值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：SetLineSize
 
@@ -903,6 +961,8 @@ fdapi.marker.setLineSize('m1', [0.5, 50]);
 | `newVal` | `boolean` | 新值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：SetOcclusionCull
 
 ```js
@@ -920,6 +980,8 @@ fdapi.marker.setOcclusionCull('m1', true);
 | `id` | `string` | 标注的唯一标识符ID |
 | `newVal` | `array` | 新值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：SetPopupOffset
 
@@ -939,6 +1001,8 @@ fdapi.marker.setPopupOffset('m1', [20, 20]);
 | `newVal` | `array` | 新值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：SetPopupSize
 
 ```js
@@ -956,6 +1020,8 @@ fdapi.marker.setPopupSize('m1', [400, 600]);
 | `id` | `string` | 标注的唯一标识符ID |
 | `newVal` | `string` | 新值，[资源引入说明](/docs/tutorials/resources) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
@@ -975,6 +1041,8 @@ await fdapi.marker.setPopupURL(id, newVal);
 | `newVal` | `number` | 新值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：SetPriority
 
 ```js
@@ -992,6 +1060,8 @@ fdapi.marker.setPriority('m1', 1);
 | `id` | `string` | 标注的唯一标识符ID |
 | `newVal` | `array` | 新的可见范围值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Range
 
@@ -1011,6 +1081,8 @@ fdapi.marker.setRange('m1', [1, 800]);
 | `newVal` | `string` | 新值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Text
 
 ```js
@@ -1028,6 +1100,8 @@ fdapi.marker.setText('m1', '体育馆');
 | `id` | `string` | 标注的唯一标识符ID |
 | `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：TextBackgroundColor
 
@@ -1047,6 +1121,8 @@ fdapi.marker.setTextBackgroundColor('m1', Color.Yellow);
 | `newVal` | `array` | 新值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：SetTextOffset
 
 ```js
@@ -1064,6 +1140,8 @@ fdapi.marker.setTextOffset('m1', [10, 10]);
 | `id` | `string` | 标注的唯一标识符ID |
 | `newVal` | `array` | 新值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：SetTextRange
 
@@ -1083,6 +1161,8 @@ fdapi.marker.setTextRange('m1', [0, 100]);
 | `newVal` | `string` | 新值，[资源引入说明](/docs/tutorials/resources) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：URL
 
 ```js
@@ -1101,6 +1181,8 @@ fdapi.marker.setURL('m1', 'http://www.baidu.com');
 | `newVal` | `string` | 新值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：SetUserData
 
 ```js
@@ -1118,6 +1200,8 @@ fdapi.marker.setUserData('m1', '{name:\"karl\",sex:\"male\",\"age\":32}');
 | `id` | `string` | Marker对象的ID |
 | `vp` | [`Viewport`](/docs/api/types#viewport) | 视口掩码（Viewport位运算） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：SetViewportVisible
 
@@ -1145,6 +1229,8 @@ fdapi.marker.setViewportVisible('m1', Viewport.V1 | Viewport.V3);
 | `ids` | `string \| array` | 标注对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Show
 
 ```js
@@ -1161,6 +1247,8 @@ fdapi.marker.show('m1');
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：ShowAll
 
 ```js
@@ -1176,6 +1264,8 @@ fdapi.marker.showAll();
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：显示所有弹出窗口：ShowAllPopupWindow
 
@@ -1194,6 +1284,8 @@ fdapi.marker.showAllPopupWindow();
 | `groupIds` | `string \| array` | Marker创建时指定的分组ID或ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：ShowByGroupId
 
 ```js
@@ -1211,6 +1303,8 @@ fdapi.marker.showByGroupId('markerAdd');
 | `ids` | `string \| array` | 标注对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：显示标注的弹出窗口：ShowPopupWindow
 
 ```js
@@ -1227,6 +1321,8 @@ fdapi.marker.showPopupWindow('m1');
 |------|------|------|
 | `data` | `data \| array` | 标注点的数据，参考add方法 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Update
 
@@ -1257,6 +1353,8 @@ fdapi.marker.focus(o.id, 200, 0);
 
 updateBegin不是异步调用，不需要await，也没有回调函数参数
 
+**返回：** 无返回值。
+
 ```js
 fdapi.xxx.updateBegin();
 for (let i = 0; i < 1000; i++) {
@@ -1280,6 +1378,8 @@ updateEnd是异步调用，可以用回调函数也可以await
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 

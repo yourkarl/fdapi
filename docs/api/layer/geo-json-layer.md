@@ -145,6 +145,8 @@ new GeoJSONLayer()
 | `materialRenderer.minValue` | `number` | 可选，区间最小值，注意：数值类型字段可以使用此属性 |
 | `materialRenderer.maxValue` | `number` | 可选，区间最大值，注意：数值类型字段可以使用此属性 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 ```js
 请求参数示例
   
@@ -308,6 +310,8 @@ new GeoJSONLayer()
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Clear
 
 ```js
@@ -324,6 +328,8 @@ fdapi.geoJSONLayer.clear();
 |------|------|------|
 | `ids` | `string \| array` | 要删除的GeoJSONLayer对象的ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Delete
 
@@ -344,6 +350,8 @@ fdapi.geoJSONLayer.delete(['layer1', 'layer2', 'layer3', 'layer4', 'layer5', 'la
 | `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Focus
 
@@ -366,6 +374,8 @@ fdapi.geoJSONLayer.focus("layer1", 100);
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：定位GeoJSONLayer内部某个要素区域：FocusFeature
 
 ```js
@@ -384,6 +394,8 @@ fdapi.geoJSONLayer.focusFeature("layer3", 3, 100, 1);
 | `ids` | `string \| array` | GeoJSONLayer对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -401,6 +413,8 @@ fdapi.geoJSONLayer.hide(['layer1', 'layer2', 'layer3', 'layer4', 'layer5', 'laye
 | `id` | `string` | GeoJSONLayer图层对象的ID |
 | `featureId` | `number` | GeoJSONLayer图层对象内部的要素区域ID |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：高亮GeoJSONLayer内部单个要素区域：HighlightFeature
 
@@ -430,6 +444,8 @@ fdapi.geoJSONLayer.highlightFeature('layer3', 1);
 | `fieldName` | `string` | GeoJSONLayer图层对象内部的要素包含的属性字段名称 |
 | `fieldType` | `number` | GeoJSONLayer图层对象内部的要素包含的属性字段类型 |
 | `values` | `array` | GeoJSONLayer图层对象内部的要素区域ID，数组元素类型为number |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：根据字段属性高亮GeoJSONLayer内部要素区域：HighlightFeatureByProperty
 
@@ -463,6 +479,8 @@ fdapi.geoJSONLayer.highlightFeatureByProperty({
 | `id` | `string` | GeoJSONLayer图层对象的ID |
 | `featureIds` | `array` | GeoJSONLayer图层对象内部的要素区域ID，数组元素类型为number |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：高亮GeoJSONLayer内部多个要素区域：HighlightFeatures
 
 ```js
@@ -484,6 +502,8 @@ fdapi.geoJSONLayer.highlightFeatures([{ "id": "layer3", "featureIds": [1, 2, 3] 
 | `maxViewHeight` | `number` | 可视高度范围最大值，取值范围：[任意负数~任意正数]，单位：米 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：SetViewHeightRange
 
 ```js
@@ -500,6 +520,8 @@ fdapi.geoJSONLayer.setViewHeightRange('layer5', 1, 1000);
 |------|------|------|
 | `ids` | `string \| array` | GeoJSONLayer对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Show
 
@@ -518,6 +540,8 @@ fdapi.geoJSONLayer.show(['layer1', 'layer2', 'layer3', 'layer4', 'layer5', 'laye
 | `ids` | `string \| array` | GeoJSONLayer图层对象的ID或ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -535,6 +559,8 @@ await fdapi.geoJSONLayer.unHighlightAllFeaturesById(ids);
 | `id` | `string` | GeoJSONLayer图层对象的ID |
 | `featureId` | `number` | GeoJSONLayer图层对象内部的要素区域ID |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
@@ -561,6 +587,8 @@ await fdapi.geoJSONLayer.unHighlightFeature(id, featureId);
 | `fieldName` | `string` | GeoJSONLayer图层对象内部的要素包含的属性字段名称 |
 | `fieldType` | `number` | GeoJSONLayer图层对象内部的要素包含的属性字段类型 |
 | `values` | `array` | GeoJSONLayer图层对象内部的要素区域ID，数组元素类型为number |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：根据字段属性取消高亮GeoJSONLayer内部要素区域：UnHighlightFeatureByProperty
 
@@ -592,6 +620,8 @@ fdapi.geoJSONLayer.unHighlightFeatureByProperty({
 | `id` | `string` | GeoJSONLayer图层对象的ID |
 | `featureIds` | `array` | GeoJSONLayer图层对象内部的要素区域ID，数组元素类型为number |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -608,6 +638,8 @@ await fdapi.geoJSONLayer.unHighlightFeatures(data);
 |------|------|------|
 | `option` | `object` | 加载GeoJSON的配置项对象，结构参考add()方法 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Update
 
@@ -669,6 +701,8 @@ setTimeout(function () {
 
 updateBegin不是异步调用，不需要await，也没有回调函数参数
 
+**返回：** 无返回值。
+
 ```js
 fdapi.xxx.updateBegin();
 for (let i = 0; i < 1000; i++) {
@@ -692,6 +726,8 @@ updateEnd是异步调用，可以用回调函数也可以await
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 

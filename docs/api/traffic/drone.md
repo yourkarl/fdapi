@@ -86,6 +86,8 @@ description: "在三维场景中加载与驱动无人机模型，支持坐标定
 | `label.cullDistance` | `number` | 无人机标牌剔除距离，相机距离无人机的观察距离大于此阈值则屏幕显示剔除。单位：米 |
 | `label.text` | `string` | 无人机标牌显示的字符串 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Add
 
 ```js
@@ -140,6 +142,8 @@ fdapi.drone.focus('drone5');
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Clear
 
 ```js
@@ -156,6 +160,8 @@ fdapi.drone.clear();
 |------|------|------|
 | `ids` | `string \| array` | 要删除的无人机对象的ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Delete
 
@@ -181,6 +187,8 @@ fdapi.drone.delete('drone5');
 | `offset` | `array` | 可选参数，无人机视角的偏移量，单位：米，默认值：[0,0,0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Focus
 
 ```js
@@ -198,6 +206,10 @@ fdapi.drone.focus('drone5', false, 8, 2, -45, 10, [0, 0, 0], 0.02);
 |------|------|------|
 | `ids` | `string \| array` | 要获取的无人机对象的无人机对象的ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
 
 ```js
 CustomObject的详细信息
@@ -229,6 +241,8 @@ fdapi.drone.get('drone5');
 | `ids` | `string \| array` | 无人机对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -255,6 +269,8 @@ fdapi.drone.hide('drone5');
 | `rotation` | `array` | 可选，无人机的旋转角度：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |
 | `astern` | `boolean` | 可选，是否开启倒档，默认值：false |
 | `time` | `number` | 可选，无人机对象移动目标点对应的时间戳 |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：MoveTo
 
@@ -298,6 +314,8 @@ fdapi.drone.focus('drone5', false, 8, 2, -45, 10, [0, 0, 0], 0.02);
 | `ids` | `string \| array` | 无人机对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Show
 
 ```js
@@ -330,6 +348,8 @@ fdapi.drone.show('drone5');
 | `label.offset` | `array` | 无人机标牌偏移，默认值：[0, 0, 0] |
 | `label.cullDistance` | `number` | 无人机标牌剔除距离，相机距离无人机的观察距离大于此阈值则屏幕显示剔除。单位：米 |
 | `label.text` | `string` | 无人机标牌显示的字符串 |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Update
 
@@ -366,6 +386,8 @@ fdapi.drone.update(d100);
 
 updateBegin不是异步调用，不需要await，也没有回调函数参数
 
+**返回：** 无返回值。
+
 ```js
 fdapi.xxx.updateBegin();
 for (let i = 0; i < 1000; i++) {
@@ -389,6 +411,8 @@ updateEnd是异步调用，可以用回调函数也可以await
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 

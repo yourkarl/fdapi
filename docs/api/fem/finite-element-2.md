@@ -103,6 +103,8 @@ new FiniteElement2()
 | `colors.color` | [`Color`](/docs/api/types#color) | 值对应的调色板颜色 |
 | `colors.value` | `number` | 值 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 ```js
 对象结构示例：
 
@@ -321,6 +323,8 @@ setTimeout(function () {
 | `crinkleClip` | `boolean` | 是否对切面上的网格体进行剖切并只显示剖切区域的一侧，默认值：false 平滑切面效果，设置为true，则显示褶皱效果 |
 | `invertClip` | `boolean` | 是否打开剖切反转，默认值：true |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：ApplyBoxClipFilter
 
 ```js
@@ -356,6 +360,8 @@ fdapi.finiteElement2.applyBoxClipFilter({
 | `filterId` | `string` | 过滤器ID |
 | `fieldName` | `string` | 有限元模型对象包含等值线值的属性字段名称，支持点属性字段 |
 | `contourValues` | `array` | 等值线对应的数值数组，数组元素的取值类型: number，取值示例：[100,200,300,500] |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：ApplyContourFilter
 
@@ -393,6 +399,8 @@ fdapi.finiteElement2.applyContourFilter({
 | `clipAxis` | `array` | 圆柱体的轴心朝向，即垂直于圆柱底面的法线向量，取值示例：[0,0,1] |
 | `crinkleClip` | `boolean` | 是否对切面上的网格体进行剖切并只显示剖切区域的一侧，默认值：false 平滑切面效果，设置为true，则显示褶皱效果 |
 | `invertClip` | `boolean` | 是否打开剖切反转，默认值：true |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：ApplyCylinderClipFilter
 
@@ -433,6 +441,8 @@ fdapi.finiteElement2.applyCylinderClipFilter({
 | `crinkleClip` | `boolean` | 是否对切面上的网格体进行剖切并只显示剖切区域的一侧，默认值：false 平滑切面效果，设置为true，则显示褶皱效果 |
 | `invertClip` | `boolean` | 是否打开剖切反转，默认值：true |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：ApplyPlaneClipFilter
 
 ```js
@@ -471,6 +481,8 @@ fdapi.finiteElement2.applyPlaneClipFilter({
 | `crinkleClip` | `boolean` | 是否对切面上的网格体进行剖切并只显示剖切区域的一侧，默认值：false 平滑切面效果，设置为true，则显示褶皱效果 |
 | `invertClip` | `boolean` | 是否打开剖切反转，默认值：true |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：ApplySphereClipFilter
 
 ```js
@@ -507,6 +519,8 @@ fdapi.finiteElement2.applySphereClipFilter({
 | `fieldName` | `string` | 有限元模型对象包含的区间类型的属性字段名称，支持cell属性字段和点属性字段 |
 | `range` | `array` | 字段属性值的区间范围: [min~max]，区间范围的取值类型: number，取值示例：[10,20] |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：ApplyThresholdFilter
 
 ```js
@@ -533,6 +547,8 @@ fdapi.finiteElement2.applyThresholdFilter({
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Clear
 
 ```js
@@ -550,6 +566,8 @@ fdapi.finiteElement2.clear();
 | `ids` | `string \| array` | 有限元仿真对象的ID或ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：ClearFilter
 
 ```js
@@ -566,6 +584,8 @@ fdapi.finiteElement2.clearFilter("fe_2");
 |------|------|------|
 | `ids` | `string \| array` | 要删除的有限元仿真对象ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Delete
 
@@ -587,6 +607,8 @@ fdapi.finiteElement2.delete(['fe_2']);
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Focus
 
 ```js
@@ -603,6 +625,10 @@ fdapi.finiteElement2.focus('fe_2');
 |------|------|------|
 | `ids` | `string \| array` | 要获取的有限元仿真对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
 
 ```js
 返回FiniteElement的详细信息
@@ -661,6 +687,8 @@ fdapi.finiteElement2.get(['fe_2']);
 | `ids` | `string \| array` | 有限元仿真对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -685,6 +713,8 @@ fdapi.finiteElement2.hide(['fe_2']);
 | `id` | `string` | 有限元仿真对象的唯一标识符ID |
 | `filterIds` | `array` | 过滤器ID数组 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：RemoveFilter
 
 ```js
@@ -702,6 +732,8 @@ fdapi.finiteElement2.removeFilter({ id: "fe_2", filterIds: ["filter1", "filter2"
 | `ids` | `string \| array` | 有限元仿真对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Show
 
 ```js
@@ -718,6 +750,8 @@ fdapi.finiteElement2.show(['fe_2']);
 |------|------|------|
 | `data` | `object \| array` | 有限元仿真对象或对象数组，参考add方法参数。注意：不支持更新文件路径参数(filePath)，需先删除再添加 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Update
 
@@ -748,6 +782,8 @@ await fdapi.finiteElement2.update(fe2);
 
 updateBegin不是异步调用，不需要await，也没有回调函数参数
 
+**返回：** 无返回值。
+
 ```js
 fdapi.xxx.updateBegin();
 for (let i = 0; i < 1000; i++) {
@@ -771,6 +807,8 @@ updateEnd是异步调用，可以用回调函数也可以await
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 

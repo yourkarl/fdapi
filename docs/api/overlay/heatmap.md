@@ -102,6 +102,8 @@ HeatMap 效果图如下：
 | `updateTime` | `number` | 更新动画的插值时间，注意：参数仅更新方法执行时生效，离散点构造热力图还支持差值动画 |
 | `viewHeightRange` | `array` | 可选，可见高度范围：[最小可见高度, 远最大可见高度]，默认值: [-1000000000, 1000000000] |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -145,6 +147,8 @@ await fdapi.heatmap.addByHeatPoints(heatmap);
 | `tifFile.maxHeight` | `number` | 最大高度，默认值：10000米，注意：设置贴地模式时 地形高度要在此范围内 |
 | `tifFile.file` | `string` | tif文件路径，路径示例："D:\\test.tif" |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -162,6 +166,8 @@ await fdapi.heatmap.addByTif(heatmap);
 | `id` | `string` | HeatMap的ID |
 | `data` | `array` | 热力点(可以是单个或数组,数据结构请参考add方法) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：AddPoints
 
@@ -191,6 +197,8 @@ await fdapi.heatmap.addPoints("heatmap1", newPoints);
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Clear
 
 ```js
@@ -208,6 +216,8 @@ fdapi.heatmap.clear();
 |------|------|------|
 | `ids` | `string \| array` | 要删除的HeatMap对象的ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Delete
 
@@ -230,6 +240,8 @@ fdapi.heatmap.delete('heatmap1');
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Focus
 
 ```js
@@ -246,6 +258,10 @@ fdapi.heatmap.focus('heatmap1', 100);
 |------|------|------|
 | `ids` | `string \| array` | 要获取的HeatMap对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
 
 ```js
 HeatMap的详细信息
@@ -276,6 +292,8 @@ fdapi.heatmap.get('heatmap1');
 | `ids` | `string \| array` | HeatMap对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -293,6 +311,8 @@ fdapi.heatmap.hide('heatmap1');
 | `id` | `string` | HeatMap的ID |
 | `pixelCoords` | `array` | Tif文件像素点的坐标数组（取值范围在文件分辨率内），取值示例：[[pixel1_x,pixel1_y],[pixel2_x,pixel2_y]...] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：HighlightPixels
 
@@ -349,6 +369,8 @@ fdapi.heatmap.highlightPixels('heatmap6', pixelCoords);
 | `tifAnimation.time` | `number` | 从第几秒开始播放，默认值：0 |
 | `tifAnimation.files` | `array` | tif文件路径数组，结构示例：["D:\\0.tif","D:\\1.tif",...] ，注意：tif文件纹理尺寸不能超过8192，最大值示例：[8192,8192] |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -366,6 +388,8 @@ await fdapi.heatmap.load(heatmap);
 | `id` | `string` | HeatMap对象的ID |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -382,6 +406,8 @@ await fdapi.heatmap.pause(id);
 |------|------|------|
 | `id` | `string` | HeatMap对象的ID |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
@@ -401,6 +427,8 @@ await fdapi.heatmap.play(id);
 | `pointIds` | `array` | 热力点ID（单个或数组） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -418,6 +446,8 @@ await fdapi.heatmap.removePoints(id, pointIds);
 | `id` | `any` | HeatMap的ID |
 | `newVal` | `array` | 热力点坐标的范围：[minX,minY,minZ,maxX,maxY,maxZ]，数组元素类型：[任意浮点数] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
@@ -437,6 +467,8 @@ await fdapi.heatmap.setBBox(id, newVal);
 | `newVal` | `array` | 热力值的范围：[min,max]，数组元素类型：[任意浮点数] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -455,6 +487,8 @@ await fdapi.heatmap.setRange(id, newVal);
 | `startTime` | `number` | 可选，从第几秒开始播放，默认值：0秒 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -472,6 +506,8 @@ await fdapi.heatmap.setTime(id, startTime);
 | `ids` | `string \| array` | HeatMap对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Show
 
 ```js
@@ -488,6 +524,8 @@ fdapi.heatmap.show('heatmap1');
 |------|------|------|
 | `id` | `string` | HeatMap的ID |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：UnHighlightAllPixels
 
@@ -508,6 +546,8 @@ fdapi.heatmap.unHighlightAllPixels('heatmap6');
 注意：
 
 updateBegin不是异步调用，不需要await，也没有回调函数参数
+
+**返回：** 无返回值。
 
 ```js
 fdapi.xxx.updateBegin();
@@ -530,6 +570,8 @@ fdapi.xxx.updateEnd(function () {
 | `heatmap` | `object` | 对象请参考add方法结构 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -549,6 +591,8 @@ updateEnd是异步调用，可以用回调函数也可以await
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 

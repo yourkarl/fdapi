@@ -76,6 +76,8 @@ new ImageryLayer()
 | `tileMatrixName` | `string` | 可选，如果服务类型是WMTS：tileMatrixName是切片方案，如果服务类型是WMS：tileMatrixName是坐标类型，不传则默认从init()方法获取 |
 | `ogcEPSG` | `string` | 可选，坐标系类型，不传则默认从init()方法获取 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Add
 
 ```js
@@ -117,6 +119,8 @@ let wmts3 = {
 | `tileLayerId` | `string` | VTPK服务对应图层树上的ID |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：AddVTPK
 
 ```js
@@ -136,6 +140,8 @@ let tileLayerId = "";
 | `ids` | `string \| array` | 要删除的ImageryLayer对象的ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Delete
 
 ```js
@@ -152,6 +158,8 @@ fdapi.imageryLayer.delete(['wmts1', 'wmts2']);
 |------|------|------|
 | `tileLayerId` | `string` | VTPK服务对应图层树上的ID |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：DeleteVTPK
 
@@ -175,6 +183,8 @@ let tileLayerId = "";
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Focus
 
 ```js
@@ -191,6 +201,8 @@ fdapi.imageryLayer.focus('wmts1');
 |------|------|------|
 | `ids` | `string \| array` | ImageryLayer对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Hide
 
@@ -221,6 +233,8 @@ fdapi.imageryLayer.hide(['wmts1', 'wmts2']);
 | `mapMode` | `boolean` | 必选，大地图true，小地图false，默认：小地图false |
 | `renderMode` | `number` | 必选，渲染模式，取值范围：0：正常（默认值）；1：透明；2：标注；3：贴地 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Init
 
 ```js
@@ -247,6 +261,8 @@ let option = {
 | `id` | `string` | 置于底部显示的ImageryLayer图层对象的ID |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：SetDrawBottom
 
 ```js
@@ -265,6 +281,8 @@ fdapi.imageryLayer.setDrawBottom("wmts1");
 | `targetLayerId` | `string` | 目标ImageryLayer图层对象的ID |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：SetDrawOrder
 
 ```js
@@ -281,6 +299,8 @@ fdapi.imageryLayer.setDrawOrder("wmts3", "wmts1");
 |------|------|------|
 | `id` | `string` | 置于顶部显示的ImageryLayer图层对象的ID |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：SetDrawTop
 
@@ -299,6 +319,8 @@ fdapi.imageryLayer.setDrawTop("wmts2");
 | `tileLayerId` | `string` | VTPK服务对应图层树上的ID |
 | `visible` | `boolean` | 服务可见性，布尔类型 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：SetVTPKVisable
 
@@ -319,6 +341,8 @@ let tileLayerId = "";
 | `ids` | `string \| array` | ImageryLayer对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Show
 
 ```js
@@ -337,6 +361,8 @@ fdapi.imageryLayer.show(['wmts1', 'wmts2']);
 注意：
 
 updateBegin不是异步调用，不需要await，也没有回调函数参数
+
+**返回：** 无返回值。
 
 ```js
 fdapi.xxx.updateBegin();
@@ -361,5 +387,7 @@ updateEnd是异步调用，可以用回调函数也可以await
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下
