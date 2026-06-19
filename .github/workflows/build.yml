@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # 取完整 git 历史，showLastUpdateTime 才能显示真实最近更新时间（浅克隆会显示构建时间）
 
       - name: Set up Python
         uses: actions/setup-python@v5

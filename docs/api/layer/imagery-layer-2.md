@@ -84,6 +84,8 @@ new ImageryLayer2()
 | `scaleDenominator` | `number` | 可选，第0层图像的scaleDenominator值 |
 | `dpi` | `number` | 可选，一个像素代表的实际地面距离，请参考不同GIS平台厂商发布的服务使用的DPI配置值：ArcGIS：90.714 天地图和超图：96 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：AddBySchemaParams
 
 ```js
@@ -129,6 +131,8 @@ fdapi.imageryLayer2.addBySchemaParams(wmts2);
 | `alpha` | `number` | 必选，球面网络图层的透明度，取值范围：[0,1] |
 | `bConvertSRGB` | `boolean` | 可选，球面网络图层服务加载时颜色效果是否开启RGB模式转换为SRGB，默认值：true |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：AddByUrl
 
 ```js
@@ -154,6 +158,8 @@ fdapi.imageryLayer2.addByUrl(wmts1);
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Clear
 
 ```js
@@ -170,6 +176,8 @@ fdapi.imageryLayer2.clear();
 |------|------|------|
 | `ids` | `string \| array` | 要删除的ImageryLayer2对象的ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Delete
 
@@ -188,6 +196,8 @@ fdapi.imageryLayer2.delete(["wmts2", "wmts1"]);
 | `ids` | `string \| array` | ImageryLayer2对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -203,6 +213,8 @@ fdapi.imageryLayer2.hide(["wmts2", "wmts1"]);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：HideAll
 
@@ -222,6 +234,8 @@ fdapi.imageryLayer2.hideAll();
 | `targetLayerId` | `string` | 目标ImageryLayer2图层对象的ID |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：SetDrawOrder
 
 ```js
@@ -240,6 +254,8 @@ fdapi.imageryLayer2.setDrawOrder("wmts1", "wmts2");
 | `ids` | `string \| array` | ImageryLayer2对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Show
 
 ```js
@@ -255,6 +271,8 @@ fdapi.imageryLayer2.show(["wmts2", "wmts1"]);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：ShowAll
 
@@ -274,6 +292,8 @@ fdapi.imageryLayer2.showAll();
 注意：
 
 updateBegin不是异步调用，不需要await，也没有回调函数参数
+
+**返回：** 无返回值。
 
 ```js
 fdapi.xxx.updateBegin();
@@ -298,6 +318,8 @@ updateEnd是异步调用，可以用回调函数也可以await
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 

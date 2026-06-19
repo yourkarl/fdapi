@@ -76,6 +76,8 @@ description: "在三维场景中加载并沿指定轨迹运行的列车对象，
 | `carriageStyle` | `string` | 车厢样式，对应模型路径。默认值：复兴号 |
 | `acceleration` | `number` | 加速度，取值范围1-10000数值越大，提速和减速越快 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 ```js
 对象结构示例
 
@@ -149,6 +151,8 @@ fdapi.train.focus('train', 10);
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Clear
 
 ```js
@@ -165,6 +169,8 @@ fdapi.train.clear();
 |------|------|------|
 | `ids` | `string \| array` | 要删除的Train对象的ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Delete
 
@@ -187,6 +193,8 @@ fdapi.train.delete('train');
 | `offset` | `array` | 可选参数，定位后载具视角的偏移量，单位：米，默认值：[0,0,0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Focus
 
 ```js
@@ -203,6 +211,10 @@ fdapi.train.focus('train', 100, 2, [0, 0, 0], [0, 0, 0]);
 |------|------|------|
 | `ids` | `string \| array` | 要获取的Train对象的Train对象的ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
 
 ```js
 train对象的详细信息
@@ -242,6 +254,8 @@ fdapi.train.get('train');
 | `ids` | `string \| array` | Train对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -267,6 +281,8 @@ fdapi.train.hide('train');
 | `distance` | `number` | 行驶里程，单位：公里 |
 | `time` | `number` | 行驶耗时，单位：秒 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：MoveTo
 
 ```js
@@ -288,6 +304,8 @@ fdapi.train.moveTo({
 | `ids` | `string \| array` | 一辆火车ID或多辆火车的ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Pause
 
 ```js
@@ -304,6 +322,8 @@ fdapi.train.pause('train');
 |------|------|------|
 | `ids` | `string \| array` | 一辆火车ID或多辆火车的ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Resume
 
@@ -327,6 +347,8 @@ fdapi.train.resume('train');
 | `sensitivity` | `number` | 可选参数，载具灵敏度，取值范围： [0~1] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：SetFollow
 
 ```js
@@ -344,6 +366,8 @@ fdapi.train.setFollow('train', 100, 2, 0, 0, [0, 0, 0]);
 | `ids` | `string \| array` | Train对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Show
 
 ```js
@@ -360,6 +384,8 @@ fdapi.train.show('train');
 |------|------|------|
 | `data` | `object \| array` | Train对象或者数组，请参考add方法 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
@@ -379,6 +405,8 @@ await fdapi.train.update(data);
 注意：
 
 updateBegin不是异步调用，不需要await，也没有回调函数参数
+
+**返回：** 无返回值。
 
 ```js
 fdapi.xxx.updateBegin();
@@ -403,6 +431,8 @@ updateEnd是异步调用，可以用回调函数也可以await
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 

@@ -124,6 +124,8 @@ new DigitalTwinPlayer(host, option)
 |------|------|------|
 | `reason` | `string` | 可选参数，指定原因，如果初始化DigitalTwinPlayer时指定了显示调试信息，可以在界面上显示销毁的原因。 |
 
+**返回：** 无返回值。
+
 > 示例代码如下：
 
 ```js
@@ -135,6 +137,8 @@ await fdplayer.destroy(reason);
 ### `getAPI()` {#getAPI}
 
 获取DigitalTwinAPI接口
+
+**返回：** 返回查询结果。
 
 > 示例代码如下：
 
@@ -148,6 +152,8 @@ await fdplayer.getAPI();
 
 获取服务器的地址（ip:port）
 
+**返回：** 返回查询结果。
+
 > 示例代码如下：
 
 ```js
@@ -159,6 +165,8 @@ await fdplayer.getHost();
 ### `getInstanceInfo()` {#getInstanceInfo}
 
 获取当前所连接的实例信息
+
+**返回：** 返回查询结果。
 
 > 示例代码如下：
 
@@ -204,6 +212,8 @@ await fdplayer.getVideoElementSize();
 
 :::
 
+**返回：** 返回查询结果。
+
 > 示例代码如下：
 
 ```js
@@ -230,6 +240,8 @@ await fdplayer.getVideoStreamSize();
 
 重新调整布局
 
+**返回：** 无返回值。
+
 > 示例代码如下：
 
 ```js
@@ -251,6 +263,8 @@ await fdplayer.resize();
 | `y` | `number` | 屏幕坐标值y |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -267,6 +281,8 @@ await fdplayer.screen2World(x, y);
 |------|------|------|
 | `bEnable` | `boolean` | — |
 
+**返回：** 无返回值。
+
 > 示例代码如下：
 
 ```js
@@ -282,6 +298,8 @@ await fdplayer.setActionEventEnabled(bEnable);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `bEnabled` | `boolean` | 是否开启 |
+
+**返回：** 无返回值。
 
 > 示例代码如下：
 
@@ -319,6 +337,8 @@ fdplayer.setInstanceOptions({
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `newVal` | `string` | 可选的值：document / video / none，具体含义请参考DigitalTwinPlayer对象的初始化方法 |
+
+**返回：** 无返回值。
 
 > 示例代码如下：
 
@@ -364,6 +384,8 @@ await fdplayer.setResolution(w, h);
 | `y` | `number` | 世界坐标点y |
 | `z` | `number` | 世界坐标点z |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 

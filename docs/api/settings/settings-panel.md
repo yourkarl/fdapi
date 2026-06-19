@@ -57,6 +57,10 @@ SettingsPanel 提供对内置设置面板里各项参数进行读写操作的接
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
+
 ```js
 {
             "nearClipPlane":	100.000000,//近裁距离
@@ -83,6 +87,10 @@ fdapi.settingsPanel.getCameraMode();
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
+
 ```js
 {
             "speed":	0.200000,//第一人称移动速度
@@ -107,6 +115,10 @@ fdapi.settingsPanel.getControlMode();
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
 
 ```js
 返回地图样式
@@ -141,6 +153,10 @@ fdapi.settingsPanel.getMapMode();
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
 
 ```js
 {
@@ -182,6 +198,10 @@ fdapi.settingsPanel.getPostProcessMode();
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
+
 ```js
 {
             "alignment":1,      //汇报演示窗口位置
@@ -209,6 +229,8 @@ fdapi.settingsPanel.getReportMode();
 | `minCameraHeight` | `number` | 最小相机高度，取值范围：[-100~正无穷]，单位：米，默认值：-100米 |
 | `maxCameraHeight` | `number` | 最大相机高度，取值范围：[100000~正无穷]，单位：米，默认值：100000米，即100公里 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：设置面板--设置相机参数：SetCameraMode
 
@@ -241,6 +263,8 @@ fdapi.settingsPanel.setCameraMode(nearClipPlane, fovH, minCameraHeight, maxCamer
 | `viewType` | `number` | 角色漫游使用第三人称或第一人称，取值范围：[0,1]，0角色漫游使用第三人称，1角色漫游使用第一人称，默认值：0 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：设置面板--设置控制参数：SetControlMode
 
 ```js
@@ -265,6 +289,8 @@ fdapi.settingsPanel.setControlMode(0.5, 0.5, true, true, 1);
 | `mode` | [`MapMode`](/docs/api/types#mapmode) | 地图样式，0：指南针；1：鹰眼图；2：大地图，参见`MapMode` 注意：设置大地图模式后，不再支持设置vtpk标注，两者互斥 |
 | `options` | `object` | 地图模式相关的参数，目前支持的选项有下面这些（如果某个参数没有设置，会使用默认值）： serviceType: 服务类型，0：MVT矢量切片（默认值）； 1：WMTS(ArcGIS)； 2：WMS； 3：MapServer(ArcGIS) ； 4：Mapbox serviceProvider: 服务提供厂商，1：ArcGIS； 2：GeoServer； 3：SuperMap超图； 4：Mapbox；5：tianditu天地图 coordType: 坐标系类型，0：经纬度；1：本地（默认值是0） mapPoint: 同名点，取值范围：[x,y]，（默认值是[0, 0]） longitude: 经度，取值范围：[0~180]（默认值是0.0） latitude: 纬度，取值范围：[0~90]（默认值是0.0） cache: 缓存路径，字符串地址，（默认值是 ":memory:"） style: 风格路径，字符串地址，（默认值是 "mapbox://styles/mapbox/streets-v10"） groundHeight: 地面高度，取值范围：[0~任意数值]（默认值是0.0） renderMode: 渲染模式，0：正常；1：透明；2：标注；3：贴地（默认值是0） decalMode: 大地图贴地模式下的贴合模式，0：都不接受 1：贴合所有 2：仅贴合地形；默认值：1，注意：此参数仅在renderMode设置为3时生效 serverURL : WMTS风格路径，二维数组，元素说明：index[0]服务id，index[1]服务地址；取值示例：[['111', 'http://192.168.1.29:81'], ['222', 'http://192.168.1.29:82'], ['333', 'http://192.168.1.29:83']] coordOrder: 坐标顺序，0: XY; 1: YX，默认值：0 maxLevel : WMTS服务最大显示层级，取值范围：[0~22]，默认值：10 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：设置面板--设置地图模式：SetMapMode
 
@@ -314,6 +340,8 @@ fdapi.settingsPanel.setMapMode(MapMode.BigMap, {
 | `pakfilePathArr` | `string \| array` | 要挂载的自定义资源文件路径或路径数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -330,6 +358,8 @@ await fdapi.settingsPanel.setPakFile(pakfilePathArr);
 |------|------|------|
 | `dirArr` | `string \| array` | 要加载的自定义资源文件目录或目录数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
@@ -381,6 +411,8 @@ await fdapi.settingsPanel.setPakFolder(dirArr);
 | `wireThickness` | `-` | &#123;number&#125; 可选参数，仅在线框效果下生效，线框大小，取值范围：[1.0~3.0]，默认值：1.0 |
 | `dofMode` | `-` | &#123;number&#125; 可选参数，仅在景深效果下生效，对焦距离，取值：0【近距离0.5km】 1【中远距离2km】 2【中远距离5km】 3【远距离10km】，默认值：0 |
 | `receiveDecalMode` | `-` | &#123;number&#125; 对象贴合模式，取值：0【无】 1【所有对象】 2【仅地形】，默认值：1 |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：设置面板--设置后期参数：SetPostProcessMode
 
@@ -438,6 +470,8 @@ fdapi.settingsPanel.setPostProcessMode({ terrainGlobalAlpha: 0.6 });
 | `playMode` | `number` | 汇报演示播放模式 取值： 0【单体播放】，1【单体循环】，2【整体循环】，默认0 |
 | `isLinkage` | `boolean` | 多视口相机是否联动 取值：联动true，不联动false，默认不联动false |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：设置面板--设置汇报模式：SetReportMode
 

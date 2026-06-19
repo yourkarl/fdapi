@@ -75,6 +75,8 @@ new DaHuaVideoFusion()
 | `accessToken` | `string` | 鉴权token，根据ICC开放平台接口文档获取 |
 | `labelVisible` | `number` | 默认是否显示摄像头的标签，点击标签可以定位到摄像头位置，取值范围：[0,1]，默认值：0 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Add
 
 ```js
@@ -101,6 +103,8 @@ fdapi.daHuaVideoFusion.add(dahuavf);
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Clear
 
 ```js
@@ -117,6 +121,8 @@ fdapi.daHuaVideoFusion.clear();
 |------|------|------|
 | `ids` | `string \| array` | 要删除的大华视频融合对象ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Delete
 
@@ -145,6 +151,8 @@ fdapi.daHuaVideoFusion.delete("dh001");
 | `id` | `string` | 必选，大华视频融合对象的ID |
 | `cameraIds` | `array` | 必选，待定位的大华视频融合对象包含的摄像头ID数组 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Focus
 
 ```js
@@ -161,6 +169,10 @@ fdapi.daHuaVideoFusion.focus({ id: "dh001", "cameraIds": ["c001", "c002", "c003"
 |------|------|------|
 | `ids` | `string \| array` | 要获取的大华视频融合对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
 
 ```js
 返回大华视频融合的详细信息 属性详情参见add方法参数
@@ -195,6 +207,8 @@ fdapi.daHuaVideoFusion.get("dh001");
 | `id` | `string` | 必选，大华视频融合对象的ID |
 | `cameraIds` | `array` | 必选，待隐藏的大华视频融合对象包含的摄像头ID数组 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -218,6 +232,8 @@ fdapi.daHuaVideoFusion.hide({ id: "dh001", "cameraIds": ["c001", "c002"] });
 |------|------|------|
 | `id` | `string` | 必选，大华视频融合对象的ID |
 | `cameraIds` | `array` | 必选，待显示的大华视频融合对象包含的摄像头ID数组 |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Show
 
@@ -252,6 +268,8 @@ fdapi.daHuaVideoFusion.show({ id: "dh001", "cameraIds": ["c001", "c002", "c003"]
 | `cameraList.projectionDis` | `number` | 投影距离，单位米，默认值：100 |
 | `cameraList.triggerDis` | `array` | (number) 触发距离，单位米，默认值：1000 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Update
 
 ```js
@@ -284,6 +302,8 @@ fdapi.daHuaVideoFusion.update(dahuavf);
 
 updateBegin不是异步调用，不需要await，也没有回调函数参数
 
+**返回：** 无返回值。
+
 ```js
 fdapi.xxx.updateBegin();
 for (let i = 0; i < 1000; i++) {
@@ -307,6 +327,8 @@ updateEnd是异步调用，可以用回调函数也可以await
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 

@@ -84,6 +84,8 @@ description: "沿坐标轨迹放样生成带截面体量的三维路径模型，
 | `curveType` | `number` | 可选，路径模型绘制时曲线的插值类型，取值范围：[0,1]，默认值：0 |
 | `segment` | `number` | 可选，路径模型的绘制时曲线的插值的分段数量，默认值：10 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Add
 
 ```js
@@ -201,6 +203,8 @@ fdapi.splineMesh.callBPFunction([
 | `functionName` | `string` | 蓝图函数名 |
 | `parameters` | `array` | 蓝图函数包含的多个参数，可选参数，数组类型，注意：传入多参数的顺序与类型务必与蓝图函数的参数顺序及其参数类型一致以保证执行结果符合预期。多个参数结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：CallBPFunction
 
 ```js
@@ -251,6 +255,8 @@ fdapi.splineMesh.callBPFunction([
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Clear
 
 ```js
@@ -268,6 +274,8 @@ fdapi.splineMesh.clear();
 | `ids` | `string \| array` | 要删除的SplineMesh对象的ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Delete
 
 ```js
@@ -284,6 +292,8 @@ fdapi.splineMesh.delete(['splineMesh1', 'splineMesh2']);
 |------|------|------|
 | `groupId` | `string` | 创建SplineMesh对象时指定的分组ID |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：DeleteByGroupId
 
@@ -305,6 +315,8 @@ fdapi.splineMesh.deleteByGroupId('group_sm');
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Focus
 
 ```js
@@ -321,6 +333,10 @@ fdapi.splineMesh.focus('splineMesh1', 100);
 |------|------|------|
 | `ids` | `string \| array` | 要获取的SplineMesh对象的SplineMesh对象的ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
 
 ```js
 splineMesh对象的详细信息
@@ -348,6 +364,8 @@ fdapi.splineMesh.get(['splineMesh1', 'splineMesh2']);
 | `ids` | `string \| array` | 3D标注对象ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
 > 示例：GetBPFunction
 
 ```js
@@ -365,6 +383,8 @@ fdapi.splineMesh.getBPFunction(['splineMesh1']);
 | `ids` | `string \| array` | SplineMesh对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -380,6 +400,8 @@ fdapi.splineMesh.hide(['splineMesh1', 'splineMesh2']);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：HideAll
 
@@ -398,6 +420,8 @@ fdapi.splineMesh.hideAll();
 | `groupId` | `string` | 创建SplineMesh对象时指定的分组ID |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：HideByGroupId
 
 ```js
@@ -415,6 +439,8 @@ fdapi.splineMesh.hideByGroupId('group_sm');
 | `ids` | `string \| array` | SplineMesh对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Show
 
 ```js
@@ -430,6 +456,8 @@ fdapi.splineMesh.show(['splineMesh1', 'splineMesh2']);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：ShowAll
 
@@ -447,6 +475,8 @@ fdapi.splineMesh.showAll();
 |------|------|------|
 | `groupId` | `string` | 创建SplineMesh对象时指定的分组ID |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：ShowByGroupId
 
@@ -477,6 +507,8 @@ fdapi.splineMesh.showByGroupId('group_sm');
 | `forwardAxis` | `number` | 路径模型的轴朝向，取值范围：[0,1,2] 分别对应X、Y、Z三个轴 |
 | `scale` | `number` | 路径模型轴朝向的缩放值，默认值：1 |
 | `style` | [`SplineMeshStyle`](/docs/api/types#splinemeshstyle) | (`SplineMeshStyle`) 路径模型样式枚举，取值详情参考 `SplineMeshStyle` |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Update
 
@@ -541,6 +573,8 @@ fdapi.splineMesh.callBPFunction([
 
 updateBegin不是异步调用，不需要await，也没有回调函数参数
 
+**返回：** 无返回值。
+
 ```js
 fdapi.xxx.updateBegin();
 for (let i = 0; i < 1000; i++) {
@@ -563,4 +597,12 @@ updateEnd是异步调用，可以用回调函数也可以await
 
 | 参数 | 类型 | 说明 |
 |------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用
+| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
+> 示例代码如下：
+
+```js
+await fdapi.splineMesh.updateEnd();
+```

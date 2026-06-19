@@ -94,6 +94,8 @@ VideoProjection的效果图：
 | `frustumColor` | [`Color`](/docs/api/types#color) | 投影线框颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `texturePath` | `string` | 自定义投影蒙版图片路径，可以是本地路径，也支持网络路径，[资源引入说明](/docs/tutorials/resources) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Add
 
 ```js
@@ -129,6 +131,8 @@ fdapi.videoProjection.focus(o.id, 50);
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Clear
 
 ```js
@@ -145,6 +149,8 @@ fdapi.videoProjection.clear();
 |------|------|------|
 | `ids` | `string \| array` | 要删除的VideoProjection对象的ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Delete
 
@@ -166,6 +172,8 @@ fdapi.videoProjection.delete('vp1');
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Focus
 
 ```js
@@ -182,6 +190,10 @@ fdapi.videoProjection.focus('vp1', 100);
 |------|------|------|
 | `ids` | `string \| array` | 要获取的VideoProjection对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
 
 ```js
 VideoProjection的详细信息
@@ -217,6 +229,8 @@ fdapi.videoProjection.get('vp1');
 | `ids` | `string \| array` | VideoProjection对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -234,6 +248,8 @@ fdapi.videoProjection.hide('vp1');
 | `id` | `string` | VideoProjection对象的ID |
 | `newVal` | `number` | 新纵横比，取值范围：[0.1~10.0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：设置纵横比：SetAspectRatio
 
@@ -253,6 +269,8 @@ fdapi.videoProjection.setAspectRatio('vp1', 3);
 | `newVal` | `boolean` | 是否背面剔除，默认值：false |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：设置是否背面剔除：SetDepthCulling
 
 ```js
@@ -270,6 +288,8 @@ fdapi.videoProjection.setDepthCulling('vp1', false);
 | `id` | `string` | VideoProjection对象的ID |
 | `newVal` | `number` | 新距离值，取值范围：[0~1000000.0]，单位：米 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：设置距离：SetDistance
 
@@ -289,6 +309,8 @@ fdapi.videoProjection.setDistance('vp1', 200);
 | `newVal` | `number` | 新垂直夹角，取值范围：[0~160]，单位：度 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：设置垂直夹角：SetFovy
 
 ```js
@@ -306,6 +328,8 @@ fdapi.videoProjection.setFovy('vp1', 100);
 | `id` | `string` | VideoProjection对象的ID |
 | `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：设置投影线框颜色：SetFrustumColor
 
@@ -325,6 +349,8 @@ fdapi.videoProjection.setFrustumColor('vp1', Color.Red);
 | `newVal` | `array` | 新位置坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：设置位置：SetLocation
 
 ```js
@@ -342,6 +368,8 @@ fdapi.videoProjection.setLocation('vp1', [492728.4375, 2491908, 68]);
 | `id` | `string` | VideoProjection对象的ID |
 | `newVal` | `array` | 新旋转值：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：设置旋转值：SetRotation
 
@@ -361,6 +389,8 @@ fdapi.videoProjection.setRotation('vp1', [-100, 0, 0]);
 | `newVal` | `string` | 新视频地址，支持本地文件和网络地址，同时支持rtsp实时视频流协议，注意：mp4文件视频只支持H264/AVC编码格式的 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：设置视频地址：SetVideoURL
 
 ```js
@@ -378,6 +408,8 @@ fdapi.videoProjection.setVideoURL('vp1', HostConfig.Path + "/assets/video/video1
 | `ids` | `string \| array` | VideoProjection对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Show
 
 ```js
@@ -394,6 +426,8 @@ fdapi.videoProjection.show('vp1');
 |------|------|------|
 | `data` | `object \| array` | 数据结构，请参考add方法 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Update
 
@@ -424,6 +458,8 @@ fdapi.videoProjection.focus(o.id, 50);
 
 updateBegin不是异步调用，不需要await，也没有回调函数参数
 
+**返回：** 无返回值。
+
 ```js
 fdapi.xxx.updateBegin();
 for (let i = 0; i < 1000; i++) {
@@ -447,6 +483,8 @@ updateEnd是异步调用，可以用回调函数也可以await
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 

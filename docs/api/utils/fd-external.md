@@ -45,6 +45,8 @@ new FdExternal()
 
 运行环境：1、Marker弹出窗口页面；2、JSTick调试窗口页面
 
+**返回：** 无返回值。
+
 ---
 
 ### `.execute(json)`
@@ -62,6 +64,8 @@ new FdExternal()
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `json` | `string` | 要执行的JSON字符串 |
+
+**返回：** 无返回值。
 
 ---
 
@@ -105,6 +109,8 @@ new FdExternal()
 |------|------|------|
 | `msg` | `string` | 要发送的字符串 |
 
+**返回：** 无返回值。
+
 ---
 
 ### `.setData(key, value)`
@@ -117,6 +123,8 @@ new FdExternal()
 |------|------|------|
 | `key` | `string` | 键 |
 | `value` | `string` | 值 |
+
+**返回：** 无返回值。
 
 ---
 

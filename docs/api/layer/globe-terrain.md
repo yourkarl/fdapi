@@ -75,6 +75,8 @@ new GlobeTerrain()
 | `alpha` | `number` | 可选，球面网络图层的透明度，取值范围：[0,1] |
 | `bConvertSRGB` | `boolean` | 可选，球面网络图层服务加载时颜色效果是否开启RGB模式转换为SRGB，默认值：true |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：AddImageryLayer
 
 ```js
@@ -135,6 +137,8 @@ fdapi.globeTerrain.addImageryLayer({
 | `scaleDenominator` | `number` | 可选，第0层图像的scaleDenominator值 |
 | `dpi` | `number` | 可选，一个像素代表的实际地面距离，请参考不同GIS平台厂商发布的服务使用的DPI配置值：ArcGIS：90.714 天地图和超图：96 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：AddImageryLayerBySchemaParams
 
 ```js
@@ -167,6 +171,8 @@ fdapi.globeTerrain.addImageryLayerBySchemaParams({
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：ClearImageryLayer
 
 ```js
@@ -184,6 +190,8 @@ fdapi.globeTerrain.clearImageryLayer();
 | `ids` | `string \| array` | 待删除的图层服务ID或ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：DeleteImageryLayer
 
 ```js
@@ -200,6 +208,8 @@ fdapi.globeTerrain.deleteImageryLayer(["wmts2", "wmts1"]);
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Destroy
 
 ```js
@@ -215,6 +225,8 @@ fdapi.globeTerrain.destroy();
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Hide
 
@@ -236,6 +248,8 @@ fdapi.globeTerrain.hide();
 | `alpha` | `number` | 可选，球面网络图层的透明度，取值范围：[0,1] |
 | `bConvertSRGB` | `boolean` | 可选，球面网络图层服务加载时颜色效果是否开启RGB模式转换为SRGB，默认值：true |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Init
 
@@ -261,6 +275,8 @@ fdapi.globeTerrain.init(terrainUrl, imageryUrl, imageryResourceUrl,1,true);
 | `imageryUrl` | `string` | 影像服务配置xml文件的url地址，注意：替换初始化的影像服务应是全球影像服务地址 |
 | `imageryResourceUrl` | `string` | 影像图像文件url模板 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
@@ -299,6 +315,8 @@ await fdapi.globeTerrain.setImagery(imageryUrl, imageryResourceUrl);
 | `scaleDenominator` | `number` | 可选，第0层图像的scaleDenominator值 |
 | `dpi` | `number` | 可选，一个像素代表的实际地面距离，请参考不同GIS平台厂商发布的服务使用的DPI配置值：ArcGIS：90.714 天地图和超图：96 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：SetImageryBySchemaParams
 
 ```js
@@ -331,6 +349,8 @@ fdapi.globeTerrain.setImageryBySchemaParams({
 | `targetLayerId` | `string` | 目标图层对象的ID |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：SetImageryLayerDrawOrder
 
 ```js
@@ -347,6 +367,8 @@ fdapi.globeTerrain.setImageryLayerDrawOrder("wmts1", "wmts2");
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Show
 
@@ -366,6 +388,8 @@ fdapi.globeTerrain.show();
 注意：
 
 updateBegin不是异步调用，不需要await，也没有回调函数参数
+
+**返回：** 无返回值。
 
 ```js
 fdapi.xxx.updateBegin();
@@ -390,6 +414,8 @@ updateEnd是异步调用，可以用回调函数也可以await
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 

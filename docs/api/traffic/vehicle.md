@@ -89,6 +89,8 @@ Vehicle 加载车辆模型并沿路径行驶，模拟交通流与车辆运动。
 | `enableDecal` | `boolean` | 可选，是否支持贴画贴合，默认值：true |
 | `visible` | `boolean` | 可选，设置载具对象加载后是否显示，默认：true |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Add
 
 ```js
@@ -134,6 +136,8 @@ fdapi.vehicle.focus('vc1');
 | `functionName` | `string` | 蓝图函数名 |
 | `parameters` | `array` | 蓝图函数包含的多个参数结构，可选参数，数组类型，注意：传入多参数的顺序与类型务必与蓝图函数的参数顺序及其参数类型一致以保证执行结果符合预期。多个参数结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -149,6 +153,8 @@ await fdapi.drone.callBatchFunction(data);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Clear
 
@@ -166,6 +172,8 @@ fdapi.vehicle.clear();
 |------|------|------|
 | `ids` | `string \| array` | 要删除的Vehicle对象的ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Delete
 
@@ -190,6 +198,8 @@ fdapi.vehicle.delete('vc1');
 | `offset` | `array` | 可选参数，定位后载具视角的偏移量，单位：米，默认值：[0,0,0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Focus
 
 ```js
@@ -207,6 +217,10 @@ fdapi.vehicle.focus('vc1', true, 6, 2, [2, 6, 0], [5, 0, 0]);
 |------|------|------|
 | `ids` | `string \| array` | 要获取的Vehicle对象的Vehicle对象的ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
 
 ```js
 CustomObject的详细信息
@@ -238,6 +252,8 @@ fdapi.vehicle.get('vc1');
 | `ids` | `string \| array` | Vehicle对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -264,6 +280,8 @@ fdapi.vehicle.hide('vc1');
 | `gear` | `number` | 车辆档位：0驻车档 1倒挡 2空挡 3前进挡 |
 | `heading` | `number` | 车辆转向角度，取值范围：[0,360] |
 | `time` | `number` | 车辆移动耗时，单位：秒 |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 ```js
 数据结构示例
@@ -315,6 +333,8 @@ let timer = setInterval(function () {
 | `ids` | `string \| array` | Vehicle对象的ID或ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Pause
 
 ```js
@@ -331,6 +351,8 @@ fdapi.vehicle.pause('vc1');
 |------|------|------|
 | `id` | `string \| array` | Vehicle对象的ID或ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Resume
 
@@ -355,6 +377,8 @@ fdapi.vehicle.resume('vc1');
 |------|------|------|
 | `id` | `string` | Vehicle对象的ID |
 | `wayPoints` | `array` | 载具运动的路径点数组，数组每一个元素的对象属性如下： |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 ```js
 数据结构示例
@@ -394,6 +418,8 @@ fdapi.vehicle.resume('vc1');
 | `ids` | `string \| array` | Vehicle对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Show
 
 ```js
@@ -417,6 +443,8 @@ fdapi.vehicle.show('vc1');
 |------|------|------|
 | `id` | `string` | Vehicle对象的ID |
 | `timeStamp` | `number` | Vehicle对象开始运动的时间 |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 ```js
 请求参数结构示例
@@ -448,6 +476,8 @@ fdapi.vehicle.start([{
 | `ids` | `string \| array` | Vehicle对象的ID或ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Stop
 
 ```js
@@ -474,6 +504,8 @@ fdapi.vehicle.stop('vc1');
 | `autoHeight` | `boolean` | 可选，是否自动计算载具行驶高度，默认值：true，注意：当设置为false时会使用载具坐标的高度Z |
 | `rotation` | `array` | 可选，载具旋转，世界坐标系旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |
 | `localOffset` | `array` | 可选，载具基于原始位置坐标的偏移量，默认值：[0,0,0] |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Update
 
@@ -503,6 +535,8 @@ fdapi.vehicle.focus('vc1');
 
 updateBegin不是异步调用，不需要await，也没有回调函数参数
 
+**返回：** 无返回值。
+
 ```js
 fdapi.xxx.updateBegin();
 for (let i = 0; i < 1000; i++) {
@@ -526,6 +560,8 @@ updateEnd是异步调用，可以用回调函数也可以await
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 

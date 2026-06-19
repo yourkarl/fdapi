@@ -92,6 +92,8 @@ new Fluid()
 | `sources.shape` | `number` | 出水点形状，取值范围：[0,1]，0矩形出水点，1圆形出水点 |
 | `sources.duration` | `number` | 出水点仿真执行时间，单位：秒，默认值：-1，即一直执行，大于0则按时间执行 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 ```js
 示例数据结构：
 
@@ -191,6 +193,8 @@ fdapi.fluid.continueSource(data);
 | `sources.shape` | `number` | 形状 |
 | `sources.duration` | `number` | 周期 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 ```js
 示例数据结构：
 
@@ -262,6 +266,8 @@ fdapi.fluid.continueSource(sourcePlay);
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Clear
 
 ```js
@@ -278,6 +284,8 @@ fdapi.fluid.clear();
 |------|------|------|
 | `ids` | `string \| array` | 一个或多个流体仿真对象的id |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Continue
 
@@ -303,6 +311,8 @@ fdapi.fluid.continue('ff');
 | `id` | `string` | 流体仿真对象的唯一标识符ID |
 | `sources` | `array` | 流体仿真对象源数据 |
 | `sources.id` | `string` | id |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：ContinueSource
 
@@ -332,6 +342,8 @@ fdapi.fluid.continueSource(data);
 | `ids` | `string \| array` | 要删除的流体仿真对象ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Delete
 
 ```js
@@ -352,6 +364,8 @@ fdapi.fluid.delete('ff');
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Focus
 
 ```js
@@ -368,6 +382,10 @@ fdapi.fluid.focus('ff');
 |------|------|------|
 | `ids` | `string \| array` | 要获取的流体仿真对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
 
 ```js
 返回Fluid的详细信息 属性详情参见add方法参数
@@ -421,6 +439,8 @@ fdapi.fluid.get('ff');
 | `ids` | `string \| array` | 流体仿真对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -437,6 +457,8 @@ fdapi.fluid.hide('ff');
 |------|------|------|
 | `ids` | `string \| array` | 一个或多个流体仿真对象的id |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Pause
 
@@ -461,6 +483,8 @@ fdapi.fluid.pause('ff');
 |------|------|------|
 | `id` | `string` | 流体仿真对象的唯一标识符ID |
 | `sourceIds` | `array` | 源数据对象id数组 |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 ```js
 示例数据：
@@ -491,6 +515,8 @@ fdapi.fluid.removeSource(data);
 | `ids` | `string \| array` | 一个或多个流体仿真对象的id |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Reset
 
 ```js
@@ -507,6 +533,8 @@ fdapi.fluid.reset('ff');
 |------|------|------|
 | `ids` | `string \| array` | 流体仿真对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Show
 
@@ -532,6 +560,8 @@ fdapi.fluid.show('ff');
 | `id` | `string` | 流体仿真对象的唯一标识符ID |
 | `sources` | `array` | 流体仿真对象源数据 |
 | `sources.id` | `string` | id |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：StopSource
 
@@ -571,6 +601,8 @@ fdapi.fluid.stopSource(data);
 | `sources` | `array` | 流体仿真对象源数据 |
 | `sources.id` | `string` | id |
 | `sources.active` | `boolean` | 是否激活 |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Update
 

@@ -46,6 +46,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: 'docs',
           editUrl: 'https://github.com/yourkarl/fdapi/edit/master/',
+          showLastUpdateTime: true,   // 每页底部显示最近更新时间（取自 git 提交历史）
         },
         blog: false,
         theme: {
@@ -108,29 +109,39 @@ const config = {
         style: 'dark',
         links: [
           {
+            title: '快速上手',
+            items: [
+              { label: '快速开始 Hello World', to: '/docs/tutorials/hello-world' },
+              { label: '核心概念与架构', to: '/docs/tutorials/architecture' },
+              { label: '实战配方', to: '/docs/tutorials/recipes' },
+              { label: '在线调试台', to: '/sandbox' },
+            ],
+          },
+          {
             title: '核心 API',
             items: [
-              { label: 'DigitalTwinAPI', to: '/docs/api/quickstart/digital-twin-api' },
-              { label: 'Camera', to: '/docs/api/camera/camera' },
-              { label: 'Settings', to: '/docs/api/weather/settings' },
-              { label: '播放器', to: '/docs/api/quickstart/digital-twin-player' },
+              { label: 'DigitalTwinAPI · 入口', to: '/docs/api/quickstart/digital-twin-api' },
+              { label: 'DigitalTwinPlayer · 播放器', to: '/docs/api/quickstart/digital-twin-player' },
+              { label: 'Camera · 相机', to: '/docs/api/camera/camera' },
+              { label: 'Settings · 场景设置', to: '/docs/api/settings/settings' },
             ],
           },
           {
-            title: '可视化 API',
+            title: '可视化与仿真',
             items: [
-              { label: 'Marker', to: '/docs/api/marker/marker' },
-              { label: 'Polygon', to: '/docs/api/vector/polygon' },
-              { label: 'HeatMap', to: '/docs/api/overlay/heatmap' },
-              { label: 'Decal', to: '/docs/api/overlay/decal' },
+              { label: 'Marker · 标注', to: '/docs/api/marker/marker' },
+              { label: 'TileLayer · 图层', to: '/docs/api/layer/tile-layer' },
+              { label: 'HeatMap · 热力图', to: '/docs/api/overlay/heatmap' },
+              { label: '交通仿真', to: '/docs/api/traffic/traffic-simulation' },
             ],
           },
           {
-            title: '教程',
+            title: '帮助与工具',
             items: [
-              { label: '快速开始', to: '/docs/tutorials/hello-world' },
-              { label: '异步调用', to: '/docs/tutorials/async-call' },
-              { label: '相机控制', to: '/docs/tutorials/camera' },
+              { label: '性能最佳实践', to: '/docs/tutorials/performance' },
+              { label: '排错指南', to: '/docs/tutorials/troubleshooting' },
+              { label: '高级接口授权', to: '/docs/tutorials/auth' },
+              { label: '空间智能工具', to: '/spatial-tools' },
             ],
           },
         ],

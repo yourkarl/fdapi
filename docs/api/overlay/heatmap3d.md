@@ -119,6 +119,8 @@ HeatMap3D 效果图如下：
 | `colors.color` | [`Color`](/docs/api/types#color) | 热力值对应的调色板颜色 |
 | `colors.value` | `number` | 热力值 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：AddByHeatPoints
 
 ```js
@@ -267,6 +269,8 @@ fdapi.heatmap3d.focus('heatmap3d_byHeatPoints', 50);
 | `colors.color` | [`Color`](/docs/api/types#color) | 热力值对应的调色板颜色 |
 | `colors.value` | `number` | 热力值 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：AddByImages
 
 ```js
@@ -336,6 +340,8 @@ fdapi.heatmap3d.focus('heatmap3d_byImages');
 | `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
 | `colors.color` | [`Color`](/docs/api/types#color) | 热力值对应的调色板颜色 |
 | `colors.value` | `number` | 热力值值 |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：AddBySparseVoxels
 
@@ -448,6 +454,8 @@ fdapi.heatmap3d.focus('heatmap3dBySparseVoxels', 10);
 | `billboards.size` | `array` | 可选，XYZ方向分层的数量，默认值：[128,128,32] |
 | `billboards.crop` | `boolean` | 可选，是否对填充范围进行缩放后的溢出部分进行裁切，默认值：true |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -493,6 +501,8 @@ await fdapi.heatmap3d.addByTif(data);
 | `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
 | `colors.color` | [`Color`](/docs/api/types#color) | 热力值对应的调色板颜色 |
 | `colors.value` | `number` | 热力值 |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：AddByVoxels
 
@@ -604,6 +614,8 @@ fdapi.heatmap3d.focus('heatmap3d_byHeatValues');
 | `voxels.extent` | `array` | 可选，热力点的盒子范围，即长方体的长宽高：[xSize,ySize,zSize]，voxelShape=1盒子时生效 |
 | `voxels.alpha` | `number` | 热力点不透明度 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 ```js
 参数结构示例
 [
@@ -674,6 +686,8 @@ fdapi.heatmap3d.focus('heatmap3d_byHeatValues');
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Clear
 
 ```js
@@ -690,6 +704,8 @@ fdapi.heatmap3d.clear();
 |------|------|------|
 | `ids` | `string \| array` | 要删除的HeatMap3D对象的ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Delete
 
@@ -711,6 +727,8 @@ fdapi.heatmap3d.delete('heatmap3d_byImages');
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Focus
 
 ```js
@@ -727,6 +745,10 @@ fdapi.heatmap3d.focus('heatmap3d_byImages', 100);
 |------|------|------|
 | `ids` | `string \| array` | 要获取的HeatMap3D对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
 
 ```js
 HeatMap3D的详细信息
@@ -776,6 +798,8 @@ fdapi.heatmap3d.get('heatmap3d_byImages');
 | `ids` | `string \| array` | HeatMap3D对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -820,6 +844,8 @@ fdapi.heatmap3d.hide('heatmap3d_byImages');
 | `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
 | `colors.color` | [`Color`](/docs/api/types#color) | 热力值对应的调色板颜色 |
 | `colors.value` | `number` | 热力值 |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Load
 
@@ -1439,6 +1465,8 @@ fdapi.camera.set(8687397.494102, 8426718.222344, 10390890.88, -62.999722, 33.423
 | `id` | `string` | HeatMap3D对象的ID |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Pause
 
 ```js
@@ -1455,6 +1483,8 @@ fdapi.heatmap3d.pause("heatmap3d-anima");
 |------|------|------|
 | `id` | `string` | HeatMap3D对象的ID |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Play
 
@@ -1473,6 +1503,8 @@ fdapi.heatmap3d.play("heatmap3d-anima");
 | `id` | `string` | HeatMap3D对象ID |
 | `coordinate` | `array` | 坐标位置 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
 > 示例：QueryVoxel
 
@@ -1493,6 +1525,8 @@ fdapi.heatmap3d.queryVoxel('heatmap3dBySparseVoxels', [493071.401875, 2492076.96
 | `displayMode` | `array` | 显示模式，取值范围：0是VolumeFog,1是InstanceMesh,2是Box |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -1511,6 +1545,8 @@ await fdapi.heatmap3d.setDisplayMode(id, displayMode);
 | `startTime` | `number` | 可选，从第几秒开始播放，默认值：0秒 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：SetTime
 
 ```js
@@ -1528,6 +1564,8 @@ fdapi.heatmap3d.setTime("heatmap3d-anima", 5);
 | `id` | `string` | HeatMap3D对象ID |
 | `vp` | [`Viewport`](/docs/api/types#viewport) | 视口掩码（Viewport位运算） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：SetViewportVisible
 
@@ -1555,6 +1593,8 @@ fdapi.heatmap3d.setViewportVisible('heatmap3d_byHeatPoints', Viewport.V1 | Viewp
 | `ids` | `string \| array` | HeatMap3D对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Show
 
 ```js
@@ -1571,6 +1611,8 @@ fdapi.heatmap3d.show('heatmap3d_byImages');
 |------|------|------|
 | `data` | `object \| array` | HeatMap3D对象或数组，参考add方法 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Update
 
@@ -1608,6 +1650,8 @@ fdapi.heatmap3d.focus('heatmap3d_byImages');
 
 updateBegin不是异步调用，不需要await，也没有回调函数参数
 
+**返回：** 无返回值。
+
 ```js
 fdapi.xxx.updateBegin();
 for (let i = 0; i < 1000; i++) {
@@ -1631,6 +1675,8 @@ updateEnd是异步调用，可以用回调函数也可以await
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 

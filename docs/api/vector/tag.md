@@ -106,6 +106,8 @@ Tag已停止更新，推荐使用功能更丰富的标注对象Marker
 | `autoHeight` | `boolean` | 自动判断下方是否有物体，设置正确高度，默认值：false |
 | `coordinateType` | `number` | 坐标系类型，取值范围：0(Projection), 1(WGS84)，如果不设置此参数，默认为0。 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 ```js
 let o = {
             id: 'p1',//tag唯一标识
@@ -212,6 +214,8 @@ img.onload = () => {
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Clear
 
 ```js
@@ -228,6 +232,8 @@ fdapi.tag.clear();
 |------|------|------|
 | `ids` | `string \| array` | 要删除的Tag对象的ID或者ID数组（可以删除一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Delete
 
@@ -249,6 +255,8 @@ fdapi.tag.delete(['p1', 'p2']);
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Focus
 
 ```js
@@ -268,6 +276,8 @@ fdapi.tag.focus('p1', 200, 0.2);
 | `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：FocusAll
 
 ```js
@@ -284,6 +294,10 @@ fdapi.tag.focusAll(200, 0.2);
 |------|------|------|
 | `ids` | `string \| array` | 要获取的Tag对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
 
 ```js
 返回Tag的详细信息
@@ -330,6 +344,8 @@ log(`Get tags: \n id: ${o.id} \n text: ${o.text}`);
 | `ids` | `string \| array` | Tag对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Hide
 
 ```js
@@ -345,6 +361,8 @@ fdapi.tag.hide(['p1']);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：HideAll
 
@@ -362,6 +380,8 @@ fdapi.tag.hideAll();
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：隐藏所有弹出窗口：HideAllPopupWindow
 
 ```js
@@ -378,6 +398,8 @@ fdapi.tag.hideAllPopupWindow();
 |------|------|------|
 | `ids` | `string \| array` | 标签的ID或者数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：隐藏标签的弹出窗口：HidePopupWindow
 
@@ -397,6 +419,8 @@ fdapi.tag.hidePopupWindow('p1');
 | `newVal` | `boolean` | 是否自动关闭标签的弹出窗口 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -414,6 +438,8 @@ await fdapi.tag.setAutoHidePopupWindow(id, newVal);
 | `id` | `string` | 标签的唯一标识符ID |
 | `newVal` | `array` | 新的位置坐标，[取值示例](/docs/tutorials/coordinates) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Coordinate
 
@@ -434,6 +460,8 @@ fdapi.tag.focus('p1', 200, 0.2);
 | `newVal` | `string` | 新的图片路径，[资源引入说明](/docs/tutorials/resources) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：ImagePath
 
 ```js
@@ -453,6 +481,8 @@ fdapi.tag.setImagePath('p1', path);
 | `newVal` | `array` | 新的图片尺寸[width,height]，取值范围：[0~任意正数] |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：ImageSize
 
 ```js
@@ -470,6 +500,8 @@ fdapi.tag.setImageSize('p1', [64, 64]);
 | `id` | `string` | 标签的唯一标识符ID |
 | `newVal` | `array` | 新的可见范围 [Min,Max]，Min和Max指摄像机相对于标签的最小和最大距离，在此范围内标签才可见，类型均为浮点数，元素取值范围：[1.0~100000.0]，单位：米 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Range
 
@@ -489,6 +521,8 @@ fdapi.tag.setRange('p1', [1, 800]);
 | `newVal` | `boolean` | 是否显示垂直牵引线 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：ShowLine
 
 ```js
@@ -506,6 +540,8 @@ fdapi.tag.setShowLine('p1', false);
 | `id` | `string` | 标签的唯一标识符ID |
 | `newVal` | `string` | 新的文本值 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Text
 
@@ -525,6 +561,8 @@ fdapi.tag.setText('p1', 'Welcome!');
 | `newVal` | [`Color`](/docs/api/types#color) | 新的颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：TextBackgroundColor
 
 ```js
@@ -542,6 +580,8 @@ fdapi.tag.setTextBackgroundColor('p1', Color.Yellow);
 | `id` | `string` | 标签的唯一标识符ID |
 | `newVal` | [`Color`](/docs/api/types#color) | 新的颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：TextBorderColor
 
@@ -561,6 +601,8 @@ fdapi.tag.setTextBorderColor('p1', Color.White);
 | `newVal` | [`Color`](/docs/api/types#color) | 新的颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：TextColor
 
 ```js
@@ -579,6 +621,8 @@ fdapi.tag.setTextColor('p1', Color.Blue);
 | `newVal` | `string` | 新值，[资源引入说明](/docs/tutorials/resources) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：URL
 
 ```js
@@ -596,6 +640,8 @@ fdapi.tag.setURL('p1', 'http://www.163.com');
 | `ids` | `string \| array` | Tag对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Show
 
 ```js
@@ -612,6 +658,8 @@ fdapi.tag.show('p1');
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：ShowAll
 
 ```js
@@ -627,6 +675,8 @@ fdapi.tag.showAll();
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：显示所有弹出窗口：ShowAllPopupWindow
 
@@ -645,6 +695,8 @@ fdapi.tag.showAllPopupWindow();
 | `ids` | `string \| array` | 标签的ID或者数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：显示标签的弹出窗口：ShowPopupWindow
 
 ```js
@@ -661,6 +713,8 @@ fdapi.tag.showPopupWindow('p1');
 |------|------|------|
 | `data` | `object \| array` | 标签数据，参考add方法 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Update
 
@@ -694,6 +748,8 @@ fdapi.tag.focus('p1', 200, 0);
 
 updateBegin不是异步调用，不需要await，也没有回调函数参数
 
+**返回：** 无返回值。
+
 ```js
 fdapi.xxx.updateBegin();
 for (let i = 0; i < 1000; i++) {
@@ -717,6 +773,8 @@ updateEnd是异步调用，可以用回调函数也可以await
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 

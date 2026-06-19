@@ -51,6 +51,8 @@ description: "在三维场景中手动绘制点/线/面/体的交互工具，并
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：Cancel
 
 ```js
@@ -67,6 +69,8 @@ fdapi.editHelper.cancel();
 |------|------|------|
 | `withOffset` | `boolean` | 是否计算工程中心偏移，默认值是true |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 ```js
 let res = await fdapi.editHelper.finish(true);
@@ -138,6 +142,8 @@ switch (res.buildType) {
 | `color` | [`Color`](/docs/api/types#color) | 颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：SetParam
 
 ```js
@@ -156,6 +162,8 @@ fdapi.editHelper.setParam(lineType, buildType, color);
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例：Start
 

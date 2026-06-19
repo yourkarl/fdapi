@@ -65,6 +65,8 @@ description: "管理场景图层树（目录树），提供对树上对象的定
 | `functionName` | `string` | 蓝图函数名 |
 | `parameters` | `array` | 蓝图函数包含的多个参数，可选参数，数组类型，注意：传入多参数的顺序与类型务必与蓝图函数的参数顺序及其参数类型一致以保证执行结果符合预期。多个参数结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 ```js
 蓝图函数调用示例代码 注意：被调用函数传入的参数类型、参数顺序都必须和蓝图函数的参数类型、顺序完全保持一致！
      fdapi.infoTree.callBPFunction([
@@ -119,6 +121,8 @@ fdapi.infoTree.callBPFunction([
 | `groupId` | `string` | 创建对象时指定的groupId |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -135,6 +139,8 @@ await fdapi.infoTree.deleteByGroupId(groupId);
 |------|------|------|
 | `ids` | `string \| array` | 待禁用X光的图层ID（支持单个ID或ID数组） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
@@ -154,6 +160,8 @@ await fdapi.infoTree.disableXRay(ids);
 | `color` | [`Color`](/docs/api/types#color) | 颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -171,6 +179,8 @@ await fdapi.infoTree.enableXRay(ids, color);
 | `ids` | `string \| array` | 图层树对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例：定位图层：Focus
 
 ```js
@@ -186,6 +196,10 @@ fdapi.infoTree.focus('979A4C034E29728F8A2635AD747B72A3');
 | 参数 | 类型 | 说明 |
 |------|------|------|
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
 
 ```js
 [{
@@ -245,6 +259,8 @@ console.log(JSON.stringify(res.infotree));
 | `ids` | `string \| array` | 图层树上对象的ID或者ID数组 |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
 > 示例：查询图层树上对象的蓝图函数：GetBPFunction
 
 ```js
@@ -261,6 +277,8 @@ fdapi.infoTree.getBPFunction('2BC267114D436EA43BF695AC98DA4E08')
 |------|------|------|
 | `ids` | `string \| array` | 要隐藏的图层ID（支持单个ID或ID数组） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 ```js
 fdapi.infoTree.hide(['6C0888EC46B4C3D68635BF9E98628819', 'B0D8D4AF42F9EFB9BA4B258F3A9BC410']);
@@ -284,6 +302,8 @@ fdapi.infoTree.hide(['979A4C034E29728F8A2635AD747B72A3']);
 | `groupId` | `string` | 创建对象时指定的groupId |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -300,6 +320,8 @@ await fdapi.infoTree.hideByGroupId(groupId);
 |------|------|------|
 | `groupId` | `string` | 创建对象时指定的groupId |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
@@ -325,6 +347,8 @@ await fdapi.infoTree.highlightByGroupId(groupId);
 | `id` | `string` | 图层id |
 | `visible` | `boolean` | 可见性 |
 
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
 > 示例代码如下：
 
 ```js
@@ -341,6 +365,8 @@ await fdapi.infoTree.setVisibility(data);
 |------|------|------|
 | `ids` | `string \| array` | 要显示的图层ID（支持单个ID或ID数组） |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 ```js
 fdapi.infoTree.show(['6C0888EC46B4C3D68635BF9E98628819', 'B0D8D4AF42F9EFB9BA4B258F3A9BC410']);
@@ -363,6 +389,8 @@ fdapi.infoTree.show('979A4C034E29728F8A2635AD747B72A3');
 |------|------|------|
 | `groupId` | `string` | 创建对象时指定的groupId |
 | `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
