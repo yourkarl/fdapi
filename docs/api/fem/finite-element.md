@@ -8,6 +8,8 @@ description: "FiniteElement 加载有限元网格与计算结果（应力/应变
 
 FiniteElement有限元分析对象，实现对有限元分析对象的操作
 
+![](/img/refdoc/api/finiteElement.gif)
+
 通过 `api.finiteElement` 访问。
 
 ## 业务场景 Skill

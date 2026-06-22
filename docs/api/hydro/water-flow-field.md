@@ -8,6 +8,8 @@ description: "WaterFlowField 精确控制水面各网格的流向与流速，构
 
 WaterFlowField流场类对象，用于精确控制水流单个网格的方向速度等
 
+![](/img/refdoc/api/waterFlowField.gif)
+
 通过 `api.waterFlowField` 访问。
 
 ---

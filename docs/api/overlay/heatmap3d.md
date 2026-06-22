@@ -20,7 +20,8 @@ HeatMap3D 效果图如下：
 
 
 
-![](/img/refdoc/api/HeatMap3D.gif)
+
+![](/img/refdoc/api/heatmap3d.gif)
 
 通过 `api.heatmap3d` 访问。
 

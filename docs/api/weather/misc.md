@@ -8,6 +8,8 @@ description: "Misc 提供一些杂项/辅助功能接口（如图片按钮、提
 
 Misc 提供一些杂项/辅助功能接口（如图片按钮、提示等通用辅助能力，具体以方法为准）。
 
+![](/img/refdoc/api/bpfuntion.gif)
+
 通过 `api.misc` 访问。
 
 ---

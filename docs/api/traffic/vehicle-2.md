@@ -8,6 +8,8 @@ description: "Vehicle2 是高级载具对象，在 Vehicle 基础上提供更丰
 
 Vehicle2 是高级载具对象，在 Vehicle 基础上提供更丰富的车辆驱动、外观与行为控制。
 
+![](/img/refdoc/api/vehicle2.gif)
+
 通过 `api.vehicle2` 访问。
 
 ---

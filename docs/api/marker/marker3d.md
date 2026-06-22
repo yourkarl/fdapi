@@ -10,7 +10,8 @@ description: "在三维场景中放置带特效的立体标注（动态标记）
 
 
 
-![](/img/refdoc/api/marker3d_style.gif)
+
+![](/img/refdoc/api/marker3d.gif)
 
 通过 `api.marker3d` 访问。
 

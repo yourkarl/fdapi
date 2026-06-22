@@ -8,6 +8,8 @@ description: "FiniteElement2 是有限元仿真对象（增强版），在结果
 
 FiniteElement2有限元仿真对象，实现对有限元仿真对象的操作
 
+![](/img/refdoc/api/finiteElement2.gif)
+
 通过 `api.finiteElement2` 访问。
 
 ## 业务场景 Skill
@@ -26,7 +28,6 @@ FiniteElement2有限元仿真对象，实现对有限元仿真对象的操作
   - 时序结果需统一时间基准
   - 色带/量纲映射与坐标对齐须正确
 
-
 ## 构造函数
 
 ```js
@@ -34,7 +35,6 @@ new FiniteElement2()
 ```
 
 ---
-
 
 ## 方法列表
 
@@ -774,7 +774,6 @@ await fdapi.finiteElement2.update(fe2);
 ### `updateBegin()` {#updateBegin}
 
 用于批量多次修改对象的属性
-
 
 在开始修改之前调用updateBegin，然后可以多次调用setXXX方法，最后调用updateEnd提交修改更新数据
 
