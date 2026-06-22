@@ -8,6 +8,8 @@ description: "TrafficSimulation 提供城市级交通仿真能力，支持十万
 
 TrafficSimulation 提供城市级交通仿真能力，支持十万级别车辆的微观交通仿真，可通过 .dat 数据驱动大批量车辆按时间/定时器移动，并内置交通热力图模式与多车型配置。
 
+![](/img/refdoc/api/trafficsim.gif)
+
 通过 `api.trafficSimulation` 访问。
 
 ---

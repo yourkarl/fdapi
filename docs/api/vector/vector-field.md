@@ -32,6 +32,10 @@ tif文件结构描述：
 
 所有tif文件的分辨率须保持一致
 
+![](/img/refdoc/api/vectorfield-wind.gif)
+
+![](/img/refdoc/api/vectorfield-ocean.gif)
+
 通过 `api.vectorField` 访问。
 
 ---

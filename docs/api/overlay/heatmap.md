@@ -12,7 +12,8 @@ HeatMap 效果图如下：
 
 
 
-![](/img/refdoc/api/HeatMap.png)
+
+![](/img/refdoc/api/heatmap.gif)
 
 通过 `api.heatmap` 访问。
 

@@ -8,6 +8,8 @@ description: "HydroDynamic1D 是一维水动力模型对象，沿河道中心线
 
 HydroDynamic1D类
 
+![](/img/refdoc/api/h1d.gif)
+
 通过 `api.hydrodynamic1d` 访问。
 
 ---

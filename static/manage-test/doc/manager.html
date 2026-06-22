@@ -1,0 +1,834 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Cloud管理服务二次开发</title>
+    <link rel="stylesheet" href="styles/manager.css">
+    <script type="text/javascript" src="../../ac_conf.js"></script>
+    <script type="text/javascript" src="scripts/jquery/jquery-3.7.0.min.js"></script>
+    <script type="text/javascript" src="scripts/manage_common.js"></script>
+    <script type="text/javascript" src="scripts/manage_service.js"></script>
+</head>
+
+<body>
+    <h1><img src="images/api-logo.svg" width="44" height="44" align="center">Cloud管理服务接口测试与二次开发说明</h1>
+
+    <!-- 接口调用说明 -->
+    <pre style="font-size: 10pt;color:gray;">
+管理服务有2种调用方式：WebSocket和REST，两种方式发送和接收的数据格式都是JSON
+    （1）在登录有效期内多次调用接口不需要重复登录，过了有效期，需要重新登录。
+    （2）登录接口不能通过WebSocket调用，只能通过REST方式调用
+    （3）WebSocket方式，需要先建立连接，然后才能调用
+    （4）通过REST调用获取实时运行状态的接口，只能返回当前的状态，不能像WebSocket一样实时不断推送。
+    （5）REST通过HTTP GET/POST/PUT。 注意：POST/PUT时Content-Type需要设置为application/json，要发送的JSON字符串设置在Body里
+    （6）如果设置了实例管理密码，对于WebSocket调用，验证信息authorization直接放在要发送的JSON对象里
+            对于REST GET，验证信息需要放在Request的headers里
+            对于REST POST/PUT，验证信息既可以放在Request的headers里，也可以放在要发送的JSON对象里。
+    </pre>
+
+
+    <!-- 接口列表 -->
+    <table cellspacing="8" border="0" id="interfaceList">
+        <tr>
+            <td><strong>模块&nbsp;</strong></td>
+            <td><strong>功能</strong></td>
+            <td><strong>WebSocket命令</strong></td>
+            <td><strong>REST</strong></td>
+            <td><strong>是否需要登录</strong></td>
+        </tr>
+
+        <!-- 管理员 -->
+        <tr>
+            <td rowspan="7">管理员</td>
+            <td><a href="/manage/captcha" target="_blank">获取验证码图片</a></td>
+            <td></td>
+            <td><strong>GET</strong> /manage/captcha</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="#d_login">管理员登录</a></td>
+            <td></td>
+            <td><strong>POST</strong> /manage/login</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="#d_captcha_required">登录是否需要验证码</a></td>
+            <td>ManageCommand.GetCaptchaRequired: -4</td>
+            <td><strong>GET</strong> /manage/captcha/required</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="#d_login_check">检查登录有效性</a></td>
+            <td>ManageCommand.CheckLogin: -3</td>
+            <td><strong>GET</strong> /manage/login/check</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="#d_logout">管理员注销登录</a></td>
+            <td>ManageCommand.Logout: -2</td>
+            <td><strong>POST</strong> /manage/logout</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="#d_account">获取管理员设置</a></td>
+            <td>ManageCommand.GetAccount: -1</td>
+            <td><strong>GET</strong> /manage/account</td>
+            <td align="center">√</td>
+        </tr>
+        <tr>
+            <td><a href="#d_change_account">修改账号设置</a></td>
+            <td>ManageCommand.ChangeAccount: -5</td>
+            <td><strong>PUT</strong> /manage/account/change</td>
+            <td align="center">√</td>
+        </tr>
+
+        <!-- 系统 -->
+        <tr>
+            <td rowspan="5">系统</td>
+            <td><a href="#d_port">获取端口号</a></td>
+            <td>ManageCommand.GetPorts: 0</td>
+            <td><strong>GET</strong> /manage/port</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="#d_status">获取当前运行状态</a></td>
+            <td>ManageCommand.GetStatus: 1</td>
+            <td><strong>GET</strong> /manage/status</td>
+            <td align="center">√</td>
+        </tr>
+        <tr>
+            <td><a href="#d_kick">踢出用户</a></td>
+            <td>ManageCommand.KickPlayer: 2</td>
+            <td><strong>POST</strong> /manage/kick</td>
+            <td align="center">√</td>
+        </tr>
+        <tr>
+            <td><a href="#d_license">获取授权信息</a></td>
+            <td>ManageCommand.GetLicenseInfo: 3</td>
+            <td><strong>GET</strong> /manage/license</td>
+            <td align="center">√</td>
+        </tr>
+        <tr>
+            <td><a href="#d_deleteuserlogin">删除用户登录信息</a></td>
+            <td>ManageCommand.DeleteUserLogin: 4</td>
+            <td><strong>PUT</strong> /manage/user/deletelogin</td>
+            <td align="center">√</td>
+        </tr>
+
+        <!-- 工程 -->
+        <tr>
+            <td rowspan="3">工程</td>
+            <td><a href="#d_project_add">添加工程</a></td>
+            <td>ManageCommand.AddProject: 10</td>
+            <td><strong>POST</strong> /manage/project/add</td>
+            <td align="center">√</td>
+        </tr>
+        <tr>
+            <td><a href="#d_project_del">删除工程</a></td>
+            <td>ManageCommand.DeleteProject: 11</td>
+            <td><strong>DELETE</strong> /manage/project/del</td>
+            <td align="center">√</td>
+        </tr>
+        <tr>
+            <td><a href="#d_project_list">获取工程列表</a></td>
+            <td>ManageCommand.GetProjectList: 12</td>
+            <td><strong>GET</strong> /manage/project</td>
+            <td></td>
+        </tr>
+
+        <!-- 实例 -->
+        <tr>
+            <td rowspan="7">实例</td>
+            <td><a href="#d_inst_list">获取实例列表</a></td>
+            <td>ManageCommand.GetInstanceList: 100</td>
+            <td><strong>GET</strong> /manage/instance</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="#d_inst_info">获取实例详细信息</a></td>
+            <td>ManageCommand.GetInstanceInformation: 101</td>
+            <td><strong>GET</strong> /manage/instance/info</td>
+            <td align="center">√</td>
+        </tr>
+        <tr>
+            <td><a href="#d_inst_free">获取一个空闲的实例</a></td>
+            <td>ManageCommand.GetOneFreeInstance: 102</td>
+            <td><strong>GET</strong> /manage/instance/free</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td><a href="#d_inst_update">设置实例运行参数</a></td>
+            <td>ManageCommand.SetInstanceParams: 104</td>
+            <td><strong>PUT</strong> /manage/instance/update</td>
+            <td align="center">√</td>
+        </tr>
+        <tr>
+            <td><a href="#d_inst_stop">停止实例</a></td>
+            <td>ManageCommand.StopInstance: 105</td>
+            <td><strong>PUT</strong> /manage/instance/stop</td>
+            <td align="center">√</td>
+        </tr>
+        <tr>
+            <td><a href="#d_inst_unlock">解锁实例</a></td>
+            <td>ManageCommand.UnlockInstance: 106</td>
+            <td><strong>PUT</strong> /manage/instance/unlock</td>
+            <td align="center">√</td>
+        </tr>
+        <tr>
+            <td><a href="#d_inst_stop_node">停止指定节点的所有实例</a>&emsp;</td>
+            <td>ManageCommand.StopAllInstance: 1003</td>
+            <td><strong>PUT</strong> /manage/instance/stop/node</td>
+            <td align="center">√</td>
+        </tr>
+
+        <!-- 授权 -->
+        <tr>
+            <td rowspan="6">授权</td>
+            <td><a href="#d_ua_add">添加用户授权</a></td>
+            <td>ManageCommand.AddUserAuth: 220</td>
+            <td><strong>POST</strong> /manage/ua/add</td>
+            <td align="center">√</td>
+        </tr>
+        <tr>
+            <td><a href="#d_ua_del">删除用户授权</a></td>
+            <td>ManageCommand.DeleteUserAuth: 221</td>
+            <td><strong>DELETE</strong> /manage/ua/del</td>
+            <td align="center">√</td>
+        </tr>
+        <tr>
+            <td><a href="#d_ua_list">获取用户授权列表</a></td>
+            <td>ManageCommand.DeleteUserAuth: 222</td>
+            <td><strong>GET</strong> /manage/ua</td>
+            <td align="center">√</td>
+        </tr>
+    </table>
+
+
+    <p>
+    <pre id="logsArea"></pre>
+    </p>
+
+
+    <!-- 接口测试 -->
+    <div>
+        <!-- 系统：管理员登录 -->
+        <div id="d_login" class="area">
+            <h2>系统：管理员登录 <a href="#">↑↑↑</a></h2>
+            <pre class="info">
+            <b>接口说明：</b>
+                    1、登录成功以后，服务器会返回TOKEN，之后每次调用接口都需要带上这个TOKEN
+                    2、登录以后TOKEN有效期为24小时，过期后调用接口会失败，此时需要重新登录以获取新的TOKEN
+            
+            <b>REST:</b> POST /manage/login
+            </pre>
+            <form>
+                <table>
+                    <tr>
+                        <td align="right" height="35">用户名 (username)：</td>
+                        <td colspan="2"><input name="e_Login_Username" id="e_Login_Username" value="admin"></td>
+
+                    </tr>
+                    <tr>
+                        <td align="right" height="35">密码 (password)：</td>
+                        <td colspan="2"><input name="e_Login_Password" type="password" autocomplete="off" id="e_Login_Password" value="111111"></td>
+                    </tr>
+                    <tr id="captchaPanel">
+                        <td align="right" height="35">验证码 (captcha)：</td>
+                        <td align="left"><input name="e_Login_Captcha" type="password" autocomplete="off" id="e_Login_Captcha">
+                        </td>
+                        <td><img id="loginCode" width="70%" height="70%" title="看不清楚？点击换一张" /></td>
+                    </tr>
+                    <tr>
+                        <td align="center" height="35" colspan="3"><a href="javascript:call_login(true)">REST调用</a></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+
+        <!-- 系统：登录是否需要验证码 -->
+        <div id="d_captcha_required" class="area">
+            <h2>系统：登录是否需要验证码 <a href="#">↑↑↑</a></h2>
+            <pre class="info">
+                <b>接口说明：</b>
+                        用于检查管理员登录是否需要验证码
+                
+                <b>REST:</b> GET /manage/captcha/required
+            </pre>
+            <p>
+                <a href="javascript:call_getCaptchaRequired()">WebSocket调用</a>&emsp;
+                <a href="javascript:call_getCaptchaRequired(true)">REST调用</a>
+            </p>
+        </div>
+
+
+        <!-- 系统：检查登录有效性 -->
+        <div id="d_login_check" class="area">
+            <h2>系统：检查登录有效性 <a href="#">↑↑↑</a></h2>
+            <pre class="info">
+                <b>接口说明：</b>
+                        用于检查管理员是否已经登录
+                
+                <b>REST:</b> GET /manage/login/check
+            </pre>
+            <p>
+                <a href="javascript:call_checkLogin()">WebSocket调用</a>&emsp;
+                <a href="javascript:call_checkLogin(true)">REST调用</a>
+            </p>
+        </div>
+
+
+        <!-- 系统：管理员注销登录 -->
+        <div id="d_logout" class="area">
+            <h2>系统：管理员注销登录 <a href="#">↑↑↑</a></h2>
+            <pre class="info">
+            <b>REST:</b> GET /manage/logout</pre>
+            <p>
+                <a href="javascript:call_logout()">WebSocket调用</a>&emsp;
+                <a href="javascript:call_logout(true)">REST调用</a>
+            </p>
+        </div>
+
+
+        <!-- 系统：获取管理员设置 -->
+        <div id="d_account" class="area">
+            <h2>系统：获取管理员设置 <a href="#">↑↑↑</a></h2>
+            <pre class="info">
+                    <b>REST:</b> GET /manage/account</pre>
+            <p>
+                <a href="javascript:call_getAccount()">WebSocket调用</a>&emsp;
+                <a href="javascript:call_getAccount(true)">REST调用</a>
+            </p>
+        </div>
+
+
+        <!-- 系统：修改账号设置 -->
+        <div id="d_change_account" class="area">
+            <h2>系统：修改账号设置 <a href="#">↑↑↑</a></h2>
+            <pre class="info">
+            <b>REST:</b> PUT /manage/account/change</pre>
+
+            <form>
+                <table width="500">
+                    <tr>
+                        <td align="right" height="35">用户名：</td>
+                        <td colspan="2"><input name="e_Change_Username" id="e_Change_Username" value="admin"></td>
+
+                    </tr>
+                    <tr>
+                        <td align="right" height="35">密码：</td>
+                        <td colspan="2">
+                            <input name="e_Change_Pasword" type="password" autocomplete="off" id="e_Change_Pasword" value="111111" disabled>
+                            <input type="checkbox" name="e_Change_IncludePassword" id="e_Change_IncludePassword" value="15">
+                            <label for="e_Change_IncludePassword">修改密码</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" height="35">确认密码：</td>
+                        <td colspan="2"><input name="e_Change_Pasword2" type="password" autocomplete="off" id="e_Change_Pasword2" value="111111" disabled></td>
+                    </tr>
+                    <tr>
+                        <td align="right" height="35">登录有效期：</td>
+                        <td colspan="2"><input name="e_Change_Period" id="e_Change_Period" value="15">分钟</td>
+                    </tr>
+                    <tr>
+                        <td align="right" height="35">验证码：</td>
+                        <td colspan="2">
+                            <input type="checkbox" name="e_Change_CaptchaRequired" id="e_Change_CaptchaRequired" value="15">
+                            <label for="e_Change_CaptchaRequired">登录需要验证码</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="javascript:call_changeAccount()">WebSocket调用</a></td>
+                        <td>
+                            <a href="javascript:call_changeAccount(true)">REST调用</a>
+                        </td>
+                        <td height="35"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+
+        <!-- 系统：踢出用户 -->
+        <div id="d_kick" class="area">
+            <h2>系统：踢出用户 <a href="#">↑↑↑</a></h2>
+            <pre class="info">
+<b>接口说明：</b>
+        用于断开用户的连接，playerId有2种获取方式：
+                1、从实例接口的实时运行状态里获取，路径：instances -> connections -> id
+                2、从DigitalTwinPlayer类的属性playerId获得。
+
+<b>REST:</b> POST /manage/kick
+
+<b>数据格式：</b> { id: '2491836508538', playerId: -1 }</pre>
+            <p>
+                <label for="e_KickPlayer_IID">实例ID (id)：</label>
+                <input name="e_KickPlayer_IID" type="text" id="e_KickPlayer_IID" style="width: 380px;" value="2491836508538">
+            </p>
+            <p>
+                <label for="e_KickPlayer_PlayerId">用户ID (playerId)：</label>
+                <input name="e_KickPlayer_PlayerId" type="text" id="e_KickPlayer_PlayerId" style="width: 50px;" value="1">
+                <font color="gray">如果设置为-1（或者不设置这个值），则踢出指定实例的所有客户端连接</font>
+            </p>
+            <p>
+                <a href="javascript:call_KickPlayer()">WebSocket调用</a>&emsp;
+                <a href="javascript:call_KickPlayer(true)">REST调用</a>
+            </p>
+        </div>
+
+
+
+        <!-- 系统：获取授权信息 -->
+        <div id="d_license" class="area">
+            <h2>系统：获取授权信息 <a href="#">↑↑↑</a></h2>
+            <pre class="info">
+<b>接口说明：</b>
+        获取服务器的授权信息，Windows平台和Linux平台授权机制不同，返回的信息也不同。                
+
+<b>REST:</b> GET /manage/license</pre>
+            <p>
+                <a href="javascript:call_GetLicenseInfo()">WebSocket调用</a>&emsp;
+                <a href="javascript:call_GetLicenseInfo(true)">REST调用</a>
+            </p>
+        </div>
+
+
+
+        <!-- 系统：删除用户登录信息（让用户登录失效） -->
+        <div id="d_deleteuserlogin" class="area">
+            <h2>系统：删除用户登录信息（让用户登录失效） <a href="#">↑↑↑</a></h2>
+            <pre class="info">
+<b>接口说明：</b>
+        当修改用户名、密码或者删除用户时，让用户登录失效（用户刷新页面将跳转到登录界面）           
+
+<b>REST:</b> PUT /manage/user/deletelogin</pre>
+            <p>
+                用户名：<input name="e_DeleteUserLogin_username" type="text" id="e_DeleteUserLogin_username" style="width: 380px;">
+            </p>
+            <p>
+                <a href="javascript:call_DeleteUserLogin()">WebSocket调用</a>&emsp;
+                <a href="javascript:call_DeleteUserLogin(true)">REST调用</a>
+            </p>
+        </div>
+
+
+
+        <!-- 系统：获取端口信息 -->
+        <div id="d_port" class="area">
+            <h2>系统：获取端口信息 <a href="#">↑↑↑</a></h2>
+            <pre class="info">
+<b>接口说明：</b>
+        获取端口、版本信息、端口映射等
+        <font color="brown">注：此接口不需要用户权限</font>
+
+<b>REST:</b> GET /manage/port</pre>
+            <p>
+                <a href="javascript:call_GetPorts()">WebSocket调用</a>&emsp;
+                <a href="/manage/port" target="_blank">REST调用</a>
+            </p>
+        </div>
+
+
+        <!-- 系统：服务器实时运行状态 -->
+        <div id="d_status" class="area">
+            <h2>实例：服务器实时运行状态 <a href="#">↑↑↑</a></h2>
+            <pre>
+<b>接口说明：</b>
+        获取服务器的实时运行状态
+
+<b>REST:</b> GET /manage/status</pre>
+            <p>
+                <a href="status.html">WebSocket调用</a>&emsp;
+                <a href="javascript:call_getStatus(true)">REST调用</a>
+            </p>
+            <pre id="e_GetStatus_Result"></pre>
+        </div>
+
+
+        <!-- 工程：添加工程 -->
+        <div id="d_project_add" class="area">
+            <h2>工程：添加工程 <a href="#">↑↑↑</a></h2>
+            <pre class="info">
+<b>接口说明：</b>
+        在服务器工程列表里添加一项
+
+<b>REST:</b> POST /manage/project/add</pre>
+            <p><label for="e_AddProject_FullPath">工程文件完整路径：</label>
+                <input name="e_AddProject_FullPath" type="text" id="e_AddProject_FullPath" style="width: 380px;" value="/usr/data/projects/beijing2023.acp">
+                <font color="gray">（注意：此路径是服务器上的路径）</font>
+            </p>
+            <p>
+                <a href="javascript:call_AddProject()">WebSocket调用</a>&emsp;
+                <a href="javascript:call_AddProject(true)">REST调用</a>
+            </p>
+        </div>
+
+
+        <!-- 工程：删除工程 -->
+        <div id="d_project_del" class="area">
+            <h2>工程：删除工程 <a href="#">↑↑↑</a></h2>
+            <pre class="info">
+<b>接口说明：</b>
+        在服务器工程列表里删除指定项
+
+<b>REST:</b> DELETE /manage/project/del</pre>
+            <p><label for="e_DeleteProject_ID">工程ID或名称：</label>
+                <input name="e_DeleteProject_ID" type="text" id="e_DeleteProject_ID" value="">
+                <font color="gray">（注意：如果输入数字则认为是工程ID，否则认为是工程名称）</font>
+            </p>
+            <p>
+                <a href="javascript:call_DeleteProject()">WebSocket调用</a>&emsp;
+                <a href="javascript:call_DeleteProject(true)">REST调用</a>
+            </p>
+        </div>
+
+
+        <!-- 工程：获取工程列表 -->
+        <div id="d_project_list" class="area">
+            <h2>工程：获取工程列表 <a href="#">↑↑↑</a></h2>
+            <pre class="info">
+<b>接口说明：</b>
+        获取服务器上已配置的工程列表
+
+<b>REST:</b> GET /manage/project</pre>
+            <a href="javascript:call_GetProjectList()">WebSocket调用</a>&emsp;
+            <a href="javascript:call_GetProjectList(true)">REST调用</a>
+        </div>
+
+        <!-- 工程：获取实例列表 -->
+        <div id="d_inst_list" class="area">
+            <h2>实例：获取实例列表 <a href="#">↑↑↑</a></h2>
+            <pre class="info">
+<b>接口说明：</b>
+        获取服务器上当前配置的所有实例列表
+
+<b>REST:</b> GET /manage/instance
+
+<b>数据格式：</b> { details: true, connections: true }</pre>
+            <p>
+                <input name="e_GetInstanceList_IncludeInstInfo" type="checkbox" id="e_GetInstanceList_IncludeInstInfo"><label for="e_GetInstanceList_IncludeInstInfo">包括实例信息 (details)</label>
+                <font color="gray">（如果勾选将返回实例的完整信息（包括所关联工程的导览列表: tours字段），否则只返回实例ID）</font>
+            </p>
+            <p>
+                <input name="e_GetInstanceList_IncludeConnInfo" type="checkbox" id="e_GetInstanceList_IncludeConnInfo"><label for="e_GetInstanceList_IncludeConnInfo">包括连接信息 (connections)</label>
+                <font color="gray">（如果勾选将返回此刻实例的连接信息，注意：要返回连接信息必须勾选“包括实例信息”选项）</font>
+            </p>
+            <p>
+                <a href="javascript:call_GetInstanceList()">WebSocket调用</a>&emsp;
+                <a href="javascript:call_GetInstanceList(true)">REST调用</a>
+            </p>
+        </div>
+
+
+        <!-- 实例：获取指定实例的详细信息 -->
+        <div id="d_inst_info" class="area">
+            <h2>实例：获取指定实例的详细信息 <a href="#">↑↑↑</a></h2>
+            <pre class="info">
+<b>接口说明：</b>
+        根据实例ID返回指定实例的详细信息
+        实例ID可以在CloudMaster软件的实例管理页，点击右键，复制实例ID获取
+            如果实例ID为空，则返回错误码4: InvalidParameters
+            如果指定的实例ID不存在，则返回错误码2: InstanceNotFound
+            如果实例关联的工程是用5.3.0908之后的Explorer保存的，并且工程包含导览，也将返回导览列表(tours字段)
+
+<b>REST:</b> /manage/instance/info
+ 
+<b>数据格式：</b> { id:'2491836508538' }</pre>
+            <label for="e_GetInstanceInformation_IID">实例ID (id)：</label>
+            <input name="e_GetInstanceInformation_IID" type="text" id="e_GetInstanceInformation_IID" style="width: 380px;" value="2491836508538">
+            <p>
+                <a href="javascript:call_GetInstanceInformation()">WebSocket调用</a>&emsp;
+                <a href="javascript:call_GetInstanceInformation(true)">REST调用</a>
+            </p>
+        </div>
+
+        <!-- 实例：获取一个空闲的实例 -->
+        <div id="d_inst_free" class="area">
+            <h2>实例：获取一个空闲的实例 <a href="#">↑↑↑</a></h2>
+            REST: /manage/instance/free
+            <pre class="info">
+<b>接口说明：</b>
+            获取一个正在运行或者尚未启动的实例
+                返回值：
+                    如果当前没有空闲的，则返回错误码1: NoFreeInstance
+                    如果有空闲的，则返回空闲实例的ID
+                服务器查找的优先级如下：
+                        1、查找已启动、没有连接、非正忙的实例
+                        2、查找未启动的实例
+                        3、查找正在启动的实例
+                        4、查找不限制连接数的
+
+<b>REST:</b> /manage/instance/free
+
+</pre>
+
+            <p>
+                <a href="javascript:call_GetOneFreeInstance()">WebSocket调用</a>&emsp;
+                <a href="javascript:call_GetOneFreeInstance(true)">REST调用</a>
+            </p>
+        </div>
+
+
+        <!-- 实例：设置实例运行参数 -->
+        <div id="d_inst_update" class="area">
+            <h2>实例：设置实例运行参数 <a href="#">↑↑↑</a></h2>
+            <pre class="info">
+<b>接口说明：</b>
+        给指定实例设置参数
+        详细的错误代码请参考ManageResult
+
+<b>REST:</b> PUT /manage/instance/update
+
+<b>数据格式：</b>
+        {
+            quiet: true,
+            async: false,   //async参数是可选的，如果设置为true，那么立即返回结果，如果设置为false或者没有此参数，会等待实例启动结果，然后再返回
+            startup: true,  //是否启动实例
+            staticInstance: {
+                id: '2491836508538',
+                adjustResolution: true,
+                limitOneClient: true,
+                locked: true,
+                pauseWhenIdle: false,
+                websocketPort: 4321
+            }
+        }</pre>
+
+            <div>
+                <table width="1200">
+                    <tr>
+                        <td width="120">实例ID</td>
+                        <td>
+                            <input name="e_SetInstP_IID" type="text" id="e_SetInstP_IID" style="width: 380px;" value="2491836508538">
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>工程</td>
+                        <td><input name="e_SetInstP_Project" type="text" id="e_SetInstP_Project" style="width: 380px;" value="D:\RelCloud-5.1\SDK\media\project\demo.acp"></td>
+                        <td>
+                            <font color="gray">
+                                如果工程在CloudMaster的工程列表里，此处可以输入acp全路径或者工程名，
+                                如果不在列表里，此处必须是全路径。 另外此处也可以输入工程ID（即pid），
+                                如果输入pid，实际设置的参数是实例的projectId属性</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input name="e_SetInstP_Quiet" type="checkbox" id="e_SetInstP_Quiet" checked="checked">
+                            <label for="e_SetInstP_Quiet">不显示实例窗口 (quiet)</label>
+                        </td>
+                        <td>
+                            <font color="gray"> 如果勾选则实例将不会显示窗口，如果没有勾选，则不会设置quiet属性，至于是在前台还是在后台运行由NodeService决定</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input name="e_SetInstP_Wait" type="checkbox" id="e_SetInstP_Wait" checked="checked">
+                            <label for="e_SetInstP_Wait">等待实例启动结果 (async)</label>
+                        </td>
+                        <td>
+                            <font color="gray">如果勾选，WebSocket会等待实例启动结果，然后再返回</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input name="e_SetInstP_Startup" type="checkbox" id="e_SetInstP_Startup" checked="checked">
+                            <label for="e_SetInstP_Startup">启动实例 (startup)</label>
+                        </td>
+                        <td>
+                            <font color="gray">如果勾选，设置参数后将会启动该实例。 如果勾选了锁定工程文件，可以不用再设置此属性，因为锁定工程肯定会自动启动实例</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input name="e_SetInstP_Restart" type="checkbox" id="e_SetInstP_Restart">
+                            <label for="e_SetInstP_Restart">重启实例 (restart)</label>
+                        </td>
+                        <td>
+                            <font color="gray">设置此参数后，如果实例未运行则会像startup参数一样启动实例；如果实例正在运行，则会重启实例</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input name="e_SetInstP_Lock" type="checkbox" id="e_SetInstP_Lock" checked="checked">
+                            <label for="e_SetInstP_Lock">锁定工程文件 (locked)</label>
+                        </td>
+                        <td>
+                            <font color="gray">锁定工程文件后，该实例就只能使用指定的工程文件，客户端访问时不能再通过pid参数动态设置成别的工程文件了</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                        <td><input name="e_SetInstP_AdjustResolution" type="checkbox" id="e_SetInstP_AdjustResolution" checked="checked">
+                            <label for="e_SetInstP_AdjustResolution">自适应客户端分辨率 (adjustResolution)</label>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input name="e_SetInstP_LimitOneClient" type="checkbox" id="e_SetInstP_LimitOneClient" checked="checked">
+                            <label for="e_SetInstP_LimitOneClient">限制一个实例只能有一个客户连接 (limitOneClient)</label>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input name="e_SetInstP_PauseWhenIdle" type="checkbox" id="e_SetInstP_PauseWhenIdle" checked="checked">
+                            <label for="e_SetInstP_PauseWhenIdle">没有用户连接时暂停渲染 (pauseWhenIdle)</label>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>WebSocket端口</td>
+                        <td><label for="e_SetInstP_WebSocketPort"></label>
+                            <input name="e_SetInstP_WebSocketPort" type="text" id="e_SetInstP_WebSocketPort" value="0" style="width: 80px;">
+                        </td>
+                        <td>
+                            <font color="gray">如果设置为0，则不开启WebSocket调用方式</font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" align="center">
+                            <a href="javascript:call_SetInstanceParams()">WebSocket调用</a>&emsp;
+                            <a href="javascript:call_SetInstanceParams(true)">REST调用</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- 实例：停止实例 -->
+        <div id="d_inst_stop" class="area">
+            <h2>实例：停止实例 <a href="#">↑↑↑</a></h2>
+            <pre class="info">
+<b>接口说明：</b>
+        根据实例ID停止指定实例的运行
+
+<b>REST:</b> PUT /manage/instance/stop
+
+<b>数据格式：</b> { id: '2491836508538' }</pre>
+            <p>
+                <label for="e_StopInstance_IID">实例ID (id)：</label>
+                <input name="e_StopInstance_IID" type="text" id="e_StopInstance_IID" style="width: 380px;" value="2491836508538">
+            </p>
+            <p>
+                <a href="javascript:call_StopInstance()">WebSocket调用</a>&emsp;
+                <a href="javascript:call_StopInstance(true)">REST调用</a>
+            </p>
+        </div>
+
+
+        <!-- 实例：停止指定节点上运行的所有实例 -->
+        <div id="d_inst_stop_node" class="area">
+            <h2>实例：停止指定节点上运行的所有实例 <a href="#">↑↑↑</a></h2>
+            <pre class="info">
+<b>接口说明：</b>
+        根据节点ID停止实例运行
+
+<b>REST:</b> PUT /manage/instance/stop/node
+
+<b>数据格式：</b> { id: 'N2491316493574' }</pre>
+            <p>
+                <label for="e_StopNodeInstances_Id">节点ID (id)：</label>
+                <input name="e_StopNodeInstances_Id" type="text" id="e_StopNodeInstances_Id" style="width: 380px;" value="N2491316493574">
+            </p>
+            <p>
+                <a href="javascript:call_StopAllInstances()">WebSocket调用</a>&emsp;
+                <a href="javascript:call_StopAllInstances(true)">REST调用</a>
+            </p>
+        </div>
+
+
+        <!-- 实例：解锁实例 -->
+        <div id="d_inst_unlock" class="area">
+            <h2>实例：解锁实例 <a href="#">↑↑↑</a></h2>
+            <pre class="info">
+<b>接口说明：</b>
+        根据实例ID解除锁定
+
+<b>REST:</b> PUT /manage/instance/unlock
+
+<b>数据格式：</b> { id: '2491836508538' }</pre>
+            <p>
+                <label for="e_UnlockInstance_IID">实例ID (id)：</label>
+                <input name="e_UnlockInstance_IID" type="text" id="e_UnlockInstance_IID" style="width: 380px;" value="2491836508538">
+            </p>
+            <p>
+                <a href="javascript:call_UnlockInstance()">WebSocket调用</a>&emsp;
+                <a href="javascript:call_UnlockInstance(true)">REST调用</a>
+            </p>
+        </div>
+
+
+
+        <!-- 授权：添加用户授权 -->
+        <div id="d_ua_add" class="area">
+            <h2>授权：添加用户授权 <a href="#">↑↑↑</a></h2>
+            <pre class="info">
+<b>接口说明：</b>
+        用户后台向服务器添加用户授权
+<b>REST:</b> POST /manage/ua/add
+</pre>
+            <p>
+                <label for="e_ua_uid">用户唯一标志符：</label>
+                <input name="e_ua_uid" type="text" id="e_ua_uid" style="width: 300px;" value="U1">
+            </p>
+            <p> </p>
+            <p>
+                <a href="javascript:call_AddUserAuth()">WebSocket调用</a>&emsp;
+                <a href="javascript:call_AddUserAuth(true)">REST调用</a>
+            </p>
+        </div>
+
+
+        <!-- 授权：删除用户授权 -->
+        <div id="d_ua_del" class="area">
+            <h2>授权：删除用户授权 <a href="#">↑↑↑</a></h2>
+            <pre class="info">
+<b>接口说明：</b>
+        删除用户授权
+<b>REST:</b> POST /manage/ua
+        </pre>
+            <p>
+                <label for="e_delua_uid">用户唯一标志符：</label>
+                <input name="e_delua_uid" type="text" id="e_delua_uid" style="width: 300px;" value="U1">
+                <font color="gray">如果用户ID设置为 ---ALL--- 则清空所有用户授权</font>
+            </p>
+            <p> </p>
+            <p>
+                <a href="javascript:call_DeleteUserAuth()">WebSocket调用</a>&emsp;
+                <a href="javascript:call_DeleteUserAuth(true)">REST调用</a>
+            </p>
+        </div>
+
+        <!-- 授权：获取用户授权列表 -->
+        <div id="d_ua_list" class="area">
+            <h2>授权：获取用户授权列表 <a href="#">↑↑↑</a></h2>
+            <pre class="info">
+<b>接口说明：</b>
+        获取用户授权列表
+<b>REST:</b> GET /manage/ua
+        </pre>
+            <p>
+                <a href="javascript:call_GetUserAuthList()">WebSocket调用</a>&emsp;
+                <a href="javascript:call_GetUserAuthList(true)">REST调用</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="bottom_palceholder"></div>
+</body>
+
+</html>
+
+<script>
+    var __isOnlyStatus = false;
+</script>

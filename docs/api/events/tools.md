@@ -8,6 +8,12 @@ description: "Tools 提供量算与空间分析等通用工具能力（如测距
 
 Tools 提供量算与空间分析等通用工具能力（如测距、测面、天际线、通视、坡度、剖切、河道断面等，具体以方法为准）。
 
+![](/img/refdoc/api/tools-m.gif)
+
+![](/img/refdoc/api/tools-m1.gif)
+
+![](/img/refdoc/api/tools-clip.gif)
+
 通过 `api.tools` 访问。
 
 ---

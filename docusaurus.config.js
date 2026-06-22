@@ -93,13 +93,18 @@ const config = {
             className: 'navbar-new',
           },
           {
+            to: '/docs/tutorials/instance-management',
+            label: '实例管理',
+            position: 'left',
+          },
+          {
             to: '/sandbox',
             label: '🧪 在线调试',
             position: 'left',
             target: '_blank',
           },
           {
-            href: 'https://github.com/yourkarl/fdapi',
+            href: 'https://github.com/yourkarl/fdapi/tree/master',
             label: 'GitHub',
             position: 'right',
           },

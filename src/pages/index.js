@@ -96,6 +96,12 @@ const features = [
     desc: '水文仿真(洪水/水动力/SPH粒子)、交通仿真(车辆/无人机/高铁/卫星)、海洋气象、信号仿真、有限元分析、战场推演。',
     link: '/docs/api/hydro/hydrodynamic1d',
   },
+  {
+    icon: '🖥️',
+    title: '实例管理',
+    desc: 'Cloud 管理服务接口：实例启停/解锁/参数设置、运行状态、端口、工程与用户授权，支持 WebSocket 与 REST。',
+    link: '/docs/tutorials/instance-management',
+  },
 ];
 
 export default function Home() {
