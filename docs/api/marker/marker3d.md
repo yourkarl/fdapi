@@ -26,6 +26,7 @@ description: "在三维场景中放置带特效的立体标注（动态标记）
   - 重点目标/重要设施的三维高亮标注与动态特效提示
   - 应急告警点位的立体闪烁、光柱等醒目动态表现
   - 带三维文字标牌的目标标识，文字可固定朝向或随视角变化
+  - 公路 / 交通设施三维标牌（Billboard）点位标注，点击弹窗联动养护资料，按路段 groupId 分组管理。
 - **注意事项**：
   - pointName 特效名称需取自 Explorer 资源面板「动态标记」下的显示名称，否则无法显示；
   - 三维标注带特效，渲染开销高于普通 Marker，海量场景应控制数量；
@@ -71,38 +72,38 @@ new Marker3D()
 
 添加一个或多个动态标记
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 动态标记的数据，可以是Object类型或者Array类型，对于每一个3D标注点，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 动态标记的数据，可以是Object类型或者Array类型，对于每一个3D标注点，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 3D标注的唯一标识符 |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `text` | `string` | 3D标注显示文字，字符长度范围[0~100] |
-| `textSize` | `number` | 3D标注显示文字字体大小，默认值：70 |
-| `textColor` | [`Color`](/docs/api/types#color) | 3D标注显示文字颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `textOutlineSize` | `number` | 3D标注显示文字轮廓大小 |
-| `textOutlineColor` | [`Color`](/docs/api/types#color) | 3D标注显示文字轮廓颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `textFixed` | `boolean` | 3D标注显示文字是否固定文本朝向，默认值：true |
-| `fixedSize` | `boolean` | 3D标注是否使用固定尺寸，默认：false 近大远小 |
-| `textVisible` | `boolean` | 3D标注显示文字是否显示文本，默认值：true |
-| `textLocation` | `array` | 文字位置：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
-| `textRotation` | `array` | 文字旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值] |
-| `textScale` | `array` | 文字缩放：[X,Y,Z]，数组元素类型：(number)，取值范围：[任意正整数] |
-| `pointName` | `string` | 3D标注展示的特效名称，取值详见Explorer资源面板-&gt;动态标记下的显示名称，取值示例：Point_B_特效编号 |
-| `pointVisible` | `boolean` | 3D标注是否显示，默认值：true |
-| `pointScale` | `number` | 3D标注整体缩放比例，取值范围：[0.01,任意正数] |
-| `coordinate` | `array` | 3D标注的位置坐标: [X,Y,Z]，[取值示例](/docs/tutorials/coordinates) |
-| `coordinateType` | `number` | 3D标注的坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
-| `range` | `array` | 3D标注的可视距离范围：[min,max]，单位：米 |
-| `viewHeightRange` | `array` | 可见高度范围：[最小可见高度, 远最大可见高度]，默认值: [-1000000000, 1000000000] |
-| `autoHeight` | `boolean` | 自动判断下方是否有物体，设置正确高度，默认值：false |
-| `collision` | `boolean` | 可选，设置Marker3D对象加载后是否开启碰撞，默认：true |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 3D标注的唯一标识符 |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `text` | `string` | 是 | - | 3D标注显示文字，字符长度范围[0~100] |
+| `textSize` | `number` | 否 | 70 | 3D标注显示文字字体大小，默认值：70 |
+| `textColor` | [`Color`](/docs/api/types#color) | 是 | - | 3D标注显示文字颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `textOutlineSize` | `number` | 是 | - | 3D标注显示文字轮廓大小 |
+| `textOutlineColor` | [`Color`](/docs/api/types#color) | 是 | - | 3D标注显示文字轮廓颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `textFixed` | `boolean` | 否 | true | 3D标注显示文字是否固定文本朝向，默认值：true |
+| `fixedSize` | `boolean` | 是 | - | 3D标注是否使用固定尺寸，默认：false 近大远小 |
+| `textVisible` | `boolean` | 否 | true | 3D标注显示文字是否显示文本，默认值：true |
+| `textLocation` | `array` | 是 | - | 文字位置：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
+| `textRotation` | `array` | 是 | - | 文字旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值] |
+| `textScale` | `array` | 是 | - | 文字缩放：[X,Y,Z]，数组元素类型：(number)，取值范围：[任意正整数] |
+| `pointName` | `string` | 是 | - | 3D标注展示的特效名称，取值详见Explorer资源面板-&gt;动态标记下的显示名称，取值示例：Point_B_特效编号 |
+| `pointVisible` | `boolean` | 否 | true | 3D标注是否显示，默认值：true |
+| `pointScale` | `number` | 是 | - | 3D标注整体缩放比例，取值范围：[0.01,任意正数] |
+| `coordinate` | `array` | 是 | - | 3D标注的位置坐标: [X,Y,Z]，[取值示例](/docs/tutorials/coordinates) |
+| `coordinateType` | `number` | 否 | 0 | 3D标注的坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
+| `range` | `array` | 是 | - | 3D标注的可视距离范围：[min,max]，单位：米 |
+| `viewHeightRange` | `array` | 否 | [-1000000000, 1000000000] | 可见高度范围：[最小可见高度, 远最大可见高度]，默认值: [-1000000000, 1000000000] |
+| `autoHeight` | `boolean` | 否 | false | 自动判断下方是否有物体，设置正确高度，默认值：false |
+| `collision` | `boolean` | 否 | - | 可选，设置Marker3D对象加载后是否开启碰撞，默认：true |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -243,25 +244,29 @@ fdapi.marker3d.callBPFunction([
 
 设置Marke3D贴合模型对象CustomObject对象，设置后Marker3D会跟随模型运动
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 自定义对象和三维标注映射绑定的数据结构，可以是Object类型或者Array类型，对于每一个映射对象，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 自定义对象和三维标注映射绑定的数据结构，可以是Object类型或者Array类型，对于每一个映射对象，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `marker3dId` | `string` | 三维标注Marker3D对象id |
-| `objectId` | `string` | 贴合的CustomObject自定义对象 |
-| `offset` | `array` | 坐标偏移量，[X,Y,Z]，[取值示例](/docs/tutorials/coordinates) |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `marker3dId` | `string` | 是 | - | 三维标注Marker3D对象id |
+| `objectId` | `string` | 是 | - | 贴合的CustomObject自定义对象 |
+| `offset` | `array` | 是 | - | 坐标偏移量，[X,Y,Z]，[取值示例](/docs/tutorials/coordinates) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.marker3d.attachObject(data);
+await fdapi.marker3d.attachObject({
+    marker3dId: '对象ID',
+    objectId: '对象ID',
+    offset: []
+});
 ```
 
 ---
@@ -270,18 +275,18 @@ await fdapi.marker3d.attachObject(data);
 
 调用Marker3D对象包含的多个蓝图函数，注意：可以根据marker3d的对象id查询包含的所有蓝图函数 fdapi.misc.getBPFunction(id);
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | CustomObject对象的ID |
-| `functionName` | `string` | 蓝图函数名 |
-| `parameters` | `array` | 蓝图函数包含的多个参数，可选参数，数组类型，注意：传入多参数的顺序与类型务必与蓝图函数的参数顺序及其参数类型一致以保证执行结果符合预期。多个参数结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | CustomObject对象的ID |
+| `functionName` | `string` | 是 | - | 蓝图函数名 |
+| `parameters` | `array` | 否 | - | 蓝图函数包含的多个参数，可选参数，数组类型，注意：传入多参数的顺序与类型务必与蓝图函数的参数顺序及其参数类型一致以保证执行结果符合预期。多个参数结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -315,9 +320,9 @@ await fdapi.marker3d.attachObject(data);
 
 清空场景中所有的3D标注
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -333,10 +338,10 @@ fdapi.marker3d.clear();
 
 删除一个或多个3D标注对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的3D标注对象的ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的3D标注对象的ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -352,10 +357,10 @@ fdapi.marker3d.delete(['m1', 'm2']);
 
 根据分组ID删除动态标注
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `groupId` | `string` | 动态标注创建时指定的分组ID |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `groupId` | `string` | 是 | - | 动态标注创建时指定的分组ID |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -371,13 +376,13 @@ fdapi.marker3d.deleteByGroupId('marker3dTest');
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 3D标注对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 3D标注对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -393,10 +398,10 @@ fdapi.marker3d.focus('m1', 100, 0.2);
 
 根据ID获取3D标注的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的3D标注对象ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的3D标注对象ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -436,10 +441,10 @@ fdapi.marker3d.get(['m1', 'm2']);
 
 根据marker3d对象的id查询其包含的蓝图函数信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 3D标注对象ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 3D标注对象ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -455,10 +460,10 @@ fdapi.marker3d.getBPFunction(['m1', 'm2']);
 
 隐藏3D标注
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 3D标注对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 3D标注对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -474,9 +479,9 @@ fdapi.marker3d.hide(['m1']);
 
 隐藏所有3D标注
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -492,10 +497,10 @@ fdapi.marker3d.hideAll();
 
 根据分组ID隐藏动态标注
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `groupId` | `string` | 动态标注创建时指定的分组ID |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `groupId` | `string` | 是 | - | 动态标注创建时指定的分组ID |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -511,12 +516,12 @@ fdapi.marker3d.hideByGroupId('marker3dTest');
 
 设置Marker3D对象的可视高度范围
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | Marker3D对象的ID |
-| `minVisibleHeight` | `number` | 可视高度范围最小值，取值范围：[任意负数~任意正数]，单位：米 |
-| `maxVisibleHeight` | `number` | 可视高度范围最大值，取值范围：[任意负数~任意正数]，单位：米 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | Marker3D对象的ID |
+| `minVisibleHeight` | `number` | 是 | - | 可视高度范围最小值，取值范围：[任意负数~任意正数]，单位：米 |
+| `maxVisibleHeight` | `number` | 是 | - | 可视高度范围最大值，取值范围：[任意负数~任意正数]，单位：米 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -532,10 +537,10 @@ fdapi.marker3d.setViewHeightRange('m1', 1, 1000);
 
 显示3D标注
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 3D标注对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 3D标注对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -551,9 +556,9 @@ fdapi.marker3d.show('m1');
 
 显示所有3D标注
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -569,10 +574,10 @@ fdapi.marker3d.showAll();
 
 根据分组ID显示动态标注
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `groupId` | `string` | 动态标注创建时指定的分组ID |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `groupId` | `string` | 是 | - | 动态标注创建时指定的分组ID |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -588,10 +593,10 @@ fdapi.marker3d.showByGroupId('marker3dTest');
 
 修改一个或多个3D标注对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `data \| array` | 3D标注点的数据，参考add方法 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `data \| array` | 是 | - | 3D标注点的数据，参考add方法 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -645,9 +650,9 @@ fdapi.xxx.updateEnd(function () {
 
 updateEnd是异步调用，可以用回调函数也可以await
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

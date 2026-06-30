@@ -74,37 +74,37 @@ Tag已停止更新，推荐使用功能更丰富的标注对象Marker
 
 添加一个或多个Tag对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 标签数据，可以是Object类型或者Array类型，对于每一个标签，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 标签数据，可以是Object类型或者Array类型，对于每一个标签，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `coordinate` | `array` | 坐标值：标签添加的位置坐标，[取值示例](/docs/tutorials/coordinates) |
-| `imagePath` | `string` | 图片路径，支持本地路径和网络路径，[资源引入说明](/docs/tutorials/resources) |
-| `imageSize` | `array` | 图片尺寸[width,height]，取值范围：[0~任意正数] |
-| `url` | `string` | 鼠标点击标签后弹出的网页的URL，也可以是本地视频文件，鼠标点击标签后会弹出视频播放窗口，[资源引入说明](/docs/tutorials/resources) |
-| `popupBackgroundColor` | [`Color`](/docs/api/types#color) | 弹窗背景色，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `popupPos` | `array` | 弹窗位置: [x, y]，数组元素类型：(number)，数组元素取值范围：[任意正整数] |
-| `popupSize` | `array` | 弹窗尺寸：[width, height]，数组元素类型：(number)，数组元素取值范围：[任意正整数] |
-| `range` | `array` | 标签的可见范围 [Min,Max]，Min和Max指摄像机相对于标签的最小和最大距离，在此范围内标签才可见，类型均为浮点数，元素取值范围：[1.0~100000.0]，单位：米 |
-| `text` | `string` | 标签显示的文字 |
-| `textRange` | `number` | 文字的可见范围，取值范围：[1.0~100000.0]，单位：米 |
-| `textSize` | `number` | 文字大小，取值范围：[0~任意正整数] |
-| `textColor` | [`Color`](/docs/api/types#color) | 文字颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `textBorderColor` | [`Color`](/docs/api/types#color) | 文字边框颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `textBackgroundColor` | [`Color`](/docs/api/types#color) | 文本背景颜色，默认值白色，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `showLine` | `boolean` | 标签下方是否显示垂直牵引线，默认值：true |
-| `hoverImagePath` | `string` | 鼠标悬停时显示的图片路径，[资源引入说明](/docs/tutorials/resources) |
-| `autoHidePopupWindow` | `boolean` | 是否自动关闭弹出窗口，默认值：true，失去焦点后会自动关闭 |
-| `autoHeight` | `boolean` | 自动判断下方是否有物体，设置正确高度，默认值：false |
-| `coordinateType` | `number` | 坐标系类型，取值范围：0(Projection), 1(WGS84)，如果不设置此参数，默认为0。 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `coordinate` | `array` | 是 | - | 坐标值：标签添加的位置坐标，[取值示例](/docs/tutorials/coordinates) |
+| `imagePath` | `string` | 是 | - | 图片路径，支持本地路径和网络路径，[资源引入说明](/docs/tutorials/resources) |
+| `imageSize` | `array` | 是 | - | 图片尺寸[width,height]，取值范围：[0~任意正数] |
+| `url` | `string` | 是 | - | 鼠标点击标签后弹出的网页的URL，也可以是本地视频文件，鼠标点击标签后会弹出视频播放窗口，[资源引入说明](/docs/tutorials/resources) |
+| `popupBackgroundColor` | [`Color`](/docs/api/types#color) | 是 | - | 弹窗背景色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `popupPos` | `array` | 是 | - | 弹窗位置: [x, y]，数组元素类型：(number)，数组元素取值范围：[任意正整数] |
+| `popupSize` | `array` | 是 | - | 弹窗尺寸：[width, height]，数组元素类型：(number)，数组元素取值范围：[任意正整数] |
+| `range` | `array` | 是 | - | 标签的可见范围 [Min,Max]，Min和Max指摄像机相对于标签的最小和最大距离，在此范围内标签才可见，类型均为浮点数，元素取值范围：[1.0~100000.0]，单位：米 |
+| `text` | `string` | 是 | - | 标签显示的文字 |
+| `textRange` | `number` | 是 | - | 文字的可见范围，取值范围：[1.0~100000.0]，单位：米 |
+| `textSize` | `number` | 是 | - | 文字大小，取值范围：[0~任意正整数] |
+| `textColor` | [`Color`](/docs/api/types#color) | 是 | - | 文字颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `textBorderColor` | [`Color`](/docs/api/types#color) | 是 | - | 文字边框颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `textBackgroundColor` | [`Color`](/docs/api/types#color) | 是 | - | 文本背景颜色，默认值白色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `showLine` | `boolean` | 否 | true | 标签下方是否显示垂直牵引线，默认值：true |
+| `hoverImagePath` | `string` | 是 | - | 鼠标悬停时显示的图片路径，[资源引入说明](/docs/tutorials/resources) |
+| `autoHidePopupWindow` | `boolean` | 否 | true | 是否自动关闭弹出窗口，默认值：true，失去焦点后会自动关闭 |
+| `autoHeight` | `boolean` | 否 | false | 自动判断下方是否有物体，设置正确高度，默认值：false |
+| `coordinateType` | `number` | 是 | - | 坐标系类型，取值范围：0(Projection), 1(WGS84)，如果不设置此参数，默认为0。 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -210,9 +210,9 @@ img.onload = () => {
 
 删除场景中所有的Tag
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -228,10 +228,10 @@ fdapi.tag.clear();
 
 删除一个或多个Tag对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的Tag对象的ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的Tag对象的ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -247,13 +247,13 @@ fdapi.tag.delete(['p1', 'p2']);
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Tag对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Tag对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -269,12 +269,12 @@ fdapi.tag.focus('p1', 200, 0.2);
 
 自动定位到能观察所有Tag对象的合适距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -290,10 +290,10 @@ fdapi.tag.focusAll(200, 0.2);
 
 根据ID获取Tag的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的Tag对象ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的Tag对象ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -339,10 +339,10 @@ log(`Get tags: \n id: ${o.id} \n text: ${o.text}`);
 
 隐藏Tag
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Tag对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Tag对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -358,9 +358,9 @@ fdapi.tag.hide(['p1']);
 
 隐藏所有Tag
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -376,9 +376,9 @@ fdapi.tag.hideAll();
 
 隐藏所有标签的弹出窗口
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -394,10 +394,10 @@ fdapi.tag.hideAllPopupWindow();
 
 隐藏指定标签的弹出窗口
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 标签的ID或者数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 标签的ID或者数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -413,18 +413,18 @@ fdapi.tag.hidePopupWindow('p1');
 
 设置是否自动关闭标签的弹出窗口
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标签的唯一标识符ID |
-| `newVal` | `boolean` | 是否自动关闭标签的弹出窗口 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标签的唯一标识符ID |
+| `newVal` | `boolean` | 是 | - | 是否自动关闭标签的弹出窗口 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.tag.setAutoHidePopupWindow(id, newVal);
+await fdapi.tag.setAutoHidePopupWindow('对象ID', true);
 ```
 
 ---
@@ -433,11 +433,11 @@ await fdapi.tag.setAutoHidePopupWindow(id, newVal);
 
 设置标签的位置
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标签的唯一标识符ID |
-| `newVal` | `array` | 新的位置坐标，[取值示例](/docs/tutorials/coordinates) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标签的唯一标识符ID |
+| `newVal` | `array` | 是 | - | 新的位置坐标，[取值示例](/docs/tutorials/coordinates) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -454,11 +454,11 @@ fdapi.tag.focus('p1', 200, 0.2);
 
 设置标签的图片
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标签的唯一标识符ID |
-| `newVal` | `string` | 新的图片路径，[资源引入说明](/docs/tutorials/resources) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标签的唯一标识符ID |
+| `newVal` | `string` | 是 | - | 新的图片路径，[资源引入说明](/docs/tutorials/resources) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -475,11 +475,11 @@ fdapi.tag.setImagePath('p1', path);
 
 设置标签图片的大小
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标签的唯一标识符ID |
-| `newVal` | `array` | 新的图片尺寸[width,height]，取值范围：[0~任意正数] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标签的唯一标识符ID |
+| `newVal` | `array` | 是 | - | 新的图片尺寸[width,height]，取值范围：[0~任意正数] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -495,11 +495,11 @@ fdapi.tag.setImageSize('p1', [64, 64]);
 
 设置标签的可见范围
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标签的唯一标识符ID |
-| `newVal` | `array` | 新的可见范围 [Min,Max]，Min和Max指摄像机相对于标签的最小和最大距离，在此范围内标签才可见，类型均为浮点数，元素取值范围：[1.0~100000.0]，单位：米 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标签的唯一标识符ID |
+| `newVal` | `array` | 是 | - | 新的可见范围 [Min,Max]，Min和Max指摄像机相对于标签的最小和最大距离，在此范围内标签才可见，类型均为浮点数，元素取值范围：[1.0~100000.0]，单位：米 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -515,11 +515,11 @@ fdapi.tag.setRange('p1', [1, 800]);
 
 设置标签是否显示垂直牵引线
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标签的唯一标识符ID |
-| `newVal` | `boolean` | 是否显示垂直牵引线 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标签的唯一标识符ID |
+| `newVal` | `boolean` | 是 | - | 是否显示垂直牵引线 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -535,11 +535,11 @@ fdapi.tag.setShowLine('p1', false);
 
 设置标签的文本
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标签的唯一标识符ID |
-| `newVal` | `string` | 新的文本值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标签的唯一标识符ID |
+| `newVal` | `string` | 是 | - | 新的文本值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -555,11 +555,11 @@ fdapi.tag.setText('p1', 'Welcome!');
 
 设置标签文本的背景颜色
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标签的唯一标识符ID |
-| `newVal` | [`Color`](/docs/api/types#color) | 新的颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标签的唯一标识符ID |
+| `newVal` | [`Color`](/docs/api/types#color) | 是 | - | 新的颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -575,11 +575,11 @@ fdapi.tag.setTextBackgroundColor('p1', Color.Yellow);
 
 设置标签文本的边框颜色
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标签的唯一标识符ID |
-| `newVal` | [`Color`](/docs/api/types#color) | 新的颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标签的唯一标识符ID |
+| `newVal` | [`Color`](/docs/api/types#color) | 是 | - | 新的颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -595,11 +595,11 @@ fdapi.tag.setTextBorderColor('p1', Color.White);
 
 设置标签文本颜色
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标签的唯一标识符ID |
-| `newVal` | [`Color`](/docs/api/types#color) | 新的颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标签的唯一标识符ID |
+| `newVal` | [`Color`](/docs/api/types#color) | 是 | - | 新的颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -615,11 +615,11 @@ fdapi.tag.setTextColor('p1', Color.Blue);
 
 设置标签的URL
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `string` | 新值，[资源引入说明](/docs/tutorials/resources) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `string` | 是 | - | 新值，[资源引入说明](/docs/tutorials/resources) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -635,10 +635,10 @@ fdapi.tag.setURL('p1', 'http://www.163.com');
 
 显示Tag
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Tag对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Tag对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -654,9 +654,9 @@ fdapi.tag.show('p1');
 
 显示所有Tag
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -672,9 +672,9 @@ fdapi.tag.showAll();
 
 显示所有标签的弹出窗口
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -690,10 +690,10 @@ fdapi.tag.showAllPopupWindow();
 
 显示指定标签的弹出窗口
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 标签的ID或者数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 标签的ID或者数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -709,10 +709,10 @@ fdapi.tag.showPopupWindow('p1');
 
 修改一个或多个Tag对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 标签数据，参考add方法 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 标签数据，参考add方法 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -770,9 +770,9 @@ fdapi.xxx.updateEnd(function () {
 
 updateEnd是异步调用，可以用回调函数也可以await
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

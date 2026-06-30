@@ -50,27 +50,27 @@ description: "用于在指定包围盒范围内模拟与渲染海岸线效果，
 
 添加一个或多个Coastline对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `bbox` | `array` | 海岸线模拟范围边界的包围盒，格式：[minX,minY,minZ,maxX,maxY,maxZ]，数组元素类型：[任意浮点数] |
-| `style` | `number` | 海岸线的样式，目前只有一个样式，默认值：0 |
-| `waveSpeed` | `number` | 海浪拍打沙滩的速度，单位：米/秒，默认值：0.5米/秒 |
-| `windVelocity` | `array` | 海风风速UV的方向向量，此参数会影响海面效果，取值示例：[U,V] |
-| `enableFloodFill` | `boolean` | 是否开启水淹，默认值：false |
-| `seaLevelTimeInterval` | `number` | 海平面水位每次抬升的时间间隔，单位：秒，默认值：0.1s |
-| `seaLevelIncrement` | `number` | 海平面水位每次抬升的高度，单位：米，默认值：0.1米 |
-| `seaLevelOffset` | `number` | 基于bbox的中心位置Z偏移的高度，单位：米，默认值：0米 |
-| `seaLevelMaxElevation` | `number` | 海平面水位抬升的最大高度，单位：米，默认值：10米 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `bbox` | `array` | 是 | - | 海岸线模拟范围边界的包围盒，格式：[minX,minY,minZ,maxX,maxY,maxZ]，数组元素类型：[任意浮点数] |
+| `style` | `number` | 否 | 0 | 海岸线的样式，目前只有一个样式，默认值：0 |
+| `waveSpeed` | `number` | 否 | 0.5米/秒 | 海浪拍打沙滩的速度，单位：米/秒，默认值：0.5米/秒 |
+| `windVelocity` | `array` | 是 | - | 海风风速UV的方向向量，此参数会影响海面效果，取值示例：[U,V] |
+| `enableFloodFill` | `boolean` | 否 | false | 是否开启水淹，默认值：false |
+| `seaLevelTimeInterval` | `number` | 否 | 0.1s | 海平面水位每次抬升的时间间隔，单位：秒，默认值：0.1s |
+| `seaLevelIncrement` | `number` | 否 | 0.1米 | 海平面水位每次抬升的高度，单位：米，默认值：0.1米 |
+| `seaLevelOffset` | `number` | 否 | 0米 | 基于bbox的中心位置Z偏移的高度，单位：米，默认值：0米 |
+| `seaLevelMaxElevation` | `number` | 否 | 10米 | 海平面水位抬升的最大高度，单位：米，默认值：10米 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -107,9 +107,9 @@ fdapi.coastline.focus("coastline");
 
 删除场景中所有的Coastline
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -125,10 +125,10 @@ fdapi.coastline.clear();
 
 删除一个或多个Coastline对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的Coastline对象的ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的Coastline对象的ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -144,13 +144,13 @@ fdapi.coastline.delete('fd1');
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Coastline对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Coastline对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -166,10 +166,10 @@ fdapi.coastline.focus('coastline');
 
 根据ID获取Coastline的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的Coastline对象ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的Coastline对象ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -196,10 +196,10 @@ fdapi.coastline.get('coastline');
 
 修改一个或多个Coastline对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，请参考add方法 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，请参考add方法 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -250,9 +250,9 @@ fdapi.xxx.updateEnd(function () {
 
 updateEnd是异步调用，可以用回调函数也可以await
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

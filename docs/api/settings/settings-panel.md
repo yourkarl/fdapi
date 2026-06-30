@@ -53,9 +53,9 @@ SettingsPanel 提供对内置设置面板里各项参数进行读写操作的接
 
 获取参数 相机面板
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -83,9 +83,9 @@ fdapi.settingsPanel.getCameraMode();
 
 获取参数 控制面板
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -112,9 +112,9 @@ fdapi.settingsPanel.getControlMode();
 
 获取地图样式
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -150,9 +150,9 @@ fdapi.settingsPanel.getMapMode();
 
 获取参数 后期面板
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -194,9 +194,9 @@ fdapi.settingsPanel.getPostProcessMode();
 
 获取参数 汇报模式面板
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -222,13 +222,13 @@ fdapi.settingsPanel.getReportMode();
 
 设置参数 相机面板
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `nearClipPlane` | `number` | 近裁距离，取值范围：[0.1~100]，单位：米，默认值：1.0 |
-| `fovH` | `number` | 水平视角，取值范围：[45~134]，单位：度，默认值：90 |
-| `minCameraHeight` | `number` | 最小相机高度，取值范围：[-100~正无穷]，单位：米，默认值：-100米 |
-| `maxCameraHeight` | `number` | 最大相机高度，取值范围：[100000~正无穷]，单位：米，默认值：100000米，即100公里 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `nearClipPlane` | `number` | 否 | 1.0 | 近裁距离，取值范围：[0.1~100]，单位：米，默认值：1.0 |
+| `fovH` | `number` | 否 | 90 | 水平视角，取值范围：[45~134]，单位：度，默认值：90 |
+| `minCameraHeight` | `number` | 否 | -100米 | 最小相机高度，取值范围：[-100~正无穷]，单位：米，默认值：-100米 |
+| `maxCameraHeight` | `number` | 否 | 100000米 | 最大相机高度，取值范围：[100000~正无穷]，单位：米，默认值：100000米，即100公里 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -254,14 +254,14 @@ fdapi.settingsPanel.setCameraMode(nearClipPlane, fovH, minCameraHeight, maxCamer
 
 设置参数 控制面板
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `speed` | `number` | 第一人称移动速度 取值范围：[0~1.0]，值越大移动速度越快，默认值：0.2 |
-| `yawSpeed` | `number` | 视角左右旋转速度 取值范围：[0~1.0]，值越大旋转速度越快，默认值：1.0 |
-| `isRotateSelf` | `boolean` | 是否开启自由交互右键自传 取值：true开启，false不开启，默认false |
-| `isUseMaleRole` | `boolean` | 第三人称交互是否使用男性角色 取值：true使用男性角色，false使用女性角色，默认false |
-| `viewType` | `number` | 角色漫游使用第三人称或第一人称，取值范围：[0,1]，0角色漫游使用第三人称，1角色漫游使用第一人称，默认值：0 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `speed` | `number` | 否 | 0.2 | 第一人称移动速度 取值范围：[0~1.0]，值越大移动速度越快，默认值：0.2 |
+| `yawSpeed` | `number` | 否 | 1.0 | 视角左右旋转速度 取值范围：[0~1.0]，值越大旋转速度越快，默认值：1.0 |
+| `isRotateSelf` | `boolean` | 是 | - | 是否开启自由交互右键自传 取值：true开启，false不开启，默认false |
+| `isUseMaleRole` | `boolean` | 是 | - | 第三人称交互是否使用男性角色 取值：true使用男性角色，false使用女性角色，默认false |
+| `viewType` | `number` | 否 | 0 | 角色漫游使用第三人称或第一人称，取值范围：[0,1]，0角色漫游使用第三人称，1角色漫游使用第一人称，默认值：0 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -284,11 +284,11 @@ fdapi.settingsPanel.setControlMode(0.5, 0.5, true, true, 1);
 
 设置地图样式
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `mode` | [`MapMode`](/docs/api/types#mapmode) | 地图样式，0：指南针；1：鹰眼图；2：大地图，参见`MapMode` 注意：设置大地图模式后，不再支持设置vtpk标注，两者互斥 |
-| `options` | `object` | 地图模式相关的参数，目前支持的选项有下面这些（如果某个参数没有设置，会使用默认值）： serviceType: 服务类型，0：MVT矢量切片（默认值）； 1：WMTS(ArcGIS)； 2：WMS； 3：MapServer(ArcGIS) ； 4：Mapbox serviceProvider: 服务提供厂商，1：ArcGIS； 2：GeoServer； 3：SuperMap超图； 4：Mapbox；5：tianditu天地图 coordType: 坐标系类型，0：经纬度；1：本地（默认值是0） mapPoint: 同名点，取值范围：[x,y]，（默认值是[0, 0]） longitude: 经度，取值范围：[0~180]（默认值是0.0） latitude: 纬度，取值范围：[0~90]（默认值是0.0） cache: 缓存路径，字符串地址，（默认值是 ":memory:"） style: 风格路径，字符串地址，（默认值是 "mapbox://styles/mapbox/streets-v10"） groundHeight: 地面高度，取值范围：[0~任意数值]（默认值是0.0） renderMode: 渲染模式，0：正常；1：透明；2：标注；3：贴地（默认值是0） decalMode: 大地图贴地模式下的贴合模式，0：都不接受 1：贴合所有 2：仅贴合地形；默认值：1，注意：此参数仅在renderMode设置为3时生效 serverURL : WMTS风格路径，二维数组，元素说明：index[0]服务id，index[1]服务地址；取值示例：[['111', 'http://192.168.1.29:81'], ['222', 'http://192.168.1.29:82'], ['333', 'http://192.168.1.29:83']] coordOrder: 坐标顺序，0: XY; 1: YX，默认值：0 maxLevel : WMTS服务最大显示层级，取值范围：[0~22]，默认值：10 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `mode` | [`MapMode`](/docs/api/types#mapmode) | 是 | - | 地图样式，0：指南针；1：鹰眼图；2：大地图，参见`MapMode` 注意：设置大地图模式后，不再支持设置vtpk标注，两者互斥 |
+| `options` | `object` | 否 | 0 | 地图模式相关的参数，目前支持的选项有下面这些（如果某个参数没有设置，会使用默认值）： serviceType: 服务类型，0：MVT矢量切片（默认值）； 1：WMTS(ArcGIS)； 2：WMS； 3：MapServer(ArcGIS) ； 4：Mapbox serviceProvider: 服务提供厂商，1：ArcGIS； 2：GeoServer； 3：SuperMap超图； 4：Mapbox；5：tianditu天地图 coordType: 坐标系类型，0：经纬度；1：本地（默认值是0） mapPoint: 同名点，取值范围：[x,y]，（默认值是[0, 0]） longitude: 经度，取值范围：[0~180]（默认值是0.0） latitude: 纬度，取值范围：[0~90]（默认值是0.0） cache: 缓存路径，字符串地址，（默认值是 ":memory:"） style: 风格路径，字符串地址，（默认值是 "mapbox://styles/mapbox/streets-v10"） groundHeight: 地面高度，取值范围：[0~任意数值]（默认值是0.0） renderMode: 渲染模式，0：正常；1：透明；2：标注；3：贴地（默认值是0） decalMode: 大地图贴地模式下的贴合模式，0：都不接受 1：贴合所有 2：仅贴合地形；默认值：1，注意：此参数仅在renderMode设置为3时生效 serverURL : WMTS风格路径，二维数组，元素说明：index[0]服务id，index[1]服务地址；取值示例：[['111', 'http://192.168.1.29:81'], ['222', 'http://192.168.1.29:82'], ['333', 'http://192.168.1.29:83']] coordOrder: 坐标顺序，0: XY; 1: YX，默认值：0 maxLevel : WMTS服务最大显示层级，取值范围：[0~22]，默认值：10 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -335,17 +335,17 @@ fdapi.settingsPanel.setMapMode(MapMode.BigMap, {
 
 设置-工程面板自定义资源挂载的pak自定义资源文件
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `pakfilePathArr` | `string \| array` | 要挂载的自定义资源文件路径或路径数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `pakfilePathArr` | `string \| array` | 是 | - | 要挂载的自定义资源文件路径或路径数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.settingsPanel.setPakFile(pakfilePathArr);
+await fdapi.settingsPanel.setPakFile([HostConfig.Path + '/assets/xxx.pak']);
 ```
 
 ---
@@ -354,17 +354,17 @@ await fdapi.settingsPanel.setPakFile(pakfilePathArr);
 
 设置-工程面板下自定义资源加载的pak自定义资源文件目录
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `dirArr` | `string \| array` | 要加载的自定义资源文件目录或目录数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `dirArr` | `string \| array` | 是 | - | 要加载的自定义资源文件目录或目录数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.settingsPanel.setPakFolder(dirArr);
+await fdapi.settingsPanel.setPakFolder([HostConfig.Path + '/assets/pak']);
 ```
 
 ---
@@ -373,44 +373,44 @@ await fdapi.settingsPanel.setPakFolder(dirArr);
 
 设置参数，后期面板，注意：支持设置单个参数或同时设置多个参数
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `postProcessOptions` | `object` | 后期面板配置参数对象，支持以下属性 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `postProcessOptions` | `object` | 是 | - | 后期面板配置参数对象，支持以下属性 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`postProcessOptions` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `globalIllumination` | `-` | &#123;boolean&#125; 屏幕空间全局光照，默认值：false |
-| `tonemapper` | `-` | &#123;boolean&#125; 是否开启色彩优化，默认值：true |
-| `contrast` | `-` | &#123;number&#125; 对比度，取值范围：[1~2]，默认值：1 |
-| `saturation` | `-` | &#123;number&#125; 饱和度，取值范围：[1~2]，默认值：1 |
-| `bloomIntensity` | `-` | &#123;number&#125; 泛光，取值范围：[0~10.0]，默认值：0 |
-| `chromaticAberration` | `-` | &#123;number&#125; 透镜色差，取值范围：[0~5]，默认值：0 |
-| `ambientIntensity` | `-` | &#123;number&#125; 环境光遮罩强度，取值范围：[0~1]，默认值：0.6 |
-| `ambientRadius` | `-` | &#123;number&#125; 环境光遮罩半径，取值范围：[0.1~5]，单位：米，默认值：0.1 |
-| `ambientFadeDistance` | `-` | &#123;number&#125; 环境光遮罩淡出距离，取值范围：[0~20000]，单位：米，默认值：12000 |
-| `exposureEnabled` | `-` | &#123;boolean&#125; 是否开启自动曝光，默认值：false |
-| `exposureCompensation` | `-` | &#123;number&#125; 曝光补偿，取值范围：[0~15]，默认值：0 |
-| `lensFlareIntensity` | `-` | &#123;number&#125; 镜头光晕强度 ，取值范围：[0~1.0]，默认值：0 |
-| `darkCorner` | `-` | &#123;number&#125; 镜头暗角，取值范围：[0~1]，单位：百分比，默认值：0 |
-| `depthFiethSwitch` | `-` | &#123;boolean&#125; 是否开启景深，默认值：false |
-| `focalLength` | `-` | &#123;number&#125; 焦距，取值范围：[0~10000]，单位：米，默认值：10000 |
-| `aperture` | `-` | &#123;number&#125; 光圈，取值范围：[1~32]，默认值：4 |
-| `deepBlur` | `-` | &#123;number&#125; 深度模糊，取值范围：[0~4]，默认值：2 |
-| `lutMode` | `-` | &#123;number&#125; LUT调色模式，取值范围：[0~30]，默认值：0（关闭调色模式），1-30对应不同LUT调色效果 |
-| `lutIntensity` | `-` | &#123;number&#125; LUT调色强度，类型为百分比，取值范围：[0~1.0]，默认值：0，即小数对应的百分比 |
-| `screenPercentage` | `-` | &#123;number&#125; 屏幕百分比，取值范围：[50~200]，默认值：125 |
-| `terrainGlobalAlpha` | `-` | &#123;number&#125; 地形不透明度，取值范围：[0~1.0]，默认值：1.0 |
-| `terrainGlobalLitStatus` | `-` | &#123;boolean&#125; 地形是否参与光照，默认值：true |
-| `osgbGlobalLitStatus` | `-` | &#123;boolean&#125; 倾斜摄影是否参与光照，默认值：false |
-| `osgbGlobalAlpha` | `-` | &#123;number&#125; 倾斜摄影不透明度，取值范围：[0~1.0],默认值：1.0 |
-| `antiAliasing` | `-` | &#123;boolean&#125; 是否开启反走样，默认值：true |
-| `postProcessEffects` | `-` | &#123;number&#125; 特效(滤镜效果)，取值范围：0【默认无效果】 1【景深效果】 2【线框效果】，3【圆珠笔】，4【白框】，5【蓝图】，6【原色黑边】， 默认值：0 |
-| `wireThickness` | `-` | &#123;number&#125; 可选参数，仅在线框效果下生效，线框大小，取值范围：[1.0~3.0]，默认值：1.0 |
-| `dofMode` | `-` | &#123;number&#125; 可选参数，仅在景深效果下生效，对焦距离，取值：0【近距离0.5km】 1【中远距离2km】 2【中远距离5km】 3【远距离10km】，默认值：0 |
-| `receiveDecalMode` | `-` | &#123;number&#125; 对象贴合模式，取值：0【无】 1【所有对象】 2【仅地形】，默认值：1 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `globalIllumination` | `-` | 否 | false | &#123;boolean&#125; 屏幕空间全局光照，默认值：false |
+| `tonemapper` | `-` | 否 | true | &#123;boolean&#125; 是否开启色彩优化，默认值：true |
+| `contrast` | `-` | 否 | 1 | &#123;number&#125; 对比度，取值范围：[1~2]，默认值：1 |
+| `saturation` | `-` | 否 | 1 | &#123;number&#125; 饱和度，取值范围：[1~2]，默认值：1 |
+| `bloomIntensity` | `-` | 否 | 0 | &#123;number&#125; 泛光，取值范围：[0~10.0]，默认值：0 |
+| `chromaticAberration` | `-` | 否 | 0 | &#123;number&#125; 透镜色差，取值范围：[0~5]，默认值：0 |
+| `ambientIntensity` | `-` | 否 | 0.6 | &#123;number&#125; 环境光遮罩强度，取值范围：[0~1]，默认值：0.6 |
+| `ambientRadius` | `-` | 否 | 0.1 | &#123;number&#125; 环境光遮罩半径，取值范围：[0.1~5]，单位：米，默认值：0.1 |
+| `ambientFadeDistance` | `-` | 否 | 12000 | &#123;number&#125; 环境光遮罩淡出距离，取值范围：[0~20000]，单位：米，默认值：12000 |
+| `exposureEnabled` | `-` | 否 | false | &#123;boolean&#125; 是否开启自动曝光，默认值：false |
+| `exposureCompensation` | `-` | 否 | 0 | &#123;number&#125; 曝光补偿，取值范围：[0~15]，默认值：0 |
+| `lensFlareIntensity` | `-` | 否 | 0 | &#123;number&#125; 镜头光晕强度 ，取值范围：[0~1.0]，默认值：0 |
+| `darkCorner` | `-` | 否 | 0 | &#123;number&#125; 镜头暗角，取值范围：[0~1]，单位：百分比，默认值：0 |
+| `depthFiethSwitch` | `-` | 否 | false | &#123;boolean&#125; 是否开启景深，默认值：false |
+| `focalLength` | `-` | 否 | 10000 | &#123;number&#125; 焦距，取值范围：[0~10000]，单位：米，默认值：10000 |
+| `aperture` | `-` | 否 | 4 | &#123;number&#125; 光圈，取值范围：[1~32]，默认值：4 |
+| `deepBlur` | `-` | 否 | 2 | &#123;number&#125; 深度模糊，取值范围：[0~4]，默认值：2 |
+| `lutMode` | `-` | 否 | 0（关闭调色模式 | &#123;number&#125; LUT调色模式，取值范围：[0~30]，默认值：0（关闭调色模式），1-30对应不同LUT调色效果 |
+| `lutIntensity` | `-` | 否 | 0 | &#123;number&#125; LUT调色强度，类型为百分比，取值范围：[0~1.0]，默认值：0，即小数对应的百分比 |
+| `screenPercentage` | `-` | 否 | 125 | &#123;number&#125; 屏幕百分比，取值范围：[50~200]，默认值：125 |
+| `terrainGlobalAlpha` | `-` | 否 | 1.0 | &#123;number&#125; 地形不透明度，取值范围：[0~1.0]，默认值：1.0 |
+| `terrainGlobalLitStatus` | `-` | 否 | true | &#123;boolean&#125; 地形是否参与光照，默认值：true |
+| `osgbGlobalLitStatus` | `-` | 否 | false | &#123;boolean&#125; 倾斜摄影是否参与光照，默认值：false |
+| `osgbGlobalAlpha` | `-` | 否 | 1.0 | &#123;number&#125; 倾斜摄影不透明度，取值范围：[0~1.0],默认值：1.0 |
+| `antiAliasing` | `-` | 否 | true | &#123;boolean&#125; 是否开启反走样，默认值：true |
+| `postProcessEffects` | `-` | 否 | 0 | &#123;number&#125; 特效(滤镜效果)，取值范围：0【默认无效果】 1【景深效果】 2【线框效果】，3【圆珠笔】，4【白框】，5【蓝图】，6【原色黑边】， 默认值：0 |
+| `wireThickness` | `-` | 否 | 1.0 | &#123;number&#125; 可选参数，仅在线框效果下生效，线框大小，取值范围：[1.0~3.0]，默认值：1.0 |
+| `dofMode` | `-` | 否 | 0 | &#123;number&#125; 可选参数，仅在景深效果下生效，对焦距离，取值：0【近距离0.5km】 1【中远距离2km】 2【中远距离5km】 3【远距离10km】，默认值：0 |
+| `receiveDecalMode` | `-` | 否 | 1 | &#123;number&#125; 对象贴合模式，取值：0【无】 1【所有对象】 2【仅地形】，默认值：1 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -464,12 +464,12 @@ fdapi.settingsPanel.setPostProcessMode({ terrainGlobalAlpha: 0.6 });
 
 设置参数 汇报模式面板
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `showAlign` | `number` | 汇报演示窗口位置 取值：0【底部】，1【居左】，2【居右】，默认0 |
-| `playMode` | `number` | 汇报演示播放模式 取值： 0【单体播放】，1【单体循环】，2【整体循环】，默认0 |
-| `isLinkage` | `boolean` | 多视口相机是否联动 取值：联动true，不联动false，默认不联动false |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `showAlign` | `number` | 否 | 0 | 汇报演示窗口位置 取值：0【底部】，1【居左】，2【居右】，默认0 |
+| `playMode` | `number` | 否 | 0 | 汇报演示播放模式 取值： 0【单体播放】，1【单体循环】，2【整体循环】，默认0 |
+| `isLinkage` | `boolean` | 是 | - | 多视口相机是否联动 取值：联动true，不联动false，默认不联动false |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

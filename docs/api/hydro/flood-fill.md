@@ -63,24 +63,24 @@ new FloodFill()
 
 添加一个或多个FloodFill对象，
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `min` | `array` | 水淹分析范围Min：[x,y]，数组元素取值：[任意数值] |
-| `max` | `array` | 水淹分析范围Max：[x,y]，数组元素取值：[任意数值] |
-| `seed` | `array` | 出水点，水淹分析范围[min~max]内的任意[x,y]，数组元素取值：[任意数值] 注意：出水点必须在水淹分析范围内，且不能被物体遮挡，否则会无效 |
-| `elevation` | `number` | 水位高度，取值范围：[任意正数]，单位：米 |
-| `color` | [`Color`](/docs/api/types#color) | 水颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `precision` | `number` | 水淹模拟精度，取值范围：[0~1] 精度越高效率会降低 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `min` | `array` | 是 | - | 水淹分析范围Min：[x,y]，数组元素取值：[任意数值] |
+| `max` | `array` | 是 | - | 水淹分析范围Max：[x,y]，数组元素取值：[任意数值] |
+| `seed` | `array` | 是 | - | 出水点，水淹分析范围[min~max]内的任意[x,y]，数组元素取值：[任意数值] 注意：出水点必须在水淹分析范围内，且不能被物体遮挡，否则会无效 |
+| `elevation` | `number` | 是 | - | 水位高度，取值范围：[任意正数]，单位：米 |
+| `color` | [`Color`](/docs/api/types#color) | 是 | - | 水颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `precision` | `number` | 是 | - | 水淹模拟精度，取值范围：[0~1] 精度越高效率会降低 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -107,9 +107,9 @@ fdapi.floodFill.focus(o.id);
 
 删除场景中所有的FloodFill
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -125,10 +125,10 @@ fdapi.floodFill.clear();
 
 删除一个或多个FloodFill对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的FloodFill对象的ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的FloodFill对象的ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -144,13 +144,13 @@ fdapi.floodFill.delete('fd1');
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | FloodFill对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | FloodFill对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -166,10 +166,10 @@ fdapi.floodFill.focus('fd1', 100);
 
 根据ID获取FloodFill的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的FloodFill对象ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的FloodFill对象ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -200,10 +200,10 @@ fdapi.floodFill.get('fd1');
 
 隐藏FloodFill
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | FloodFill对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | FloodFill对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -219,9 +219,9 @@ fdapi.floodFill.hide('fd1');
 
 隐藏所有FloodFill
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -237,18 +237,18 @@ fdapi.floodFill.hideAll();
 
 设置水颜色
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | [`Color`](/docs/api/types#color) | 是 | - | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.floodFill.setColor(id, newVal);
+await fdapi.floodFill.setColor('对象ID', '示例值');
 ```
 
 ---
@@ -257,18 +257,18 @@ await fdapi.floodFill.setColor(id, newVal);
 
 设置水位高度
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.floodFill.setElevation(id, newVal);
+await fdapi.floodFill.setElevation('对象ID', 0);
 ```
 
 ---
@@ -277,18 +277,18 @@ await fdapi.floodFill.setElevation(id, newVal);
 
 设置水淹模拟精度
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.floodFill.setPrecision(id, newVal);
+await fdapi.floodFill.setPrecision('对象ID', 0);
 ```
 
 ---
@@ -297,19 +297,19 @@ await fdapi.floodFill.setPrecision(id, newVal);
 
 设置水淹分析范围 注意：出水点[x,y]一定要在新设置的水淹分析范围[min~max]内
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 水淹分析范围唯一标识，字符串类型的ID |
-| `minArr` | `array` | 水淹分析范围Min：[x,y]，数组元素取值：[任意数值] |
-| `maxArr` | `array` | 水淹分析范围Max：[x,y]，数组元素取值：[任意数值] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 水淹分析范围唯一标识，字符串类型的ID |
+| `minArr` | `array` | 是 | - | 水淹分析范围Min：[x,y]，数组元素取值：[任意数值] |
+| `maxArr` | `array` | 是 | - | 水淹分析范围Max：[x,y]，数组元素取值：[任意数值] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.floodFill.setRange(id, minArr, maxArr);
+await fdapi.floodFill.setRange('对象ID', [], []);
 ```
 
 ---
@@ -318,18 +318,18 @@ await fdapi.floodFill.setRange(id, minArr, maxArr);
 
 设置出水点
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `array` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `array` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.floodFill.setSeed(id, newVal);
+await fdapi.floodFill.setSeed('对象ID', []);
 ```
 
 ---
@@ -338,10 +338,10 @@ await fdapi.floodFill.setSeed(id, newVal);
 
 显示FloodFill
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | FloodFill对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | FloodFill对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -357,9 +357,9 @@ fdapi.floodFill.show('fd1');
 
 显示所有FloodFill
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -375,10 +375,10 @@ fdapi.floodFill.showAll();
 
 修改一个或多个FloodFill对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，请参考add方法 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，请参考add方法 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -433,8 +433,8 @@ fdapi.xxx.updateEnd(function () {
 
 updateEnd是异步调用，可以用回调函数也可以await
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。

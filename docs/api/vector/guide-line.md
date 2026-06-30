@@ -15,11 +15,12 @@ description: "在三维场景中绘制带流动动画的引导线，用于指示
 
 - **功能介绍**：在三维场景中绘制带流动动画的引导线，用于指示路径、动线与流向，支持直线/曲线样式、宽度、速度等参数，常用于强调人/车/物的移动轨迹与导览路线。
 - **别名 / 不同行业叫法**：导览线、引导线、路线、动线、参观路线、疏散路线。
-- **适用行业**：智慧园区、智慧城市、交通、应急、智慧水利、文旅展馆。
+- **适用行业**：智慧园区、智慧城市、交通、应急、智慧水利、文旅展馆。、低空经济
 - **使用场景**：
   - 园区/展馆参观导览，沿预设路线播放流动引导动画指引游客行进方向。
   - 应急疏散演练中可视化逃生路线与人员疏散动线。
   - 交通枢纽、停车场内的车行/人行引导，展示进出场动线与流向。
+  - 航道引导线：绘制低空飞行引导路径与航线指示。
 - **注意事项**：
   - shape 设为曲线（1）时坐标点过多会显著影响添加效率，长路径建议适度精简点位。
   - 注意 coordinateType 与场景坐标系一致（Projection/WGS84/GCJ02/BD09），避免引导线偏移。
@@ -75,39 +76,39 @@ let res = await fdapi.misc.getMaterial(material);
 
 let params = res.data[0].params;
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `coordinates` | `array` | 坐标点数组，[取值示例](/docs/tutorials/coordinates) |
-| `coordinateType` | `number` | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
-| `range` | `array` | 可视范围: [近裁距离, 远裁距离]，近裁/远裁取值范围: [0, 2000000]，默认值：[0, 1000000]， |
-| `depthTest` | `boolean` | 是否做深度检测，true会被遮挡，false不会被遮挡，默认值：true |
-| `shape` | `number` | 引导线样式，取值范围：[0,1]，0：直线， 1：曲线，默认值：0，注意：设置为曲线坐标点多的时候会影响添加添加效率 |
-| `width` | `number` | 引导线宽度，单位：米，取值范围：[0~1000000]，默认值：30 |
-| `guideSize` | `number` | 引导线动画对象的尺寸，单位：米，取值范围：[0~1000000]，默认值：30 |
-| `speed` | `number` | 引导线动画播放的速率，单位：米/秒，取值范围：[0~100]，默认值：10 |
-| `interval` | `number` | 引导动画播放的时间间隔，单位：秒，取值范围：[-1~20],默认值：-1，不循环播放 |
-| `style` | `object` | 引导线包含的起点、终点和折线的样式，结构如下： |
-| `style.startPoint` | `object` | 起点样式对象，支持以下属性： |
-| `style.material` | `string` | 可选参数，自定义材质路径，即资源库PAK文件里材质文件的路径，设置自定义材质参数后材质默认参数会失效 |
-| `style.scalarParameters` | `array` | 可选参数，仅在设置自定义材质路径后生效，自定义材质数值类型参数，包含name/value键值对的数组，其中value为数值，格式示例：[&#123;"name":"不透明度","value":0.5&#125;,&#123;"name":"UV重复","value":1.0&#125;] |
-| `style.name` | `string` | 材质包含的数值参数名称 |
-| `style.value` | `number` | 材质包含的数值参数名称对应的数值 |
-| `style.vectorParameters` | `array` | 可选参数，仅在设置自定义材质路径后生效，自定义材质数组类型参数，包含name/value键值对的数组，其中value为数组，格式示例：[&#123;"name":"color1","value":[1,1,1,1]&#125;,&#123;"name":"color2","value":[1,0,0,1]&#125;] |
-| `style.name` | `string` | 材质包含的数组参数名称 |
-| `style.value` | `array` | 材质包含的数组参数名称对应的数组值，一般是颜色数组：[r, g, b, a] |
-| `style.polyline` | `object` | 起点样式对象，支持以下属性： |
-| `style.material` | `string` | 可选参数，自定义材质路径，即资源库PAK文件里材质文件的路径，设置自定义材质参数后默认材质参数会失效 |
-| `style.endPoint` | `object` | 起点样式对象，支持以下属性： |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `coordinates` | `array` | 是 | - | 坐标点数组，[取值示例](/docs/tutorials/coordinates) |
+| `coordinateType` | `number` | 否 | 0 | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
+| `range` | `array` | 否 | [0, 1000000] | 可视范围: [近裁距离, 远裁距离]，近裁/远裁取值范围: [0, 2000000]，默认值：[0, 1000000]， |
+| `depthTest` | `boolean` | 否 | true | 是否做深度检测，true会被遮挡，false不会被遮挡，默认值：true |
+| `shape` | `number` | 否 | 0 | 引导线样式，取值范围：[0,1]，0：直线， 1：曲线，默认值：0，注意：设置为曲线坐标点多的时候会影响添加添加效率 |
+| `width` | `number` | 否 | 30 | 引导线宽度，单位：米，取值范围：[0~1000000]，默认值：30 |
+| `guideSize` | `number` | 否 | 30 | 引导线动画对象的尺寸，单位：米，取值范围：[0~1000000]，默认值：30 |
+| `speed` | `number` | 否 | 10 | 引导线动画播放的速率，单位：米/秒，取值范围：[0~100]，默认值：10 |
+| `interval` | `number` | 否 | -1 | 引导动画播放的时间间隔，单位：秒，取值范围：[-1~20],默认值：-1，不循环播放 |
+| `style` | `object` | 是 | - | 引导线包含的起点、终点和折线的样式，结构如下： |
+| `style.startPoint` | `object` | 是 | - | 起点样式对象，支持以下属性： |
+| `style.material` | `string` | 否 | - | 可选参数，自定义材质路径，即资源库PAK文件里材质文件的路径，设置自定义材质参数后材质默认参数会失效 |
+| `style.scalarParameters` | `array` | 否 | - | 可选参数，仅在设置自定义材质路径后生效，自定义材质数值类型参数，包含name/value键值对的数组，其中value为数值，格式示例：[&#123;"name":"不透明度","value":0.5&#125;,&#123;"name":"UV重复","value":1.0&#125;] |
+| `style.name` | `string` | 是 | - | 材质包含的数值参数名称 |
+| `style.value` | `number` | 是 | - | 材质包含的数值参数名称对应的数值 |
+| `style.vectorParameters` | `array` | 否 | - | 可选参数，仅在设置自定义材质路径后生效，自定义材质数组类型参数，包含name/value键值对的数组，其中value为数组，格式示例：[&#123;"name":"color1","value":[1,1,1,1]&#125;,&#123;"name":"color2","value":[1,0,0,1]&#125;] |
+| `style.name` | `string` | 是 | - | 材质包含的数组参数名称 |
+| `style.value` | `array` | 是 | - | 材质包含的数组参数名称对应的数组值，一般是颜色数组：[r, g, b, a] |
+| `style.polyline` | `object` | 是 | - | 起点样式对象，支持以下属性： |
+| `style.material` | `string` | 否 | - | 可选参数，自定义材质路径，即资源库PAK文件里材质文件的路径，设置自定义材质参数后默认材质参数会失效 |
+| `style.endPoint` | `object` | 是 | - | 起点样式对象，支持以下属性： |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -276,9 +277,9 @@ fdapi.guideLine.focus(g1.id, 200);
 
 清空场景中所有的GuideLine
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -294,10 +295,10 @@ fdapi.guideLine.clear();
 
 删除一个或多个GuideLine对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的GuideLine对象的ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的GuideLine对象的ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -313,13 +314,13 @@ fdapi.guideLine.delete('g1');
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | GuideLine对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | GuideLine对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -335,10 +336,10 @@ fdapi.guideLine.focus('g1');
 
 根据ID获取GuideLine的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的GuideLine对象ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的GuideLine对象ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -354,10 +355,10 @@ fdapi.guideLine.get('g1');
 
 隐藏GuideLine
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | GuideLine对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | GuideLine对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -373,18 +374,18 @@ fdapi.guideLine.hide('g1');
 
 设置坐标值
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `array` | 新坐标值，[取值示例](/docs/tutorials/coordinates) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `array` | 是 | - | 新坐标值，[取值示例](/docs/tutorials/coordinates) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.guideLine.setCoordinates(id, newVal);
+await fdapi.guideLine.setCoordinates('对象ID', []);
 ```
 
 ---
@@ -393,18 +394,18 @@ await fdapi.guideLine.setCoordinates(id, newVal);
 
 设置是否做深度检测
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `boolean` | 是否做深度检测 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `boolean` | 是 | - | 是否做深度检测 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.guideLine.setDepthTest(id, newVal);
+await fdapi.guideLine.setDepthTest('对象ID', true);
 ```
 
 ---
@@ -413,18 +414,18 @@ await fdapi.guideLine.setDepthTest(id, newVal);
 
 设置新的引导对象大小
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | [`Color`](/docs/api/types#color) | 新的引导对象大小 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | [`Color`](/docs/api/types#color) | 是 | - | 新的引导对象大小 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.guideLine.setGuideSize(id, newVal);
+await fdapi.guideLine.setGuideSize('对象ID', '示例值');
 ```
 
 ---
@@ -433,18 +434,18 @@ await fdapi.guideLine.setGuideSize(id, newVal);
 
 设置新的播放时间间隔
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.guideLine.setInterval(id, newVal);
+await fdapi.guideLine.setInterval('对象ID', 0);
 ```
 
 ---
@@ -453,19 +454,19 @@ await fdapi.guideLine.setInterval(id, newVal);
 
 设置GuideLine对象的可视范围
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | GuideLine对象的ID |
-| `min` | `number` | 可视范围最小值，取值范围：[任意负数~任意正数]，单位：米 |
-| `min` | `number` | 可视范围最大值，取值范围：[任意负数~任意正数]，单位：米 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | GuideLine对象的ID |
+| `min` | `number` | 是 | - | 可视范围最小值，取值范围：[任意负数~任意正数]，单位：米 |
+| `min` | `number` | 是 | - | 可视范围最大值，取值范围：[任意负数~任意正数]，单位：米 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.guideLine.setRange(id, min, min);
+await fdapi.guideLine.setRange('对象ID', 0, 0);
 ```
 
 ---
@@ -474,18 +475,18 @@ await fdapi.guideLine.setRange(id, min, min);
 
 设置新的shape样式
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `number` | 新值， 0： 直线， 1： 曲线 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `number` | 是 | - | 新值， 0： 直线， 1： 曲线 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.guideLine.setShape(id, newVal);
+await fdapi.guideLine.setShape('对象ID', 0);
 ```
 
 ---
@@ -494,18 +495,18 @@ await fdapi.guideLine.setShape(id, newVal);
 
 设置新的速率
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `number` | 新速率值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `number` | 是 | - | 新速率值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.guideLine.setSpeed(id, newVal);
+await fdapi.guideLine.setSpeed('对象ID', 0);
 ```
 
 ---
@@ -514,18 +515,18 @@ await fdapi.guideLine.setSpeed(id, newVal);
 
 设置新的宽度
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.guideLine.setWidth(id, newVal);
+await fdapi.guideLine.setWidth('对象ID', 0);
 ```
 
 ---
@@ -534,10 +535,10 @@ await fdapi.guideLine.setWidth(id, newVal);
 
 显示GuideLine
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | GuideLine对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | GuideLine对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -553,10 +554,10 @@ fdapi.guideLine.show('g1');
 
 修改一个或多个GuideLine对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，请参考add方法 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，请参考add方法 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -607,9 +608,9 @@ fdapi.xxx.updateEnd(function () {
 
 updateEnd是异步调用，可以用回调函数也可以await
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

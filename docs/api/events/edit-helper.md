@@ -47,9 +47,9 @@ description: "在三维场景中手动绘制点/线/面/体的交互工具，并
 
 取消绘制模式
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -65,10 +65,10 @@ fdapi.editHelper.cancel();
 
 绘制结束。调用此方法会结束当前的绘制，并在回调函数中返回绘制类型和坐标点，然后根据这些坐标点再创建相关的几何图形。
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `withOffset` | `boolean` | 是否计算工程中心偏移，默认值是true |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `withOffset` | `boolean` | 否 | true | 是否计算工程中心偏移，默认值是true |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -135,12 +135,12 @@ switch (res.buildType) {
 
 设置绘制参数
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `lineType` | `number` | 线类型，0：直线，1：曲线，默认值是0 |
-| `buildType` | `number` | 绘制类型，0：画多点线段， 1：画多边形， 默认值是0 |
-| `color` | [`Color`](/docs/api/types#color) | 颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `lineType` | `number` | 否 | 0 | 线类型，0：直线，1：曲线，默认值是0 |
+| `buildType` | `number` | 否 | 0 | 绘制类型，0：画多点线段， 1：画多边形， 默认值是0 |
+| `color` | [`Color`](/docs/api/types#color) | 是 | - | 颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -159,9 +159,9 @@ fdapi.editHelper.setParam(lineType, buildType, color);
 
 进入绘制模式
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

@@ -77,7 +77,7 @@ export default function SpatialTools() {
       {/* Hero */}
       <div className="hero-banner">
         <div style={{ maxWidth: 880, margin: '0 auto', padding: '0 24px' }}>
-          <p style={{ color: '#00d4ff', letterSpacing: '2px', fontWeight: 600, fontSize: '0.85rem', marginBottom: 12, textTransform: 'uppercase' }}>
+          <p style={{ color: 'var(--dts-accent)', letterSpacing: '2px', fontWeight: 600, fontSize: '0.85rem', marginBottom: 12, textTransform: 'uppercase' }}>
             Spatial Intelligence Toolkit
           </p>
           <h1 className="hero-title">空间智能工具</h1>
@@ -89,7 +89,7 @@ export default function SpatialTools() {
       </div>
 
       {/* 下载卡片 */}
-      <main style={{ background: '#0d1117', padding: '8px 24px 64px' }}>
+      <main style={{ background: 'var(--dts-bg)', padding: '8px 24px 64px' }}>
         <div style={{ maxWidth: 1000, margin: '0 auto' }}>
           <div className="spatial-grid">
             {TOOLS.map((t, i) => (
@@ -98,7 +98,7 @@ export default function SpatialTools() {
           </div>
 
           {/* 接入三步 */}
-          <h2 style={{ textAlign: 'center', color: '#e6f0ff', fontSize: '1.6rem', margin: '56px 0 28px' }}>
+          <h2 style={{ textAlign: 'center', color: 'var(--dts-heading)', fontSize: '1.6rem', margin: '56px 0 28px' }}>
             三步接入
           </h2>
           <div className="spatial-steps">
@@ -119,7 +119,7 @@ export default function SpatialTools() {
             </div>
           </div>
 
-          <p style={{ textAlign: 'center', color: '#6b8ca8', marginTop: 40, fontSize: '0.9rem' }}>
+          <p style={{ textAlign: 'center', color: 'var(--dts-muted)', marginTop: 40, fontSize: '0.9rem' }}>
             需要先部署 DTS 云渲染服务并准备好工程。更多接入细节见{' '}
             <Link to="/docs/tutorials/architecture">架构概览</Link>。
           </p>

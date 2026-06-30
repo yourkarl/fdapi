@@ -60,34 +60,34 @@ new SmoothedParticleHydrodynamics()
 
 根据bin时序文件添加一个或多个光滑粒子流体动力学仿真对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 光滑粒子流体动力学仿真对象，可以是Object类型或者Array类型，对于每一个SmoothedParticleHydrodynamics对象，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 光滑粒子流体动力学仿真对象，可以是Object类型或者Array类型，对于每一个SmoothedParticleHydrodynamics对象，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 光滑粒子流体动力学仿真对象的唯一标识符ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `origin` | `array` | 仿真模型对象的原点，默认值：[0, 0, 0]，如果bin文件内坐标是相对坐标则此参数相当于offset |
-| `style` | `number` | 光滑粒子流体动力学仿真对象样式，取值范围：[0,1,2,3,4]，取值描述：0热力样式 1~4四种水材质样式，默认值：0 |
-| `duration` | `number` | 仿真的持续时间，单位：秒，默认值：30s |
-| `loop` | `boolean` | 是否循环播放，默认值：false |
-| `play` | `boolean` | 添加后是否开始播放，默认值：false |
-| `files` | `array` | 按时序排列的二进制bin文件路径的二维数组，结构示例：["D:\Time1.bin","D:\Time2.bin"...]，bin文件格式描述：x,y,z,value，四个字段分别对应四个8字节的double字段，按小端字节顺序（ByteOrder.LITTLE_ENDIAN）写入二进制bin文件 |
-| `particleNumSides` | `number` | 可选，粒子多边形的边的数量，控制粒子几何形状的复杂度，默认值：2 |
-| `particle` | `object` | 光滑粒子样式属性如下： |
-| `particle.thickness` | `number` | 每个粒子的基础水深，默认值：0.02米 |
-| `particle.radius` | `number` | 每个粒子的默认半径，默认值：15米 |
-| `colors` | `object` | 热力样式下的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
-| `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效值对应的默认颜色，默认白色 |
-| `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | [`Color`](/docs/api/types#color) | 热力值对应的调色板颜色 |
-| `colors.value` | `number` | 热力值 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 光滑粒子流体动力学仿真对象的唯一标识符ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `origin` | `array` | 否 | [0, 0, 0] | 仿真模型对象的原点，默认值：[0, 0, 0]，如果bin文件内坐标是相对坐标则此参数相当于offset |
+| `style` | `number` | 否 | 0 | 光滑粒子流体动力学仿真对象样式，取值范围：[0,1,2,3,4]，取值描述：0热力样式 1~4四种水材质样式，默认值：0 |
+| `duration` | `number` | 否 | 30s | 仿真的持续时间，单位：秒，默认值：30s |
+| `loop` | `boolean` | 否 | false | 是否循环播放，默认值：false |
+| `play` | `boolean` | 否 | false | 添加后是否开始播放，默认值：false |
+| `files` | `array` | 是 | - | 按时序排列的二进制bin文件路径的二维数组，结构示例：["D:\Time1.bin","D:\Time2.bin"...]，bin文件格式描述：x,y,z,value，四个字段分别对应四个8字节的double字段，按小端字节顺序（ByteOrder.LITTLE_ENDIAN）写入二进制bin文件 |
+| `particleNumSides` | `number` | 否 | 2 | 可选，粒子多边形的边的数量，控制粒子几何形状的复杂度，默认值：2 |
+| `particle` | `object` | 是 | - | 光滑粒子样式属性如下： |
+| `particle.thickness` | `number` | 否 | 0.02米 | 每个粒子的基础水深，默认值：0.02米 |
+| `particle.radius` | `number` | 否 | 15米 | 每个粒子的默认半径，默认值：15米 |
+| `colors` | `object` | 是 | - | 热力样式下的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
+| `colors.gradient` | `boolean` | 是 | - | 是否渐变 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 是 | - | 无效值对应的默认颜色，默认白色 |
+| `colors.colorStops` | `array` | 是 | - | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
+| `colors.color` | [`Color`](/docs/api/types#color) | 是 | - | 热力值对应的调色板颜色 |
+| `colors.value` | `number` | 是 | - | 热力值 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -186,43 +186,63 @@ new SmoothedParticleHydrodynamics()
 
 根据vtk时序文件添加一个或多个光滑粒子流体动力学仿真对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 光滑粒子流体动力学仿真对象，可以是Object类型或者Array类型，对于每一个SmoothedParticleHydrodynamics对象，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 光滑粒子流体动力学仿真对象，可以是Object类型或者Array类型，对于每一个SmoothedParticleHydrodynamics对象，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 光滑粒子流体动力学仿真对象的唯一标识符ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `origin` | `array` | 仿真模型对象的原点，默认值：[0, 0, 0]，如果bin文件内坐标是相对坐标则此参数相当于offset |
-| `style` | `number` | 光滑粒子流体动力学仿真对象样式，取值范围：[0,1,2,3,4]，取值描述：0热力样式 1~4四种水材质样式，默认值：0 |
-| `duration` | `number` | 仿真的持续时间，单位：秒，默认值：30s |
-| `loop` | `boolean` | 是否循环播放，默认值：false |
-| `play` | `boolean` | 添加后是否开始播放，默认值：false |
-| `files` | `array` | 按时序排列的vtk文件数组，结构示例：["D:\Time0.vtk","D:\Time1.vtk","D:\Time2.vtk"...] |
-| `heatValueFieldName` | `string` | 粒子热力值使用的vtk字段名称 |
-| `idFieldName` | `string` | 粒子ID使用的vtk字段名称 |
-| `particleNumSides` | `number` | 可选，粒子多边形的边的数量，控制粒子几何形状的复杂度，默认值：2 |
-| `particle` | `object` | 光滑粒子样式属性如下： |
-| `particle.thickness` | `number` | 每个粒子的基础水深，默认值：0.02米 |
-| `particle.radius` | `number` | 每个粒子的默认半径，默认值：15米 |
-| `colors` | `object` | 热力样式下的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
-| `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效值对应的默认颜色，默认白色 |
-| `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | [`Color`](/docs/api/types#color) | 热力值对应的调色板颜色 |
-| `colors.value` | `number` | 热力值 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 光滑粒子流体动力学仿真对象的唯一标识符ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `origin` | `array` | 否 | [0, 0, 0] | 仿真模型对象的原点，默认值：[0, 0, 0]，如果bin文件内坐标是相对坐标则此参数相当于offset |
+| `style` | `number` | 否 | 0 | 光滑粒子流体动力学仿真对象样式，取值范围：[0,1,2,3,4]，取值描述：0热力样式 1~4四种水材质样式，默认值：0 |
+| `duration` | `number` | 否 | 30s | 仿真的持续时间，单位：秒，默认值：30s |
+| `loop` | `boolean` | 否 | false | 是否循环播放，默认值：false |
+| `play` | `boolean` | 否 | false | 添加后是否开始播放，默认值：false |
+| `files` | `array` | 是 | - | 按时序排列的vtk文件数组，结构示例：["D:\Time0.vtk","D:\Time1.vtk","D:\Time2.vtk"...] |
+| `heatValueFieldName` | `string` | 是 | - | 粒子热力值使用的vtk字段名称 |
+| `idFieldName` | `string` | 是 | - | 粒子ID使用的vtk字段名称 |
+| `particleNumSides` | `number` | 否 | 2 | 可选，粒子多边形的边的数量，控制粒子几何形状的复杂度，默认值：2 |
+| `particle` | `object` | 是 | - | 光滑粒子样式属性如下： |
+| `particle.thickness` | `number` | 否 | 0.02米 | 每个粒子的基础水深，默认值：0.02米 |
+| `particle.radius` | `number` | 否 | 15米 | 每个粒子的默认半径，默认值：15米 |
+| `colors` | `object` | 是 | - | 热力样式下的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
+| `colors.gradient` | `boolean` | 是 | - | 是否渐变 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 是 | - | 无效值对应的默认颜色，默认白色 |
+| `colors.colorStops` | `array` | 是 | - | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
+| `colors.color` | [`Color`](/docs/api/types#color) | 是 | - | 热力值对应的调色板颜色 |
+| `colors.value` | `number` | 是 | - | 热力值 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.smoothedParticleHydrodynamics.addByVtk(data);
+await fdapi.smoothedParticleHydrodynamics.addByVtk({
+    id: '对象ID',
+    groupId: '对象ID',
+    userData: '示例值',
+    origin: [0, 0, 0],
+    style: 0,
+    duration: '30s',
+    loop: false,
+    play: false,
+    files: [],
+    heatValueFieldName: '示例值',
+    idFieldName: '示例值',
+    particleNumSides: 2,
+    particle: {},
+    particle.thickness: '0.02米',
+    particle.radius: '15米',
+    colors: {},
+    colors.gradient: true,
+    colors.colorStops: [255, 255, 255],
+    colors.value: 0
+});
 ```
 
 ---
@@ -231,9 +251,9 @@ await fdapi.smoothedParticleHydrodynamics.addByVtk(data);
 
 清空场景中所有的光滑粒子流体动力学仿真对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -249,10 +269,10 @@ fdapi.smoothedParticleHydrodynamics.clear();
 
 删除一个或多个光滑粒子流体动力学仿真对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的光滑粒子流体动力学仿真对象ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的光滑粒子流体动力学仿真对象ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -268,13 +288,13 @@ fdapi.smoothedParticleHydrodynamics.delete('sph');
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 光滑粒子流体动力学仿真对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 光滑粒子流体动力学仿真对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -290,10 +310,10 @@ fdapi.smoothedParticleHydrodynamics.focus('sph');
 
 根据光滑粒子流体动力学仿真对象ID获取光滑粒子流体动力学仿真对象的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的光滑粒子流体动力学仿真对象ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的光滑粒子流体动力学仿真对象ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -309,10 +329,10 @@ fdapi.smoothedParticleHydrodynamics.get('sph');
 
 隐藏光滑粒子流体动力学仿真对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 光滑粒子流体动力学仿真对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 光滑粒子流体动力学仿真对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -328,10 +348,10 @@ fdapi.smoothedParticleHydrodynamics.hide('sph');
 
 显示光滑粒子流体动力学仿真对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 光滑粒子流体动力学仿真对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 光滑粒子流体动力学仿真对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -347,26 +367,26 @@ fdapi.smoothedParticleHydrodynamics.show('sph');
 
 修改一个或多个光滑粒子流体动力学仿真对象，支持更新以下属性：
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `data \| array` | 光滑粒子流体动力学仿真对象或对象数组，支持更新以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `data \| array` | 是 | - | 光滑粒子流体动力学仿真对象或对象数组，支持更新以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 根据SmoothedParticleHydrodynamics对象ID更新以下属性 |
-| `play` | `boolean` | 可选，是否开始播放，默认值：false |
-| `particle` | `object` | 可选，光滑粒子样式属性如下： |
-| `particle.thickness` | `number` | 每个粒子的基础水深，默认值：0.02米 |
-| `particle.radius` | `number` | 每个粒子的默认半径，默认值：15米 |
-| `colors` | `object` | 可选，热力样式下的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
-| `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效值对应的默认颜色，默认白色 |
-| `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | [`Color`](/docs/api/types#color) | 热力值对应的调色板颜色 |
-| `colors.value` | `number` | 热力值 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 根据SmoothedParticleHydrodynamics对象ID更新以下属性 |
+| `play` | `boolean` | 否 | false | 可选，是否开始播放，默认值：false |
+| `particle` | `object` | 否 | - | 可选，光滑粒子样式属性如下： |
+| `particle.thickness` | `number` | 否 | 0.02米 | 每个粒子的基础水深，默认值：0.02米 |
+| `particle.radius` | `number` | 否 | 15米 | 每个粒子的默认半径，默认值：15米 |
+| `colors` | `object` | 否 | - | 可选，热力样式下的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
+| `colors.gradient` | `boolean` | 是 | - | 是否渐变 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 是 | - | 无效值对应的默认颜色，默认白色 |
+| `colors.colorStops` | `array` | 是 | - | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
+| `colors.color` | [`Color`](/docs/api/types#color) | 是 | - | 热力值对应的调色板颜色 |
+| `colors.value` | `number` | 是 | - | 热力值 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -420,9 +440,9 @@ fdapi.xxx.updateEnd(function () {
 
 updateEnd是异步调用，可以用回调函数也可以await
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

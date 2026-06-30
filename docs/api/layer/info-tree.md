@@ -22,6 +22,7 @@ description: "管理场景图层树（目录树），提供对树上对象的定
   - 通过图层树对场景中预置的模型/图层进行分组管理与一键显隐控制。
   - 根据树节点 id 定位（focus）到指定工程车、设备、楼栋等对象。
   - 调用树上对象绑定的蓝图函数批量驱动其颜色、状态等动态效果。
+  - 公路场景按路线、构件类型分级树形管理图层，支持显隐、透明度与批量操作，并配合 groupId 分组联动。
 - **注意事项**：
   - callBPFunction 传入的参数类型与顺序必须与目标蓝图函数完全一致，否则执行结果异常；可先用 fdapi.misc.getBPFunction(id) 查询对象的蓝图函数。
   - 操作依赖图层树上对象的真实 id，需先确保对象已在工程中预置并具有正确节点结构。
@@ -52,18 +53,18 @@ description: "管理场景图层树（目录树），提供对树上对象的定
 
 调用图层树上对象包含的多个蓝图函数，注意：可以根据图层树上的对象id查询包含的所有蓝图函数 fdapi.misc.getBPFunction(id);
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 图层树上对象的ID |
-| `functionName` | `string` | 蓝图函数名 |
-| `parameters` | `array` | 蓝图函数包含的多个参数，可选参数，数组类型，注意：传入多参数的顺序与类型务必与蓝图函数的参数顺序及其参数类型一致以保证执行结果符合预期。多个参数结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 图层树上对象的ID |
+| `functionName` | `string` | 是 | - | 蓝图函数名 |
+| `parameters` | `array` | 否 | - | 蓝图函数包含的多个参数，可选参数，数组类型，注意：传入多参数的顺序与类型务必与蓝图函数的参数顺序及其参数类型一致以保证执行结果符合预期。多个参数结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -116,17 +117,17 @@ fdapi.infoTree.callBPFunction([
 
 通过GroupId删除各类API创建的对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `groupId` | `string` | 创建对象时指定的groupId |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `groupId` | `string` | 是 | - | 创建对象时指定的groupId |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.infoTree.deleteByGroupId(groupId);
+await fdapi.infoTree.deleteByGroupId('对象ID');
 ```
 
 ---
@@ -135,17 +136,17 @@ await fdapi.infoTree.deleteByGroupId(groupId);
 
 禁用X光
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 待禁用X光的图层ID（支持单个ID或ID数组） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 待禁用X光的图层ID（支持单个ID或ID数组） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.infoTree.disableXRay(ids);
+await fdapi.infoTree.disableXRay(['对象ID']);
 ```
 
 ---
@@ -154,18 +155,18 @@ await fdapi.infoTree.disableXRay(ids);
 
 启用X光
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 待启用X光的图层ID（支持单个ID或ID数组） |
-| `color` | [`Color`](/docs/api/types#color) | 颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 待启用X光的图层ID（支持单个ID或ID数组） |
+| `color` | [`Color`](/docs/api/types#color) | 是 | - | 颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.infoTree.enableXRay(ids, color);
+await fdapi.infoTree.enableXRay('#FFFFFF');
 ```
 
 ---
@@ -174,10 +175,10 @@ await fdapi.infoTree.enableXRay(ids, color);
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 图层树对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 图层树对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -193,9 +194,9 @@ fdapi.infoTree.focus('979A4C034E29728F8A2635AD747B72A3');
 
 获取图层树信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -254,10 +255,10 @@ console.log(JSON.stringify(res.infotree));
 
 根据图层树对象ID查询其包含的蓝图函数信息，注意：支持批量查询
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 图层树上对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 图层树上对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -273,10 +274,10 @@ fdapi.infoTree.getBPFunction('2BC267114D436EA43BF695AC98DA4E08')
 
 隐藏图层
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要隐藏的图层ID（支持单个ID或ID数组） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要隐藏的图层ID（支持单个ID或ID数组） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -297,17 +298,17 @@ fdapi.infoTree.hide(['979A4C034E29728F8A2635AD747B72A3']);
 
 通过GroupId隐藏各类API创建的对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `groupId` | `string` | 创建对象时指定的groupId |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `groupId` | `string` | 是 | - | 创建对象时指定的groupId |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.infoTree.hideByGroupId(groupId);
+await fdapi.infoTree.hideByGroupId('对象ID');
 ```
 
 ---
@@ -316,17 +317,17 @@ await fdapi.infoTree.hideByGroupId(groupId);
 
 通过GroupId高亮各类API创建的对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `groupId` | `string` | 创建对象时指定的groupId |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `groupId` | `string` | 是 | - | 创建对象时指定的groupId |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.infoTree.highlightByGroupId(groupId);
+await fdapi.infoTree.highlightByGroupId('对象ID');
 ```
 
 ---
@@ -335,24 +336,27 @@ await fdapi.infoTree.highlightByGroupId(groupId);
 
 设置图层的可见性
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 图层可见性对象或数组，每个对象有以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 图层可见性对象或数组，每个对象有以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 图层id |
-| `visible` | `boolean` | 可见性 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 图层id |
+| `visible` | `boolean` | 是 | - | 可见性 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.infoTree.setVisibility(data);
+await fdapi.infoTree.setVisibility({
+    id: '对象ID',
+    visible: true
+});
 ```
 
 ---
@@ -361,10 +365,10 @@ await fdapi.infoTree.setVisibility(data);
 
 显示图层
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要显示的图层ID（支持单个ID或ID数组） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要显示的图层ID（支持单个ID或ID数组） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -385,15 +389,15 @@ fdapi.infoTree.show('979A4C034E29728F8A2635AD747B72A3');
 
 通过GroupId显示各类API创建的对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `groupId` | `string` | 创建对象时指定的groupId |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `groupId` | `string` | 是 | - | 创建对象时指定的groupId |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.infoTree.showByGroupId(groupId);
+await fdapi.infoTree.showByGroupId('对象ID');
 ```

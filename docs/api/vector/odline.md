@@ -27,11 +27,12 @@ description: "以起点(O)到终点(D)的弧线表达两点间的流向与流量
 
 - **功能介绍**：以起点(O)到终点(D)的弧线表达两点之间的流向与流量关系，支持弯曲度、流速、亮度等参数，常用大量 OD 线表现迁徙、流动与关联强度。
 - **别名 / 不同行业叫法**：OD线、迁徙线、流向线、流量线、起讫线、关系线。
-- **适用行业**：智慧城市、交通、应急、园区、能源、海洋。
+- **适用行业**：智慧城市、交通、应急、园区、能源、海洋。、智慧交通与公路
 - **使用场景**：
   - 人口迁徙、客流/车流的起讫分析与城市间迁徙可视化。
   - 物流、资金、能源调度等起点到终点的流量与流向展示。
   - 通信/网络访问关系、设备间数据流向的关联表达。
+  - 产业链 / 物流 OD 流向飞线：园区之间物流流线可视化，线条粗细代表货运总量。
 - **注意事项**：
   - 每条 ODLine 的 coordinates 仅含起点与终点 2 个坐标，多段路径请用 Polyline。
   - 大批量 OD 线（如全国迁徙）数据量大，建议按权重过滤或聚合后绘制以保证性能。
@@ -85,35 +86,35 @@ new ODLine()
 
 添加一个或多个ODLine对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `color` | [`Color`](/docs/api/types#color) | 颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `coordinates` | `array` | 坐标点数组，只有2个元素，第1个元素是起点坐标，第2个元素是终点坐标 |
-| `coordinateType` | `number` | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
-| `flowRate` | `number` | 流速，取值范围：[0~1.0]，默认值：0.5 |
-| `intensity` | `number` | 亮度，取值范围：[0.1~1000]，默认值：0.5 |
-| `bendDegree` | `number` | 弯曲度，取值范围：[0~1.0]，默认值：0.5 |
-| `tiling` | `number` | 材质贴图平铺比例，从起始位置开始平铺，超过的部分会按此比例生成新的区域，类似CSS的repeat。如果这个值 &lt;= 0 使用自动计算按Polyline长度比例平铺， &gt;0使用用户输入的值去平铺 |
-| `lineThickness` | `number` | 线宽，单位：米，默认值20 |
-| `flowPointSizeScale` | `number` | 运动点的缩放值，默认值20， 单位米 |
-| `labelSizeScale` | `number` | 两端点的缩放值，默认值100， 单位米 |
-| `lineShape` | `number` | ODLine模型样式 0:平面 1:柱体，默认值1 |
-| `lineStyle` | `number` | ODLine材质样式 0:纯色，1:箭头，2:流动点，3：虚线，默认值0（Style为2时建议手动设置Tiling 例如设为1） |
-| `flowShape` | `number` | ODLine发光点样式 0:无 1:球体，默认值0（Shape为0即删除/隐藏，当Shape为0时设置Style无效） |
-| `startPointShape` | `number` | StartPoint样式， default 0 ( 0 : None 1 : Sphere ) |
-| `endPointShape` | `number` | EndPoint样式， default 0 ( 0 : None 1 : Sphere ) |
-| `startLabelShape` | `number` | StartLabel样式， default 0 ( 0 : None 1 : Circle ) |
-| `endLabelShape` | `number` | EndLabel样式， default 0 ( 0 : None 1 : Circle ) |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `color` | [`Color`](/docs/api/types#color) | 是 | - | 颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `coordinates` | `array` | 是 | - | 坐标点数组，只有2个元素，第1个元素是起点坐标，第2个元素是终点坐标 |
+| `coordinateType` | `number` | 否 | 0 | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
+| `flowRate` | `number` | 否 | 0.5 | 流速，取值范围：[0~1.0]，默认值：0.5 |
+| `intensity` | `number` | 否 | 0.5 | 亮度，取值范围：[0.1~1000]，默认值：0.5 |
+| `bendDegree` | `number` | 否 | 0.5 | 弯曲度，取值范围：[0~1.0]，默认值：0.5 |
+| `tiling` | `number` | 是 | - | 材质贴图平铺比例，从起始位置开始平铺，超过的部分会按此比例生成新的区域，类似CSS的repeat。如果这个值 &lt;= 0 使用自动计算按Polyline长度比例平铺， &gt;0使用用户输入的值去平铺 |
+| `lineThickness` | `number` | 否 | 20 | 线宽，单位：米，默认值20 |
+| `flowPointSizeScale` | `number` | 否 | 20 | 运动点的缩放值，默认值20， 单位米 |
+| `labelSizeScale` | `number` | 否 | 100 | 两端点的缩放值，默认值100， 单位米 |
+| `lineShape` | `number` | 否 | 1 | ODLine模型样式 0:平面 1:柱体，默认值1 |
+| `lineStyle` | `number` | 否 | 0（Style为2时建议手动设置Tiling | ODLine材质样式 0:纯色，1:箭头，2:流动点，3：虚线，默认值0（Style为2时建议手动设置Tiling 例如设为1） |
+| `flowShape` | `number` | 否 | 0（Shape为0即删除/隐藏 | ODLine发光点样式 0:无 1:球体，默认值0（Shape为0即删除/隐藏，当Shape为0时设置Style无效） |
+| `startPointShape` | `number` | 是 | - | StartPoint样式， default 0 ( 0 : None 1 : Sphere ) |
+| `endPointShape` | `number` | 是 | - | EndPoint样式， default 0 ( 0 : None 1 : Sphere ) |
+| `startLabelShape` | `number` | 是 | - | StartLabel样式， default 0 ( 0 : None 1 : Circle ) |
+| `endLabelShape` | `number` | 是 | - | EndLabel样式， default 0 ( 0 : None 1 : Circle ) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -192,9 +193,9 @@ fdapi.odline.focus(od1.id);
 
 删除场景中所有的ODLine
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -210,10 +211,10 @@ fdapi.odline.clear();
 
 删除一个或多个ODLine对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的ODLine对象的ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的ODLine对象的ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -229,13 +230,13 @@ fdapi.odline.delete('od1');
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | ODLine对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | ODLine对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -251,10 +252,10 @@ fdapi.odline.focus('od1', 600, 1);
 
 根据ID获取ODLine的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的ODLine对象ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的ODLine对象ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -302,10 +303,10 @@ fdapi.odline.get('od1');
 
 隐藏ODLine
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | ODLine对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | ODLine对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -321,9 +322,9 @@ fdapi.odline.hide('od1');
 
 隐藏所有ODLine
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -339,18 +340,18 @@ fdapi.odline.hideAll();
 
 设置新的弯曲度
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.odline.setBendDegree(id, newVal);
+await fdapi.odline.setBendDegree('对象ID', 0);
 ```
 
 ---
@@ -359,18 +360,18 @@ await fdapi.odline.setBendDegree(id, newVal);
 
 设置新的亮度
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.odline.setBrightness(id, newVal);
+await fdapi.odline.setBrightness('对象ID', 0);
 ```
 
 ---
@@ -379,18 +380,18 @@ await fdapi.odline.setBrightness(id, newVal);
 
 设置新的颜色值
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | [`Color`](/docs/api/types#color) | 是 | - | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.odline.setColor(id, newVal);
+await fdapi.odline.setColor('对象ID', '示例值');
 ```
 
 ---
@@ -399,18 +400,18 @@ await fdapi.odline.setColor(id, newVal);
 
 设置坐标值
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `array` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `array` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.odline.setCoordinates(id, newVal);
+await fdapi.odline.setCoordinates('对象ID', []);
 ```
 
 ---
@@ -419,18 +420,18 @@ await fdapi.odline.setCoordinates(id, newVal);
 
 设置EndLabel样式
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.odline.setEndLabelShape(id, newVal);
+await fdapi.odline.setEndLabelShape('对象ID', 0);
 ```
 
 ---
@@ -439,18 +440,18 @@ await fdapi.odline.setEndLabelShape(id, newVal);
 
 设置EndPoint样式
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.odline.setEndPointShape(id, newVal);
+await fdapi.odline.setEndPointShape('对象ID', 0);
 ```
 
 ---
@@ -459,18 +460,18 @@ await fdapi.odline.setEndPointShape(id, newVal);
 
 设置运动点的缩放
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.odline.setflowPointSizeScale(id, newVal);
+await fdapi.odline.setflowPointSizeScale('对象ID', 0);
 ```
 
 ---
@@ -479,18 +480,18 @@ await fdapi.odline.setflowPointSizeScale(id, newVal);
 
 设置新的流速
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.odline.setFlowRate(id, newVal);
+await fdapi.odline.setFlowRate('对象ID', 0);
 ```
 
 ---
@@ -499,18 +500,18 @@ await fdapi.odline.setFlowRate(id, newVal);
 
 设置ODLine发光点样式
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.odline.setFlowShape(id, newVal);
+await fdapi.odline.setFlowShape('对象ID', 0);
 ```
 
 ---
@@ -519,18 +520,18 @@ await fdapi.odline.setFlowShape(id, newVal);
 
 设置两端点的缩放值
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.odline.setLabelSizeScale(id, newVal);
+await fdapi.odline.setLabelSizeScale('对象ID', 0);
 ```
 
 ---
@@ -539,18 +540,18 @@ await fdapi.odline.setLabelSizeScale(id, newVal);
 
 设置ODLine模型样式
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.odline.setLineShape(id, newVal);
+await fdapi.odline.setLineShape('对象ID', 0);
 ```
 
 ---
@@ -559,18 +560,18 @@ await fdapi.odline.setLineShape(id, newVal);
 
 设置ODLine材质样式
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.odline.setLineStyle(id, newVal);
+await fdapi.odline.setLineStyle('对象ID', 0);
 ```
 
 ---
@@ -579,18 +580,18 @@ await fdapi.odline.setLineStyle(id, newVal);
 
 设置线的厚度
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.odline.setLineThickness(id, newVal);
+await fdapi.odline.setLineThickness('对象ID', 0);
 ```
 
 ---
@@ -599,18 +600,18 @@ await fdapi.odline.setLineThickness(id, newVal);
 
 设置StartLabel样式
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.odline.setStartLabelShape(id, newVal);
+await fdapi.odline.setStartLabelShape('对象ID', 0);
 ```
 
 ---
@@ -619,18 +620,18 @@ await fdapi.odline.setStartLabelShape(id, newVal);
 
 设置StartPoint样式
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.odline.setStartPointShape(id, newVal);
+await fdapi.odline.setStartPointShape('对象ID', 0);
 ```
 
 ---
@@ -639,18 +640,18 @@ await fdapi.odline.setStartPointShape(id, newVal);
 
 设置材质贴图平铺
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.odline.setTiling(id, newVal);
+await fdapi.odline.setTiling('对象ID', 0);
 ```
 
 ---
@@ -659,10 +660,10 @@ await fdapi.odline.setTiling(id, newVal);
 
 显示ODLine
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | ODLine对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | ODLine对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -678,9 +679,9 @@ fdapi.odline.show('od1');
 
 显示所有ODLine
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -696,10 +697,10 @@ fdapi.odline.showAll();
 
 修改一个或多个ODLine对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，请参考add方法 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，请参考add方法 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -749,9 +750,9 @@ fdapi.xxx.updateEnd(function () {
 
 updateEnd是异步调用，可以用回调函数也可以await
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

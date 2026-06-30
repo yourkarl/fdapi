@@ -52,33 +52,33 @@ WaterFlowField流场类对象，用于精确控制水流单个网格的方向速
 
 添加一个或多个WaterFlowField对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | WaterMesh数据，可以是Object类型或者Array类型，对于每一个WaterFlowField对象，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | WaterMesh数据，可以是Object类型或者Array类型，对于每一个WaterFlowField对象，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | WaterFlowField对象ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `coordinateType` | `number` | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
-| `indices` | `array` | 可选，顶点坐标的索引，用来绘制流场内的三角网格，可以为空，若不传则使用系统默认计算的顶点索引；数组元素类型：(number)；数组元素顺序：顶点索引顺序需构成三角网格且同为顺时针或逆时针方向；数组元素取值范围：[0~points.length-1]，取值示例：[2, 0, 3, 0, 2, 1] |
-| `maxEdgeLength` | `number` | 三角网格边的最大长度，用于控制流场内各三角形边的最大长度，取值范围：[0~任意正数]，单位：米，默认值：0，自动计算最大长度 |
-| `points` | `array` | 流场内运动的采样点位置坐标数组，二维数组，数组元素：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates) |
-| `uvs` | `array` | 流场内运动的采样点流速流向数组，二维数组，数组元素：[U,V]，单位：米/秒，其中uvs数组必须和points保持对应关系且长度一致 |
-| `alphas` | `array` | 流场内运动的采样点渲染区域不透明度数组，一维数组，数组元素：数值，范围：[0~1]，其中alphas数组必须和points和uvs保持对应关系且长度一致 |
-| `validUVRange` | `array` | 流速有效范围，流速小于min的区域会显示蓝色，min到max之间的区域会从蓝色过渡到红色显示热力图的颜色变化效果，流速大于max的显示红色，[min,max]，数组元素min/max的取值范围：[0~任意正数]，默认值：[0,max]，数组元素单位：米/秒 |
-| `uvRangeMapping` | `array` | 流速重映射范围，为了突出流动效果，可以对流速有效范围进行一个映射，把ValidUVRange的min和max映射到一个新的min和max，方便看出流向，[mapMin,mapMax]，即validUVRange范围的对应数值映射的新范围，用来增加流速从而调整渲染效果。 |
-| `displayMode` | [`WaterFlowFieldStyle`](/docs/api/types#waterflowfieldstyle) | 流场的材质样式，参考 `WaterFlowFieldStyle`，0为热力值材质，1为水流材质，2为光流粒子材质，默认取值：0 |
-| `heatValues` | `array` | 可选，热值数组，一维数组，数组元素为数值，仅displayMode参数为0时生效，heatValues数组长度必须和points/uvs保持对应关系且长度一致 |
-| `colorLookUpArray` | `array` | 可选，热值显示对应的颜色数组，二维数组，数组元素为[r,g,b,a]颜色数组，rgba取值范围：[0~1]，即各颜色值除于255，仅displayMode参数为0时生效，数组长度大于2 |
-| `heatValueRange` | `array` | 可选，热值取值范围数组，仅displayMode参数为0时生效，取值示例：[min,max]，数组元素min/max的取值范围：[0~1000]，默认值：[0,1] |
-| `waterColor` | [`Color`](/docs/api/types#color) | 水流材质的颜色，仅displayMode=1时生效，默认值：[0.0, 0.325, 0.223, 1.00]，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `particleScale` | `number` | 水流粒子缩放大小，取值范围：[1~30]，默认值：1 |
-| `traceFactor` | `number` | 光流轨迹保持因子，仅在displayMode=2生效，取值范围：[0~100] 值越大粒子轨迹越长，注意：水流场的采样点越稀疏，因子值就要设置越大 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | WaterFlowField对象ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `coordinateType` | `number` | 否 | 0 | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
+| `indices` | `array` | 否 | - | 可选，顶点坐标的索引，用来绘制流场内的三角网格，可以为空，若不传则使用系统默认计算的顶点索引；数组元素类型：(number)；数组元素顺序：顶点索引顺序需构成三角网格且同为顺时针或逆时针方向；数组元素取值范围：[0~points.length-1]，取值示例：[2, 0, 3, 0, 2, 1] |
+| `maxEdgeLength` | `number` | 否 | 0 | 三角网格边的最大长度，用于控制流场内各三角形边的最大长度，取值范围：[0~任意正数]，单位：米，默认值：0，自动计算最大长度 |
+| `points` | `array` | 是 | - | 流场内运动的采样点位置坐标数组，二维数组，数组元素：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates) |
+| `uvs` | `array` | 是 | - | 流场内运动的采样点流速流向数组，二维数组，数组元素：[U,V]，单位：米/秒，其中uvs数组必须和points保持对应关系且长度一致 |
+| `alphas` | `array` | 是 | - | 流场内运动的采样点渲染区域不透明度数组，一维数组，数组元素：数值，范围：[0~1]，其中alphas数组必须和points和uvs保持对应关系且长度一致 |
+| `validUVRange` | `array` | 否 | [0,max] | 流速有效范围，流速小于min的区域会显示蓝色，min到max之间的区域会从蓝色过渡到红色显示热力图的颜色变化效果，流速大于max的显示红色，[min,max]，数组元素min/max的取值范围：[0~任意正数]，默认值：[0,max]，数组元素单位：米/秒 |
+| `uvRangeMapping` | `array` | 是 | - | 流速重映射范围，为了突出流动效果，可以对流速有效范围进行一个映射，把ValidUVRange的min和max映射到一个新的min和max，方便看出流向，[mapMin,mapMax]，即validUVRange范围的对应数值映射的新范围，用来增加流速从而调整渲染效果。 |
+| `displayMode` | [`WaterFlowFieldStyle`](/docs/api/types#waterflowfieldstyle) | 是 | - | 流场的材质样式，参考 `WaterFlowFieldStyle`，0为热力值材质，1为水流材质，2为光流粒子材质，默认取值：0 |
+| `heatValues` | `array` | 否 | - | 可选，热值数组，一维数组，数组元素为数值，仅displayMode参数为0时生效，heatValues数组长度必须和points/uvs保持对应关系且长度一致 |
+| `colorLookUpArray` | `array` | 否 | - | 可选，热值显示对应的颜色数组，二维数组，数组元素为[r,g,b,a]颜色数组，rgba取值范围：[0~1]，即各颜色值除于255，仅displayMode参数为0时生效，数组长度大于2 |
+| `heatValueRange` | `array` | 否 | [0,1] | 可选，热值取值范围数组，仅displayMode参数为0时生效，取值示例：[min,max]，数组元素min/max的取值范围：[0~1000]，默认值：[0,1] |
+| `waterColor` | [`Color`](/docs/api/types#color) | 否 | [0.0, 0.325, 0.223, 1.00] | 水流材质的颜色，仅displayMode=1时生效，默认值：[0.0, 0.325, 0.223, 1.00]，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `particleScale` | `number` | 否 | 1 | 水流粒子缩放大小，取值范围：[1~30]，默认值：1 |
+| `traceFactor` | `number` | 是 | - | 光流轨迹保持因子，仅在displayMode=2生效，取值范围：[0~100] 值越大粒子轨迹越长，注意：水流场的采样点越稀疏，因子值就要设置越大 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -149,9 +149,9 @@ fdapi.waterFlowField.focus('flowField1', 1000);
 
 清空场景中所有的WaterFlowField对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -167,10 +167,10 @@ fdapi.waterFlowField.clear();
 
 删除一个或多个WaterFlowField对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的WaterFlowField对象的ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的WaterFlowField对象的ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -186,13 +186,13 @@ fdapi.waterFlowField.delete('flowField1');
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | WaterFlowField对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | WaterFlowField对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -208,10 +208,10 @@ fdapi.waterFlowField.focus('flowField1', 1000);
 
 根据ID获取WaterFlowField对象的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的WaterFlowField对象ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的WaterFlowField对象ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -245,10 +245,10 @@ fdapi.waterFlowField.get('flowField1');
 
 隐藏WaterFlowField对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | WaterFlowField对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | WaterFlowField对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -264,11 +264,11 @@ fdapi.waterFlowField.hide('flowField1');
 
 设置水流场对象在进入多视口状态下视口可见性
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | WaterFlowField对象ID |
-| `vp` | [`Viewport`](/docs/api/types#viewport) | 视口掩码（Viewport位运算） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | WaterFlowField对象ID |
+| `vp` | [`Viewport`](/docs/api/types#viewport) | 是 | - | 视口掩码（Viewport位运算） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -293,10 +293,10 @@ fdapi.waterFlowField.setViewportVisible('flowField1', Viewport.V1 | Viewport.V3)
 
 显示WaterFlowField对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | WaterFlowField对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | WaterFlowField对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -312,10 +312,10 @@ fdapi.waterFlowField.show('flowField1');
 
 修改一个或多个WaterFlowField对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | WaterFlowField数据，支持单个对象和对象数组，结构参考add方法 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | WaterFlowField数据，支持单个对象和对象数组，结构参考add方法 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

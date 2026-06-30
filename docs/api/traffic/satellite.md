@@ -71,27 +71,27 @@ new Satellite()
 
 添加一个或多个Satellite对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
-| `textRange` | `array` | 卫星文字的可视范围: [近裁距离, 远裁距离]，取值范围: [任意负值, 任意正值] |
-| `modelRange` | `array` | 卫星模型的可视范围: [近裁距离, 远裁距离]，取值范围: [任意负值, 任意正值] |
-| `imageVisibleDistance` | `number` | 卫星缩略图的可见距离，取值范围: [0~200000000] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `textRange` | `array` | 是 | - | 卫星文字的可视范围: [近裁距离, 远裁距离]，取值范围: [任意负值, 任意正值] |
+| `modelRange` | `array` | 是 | - | 卫星模型的可视范围: [近裁距离, 远裁距离]，取值范围: [任意负值, 任意正值] |
+| `imageVisibleDistance` | `number` | 是 | - | 卫星缩略图的可见距离，取值范围: [0~200000000] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 卫星字符串类型的ID |
-| `text` | `string` | 卫星标签显示的文字内容 |
-| `assetPath` | `string` | 蓝图Actor在UE工程的资源引用目录（相对路径），注意：模型必须是蓝图Actor类，即在使用UE打包pak文件时此自定义对象在UE工程内的相对路径 |
-| `coordinate` | `array` | 卫星的坐标位置 |
-| `pointSize` | `number` | 卫星像素点的像素尺寸，单位：像素 |
-| `color` | [`Color`](/docs/api/types#color) | 卫星像素点的显示颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `imagePath` | `number` | 可选，卫星缩略图的文件路径，注意：参数配置的各缩略图的分辨率大小必须相同，[资源引入说明](/docs/tutorials/resources) |
-| `imageSize` | `array` | 可选，卫星的缩略图尺寸，宽高取值：[width, height]，默认使用图片尺寸 |
-| `modelRotation` | `array` | 可选，卫星的旋转姿态，世界坐标系旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 卫星字符串类型的ID |
+| `text` | `string` | 是 | - | 卫星标签显示的文字内容 |
+| `assetPath` | `string` | 是 | - | 蓝图Actor在UE工程的资源引用目录（相对路径），注意：模型必须是蓝图Actor类，即在使用UE打包pak文件时此自定义对象在UE工程内的相对路径 |
+| `coordinate` | `array` | 是 | - | 卫星的坐标位置 |
+| `pointSize` | `number` | 是 | - | 卫星像素点的像素尺寸，单位：像素 |
+| `color` | [`Color`](/docs/api/types#color) | 是 | - | 卫星像素点的显示颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `imagePath` | `number` | 否 | - | 可选，卫星缩略图的文件路径，注意：参数配置的各缩略图的分辨率大小必须相同，[资源引入说明](/docs/tutorials/resources) |
+| `imageSize` | `array` | 否 | - | 可选，卫星的缩略图尺寸，宽高取值：[width, height]，默认使用图片尺寸 |
+| `modelRotation` | `array` | 否 | [0,0,0] | 可选，卫星的旋转姿态，世界坐标系旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -285,30 +285,30 @@ let timer = setInterval(function () {
 
 在两颗卫星之间添加连接线，卫星运动时连接线会跟随同步运动
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 卫星连接线的关系配置对象或数组，支持批量添加连接线，每个对象包含以下属性： |
-| `materials` | `array \| object` | 卫星连接线使用的所有材质信息数组，每个材质对象包含以下参数： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 卫星连接线的关系配置对象或数组，支持批量添加连接线，每个对象包含以下属性： |
+| `materials` | `array \| object` | 是 | - | 卫星连接线使用的所有材质信息数组，每个材质对象包含以下参数： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 卫星连接线的字符串类型的ID |
-| `material` | `string` | 卫星连接线样式使用的材质路径，注意：材质路径需要在materials数组内存在 |
-| `startId` | `string` | 卫星连接线起始点绑定的卫星ID |
-| `endId` | `string` | 卫星连接线结束点绑定的卫星ID |
-| `thickness` | `number` | 卫星连接线的线宽，单位：米，默认值：5 |
-| `color` | [`Color`](/docs/api/types#color) | 卫星连接线的颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 卫星连接线的字符串类型的ID |
+| `material` | `string` | 是 | - | 卫星连接线样式使用的材质路径，注意：材质路径需要在materials数组内存在 |
+| `startId` | `string` | 是 | - | 卫星连接线起始点绑定的卫星ID |
+| `endId` | `string` | 是 | - | 卫星连接线结束点绑定的卫星ID |
+| `thickness` | `number` | 否 | 5 | 卫星连接线的线宽，单位：米，默认值：5 |
+| `color` | [`Color`](/docs/api/types#color) | 是 | - | 卫星连接线的颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 
 > **`materials` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `material` | `string` | 卫星连接线样式使用的材质路径，注意：材质路径需要在materials数组内存在 |
-| `scalarParameters` | `array` | 可选参数，仅在设置自定义材质路径后生效，自定义材质数值类型参数，包含name/value键值对的数组，其中value为数值，格式示例：[&#123;"name":"不透明度","value":0.5&#125;,&#123;"name":"UV重复","value":1.0&#125;] |
-| `vectorParameters` | `array` | 可选参数，仅在设置自定义材质路径后生效，自定义材质矢量类型参数，包含name/value键值对的数组，其中value为数组，格式示例：[&#123;"name":"color1","value":[1,1,1,1]&#125;,&#123;"name":"color2","value":[1,0,0,1]&#125;] |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `material` | `string` | 是 | - | 卫星连接线样式使用的材质路径，注意：材质路径需要在materials数组内存在 |
+| `scalarParameters` | `array` | 否 | - | 可选参数，仅在设置自定义材质路径后生效，自定义材质数值类型参数，包含name/value键值对的数组，其中value为数值，格式示例：[&#123;"name":"不透明度","value":0.5&#125;,&#123;"name":"UV重复","value":1.0&#125;] |
+| `vectorParameters` | `array` | 否 | - | 可选参数，仅在设置自定义材质路径后生效，自定义材质矢量类型参数，包含name/value键值对的数组，其中value为数组，格式示例：[&#123;"name":"color1","value":[1,1,1,1]&#125;,&#123;"name":"color2","value":[1,0,0,1]&#125;] |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -350,18 +350,18 @@ await fdapi.satellite.addLinkage(linkArr,[{
 
 调用卫星模型包含的多个蓝图函数，注意：调用前请使用getBPFunction()函数来查询当前卫星模型包含的蓝图函数参数信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 卫星对象的ID |
-| `functionName` | `string` | 蓝图函数名 |
-| `parameters` | `array` | 蓝图函数包含的多个参数，可选参数，数组类型，注意：传入多参数的顺序与类型务必与蓝图函数的参数顺序及其参数类型一致以保证执行结果符合预期。多个参数结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 卫星对象的ID |
+| `functionName` | `string` | 是 | - | 蓝图函数名 |
+| `parameters` | `array` | 否 | - | 蓝图函数包含的多个参数，可选参数，数组类型，注意：传入多参数的顺序与类型务必与蓝图函数的参数顺序及其参数类型一致以保证执行结果符合预期。多个参数结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -403,9 +403,9 @@ fdapi.satellite.callBPFunction(bpFunctionArr);
 
 清空场景中所有的Satellite
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -421,9 +421,9 @@ fdapi.satellite.clear();
 
 清空场景中所有的卫星连接线
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -439,10 +439,10 @@ fdapi.satellite.clearLinkage();
 
 根据卫星连接线的ID删除连接线
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的卫星的ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的卫星的ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -458,10 +458,10 @@ fdapi.satellite.deleteLinkage(["linkage_1","linkage_2","linkage_3"]);
 
 删除一个或多个卫星模型和其对应的文字标签
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Satellite对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Satellite对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -477,16 +477,16 @@ fdapi.satellite.deleteSatellite(["500","501","502"]);
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 卫星对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，如果设置为负值则会在模型内部，可以用来模拟内部观察视角 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `pitch` | `number` | 可选参数，相机旋转的Pitch，取值范围：[-90~90] |
-| `yaw` | `number` | 可选参数，相机旋转的Yaw，取值范围： [-180~180] |
-| `sensitivity` | `number` | 可选参数，卫星灵敏度，取值范围： [0~1] |
-| `offset` | `array` | 可选参数，跟随后卫星观察视角的偏移量，单位：米，默认值：[0,0,0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 卫星对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，如果设置为负值则会在模型内部，可以用来模拟内部观察视角 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `pitch` | `number` | 否 | - | 可选参数，相机旋转的Pitch，取值范围：[-90~90] |
+| `yaw` | `number` | 否 | - | 可选参数，相机旋转的Yaw，取值范围： [-180~180] |
+| `sensitivity` | `number` | 否 | - | 可选参数，卫星灵敏度，取值范围： [0~1] |
+| `offset` | `array` | 否 | [0,0,0] | 可选参数，跟随后卫星观察视角的偏移量，单位：米，默认值：[0,0,0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -502,10 +502,10 @@ fdapi.satellite.focus(["500"], 20, 0, -29, -30);
 
 根据卫星模型的ID获取卫星的实时位置信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的卫星的ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的卫星的ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -521,10 +521,10 @@ fdapi.satellite.get(["500","501","502"]);
 
 根据卫星模型ID查询其包含的蓝图函数信息，注意：支持批量查询
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 卫星对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 卫星对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -540,10 +540,10 @@ fdapi.satellite.getBPFunction(["500","501","502"]);
 
 隐藏一个或多个卫星模型
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Satellite对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Satellite对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -559,10 +559,10 @@ fdapi.satellite.hideModel(["500","501","502"]);
 
 隐藏一个或多个卫星模型和其对应的文字标签
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Satellite对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Satellite对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -578,10 +578,10 @@ fdapi.satellite.hideSatellite(["500","501","502"]);
 
 隐藏一个或多个卫星的文字标签
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Satellite对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Satellite对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -597,14 +597,14 @@ fdapi.satellite.hideText(["500","501","502"]);
 
 打开指定卫星的缩略图的高亮效果
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 必选，卫星ID或ID数组 |
-| `speed` | `number` | 可选，卫星缩略图高亮动画的频率 |
-| `scaleRange` | `number` | 可选，卫星缩略图大小渐变的区间范围，取值示例：[minScale, maxScale] |
-| `alphaRange` | `number` | 可选，卫星缩略图透明渐变的区间范围，取值示例：[minAlpha, maxAlpah] |
-| `intensityRange` | `number` | 可选，卫星缩略图亮度渐变的区间范围，取值示例：[minIntensity, maxIntensity] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 必选，卫星ID或ID数组 |
+| `speed` | `number` | 否 | - | 可选，卫星缩略图高亮动画的频率 |
+| `scaleRange` | `number` | 否 | - | 可选，卫星缩略图大小渐变的区间范围，取值示例：[minScale, maxScale] |
+| `alphaRange` | `number` | 否 | - | 可选，卫星缩略图透明渐变的区间范围，取值示例：[minAlpha, maxAlpah] |
+| `intensityRange` | `number` | 否 | - | 可选，卫星缩略图亮度渐变的区间范围，取值示例：[minIntensity, maxIntensity] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -626,13 +626,13 @@ fdapi.satellite.highlight(idsArr, 2, [0.5, 2], [0.5, 1], [0.5, 3]);
 
 设置卫星运动时自动跟随相机
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 卫星对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，如果设置为负值则会在模型内部，可以模拟卫星观察视角 |
-| `pitch` | `number` | 可选参数，相机旋转的Pitch，取值范围：[-90~90] |
-| `yaw` | `number` | 可选参数，相机旋转的Yaw，取值范围： [-180~180] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 卫星对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，如果设置为负值则会在模型内部，可以模拟卫星观察视角 |
+| `pitch` | `number` | 否 | - | 可选参数，相机旋转的Pitch，取值范围：[-90~90] |
+| `yaw` | `number` | 否 | - | 可选参数，相机旋转的Yaw，取值范围： [-180~180] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -649,10 +649,10 @@ fdapi.satellite.setFollow(["500"], 20, -29, -30);
 
 显示一个或多个卫星模型
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Satellite对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Satellite对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -668,10 +668,10 @@ fdapi.satellite.showModel(["500","501","502"]);
 
 显示一个或多个卫星模型和其对应的文字标签
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Satellite对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Satellite对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -687,10 +687,10 @@ fdapi.satellite.showSatellite(["500","501","502"]);
 
 显示一个或多个卫星的文字标签
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Satellite对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Satellite对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -706,10 +706,10 @@ fdapi.satellite.showText(["500","501","502"]);
 
 取消指定卫星缩略图的高亮效果
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 卫星ID或ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 卫星ID或ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -731,10 +731,10 @@ fdapi.satellite.unHighlight(idsArr);
 
 取消所有卫星缩略图的高亮效果
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 卫星ID或ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 卫星ID或ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -751,18 +751,24 @@ fdapi.satellite.unHighlightAll();
 
 修改一个或多个Satellite对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，请参考add方法 |
-| `duration` | `number` | 更新持续时间 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，请参考add方法 |
+| `duration` | `number` | 是 | - | 更新持续时间 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.coastline.update(data, duration);
+let coastline = {
+    id: 'coastline',
+    enableFloodFill: false, //是否开启水淹，默认值：false
+    seaLevelOffset: 2, //基于bbox的中心位置Z偏移的高度，单位：米，默认值：0米
+}
+await fdapi.coastline.update(coastline);
+fdapi.coastline.focus("coastline");
 ```
 
 ---
@@ -800,9 +806,9 @@ fdapi.xxx.updateEnd(function () {
 
 updateEnd是异步调用，可以用回调函数也可以await
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -818,30 +824,30 @@ await fdapi.coastline.updateEnd();
 
 更新卫星之间连接线
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 卫星连接线的关系配置对象或数组，支持批量添加连接线，每个对象包含以下属性： |
-| `materials` | `array \| object` | 卫星连接线使用的所有材质信息数组，每个材质对象包含以下参数： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 卫星连接线的关系配置对象或数组，支持批量添加连接线，每个对象包含以下属性： |
+| `materials` | `array \| object` | 是 | - | 卫星连接线使用的所有材质信息数组，每个材质对象包含以下参数： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 卫星连接线的字符串类型的ID |
-| `material` | `string` | 卫星连接线样式使用的材质路径，注意：材质路径需要在materials数组内存在 |
-| `startId` | `string` | 卫星连接线起始点绑定的卫星ID |
-| `endId` | `string` | 卫星连接线结束点绑定的卫星ID |
-| `thickness` | `number` | 卫星连接线的线宽，单位：米，默认值：5 |
-| `color` | [`Color`](/docs/api/types#color) | 卫星连接线的颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 卫星连接线的字符串类型的ID |
+| `material` | `string` | 是 | - | 卫星连接线样式使用的材质路径，注意：材质路径需要在materials数组内存在 |
+| `startId` | `string` | 是 | - | 卫星连接线起始点绑定的卫星ID |
+| `endId` | `string` | 是 | - | 卫星连接线结束点绑定的卫星ID |
+| `thickness` | `number` | 否 | 5 | 卫星连接线的线宽，单位：米，默认值：5 |
+| `color` | [`Color`](/docs/api/types#color) | 是 | - | 卫星连接线的颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 
 > **`materials` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `material` | `string` | 卫星连接线样式使用的材质路径，注意：材质路径需要在materials数组内存在 |
-| `scalarParameters` | `array` | 可选参数，仅在设置自定义材质路径后生效，自定义材质数值类型参数，包含name/value键值对的数组，其中value为数值，格式示例：[&#123;"name":"不透明度","value":0.5&#125;,&#123;"name":"UV重复","value":1.0&#125;] |
-| `vectorParameters` | `array` | 可选参数，仅在设置自定义材质路径后生效，自定义材质矢量类型参数，包含name/value键值对的数组，其中value为数组，格式示例：[&#123;"name":"color1","value":[1,1,1,1]&#125;,&#123;"name":"color2","value":[1,0,0,1]&#125;] |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `material` | `string` | 是 | - | 卫星连接线样式使用的材质路径，注意：材质路径需要在materials数组内存在 |
+| `scalarParameters` | `array` | 否 | - | 可选参数，仅在设置自定义材质路径后生效，自定义材质数值类型参数，包含name/value键值对的数组，其中value为数值，格式示例：[&#123;"name":"不透明度","value":0.5&#125;,&#123;"name":"UV重复","value":1.0&#125;] |
+| `vectorParameters` | `array` | 否 | - | 可选参数，仅在设置自定义材质路径后生效，自定义材质矢量类型参数，包含name/value键值对的数组，其中value为数组，格式示例：[&#123;"name":"color1","value":[1,1,1,1]&#125;,&#123;"name":"color2","value":[1,0,0,1]&#125;] |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

@@ -6,9 +6,9 @@ description: "DTS Explorer 桌面端的功能介绍与二次开发接入说明"
 
 ## DTS Explorer 桌面端简介
 
-DTS Explorer 是 DTS 平台的**桌面端渲染**，相对于云渲染版本（DTS Cloud），Explorer 在本地运行渲染引擎，适用于对网络带宽有限制、或需要本地高性能渲染的场景。
+DTS Explorer 是 DTS 平台的**桌面端渲染**，相对于云渲染版本（DTS），Explorer 在本地运行渲染引擎，适用于对网络带宽有限制、或需要本地高性能渲染的场景。
 
-| 对比项 | DTS Cloud（云渲染） | DTS Explorer（本地） |
+| 对比项 | DTS（云渲染） | DTS Explorer（本地） |
 |--------|-------------------|----------------------|
 | 渲染位置 | 服务端渲染，视频流传输 | 本地 GPU 直接渲染 |
 | 接入方式 | WebSocket + 视频流 | WebSocket（本地端口） |
@@ -56,7 +56,7 @@ const fdapi = player.getAPI();
 
 ### 与云渲染 API 的兼容性
 
-Explorer 和 DTS Cloud 使用**相同的 `fdapi` API 接口**，同一套业务代码只需切换 `host` 地址即可在两种模式下运行。
+Explorer 和 DTS 使用**相同的 `fdapi` API 接口**，同一套业务代码只需切换 `host` 地址即可在两种模式下运行。
 
 ---
 

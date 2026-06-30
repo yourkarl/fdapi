@@ -33,11 +33,12 @@ HeatMap3D 效果图如下：
 
 - **功能介绍**：HeatMap3D 在三维空间内构建体热力图，支持空间图片、离散点、体素、稀疏体素等多种构建方式，以体积雾、体素、盒子或贴花等显示模式表达数据在三维空间中的分布与浓度。
 - **别名 / 不同行业叫法**：三维热力、体热力、空间热力图、体积热力、立体热区、浓度场。
-- **适用行业**：应急管理、能源、海洋、智慧城市、国防军事、智慧水利。
+- **适用行业**：应急管理、能源、海洋、智慧城市、国防军事、智慧水利。、智慧交通与公路
 - **使用场景**：
   - 应急行业：模拟有毒有害气体、烟雾、污染物在空间中的三维扩散浓度场。
   - 海洋 / 水利：温盐、流速、溶解氧等水体要素在不同深度的三维分布展示。
   - 能源 / 气象：风场、温度场、辐射强度等空间体数据的立体可视化。
+  - 三维产业 / 风险热力：体热力表达空间聚集程度与风险分布。
 - **注意事项**：
   - `voxelShape` 设为球体（Sphere）时构建非常耗时，体素数量大时建议使用盒子（Box）模式。
   - `displayMode` 为 0/1（体积雾/体素）时与全局剖切方法联动，模式 2（盒子）需自行传入 `clipBox`。
@@ -77,48 +78,48 @@ HeatMap3D 效果图如下：
 
 根据空间离散点和对应热力值构建三维热力图
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | HeatMap3D对象或数组，对于每个对象，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | HeatMap3D对象或数组，对于每个对象，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `updateTime` | `number` | 更新动画的插值时间，单位：秒，注意：参数仅更新方法update()执行时生效 |
-| `displayMode` | `number` | 显示模式，取值：[0,1,2,3] ，0是体积雾效果, 1是体素效果 , 2是盒子效果，3是贴花效果，注意：0\|1是跟全局剖切方法联动的，只有2不跟全局剖切联动需要自己传参clipBox |
-| `brightness` | `number` | 亮度，取值范围：[0~100] ，值等于0则完全透明，值越大越不透明 |
-| `indices` | `array` | 离散热力点坐标的索引；数组元素类型：(number)；取值示例：[2, 0, 3, 0, 2, 1]，注意：仅在voxelShape=2四面体模式下生效 |
-| `voxels` | `array` | 离散热力点的坐标数组，包含热力点坐标、热力值影响半径(或盒子范围)、热力值和不透明度四个属性，结构示例：[&#123;"coordinate": [0,0,0],"radius": 5,"heatValue": 0.5,"alpha": 1&#125;] |
-| `voxels.coordinate` | `array` | 离散热力点的坐标位置，示例：[x,y,z] |
-| `voxels.heatValue` | `array` | 热力点对应的热力值，用于匹配colors参数的colorStops数组内颜色 |
-| `voxels.radius` | `number` | 可选，二选一，热力点的半径，当voxelShape=0球体时生效 |
-| `voxels.extent` | `array` | 可选，二选一，热力点的盒子范围，即长方体的长宽高：[xSize,ySize,zSize]，voxelShape=1盒子时生效 |
-| `voxels.alpha` | `number` | 热力点不透明度 |
-| `voxelAlphaMode` | `number` | 三维体素块透明模式，取值：[0,1]，0 : 使用色带colors的透明度值（默认值） 1 : 使用点的热力值在heatValueRange范围内按[0~1]线性插值生成alpha，注意：仅离散点构建时生效 |
-| `voxelShape` | `number` | 三维体素块形状，取值：[0,1,2]，0 : Sphere球（注意体素设置为球时构建非常耗时） 1 : Box盒子（默认值） 2 : 四面体，注意：仅离散点构建时生效 |
-| `voxelSize` | `number` | 三维体素块尺寸，支持仅传入Voxels和VoxelSize参数，则自动计算Bounds和TextureSize |
-| `voxelGridSize` | `array` | 三维体素块网格尺寸，默认使用纹理尺寸，取值示例： [1,1,256] |
-| `textureSize` | `number` | 纹理尺寸，取值范围：[128~512]，默认：128 |
-| `denoise` | `number` | 降噪级别，取值范围：[0,1,2,3,4,5]，默认值：0 不做降噪；1~5 五级，注意：值越大添加越耗时 |
-| `bbox` | `array` | 三维热力图的包围盒范围，格式：[minX,minY,minZ,maxX,maxY,maxZ]，数组元素类型：[任意浮点数] |
-| `boundsColor` | `array` | 三维热力图的包围盒1px边框的颜色，默认不显示，取值示例如白色线框：[1,1,1,1] |
-| `volumeBoxLocation` | `array` | 三维热力图坐标位置：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
-| `volumeBoxRotation` | `array` | 三维热力图坐标旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值] |
-| `volumeBoxSize` | `array` | 三维热力图盒子范围：[长,宽,高]，数组元素类型：[任意浮点数]， 单位：米 |
-| `heatValueMode` | `number` | 热力值模式，取值：[0,1,2,3,4,5,6] ，0 : Interp插值（默认值） 1 : Nearest最近 2 : Addition叠加 3 : Minimum最小 4 : Maximum最大 5 : Overwrite覆盖 6 : DoOnce独占 |
-| `heatValueRange` | `array` | 热力值的范围：[min,max]，数组元素类型：[任意浮点数] |
-| `blendMode` | `number` | 三维热力图颜色混合模式，取值范围：[0,1]，0：X光效果 1：半透明效果 |
-| `colors` | `object` | 三维热力图对象的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
-| `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
-| `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | [`Color`](/docs/api/types#color) | 热力值对应的调色板颜色 |
-| `colors.value` | `number` | 热力值 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `updateTime` | `number` | 是 | - | 更新动画的插值时间，单位：秒，注意：参数仅更新方法update()执行时生效 |
+| `displayMode` | `number` | 是 | - | 显示模式，取值：[0,1,2,3] ，0是体积雾效果, 1是体素效果 , 2是盒子效果，3是贴花效果，注意：0\|1是跟全局剖切方法联动的，只有2不跟全局剖切联动需要自己传参clipBox |
+| `brightness` | `number` | 是 | - | 亮度，取值范围：[0~100] ，值等于0则完全透明，值越大越不透明 |
+| `indices` | `array` | 是 | - | 离散热力点坐标的索引；数组元素类型：(number)；取值示例：[2, 0, 3, 0, 2, 1]，注意：仅在voxelShape=2四面体模式下生效 |
+| `voxels` | `array` | 是 | - | 离散热力点的坐标数组，包含热力点坐标、热力值影响半径(或盒子范围)、热力值和不透明度四个属性，结构示例：[&#123;"coordinate": [0,0,0],"radius": 5,"heatValue": 0.5,"alpha": 1&#125;] |
+| `voxels.coordinate` | `array` | 是 | - | 离散热力点的坐标位置，示例：[x,y,z] |
+| `voxels.heatValue` | `array` | 是 | - | 热力点对应的热力值，用于匹配colors参数的colorStops数组内颜色 |
+| `voxels.radius` | `number` | 否 | - | 可选，二选一，热力点的半径，当voxelShape=0球体时生效 |
+| `voxels.extent` | `array` | 否 | - | 可选，二选一，热力点的盒子范围，即长方体的长宽高：[xSize,ySize,zSize]，voxelShape=1盒子时生效 |
+| `voxels.alpha` | `number` | 是 | - | 热力点不透明度 |
+| `voxelAlphaMode` | `number` | 是 | - | 三维体素块透明模式，取值：[0,1]，0 : 使用色带colors的透明度值（默认值） 1 : 使用点的热力值在heatValueRange范围内按[0~1]线性插值生成alpha，注意：仅离散点构建时生效 |
+| `voxelShape` | `number` | 是 | - | 三维体素块形状，取值：[0,1,2]，0 : Sphere球（注意体素设置为球时构建非常耗时） 1 : Box盒子（默认值） 2 : 四面体，注意：仅离散点构建时生效 |
+| `voxelSize` | `number` | 是 | - | 三维体素块尺寸，支持仅传入Voxels和VoxelSize参数，则自动计算Bounds和TextureSize |
+| `voxelGridSize` | `array` | 是 | - | 三维体素块网格尺寸，默认使用纹理尺寸，取值示例： [1,1,256] |
+| `textureSize` | `number` | 是 | - | 纹理尺寸，取值范围：[128~512]，默认：128 |
+| `denoise` | `number` | 否 | 0 | 降噪级别，取值范围：[0,1,2,3,4,5]，默认值：0 不做降噪；1~5 五级，注意：值越大添加越耗时 |
+| `bbox` | `array` | 是 | - | 三维热力图的包围盒范围，格式：[minX,minY,minZ,maxX,maxY,maxZ]，数组元素类型：[任意浮点数] |
+| `boundsColor` | `array` | 是 | - | 三维热力图的包围盒1px边框的颜色，默认不显示，取值示例如白色线框：[1,1,1,1] |
+| `volumeBoxLocation` | `array` | 是 | - | 三维热力图坐标位置：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
+| `volumeBoxRotation` | `array` | 是 | - | 三维热力图坐标旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值] |
+| `volumeBoxSize` | `array` | 是 | - | 三维热力图盒子范围：[长,宽,高]，数组元素类型：[任意浮点数]， 单位：米 |
+| `heatValueMode` | `number` | 是 | - | 热力值模式，取值：[0,1,2,3,4,5,6] ，0 : Interp插值（默认值） 1 : Nearest最近 2 : Addition叠加 3 : Minimum最小 4 : Maximum最大 5 : Overwrite覆盖 6 : DoOnce独占 |
+| `heatValueRange` | `array` | 是 | - | 热力值的范围：[min,max]，数组元素类型：[任意浮点数] |
+| `blendMode` | `number` | 是 | - | 三维热力图颜色混合模式，取值范围：[0,1]，0：X光效果 1：半透明效果 |
+| `colors` | `object` | 是 | - | 三维热力图对象的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
+| `colors.gradient` | `boolean` | 是 | - | 是否渐变 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 是 | - | 无效像素点的默认颜色，默认白色 |
+| `colors.colorStops` | `array` | 是 | - | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
+| `colors.color` | [`Color`](/docs/api/types#color) | 是 | - | 热力值对应的调色板颜色 |
+| `colors.value` | `number` | 是 | - | 热力值 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -235,40 +236,40 @@ fdapi.heatmap3d.focus('heatmap3d_byHeatPoints', 50);
 
 根据16张空间图片构建三维热力图
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | HeatMap3D对象或数组，对于每个对象，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | HeatMap3D对象或数组，对于每个对象，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `updateTime` | `number` | 更新动画的插值时间，单位：秒，注意：参数仅更新方法update()执行时生效 |
-| `imagesArray` | `array` | 二选一，16张1024*1024的空间热力图图片的路径，空间位置从低到高，参考示例代码，注意：仅空间图片构建时生效 |
-| `imageFiles` | `array` | 二选一，构成空间热力图图片对象数组，每一个图片对象包含以下属性： |
-| `imageFiles.size` | `array` | 图片尺寸 |
-| `imageFiles.images` | `array` | 图片对象数组，每一个对象包含一下属性： |
-| `imageFiles.filePath` | `string` | 图片文件路径 |
-| `imageFiles.minValue` | `number` | 最小值 |
-| `imageFiles.maxValue` | `number` | 最大值 |
-| `volumeBoxLocation` | `array` | 三维热力图坐标位置：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
-| `volumeBoxRotation` | `array` | 三维热力图坐标旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值] |
-| `bbox` | `array` | 三维热力图的包围盒范围，格式：[minX,minY,minZ,maxX,maxY,maxZ]，数组元素类型：[任意浮点数] |
-| `boundsColor` | `array` | 三维热力图的包围盒1px边框的颜色，默认不显示，取值示例如白色线框：[1,1,1,1] |
-| `volumeBoxSize` | `array` | 三维热力图盒子范围：[长,宽,高]，数组元素类型：[任意浮点数]， 单位：米 |
-| `brightness` | `number` | 亮度，取值范围：[0~100] ，值等于0则完全透明，值越大越不透明 |
-| `displayMode` | `number` | 显示模式，取值范围：[0,1,2,3] ，支持四类效果：0是体积雾效果, 1是体素效果 , 2是盒子效果，3是贴花效果，注意：0\|1是跟全局剖切方法联动的，只有2不跟全局剖切联动需要自己传参clipBox |
-| `blendMode` | `number` | 三维热力图颜色混合模式，取值范围：[0,1]，0：X光效果 1：半透明效果 |
-| `colors` | `object` | 三维热力图对象的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
-| `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
-| `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | [`Color`](/docs/api/types#color) | 热力值对应的调色板颜色 |
-| `colors.value` | `number` | 热力值 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `updateTime` | `number` | 是 | - | 更新动画的插值时间，单位：秒，注意：参数仅更新方法update()执行时生效 |
+| `imagesArray` | `array` | 是 | - | 二选一，16张1024*1024的空间热力图图片的路径，空间位置从低到高，参考示例代码，注意：仅空间图片构建时生效 |
+| `imageFiles` | `array` | 是 | - | 二选一，构成空间热力图图片对象数组，每一个图片对象包含以下属性： |
+| `imageFiles.size` | `array` | 是 | - | 图片尺寸 |
+| `imageFiles.images` | `array` | 是 | - | 图片对象数组，每一个对象包含一下属性： |
+| `imageFiles.filePath` | `string` | 是 | - | 图片文件路径 |
+| `imageFiles.minValue` | `number` | 是 | - | 最小值 |
+| `imageFiles.maxValue` | `number` | 是 | - | 最大值 |
+| `volumeBoxLocation` | `array` | 是 | - | 三维热力图坐标位置：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
+| `volumeBoxRotation` | `array` | 是 | - | 三维热力图坐标旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值] |
+| `bbox` | `array` | 是 | - | 三维热力图的包围盒范围，格式：[minX,minY,minZ,maxX,maxY,maxZ]，数组元素类型：[任意浮点数] |
+| `boundsColor` | `array` | 是 | - | 三维热力图的包围盒1px边框的颜色，默认不显示，取值示例如白色线框：[1,1,1,1] |
+| `volumeBoxSize` | `array` | 是 | - | 三维热力图盒子范围：[长,宽,高]，数组元素类型：[任意浮点数]， 单位：米 |
+| `brightness` | `number` | 是 | - | 亮度，取值范围：[0~100] ，值等于0则完全透明，值越大越不透明 |
+| `displayMode` | `number` | 是 | - | 显示模式，取值范围：[0,1,2,3] ，支持四类效果：0是体积雾效果, 1是体素效果 , 2是盒子效果，3是贴花效果，注意：0\|1是跟全局剖切方法联动的，只有2不跟全局剖切联动需要自己传参clipBox |
+| `blendMode` | `number` | 是 | - | 三维热力图颜色混合模式，取值范围：[0,1]，0：X光效果 1：半透明效果 |
+| `colors` | `object` | 是 | - | 三维热力图对象的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
+| `colors.gradient` | `boolean` | 是 | - | 是否渐变 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 是 | - | 无效像素点的默认颜色，默认白色 |
+| `colors.colorStops` | `array` | 是 | - | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
+| `colors.color` | [`Color`](/docs/api/types#color) | 是 | - | 热力值对应的调色板颜色 |
+| `colors.value` | `number` | 是 | - | 热力值 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -304,43 +305,43 @@ fdapi.heatmap3d.focus('heatmap3d_byImages');
 
 根据稀疏体素构建三维热力图
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | HeatMap3D对象或数组，对于每个对象，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | HeatMap3D对象或数组，对于每个对象，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `updateTime` | `number` | 更新动画的插值时间，单位：秒，注意：参数仅更新方法update()执行时生效 |
-| `sparseVoxels` | `object` | ) 稀疏类型体素构建三维热力对象 |
-| `sparseVoxels.voxels` | `array` | 稀疏体素数组 |
-| `sparseVoxels.voxel` | `array` | 稀疏体素纹理坐标索引，取值类型：[i,j,k]，i、j、k均需要小于体素尺寸size |
-| `sparseVoxels.value` | `number` | 纹理坐标对应的值 |
-| `sparseVoxels.data` | `string` | 用户自定义数据 |
-| `sparseVoxels.size` | `array` | 稀疏体素的纹理坐标[i,j,k]的最大值，取值示例：[256,256,256]，即i、j、k的最大值为256 |
-| `displayMode` | `number` | 显示模式，取值：[0,1,2,3] ，0是体积雾效果, 1是体素效果 , 2是盒子效果，3是贴花效果，注意：0\|1是跟全局剖切方法联动的，只有2不跟全局剖切联动需要自己传参clipBox |
-| `brightness` | `number` | 亮度，取值范围：[0~100] ，值等于0则完全透明，值越大越不透明 |
-| `bbox` | `array` | 三维热力图的包围盒范围，格式：[minX,minY,minZ,maxX,maxY,maxZ]，数组元素类型：[任意浮点数] |
-| `boundsColor` | `array` | 三维热力图的包围盒1px边框的颜色，默认不显示，取值示例如白色线框：[1,1,1,1] |
-| `volumeBoxLocation` | `array` | 三维热力图坐标位置：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
-| `volumeBoxRotation` | `array` | 三维热力图坐标旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值] |
-| `volumeBoxSize` | `array` | 三维热力图盒子范围：[长,宽,高]，数组元素类型：[任意浮点数]， 单位：米 |
-| `voxelAlphaMode` | `number` | 三维体素块透明模式，取值：[0,1]，0 : 使用色带colors的透明度值（默认值） 1 : 使用点的热力值在heatValueRange范围内按[0~1]线性插值生成alpha，注意：仅离散点构建时生效 |
-| `voxelShape` | `number` | 三维体素块形状，取值：[0,1,2]，0 : Sphere球（注意体素设置为球时构建非常耗时） 1 : Box盒子（默认值） 2 : 四面体，注意：仅离散点构建时生效 |
-| `blendMode` | `number` | 三维热力图颜色混合模式，取值范围：[0,1]，0：X光效果 1：半透明效果 |
-| `heatValueMode` | `number` | 热力值模式，取值：[0,1,2,3,4,5,6] ，0 : Interp插值（默认值） 1 : Nearest最近 2 : Addition叠加 3 : Minimum最小 4 : Maximum最大 5 : Overwrite覆盖 6 : DoOnce独占 |
-| `heatValueRange` | `array` | 热力值的范围：[min,max]，数组元素类型：[任意浮点数] |
-| `colors` | `object` | 三维热力图对象的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
-| `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
-| `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | [`Color`](/docs/api/types#color) | 热力值对应的调色板颜色 |
-| `colors.value` | `number` | 热力值值 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `updateTime` | `number` | 是 | - | 更新动画的插值时间，单位：秒，注意：参数仅更新方法update()执行时生效 |
+| `sparseVoxels` | `object` | 是 | - | ) 稀疏类型体素构建三维热力对象 |
+| `sparseVoxels.voxels` | `array` | 是 | - | 稀疏体素数组 |
+| `sparseVoxels.voxel` | `array` | 是 | - | 稀疏体素纹理坐标索引，取值类型：[i,j,k]，i、j、k均需要小于体素尺寸size |
+| `sparseVoxels.value` | `number` | 是 | - | 纹理坐标对应的值 |
+| `sparseVoxels.data` | `string` | 是 | - | 用户自定义数据 |
+| `sparseVoxels.size` | `array` | 是 | - | 稀疏体素的纹理坐标[i,j,k]的最大值，取值示例：[256,256,256]，即i、j、k的最大值为256 |
+| `displayMode` | `number` | 是 | - | 显示模式，取值：[0,1,2,3] ，0是体积雾效果, 1是体素效果 , 2是盒子效果，3是贴花效果，注意：0\|1是跟全局剖切方法联动的，只有2不跟全局剖切联动需要自己传参clipBox |
+| `brightness` | `number` | 是 | - | 亮度，取值范围：[0~100] ，值等于0则完全透明，值越大越不透明 |
+| `bbox` | `array` | 是 | - | 三维热力图的包围盒范围，格式：[minX,minY,minZ,maxX,maxY,maxZ]，数组元素类型：[任意浮点数] |
+| `boundsColor` | `array` | 是 | - | 三维热力图的包围盒1px边框的颜色，默认不显示，取值示例如白色线框：[1,1,1,1] |
+| `volumeBoxLocation` | `array` | 是 | - | 三维热力图坐标位置：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
+| `volumeBoxRotation` | `array` | 是 | - | 三维热力图坐标旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值] |
+| `volumeBoxSize` | `array` | 是 | - | 三维热力图盒子范围：[长,宽,高]，数组元素类型：[任意浮点数]， 单位：米 |
+| `voxelAlphaMode` | `number` | 是 | - | 三维体素块透明模式，取值：[0,1]，0 : 使用色带colors的透明度值（默认值） 1 : 使用点的热力值在heatValueRange范围内按[0~1]线性插值生成alpha，注意：仅离散点构建时生效 |
+| `voxelShape` | `number` | 是 | - | 三维体素块形状，取值：[0,1,2]，0 : Sphere球（注意体素设置为球时构建非常耗时） 1 : Box盒子（默认值） 2 : 四面体，注意：仅离散点构建时生效 |
+| `blendMode` | `number` | 是 | - | 三维热力图颜色混合模式，取值范围：[0,1]，0：X光效果 1：半透明效果 |
+| `heatValueMode` | `number` | 是 | - | 热力值模式，取值：[0,1,2,3,4,5,6] ，0 : Interp插值（默认值） 1 : Nearest最近 2 : Addition叠加 3 : Minimum最小 4 : Maximum最大 5 : Overwrite覆盖 6 : DoOnce独占 |
+| `heatValueRange` | `array` | 是 | - | 热力值的范围：[min,max]，数组元素类型：[任意浮点数] |
+| `colors` | `object` | 是 | - | 三维热力图对象的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
+| `colors.gradient` | `boolean` | 是 | - | 是否渐变 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 是 | - | 无效像素点的默认颜色，默认白色 |
+| `colors.colorStops` | `array` | 是 | - | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
+| `colors.color` | [`Color`](/docs/api/types#color) | 是 | - | 热力值对应的调色板颜色 |
+| `colors.value` | `number` | 是 | - | 热力值值 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -409,58 +410,93 @@ fdapi.heatmap3d.focus('heatmap3dBySparseVoxels', 10);
 
 根据tif文件构建三维热力图
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | HeatMap3D对象或数组，对于每个对象，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | HeatMap3D对象或数组，对于每个对象，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `updateTime` | `number` | 更新动画的插值时间，单位：秒，注意：参数仅更新方法update()执行时生效 |
-| `tifFiles` | `object` | 生成三维热力图的tif文件对象属性如下： |
-| `tifFiles.files` | `array` | 二进制文件路径数组，示例：["D:\\xxx1.tif","D:\\xxx2.tif","D:\\xxx3.tif"...] |
-| `tifFiles.size` | `array` | 可选，纹理分辨率，注意：纹理尺寸不能超过2048，最大值示例：[2048,2048] |
-| `tifFiles.needProject` | `boolean` | 是否需要重投影 |
-| `tifFiles.minHeight` | `number` | 可选，最小高度 |
-| `tifFiles.maxHeight` | `number` | 可选，最大高度 |
-| `brightness` | `number` | 亮度，取值范围：[0~100] ，值等于0则完全透明，值越大越不透明 |
-| `displayMode` | `number` | 显示模式，取值：[0,1,2,3] ，0是体积雾效果, 1是体素效果 , 2是盒子效果，3是贴花效果，注意：0\|1是跟全局剖切方法联动的，只有2不跟全局剖切联动需要自己传参clipBox |
-| `clipBox` | `array` | 三维热力图盒子剖切的bbox范围，取值格式示例：[minX,minY,minZ,maxX,maxY,maxZ]，元素取值范围：[0~volumeBoxSize] |
-| `clipVoxel` | `boolean` | 三维热力图执行盒子剖切时是否裁切体素(displayMode:1)，默认值：true |
-| `volumeBoxLocation` | `array` | 三维热力图坐标位置：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
-| `volumeBoxRotation` | `array` | 三维热力图坐标旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值] |
-| `volumeBoxSize` | `array` | 三维热力图盒子范围：[长,宽,高]，数组元素类型：[任意浮点数]， 单位：米 |
-| `voxelGridSize` | `array` | 三维体素块网格尺寸，默认使用纹理尺寸，取值示例： [1,1,256] |
-| `voxelAlphaMode` | `number` | 三维体素块透明模式，取值：[0,1]，0 : 使用色带colors的透明度值（默认值） 1 : 使用点的热力值在heatValueRange范围内按[0~1]线性插值生成alpha，注意：仅离散点构建时生效 |
-| `voxelShape` | `number` | 三维体素块形状，取值：[0,1,2]，0 : Sphere球（注意体素设置为球时构建非常耗时） 1 : Box盒子（默认值） 2 : 四面体，注意：仅离散点构建时生效 |
-| `boundsColor` | `array` | 三维热力图的包围盒1px边框的颜色，默认不显示，取值示例如白色线框：[1,1,1,1] |
-| `heatValueMode` | `number` | 热力值模式，取值：[0,1,2,3,4,5,6] ，0 : Interp插值（默认值） 1 : Nearest最近 2 : Addition叠加 3 : Minimum最小 4 : Maximum最大 5 : Overwrite覆盖 6 : DoOnce独占 |
-| `heatValueRange` | `array` | 热力值的范围：[min,max]，数组元素类型：[任意浮点数] |
-| `textureSize` | `number` | 纹理尺寸，取值范围：[128~512]，默认：128 |
-| `blendMode` | `number` | 三维热力图颜色混合模式，取值范围：[0,1]，0：X光效果 1：半透明效果 |
-| `opacityMaskClip` | `number` | 三维热力图clipbox剖切支持的透明度阈值，色带colors参数内配置的颜色透明度值如果大于此值则进行剖切 |
-| `colors` | `object` | 三维热力图对象的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
-| `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
-| `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | [`Color`](/docs/api/types#color) | 热力值对应的调色板颜色 |
-| `colors.value` | `number` | 热力值 |
-| `billboards` | `object` | 三维热力图对象始终朝向相机（广告牌效果），仅体素模式下displayMode=1生效，包含参数如下： |
-| `billboards.scale` | `number` | 可选，面向屏幕的缩放值 |
-| `billboards.size` | `array` | 可选，XYZ方向分层的数量，默认值：[128,128,32] |
-| `billboards.crop` | `boolean` | 可选，是否对填充范围进行缩放后的溢出部分进行裁切，默认值：true |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `updateTime` | `number` | 是 | - | 更新动画的插值时间，单位：秒，注意：参数仅更新方法update()执行时生效 |
+| `tifFiles` | `object` | 是 | - | 生成三维热力图的tif文件对象属性如下： |
+| `tifFiles.files` | `array` | 是 | - | 二进制文件路径数组，示例：["D:\\xxx1.tif","D:\\xxx2.tif","D:\\xxx3.tif"...] |
+| `tifFiles.size` | `array` | 否 | - | 可选，纹理分辨率，注意：纹理尺寸不能超过2048，最大值示例：[2048,2048] |
+| `tifFiles.needProject` | `boolean` | 是 | - | 是否需要重投影 |
+| `tifFiles.minHeight` | `number` | 否 | - | 可选，最小高度 |
+| `tifFiles.maxHeight` | `number` | 否 | - | 可选，最大高度 |
+| `brightness` | `number` | 是 | - | 亮度，取值范围：[0~100] ，值等于0则完全透明，值越大越不透明 |
+| `displayMode` | `number` | 是 | - | 显示模式，取值：[0,1,2,3] ，0是体积雾效果, 1是体素效果 , 2是盒子效果，3是贴花效果，注意：0\|1是跟全局剖切方法联动的，只有2不跟全局剖切联动需要自己传参clipBox |
+| `clipBox` | `array` | 是 | - | 三维热力图盒子剖切的bbox范围，取值格式示例：[minX,minY,minZ,maxX,maxY,maxZ]，元素取值范围：[0~volumeBoxSize] |
+| `clipVoxel` | `boolean` | 否 | true | 三维热力图执行盒子剖切时是否裁切体素(displayMode:1)，默认值：true |
+| `volumeBoxLocation` | `array` | 是 | - | 三维热力图坐标位置：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
+| `volumeBoxRotation` | `array` | 是 | - | 三维热力图坐标旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值] |
+| `volumeBoxSize` | `array` | 是 | - | 三维热力图盒子范围：[长,宽,高]，数组元素类型：[任意浮点数]， 单位：米 |
+| `voxelGridSize` | `array` | 是 | - | 三维体素块网格尺寸，默认使用纹理尺寸，取值示例： [1,1,256] |
+| `voxelAlphaMode` | `number` | 是 | - | 三维体素块透明模式，取值：[0,1]，0 : 使用色带colors的透明度值（默认值） 1 : 使用点的热力值在heatValueRange范围内按[0~1]线性插值生成alpha，注意：仅离散点构建时生效 |
+| `voxelShape` | `number` | 是 | - | 三维体素块形状，取值：[0,1,2]，0 : Sphere球（注意体素设置为球时构建非常耗时） 1 : Box盒子（默认值） 2 : 四面体，注意：仅离散点构建时生效 |
+| `boundsColor` | `array` | 是 | - | 三维热力图的包围盒1px边框的颜色，默认不显示，取值示例如白色线框：[1,1,1,1] |
+| `heatValueMode` | `number` | 是 | - | 热力值模式，取值：[0,1,2,3,4,5,6] ，0 : Interp插值（默认值） 1 : Nearest最近 2 : Addition叠加 3 : Minimum最小 4 : Maximum最大 5 : Overwrite覆盖 6 : DoOnce独占 |
+| `heatValueRange` | `array` | 是 | - | 热力值的范围：[min,max]，数组元素类型：[任意浮点数] |
+| `textureSize` | `number` | 是 | - | 纹理尺寸，取值范围：[128~512]，默认：128 |
+| `blendMode` | `number` | 是 | - | 三维热力图颜色混合模式，取值范围：[0,1]，0：X光效果 1：半透明效果 |
+| `opacityMaskClip` | `number` | 是 | - | 三维热力图clipbox剖切支持的透明度阈值，色带colors参数内配置的颜色透明度值如果大于此值则进行剖切 |
+| `colors` | `object` | 是 | - | 三维热力图对象的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
+| `colors.gradient` | `boolean` | 是 | - | 是否渐变 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 是 | - | 无效像素点的默认颜色，默认白色 |
+| `colors.colorStops` | `array` | 是 | - | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
+| `colors.color` | [`Color`](/docs/api/types#color) | 是 | - | 热力值对应的调色板颜色 |
+| `colors.value` | `number` | 是 | - | 热力值 |
+| `billboards` | `object` | 是 | - | 三维热力图对象始终朝向相机（广告牌效果），仅体素模式下displayMode=1生效，包含参数如下： |
+| `billboards.scale` | `number` | 否 | - | 可选，面向屏幕的缩放值 |
+| `billboards.size` | `array` | 否 | [128,128,32] | 可选，XYZ方向分层的数量，默认值：[128,128,32] |
+| `billboards.crop` | `boolean` | 否 | true | 可选，是否对填充范围进行缩放后的溢出部分进行裁切，默认值：true |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.heatmap3d.addByTif(data);
+await fdapi.heatmap3d.addByTif({
+    id: '对象ID',
+    groupId: '对象ID',
+    userData: '示例值',
+    updateTime: 0,
+    tifFiles: {},
+    tifFiles.files: [],
+    tifFiles.size: [],
+    tifFiles.needProject: true,
+    tifFiles.minHeight: 0,
+    tifFiles.maxHeight: 0,
+    brightness: 0,
+    displayMode: 0,
+    clipBox: [],
+    clipVoxel: true,
+    volumeBoxLocation: [0, 0, 0],
+    volumeBoxRotation: [0, 0, 0],
+    volumeBoxSize: [],
+    voxelGridSize: [],
+    voxelAlphaMode: 0,
+    voxelShape: 0,
+    boundsColor: [255, 255, 255],
+    heatValueMode: 0,
+    heatValueRange: [],
+    textureSize: 0,
+    blendMode: 0,
+    opacityMaskClip: 0,
+    colors: {},
+    colors.gradient: true,
+    colors.colorStops: [255, 255, 255],
+    colors.value: 0,
+    billboards: {},
+    billboards.scale: 0,
+    billboards.size: [128,128,32],
+    billboards.crop: true
+});
 ```
 
 ---
@@ -469,39 +505,39 @@ await fdapi.heatmap3d.addByTif(data);
 
 根据纯热力值构建三维热力图
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | HeatMap3D对象或数组，对于每个对象，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | HeatMap3D对象或数组，对于每个对象，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `updateTime` | `number` | 更新动画的插值时间，单位：秒，注意：参数仅更新方法update()执行时生效 |
-| `displayMode` | `number` | 显示模式，取值：[0,1,2,3] ，0是体积雾效果, 1是体素效果 , 2是盒子效果，3是贴花效果，注意：0\|1是跟全局剖切方法联动的，只有2不跟全局剖切联动需要自己传参clipBox |
-| `brightness` | `number` | 亮度，取值范围：[0~100] ，值等于0则完全透明，值越大越不透明 |
-| `bbox` | `array` | 三维热力图的包围盒范围，格式：[minX,minY,minZ,maxX,maxY,maxZ]，数组元素类型：[任意浮点数] |
-| `boundsColor` | `array` | 三维热力图的包围盒1px边框的颜色，默认不显示，取值示例如白色线框：[1,1,1,1] |
-| `volumeBoxLocation` | `array` | 三维热力图坐标位置：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
-| `volumeBoxRotation` | `array` | 三维热力图坐标旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值] |
-| `volumeBoxSize` | `array` | 三维热力图盒子范围：[长,宽,高]，数组元素类型：[任意浮点数]， 单位：米 |
-| `heatValueMode` | `number` | 热力值模式，取值：[0,1,2,3,4,5,6] ，0 : Interp插值（默认值） 1 : Nearest最近 2 : Addition叠加 3 : Minimum最小 4 : Maximum最大 5 : Overwrite覆盖 6 : DoOnce独占 |
-| `heatValueRange` | `array` | 热力值的范围：[min,max]，数组元素类型：[任意浮点数] |
-| `blendMode` | `number` | 三维热力图颜色混合模式，取值范围：[0,1]，0：X光效果 1：半透明效果 |
-| `heatValues` | `object` | 构建三维热力图的热力值对象，注意：此参数需要根据纯热力值构建 |
-| `heatValues.size` | `array` | 体素尺寸，取值示例：[x, y, z]，x*y*z就是包含的热力值数量，即values数组的长度等于x*y*z |
-| `heatValues.values` | `array` | 体素的热力值，数组长度需要等于x*y*z。注意：如果某个体素的值不在heatValueRange范围内则属于无效体素不做渲染。 |
-| `heatValues.alphas` | `array` | 可选参数，透明度数组，不传则默认使用colors的透明度 |
-| `colors` | `object` | 三维热力图对象的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
-| `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
-| `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | [`Color`](/docs/api/types#color) | 热力值对应的调色板颜色 |
-| `colors.value` | `number` | 热力值 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `updateTime` | `number` | 是 | - | 更新动画的插值时间，单位：秒，注意：参数仅更新方法update()执行时生效 |
+| `displayMode` | `number` | 是 | - | 显示模式，取值：[0,1,2,3] ，0是体积雾效果, 1是体素效果 , 2是盒子效果，3是贴花效果，注意：0\|1是跟全局剖切方法联动的，只有2不跟全局剖切联动需要自己传参clipBox |
+| `brightness` | `number` | 是 | - | 亮度，取值范围：[0~100] ，值等于0则完全透明，值越大越不透明 |
+| `bbox` | `array` | 是 | - | 三维热力图的包围盒范围，格式：[minX,minY,minZ,maxX,maxY,maxZ]，数组元素类型：[任意浮点数] |
+| `boundsColor` | `array` | 是 | - | 三维热力图的包围盒1px边框的颜色，默认不显示，取值示例如白色线框：[1,1,1,1] |
+| `volumeBoxLocation` | `array` | 是 | - | 三维热力图坐标位置：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
+| `volumeBoxRotation` | `array` | 是 | - | 三维热力图坐标旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值] |
+| `volumeBoxSize` | `array` | 是 | - | 三维热力图盒子范围：[长,宽,高]，数组元素类型：[任意浮点数]， 单位：米 |
+| `heatValueMode` | `number` | 是 | - | 热力值模式，取值：[0,1,2,3,4,5,6] ，0 : Interp插值（默认值） 1 : Nearest最近 2 : Addition叠加 3 : Minimum最小 4 : Maximum最大 5 : Overwrite覆盖 6 : DoOnce独占 |
+| `heatValueRange` | `array` | 是 | - | 热力值的范围：[min,max]，数组元素类型：[任意浮点数] |
+| `blendMode` | `number` | 是 | - | 三维热力图颜色混合模式，取值范围：[0,1]，0：X光效果 1：半透明效果 |
+| `heatValues` | `object` | 是 | - | 构建三维热力图的热力值对象，注意：此参数需要根据纯热力值构建 |
+| `heatValues.size` | `array` | 是 | - | 体素尺寸，取值示例：[x, y, z]，x*y*z就是包含的热力值数量，即values数组的长度等于x*y*z |
+| `heatValues.values` | `array` | 是 | - | 体素的热力值，数组长度需要等于x*y*z。注意：如果某个体素的值不在heatValueRange范围内则属于无效体素不做渲染。 |
+| `heatValues.alphas` | `array` | 否 | - | 可选参数，透明度数组，不传则默认使用colors的透明度 |
+| `colors` | `object` | 是 | - | 三维热力图对象的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
+| `colors.gradient` | `boolean` | 是 | - | 是否渐变 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 是 | - | 无效像素点的默认颜色，默认白色 |
+| `colors.colorStops` | `array` | 是 | - | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
+| `colors.color` | [`Color`](/docs/api/types#color) | 是 | - | 热力值对应的调色板颜色 |
+| `colors.value` | `number` | 是 | - | 热力值 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -598,22 +634,22 @@ fdapi.heatmap3d.focus('heatmap3d_byHeatValues');
 
 动态往HeatMap3D对象内添加离散热力点，注意：仅支持空间离散点构造方法addByHeatPoints()
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | Voxel对象或对象数组，对于每个对象，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | Voxel对象或对象数组，对于每个对象，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `voxels` | `array` | 离散热力点信息坐标数组，包含热力点坐标、热力值影响半径（或盒子范围）、热力值和不透明度等属性，结构示例：[&#123;"coordinate": [0,0,0],"radius": 5,"heatValue": 0.5,"alpha": 1&#125;] |
-| `voxels.coordinate` | `array` | 热力点的坐标位置，示例：[x,y,z] |
-| `voxels.heatValue` | `array` | 热力点对应的热力值 |
-| `voxels.radius` | `number` | 可选，热力点的半径，当voxelShape=0球体时生效 |
-| `voxels.extent` | `array` | 可选，热力点的盒子范围，即长方体的长宽高：[xSize,ySize,zSize]，voxelShape=1盒子时生效 |
-| `voxels.alpha` | `number` | 热力点不透明度 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `voxels` | `array` | 是 | - | 离散热力点信息坐标数组，包含热力点坐标、热力值影响半径（或盒子范围）、热力值和不透明度等属性，结构示例：[&#123;"coordinate": [0,0,0],"radius": 5,"heatValue": 0.5,"alpha": 1&#125;] |
+| `voxels.coordinate` | `array` | 是 | - | 热力点的坐标位置，示例：[x,y,z] |
+| `voxels.heatValue` | `array` | 是 | - | 热力点对应的热力值 |
+| `voxels.radius` | `number` | 否 | - | 可选，热力点的半径，当voxelShape=0球体时生效 |
+| `voxels.extent` | `array` | 否 | - | 可选，热力点的盒子范围，即长方体的长宽高：[xSize,ySize,zSize]，voxelShape=1盒子时生效 |
+| `voxels.alpha` | `number` | 是 | - | 热力点不透明度 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -683,9 +719,9 @@ fdapi.heatmap3d.focus('heatmap3d_byHeatValues');
 
 清空场景中所有的HeatMap3D
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -701,10 +737,10 @@ fdapi.heatmap3d.clear();
 
 删除一个或多个HeatMap3D对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的HeatMap3D对象的ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的HeatMap3D对象的ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -720,13 +756,13 @@ fdapi.heatmap3d.delete('heatmap3d_byImages');
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | HeatMap3D对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | HeatMap3D对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -742,10 +778,10 @@ fdapi.heatmap3d.focus('heatmap3d_byImages', 100);
 
 根据ID获取HeatMap3D的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的HeatMap3D对象ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的HeatMap3D对象ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -794,10 +830,10 @@ fdapi.heatmap3d.get('heatmap3d_byImages');
 
 隐藏HeatMap3D
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | HeatMap3D对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | HeatMap3D对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -813,38 +849,38 @@ fdapi.heatmap3d.hide('heatmap3d_byImages');
 
 预加载的三维热力图动画，包含多个Tif文件，加载后可以使用play()方法播放三维热力图动画。
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | HeatMap3D对象或数组，对于每个对象，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | HeatMap3D对象或数组，对于每个对象，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `tifAnimation` | `object` | 生成三维热力图的tif文件对象属性如下： |
-| `tifAnimation.minHeight` | `number` | 最小高度 |
-| `tifAnimation.maxHeight` | `number` | 最大高度 |
-| `tifAnimation.totalSeconds` | `number` | 动画播放默认的总时长，单位：秒 |
-| `tifAnimation.time` | `number` | 从第几秒开始播放，默认值：0 |
-| `tifAnimation.files` | `array` | tif文件路径二维数组，结构示例：[["D:\\Time0_1.tif","D:\\Time0_2.tif"],["D:\\Time1_1.tif","D:\\Time1_2.tif"]...] ，注意：tif文件纹理尺寸不能超过8192，最大值示例：[8192,8192] |
-| `brightness` | `number` | 亮度，取值范围：[0~100] ，值等于0则完全透明，值越大越不透明 |
-| `displayMode` | `number` | 显示模式，取值：[0,1,2,3] ，0是体积雾效果, 1是体素效果 , 2是盒子效果，3是贴花效果，注意：0\|1是跟全局剖切方法联动的，只有2不跟全局剖切联动需要自己传参clipBox |
-| `heatValueMode` | `number` | 热力值模式，取值：[0,1,2,3,4,5,6] ，0 : Interp插值（默认值） 1 : Nearest最近 2 : Addition叠加 3 : Minimum最小 4 : Maximum最大 5 : Overwrite覆盖 6 : DoOnce独占 |
-| `heatValueRange` | `array` | 热力值的范围：[min,max]，数组元素类型：[任意浮点数] |
-| `voxelAlphaMode` | `number` | 三维体素块透明模式，取值：[0,1]，0 : 使用色带colors的透明度值（默认值） 1 : 使用点的热力值在heatValueRange范围内按[0~1]线性插值生成alpha，注意：仅离散点构建时生效 |
-| `voxelGridSize` | `array` | 三维体素块网格尺寸，默认使用纹理尺寸，取值示例： [1,1,256] |
-| `textureSize` | `number` | 纹理尺寸，取值范围：[128~512]，默认：128 |
-| `blendMode` | `number` | 各图层之间的混合模式，取值范围：[0,1] |
-| `colors` | `object` | 三维热力图对象的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
-| `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
-| `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | [`Color`](/docs/api/types#color) | 热力值对应的调色板颜色 |
-| `colors.value` | `number` | 热力值 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `tifAnimation` | `object` | 是 | - | 生成三维热力图的tif文件对象属性如下： |
+| `tifAnimation.minHeight` | `number` | 是 | - | 最小高度 |
+| `tifAnimation.maxHeight` | `number` | 是 | - | 最大高度 |
+| `tifAnimation.totalSeconds` | `number` | 是 | - | 动画播放默认的总时长，单位：秒 |
+| `tifAnimation.time` | `number` | 否 | 0 | 从第几秒开始播放，默认值：0 |
+| `tifAnimation.files` | `array` | 是 | - | tif文件路径二维数组，结构示例：[["D:\\Time0_1.tif","D:\\Time0_2.tif"],["D:\\Time1_1.tif","D:\\Time1_2.tif"]...] ，注意：tif文件纹理尺寸不能超过8192，最大值示例：[8192,8192] |
+| `brightness` | `number` | 是 | - | 亮度，取值范围：[0~100] ，值等于0则完全透明，值越大越不透明 |
+| `displayMode` | `number` | 是 | - | 显示模式，取值：[0,1,2,3] ，0是体积雾效果, 1是体素效果 , 2是盒子效果，3是贴花效果，注意：0\|1是跟全局剖切方法联动的，只有2不跟全局剖切联动需要自己传参clipBox |
+| `heatValueMode` | `number` | 是 | - | 热力值模式，取值：[0,1,2,3,4,5,6] ，0 : Interp插值（默认值） 1 : Nearest最近 2 : Addition叠加 3 : Minimum最小 4 : Maximum最大 5 : Overwrite覆盖 6 : DoOnce独占 |
+| `heatValueRange` | `array` | 是 | - | 热力值的范围：[min,max]，数组元素类型：[任意浮点数] |
+| `voxelAlphaMode` | `number` | 是 | - | 三维体素块透明模式，取值：[0,1]，0 : 使用色带colors的透明度值（默认值） 1 : 使用点的热力值在heatValueRange范围内按[0~1]线性插值生成alpha，注意：仅离散点构建时生效 |
+| `voxelGridSize` | `array` | 是 | - | 三维体素块网格尺寸，默认使用纹理尺寸，取值示例： [1,1,256] |
+| `textureSize` | `number` | 是 | - | 纹理尺寸，取值范围：[128~512]，默认：128 |
+| `blendMode` | `number` | 是 | - | 各图层之间的混合模式，取值范围：[0,1] |
+| `colors` | `object` | 是 | - | 三维热力图对象的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
+| `colors.gradient` | `boolean` | 是 | - | 是否渐变 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 是 | - | 无效像素点的默认颜色，默认白色 |
+| `colors.colorStops` | `array` | 是 | - | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
+| `colors.color` | [`Color`](/docs/api/types#color) | 是 | - | 热力值对应的调色板颜色 |
+| `colors.value` | `number` | 是 | - | 热力值 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1461,10 +1497,10 @@ fdapi.camera.set(8687397.494102, 8426718.222344, 10390890.88, -62.999722, 33.423
 
 暂停播放三维热力图动画
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | HeatMap3D对象的ID |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | HeatMap3D对象的ID |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1480,10 +1516,10 @@ fdapi.heatmap3d.pause("heatmap3d-anima");
 
 播放预加载的三维热力图动画
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | HeatMap3D对象的ID |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | HeatMap3D对象的ID |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1499,11 +1535,11 @@ fdapi.heatmap3d.play("heatmap3d-anima");
 
 根据ID和坐标位置获取对应HeatMap3D对象包含体素块的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | HeatMap3D对象ID |
-| `coordinate` | `array` | 坐标位置 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | HeatMap3D对象ID |
+| `coordinate` | `array` | 是 | - | 坐标位置 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -1520,18 +1556,18 @@ fdapi.heatmap3d.queryVoxel('heatmap3dBySparseVoxels', [493071.401875, 2492076.96
 
 设置三维热力图的显示模式
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `any` | HeatMap3D的ID |
-| `displayMode` | `array` | 显示模式，取值范围：0是VolumeFog,1是InstanceMesh,2是Box |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `any` | 是 | - | HeatMap3D的ID |
+| `displayMode` | `array` | 是 | - | 显示模式，取值范围：0是VolumeFog,1是InstanceMesh,2是Box |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.heatmap3d.setDisplayMode(id, displayMode);
+await fdapi.heatmap3d.setDisplayMode('对象ID', []);
 ```
 
 ---
@@ -1540,11 +1576,11 @@ await fdapi.heatmap3d.setDisplayMode(id, displayMode);
 
 从第几秒开始播放三维热力图动画
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | HeatMap3D对象的ID |
-| `startTime` | `number` | 可选，从第几秒开始播放，默认值：0秒 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | HeatMap3D对象的ID |
+| `startTime` | `number` | 否 | 0秒 | 可选，从第几秒开始播放，默认值：0秒 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1560,11 +1596,11 @@ fdapi.heatmap3d.setTime("heatmap3d-anima", 5);
 
 设置HeatMap3D对象在进入多视口状态下视口可见性
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | HeatMap3D对象ID |
-| `vp` | [`Viewport`](/docs/api/types#viewport) | 视口掩码（Viewport位运算） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | HeatMap3D对象ID |
+| `vp` | [`Viewport`](/docs/api/types#viewport) | 是 | - | 视口掩码（Viewport位运算） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1589,10 +1625,10 @@ fdapi.heatmap3d.setViewportVisible('heatmap3d_byHeatPoints', Viewport.V1 | Viewp
 
 显示HeatMap3D
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | HeatMap3D对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | HeatMap3D对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1608,10 +1644,10 @@ fdapi.heatmap3d.show('heatmap3d_byImages');
 
 修改HeatMap3D
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | HeatMap3D对象或数组，参考add方法 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | HeatMap3D对象或数组，参考add方法 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1673,9 +1709,9 @@ fdapi.xxx.updateEnd(function () {
 
 updateEnd是异步调用，可以用回调函数也可以await
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

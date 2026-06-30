@@ -24,11 +24,12 @@ CustomTag已停止更新，推荐使用功能更丰富的标注对象Marker
 
 - **功能介绍**：用于在三维场景中加载基于网页（HTML）的自定义标签，将外部网页内容贴合到指定坐标点，可承载富文本、图表、视频等网页化信息展示。该对象已停止更新，新项目推荐使用功能更丰富的 Marker 对象。
 - **别名 / 不同行业叫法**：自定义标签、HTML标牌、信息牌、网页标签、网页贴牌。
-- **适用行业**：智慧城市、智慧园区、文博展陈、应急指挥、交通枢纽。
+- **适用行业**：智慧城市、智慧园区、文博展陈、应急指挥、交通枢纽。、智慧交通与公路
 - **使用场景**：
   - 在建筑、设施上方挂接网页化信息卡，展示名称、地址、简介等内容
   - 点击标签弹出包含详情页、统计图表或监控视频的弹窗窗口
   - 园区/展馆点位的图文导览与交互式信息牌
+  - 公路资产复合标注：点击设施弹出 HTML 资料页（popupURL）展示养护记录、附件图纸，按资产类型分组显隐。
 - **注意事项**：
   - 本对象已废弃且停止更新，新项目应优先选用 Marker；
   - contentURL 的本地路径中不能含有空格，资源引入需遵循资源说明；
@@ -61,27 +62,27 @@ CustomTag已停止更新，推荐使用功能更丰富的标注对象Marker
 
 添加一个或多个CustomTag对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | CustomTag类的对象或者数组，对于每一个CustomTag，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | CustomTag类的对象或者数组，对于每一个CustomTag，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `coordinate` | `array` | 坐标值，[取值示例](/docs/tutorials/coordinates) |
-| `contentURL` | `string` | 网页URL（本地地址或者网络地址），注意：本地地址中不能有空格 |
-| `contentSize` | `array` | 网页窗口尺寸： [width, height]，数组元素类型：(number)，数组元素取值范围：[任意正整数] |
-| `popupURL` | `string` | 弹出窗口的网页地址，[资源引入说明](/docs/tutorials/resources) |
-| `popupSize` | `array` | 弹出窗口的尺寸：[width, height]，数组元素类型：(number)，数组元素取值范围：[任意正整数] |
-| `pivot` | `array` | 中心点：[0.5,0.5]，数组元素类型：(number)，数组元素取值范围：[0~1] |
-| `range` | `array` | 显示范围：[min, max]，数组元素类型：(number)，数组元素取值范围：[任意正整数] |
-| `autoHidePopupWindow` | `boolean` | 是否自动关闭弹出窗口，默认会自动关闭：true |
-| `popupPos` | `array` | 弹窗位置: [x, y]，数组元素类型：(number)，数组元素取值范围：[任意正整数] |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `coordinate` | `array` | 是 | - | 坐标值，[取值示例](/docs/tutorials/coordinates) |
+| `contentURL` | `string` | 是 | - | 网页URL（本地地址或者网络地址），注意：本地地址中不能有空格 |
+| `contentSize` | `array` | 是 | - | 网页窗口尺寸： [width, height]，数组元素类型：(number)，数组元素取值范围：[任意正整数] |
+| `popupURL` | `string` | 是 | - | 弹出窗口的网页地址，[资源引入说明](/docs/tutorials/resources) |
+| `popupSize` | `array` | 是 | - | 弹出窗口的尺寸：[width, height]，数组元素类型：(number)，数组元素取值范围：[任意正整数] |
+| `pivot` | `array` | 是 | - | 中心点：[0.5,0.5]，数组元素类型：(number)，数组元素取值范围：[0~1] |
+| `range` | `array` | 是 | - | 显示范围：[min, max]，数组元素类型：(number)，数组元素取值范围：[任意正整数] |
+| `autoHidePopupWindow` | `boolean` | 是 | - | 是否自动关闭弹出窗口，默认会自动关闭：true |
+| `popupPos` | `array` | 是 | - | 弹窗位置: [x, y]，数组元素类型：(number)，数组元素取值范围：[任意正整数] |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -129,9 +130,9 @@ fdapi.customTag.focus(o.id, 50, 0.2);
 
 删除场景中所有的CustomTag
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -147,10 +148,10 @@ fdapi.customTag.clear();
 
 删除一个或多个CustomTag对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的CustomTag对象的ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的CustomTag对象的ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -166,13 +167,13 @@ fdapi.customTag.delete('ct1');
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | CustomTag对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | CustomTag对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -188,19 +189,19 @@ fdapi.customTag.focus('ct1', 50, 0.1);
 
 自动定位到能观察所有CustomTag对象的合适距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.customTag.focusAll(distance, flyTime, rotation);
+await fdapi.customTag.focusAll(0, '2秒', [0, 0, 0]);
 ```
 
 ---
@@ -209,10 +210,10 @@ await fdapi.customTag.focusAll(distance, flyTime, rotation);
 
 根据ID获取CustomTag的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的CustomTag对象ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的CustomTag对象ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -247,10 +248,10 @@ fdapi.customTag.get('ct1');
 
 隐藏CustomTag
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | CustomTag对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | CustomTag对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -266,9 +267,9 @@ fdapi.customTag.hide('ct1');
 
 隐藏所有CustomTag
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -284,18 +285,18 @@ fdapi.customTag.hideAll();
 
 设置是否自动关闭标签的弹出窗口
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标签的唯一标识符ID |
-| `newVal` | `boolean` | 是否自动关闭标签的弹出窗口 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标签的唯一标识符ID |
+| `newVal` | `boolean` | 是 | - | 是否自动关闭标签的弹出窗口 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.customTag.setAutoHidePopupWindow(id, newVal);
+await fdapi.customTag.setAutoHidePopupWindow('对象ID', true);
 ```
 
 ---
@@ -304,10 +305,10 @@ await fdapi.customTag.setAutoHidePopupWindow(id, newVal);
 
 显示CustomTag
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | CustomTag对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | CustomTag对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -323,9 +324,9 @@ fdapi.customTag.show('ct1');
 
 显示所有CustomTag
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -341,10 +342,10 @@ fdapi.customTag.showAll();
 
 修改一个或多个CustomTag对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | CustomTag类的对象或者数组，参考add方法 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | CustomTag类的对象或者数组，参考add方法 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -400,9 +401,9 @@ fdapi.xxx.updateEnd(function () {
 
 updateEnd是异步调用，可以用回调函数也可以await
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

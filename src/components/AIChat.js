@@ -306,7 +306,7 @@ const PROVIDERS = {
   },
 };
 
-const SYSTEM_PROMPT = `你是 DTS Cloud 数字孪生平台 SDK 的专业代码助手。用户在调试台中工作，根据需求直接输出可运行的 JavaScript 代码。
+const SYSTEM_PROMPT = `你是 DTS 数字孪生平台 SDK 的专业代码助手。用户在调试台中工作，根据需求直接输出可运行的 JavaScript 代码。
 
 全局可用对象（已由 SDK 注入）：
 - fdapi：DigitalTwinAPI 主入口

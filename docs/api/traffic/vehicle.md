@@ -25,6 +25,7 @@ Vehicle 加载车辆模型并沿路径行驶，模拟交通流与车辆运动。
   - 道路车流仿真与可视化
   - 车辆轨迹回放与事件还原
   - 救援/巡逻等事件车辆的运动
+  - 交通 IoT 车辆数字孪生：单辆车沿车道精细化行驶仿真，自定义车型、车速与朝向，配合 Camera.follow 对重点车辆第一视角跟随。
 - **注意事项**：
   - 大量车辆需用实例化/LOD 控制性能
   - 行驶路径需与路网匹配
@@ -66,30 +67,30 @@ Vehicle 加载车辆模型并沿路径行驶，模拟交通流与车辆运动。
 
 ![](/img/refdoc/api/copy_actor_path.gif)
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | Vehicle对象的ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `assetPath` | `string` | 资源库车辆载具路径，类似CustomObject对象的assetPath，示例值：'/JC_CustomAssets/VehicleLibrary/Exhibition/SUV_01' |
-| `coordinate` | `array` | 载具初始位置坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
-| `coordinateType` | `number` | 可选，坐标系类型，取值：0为Projection类型，1为WGS84类型，默认值：0 |
-| `autoHeight` | `boolean` | 可选，是否自动计算载具行驶高度，默认值：true，注意：当设置为false时会使用载具坐标的高度Z |
-| `useInitZ` | `boolean` | 可选，是否使用添加载具初始化坐标的高度Z，默认：false |
-| `delay` | `number` | 可选，控制载具moveTo()接口移动的延迟时间，单位：秒，默认值：0.5，设置0则不延时立刻移动 |
-| `rotation` | `array` | 可选，载具旋转，世界坐标系旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |
-| `colorType` | `number` | 可选，载具使用内置涂装颜色的类型，取值范围：[0~任意正整数]，默认值：0 随机使用涂装颜色，大于0则使用其他固定的涂装颜色。 |
-| `color` | [`Color`](/docs/api/types#color) | 可选，载具自定义涂装颜色，注意：若传入此颜色参数会覆盖掉内置的涂装颜色（colorType），支持四种格式，[取值示例](/docs/tutorials/color) |
-| `localOffset` | `array` | 可选，载具基于原始位置坐标的偏移量，默认值：[0,0,0] |
-| `enableDecal` | `boolean` | 可选，是否支持贴画贴合，默认值：true |
-| `visible` | `boolean` | 可选，设置载具对象加载后是否显示，默认：true |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | Vehicle对象的ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `assetPath` | `string` | 是 | - | 资源库车辆载具路径，类似CustomObject对象的assetPath，示例值：'/JC_CustomAssets/VehicleLibrary/Exhibition/SUV_01' |
+| `coordinate` | `array` | 是 | - | 载具初始位置坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
+| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值：0为Projection类型，1为WGS84类型，默认值：0 |
+| `autoHeight` | `boolean` | 否 | true | 可选，是否自动计算载具行驶高度，默认值：true，注意：当设置为false时会使用载具坐标的高度Z |
+| `useInitZ` | `boolean` | 否 | - | 可选，是否使用添加载具初始化坐标的高度Z，默认：false |
+| `delay` | `number` | 否 | 0.5 | 可选，控制载具moveTo()接口移动的延迟时间，单位：秒，默认值：0.5，设置0则不延时立刻移动 |
+| `rotation` | `array` | 否 | [0,0,0] | 可选，载具旋转，世界坐标系旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |
+| `colorType` | `number` | 否 | 0 | 可选，载具使用内置涂装颜色的类型，取值范围：[0~任意正整数]，默认值：0 随机使用涂装颜色，大于0则使用其他固定的涂装颜色。 |
+| `color` | [`Color`](/docs/api/types#color) | 否 | - | 可选，载具自定义涂装颜色，注意：若传入此颜色参数会覆盖掉内置的涂装颜色（colorType），支持四种格式，[取值示例](/docs/tutorials/color) |
+| `localOffset` | `array` | 否 | [0,0,0] | 可选，载具基于原始位置坐标的偏移量，默认值：[0,0,0] |
+| `enableDecal` | `boolean` | 否 | true | 可选，是否支持贴画贴合，默认值：true |
+| `visible` | `boolean` | 否 | - | 可选，设置载具对象加载后是否显示，默认：true |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -125,25 +126,29 @@ fdapi.vehicle.focus('vc1');
 
 调用多个Vehicle对象的多个蓝图函数
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | Vehicle对象的ID |
-| `functionName` | `string` | 蓝图函数名 |
-| `parameters` | `array` | 蓝图函数包含的多个参数结构，可选参数，数组类型，注意：传入多参数的顺序与类型务必与蓝图函数的参数顺序及其参数类型一致以保证执行结果符合预期。多个参数结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | Vehicle对象的ID |
+| `functionName` | `string` | 是 | - | 蓝图函数名 |
+| `parameters` | `array` | 否 | - | 蓝图函数包含的多个参数结构，可选参数，数组类型，注意：传入多参数的顺序与类型务必与蓝图函数的参数顺序及其参数类型一致以保证执行结果符合预期。多个参数结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.drone.callBatchFunction(data);
+await fdapi.drone.callBatchFunction({
+    id: '对象ID',
+    functionName: '示例值',
+    parameters: []
+});
 ```
 
 ---
@@ -152,9 +157,9 @@ await fdapi.drone.callBatchFunction(data);
 
 清空场景中所有的Vehicle对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -170,10 +175,10 @@ fdapi.vehicle.clear();
 
 删除一个或多个Vehicle对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的Vehicle对象的ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的Vehicle对象的ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -189,16 +194,16 @@ fdapi.vehicle.delete('vc1');
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Vehicle对象的ID或者ID数组 |
-| `followEnable` | `boolean` | 可选参数，是否开启相机自动跟随(开启后相机交互会被自动托管)，默认值：false |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，如果设置为负值则会在模型内部，可以用来模拟驾驶员视角 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `distanceRotation` | `array` | 可选参数，跟车相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `offset` | `array` | 可选参数，定位后载具视角的偏移量，单位：米，默认值：[0,0,0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Vehicle对象的ID或者ID数组 |
+| `followEnable` | `boolean` | 否 | false | 可选参数，是否开启相机自动跟随(开启后相机交互会被自动托管)，默认值：false |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，如果设置为负值则会在模型内部，可以用来模拟驾驶员视角 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `distanceRotation` | `array` | 否 | - | 可选参数，跟车相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `offset` | `array` | 否 | [0,0,0] | 可选参数，定位后载具视角的偏移量，单位：米，默认值：[0,0,0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -215,10 +220,10 @@ fdapi.vehicle.focus('vc1', true, 6, 2, [2, 6, 0], [5, 0, 0]);
 
 根据ID获取Vehicle对象的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的Vehicle对象的Vehicle对象的ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的Vehicle对象的Vehicle对象的ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -249,10 +254,10 @@ fdapi.vehicle.get('vc1');
 
 隐藏一个或多个Vehicle对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Vehicle对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Vehicle对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -268,20 +273,20 @@ fdapi.vehicle.hide('vc1');
 
 设置Vehicle对象行驶（根据实时获取的GPS数据运动）
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | Vehicle对象的ID |
-| `coordinate` | `array` | 车辆移动目标点坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
-| `gear` | `number` | 车辆档位：0驻车档 1倒挡 2空挡 3前进挡 |
-| `heading` | `number` | 车辆转向角度，取值范围：[0,360] |
-| `time` | `number` | 车辆移动耗时，单位：秒 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | Vehicle对象的ID |
+| `coordinate` | `array` | 是 | - | 车辆移动目标点坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
+| `gear` | `number` | 是 | - | 车辆档位：0驻车档 1倒挡 2空挡 3前进挡 |
+| `heading` | `number` | 是 | - | 车辆转向角度，取值范围：[0,360] |
+| `time` | `number` | 是 | - | 车辆移动耗时，单位：秒 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -330,10 +335,10 @@ let timer = setInterval(function () {
 
 暂停指定的载具运动
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Vehicle对象的ID或ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Vehicle对象的ID或ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -349,10 +354,10 @@ fdapi.vehicle.pause('vc1');
 
 恢复指定的载具运动
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string \| array` | Vehicle对象的ID或ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string \| array` | 是 | - | Vehicle对象的ID或ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -368,17 +373,17 @@ fdapi.vehicle.resume('vc1');
 
 设置Vehicle对象行驶的路径点（已知路径点 轨迹动画）
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | Vehicle对象的ID |
-| `wayPoints` | `array` | 载具运动的路径点数组，数组每一个元素的对象属性如下： |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | Vehicle对象的ID |
+| `wayPoints` | `array` | 是 | - | 载具运动的路径点数组，数组每一个元素的对象属性如下： |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -415,10 +420,10 @@ fdapi.vehicle.resume('vc1');
 
 显示一个或多个Vehicle对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Vehicle对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Vehicle对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -434,17 +439,17 @@ fdapi.vehicle.show('vc1');
 
 启动指定的载具在某个时刻开始运动
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | Vehicle对象的ID |
-| `timeStamp` | `number` | Vehicle对象开始运动的时间 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | Vehicle对象的ID |
+| `timeStamp` | `number` | 是 | - | Vehicle对象开始运动的时间 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -473,10 +478,10 @@ fdapi.vehicle.start([{
 
 停止指定的载具运动
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Vehicle对象的ID或ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Vehicle对象的ID或ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -492,20 +497,20 @@ fdapi.vehicle.stop('vc1');
 
 修改一个或多个Vehicle对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | Vehicle对象或者数组，以下属性支持更新 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | Vehicle对象或者数组，以下属性支持更新 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 根据Vehicle对象的ID更新载具属性 |
-| `coordinate` | `array` | 载具初始位置坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
-| `autoHeight` | `boolean` | 可选，是否自动计算载具行驶高度，默认值：true，注意：当设置为false时会使用载具坐标的高度Z |
-| `rotation` | `array` | 可选，载具旋转，世界坐标系旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |
-| `localOffset` | `array` | 可选，载具基于原始位置坐标的偏移量，默认值：[0,0,0] |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 根据Vehicle对象的ID更新载具属性 |
+| `coordinate` | `array` | 是 | - | 载具初始位置坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
+| `autoHeight` | `boolean` | 否 | true | 可选，是否自动计算载具行驶高度，默认值：true，注意：当设置为false时会使用载具坐标的高度Z |
+| `rotation` | `array` | 否 | [0,0,0] | 可选，载具旋转，世界坐标系旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |
+| `localOffset` | `array` | 否 | [0,0,0] | 可选，载具基于原始位置坐标的偏移量，默认值：[0,0,0] |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -559,9 +564,9 @@ fdapi.xxx.updateEnd(function () {
 
 updateEnd是异步调用，可以用回调函数也可以await
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

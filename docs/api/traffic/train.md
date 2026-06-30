@@ -24,6 +24,7 @@ description: "在三维场景中加载并沿指定轨迹运行的列车对象，
   - 地铁/高铁/城轨线路的列车运行可视化与时刻表/班次推演。
   - 轨道交通调度监控、客流与运营态势的数字孪生展示。
   - 站场、厂区铁路调车与应急演练中的列车移动仿真。
+  - 轨道交通列车运行仿真：列车沿轨道行驶，配合 Camera.follow 跟随观察站段运行。
 - **注意事项**：
   - 列车沿 `coordinates` 轨迹坐标行驶，坐标需贴合实际轨道线形并与 `coordinateType`（Projection/WGS84）一致，否则会出现脱轨或抖动。
   - `carriageNum`/`carriageStyle` 决定车厢编组与模型，`maxSpeed`、`acceleration` 控制运行节奏；`doubleLocomotive`、`direction` 用于设置车头与运行方向。
@@ -56,27 +57,27 @@ description: "在三维场景中加载并沿指定轨迹运行的列车对象，
 
 展示效果如下动图：
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | Train对象的ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `coordinateType` | `number` | 可选，坐标系类型，取值：0为Projection类型，1为WGS84类型，默认值：0 |
-| `coordinates` | `array` | 路径模型的轨迹坐标数组，取值示例：[取值示例](/docs/tutorials/coordinates) |
-| `range` | `array` | 可视范围: [近裁距离, 远裁距离]，取值范围: [任意负值, 任意正值] |
-| `doubleLocomotive` | `number` | 是否为双车头，取值范围：[0,1]，0：单向车头 1：双向车头 |
-| `direction` | `number` | 是否为反方向，取值范围：[0,1] |
-| `maxSpeed` | `number` | 最大速度 |
-| `carriageNum` | `number` | 车厢节数 |
-| `carriageStyle` | `string` | 车厢样式，对应模型路径。默认值：复兴号 |
-| `acceleration` | `number` | 加速度，取值范围1-10000数值越大，提速和减速越快 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | Train对象的ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值：0为Projection类型，1为WGS84类型，默认值：0 |
+| `coordinates` | `array` | 是 | - | 路径模型的轨迹坐标数组，取值示例：[取值示例](/docs/tutorials/coordinates) |
+| `range` | `array` | 是 | - | 可视范围: [近裁距离, 远裁距离]，取值范围: [任意负值, 任意正值] |
+| `doubleLocomotive` | `number` | 是 | - | 是否为双车头，取值范围：[0,1]，0：单向车头 1：双向车头 |
+| `direction` | `number` | 是 | - | 是否为反方向，取值范围：[0,1] |
+| `maxSpeed` | `number` | 是 | - | 最大速度 |
+| `carriageNum` | `number` | 是 | - | 车厢节数 |
+| `carriageStyle` | `string` | 否 | 复兴号 | 车厢样式，对应模型路径。默认值：复兴号 |
+| `acceleration` | `number` | 是 | - | 加速度，取值范围1-10000数值越大，提速和减速越快 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -149,9 +150,9 @@ fdapi.train.focus('train', 10);
 
 清空场景中所有的Train对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -167,10 +168,10 @@ fdapi.train.clear();
 
 删除一个或多个Train对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的Train对象的ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的Train对象的ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -186,14 +187,14 @@ fdapi.train.delete('train');
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Train对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，如果设置为负值则会在模型内部，可以用来模拟驾驶员视角 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `offset` | `array` | 可选参数，定位后载具视角的偏移量，单位：米，默认值：[0,0,0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Train对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，如果设置为负值则会在模型内部，可以用来模拟驾驶员视角 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `offset` | `array` | 否 | [0,0,0] | 可选参数，定位后载具视角的偏移量，单位：米，默认值：[0,0,0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -209,10 +210,10 @@ fdapi.train.focus('train', 100, 2, [0, 0, 0], [0, 0, 0]);
 
 根据ID获取Train对象的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的Train对象的Train对象的ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的Train对象的Train对象的ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -251,10 +252,10 @@ fdapi.train.get('train');
 
 隐藏一个或多个Train对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Train对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Train对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -270,18 +271,18 @@ fdapi.train.hide('train');
 
 火车按时间和里程移动
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | Train对象的ID |
-| `distance` | `number` | 行驶里程，单位：公里 |
-| `time` | `number` | 行驶耗时，单位：秒 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | Train对象的ID |
+| `distance` | `number` | 是 | - | 行驶里程，单位：公里 |
+| `time` | `number` | 是 | - | 行驶耗时，单位：秒 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -301,10 +302,10 @@ fdapi.train.moveTo({
 
 根据火车ID暂停火车
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 一辆火车ID或多辆火车的ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 一辆火车ID或多辆火车的ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -320,10 +321,10 @@ fdapi.train.pause('train');
 
 根据火车ID恢复火车移动
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 一辆火车ID或多辆火车的ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 一辆火车ID或多辆火车的ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -339,15 +340,15 @@ fdapi.train.resume('train');
 
 设置火车行驶时自动跟随相机
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Train对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，如果设置为负值则会在模型内部，可以用来模拟驾驶员视角 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `pitch` | `number` | 可选参数，相机旋转的Pitch，取值范围：[-90~90] |
-| `yaw` | `number` | 可选参数，相机旋转的Yaw，取值范围： [-180~180] |
-| `sensitivity` | `number` | 可选参数，载具灵敏度，取值范围： [0~1] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Train对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，如果设置为负值则会在模型内部，可以用来模拟驾驶员视角 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `pitch` | `number` | 否 | - | 可选参数，相机旋转的Pitch，取值范围：[-90~90] |
+| `yaw` | `number` | 否 | - | 可选参数，相机旋转的Yaw，取值范围： [-180~180] |
+| `sensitivity` | `number` | 否 | - | 可选参数，载具灵敏度，取值范围： [0~1] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -363,10 +364,10 @@ fdapi.train.setFollow('train', 100, 2, 0, 0, [0, 0, 0]);
 
 显示一个或多个Train对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Train对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Train对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -382,17 +383,17 @@ fdapi.train.show('train');
 
 修改一个或多个Train对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | Train对象或者数组，请参考add方法 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | Train对象或者数组，请参考add方法 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.train.update(data);
+await fdapi.train.update({ id: '对象ID' });
 ```
 
 ---
@@ -430,9 +431,9 @@ fdapi.xxx.updateEnd(function () {
 
 updateEnd是异步调用，可以用回调函数也可以await
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
