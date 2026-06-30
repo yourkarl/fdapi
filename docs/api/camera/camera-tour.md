@@ -25,6 +25,7 @@ CameraTour 是相机导览（漫游）动画对象，用于按关键帧序列驱
   - 展厅或领导汇报中自动巡游城市/园区，串联多个重点区域形成讲解动线。
   - 项目开场或大屏轮播时循环播放预设飞行路线，无人值守自动展示。
   - 应急复盘按时间轴沿事件发生路径漫游回放现场态势。
+  - 动画导览汇报：绘制 / 编辑漫游路径，设置停留时长与播放速度，沉浸式汇报展示并导出高分辨率视频。
 - **注意事项**：
   - 路线由 CameraTourData 与 CameraTourKeyFrame 组成，需先 add 再 play。
   - 关键帧坐标系须与工程一致；关键帧不宜过密以保证飞行平滑。
@@ -58,10 +59,10 @@ CameraTour 是相机导览（漫游）动画对象，用于按关键帧序列驱
 
 创建一个或多个CameraTour对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `CameraTourData \| array` | [`CameraTourData`](/docs/api/camera/camera-tour-data)类的对象或者数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `CameraTourData \| array` | 是 | - | [`CameraTourData`](/docs/api/camera/camera-tour-data)类的对象或者数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -89,10 +90,10 @@ fdapi.cameraTour.play('1');
 
 删除一个或多个CameraTour对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的CameraTour对象的ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的CameraTour对象的ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -108,10 +109,10 @@ fdapi.cameraTour.delete('1');
 
 根据CameraTour的ID导出视频文件，注意：导出的视频文件默认格式为*.mp4，分辨率：1920X1080，帧速率：30
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | CameraTour的ID |
-| `path` | `string` | 导出的相机导览视频文件的磁盘保存路径，注意：此路径需要在渲染服务器端存在，因为导出视频文件保存在渲染服务器的磁盘上，取值示例：D:/videos/test.mp4 |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | CameraTour的ID |
+| `path` | `string` | 是 | - | 导出的相机导览视频文件的磁盘保存路径，注意：此路径需要在渲染服务器端存在，因为导出视频文件保存在渲染服务器的磁盘上，取值示例：D:/videos/test.mp4 |
 
 **返回：** 返回查询结果。
 
@@ -135,10 +136,10 @@ fdapi.cameraTour.pause();
 
 开始播放导览动画
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | CameraTour的ID |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | CameraTour的ID |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -168,11 +169,11 @@ fdapi.cameraTour.resume();
 
 设置时间长度
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | CameraTour的ID |
-| `val` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | CameraTour的ID |
+| `val` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -182,11 +183,11 @@ fdapi.cameraTour.resume();
 
 设置导览动画关键帧
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | CameraTour的ID |
-| `val` | `array` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | CameraTour的ID |
+| `val` | `array` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -196,11 +197,11 @@ fdapi.cameraTour.resume();
 
 设置播放导览时点击鼠标是否暂停
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 相机导览的ID |
-| `bool` | `boolean` | 播放导览时点击鼠标是否暂停，默认：true |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 相机导览的ID |
+| `bool` | `boolean` | 是 | - | 播放导览时点击鼠标是否暂停，默认：true |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -216,11 +217,11 @@ fdapi.cameraTour.setMouseClickToPause('1', false);
 
 设置名称
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | CameraTour的ID |
-| `val` | `string` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | CameraTour的ID |
+| `val` | `string` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -230,11 +231,11 @@ fdapi.cameraTour.setMouseClickToPause('1', false);
 
 设置导览从某时刻开始播放
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 相机导览的ID |
-| `time` | `number` | 导览开始播放的时刻 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 相机导览的ID |
+| `time` | `number` | 是 | - | 导览开始播放的时刻 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -250,11 +251,11 @@ fdapi.cameraTour.setTime('1', 3);
 
 设置用户数据
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | CameraTour的ID |
-| `val` | `string` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | CameraTour的ID |
+| `val` | `string` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -264,9 +265,9 @@ fdapi.cameraTour.setTime('1', 3);
 
 停止播放导览动画
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -282,10 +283,10 @@ fdapi.cameraTour.stop();
 
 修改一个或多个CameraTour对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `CameraTourData \| array` | [`CameraTourData`](/docs/api/camera/camera-tour-data)类的对象或者数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `CameraTourData \| array` | 是 | - | [`CameraTourData`](/docs/api/camera/camera-tour-data)类的对象或者数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

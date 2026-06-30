@@ -59,52 +59,52 @@ new FiniteElement()
 
 添加一个或多个有限元分析对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 有限元分析对象的数据结构，可以是Object类型或者Array类型，对于每一个FiniteElement对象，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 有限元分析对象的数据结构，可以是Object类型或者Array类型，对于每一个FiniteElement对象，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 有限元分析的唯一标识符ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `dataPath` | `string` | 必选，包含有限元分析数据的二进制文件路径 |
-| `coordinate` | `array` | 有限元分析位置坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
-| `coordinateType` | `number` | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
-| `rotation` | `array` | 有限元分析旋转角度：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |
-| `type` | `number` | 有限元分析类型，共12种，类型：整数，取值范围：[0~11]，以下为类型数值对应关系： |
-| `type.0` | `-` | ： u1 沿X轴向空间位移 |
-| `type.1` | `-` | ： u2 沿Y轴向空间位移 |
-| `type.2` | `-` | ： u3 沿Z轴向空间位移 |
-| `type.3` | `-` | ： s11 X轴向的应力，正值为拉应力，负值为压应力 |
-| `type.4` | `-` | ： s22 Y轴向的应力，正值为拉应力，负值为压应力 |
-| `type.5` | `-` | ： s33 Z轴向的应力，正值为拉应力，负值为压应力 |
-| `type.6` | `-` | ： s12 在YZ平面上，沿Y向的剪力 |
-| `type.7` | `-` | ： s13 在YZ平面上，沿Z向的剪力 |
-| `type.8` | `-` | ： s23 在XZ平面上，沿Z向的剪力 |
-| `type.9` | `-` | ： d1 X方向损伤 |
-| `type.10` | `-` | ：d2 Y方向损伤 |
-| `type.11` | `-` | ：d3 Z方向损伤 |
-| `valueRange` | `array` | 有限元分析结果对应值的范围：[min,max]，数组元素类型：[任意浮点数] |
-| `characteristicLine` | `object` | 有限元对象的特征线对象，包含以下参数： |
-| `characteristicLine.filePath` | `string` | 包含特征线信息的文件路径 |
-| `characteristicLine.color` | [`Color`](/docs/api/types#color) | 特征线的颜色 |
-| `showLine` | `boolean` | 是否显示等值线，默认值：false |
-| `showColorLine` | `boolean` | 是否显示等值线颜色，默认值：false |
-| `contourParams` | `array` | 控制有限元分析对象热力效果，从valueRange的min/max分割而来，二维数组，取值示例：[[min,max],[min,max],[min,max]...] |
-| `sections` | `array` | 有限元分析对象的各部分设置可见性 |
-| `sections.index` | `number` | 待隐藏显示的模型索引 |
-| `sections.visible` | `boolean` | 是否可见，默认值：true |
-| `colors` | `object` | 有限元分析对象的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
-| `colors.size` | `number` | 调色板图片尺寸 |
-| `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
-| `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | [`Color`](/docs/api/types#color) | 值对应的调色板颜色 |
-| `colors.value` | `number` | 值 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 有限元分析的唯一标识符ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `dataPath` | `string` | 是 | - | 必选，包含有限元分析数据的二进制文件路径 |
+| `coordinate` | `array` | 是 | - | 有限元分析位置坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
+| `coordinateType` | `number` | 否 | 0 | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
+| `rotation` | `array` | 否 | [0,0,0] | 有限元分析旋转角度：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |
+| `type` | `number` | 是 | - | 有限元分析类型，共12种，类型：整数，取值范围：[0~11]，以下为类型数值对应关系： |
+| `type.0` | `-` | 是 | - | ： u1 沿X轴向空间位移 |
+| `type.1` | `-` | 是 | - | ： u2 沿Y轴向空间位移 |
+| `type.2` | `-` | 是 | - | ： u3 沿Z轴向空间位移 |
+| `type.3` | `-` | 是 | - | ： s11 X轴向的应力，正值为拉应力，负值为压应力 |
+| `type.4` | `-` | 是 | - | ： s22 Y轴向的应力，正值为拉应力，负值为压应力 |
+| `type.5` | `-` | 是 | - | ： s33 Z轴向的应力，正值为拉应力，负值为压应力 |
+| `type.6` | `-` | 是 | - | ： s12 在YZ平面上，沿Y向的剪力 |
+| `type.7` | `-` | 是 | - | ： s13 在YZ平面上，沿Z向的剪力 |
+| `type.8` | `-` | 是 | - | ： s23 在XZ平面上，沿Z向的剪力 |
+| `type.9` | `-` | 是 | - | ： d1 X方向损伤 |
+| `type.10` | `-` | 是 | - | ：d2 Y方向损伤 |
+| `type.11` | `-` | 是 | - | ：d3 Z方向损伤 |
+| `valueRange` | `array` | 是 | - | 有限元分析结果对应值的范围：[min,max]，数组元素类型：[任意浮点数] |
+| `characteristicLine` | `object` | 是 | - | 有限元对象的特征线对象，包含以下参数： |
+| `characteristicLine.filePath` | `string` | 是 | - | 包含特征线信息的文件路径 |
+| `characteristicLine.color` | [`Color`](/docs/api/types#color) | 是 | - | 特征线的颜色 |
+| `showLine` | `boolean` | 否 | false | 是否显示等值线，默认值：false |
+| `showColorLine` | `boolean` | 否 | false | 是否显示等值线颜色，默认值：false |
+| `contourParams` | `array` | 是 | - | 控制有限元分析对象热力效果，从valueRange的min/max分割而来，二维数组，取值示例：[[min,max],[min,max],[min,max]...] |
+| `sections` | `array` | 是 | - | 有限元分析对象的各部分设置可见性 |
+| `sections.index` | `number` | 是 | - | 待隐藏显示的模型索引 |
+| `sections.visible` | `boolean` | 否 | true | 是否可见，默认值：true |
+| `colors` | `object` | 是 | - | 有限元分析对象的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
+| `colors.size` | `number` | 是 | - | 调色板图片尺寸 |
+| `colors.gradient` | `boolean` | 是 | - | 是否渐变 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 是 | - | 无效像素点的默认颜色，默认白色 |
+| `colors.colorStops` | `array` | 是 | - | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
+| `colors.color` | [`Color`](/docs/api/types#color) | 是 | - | 值对应的调色板颜色 |
+| `colors.value` | `number` | 是 | - | 值 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -235,9 +235,9 @@ fdapi.finiteElement.focus('fe_1');
 
 清空场景中所有的有限元分析对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -253,10 +253,10 @@ fdapi.finiteElement.clear();
 
 删除一个或多个有限元分析对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的有限元分析对象ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的有限元分析对象ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -272,13 +272,13 @@ fdapi.finiteElement.delete(['fe_1']);
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 有限元分析对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 有限元分析对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -294,10 +294,10 @@ fdapi.finiteElement.focus('fe_1');
 
 根据有限元分析ID获取有限元分析的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的有限元分析对象ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的有限元分析对象ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -340,10 +340,10 @@ fdapi.finiteElement.get(['fe_1']);
 
 隐藏有限元分析
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 有限元分析对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 有限元分析对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -359,10 +359,10 @@ fdapi.finiteElement.hide(['fe_1']);
 
 显示有限元分析
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 有限元分析对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 有限元分析对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -378,10 +378,10 @@ fdapi.finiteElement.show(['fe_1']);
 
 修改一个或多个有限元分析对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 有限元分析对象或对象数组，参考add方法 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 有限元分析对象或对象数组，参考add方法 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -441,9 +441,9 @@ fdapi.xxx.updateEnd(function () {
 
 updateEnd是异步调用，可以用回调函数也可以await
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

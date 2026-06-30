@@ -587,7 +587,7 @@ export default function Sandbox() {
   }[status];
 
   return (
-    <Layout noFooter title="在线调试" description="DTS Cloud SDK 在线调试台 — 真实连接云渲染服务">
+    <Layout noFooter title="在线调试" description="DTS SDK 在线调试台 — 真实连接云渲染服务">
       <style>{`
         /* ============ 在线调试台 · 简约暗色 ============ */
         .sb-wrap {

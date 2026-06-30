@@ -24,6 +24,7 @@ description: "在三维场景中加载与驱动无人机模型，支持坐标定
   - 低空经济航线与无人机物流配送的可视化飞行模拟与航迹回放。
   - 应急救援、电力/管线/能源设施的无人机巡检路径与状态展示。
   - 城市治理、园区安防的无人机空中巡逻与目标跟踪轨迹呈现。
+  - 低空经济无人机全流程航线仿真：沿航道从起点到终点飞行，机头第一视角漫游，仪表盘展示高度 / 对地速度 / 剩余电量 / 航线偏离告警，支持多机同步并行。
 - **注意事项**：
   - 通过 `assetPath` 引用资源库无人机模型，`coordinate` 与 `coordinateType`（Projection/WGS84）需匹配；轨迹线 `trailDuration`、`trailType` 等影响渲染开销。
   - `delay` 控制 moveTo 移动延迟，设为 0 立即移动；大量无人机同时驱动时应关注性能与轨迹持续时间设置。
@@ -57,36 +58,36 @@ description: "在三维场景中加载与驱动无人机模型，支持坐标定
 
 ![](/img/refdoc/api/copy_actor_path.gif)
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 无人机对象的ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `assetPath` | `string` | 资源库无人机的路径，类似CustomObject对象的assetPath，示例值：'/AirCityPlugin/ArtResources/Drone/Drone' |
-| `coordinate` | `array` | 无人机初始位置坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
-| `coordinateType` | `number` | 可选，坐标系类型，取值：0为Projection类型，1为WGS84类型，默认值：0 |
-| `delay` | `number` | 可选，控制无人机moveTo()接口移动的延迟时间，单位：秒，默认值：0.5，设置0则不延时立刻移动 |
-| `rotation` | `array` | 可选，无人机旋转，世界坐标系旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |
-| `localOffset` | `array` | 可选，无人机基于原始位置坐标的偏移量，默认值：[0,0,0] |
-| `scale` | `array` | 可选，无人机缩放：[X,Y,Z]，数组元素类型：(number)，取值范围：[任意正整数] |
-| `visible` | `boolean` | 可选，设置无人机对象加载后是否显示，默认：true |
-| `trailType` | [`DroneTrailStyle`](/docs/api/types#dronetrailstyle) | (`DroneTrailStyle`) 可选，轨迹线样式枚举，详情参考 `DroneTrailStyle`，默认值：0 |
-| `trailThickness` | `number` | 可选，像素线宽度，注意：仅设置像素线样式枚举时生效 |
-| `trailColor` | [`Color`](/docs/api/types#color) | 可选，轨迹线颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `trailDuration` | `number` | 可选，轨迹持续时间，单位：秒，默认值：3秒 |
-| `lightColor` | [`Color`](/docs/api/types#color) | 可选，无人机自发光灯颜色亮度，取值示例：[1, 0, 0, 10]，注意：alpha是无人机亮度，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `label` | `object` | 可选，无人机的标牌对象，默认不显示，包含可配置的参数如下： |
-| `label.visible` | `boolean` | 无人机标牌是否可见，默认值：false |
-| `label.offset` | `array` | 无人机标牌偏移，默认值：[0, 0, 0] |
-| `label.cullDistance` | `number` | 无人机标牌剔除距离，相机距离无人机的观察距离大于此阈值则屏幕显示剔除。单位：米 |
-| `label.text` | `string` | 无人机标牌显示的字符串 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 无人机对象的ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `assetPath` | `string` | 是 | - | 资源库无人机的路径，类似CustomObject对象的assetPath，示例值：'/AirCityPlugin/ArtResources/Drone/Drone' |
+| `coordinate` | `array` | 是 | - | 无人机初始位置坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
+| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值：0为Projection类型，1为WGS84类型，默认值：0 |
+| `delay` | `number` | 否 | 0.5 | 可选，控制无人机moveTo()接口移动的延迟时间，单位：秒，默认值：0.5，设置0则不延时立刻移动 |
+| `rotation` | `array` | 否 | [0,0,0] | 可选，无人机旋转，世界坐标系旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |
+| `localOffset` | `array` | 否 | [0,0,0] | 可选，无人机基于原始位置坐标的偏移量，默认值：[0,0,0] |
+| `scale` | `array` | 否 | - | 可选，无人机缩放：[X,Y,Z]，数组元素类型：(number)，取值范围：[任意正整数] |
+| `visible` | `boolean` | 否 | - | 可选，设置无人机对象加载后是否显示，默认：true |
+| `trailType` | [`DroneTrailStyle`](/docs/api/types#dronetrailstyle) | 否 | 0 | (`DroneTrailStyle`) 可选，轨迹线样式枚举，详情参考 `DroneTrailStyle`，默认值：0 |
+| `trailThickness` | `number` | 否 | - | 可选，像素线宽度，注意：仅设置像素线样式枚举时生效 |
+| `trailColor` | [`Color`](/docs/api/types#color) | 否 | - | 可选，轨迹线颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `trailDuration` | `number` | 否 | 3秒 | 可选，轨迹持续时间，单位：秒，默认值：3秒 |
+| `lightColor` | [`Color`](/docs/api/types#color) | 否 | - | 可选，无人机自发光灯颜色亮度，取值示例：[1, 0, 0, 10]，注意：alpha是无人机亮度，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `label` | `object` | 否 | - | 可选，无人机的标牌对象，默认不显示，包含可配置的参数如下： |
+| `label.visible` | `boolean` | 否 | false | 无人机标牌是否可见，默认值：false |
+| `label.offset` | `array` | 否 | [0, 0, 0] | 无人机标牌偏移，默认值：[0, 0, 0] |
+| `label.cullDistance` | `number` | 是 | - | 无人机标牌剔除距离，相机距离无人机的观察距离大于此阈值则屏幕显示剔除。单位：米 |
+| `label.text` | `string` | 是 | - | 无人机标牌显示的字符串 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -140,9 +141,9 @@ fdapi.drone.focus('drone5');
 
 清空场景中所有的无人机对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -158,10 +159,10 @@ fdapi.drone.clear();
 
 删除一个或多个无人机对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的无人机对象的ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的无人机对象的ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -177,17 +178,17 @@ fdapi.drone.delete('drone5');
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 无人机对象的ID或者ID数组 |
-| `followEnable` | `boolean` | 可选参数，是否开启相机自动跟随(开启后相机交互会被自动托管)，默认值：false |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，如果设置为负值则会在模型内部，可以用来模拟无人机观察视角 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `viewPitch` | `number` | 可选参数，观察欧拉角的Pitch，取值范围：[-90~90] |
-| `viewYaw` | `number` | 可选参数，观察欧拉角的Yaw，取值范围： [-180~180] |
-| `sensitivity` | `number` | 可选参数，无人机灵敏度，取值范围： [0~1] |
-| `offset` | `array` | 可选参数，无人机视角的偏移量，单位：米，默认值：[0,0,0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 无人机对象的ID或者ID数组 |
+| `followEnable` | `boolean` | 否 | false | 可选参数，是否开启相机自动跟随(开启后相机交互会被自动托管)，默认值：false |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，如果设置为负值则会在模型内部，可以用来模拟无人机观察视角 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `viewPitch` | `number` | 否 | - | 可选参数，观察欧拉角的Pitch，取值范围：[-90~90] |
+| `viewYaw` | `number` | 否 | - | 可选参数，观察欧拉角的Yaw，取值范围： [-180~180] |
+| `sensitivity` | `number` | 否 | - | 可选参数，无人机灵敏度，取值范围： [0~1] |
+| `offset` | `array` | 否 | [0,0,0] | 可选参数，无人机视角的偏移量，单位：米，默认值：[0,0,0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -204,10 +205,10 @@ fdapi.drone.focus('drone5', false, 8, 2, -45, 10, [0, 0, 0], 0.02);
 
 根据ID获取无人机对象的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的无人机对象的无人机对象的ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的无人机对象的无人机对象的ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -238,10 +239,10 @@ fdapi.drone.get('drone5');
 
 隐藏一个或多个无人机对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 无人机对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 无人机对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -257,20 +258,20 @@ fdapi.drone.hide('drone5');
 
 设置无人机对象飞行移动
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 无人机对象的ID |
-| `coordinate` | `array` | 无人机对象移动目标点坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
-| `rotation` | `array` | 可选，无人机的旋转角度：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |
-| `astern` | `boolean` | 可选，是否开启倒档，默认值：false |
-| `time` | `number` | 可选，无人机对象移动目标点对应的时间戳 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 无人机对象的ID |
+| `coordinate` | `array` | 是 | - | 无人机对象移动目标点坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
+| `rotation` | `array` | 否 | [0,0,0] | 可选，无人机的旋转角度：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |
+| `astern` | `boolean` | 否 | false | 可选，是否开启倒档，默认值：false |
+| `time` | `number` | 否 | - | 可选，无人机对象移动目标点对应的时间戳 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -311,10 +312,10 @@ fdapi.drone.focus('drone5', false, 8, 2, -45, 10, [0, 0, 0], 0.02);
 
 显示一个或多个无人机对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 无人机对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 无人机对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -330,26 +331,26 @@ fdapi.drone.show('drone5');
 
 修改一个或多个无人机对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 无人机对象或者数组，以下属性支持更新 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 无人机对象或者数组，以下属性支持更新 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 根据无人机对象的ID更新无人机相关属性 |
-| `trailType` | `number` | (`DroneTrailStyle`) 可选，轨迹线样式枚举，详情参考 `DroneTrailStyle`，默认值：0 |
-| `trailColor` | [`Color`](/docs/api/types#color) | 可选，轨迹线颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `trailDuration` | `number` | 可选，轨迹持续时间，单位：秒，默认值：3 |
-| `trailThickness` | `number` | 可选，像素线宽度，注意：仅设置像素线样式枚举时生效 |
-| `lightColor` | [`Color`](/docs/api/types#color) | 可选，无人机自发光灯颜色亮度，取值示例：[1, 0, 0, 10]，注意：alpha是无人机亮度，支持四种格式，[取值示例](/docs/tutorials/color)，默认：关闭 |
-| `label` | `object` | 可选，无人机的标牌对象，默认不显示，包含可配置的参数如下： |
-| `label.visible` | `boolean` | 无人机标牌是否可见，默认值：false |
-| `label.offset` | `array` | 无人机标牌偏移，默认值：[0, 0, 0] |
-| `label.cullDistance` | `number` | 无人机标牌剔除距离，相机距离无人机的观察距离大于此阈值则屏幕显示剔除。单位：米 |
-| `label.text` | `string` | 无人机标牌显示的字符串 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 根据无人机对象的ID更新无人机相关属性 |
+| `trailType` | `number` | 否 | 0 | (`DroneTrailStyle`) 可选，轨迹线样式枚举，详情参考 `DroneTrailStyle`，默认值：0 |
+| `trailColor` | [`Color`](/docs/api/types#color) | 否 | - | 可选，轨迹线颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `trailDuration` | `number` | 否 | 3 | 可选，轨迹持续时间，单位：秒，默认值：3 |
+| `trailThickness` | `number` | 否 | - | 可选，像素线宽度，注意：仅设置像素线样式枚举时生效 |
+| `lightColor` | [`Color`](/docs/api/types#color) | 否 | - | 可选，无人机自发光灯颜色亮度，取值示例：[1, 0, 0, 10]，注意：alpha是无人机亮度，支持四种格式，[取值示例](/docs/tutorials/color)，默认：关闭 |
+| `label` | `object` | 否 | - | 可选，无人机的标牌对象，默认不显示，包含可配置的参数如下： |
+| `label.visible` | `boolean` | 否 | false | 无人机标牌是否可见，默认值：false |
+| `label.offset` | `array` | 否 | [0, 0, 0] | 无人机标牌偏移，默认值：[0, 0, 0] |
+| `label.cullDistance` | `number` | 是 | - | 无人机标牌剔除距离，相机距离无人机的观察距离大于此阈值则屏幕显示剔除。单位：米 |
+| `label.text` | `string` | 是 | - | 无人机标牌显示的字符串 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -410,9 +411,9 @@ fdapi.xxx.updateEnd(function () {
 
 updateEnd是异步调用，可以用回调函数也可以await
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

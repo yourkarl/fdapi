@@ -17,6 +17,21 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: '行业方案',
+      collapsible: false,
+      items: [
+        'tutorials/transport-solution',
+        'tutorials/road-asset-attributes',
+        'tutorials/water-solution',
+        'tutorials/park-solution',
+        'tutorials/community-cim-solution',
+        'tutorials/building-solution',
+        'tutorials/rail-transit-solution',
+        'tutorials/campus-solution',
+      ],
+    },
+    {
+      type: 'category',
       label: '核心概念',
       collapsible: false,
       items: [
@@ -41,6 +56,7 @@ const sidebars = {
         'tutorials/explorer',
         'tutorials/explorer-guideline',
         'tutorials/cloud-deploy',
+        'tutorials/instance-management',
         'tutorials/revision-history',
       ],
     },

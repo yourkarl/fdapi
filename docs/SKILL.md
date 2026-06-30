@@ -1,12 +1,12 @@
 ---
 name: ddts
-display_name: DTS Cloud 数字孪生 SDK —— fdapi 二次开发与 API 查询
+display_name: DTS 数字孪生 SDK —— fdapi 二次开发与 API 查询
 version: '7.1'
 homepage: https://yourkarl.github.io/fdapi/
-description: 飞渡 DTS Cloud（DigitalTwin）数字孪生 SDK 开发与 API 查询工具。涵盖云渲染初始化、异步调用、事件、坐标/颜色约定，以及 fdapi 全部类与方法（相机、标注、图层、矢量、模型、水利/海洋、交通、信号、战场、有限元、天气、分析量算等）。在用户进行 DTS 二次开发，或查询 fdapi / DigitalTwinAPI / DigitalTwinPlayer / 某个类或方法、需要标注/相机/图层/仿真等示例代码时使用。
+description: 飞渡 DTS（DigitalTwin）数字孪生 SDK 开发与 API 查询工具。涵盖云渲染初始化、异步调用、事件、坐标/颜色约定，以及 fdapi 全部类与方法（相机、标注、图层、矢量、模型、水利/海洋、交通、信号、战场、有限元、天气、分析量算等）。在用户进行 DTS 二次开发，或查询 fdapi / DigitalTwinAPI / DigitalTwinPlayer / 某个类或方法、需要标注/相机/图层/仿真等示例代码时使用。
 ---
 
-# DTS Cloud 数字孪生 SDK 文档
+# DTS 数字孪生 SDK 文档
 
 飞渡 DTS（Digital Twin System）Cloud 是云渲染数字孪生平台。网页通过 `DigitalTwinPlayer` 接收三维视频流，并通过 `fdapi`（即 `DigitalTwinAPI`）调用三维场景能力。本 Skill 提供初始化模板、调用约定，并把文档拆分到类/方法级别供按需查阅。
 

@@ -70,7 +70,9 @@
       "mcp__Claude_Preview__preview_network",
       "mcp__Claude_Preview__preview_screenshot",
       "mcp__Claude_Preview__preview_console_logs",
-      "mcp__Claude_Preview__preview_resize"
+      "mcp__Claude_Preview__preview_resize",
+      "PowerShell($tools = @{}; foreach\\($c in \"python\",\"python3\",\"node\",\"magick\",\"wkhtmltoimage\"\\){ $p = \\(Get-Command $c -ErrorAction SilentlyContinue\\).Source; if\\($p\\){ Write-Output \"$c -> $p\" } else { Write-Output \"$c -> NOT FOUND\" } }; Write-Output \"---chrome---\"; $chromePaths = @\\(\"C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\",\"C:\\\\Program Files \\(x86\\)\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\",\"C:\\\\Program Files \\(x86\\)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\",\"C:\\\\Program Files\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\"\\); foreach\\($cp in $chromePaths\\){ if\\(Test-Path $cp\\){ Write-Output \"FOUND: $cp\" } })",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $img=[System.Drawing.Bitmap]::FromFile\\(\"D:\\\\UserData\\\\Desktop\\\\1.png\"\\); $pts=@{ \"blue-row\\(y50\\)\"= @\\(20,50\\); \"white-row\\(y75\\)\"=@\\(20,75\\); \"title-text\"=@\\(560,18\\); \"header-block\\(y150\\)\"=@\\(20,150\\); \"value-text\\(y230\\)\"=@\\(660,230\\) }; foreach\\($k in $pts.Keys\\){ $p=$pts[$k]; $c=$img.GetPixel\\($p[0],$p[1]\\); Write-Output \\(\"{0}: #{1:X2}{2:X2}{3:X2}\" -f $k,$c.R,$c.G,$c.B\\) }; $img.Dispose\\(\\))"
     ],
     "deny": [
       "Bash(rm -rf *)",

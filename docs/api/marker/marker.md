@@ -28,6 +28,7 @@ Marker标注点的效果图：
   - 在地图/场景上批量标注监控点、传感器、消防栓、摄像头等设备点位
   - 应急场景下标注告警点、事故点、风险源并叠加状态图标与文字
   - 园区/楼宇的资产点位标识与点击查看详情交互
+  - 公路设施点位标注（路灯、监控、收费站等），点击弹出 HTML 资料页（popupURL）展示养护记录与附件图纸，按公路 / 路段 / 资产类型用 groupId 分组显隐。
 - **注意事项**：
   - 单次创建的 Marker 数量不要超过 5000 个，单工程内总量不要超过 20 万个，超量会影响性能；
   - 通过 range / textRange / viewHeightRange 控制可视范围，避免海量标注同屏堆叠；
@@ -104,55 +105,55 @@ new Marker()
 
 添加一个或多个标注点  调用时注意：单次创建的Marker对象数量不要超过5000个，在一个工程内创建的Marker对象总数量不要超过20万个。
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 标注点的数据，可以是Object类型或者Array类型，对于每一个标注点，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 标注点的数据，可以是Object类型或者Array类型，对于每一个标注点，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注点的唯一标识符 |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `coordinateType` | `number` | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
-| `coordinate` | `array` | 标注点的位置坐标: [x, y, z]，[取值示例](/docs/tutorials/coordinates) |
-| `anchors` | `array` | 锚点: [x, y]，设置Marker的聚焦图片位置的偏移，默认值：[0,0]，取值规则如下图： ![](/img/refdoc/api/anchors.png) |
-| `range` | `array` | 可视范围: [近裁距离, 远裁距离]，默认值: [10, 10000] |
-| `textRange` | `array` | 文本可视范围: [近裁距离, 远裁距离]，默认值: [100, 6000] |
-| `viewHeightRange` | `array` | 可见高度范围：[最小可见高度, 远最大可见高度]，默认值: [-1000000000, 1000000000] |
-| `rangeRatio` | `number` | 可视范围的衰减因子，取值范围：[0~1]，仅在设置了viewHeightRange后才生效，会根据相机高度对可见距离进行衰减，相机高度=maxViewHeight时，marker的可见范围是range，相机高度下降到minViewHeight时marker的可见范围会线性衰减到rangeRatio*range |
-| `imageSize` | `array` | 图片的尺寸: [width, height]， 默认值[32,32] |
-| `fixedSize` | `boolean` | 图片是否固定尺寸，取值范围：false 自适应，近大远小，true 固定尺寸，默认值：false |
-| `imagePath` | `string` | 图片路径，支持gif动图，支持本地路径和网络路径，[资源引入说明](/docs/tutorials/resources) |
-| `hoverImagePath` | `string` | 鼠标悬停时显示的图片路径，支持gif动图，支持本地路径和网络路径，[资源引入说明](/docs/tutorials/resources) |
-| `hoverImageSize` | `array` | 鼠标悬停时显示的图片尺寸: [width, height]， 默认值：[0,0] 使用图片自身的尺寸，注意：如果设置的值比imageSize尺寸小，则默认使用imageSize的尺寸。 |
-| `text` | `string` | 显示的文字 |
-| `useTextAnimation` | `boolean` | 是否打开文字展开动画效果，默认值：true |
-| `textOffset` | `array` | 文本偏移: [x, y]，默认值：[0,0] |
-| `fontSize` | `number` | 字体大小，默认值：12 |
-| `fontOutlineSize` | `number` | 字体轮廓线大小，默认值：1 |
-| `textBackgroundColor` | [`Color`](/docs/api/types#color) | 文本背景颜色，默认值白色[1, 1, 1, 0.85]，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `fontColor` | [`Color`](/docs/api/types#color) | 字体颜色，默认值：黑色Color.Black，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `fontOutlineColor` | [`Color`](/docs/api/types#color) | 字体轮廓线颜色，默认值：黑色Color.Black，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `popupBackgroundColor` | [`Color`](/docs/api/types#color) | 弹窗背景颜色， [1.0,1.0,1.0,0.1] ，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `popupURL` | `string` | 弹窗HTML链接或者视频文件路径，也支持实时流媒体视频地址，[资源引入说明](/docs/tutorials/resources) |
-| `popupSize` | `array` | 弹窗大小: [width, height]，默认值：[600,400] |
-| `popupOffset` | `array` | 弹窗偏移: [x, y]，默认值：[0,0] |
-| `showLine` | `boolean` | 标注点下方是否显示垂直牵引线，默认不显示：false |
-| `lineSize` | `array` | 牵引线粗细[width, height]，默认值：[0,0]，如果要显示牵引线，需要将该属性设置成非0值 |
-| `lineColor` | [`Color`](/docs/api/types#color) | 牵引线颜色，默认值：白色，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `lineOffset` | `array` | 牵引线偏移: [x, y]，默认值：[0,0] |
-| `autoHidePopupWindow` | `boolean` | 是否自动关闭弹出窗口，默认值：true |
-| `autoHideText` | `boolean` | 打开弹窗时是否自动隐藏文字，默认值：true |
-| `autoHeight` | `boolean` | 自动判断下方是否有物体，设置正确高度，默认值：false。注意：如果Marker坐标的z值是0或者不设置，则自动判断位置下方是否有物体并进行贴合，如果z有值则相当于z方向的offset偏移 |
-| `displayMode` | `number` | 显示模式，默认值：4，取值说明如下： |
-| `autoDisplayModeSwitchFirstRatio` | `number` | 智能模式时的显示模式切换时range参数的首段比例，仅在displayMode=4时生效，取值范围：[0.01~1.0)，默认值0.01，示例：如果range=[1,1000]，则在[1,10]范围内dislayMode=2 |
-| `autoDisplayModeSwitchSecondRatio` | `number` | 智能模式时的显示模式切换时range参数的第二段比例，仅在displayMode=4时生效，取值范围：[0.01~1.0)，默认值0.1，示例：如果range=[1,1000]，则在[10,100]范围内dislayMode=1，大于100则dislayMode=0 |
-| `clusterByImage` | `boolean` | 聚合时是否根据图片路径(imagePath)分类聚合显示，即当多个marker的imagePath路径参数相同时按路径对marker分类聚合 |
-| `priority` | `number` | 避让优先级，默认值：0，注意：值越大显示越靠上 |
-| `occlusionCull` | `boolean` | 是否参与遮挡剔除，注意：仅displayMode设置为0或1时，遮挡剔除才会生效 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注点的唯一标识符 |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `coordinateType` | `number` | 否 | 0 | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
+| `coordinate` | `array` | 是 | - | 标注点的位置坐标: [x, y, z]，[取值示例](/docs/tutorials/coordinates) |
+| `anchors` | `array` | 否 | [0,0] | 锚点: [x, y]，设置Marker的聚焦图片位置的偏移，默认值：[0,0]，取值规则如下图： ![](/img/refdoc/api/anchors.png) |
+| `range` | `array` | 否 | [10, 10000] | 可视范围: [近裁距离, 远裁距离]，默认值: [10, 10000] |
+| `textRange` | `array` | 否 | [100, 6000] | 文本可视范围: [近裁距离, 远裁距离]，默认值: [100, 6000] |
+| `viewHeightRange` | `array` | 否 | [-1000000000, 1000000000] | 可见高度范围：[最小可见高度, 远最大可见高度]，默认值: [-1000000000, 1000000000] |
+| `rangeRatio` | `number` | 是 | - | 可视范围的衰减因子，取值范围：[0~1]，仅在设置了viewHeightRange后才生效，会根据相机高度对可见距离进行衰减，相机高度=maxViewHeight时，marker的可见范围是range，相机高度下降到minViewHeight时marker的可见范围会线性衰减到rangeRatio*range |
+| `imageSize` | `array` | 否 | [32,32] | 图片的尺寸: [width, height]， 默认值[32,32] |
+| `fixedSize` | `boolean` | 否 | false | 图片是否固定尺寸，取值范围：false 自适应，近大远小，true 固定尺寸，默认值：false |
+| `imagePath` | `string` | 是 | - | 图片路径，支持gif动图，支持本地路径和网络路径，[资源引入说明](/docs/tutorials/resources) |
+| `hoverImagePath` | `string` | 是 | - | 鼠标悬停时显示的图片路径，支持gif动图，支持本地路径和网络路径，[资源引入说明](/docs/tutorials/resources) |
+| `hoverImageSize` | `array` | 否 | [0,0] | 鼠标悬停时显示的图片尺寸: [width, height]， 默认值：[0,0] 使用图片自身的尺寸，注意：如果设置的值比imageSize尺寸小，则默认使用imageSize的尺寸。 |
+| `text` | `string` | 是 | - | 显示的文字 |
+| `useTextAnimation` | `boolean` | 否 | true | 是否打开文字展开动画效果，默认值：true |
+| `textOffset` | `array` | 否 | [0,0] | 文本偏移: [x, y]，默认值：[0,0] |
+| `fontSize` | `number` | 否 | 12 | 字体大小，默认值：12 |
+| `fontOutlineSize` | `number` | 否 | 1 | 字体轮廓线大小，默认值：1 |
+| `textBackgroundColor` | [`Color`](/docs/api/types#color) | 是 | - | 文本背景颜色，默认值白色[1, 1, 1, 0.85]，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fontColor` | [`Color`](/docs/api/types#color) | 否 | 黑色Color.Black | 字体颜色，默认值：黑色Color.Black，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fontOutlineColor` | [`Color`](/docs/api/types#color) | 否 | 黑色Color.Black | 字体轮廓线颜色，默认值：黑色Color.Black，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `popupBackgroundColor` | [`Color`](/docs/api/types#color) | 是 | - | 弹窗背景颜色， [1.0,1.0,1.0,0.1] ，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `popupURL` | `string` | 是 | - | 弹窗HTML链接或者视频文件路径，也支持实时流媒体视频地址，[资源引入说明](/docs/tutorials/resources) |
+| `popupSize` | `array` | 否 | [600,400] | 弹窗大小: [width, height]，默认值：[600,400] |
+| `popupOffset` | `array` | 否 | [0,0] | 弹窗偏移: [x, y]，默认值：[0,0] |
+| `showLine` | `boolean` | 是 | - | 标注点下方是否显示垂直牵引线，默认不显示：false |
+| `lineSize` | `array` | 否 | [0,0] | 牵引线粗细[width, height]，默认值：[0,0]，如果要显示牵引线，需要将该属性设置成非0值 |
+| `lineColor` | [`Color`](/docs/api/types#color) | 否 | 白色 | 牵引线颜色，默认值：白色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `lineOffset` | `array` | 否 | [0,0] | 牵引线偏移: [x, y]，默认值：[0,0] |
+| `autoHidePopupWindow` | `boolean` | 否 | true | 是否自动关闭弹出窗口，默认值：true |
+| `autoHideText` | `boolean` | 否 | true | 打开弹窗时是否自动隐藏文字，默认值：true |
+| `autoHeight` | `boolean` | 否 | false | 自动判断下方是否有物体，设置正确高度，默认值：false。注意：如果Marker坐标的z值是0或者不设置，则自动判断位置下方是否有物体并进行贴合，如果z有值则相当于z方向的offset偏移 |
+| `displayMode` | `number` | 否 | 4 | 显示模式，默认值：4，取值说明如下： |
+| `autoDisplayModeSwitchFirstRatio` | `number` | 否 | 0.01 | 智能模式时的显示模式切换时range参数的首段比例，仅在displayMode=4时生效，取值范围：[0.01~1.0)，默认值0.01，示例：如果range=[1,1000]，则在[1,10]范围内dislayMode=2 |
+| `autoDisplayModeSwitchSecondRatio` | `number` | 否 | 0.1 | 智能模式时的显示模式切换时range参数的第二段比例，仅在displayMode=4时生效，取值范围：[0.01~1.0)，默认值0.1，示例：如果range=[1,1000]，则在[10,100]范围内dislayMode=1，大于100则dislayMode=0 |
+| `clusterByImage` | `boolean` | 是 | - | 聚合时是否根据图片路径(imagePath)分类聚合显示，即当多个marker的imagePath路径参数相同时按路径对marker分类聚合 |
+| `priority` | `number` | 否 | 0 | 避让优先级，默认值：0，注意：值越大显示越靠上 |
+| `occlusionCull` | `boolean` | 是 | - | 是否参与遮挡剔除，注意：仅displayMode设置为0或1时，遮挡剔除才会生效 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -355,25 +356,29 @@ img.onload = () => {
 
 设置Marker贴合模型对象进行移动，设置贴合后Marker会跟随模型一起平滑运动，支持的对象类型：CustomObject、Vehicle、Vehicle2、Train、Drone
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 模型对象id和MarkerId的数据映射对象数组，可以是Object类型或者Array类型，对于每一个映射对象，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 模型对象id和MarkerId的数据映射对象数组，可以是Object类型或者Array类型，对于每一个映射对象，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `markerId` | `string` | 标注Marker对象id |
-| `objectId` | `string` | 被贴合的对象id，支持的对象类型：CustomObject、Vehicle、Vehicle2、Train、Drone |
-| `offset` | `array` | 贴合的偏移量，[X,Y,Z]，[取值示例](/docs/tutorials/coordinates) |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `markerId` | `string` | 是 | - | 标注Marker对象id |
+| `objectId` | `string` | 是 | - | 被贴合的对象id，支持的对象类型：CustomObject、Vehicle、Vehicle2、Train、Drone |
+| `offset` | `array` | 是 | - | 贴合的偏移量，[X,Y,Z]，[取值示例](/docs/tutorials/coordinates) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.marker.attachObject(data);
+await fdapi.marker.attachObject({
+    markerId: '对象ID',
+    objectId: '对象ID',
+    offset: []
+});
 ```
 
 ---
@@ -382,9 +387,9 @@ await fdapi.marker.attachObject(data);
 
 删除场景中所有的标注
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -400,10 +405,10 @@ fdapi.marker.clear();
 
 删除一个或多个标注对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的标注对象的ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的标注对象的ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -419,10 +424,10 @@ fdapi.marker.delete(['m1', 'm2']);
 
 根据分组ID删除Marker
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `groupIds` | `string \| array` | Marker创建时指定的分组ID或ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `groupIds` | `string \| array` | 是 | - | Marker创建时指定的分组ID或ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -438,13 +443,13 @@ fdapi.marker.deleteByGroupId('markerAdd');
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 标注对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 标注对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -460,12 +465,12 @@ fdapi.marker.focus('m1', 200, 0.2);
 
 自动定位到能观察所有Marker对象的合适距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -481,10 +486,10 @@ fdapi.marker.focusAll(200, 0.2);
 
 根据ID获取标注的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的标注对象ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的标注对象ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -541,10 +546,10 @@ log(`获取标注：\n id: ${o.id} \n text: ${o.text}`);
 
 隐藏标注
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 标注对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 标注对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -560,9 +565,9 @@ fdapi.marker.hide(['m1']);
 
 隐藏所有标注
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -578,9 +583,9 @@ fdapi.marker.hideAll();
 
 隐藏所有标注的弹出窗口
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -596,10 +601,10 @@ fdapi.marker.hideAllPopupWindow();
 
 根据分组ID隐藏Marker
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `groupIds` | `string \| array` | Marker创建时指定的分组ID或ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `groupIds` | `string \| array` | 是 | - | Marker创建时指定的分组ID或ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -615,10 +620,10 @@ fdapi.marker.hideByGroupId('markerAdd');
 
 隐藏指定标注的弹出窗口
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 标注对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 标注对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -634,11 +639,11 @@ fdapi.marker.hidePopupWindow('m1');
 
 设置标注的整体偏移量（修改锚点）
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `array` | 锚点新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `array` | 是 | - | 锚点新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -656,11 +661,11 @@ fdapi.marker.focus('m1', 100, 1);
 
 设置是否自动关闭标注的弹出窗口
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `boolean` | 是否显示垂直牵引线 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `boolean` | 是 | - | 是否显示垂直牵引线 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -676,20 +681,20 @@ fdapi.marker.setAutoHidePopupWindow('m1', false);
 
 设置marker聚合样式
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `style` | `object` | marker的聚合样式对象，包含以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `style` | `object` | 是 | - | marker的聚合样式对象，包含以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`style` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `imagePath` | `string` | 聚合后显示的图片磁盘路径或图片URL |
-| `imageSize` | `array` | 聚合后显示的图片尺寸宽高，示例：[20,20] |
-| `fontSize` | `string` | 聚合后显示的聚合数字的字体大小 |
-| `fontColor` | [`Color`](/docs/api/types#color) | 聚合后显示的聚合数字的字体颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `enableAnimation` | `boolean` | 是否开启marker聚合时的透明渐变动画，默认值：true |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `imagePath` | `string` | 是 | - | 聚合后显示的图片磁盘路径或图片URL |
+| `imageSize` | `array` | 是 | - | 聚合后显示的图片尺寸宽高，示例：[20,20] |
+| `fontSize` | `string` | 是 | - | 聚合后显示的聚合数字的字体大小 |
+| `fontColor` | [`Color`](/docs/api/types#color) | 是 | - | 聚合后显示的聚合数字的字体颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `enableAnimation` | `boolean` | 否 | true | 是否开启marker聚合时的透明渐变动画，默认值：true |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -712,11 +717,11 @@ fdapi.marker.setClusterStyle(style);
 
 设置标注的位置
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `array` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `array` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -733,11 +738,11 @@ fdapi.marker.focus('m1', 200, 0.2);
 
 设置标注文本颜色
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | [`Color`](/docs/api/types#color) | 是 | - | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -753,18 +758,18 @@ fdapi.marker.setFontColor('m1', Color.Blue);
 
 设置字体轮廓线颜色
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | [`Color`](/docs/api/types#color) | 是 | - | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.marker.setFontOutlineColor(id, newVal);
+await fdapi.marker.setFontOutlineColor('对象ID', '示例值');
 ```
 
 ---
@@ -773,11 +778,11 @@ await fdapi.marker.setFontOutlineColor(id, newVal);
 
 设置字体轮廓线大小
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -793,11 +798,11 @@ fdapi.marker.setFontOutlineSize('m1', 2);
 
 设置字体大小
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -813,11 +818,11 @@ fdapi.marker.setFontSize('m1', 30);
 
 设置分组
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `string` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `string` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -833,11 +838,11 @@ fdapi.marker.setGroupId('m1', 'groupMarker2');
 
 设置鼠标悬停时显示的图片路径
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `string` | 新值，[资源引入说明](/docs/tutorials/resources) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `string` | 是 | - | 新值，[资源引入说明](/docs/tutorials/resources) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -854,11 +859,11 @@ fdapi.marker.setHoverImagePath('m1', hoverImagePath);
 
 设置标注的图片
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `string` | 新值，[资源引入说明](/docs/tutorials/resources) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `string` | 是 | - | 新值，[资源引入说明](/docs/tutorials/resources) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -875,11 +880,11 @@ fdapi.marker.setImagePath('m1', path);
 
 设置标注图片的大小
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `array` | 新的尺寸 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `array` | 是 | - | 新的尺寸 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -895,11 +900,11 @@ fdapi.marker.setImageSize('m1', [64, 64]);
 
 设置LineColor
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | [`Color`](/docs/api/types#color) | 是 | - | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -915,11 +920,11 @@ fdapi.marker.setLineColor('m1', Color.Red);
 
 设置LineOffset
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `array` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `array` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -935,11 +940,11 @@ fdapi.marker.setLineOffset('m1', [10, 10]);
 
 设置LineSize
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `array` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `array` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -955,11 +960,11 @@ fdapi.marker.setLineSize('m1', [0.5, 50]);
 
 设置是否参与遮挡剔除
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `boolean` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `boolean` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -975,11 +980,11 @@ fdapi.marker.setOcclusionCull('m1', true);
 
 设置弹窗偏移: [x, y]
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `array` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `array` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -995,11 +1000,11 @@ fdapi.marker.setPopupOffset('m1', [20, 20]);
 
 设置弹窗大小: [width, height]
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `array` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `array` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1015,18 +1020,18 @@ fdapi.marker.setPopupSize('m1', [400, 600]);
 
 设置弹窗HTML链接
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `string` | 新值，[资源引入说明](/docs/tutorials/resources) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `string` | 是 | - | 新值，[资源引入说明](/docs/tutorials/resources) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.marker.setPopupURL(id, newVal);
+await fdapi.marker.setPopupURL('对象ID', '示例值');
 ```
 
 ---
@@ -1035,11 +1040,11 @@ await fdapi.marker.setPopupURL(id, newVal);
 
 设置避让优先级
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1055,11 +1060,11 @@ fdapi.marker.setPriority('m1', 1);
 
 设置标注的可见范围
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `array` | 新的可见范围值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `array` | 是 | - | 新的可见范围值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1075,11 +1080,11 @@ fdapi.marker.setRange('m1', [1, 800]);
 
 设置标注的文本
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `string` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `string` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1095,11 +1100,11 @@ fdapi.marker.setText('m1', '体育馆');
 
 设置标注文本的背景颜色
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | [`Color`](/docs/api/types#color) | 是 | - | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1115,11 +1120,11 @@ fdapi.marker.setTextBackgroundColor('m1', Color.Yellow);
 
 设置文本偏移
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `array` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `array` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1135,11 +1140,11 @@ fdapi.marker.setTextOffset('m1', [10, 10]);
 
 设置文本可视范围: [近裁距离, 远裁距离]
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `array` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `array` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1155,11 +1160,11 @@ fdapi.marker.setTextRange('m1', [0, 100]);
 
 设置标注的URL
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `string` | 新值，[资源引入说明](/docs/tutorials/resources) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `string` | 是 | - | 新值，[资源引入说明](/docs/tutorials/resources) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1175,11 +1180,11 @@ fdapi.marker.setURL('m1', 'http://www.baidu.com');
 
 设置用户数据
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 标注的唯一标识符ID |
-| `newVal` | `string` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 标注的唯一标识符ID |
+| `newVal` | `string` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1195,11 +1200,11 @@ fdapi.marker.setUserData('m1', '{name:\"karl\",sex:\"male\",\"age\":32}');
 
 多视口状态下，设置Marker对象在各视口的可见性
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | Marker对象的ID |
-| `vp` | [`Viewport`](/docs/api/types#viewport) | 视口掩码（Viewport位运算） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | Marker对象的ID |
+| `vp` | [`Viewport`](/docs/api/types#viewport) | 是 | - | 视口掩码（Viewport位运算） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1224,10 +1229,10 @@ fdapi.marker.setViewportVisible('m1', Viewport.V1 | Viewport.V3);
 
 显示标注
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 标注对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 标注对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1243,9 +1248,9 @@ fdapi.marker.show('m1');
 
 显示所有标注
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1261,9 +1266,9 @@ fdapi.marker.showAll();
 
 显示所有标注的弹出窗口
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1279,10 +1284,10 @@ fdapi.marker.showAllPopupWindow();
 
 根据分组ID显示Marker
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `groupIds` | `string \| array` | Marker创建时指定的分组ID或ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `groupIds` | `string \| array` | 是 | - | Marker创建时指定的分组ID或ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1298,10 +1303,10 @@ fdapi.marker.showByGroupId('markerAdd');
 
 显示指定标注的弹出窗口
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 标注对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 标注对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1317,10 +1322,10 @@ fdapi.marker.showPopupWindow('m1');
 
 修改一个或多个标注对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `data \| array` | 标注点的数据，参考add方法 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `data \| array` | 是 | - | 标注点的数据，参考add方法 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -1375,9 +1380,9 @@ fdapi.xxx.updateEnd(function () {
 
 updateEnd是异步调用，可以用回调函数也可以await
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

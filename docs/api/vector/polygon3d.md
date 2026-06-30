@@ -63,11 +63,12 @@ let coords2 = [
 
 - **功能介绍**：在二维多边形基础上拉伸出高度，绘制三维体块面，用于表达有体量的区域，如建筑体块、围墙、立体淹没水体等，支持带洞与多 Part 复合多边形。
 - **别名 / 不同行业叫法**：三维面、立体面、体块、拉伸多边形、白模、立体区域、淹没体。
-- **适用行业**：智慧城市、智慧水利、应急、园区、测绘、国防。
+- **适用行业**：智慧城市、智慧水利、应急、园区、测绘、国防。、低空经济
 - **使用场景**：
   - 城市规划中的建筑白模、体块快速生成与分区高度可视化。
   - 水利防汛中按水位拉伸的立体淹没水体与蓄滞洪区体量表达。
   - 园区/国防中的围墙、电子围栏、立体警戒区域的体块展示。
+  - 空域立体范围：红色立体禁飞区、半透明限飞区三维范围展示。
 - **注意事项**：
   - 相比 Polygon 多了高度/拉伸维度，仅需贴地平面区域时使用 Polygon 更轻量。
   - 坐标按"外环+内环(洞)"及多 Part 的层级数组组织，注意嵌套结构与拉伸高度参数。
@@ -124,35 +125,35 @@ let res = await fdapi.misc.getMaterial(material);
 
 let params = res.data[0].params;
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `coordinates` | `array` | 多边形坐标数组，[取值示例](/docs/tutorials/coordinates) |
-| `coordinateType` | `number` | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
-| `color` | [`Color`](/docs/api/types#color) | 颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `height` | `number` | 3D多边形的高度，取值范围：[任意正数] |
-| `intensity` | `number` | 亮度，取值范围：[0~1000] |
-| `viewHeightRange` | `array` | 可见高度范围：[最小可见高度, 远最大可见高度]，默认值: [-1000000000, 1000000000] |
-| `style` | `number` | 3DPolygon的样式，参考 `Polygon3DStyle` |
-| `tillingX` | `number` | 可选参数，仅当3DPolygon的样式支持贴图显示时，设置贴图横向平铺，取值范围：[任意数值] |
-| `tillingY` | `number` | 可选参数，仅当3DPolygon的样式支持贴图显示时，设置贴图纵向平铺，取值范围：[任意数值] |
-| `material` | `string` | 可选参数，自定义材质路径，即资源库PAK文件里材质文件的路径，设置自定义材质参数后style相关参数会失效 |
-| `scalarParameters` | `array` | 可选参数，仅在设置自定义材质路径后生效，自定义材质数值类型参数，包含name/value键值对的数组，其中value为数值，格式示例：[&#123;"name":"不透明度","value":0.5&#125;,&#123;"name":"UV重复","value":1.0&#125;] |
-| `vectorParameters` | `array` | 可选参数，仅在设置自定义材质路径后生效，自定义材质矢量类型参数，包含name/value键值对的数组，其中value为数组，格式示例：[&#123;"name":"color1","value":[1,1,1,1]&#125;,&#123;"name":"color2","value":[1,0,0,1]&#125;] |
-| `generateTop` | `boolean` | 可选参数，是否生成顶面，默认：true |
-| `generateSide` | `boolean` | 可选参数，是否生成侧面，默认：true |
-| `generateBottom` | `boolean` | 可选参数，是否生成底面，默认：true |
-| `bClip` | `boolean` | 可选参数，是否参与剖切，默认：false |
-| `depthTest` | `boolean` | 是否做深度检测，默认为true，true会被遮挡，false不会被遮挡，注意：非半透明材质不支持深度检测 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `coordinates` | `array` | 是 | - | 多边形坐标数组，[取值示例](/docs/tutorials/coordinates) |
+| `coordinateType` | `number` | 否 | 0 | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
+| `color` | [`Color`](/docs/api/types#color) | 是 | - | 颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `height` | `number` | 是 | - | 3D多边形的高度，取值范围：[任意正数] |
+| `intensity` | `number` | 是 | - | 亮度，取值范围：[0~1000] |
+| `viewHeightRange` | `array` | 否 | [-1000000000, 1000000000] | 可见高度范围：[最小可见高度, 远最大可见高度]，默认值: [-1000000000, 1000000000] |
+| `style` | `number` | 是 | - | 3DPolygon的样式，参考 `Polygon3DStyle` |
+| `tillingX` | `number` | 否 | - | 可选参数，仅当3DPolygon的样式支持贴图显示时，设置贴图横向平铺，取值范围：[任意数值] |
+| `tillingY` | `number` | 否 | - | 可选参数，仅当3DPolygon的样式支持贴图显示时，设置贴图纵向平铺，取值范围：[任意数值] |
+| `material` | `string` | 否 | - | 可选参数，自定义材质路径，即资源库PAK文件里材质文件的路径，设置自定义材质参数后style相关参数会失效 |
+| `scalarParameters` | `array` | 否 | - | 可选参数，仅在设置自定义材质路径后生效，自定义材质数值类型参数，包含name/value键值对的数组，其中value为数值，格式示例：[&#123;"name":"不透明度","value":0.5&#125;,&#123;"name":"UV重复","value":1.0&#125;] |
+| `vectorParameters` | `array` | 否 | - | 可选参数，仅在设置自定义材质路径后生效，自定义材质矢量类型参数，包含name/value键值对的数组，其中value为数组，格式示例：[&#123;"name":"color1","value":[1,1,1,1]&#125;,&#123;"name":"color2","value":[1,0,0,1]&#125;] |
+| `generateTop` | `boolean` | 否 | - | 可选参数，是否生成顶面，默认：true |
+| `generateSide` | `boolean` | 否 | - | 可选参数，是否生成侧面，默认：true |
+| `generateBottom` | `boolean` | 否 | - | 可选参数，是否生成底面，默认：true |
+| `bClip` | `boolean` | 否 | - | 可选参数，是否参与剖切，默认：false |
+| `depthTest` | `boolean` | 是 | - | 是否做深度检测，默认为true，true会被遮挡，false不会被遮挡，注意：非半透明材质不支持深度检测 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -250,9 +251,9 @@ fdapi.polygon3d.focus('p3d1', 50);
 
 删除场景中所有的3DPolygon
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -268,10 +269,10 @@ fdapi.polygon3d.clear();
 
 删除一个或多个3DPolygon对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的3DPolygon对象的ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的3DPolygon对象的ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -287,10 +288,10 @@ fdapi.polygon3d.delete(['p3d1', 'p3d2']);
 
 禁止Polygon3D参与剖切
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `number \| array` | Polygon3D对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `number \| array` | 是 | - | Polygon3D对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -306,10 +307,10 @@ fdapi.polygon3d.disableClip(['p3d1', 'p3d2']);
 
 设置Polygon3D参与剖切
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `number \| array` | Polygon3D对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `number \| array` | 是 | - | Polygon3D对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -325,13 +326,13 @@ fdapi.polygon3d.enableClip(['p3d1', 'p3d2']);
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 3DPolygon对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 3DPolygon对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -347,10 +348,10 @@ fdapi.polygon3d.focus('p3d1', 10);
 
 根据ID获取3DPolygon的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的3DPolygon对象ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的3DPolygon对象ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -380,18 +381,18 @@ fdapi.polygon3d.get(['p3d1', 'p3d2']);
 
 闪烁
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | Polygon3D的ID |
-| `color` | [`Color`](/docs/api/types#color) | 闪烁的颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `duration` | `number` | 闪烁持续时间，单位：秒，取值范围：[0.01~任意正数] |
-| `interval` | `number` | 闪烁间隔时间，单位：秒，取值范围：[0.01~任意正数]，注意：间隔时间要小于持续闪烁时间 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | Polygon3D的ID |
+| `color` | [`Color`](/docs/api/types#color) | 是 | - | 闪烁的颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `duration` | `number` | 是 | - | 闪烁持续时间，单位：秒，取值范围：[0.01~任意正数] |
+| `interval` | `number` | 是 | - | 闪烁间隔时间，单位：秒，取值范围：[0.01~任意正数]，注意：间隔时间要小于持续闪烁时间 |
 
 **返回：** 无返回值。
 
@@ -412,10 +413,10 @@ fdapi.polygon3d.glow([{
 
 隐藏3DPolygon
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 3DPolygon对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 3DPolygon对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -431,9 +432,9 @@ fdapi.polygon3d.hide(['p3d1', 'p3d2']);
 
 隐藏所有3DPolygon
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -449,10 +450,10 @@ fdapi.polygon3d.hideAll();
 
 高亮，目前仅部分样式支持高亮，和材质有关
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Polygon3D的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Polygon3D的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -469,18 +470,18 @@ fdapi.polygon3d.highlight('p3d1');
 
 设置颜色
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | Polygon3D的ID |
-| `newColor` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | Polygon3D的ID |
+| `newColor` | [`Color`](/docs/api/types#color) | 是 | - | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.polygon3d.setColor(id, newColor);
+await fdapi.polygon3d.setColor('对象ID', '#FFFFFF');
 ```
 
 ---
@@ -489,18 +490,18 @@ await fdapi.polygon3d.setColor(id, newColor);
 
 设置坐标
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | Polygon3D的ID |
-| `newVal` | `array` | 新坐标值，[取值示例](/docs/tutorials/coordinates) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | Polygon3D的ID |
+| `newVal` | `array` | 是 | - | 新坐标值，[取值示例](/docs/tutorials/coordinates) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.polygon3d.setCoordinates(id, newVal);
+await fdapi.polygon3d.setCoordinates('对象ID', []);
 ```
 
 ---
@@ -509,18 +510,18 @@ await fdapi.polygon3d.setCoordinates(id, newVal);
 
 设置是否做深度检测
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `any` | Polygon3D的ID |
-| `newVal` | `boolean` | 是否做深度检测 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `any` | 是 | - | Polygon3D的ID |
+| `newVal` | `boolean` | 是 | - | 是否做深度检测 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.polygon3d.setDepthTest(id, newVal);
+await fdapi.polygon3d.setDepthTest('对象ID', true);
 ```
 
 ---
@@ -529,18 +530,18 @@ await fdapi.polygon3d.setDepthTest(id, newVal);
 
 设置高度
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | Polygon3D的ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | Polygon3D的ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.polygon3d.setHeight(id, newVal);
+await fdapi.polygon3d.setHeight('对象ID', 0);
 ```
 
 ---
@@ -549,18 +550,18 @@ await fdapi.polygon3d.setHeight(id, newVal);
 
 设置亮度
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | Polygon3D的ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | Polygon3D的ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.polygon3d.setIntensity(id, newVal);
+await fdapi.polygon3d.setIntensity('对象ID', 0);
 ```
 
 ---
@@ -569,18 +570,18 @@ await fdapi.polygon3d.setIntensity(id, newVal);
 
 设置样式
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | Polygon3D的ID |
-| `newVal` | `number` | 新3DPolygon的样式，参考 `Polygon3DStyle` |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | Polygon3D的ID |
+| `newVal` | `number` | 是 | - | 新3DPolygon的样式，参考 `Polygon3DStyle` |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.polygon3d.setStyle(id, newVal);
+await fdapi.polygon3d.setStyle('对象ID', 0);
 ```
 
 ---
@@ -589,18 +590,18 @@ await fdapi.polygon3d.setStyle(id, newVal);
 
 设置TillingX
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | Polygon3D的ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | Polygon3D的ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.polygon3d.setTillingX(id, newVal);
+await fdapi.polygon3d.setTillingX('对象ID', 0);
 ```
 
 ---
@@ -609,18 +610,18 @@ await fdapi.polygon3d.setTillingX(id, newVal);
 
 设置TillingY
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | Polygon3D的ID |
-| `newVal` | `number` | 新值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | Polygon3D的ID |
+| `newVal` | `number` | 是 | - | 新值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.polygon3d.setTillingY(id, newVal);
+await fdapi.polygon3d.setTillingY('对象ID', 0);
 ```
 
 ---
@@ -629,12 +630,12 @@ await fdapi.polygon3d.setTillingY(id, newVal);
 
 设置Polygon3D对象的可视高度范围
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | Polygon3D对象的ID |
-| `minViewHeight` | `number` | 可视高度范围最小值，取值范围：[任意负数~任意正数]，单位：米 |
-| `maxViewHeight` | `number` | 可视高度范围最大值，取值范围：[任意负数~任意正数]，单位：米 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | Polygon3D对象的ID |
+| `minViewHeight` | `number` | 是 | - | 可视高度范围最小值，取值范围：[任意负数~任意正数]，单位：米 |
+| `maxViewHeight` | `number` | 是 | - | 可视高度范围最大值，取值范围：[任意负数~任意正数]，单位：米 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -650,10 +651,10 @@ fdapi.polygon3d.setViewHeightRange('p3d1', 1, 1000);
 
 显示3DPolygon
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 3DPolygon对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 3DPolygon对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -669,9 +670,9 @@ fdapi.polygon3d.show(['p3d1', 'p3d2']);
 
 显示所有3DPolygon
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -687,10 +688,10 @@ fdapi.polygon3d.showAll();
 
 停止闪烁
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Polygon3D的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Polygon3D的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -706,17 +707,17 @@ fdapi.polygon3d.stopGlow('p3d1');
 
 停止高亮
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | Polygon3D的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | Polygon3D的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.polygon3d.unHighlight(ids);
+await fdapi.polygon3d.unHighlight(['对象ID']);
 ```
 
 ---
@@ -725,10 +726,10 @@ await fdapi.polygon3d.unHighlight(ids);
 
 修改一个或多个3DPolygon对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，请参考add方法 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，请参考add方法 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -787,9 +788,9 @@ fdapi.xxx.updateEnd(function () {
 
 updateEnd是异步调用，可以用回调函数也可以await
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

@@ -25,11 +25,12 @@ HeatMap 效果图如下：
 
 - **功能介绍**：HeatMap 根据离散热力点及其热力值，在地表生成二维平面热力图，通过颜色梯度直观表达数据在空间上的密度、强度或聚集分布。
 - **别名 / 不同行业叫法**：热力图、人流热区、OD 热力、密度图、分布图、强度图、色斑图。
-- **适用行业**：智慧城市、安防、交通、园区、应急管理、海洋。
+- **适用行业**：智慧城市、安防、交通、园区、应急管理、海洋。、智慧交通与公路
 - **使用场景**：
   - 智慧城市 / 安防：展示人流密度、客流热区、POI 聚集度，辅助安保布防与公共空间管理。
   - 交通行业：OD 出行热力、路网拥堵强度、站点客流分布可视化。
   - 园区 / 环境监测：温度、噪声、空气质量等监测值的空间插值分布展示。
+  - 二维产业热力密度：按企业产值 / 货运流量生成热力图，色块深浅代表聚集程度。
 - **注意事项**：
   - 热力点 `heatValue` 须落在 `range` 设定范围内，超出范围的点将按无效处理。
   - `textureSize` 越大热力图越清晰但生成越耗时，海量热力点时应权衡纹理尺寸与性能。
@@ -68,47 +69,47 @@ HeatMap 效果图如下：
 
 根据热力点绘制热力图
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `heatmap` | `object` | HeatMap对象属性如下： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `heatmap` | `object` | 是 | - | HeatMap对象属性如下： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`heatmap` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `bbox` | `array` | 热力点坐标的范围 |
-| `range` | `array` | 可选，热力值的范围 |
-| `data` | `array` | 可选，热力图包含的热力点数据，（注意：点的heatValue取值要在range所设定的范围内） |
-| `data.id` | `string` | 字符串类型的ID |
-| `data.coordinate` | `array` | 热力点坐标，[取值示例](/docs/tutorials/coordinates) |
-| `data.radius` | `number` | 热力点影像半径范围，取值范围：[任意数值] |
-| `data.heatValue` | `number` | 热力值，取值范围：[range参数设定范围内的任意数值] |
-| `style` | `array` | 可选参数，热力图样式枚举，详情参考 `HeatMapStyle` |
-| `textureSize` | `number` | style=0或1时参数生效，纹理大小，默认值：1024，取值范围：[128~4096]，注意：值越大纹理越清晰但创建越耗时 |
-| `opacityMode` | `number` | style=0或1时参数生效，不透明度模式，默认值：1，取值范围：0：使用自定义色卡颜色的不透明度 1：使用热力点的不透明度 |
-| `opacityRange` | `array` | style=0或1时参数生效，不透明度范围，默认值：[0~1.0]，注意：仅opacityMode为1时有效 |
-| `blur` | `number` | style=0或1时参数生效，热力点模糊因子，默认值：0.85，注意：模糊系数越高，渐变越平滑，取值范围：[0~1.0] |
-| `colors` | `object` | 可选，默认使用标准热力配色，当style=0或1时参数生效，自定义颜色卡区间数组，包含渐变控制参数、无效点颜色和颜色数组 |
-| `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
-| `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | [`Color`](/docs/api/types#color) | 值对应的调色板颜色 |
-| `colors.value` | `number` | 值 |
-| `blendMode` | `number` | 混合模式，取值范围：[0,1] |
-| `light` | `boolean` | 是否参与光照，布尔类型，默认值：false |
-| `updateTime` | `number` | 更新动画的插值时间，注意：参数仅更新方法执行时生效，离散点构造热力图还支持差值动画 |
-| `viewHeightRange` | `array` | 可选，可见高度范围：[最小可见高度, 远最大可见高度]，默认值: [-1000000000, 1000000000] |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `bbox` | `array` | 是 | - | 热力点坐标的范围 |
+| `range` | `array` | 否 | - | 可选，热力值的范围 |
+| `data` | `array` | 否 | - | 可选，热力图包含的热力点数据，（注意：点的heatValue取值要在range所设定的范围内） |
+| `data.id` | `string` | 是 | - | 字符串类型的ID |
+| `data.coordinate` | `array` | 是 | - | 热力点坐标，[取值示例](/docs/tutorials/coordinates) |
+| `data.radius` | `number` | 是 | - | 热力点影像半径范围，取值范围：[任意数值] |
+| `data.heatValue` | `number` | 是 | - | 热力值，取值范围：[range参数设定范围内的任意数值] |
+| `style` | `array` | 否 | - | 可选参数，热力图样式枚举，详情参考 `HeatMapStyle` |
+| `textureSize` | `number` | 否 | 1024 | style=0或1时参数生效，纹理大小，默认值：1024，取值范围：[128~4096]，注意：值越大纹理越清晰但创建越耗时 |
+| `opacityMode` | `number` | 否 | 1 | style=0或1时参数生效，不透明度模式，默认值：1，取值范围：0：使用自定义色卡颜色的不透明度 1：使用热力点的不透明度 |
+| `opacityRange` | `array` | 否 | [0~1.0] | style=0或1时参数生效，不透明度范围，默认值：[0~1.0]，注意：仅opacityMode为1时有效 |
+| `blur` | `number` | 否 | 0.85 | style=0或1时参数生效，热力点模糊因子，默认值：0.85，注意：模糊系数越高，渐变越平滑，取值范围：[0~1.0] |
+| `colors` | `object` | 否 | - | 可选，默认使用标准热力配色，当style=0或1时参数生效，自定义颜色卡区间数组，包含渐变控制参数、无效点颜色和颜色数组 |
+| `colors.gradient` | `boolean` | 是 | - | 是否渐变 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 是 | - | 无效像素点的默认颜色，默认白色 |
+| `colors.colorStops` | `array` | 是 | - | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
+| `colors.color` | [`Color`](/docs/api/types#color) | 是 | - | 值对应的调色板颜色 |
+| `colors.value` | `number` | 是 | - | 值 |
+| `blendMode` | `number` | 是 | - | 混合模式，取值范围：[0,1] |
+| `light` | `boolean` | 否 | false | 是否参与光照，布尔类型，默认值：false |
+| `updateTime` | `number` | 是 | - | 更新动画的插值时间，注意：参数仅更新方法执行时生效，离散点构造热力图还支持差值动画 |
+| `viewHeightRange` | `array` | 否 | [-1000000000, 1000000000] | 可选，可见高度范围：[最小可见高度, 远最大可见高度]，默认值: [-1000000000, 1000000000] |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.heatmap.addByHeatPoints(heatmap);
+await fdapi.heatmap.addByHeatPoints({});
 ```
 
 ---
@@ -117,43 +118,43 @@ await fdapi.heatmap.addByHeatPoints(heatmap);
 
 根据tif文件加载热力图
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `heatmap` | `object` | HeatMap对象属性如下： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `heatmap` | `object` | 是 | - | HeatMap对象属性如下： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`heatmap` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `style` | `array` | 可选，热力图样式枚举，详情参考 `HeatMapStyle` |
-| `range` | `array` | 可选，热力值的范围，数据结构参考add方法，如果不想设置range，可将此参数设置为null |
-| `opacityMode` | `number` | style=0或1时参数生效，不透明度模式，默认值：1，取值范围：0：使用自定义色卡颜色的不透明度 1：使用热力点的不透明度 |
-| `opacityRange` | `array` | style=0或1时参数生效，不透明度范围，默认值：[0~1.0]，注意：仅opacityMode为1时有效 |
-| `blur` | `number` | style=0或1时参数生效，热力点模糊因子，默认值：0.85，注意：模糊系数越高，渐变越平滑，取值范围：[0~1.0] |
-| `colors` | `object` | style=0或1时参数生效，自定义颜色卡区间数组，包含渐变控制参数、无效点颜色和颜色数组 |
-| `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
-| `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | [`Color`](/docs/api/types#color) | 值对应的调色板颜色 |
-| `colors.value` | `number` | 值 |
-| `blendMode` | `number` | 混合模式，取值范围：[0,1] |
-| `light` | `boolean` | 是否参与光照，布尔类型，默认值：false |
-| `updateTime` | `number` | 更新动画的插值时间，注意：参数仅更新方法执行时生效 |
-| `tifFile` | `object` | tif文件属性对象，包含属性如下： |
-| `tifFile.minHeight` | `number` | 最小高度，默认值：-1000米，注意：设置贴地模式时 地形高度要在此范围内 |
-| `tifFile.maxHeight` | `number` | 最大高度，默认值：10000米，注意：设置贴地模式时 地形高度要在此范围内 |
-| `tifFile.file` | `string` | tif文件路径，路径示例："D:\\test.tif" |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `style` | `array` | 否 | - | 可选，热力图样式枚举，详情参考 `HeatMapStyle` |
+| `range` | `array` | 否 | - | 可选，热力值的范围，数据结构参考add方法，如果不想设置range，可将此参数设置为null |
+| `opacityMode` | `number` | 否 | 1 | style=0或1时参数生效，不透明度模式，默认值：1，取值范围：0：使用自定义色卡颜色的不透明度 1：使用热力点的不透明度 |
+| `opacityRange` | `array` | 否 | [0~1.0] | style=0或1时参数生效，不透明度范围，默认值：[0~1.0]，注意：仅opacityMode为1时有效 |
+| `blur` | `number` | 否 | 0.85 | style=0或1时参数生效，热力点模糊因子，默认值：0.85，注意：模糊系数越高，渐变越平滑，取值范围：[0~1.0] |
+| `colors` | `object` | 是 | - | style=0或1时参数生效，自定义颜色卡区间数组，包含渐变控制参数、无效点颜色和颜色数组 |
+| `colors.gradient` | `boolean` | 是 | - | 是否渐变 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 是 | - | 无效像素点的默认颜色，默认白色 |
+| `colors.colorStops` | `array` | 是 | - | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
+| `colors.color` | [`Color`](/docs/api/types#color) | 是 | - | 值对应的调色板颜色 |
+| `colors.value` | `number` | 是 | - | 值 |
+| `blendMode` | `number` | 是 | - | 混合模式，取值范围：[0,1] |
+| `light` | `boolean` | 否 | false | 是否参与光照，布尔类型，默认值：false |
+| `updateTime` | `number` | 是 | - | 更新动画的插值时间，注意：参数仅更新方法执行时生效 |
+| `tifFile` | `object` | 是 | - | tif文件属性对象，包含属性如下： |
+| `tifFile.minHeight` | `number` | 否 | -1000米 | 最小高度，默认值：-1000米，注意：设置贴地模式时 地形高度要在此范围内 |
+| `tifFile.maxHeight` | `number` | 否 | 10000米 | 最大高度，默认值：10000米，注意：设置贴地模式时 地形高度要在此范围内 |
+| `tifFile.file` | `string` | 是 | - | tif文件路径，路径示例："D:\\test.tif" |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.heatmap.addByTif(heatmap);
+await fdapi.heatmap.addByTif({});
 ```
 
 ---
@@ -162,11 +163,11 @@ await fdapi.heatmap.addByTif(heatmap);
 
 为HeatMap添加热力点
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | HeatMap的ID |
-| `data` | `array` | 热力点(可以是单个或数组,数据结构请参考add方法) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | HeatMap的ID |
+| `data` | `array` | 是 | - | 热力点(可以是单个或数组,数据结构请参考add方法) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -194,9 +195,9 @@ await fdapi.heatmap.addPoints("heatmap1", newPoints);
 
 删除场景中所有的HeatMap
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -213,10 +214,10 @@ fdapi.heatmap.clear();
 
 删除一个或多个HeatMap对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的HeatMap对象的ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的HeatMap对象的ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -233,13 +234,13 @@ fdapi.heatmap.delete('heatmap1');
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | HeatMap对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | HeatMap对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -255,10 +256,10 @@ fdapi.heatmap.focus('heatmap1', 100);
 
 根据ID获取HeatMap的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的HeatMap对象ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的HeatMap对象ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -288,10 +289,10 @@ fdapi.heatmap.get('heatmap1');
 
 隐藏HeatMap
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | HeatMap对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | HeatMap对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -307,11 +308,11 @@ fdapi.heatmap.hide('heatmap1');
 
 高亮通过Tif文件加载的热力图中指定的像素点，注意：像素点数组的取值范围必须在Tif文件分辨率内
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | HeatMap的ID |
-| `pixelCoords` | `array` | Tif文件像素点的坐标数组（取值范围在文件分辨率内），取值示例：[[pixel1_x,pixel1_y],[pixel2_x,pixel2_y]...] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | HeatMap的ID |
+| `pixelCoords` | `array` | 是 | - | Tif文件像素点的坐标数组（取值范围在文件分辨率内），取值示例：[[pixel1_x,pixel1_y],[pixel2_x,pixel2_y]...] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -336,46 +337,46 @@ fdapi.heatmap.highlightPixels('heatmap6', pixelCoords);
 
 预加载的热力图动画，包含多个Tif文件，加载后可以使用play()方法进行播放。
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `heatmap` | `object` | HeatMap对象属性如下： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `heatmap` | `object` | 是 | - | HeatMap对象属性如下： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`heatmap` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `range` | `array` | 可选，热力值的范围，数据结构参考add方法，如果不想设置range，可将此参数设置为null |
-| `data` | `array` | 可选，热力图包含的热力点 |
-| `style` | `array` | 可选参数，热力图样式枚举，详情参考 `HeatMapStyle` |
-| `opacityMode` | `number` | style=0或1时参数生效，不透明度模式，默认值：1，取值范围：0：使用自定义色卡颜色的不透明度 1：使用热力点的不透明度 |
-| `opacityRange` | `array` | style=0或1时参数生效，不透明度范围，默认值：[0~1.0]，注意：仅opacityMode为1时有效 |
-| `blur` | `number` | style=0或1时参数生效，热力点模糊因子，默认值：0.85，注意：模糊系数越高，渐变越平滑，取值范围：[0~1.0] |
-| `colors` | `object` | style=0或1时参数生效，自定义颜色卡区间数组，包含渐变控制参数、无效点颜色和颜色数组 |
-| `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
-| `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | [`Color`](/docs/api/types#color) | 值对应的调色板颜色 |
-| `colors.value` | `number` | 值 |
-| `blendMode` | `number` | 混合模式，取值范围：[0,1] |
-| `light` | `boolean` | 是否参与光照，布尔类型，默认值：false |
-| `shadow` | `number` | 阴影强度，取值范围：[0,任意正数] |
-| `tifAnimation` | `object` | 预加载的tif文件列表对象，包含属性如下： |
-| `tifAnimation.minHeight` | `number` | 最小高度 |
-| `tifAnimation.maxHeight` | `number` | 最大高度 |
-| `tifAnimation.totalSeconds` | `number` | 动画播放默认的总时长，单位：秒 |
-| `tifAnimation.time` | `number` | 从第几秒开始播放，默认值：0 |
-| `tifAnimation.files` | `array` | tif文件路径数组，结构示例：["D:\\0.tif","D:\\1.tif",...] ，注意：tif文件纹理尺寸不能超过8192，最大值示例：[8192,8192] |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `range` | `array` | 否 | - | 可选，热力值的范围，数据结构参考add方法，如果不想设置range，可将此参数设置为null |
+| `data` | `array` | 否 | - | 可选，热力图包含的热力点 |
+| `style` | `array` | 否 | - | 可选参数，热力图样式枚举，详情参考 `HeatMapStyle` |
+| `opacityMode` | `number` | 否 | 1 | style=0或1时参数生效，不透明度模式，默认值：1，取值范围：0：使用自定义色卡颜色的不透明度 1：使用热力点的不透明度 |
+| `opacityRange` | `array` | 否 | [0~1.0] | style=0或1时参数生效，不透明度范围，默认值：[0~1.0]，注意：仅opacityMode为1时有效 |
+| `blur` | `number` | 否 | 0.85 | style=0或1时参数生效，热力点模糊因子，默认值：0.85，注意：模糊系数越高，渐变越平滑，取值范围：[0~1.0] |
+| `colors` | `object` | 是 | - | style=0或1时参数生效，自定义颜色卡区间数组，包含渐变控制参数、无效点颜色和颜色数组 |
+| `colors.gradient` | `boolean` | 是 | - | 是否渐变 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 是 | - | 无效像素点的默认颜色，默认白色 |
+| `colors.colorStops` | `array` | 是 | - | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
+| `colors.color` | [`Color`](/docs/api/types#color) | 是 | - | 值对应的调色板颜色 |
+| `colors.value` | `number` | 是 | - | 值 |
+| `blendMode` | `number` | 是 | - | 混合模式，取值范围：[0,1] |
+| `light` | `boolean` | 否 | false | 是否参与光照，布尔类型，默认值：false |
+| `shadow` | `number` | 是 | - | 阴影强度，取值范围：[0,任意正数] |
+| `tifAnimation` | `object` | 是 | - | 预加载的tif文件列表对象，包含属性如下： |
+| `tifAnimation.minHeight` | `number` | 是 | - | 最小高度 |
+| `tifAnimation.maxHeight` | `number` | 是 | - | 最大高度 |
+| `tifAnimation.totalSeconds` | `number` | 是 | - | 动画播放默认的总时长，单位：秒 |
+| `tifAnimation.time` | `number` | 否 | 0 | 从第几秒开始播放，默认值：0 |
+| `tifAnimation.files` | `array` | 是 | - | tif文件路径数组，结构示例：["D:\\0.tif","D:\\1.tif",...] ，注意：tif文件纹理尺寸不能超过8192，最大值示例：[8192,8192] |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.heatmap.load(heatmap);
+await fdapi.heatmap.load({});
 ```
 
 ---
@@ -384,17 +385,17 @@ await fdapi.heatmap.load(heatmap);
 
 暂停播放热力图动画
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | HeatMap对象的ID |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | HeatMap对象的ID |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.heatmap.pause(id);
+await fdapi.heatmap.pause('对象ID');
 ```
 
 ---
@@ -403,17 +404,17 @@ await fdapi.heatmap.pause(id);
 
 播放预加载的热力图动画
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | HeatMap对象的ID |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | HeatMap对象的ID |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.heatmap.play(id);
+await fdapi.heatmap.play('对象ID');
 ```
 
 ---
@@ -422,18 +423,18 @@ await fdapi.heatmap.play(id);
 
 为HeatMap移除热力点
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | HeatMap的ID |
-| `pointIds` | `array` | 热力点ID（单个或数组） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | HeatMap的ID |
+| `pointIds` | `array` | 是 | - | 热力点ID（单个或数组） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.heatmap.removePoints(id, pointIds);
+await fdapi.heatmap.removePoints('对象ID', ['对象ID']);
 ```
 
 ---
@@ -442,18 +443,18 @@ await fdapi.heatmap.removePoints(id, pointIds);
 
 设置BoundingBox 热力点坐标的范围
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `any` | HeatMap的ID |
-| `newVal` | `array` | 热力点坐标的范围：[minX,minY,minZ,maxX,maxY,maxZ]，数组元素类型：[任意浮点数] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `any` | 是 | - | HeatMap的ID |
+| `newVal` | `array` | 是 | - | 热力点坐标的范围：[minX,minY,minZ,maxX,maxY,maxZ]，数组元素类型：[任意浮点数] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.heatmap.setBBox(id, newVal);
+await fdapi.heatmap.setBBox('对象ID', []);
 ```
 
 ---
@@ -462,18 +463,18 @@ await fdapi.heatmap.setBBox(id, newVal);
 
 设置热力值的范围
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `any` | HeatMap的ID |
-| `newVal` | `array` | 热力值的范围：[min,max]，数组元素类型：[任意浮点数] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `any` | 是 | - | HeatMap的ID |
+| `newVal` | `array` | 是 | - | 热力值的范围：[min,max]，数组元素类型：[任意浮点数] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.heatmap.setRange(id, newVal);
+await fdapi.heatmap.setRange('对象ID', []);
 ```
 
 ---
@@ -482,18 +483,18 @@ await fdapi.heatmap.setRange(id, newVal);
 
 从第几秒开始播放
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | HeatMap对象的ID |
-| `startTime` | `number` | 可选，从第几秒开始播放，默认值：0秒 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | HeatMap对象的ID |
+| `startTime` | `number` | 否 | 0秒 | 可选，从第几秒开始播放，默认值：0秒 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.heatmap.setTime(id, startTime);
+await fdapi.heatmap.setTime('对象ID', '0秒');
 ```
 
 ---
@@ -502,10 +503,10 @@ await fdapi.heatmap.setTime(id, startTime);
 
 显示HeatMap
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | HeatMap对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | HeatMap对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -521,10 +522,10 @@ fdapi.heatmap.show('heatmap1');
 
 取消热力图内所有像素点高亮
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | HeatMap的ID |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | HeatMap的ID |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -566,17 +567,17 @@ fdapi.xxx.updateEnd(function () {
 
 更新热力图
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `heatmap` | `object` | 对象请参考add方法结构 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `heatmap` | `object` | 是 | - | 对象请参考add方法结构 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.heatmap.updateByHeatPoints(heatmap);
+await fdapi.heatmap.updateByHeatPoints({});
 ```
 
 ---
@@ -589,9 +590,9 @@ await fdapi.heatmap.updateByHeatPoints(heatmap);
 
 updateEnd是异步调用，可以用回调函数也可以await
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

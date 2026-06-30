@@ -59,27 +59,27 @@ WaterMesh 以自定义网格构建水面/水体，控制其形态、材质与水
 
 添加一个或多个WaterMesh对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | WaterMesh数据，可以是Object类型或者Array类型，对于每一个WaterMesh，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | WaterMesh数据，可以是Object类型或者Array类型，对于每一个WaterMesh，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `coordinateType` | `number` | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
-| `coordinates` | `array` | 顶点坐标，[取值示例](/docs/tutorials/coordinates) |
-| `indices` | `array` | 顶点坐标的索引，用来绘制三角网格；数组元素类型：(number)；数组元素顺序：顶点索引顺序需构成三角网格且同为顺时针或逆时针方向；数组元素取值范围：[0~coordinates.length-1]，取值示例：[2, 0, 3, 0, 2, 1] |
-| `normals` | `array` | 顶点法向，[X,Y,Z]，不传则使用默认值 |
-| `waterUVRepeat` | `number` | 水流贴图的重复间隔距离，取值范围：[1，10000]，单位：米 |
-| `waterColor` | [`Color`](/docs/api/types#color) | 水流颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `waterSpeed` | `number` | 水流速度，取值范围：[0.01~30]，单位：米/秒，默认值：3米/秒 |
-| `waterDirection` | `number` | 水流方向，取值范围：[0~1]，单位：度，此值与[0~360]按比例换算，默认值：0度 |
-| `waveScale` | `number` | 波纹强度，取值范围：[0.01~1]，单位：米，默认值：0.3米 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `coordinateType` | `number` | 否 | 0 | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
+| `coordinates` | `array` | 是 | - | 顶点坐标，[取值示例](/docs/tutorials/coordinates) |
+| `indices` | `array` | 是 | - | 顶点坐标的索引，用来绘制三角网格；数组元素类型：(number)；数组元素顺序：顶点索引顺序需构成三角网格且同为顺时针或逆时针方向；数组元素取值范围：[0~coordinates.length-1]，取值示例：[2, 0, 3, 0, 2, 1] |
+| `normals` | `array` | 是 | - | 顶点法向，[X,Y,Z]，不传则使用默认值 |
+| `waterUVRepeat` | `number` | 是 | - | 水流贴图的重复间隔距离，取值范围：[1，10000]，单位：米 |
+| `waterColor` | [`Color`](/docs/api/types#color) | 是 | - | 水流颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `waterSpeed` | `number` | 否 | 3米/秒 | 水流速度，取值范围：[0.01~30]，单位：米/秒，默认值：3米/秒 |
+| `waterDirection` | `number` | 否 | 0度 | 水流方向，取值范围：[0~1]，单位：度，此值与[0~360]按比例换算，默认值：0度 |
+| `waveScale` | `number` | 否 | 0.3米 | 波纹强度，取值范围：[0.01~1]，单位：米，默认值：0.3米 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -115,9 +115,9 @@ fdapi.waterMesh.focus('watermesh1', 100);
 
 删除场景中所有的WaterMesh
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -133,10 +133,10 @@ fdapi.waterMesh.clear();
 
 删除一个或多个WaterMesh对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的WaterMesh对象的ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的WaterMesh对象的ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -152,13 +152,13 @@ fdapi.waterMesh.delete('watermesh1');
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | WaterMesh对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | WaterMesh对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -174,10 +174,10 @@ fdapi.waterMesh.focus('watermesh1', 10);
 
 根据ID获取WaterMesh的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的WaterMesh对象ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的WaterMesh对象ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -209,10 +209,10 @@ fdapi.waterMesh.get('watermesh1');
 
 隐藏WaterMesh
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | WaterMesh对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | WaterMesh对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -228,9 +228,9 @@ fdapi.waterMesh.hide('watermesh1');
 
 隐藏所有WaterMesh
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -246,18 +246,18 @@ await fdapi.boxTrigger.hideAll();
 
 设置WaterMesh顶点坐标
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 唯一标识符 |
-| `newVal` | `array` | 新的顶点坐标，[取值示例](/docs/tutorials/coordinates) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 唯一标识符 |
+| `newVal` | `array` | 是 | - | 新的顶点坐标，[取值示例](/docs/tutorials/coordinates) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setCoordinates(id, newVal);
+await fdapi.boxTrigger.setCoordinates('对象ID', []);
 ```
 
 ---
@@ -266,18 +266,18 @@ await fdapi.boxTrigger.setCoordinates(id, newVal);
 
 设置WaterMesh顶点坐标索引
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 唯一标识符 |
-| `newVal` | `array` | 新顶点坐标的索引，数组元素类型：(number)，数组元素取值范围：[0~coordinates.length-1]，取值示例：[2, 0, 3, 0, 2, 1] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 唯一标识符 |
+| `newVal` | `array` | 是 | - | 新顶点坐标的索引，数组元素类型：(number)，数组元素取值范围：[0~coordinates.length-1]，取值示例：[2, 0, 3, 0, 2, 1] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setIndices(id, newVal);
+await fdapi.boxTrigger.setIndices('对象ID', []);
 ```
 
 ---
@@ -286,18 +286,18 @@ await fdapi.boxTrigger.setIndices(id, newVal);
 
 设置WaterMesh法向
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 唯一标识符 |
-| `newVal` | `array` | 新法向 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 唯一标识符 |
+| `newVal` | `array` | 是 | - | 新法向 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setNormals(id, newVal);
+await fdapi.boxTrigger.setNormals('对象ID', []);
 ```
 
 ---
@@ -306,18 +306,18 @@ await fdapi.boxTrigger.setNormals(id, newVal);
 
 设置颜色
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | WaterMesh唯一标识符 |
-| `newVal` | [`Color`](/docs/api/types#color) | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | WaterMesh唯一标识符 |
+| `newVal` | [`Color`](/docs/api/types#color) | 是 | - | 新颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setWaterColor(id, newVal);
+await fdapi.boxTrigger.setWaterColor('对象ID', '示例值');
 ```
 
 ---
@@ -326,18 +326,18 @@ await fdapi.boxTrigger.setWaterColor(id, newVal);
 
 设置水流方向
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | WaterMesh唯一标识符 |
-| `newVal` | `number` | 新的水流方向 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | WaterMesh唯一标识符 |
+| `newVal` | `number` | 是 | - | 新的水流方向 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setWaterDirection(id, newVal);
+await fdapi.boxTrigger.setWaterDirection('对象ID', 0);
 ```
 
 ---
@@ -346,18 +346,18 @@ await fdapi.boxTrigger.setWaterDirection(id, newVal);
 
 设置水流速度
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | WaterMesh唯一标识符 |
-| `newVal` | `number` | 新的水流速度 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | WaterMesh唯一标识符 |
+| `newVal` | `number` | 是 | - | 新的水流速度 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setWaterSpeed(id, newVal);
+await fdapi.boxTrigger.setWaterSpeed('对象ID', 0);
 ```
 
 ---
@@ -366,18 +366,18 @@ await fdapi.boxTrigger.setWaterSpeed(id, newVal);
 
 设置水流贴图重复间隔距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | WaterMesh唯一标识符 |
-| `newVal` | `number` | 新的水流贴图重复间隔距离 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | WaterMesh唯一标识符 |
+| `newVal` | `number` | 是 | - | 新的水流贴图重复间隔距离 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setWaterUVRepeat(id, newVal);
+await fdapi.boxTrigger.setWaterUVRepeat('对象ID', 0);
 ```
 
 ---
@@ -386,18 +386,18 @@ await fdapi.boxTrigger.setWaterUVRepeat(id, newVal);
 
 设置水波纹大小
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | WaterMesh唯一标识符 |
-| `newVal` | `number` | 新的水波纹大小 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | WaterMesh唯一标识符 |
+| `newVal` | `number` | 是 | - | 新的水波纹大小 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setWaterWaveScale(id, newVal);
+await fdapi.boxTrigger.setWaterWaveScale('对象ID', 0);
 ```
 
 ---
@@ -406,10 +406,10 @@ await fdapi.boxTrigger.setWaterWaveScale(id, newVal);
 
 显示WaterMesh
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | WaterMesh对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | WaterMesh对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -425,9 +425,9 @@ fdapi.waterMesh.show('watermesh1');
 
 显示所有WaterMesh
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -443,10 +443,10 @@ await fdapi.boxTrigger.showAll();
 
 修改一个或多个WaterMesh对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | WaterMesh数据，参考add方法 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | WaterMesh数据，参考add方法 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

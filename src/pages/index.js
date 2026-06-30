@@ -96,20 +96,14 @@ const features = [
     desc: '水文仿真(洪水/水动力/SPH粒子)、交通仿真(车辆/无人机/高铁/卫星)、海洋气象、信号仿真、有限元分析、战场推演。',
     link: '/docs/api/hydro/hydrodynamic1d',
   },
-  {
-    icon: '🖥️',
-    title: '实例管理',
-    desc: 'Cloud 管理服务接口：实例启停/解锁/参数设置、运行状态、端口、工程与用户授权，支持 WebSocket 与 REST。',
-    link: '/docs/tutorials/instance-management',
-  },
 ];
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title="DTS Cloud 数字孪生平台 API 文档"
-      description="DTS Cloud 数字孪生平台 SDK v7.1 二次开发 API 完整参考文档"
+      title="DTS 数字孪生平台 API 文档"
+      description="DTS 数字孪生平台 SDK v7.1 二次开发 API 完整参考文档"
     >
       {/* 教学视频源站启用了 Referer 防盗链：跨域请求不携带 Referer 即可放行（站内请求仍正常带上） */}
       <Head>
@@ -118,10 +112,10 @@ export default function Home() {
       {/* Hero */}
       <div className="hero-banner">
         <div style={{ maxWidth: 860, margin: '0 auto', padding: '0 24px' }}>
-          <p style={{ color: '#00d4ff', letterSpacing: '2px', fontWeight: 600, fontSize: '0.85rem', marginBottom: 12, textTransform: 'uppercase' }}>
+          <p style={{ color: 'var(--dts-accent)', letterSpacing: '2px', fontWeight: 600, fontSize: '0.85rem', marginBottom: 12, textTransform: 'uppercase' }}>
             Digital Twin SDK v7.1
           </p>
-          <h1 className="hero-title">DTS Cloud 数字孪生平台</h1>
+          <h1 className="hero-title">DTS 数字孪生平台</h1>
           <p className="hero-subtitle">
             二次开发 API 文档 — 全面覆盖云渲染、三维可视化、仿真分析、GIS 图层，
             让开发者快速构建沉浸式数字孪生应用。
@@ -138,7 +132,7 @@ export default function Home() {
       </div>
 
       {/* Stats */}
-      <div style={{ background: '#0d1117', padding: '0 24px' }}>
+      <div style={{ background: 'var(--dts-bg)', padding: '0 24px' }}>
         <div style={{ maxWidth: 960, margin: '0 auto' }}>
           <div className="stats-bar">
             <div className="stat-item">
@@ -162,17 +156,17 @@ export default function Home() {
       </div>
 
       {/* Features */}
-      <main style={{ background: '#0d1117', padding: '20px 24px 60px' }}>
+      <main style={{ background: 'var(--dts-bg)', padding: '20px 24px 60px' }}>
         <div style={{ maxWidth: 1080, margin: '0 auto' }}>
           <h2 style={{
             textAlign: 'center',
-            color: '#e6f0ff',
+            color: 'var(--dts-heading)',
             fontSize: '1.8rem',
             margin: '40px 0 8px',
           }}>
             覆盖数字孪生全场景
           </h2>
-          <p style={{ textAlign: 'center', color: '#6b8ca8', marginBottom: 0 }}>
+          <p style={{ textAlign: 'center', color: 'var(--dts-muted)', marginBottom: 0 }}>
             从云渲染接入到三维标注、仿真分析、GIS 集成，SDK 一站覆盖
           </p>
           <div className="feature-grid">
@@ -194,7 +188,7 @@ export default function Home() {
 
         {/* Quick Start Code */}
         <div style={{ maxWidth: 1080, margin: '0 auto', marginTop: 32 }}>
-          <h2 style={{ color: '#00d4ff', borderLeft: '3px solid #00d4ff', paddingLeft: 12 }}>
+          <h2 style={{ color: 'var(--dts-accent)', borderLeft: '3px solid var(--dts-accent)', paddingLeft: 12 }}>
             5 分钟接入示例
           </h2>
           {/* 二次开发入门教学视频 */}
@@ -203,7 +197,7 @@ export default function Home() {
             marginBottom: 24,
             borderRadius: 8,
             overflow: 'hidden',
-            border: '1px solid rgba(0,212,255,0.15)',
+            border: '1px solid var(--dts-border)',
             background: '#000',
             lineHeight: 0,
           }}>

@@ -10,10 +10,10 @@ description: "DTS SDK 二次开发中最常见的问题与解决方案"
 
 **原因排查：**
 
-1. **IP 或端口填写错误** — 确认 DTS Cloud 服务已启动，且 `host` 地址和端口正确。
+1. **IP 或端口填写错误** — 确认 DTS 服务已启动，且 `host` 地址和端口正确。
 2. **`domId` 对应的元素不存在** — 检查 HTML 中是否有 `id` 与 `domId` 一致的容器元素，且在 `new DigitalTwinAPI(...)` 执行时 DOM 已渲染完毕。
 3. **SDK 文件未加载** — 打开浏览器控制台，确认没有 `DigitalTwinAPI is not defined` 错误。检查 `<script src="...ac.min.js">` 路径是否正确。
-4. **跨域被拦截** — 确认 DTS Cloud 服务端配置了 CORS 响应头，或页面与服务同域。
+4. **跨域被拦截** — 确认 DTS 服务端配置了 CORS 响应头，或页面与服务同域。
 
 ```js
 // 正确写法：DOM 就绪后再初始化
@@ -34,7 +34,7 @@ window.onload = function () {
 
 ### Q: 视频流画面一直显示加载中，没有画面
 
-1. 确认 DTS Cloud 渲染实例已在后台正常运行。
+1. 确认 DTS 渲染实例已在后台正常运行。
 2. 检查网络带宽，云渲染视频流需要稳定的 10Mbps 以上连接。
 3. 在 Chrome 控制台 Network 面板查看 WebSocket 连接状态，是否有 `101 Switching Protocols`。
 4. 部分企业网络会拦截 WebSocket，尝试切换到其他网络环境测试。

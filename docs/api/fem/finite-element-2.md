@@ -65,43 +65,43 @@ new FiniteElement2()
 
 根据VTK文件添加一个或多个有限元仿真对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 有限元仿真对象的数据结构，可以是Object类型或者Array类型，对于每一个FiniteElement2对象，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 有限元仿真对象的数据结构，可以是Object类型或者Array类型，对于每一个FiniteElement2对象，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 有限元仿真对象的唯一标识符ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `filePath` | `string` | 必选，包含有限元仿真对象数据的VTK文件路径，取值示例：D:/xxx.vtk |
-| `location` | `array` | 有限元仿真对象位置坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
-| `coordinateType` | `number` | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
-| `rotation` | `array` | 有限元仿真对象旋转角度：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |
-| `collision` | `boolean` | 有限元仿真对象创建后是否开启碰撞，默认：true |
-| `showMesh` | `boolean` | 是否显示有限元仿真模型，默认值：true |
-| `edge` | `object` | 网格线边框样式对象，包含以下参数： |
-| `edge.type` | `number` | 线框样式，取值范围：[0,1,2]，0：隐藏 1：网格线 2：特征线 |
-| `edge.featureAngel` | `number` | 特征性二面角 |
-| `edge.color` | `string` | 可选，线框颜色，默认值：[0.1, 0,1, 0.1, 1]，[取值示例](/docs/tutorials/color) |
-| `pointField` | `object` | 设置有限元仿真对象的点属性字段，包含以下参数： |
-| `pointField.field` | `string` | 可选，属性字段名称 |
-| `pointField.component` | `string` | 可选，属性字段对应的分量名称 |
-| `arrow` | `object` | 设置有限元仿真对象的箭头效果，包含以下参数： |
-| `arrow.vectorField` | `string` | 使用此属性字段名称对应的值符号化显示箭头 |
-| `arrow.lengthScale` | `number` | 可选，箭头长度缩放值 |
-| `arrow.sizeScale` | `number` | 可选，箭头尺寸 |
-| `arrow.colorField` | `string` | 颜色属性字段名称 |
-| `arrow.colorComponent` | `string` | 颜色属性字段对应的分量名称 |
-| `colors` | `object` | 有限元仿真对象的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
-| `colors.gradient` | `boolean` | 是否渐变 |
-| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 无效像素点的默认颜色，默认白色 |
-| `colors.colorStops` | `array` | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
-| `colors.color` | [`Color`](/docs/api/types#color) | 值对应的调色板颜色 |
-| `colors.value` | `number` | 值 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 有限元仿真对象的唯一标识符ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `filePath` | `string` | 是 | - | 必选，包含有限元仿真对象数据的VTK文件路径，取值示例：D:/xxx.vtk |
+| `location` | `array` | 是 | - | 有限元仿真对象位置坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
+| `coordinateType` | `number` | 否 | 0 | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
+| `rotation` | `array` | 否 | [0,0,0] | 有限元仿真对象旋转角度：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |
+| `collision` | `boolean` | 是 | - | 有限元仿真对象创建后是否开启碰撞，默认：true |
+| `showMesh` | `boolean` | 否 | true | 是否显示有限元仿真模型，默认值：true |
+| `edge` | `object` | 是 | - | 网格线边框样式对象，包含以下参数： |
+| `edge.type` | `number` | 是 | - | 线框样式，取值范围：[0,1,2]，0：隐藏 1：网格线 2：特征线 |
+| `edge.featureAngel` | `number` | 是 | - | 特征性二面角 |
+| `edge.color` | `string` | 否 | [0.1, 0,1, 0.1, 1] | 可选，线框颜色，默认值：[0.1, 0,1, 0.1, 1]，[取值示例](/docs/tutorials/color) |
+| `pointField` | `object` | 是 | - | 设置有限元仿真对象的点属性字段，包含以下参数： |
+| `pointField.field` | `string` | 否 | - | 可选，属性字段名称 |
+| `pointField.component` | `string` | 否 | - | 可选，属性字段对应的分量名称 |
+| `arrow` | `object` | 是 | - | 设置有限元仿真对象的箭头效果，包含以下参数： |
+| `arrow.vectorField` | `string` | 是 | - | 使用此属性字段名称对应的值符号化显示箭头 |
+| `arrow.lengthScale` | `number` | 否 | - | 可选，箭头长度缩放值 |
+| `arrow.sizeScale` | `number` | 否 | - | 可选，箭头尺寸 |
+| `arrow.colorField` | `string` | 是 | - | 颜色属性字段名称 |
+| `arrow.colorComponent` | `string` | 是 | - | 颜色属性字段对应的分量名称 |
+| `colors` | `object` | 是 | - | 有限元仿真对象的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
+| `colors.gradient` | `boolean` | 是 | - | 是否渐变 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 是 | - | 无效像素点的默认颜色，默认白色 |
+| `colors.colorStops` | `array` | 是 | - | 调色板对象数组，每一个对象包含热力值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持以下属性： |
+| `colors.color` | [`Color`](/docs/api/types#color) | 是 | - | 值对应的调色板颜色 |
+| `colors.value` | `number` | 是 | - | 值 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -307,21 +307,21 @@ setTimeout(function () {
 
 盒子过滤器
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 有限元仿真对象盒子过滤器的数据结构，可以是Object类型或者Array类型，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 有限元仿真对象盒子过滤器的数据结构，可以是Object类型或者Array类型，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 有限元仿真对象的唯一标识符ID |
-| `filterId` | `string` | 过滤器ID |
-| `clipBBox` | `array` | 剖切盒子的范围，格式：[minX,minY,minZ,maxX,maxY,maxZ]，数组元素类型：[任意浮点数] |
-| `clipRotation` | `array` | 剖切盒子的旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值] |
-| `crinkleClip` | `boolean` | 是否对切面上的网格体进行剖切并只显示剖切区域的一侧，默认值：false 平滑切面效果，设置为true，则显示褶皱效果 |
-| `invertClip` | `boolean` | 是否打开剖切反转，默认值：true |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 有限元仿真对象的唯一标识符ID |
+| `filterId` | `string` | 是 | - | 过滤器ID |
+| `clipBBox` | `array` | 是 | - | 剖切盒子的范围，格式：[minX,minY,minZ,maxX,maxY,maxZ]，数组元素类型：[任意浮点数] |
+| `clipRotation` | `array` | 是 | - | 剖切盒子的旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值] |
+| `crinkleClip` | `boolean` | 否 | false | 是否对切面上的网格体进行剖切并只显示剖切区域的一侧，默认值：false 平滑切面效果，设置为true，则显示褶皱效果 |
+| `invertClip` | `boolean` | 否 | true | 是否打开剖切反转，默认值：true |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -347,19 +347,19 @@ fdapi.finiteElement2.applyBoxClipFilter({
 
 根据等值线对应的数值添加过滤器并展示过滤后的有限元模型分析结果
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 有限元仿真对象过滤器的数据结构，可以是Object类型或者Array类型，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 有限元仿真对象过滤器的数据结构，可以是Object类型或者Array类型，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 有限元仿真对象的唯一标识符ID |
-| `filterId` | `string` | 过滤器ID |
-| `fieldName` | `string` | 有限元模型对象包含等值线值的属性字段名称，支持点属性字段 |
-| `contourValues` | `array` | 等值线对应的数值数组，数组元素的取值类型: number，取值示例：[100,200,300,500] |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 有限元仿真对象的唯一标识符ID |
+| `filterId` | `string` | 是 | - | 过滤器ID |
+| `fieldName` | `string` | 是 | - | 有限元模型对象包含等值线值的属性字段名称，支持点属性字段 |
+| `contourValues` | `array` | 是 | - | 等值线对应的数值数组，数组元素的取值类型: number，取值示例：[100,200,300,500] |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -383,22 +383,22 @@ fdapi.finiteElement2.applyContourFilter({
 
 圆柱过滤器
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 有限元仿真对象圆柱过滤器的数据结构，可以是Object类型或者Array类型，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 有限元仿真对象圆柱过滤器的数据结构，可以是Object类型或者Array类型，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 有限元仿真对象的唯一标识符ID |
-| `filterId` | `string` | 过滤器ID |
-| `clipOrigin` | `array` | 圆柱体的柱心坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
-| `clipRadius` | `array` | 圆柱体的半径，单位：米，取值范围：[0,任意正数] |
-| `clipAxis` | `array` | 圆柱体的轴心朝向，即垂直于圆柱底面的法线向量，取值示例：[0,0,1] |
-| `crinkleClip` | `boolean` | 是否对切面上的网格体进行剖切并只显示剖切区域的一侧，默认值：false 平滑切面效果，设置为true，则显示褶皱效果 |
-| `invertClip` | `boolean` | 是否打开剖切反转，默认值：true |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 有限元仿真对象的唯一标识符ID |
+| `filterId` | `string` | 是 | - | 过滤器ID |
+| `clipOrigin` | `array` | 是 | - | 圆柱体的柱心坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
+| `clipRadius` | `array` | 是 | - | 圆柱体的半径，单位：米，取值范围：[0,任意正数] |
+| `clipAxis` | `array` | 是 | - | 圆柱体的轴心朝向，即垂直于圆柱底面的法线向量，取值示例：[0,0,1] |
+| `crinkleClip` | `boolean` | 否 | false | 是否对切面上的网格体进行剖切并只显示剖切区域的一侧，默认值：false 平滑切面效果，设置为true，则显示褶皱效果 |
+| `invertClip` | `boolean` | 否 | true | 是否打开剖切反转，默认值：true |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -425,21 +425,21 @@ fdapi.finiteElement2.applyCylinderClipFilter({
 
 切面过滤器
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 有限元仿真对象切面过滤器的数据结构，可以是Object类型或者Array类型，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 有限元仿真对象切面过滤器的数据结构，可以是Object类型或者Array类型，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 有限元仿真对象的唯一标识符ID |
-| `filterId` | `string` | 过滤器ID |
-| `clipOrigin` | `array` | 切面的原点坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
-| `clipNormal` | `array` | 切面的法线向量，取值示例：[1,0,0] |
-| `crinkleClip` | `boolean` | 是否对切面上的网格体进行剖切并只显示剖切区域的一侧，默认值：false 平滑切面效果，设置为true，则显示褶皱效果 |
-| `invertClip` | `boolean` | 是否打开剖切反转，默认值：true |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 有限元仿真对象的唯一标识符ID |
+| `filterId` | `string` | 是 | - | 过滤器ID |
+| `clipOrigin` | `array` | 是 | - | 切面的原点坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
+| `clipNormal` | `array` | 是 | - | 切面的法线向量，取值示例：[1,0,0] |
+| `crinkleClip` | `boolean` | 否 | false | 是否对切面上的网格体进行剖切并只显示剖切区域的一侧，默认值：false 平滑切面效果，设置为true，则显示褶皱效果 |
+| `invertClip` | `boolean` | 否 | true | 是否打开剖切反转，默认值：true |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -465,21 +465,21 @@ fdapi.finiteElement2.applyPlaneClipFilter({
 
 球型过滤器
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 有限元仿真对象球型过滤器的数据结构，可以是Object类型或者Array类型，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 有限元仿真对象球型过滤器的数据结构，可以是Object类型或者Array类型，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 有限元仿真对象的唯一标识符ID |
-| `filterId` | `string` | 过滤器ID |
-| `clipOrigin` | `array` | 球的球心坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
-| `clipRadius` | `array` | 球的半径，单位：米，取值范围：[0,任意正数] |
-| `crinkleClip` | `boolean` | 是否对切面上的网格体进行剖切并只显示剖切区域的一侧，默认值：false 平滑切面效果，设置为true，则显示褶皱效果 |
-| `invertClip` | `boolean` | 是否打开剖切反转，默认值：true |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 有限元仿真对象的唯一标识符ID |
+| `filterId` | `string` | 是 | - | 过滤器ID |
+| `clipOrigin` | `array` | 是 | - | 球的球心坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
+| `clipRadius` | `array` | 是 | - | 球的半径，单位：米，取值范围：[0,任意正数] |
+| `crinkleClip` | `boolean` | 否 | false | 是否对切面上的网格体进行剖切并只显示剖切区域的一侧，默认值：false 平滑切面效果，设置为true，则显示褶皱效果 |
+| `invertClip` | `boolean` | 否 | true | 是否打开剖切反转，默认值：true |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -505,19 +505,19 @@ fdapi.finiteElement2.applySphereClipFilter({
 
 根据模型属性字段对应的区间值添加过滤器并展示过滤后的有限元模型分析结果
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 有限元仿真对象过滤器的数据结构，可以是Object类型或者Array类型，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 有限元仿真对象过滤器的数据结构，可以是Object类型或者Array类型，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 有限元仿真对象的唯一标识符ID |
-| `filterId` | `string` | 过滤器ID |
-| `fieldName` | `string` | 有限元模型对象包含的区间类型的属性字段名称，支持cell属性字段和点属性字段 |
-| `range` | `array` | 字段属性值的区间范围: [min~max]，区间范围的取值类型: number，取值示例：[10,20] |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 有限元仿真对象的唯一标识符ID |
+| `filterId` | `string` | 是 | - | 过滤器ID |
+| `fieldName` | `string` | 是 | - | 有限元模型对象包含的区间类型的属性字段名称，支持cell属性字段和点属性字段 |
+| `range` | `array` | 是 | - | 字段属性值的区间范围: [min~max]，区间范围的取值类型: number，取值示例：[10,20] |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -543,9 +543,9 @@ fdapi.finiteElement2.applyThresholdFilter({
 
 清空场景中所有的有限元仿真对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -561,10 +561,10 @@ fdapi.finiteElement2.clear();
 
 清空指定的有限元模型对象添加的所有过滤器
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 有限元仿真对象的ID或ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 有限元仿真对象的ID或ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -580,10 +580,10 @@ fdapi.finiteElement2.clearFilter("fe_2");
 
 删除一个或多个有限元仿真对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的有限元仿真对象ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的有限元仿真对象ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -599,13 +599,13 @@ fdapi.finiteElement2.delete(['fe_2']);
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 有限元仿真对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 有限元仿真对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -621,10 +621,10 @@ fdapi.finiteElement2.focus('fe_2');
 
 根据有限元分析ID获取有限元分析的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的有限元仿真对象ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的有限元仿真对象ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -682,10 +682,10 @@ fdapi.finiteElement2.get(['fe_2']);
 
 隐藏有限元分析
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 有限元仿真对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 有限元仿真对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -701,17 +701,17 @@ fdapi.finiteElement2.hide(['fe_2']);
 
 移除指定的有限元模型对象添加的相关过滤器
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 有限元仿真对象过滤器的数据结构，可以是Object类型或者Array类型 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 有限元仿真对象过滤器的数据结构，可以是Object类型或者Array类型 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 有限元仿真对象的唯一标识符ID |
-| `filterIds` | `array` | 过滤器ID数组 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 有限元仿真对象的唯一标识符ID |
+| `filterIds` | `array` | 是 | - | 过滤器ID数组 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -727,10 +727,10 @@ fdapi.finiteElement2.removeFilter({ id: "fe_2", filterIds: ["filter1", "filter2"
 
 显示有限元分析
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 有限元仿真对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 有限元仿真对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -746,10 +746,10 @@ fdapi.finiteElement2.show(['fe_2']);
 
 修改一个或多个有限元仿真对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 有限元仿真对象或对象数组，参考add方法参数。注意：不支持更新文件路径参数(filePath)，需先删除再添加 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 有限元仿真对象或对象数组，参考add方法参数。注意：不支持更新文件路径参数(filePath)，需先删除再添加 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -803,9 +803,9 @@ fdapi.xxx.updateEnd(function () {
 
 updateEnd是异步调用，可以用回调函数也可以await
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

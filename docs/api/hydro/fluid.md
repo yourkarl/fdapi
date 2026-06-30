@@ -70,28 +70,28 @@ new Fluid()
 
 添加一个或多个流体仿真对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 流体仿真对象的数据结构，可以是Object类型或者Array类型，对于每一个Fluid对象，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 流体仿真对象的数据结构，可以是Object类型或者Array类型，对于每一个Fluid对象，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 流体仿真对象的唯一标识符ID |
-| `groupId` | `string` | 可选，Group分组id |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `bbox` | `bbox` | 流体仿真的包围盒范围，格式：[minX,minY,minZ,maxX,maxY,maxZ]，数组元素类型：[任意浮点数] |
-| `style` | `number` | 流体样式，共28种水样式，取值范围：[0~27]，样式参考流体的样式预览图 |
-| `color` | [`Color`](/docs/api/types#color) | 可选，流体颜色，默认使用style样式自带颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `sources` | `array` | 出水点信息 |
-| `sources.id` | `string` | 出水点ID |
-| `sources.rotation` | `array` | 出水点旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值] |
-| `sources.bbox` | `array` | 出水点范围，格式：[minX,minY,minZ,maxX,maxY,maxZ]，注意：此出水点bbox范围要在流体仿真的bbox范围内，同时高度位置不要被模型遮挡，一般用射线求交接口拿到地形高度再加上1米即可。 |
-| `sources.velocity` | `array` | 出水点uv向量（流速、流向），格式：[x,y]，取值范围：[-2,2] |
-| `sources.shape` | `number` | 出水点形状，取值范围：[0,1]，0矩形出水点，1圆形出水点 |
-| `sources.duration` | `number` | 出水点仿真执行时间，单位：秒，默认值：-1，即一直执行，大于0则按时间执行 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 流体仿真对象的唯一标识符ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组id |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `bbox` | `bbox` | 是 | - | 流体仿真的包围盒范围，格式：[minX,minY,minZ,maxX,maxY,maxZ]，数组元素类型：[任意浮点数] |
+| `style` | `number` | 是 | - | 流体样式，共28种水样式，取值范围：[0~27]，样式参考流体的样式预览图 |
+| `color` | [`Color`](/docs/api/types#color) | 否 | - | 可选，流体颜色，默认使用style样式自带颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `sources` | `array` | 是 | - | 出水点信息 |
+| `sources.id` | `string` | 是 | - | 出水点ID |
+| `sources.rotation` | `array` | 是 | - | 出水点旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值] |
+| `sources.bbox` | `array` | 是 | - | 出水点范围，格式：[minX,minY,minZ,maxX,maxY,maxZ]，注意：此出水点bbox范围要在流体仿真的bbox范围内，同时高度位置不要被模型遮挡，一般用射线求交接口拿到地形高度再加上1米即可。 |
+| `sources.velocity` | `array` | 是 | - | 出水点uv向量（流速、流向），格式：[x,y]，取值范围：[-2,2] |
+| `sources.shape` | `number` | 是 | - | 出水点形状，取值范围：[0,1]，0矩形出水点，1圆形出水点 |
+| `sources.duration` | `number` | 否 | -1 | 出水点仿真执行时间，单位：秒，默认值：-1，即一直执行，大于0则按时间执行 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -176,23 +176,23 @@ fdapi.fluid.continueSource(data);
 
 添加一个或多个流体仿真对象的源数据
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 源数据的数据结构，可以是Object类型或者Array类型，对于每一个源数据对象，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 源数据的数据结构，可以是Object类型或者Array类型，对于每一个源数据对象，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 源数据对象的唯一标识符ID |
-| `sources` | `array` | 源数据对象源数据 |
-| `sources.id` | `string` | id |
-| `sources.bbox` | `array` | X、Y方向的包围盒范围，格式：[minX,minY,maxX,maxY]，注意：参数范围不包含高度Z |
-| `sources.height` | `number` | 高度 |
-| `sources.velocity` | `array` | 速率，格式：[x,y] |
-| `sources.shape` | `number` | 形状 |
-| `sources.duration` | `number` | 周期 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 源数据对象的唯一标识符ID |
+| `sources` | `array` | 是 | - | 源数据对象源数据 |
+| `sources.id` | `string` | 是 | - | id |
+| `sources.bbox` | `array` | 是 | - | X、Y方向的包围盒范围，格式：[minX,minY,maxX,maxY]，注意：参数范围不包含高度Z |
+| `sources.height` | `number` | 是 | - | 高度 |
+| `sources.velocity` | `array` | 是 | - | 速率，格式：[x,y] |
+| `sources.shape` | `number` | 是 | - | 形状 |
+| `sources.duration` | `number` | 是 | - | 周期 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -263,9 +263,9 @@ fdapi.fluid.continueSource(sourcePlay);
 
 清空场景中所有的流体仿真对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -281,10 +281,10 @@ fdapi.fluid.clear();
 
 继续流体仿真
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 一个或多个流体仿真对象的id |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 一个或多个流体仿真对象的id |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -300,18 +300,18 @@ fdapi.fluid.continue('ff');
 
 继续仿真
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 源数据的id信息，结构如下： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 源数据的id信息，结构如下： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 流体仿真对象的唯一标识符ID |
-| `sources` | `array` | 流体仿真对象源数据 |
-| `sources.id` | `string` | id |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 流体仿真对象的唯一标识符ID |
+| `sources` | `array` | 是 | - | 流体仿真对象源数据 |
+| `sources.id` | `string` | 是 | - | id |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -338,10 +338,10 @@ fdapi.fluid.continueSource(data);
 
 删除一个或多个流体仿真对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的流体仿真对象ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的流体仿真对象ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -357,13 +357,13 @@ fdapi.fluid.delete('ff');
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 流体仿真对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 流体仿真对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -379,10 +379,10 @@ fdapi.fluid.focus('ff');
 
 根据流体仿真ID获取流体仿真的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的流体仿真对象ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的流体仿真对象ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -435,10 +435,10 @@ fdapi.fluid.get('ff');
 
 隐藏流体仿真
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 流体仿真对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 流体仿真对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -454,10 +454,10 @@ fdapi.fluid.hide('ff');
 
 暂停流体仿真
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 一个或多个流体仿真对象的id |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 一个或多个流体仿真对象的id |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -473,17 +473,17 @@ fdapi.fluid.pause('ff');
 
 移除一个或多个流体仿真对象的源数据
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 待移除的源数据的id信息，结构如下： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 待移除的源数据的id信息，结构如下： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 流体仿真对象的唯一标识符ID |
-| `sourceIds` | `array` | 源数据对象id数组 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 流体仿真对象的唯一标识符ID |
+| `sourceIds` | `array` | 是 | - | 源数据对象id数组 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -511,10 +511,10 @@ fdapi.fluid.removeSource(data);
 
 重置流体仿真
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 一个或多个流体仿真对象的id |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 一个或多个流体仿真对象的id |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -530,10 +530,10 @@ fdapi.fluid.reset('ff');
 
 显示流体仿真
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 流体仿真对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 流体仿真对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -549,18 +549,18 @@ fdapi.fluid.show('ff');
 
 停止仿真
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 源数据的id信息，结构如下： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 源数据的id信息，结构如下： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 流体仿真对象的唯一标识符ID |
-| `sources` | `array` | 流体仿真对象源数据 |
-| `sources.id` | `string` | id |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 流体仿真对象的唯一标识符ID |
+| `sources` | `array` | 是 | - | 流体仿真对象源数据 |
+| `sources.id` | `string` | 是 | - | id |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -588,20 +588,20 @@ fdapi.fluid.stopSource(data);
 
 修改一个或多个流体仿真对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 流体仿真对象或对象数组，结构如下： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 流体仿真对象或对象数组，结构如下： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 流体仿真对象的唯一标识符ID |
-| `active` | `boolean` | 是否激活仿真 |
-| `sources` | `array` | 流体仿真对象源数据 |
-| `sources.id` | `string` | id |
-| `sources.active` | `boolean` | 是否激活 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 流体仿真对象的唯一标识符ID |
+| `active` | `boolean` | 是 | - | 是否激活仿真 |
+| `sources` | `array` | 是 | - | 流体仿真对象源数据 |
+| `sources.id` | `string` | 是 | - | id |
+| `sources.active` | `boolean` | 是 | - | 是否激活 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

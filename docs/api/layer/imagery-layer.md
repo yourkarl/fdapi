@@ -21,6 +21,7 @@ ImageryLayer 网络图层相关的操作方法，包含WMS、WMTS、MapServer等
   - 加载 ArcGIS MapServer、天地图等服务作为城市三维场景的二维影像/电子地图底图。
   - 同时叠加多个影像与注记服务，构建影像+矢量注记的复合底图。
   - 为业务专题图层提供地理参考背景底图。
+  - 一张图影像底图：卫星影像与 OGC（WMTS/WMS）、第三方地图（天地图等）配准叠加。
 - **注意事项**：
   - 适用于平面投影坐标系工程；球面坐标系下应使用 ImageryLayer2 / GlobeTerrain。
   - url 模板需正确包含 \{TileMatrix\}\{TileRow\}\{TileCol\} 等变量，xmlPath、layerName、坐标系等不传时会尝试从 init() 自动获取。
@@ -60,21 +61,21 @@ new ImageryLayer()
 
 添加一个或多个网络地图服务，如WMTS/WMS服务等网络图层服务
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 图层服务的对象，可以是Object类型或Array类型，对于每一个图层服务对象，支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 图层服务的对象，可以是Object类型或Array类型，对于每一个图层服务对象，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 必选，图层服务字符串类型的ID |
-| `url` | `string` | 必选，WMTS/WMS服务的URL地址，例如WMTS GetTile操作的基本URL（用于KVP编码的请求）或tile-URL模板（用于RESTful请求）。 tile-URL模板应包含以下变量:&#123;style&#125;，&#123;TileMatrixSet&#125;，&#123;TileMatrix&#125;，&#123;TileRow&#125;，&#123;TileCol&#125;。如果实际值是硬编码的，或者服务器不需要，则前两个是可选的。 &#123;s&#125;关键字可用于指定子域。 |
-| `xmlPath` | `string` | 可选，获取OGC标准服务的元数据能力文档（Capabilities XML文档）的URL地址，需包含图层、瓦片规则、请求参数等信息，不传则默认从init()方法获取 |
-| `layerName` | `string` | 可选，图层名称，不传则默认从init()方法获取 |
-| `tileMatrixName` | `string` | 可选，如果服务类型是WMTS：tileMatrixName是切片方案，如果服务类型是WMS：tileMatrixName是坐标类型，不传则默认从init()方法获取 |
-| `ogcEPSG` | `string` | 可选，坐标系类型，不传则默认从init()方法获取 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 必选，图层服务字符串类型的ID |
+| `url` | `string` | 否 | - | 必选，WMTS/WMS服务的URL地址，例如WMTS GetTile操作的基本URL（用于KVP编码的请求）或tile-URL模板（用于RESTful请求）。 tile-URL模板应包含以下变量:&#123;style&#125;，&#123;TileMatrixSet&#125;，&#123;TileMatrix&#125;，&#123;TileRow&#125;，&#123;TileCol&#125;。如果实际值是硬编码的，或者服务器不需要，则前两个是可选的。 &#123;s&#125;关键字可用于指定子域。 |
+| `xmlPath` | `string` | 否 | - | 可选，获取OGC标准服务的元数据能力文档（Capabilities XML文档）的URL地址，需包含图层、瓦片规则、请求参数等信息，不传则默认从init()方法获取 |
+| `layerName` | `string` | 否 | - | 可选，图层名称，不传则默认从init()方法获取 |
+| `tileMatrixName` | `string` | 否 | - | 可选，如果服务类型是WMTS：tileMatrixName是切片方案，如果服务类型是WMS：tileMatrixName是坐标类型，不传则默认从init()方法获取 |
+| `ogcEPSG` | `string` | 否 | - | 可选，坐标系类型，不传则默认从init()方法获取 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -114,10 +115,10 @@ let wmts3 = {
 
 给图层服务叠加显示对应VTPK标注
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `tileLayerId` | `string` | VTPK服务对应图层树上的ID |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `tileLayerId` | `string` | 是 | - | VTPK服务对应图层树上的ID |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -135,10 +136,10 @@ let tileLayerId = "";
 
 删除一个或多个ImageryLayer图层对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的ImageryLayer对象的ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的ImageryLayer对象的ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -154,10 +155,10 @@ fdapi.imageryLayer.delete(['wmts1', 'wmts2']);
 
 删除叠加的VTPK标注
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `tileLayerId` | `string` | VTPK服务对应图层树上的ID |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `tileLayerId` | `string` | 是 | - | VTPK服务对应图层树上的ID |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -175,13 +176,13 @@ let tileLayerId = "";
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | ImageryLayer图层对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | ImageryLayer图层对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -197,10 +198,10 @@ fdapi.imageryLayer.focus('wmts1');
 
 隐藏一个或多个ImageryLayer图层对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | ImageryLayer对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | ImageryLayer对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -216,22 +217,22 @@ fdapi.imageryLayer.hide(['wmts1', 'wmts2']);
 
 添加图层服务前需要先初始化相关参数
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `option` | `object` | 初始化对象，包含图层初始化环境配置和图层范围信息 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `option` | `object` | 是 | - | 初始化对象，包含图层初始化环境配置和图层范围信息 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`option` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `xmlUrl` | `string` | 必选，获取OGC标准服务的元数据能力文档（Capabilities XML文档）的URL地址，需包含图层、瓦片规则、请求参数等信息 |
-| `layerName` | `string` | 必选，图层名称 |
-| `tileMatrixName` | `string` | 必选，如果服务类型是WMTS：tileMatrixName是切片方案，如果服务类型是WMS：tileMatrixName是坐标类型 |
-| `ogcEPSG` | `string` | 必选，坐标系类型 |
-| `cachePath` | `string` | 必选，缓存路径 |
-| `mapMode` | `boolean` | 必选，大地图true，小地图false，默认：小地图false |
-| `renderMode` | `number` | 必选，渲染模式，取值范围：0：正常（默认值）；1：透明；2：标注；3：贴地 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `xmlUrl` | `string` | 是 | - | 必选，获取OGC标准服务的元数据能力文档（Capabilities XML文档）的URL地址，需包含图层、瓦片规则、请求参数等信息 |
+| `layerName` | `string` | 是 | - | 必选，图层名称 |
+| `tileMatrixName` | `string` | 是 | - | 必选，如果服务类型是WMTS：tileMatrixName是切片方案，如果服务类型是WMS：tileMatrixName是坐标类型 |
+| `ogcEPSG` | `string` | 是 | - | 必选，坐标系类型 |
+| `cachePath` | `string` | 是 | - | 必选，缓存路径 |
+| `mapMode` | `boolean` | 是 | - | 必选，大地图true，小地图false，默认：小地图false |
+| `renderMode` | `number` | 是 | - | 必选，渲染模式，取值范围：0：正常（默认值）；1：透明；2：标注；3：贴地 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -256,10 +257,10 @@ let option = {
 
 设置ImageryLayer图层置底显示
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 置于底部显示的ImageryLayer图层对象的ID |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 置于底部显示的ImageryLayer图层对象的ID |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -275,11 +276,11 @@ fdapi.imageryLayer.setDrawBottom("wmts1");
 
 设置两个ImageryLayer图层的绘制顺序，即移动当前ImageryLayer图层到目标ImageryLayer图层的上方位置显示
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `currentLayerId` | `string` | 当前ImageryLayer图层对象的ID，即设置成功后此图层会在目标图层的上方位置显示 |
-| `targetLayerId` | `string` | 目标ImageryLayer图层对象的ID |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `currentLayerId` | `string` | 是 | - | 当前ImageryLayer图层对象的ID，即设置成功后此图层会在目标图层的上方位置显示 |
+| `targetLayerId` | `string` | 是 | - | 目标ImageryLayer图层对象的ID |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -295,10 +296,10 @@ fdapi.imageryLayer.setDrawOrder("wmts3", "wmts1");
 
 设置ImageryLayer图层置顶显示
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 置于顶部显示的ImageryLayer图层对象的ID |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 置于顶部显示的ImageryLayer图层对象的ID |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -314,11 +315,11 @@ fdapi.imageryLayer.setDrawTop("wmts2");
 
 设置叠加的VTPK标注可见性
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `tileLayerId` | `string` | VTPK服务对应图层树上的ID |
-| `visible` | `boolean` | 服务可见性，布尔类型 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `tileLayerId` | `string` | 是 | - | VTPK服务对应图层树上的ID |
+| `visible` | `boolean` | 是 | - | 服务可见性，布尔类型 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -336,10 +337,10 @@ let tileLayerId = "";
 
 显示一个或多个ImageryLayer图层对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | ImageryLayer对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | ImageryLayer对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -384,9 +385,9 @@ fdapi.xxx.updateEnd(function () {
 
 updateEnd是异步调用，可以用回调函数也可以await
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

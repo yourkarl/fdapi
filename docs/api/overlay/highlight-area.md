@@ -22,11 +22,13 @@ HighlightArea 根据多边形坐标在三维场景中对指定区域内的模型
 
 - **功能介绍**：HighlightArea 根据多边形坐标在三维场景中对指定区域内的模型进行高亮染色，并可通过高度范围限定染色的 Z 区间，用于突出强调某一空间范围。
 - **别名 / 不同行业叫法**：高亮区域、热区、责任区、网格、管辖范围、染色区、圈层、重点区域。
-- **适用行业**：智慧城市、应急管理、园区、智慧水利、安防、交通。
+- **适用行业**：智慧城市、应急管理、园区、智慧水利、安防、交通。、智慧交通与公路、智慧社区与 CIM
 - **使用场景**：
   - 应急 / 城市管理：高亮事件影响范围、风险责任区、网格化管理单元，配合调度指挥。
   - 园区 / 安防：突出显示重点防护区域、权属地块、围栏内建筑。
   - 水利行业：淹没范围、防洪责任段、河湖管理范围的区域强调。
+  - 产业分布区域高亮：按产业类型对园区 / 区域着色高亮区分。
+  - 智慧社区网格化管理：按网格 / 责任区对区域着色高亮分区。
 - **注意事项**：
   - `heightRange` 用于限定染色的 Z 坐标区间，只有处于该区间的模型才会被染色，需结合实际高程设置。
   - `depthTest` 为 true 时高亮会被前方物体遮挡，需穿透显示时设为 false。
@@ -59,23 +61,23 @@ HighlightArea 根据多边形坐标在三维场景中对指定区域内的模型
 
 添加一个或多个HighlightArea对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 对象或者数组，对于每一个对象支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 对象或者数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 字符串类型的ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `coordinates` | `array` | 多边形坐标数组（二维数组），[取值示例](/docs/tutorials/coordinates) |
-| `color` | [`Color`](/docs/api/types#color) | 多边形高亮颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `heightRange` | `array` | 高亮染色区域高度范围：[min,max]，数组元素取值范围：[任意浮点数]，取值说明：Z坐标的区间，只有Z值这这个区间的模型才会被染色 |
-| `intensity` | `number` | 高亮颜色的强度，取值范围：[0~1000] |
-| `depthTest` | `boolean` | 是否做深度检测，默认为true（DepthTest=true会被遮挡，false的话不会被遮挡） |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 字符串类型的ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `coordinates` | `array` | 是 | - | 多边形坐标数组（二维数组），[取值示例](/docs/tutorials/coordinates) |
+| `color` | [`Color`](/docs/api/types#color) | 是 | - | 多边形高亮颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `heightRange` | `array` | 是 | - | 高亮染色区域高度范围：[min,max]，数组元素取值范围：[任意浮点数]，取值说明：Z坐标的区间，只有Z值这这个区间的模型才会被染色 |
+| `intensity` | `number` | 是 | - | 高亮颜色的强度，取值范围：[0~1000] |
+| `depthTest` | `boolean` | 是 | - | 是否做深度检测，默认为true（DepthTest=true会被遮挡，false的话不会被遮挡） |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -112,9 +114,9 @@ fdapi.highlightArea.focus(o.id);
 
 删除场景中所有的HighlightArea
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -130,10 +132,10 @@ fdapi.highlightArea.clear();
 
 删除一个或多个HighlightArea对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的HighlightArea对象的ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的HighlightArea对象的ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -149,13 +151,13 @@ fdapi.highlightArea.delete('1');
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | HighlightArea对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | HighlightArea对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -171,10 +173,10 @@ fdapi.highlightArea.focus('1', 600);
 
 根据ID获取HighlightArea的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的HighlightArea对象ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的HighlightArea对象ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -203,10 +205,10 @@ fdapi.highlightArea.get('1');
 
 隐藏HighlightArea
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | HighlightArea对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | HighlightArea对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -222,18 +224,18 @@ fdapi.highlightArea.hide('1');
 
 设置颜色
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `any` | HighlightArea对象的ID |
-| `newVal` | [`Color`](/docs/api/types#color) | 新的颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `any` | 是 | - | HighlightArea对象的ID |
+| `newVal` | [`Color`](/docs/api/types#color) | 是 | - | 新的颜色值，支持四种格式，[取值示例](/docs/tutorials/color) |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.highlightArea.setColor(id, newVal);
+await fdapi.highlightArea.setColor('对象ID', '示例值');
 ```
 
 ---
@@ -242,18 +244,18 @@ await fdapi.highlightArea.setColor(id, newVal);
 
 设置坐标
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `any` | HighlightArea对象的ID |
-| `newVal` | `array` | 新的坐标值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `any` | 是 | - | HighlightArea对象的ID |
+| `newVal` | `array` | 是 | - | 新的坐标值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.highlightArea.setCoordinates(id, newVal);
+await fdapi.highlightArea.setCoordinates('对象ID', []);
 ```
 
 ---
@@ -262,18 +264,18 @@ await fdapi.highlightArea.setCoordinates(id, newVal);
 
 设置是否做深度检测
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `any` | HighlightArea对象的ID |
-| `newVal` | `boolean` | 是否做深度检测 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `any` | 是 | - | HighlightArea对象的ID |
+| `newVal` | `boolean` | 是 | - | 是否做深度检测 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.highlightArea.setDepthTest(id, newVal);
+await fdapi.highlightArea.setDepthTest('对象ID', true);
 ```
 
 ---
@@ -282,18 +284,18 @@ await fdapi.highlightArea.setDepthTest(id, newVal);
 
 设置高度范围
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `any` | HighlightArea对象的ID |
-| `newVal` | `array` | 高亮染色区域高度范围：[min,max] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `any` | 是 | - | HighlightArea对象的ID |
+| `newVal` | `array` | 是 | - | 高亮染色区域高度范围：[min,max] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.highlightArea.setHeightRange(id, newVal);
+await fdapi.highlightArea.setHeightRange('对象ID', []);
 ```
 
 ---
@@ -302,18 +304,18 @@ await fdapi.highlightArea.setHeightRange(id, newVal);
 
 设置亮度
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `id` | `any` | HighlightArea对象的ID |
-| `newVal` | `number` | 新的亮度值 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `any` | 是 | - | HighlightArea对象的ID |
+| `newVal` | `number` | 是 | - | 新的亮度值 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
 > 示例代码如下：
 
 ```js
-await fdapi.highlightArea.setIntensity(id, newVal);
+await fdapi.highlightArea.setIntensity('对象ID', 0);
 ```
 
 ---
@@ -322,10 +324,10 @@ await fdapi.highlightArea.setIntensity(id, newVal);
 
 显示HighlightArea
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | HighlightArea对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | HighlightArea对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -341,10 +343,10 @@ fdapi.highlightArea.show('1');
 
 修改一个或多个HighlightArea对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 对象或者数组，数据结构请参考add方法 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 对象或者数组，数据结构请参考add方法 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -404,9 +406,9 @@ fdapi.xxx.updateEnd(function () {
 
 updateEnd是异步调用，可以用回调函数也可以await
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

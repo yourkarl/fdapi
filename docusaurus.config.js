@@ -5,7 +5,7 @@ const darkTheme = themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'DTS Cloud 数字孪生平台',
+  title: 'DTS 数字孪生平台',
   tagline: '二次开发 API 文档 · Digital Twin SDK v7.1',
   favicon: 'favicon.ico',
   url: 'https://yourkarl.github.io',
@@ -66,13 +66,12 @@ const config = {
       },
       image: 'img/dts-social-card.png',
       navbar: {
-        title: 'DTS Cloud SDK',
+        title: 'DTS SDK',
         logo: {
           alt: 'DTS Logo',
           src: 'img/logo.svg',
           srcDark: 'img/logo.svg',
         },
-        style: 'dark',
         items: [
           {
             type: 'docSidebar',
@@ -93,13 +92,14 @@ const config = {
             className: 'navbar-new',
           },
           {
-            to: '/docs/tutorials/instance-management',
-            label: '实例管理',
+            to: '/sandbox',
+            label: '>_ 在线调试',
             position: 'left',
+            target: '_blank',
           },
           {
-            to: '/sandbox',
-            label: '🧪 在线调试',
+            to: '/instance-manager',
+            label: '🖧 实例管理',
             position: 'left',
             target: '_blank',
           },
@@ -150,7 +150,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} DTS Cloud Platform. All rights reserved.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Beijing Freedo Technology Co., Ltd. All rights reserved.`,
       },
       prism: {
         theme: lightTheme,

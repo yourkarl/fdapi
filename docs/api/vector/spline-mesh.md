@@ -18,11 +18,13 @@ description: "沿坐标轨迹放样生成带截面体量的三维路径模型，
 
 - **功能介绍**：沿坐标轨迹放样生成带截面体量的三维路径模型，将模型沿样条曲线延展，用于表达具有真实粗细的管道、线缆、管廊等线状实体，支持内置样式或自定义模型路径。
 - **别名 / 不同行业叫法**：样条管线、管道、管线模型、线缆、管廊、放样模型、路径模型、传送带。
-- **适用行业**：能源、智慧水利、智慧城市、园区、交通、国防。
+- **适用行业**：能源、智慧水利、智慧城市、园区、交通、国防。、低空经济、轨道交通
 - **使用场景**：
   - 给排水、油气、电力、热力等管线的三维实体建模与管径可视化。
   - 综合管廊、地下管网的立体路径展示与漫游巡检。
   - 输送带、缆车索道、轨道等连续线状设施的体量化表达。
+  - 平滑三维航线 / 航道带：以样条生成连续光滑的低空飞行航道。
+  - 轨道交通线路：以样条生成平滑的轨道 / 线路三维走向。
 - **注意事项**：
   - 相比 Polyline 的贴地/空间折线，SplineMesh 是有截面体量的三维实体，渲染开销更高，数量多时需控制。
   - curveType 与 segment 控制曲线插值类型与分段数，分段过密会增加面数、影响性能。
@@ -63,26 +65,26 @@ description: "沿坐标轨迹放样生成带截面体量的三维路径模型，
 
 ![](/img/refdoc/api/SplineMesh.gif)
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | SplineMesh对象的ID |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `coordinateType` | `number` | 可选，坐标系类型，取值：0为Projection类型，1为WGS84类型，默认值：0 |
-| `coordinates` | `array` | 必选，路径模型的轨迹坐标数组，取值示例：[取值示例](/docs/tutorials/coordinates) |
-| `style` | [`SplineMeshStyle`](/docs/api/types#splinemeshstyle) | (`SplineMeshStyle`) 可选(二选一)，路径模型内置样式枚举，取值详情参考 `SplineMeshStyle` |
-| `meshPath` | `string` | 可选(二选一)，路径模型自定义样式的打包路径，注意：若传入此路径会自动覆盖style样式 |
-| `range` | `array` | 可选，可视范围: [近裁距离, 远裁距离]，取值范围: [任意负值, 任意正值] |
-| `scale` | `number` | 可选，路径模型的整体缩放，默认值：1 |
-| `curveType` | `number` | 可选，路径模型绘制时曲线的插值类型，取值范围：[0,1]，默认值：0 |
-| `segment` | `number` | 可选，路径模型的绘制时曲线的插值的分段数量，默认值：10 |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | SplineMesh对象的ID |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值：0为Projection类型，1为WGS84类型，默认值：0 |
+| `coordinates` | `array` | 是 | - | 必选，路径模型的轨迹坐标数组，取值示例：[取值示例](/docs/tutorials/coordinates) |
+| `style` | [`SplineMeshStyle`](/docs/api/types#splinemeshstyle) | 否 | - | (`SplineMeshStyle`) 可选(二选一)，路径模型内置样式枚举，取值详情参考 `SplineMeshStyle` |
+| `meshPath` | `string` | 否 | - | 可选(二选一)，路径模型自定义样式的打包路径，注意：若传入此路径会自动覆盖style样式 |
+| `range` | `array` | 否 | - | 可选，可视范围: [近裁距离, 远裁距离]，取值范围: [任意负值, 任意正值] |
+| `scale` | `number` | 否 | 1 | 可选，路径模型的整体缩放，默认值：1 |
+| `curveType` | `number` | 否 | 0 | 可选，路径模型绘制时曲线的插值类型，取值范围：[0,1]，默认值：0 |
+| `segment` | `number` | 否 | 10 | 可选，路径模型的绘制时曲线的插值的分段数量，默认值：10 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -190,18 +192,18 @@ fdapi.splineMesh.callBPFunction([
 
 调用splineMesh对象包含的多个蓝图函数
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | CustomObject对象的ID |
-| `functionName` | `string` | 蓝图函数名 |
-| `parameters` | `array` | 蓝图函数包含的多个参数，可选参数，数组类型，注意：传入多参数的顺序与类型务必与蓝图函数的参数顺序及其参数类型一致以保证执行结果符合预期。多个参数结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | CustomObject对象的ID |
+| `functionName` | `string` | 是 | - | 蓝图函数名 |
+| `parameters` | `array` | 否 | - | 蓝图函数包含的多个参数，可选参数，数组类型，注意：传入多参数的顺序与类型务必与蓝图函数的参数顺序及其参数类型一致以保证执行结果符合预期。多个参数结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -251,9 +253,9 @@ fdapi.splineMesh.callBPFunction([
 
 清空场景中所有的SplineMesh对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -269,10 +271,10 @@ fdapi.splineMesh.clear();
 
 删除一个或多个SplineMesh对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要删除的SplineMesh对象的ID或者ID数组（可以删除一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要删除的SplineMesh对象的ID或者ID数组（可以删除一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -288,10 +290,10 @@ fdapi.splineMesh.delete(['splineMesh1', 'splineMesh2']);
 
 根据分组ID删除SplineMesh
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `groupId` | `string` | 创建SplineMesh对象时指定的分组ID |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `groupId` | `string` | 是 | - | 创建SplineMesh对象时指定的分组ID |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -307,13 +309,13 @@ fdapi.splineMesh.deleteByGroupId('group_sm');
 
 自动定位到合适的观察距离
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | SplineMesh对象的ID或者ID数组 |
-| `distance` | `number` | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
-| `flyTime` | `number` | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
-| `rotation` | `array` | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | SplineMesh对象的ID或者ID数组 |
+| `distance` | `number` | 否 | - | 可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算 |
+| `flyTime` | `number` | 否 | 2秒 | 可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒 |
+| `rotation` | `array` | 否 | - | 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0] |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -329,10 +331,10 @@ fdapi.splineMesh.focus('splineMesh1', 100);
 
 根据ID获取SplineMesh对象的详细信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 要获取的SplineMesh对象的SplineMesh对象的ID或者ID数组（可以获取一个或者多个） |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 要获取的SplineMesh对象的SplineMesh对象的ID或者ID数组（可以获取一个或者多个） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -359,10 +361,10 @@ fdapi.splineMesh.get(['splineMesh1', 'splineMesh2']);
 
 根据splineMesh对象的id查询其包含的蓝图函数信息
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | 3D标注对象ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 3D标注对象ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
 
@@ -378,10 +380,10 @@ fdapi.splineMesh.getBPFunction(['splineMesh1']);
 
 隐藏一个或多个SplineMesh对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | SplineMesh对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | SplineMesh对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -397,9 +399,9 @@ fdapi.splineMesh.hide(['splineMesh1', 'splineMesh2']);
 
 隐藏所有SplineMesh对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -415,10 +417,10 @@ fdapi.splineMesh.hideAll();
 
 根据分组ID隐藏SplineMesh
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `groupId` | `string` | 创建SplineMesh对象时指定的分组ID |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `groupId` | `string` | 是 | - | 创建SplineMesh对象时指定的分组ID |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -434,10 +436,10 @@ fdapi.splineMesh.hideByGroupId('group_sm');
 
 显示一个或多个SplineMesh对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `ids` | `string \| array` | SplineMesh对象的ID或者ID数组 |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | SplineMesh对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -453,9 +455,9 @@ fdapi.splineMesh.show(['splineMesh1', 'splineMesh2']);
 
 显示所有SplineMesh对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -471,10 +473,10 @@ fdapi.splineMesh.showAll();
 
 根据分组ID显示SplineMesh
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `groupId` | `string` | 创建SplineMesh对象时指定的分组ID |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `groupId` | `string` | 是 | - | 创建SplineMesh对象时指定的分组ID |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -490,23 +492,23 @@ fdapi.splineMesh.showByGroupId('group_sm');
 
 修改一个或多个SplineMesh对象
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `data` | `object \| array` | SplineMesh对象或者数组，支持更新以下属性： |
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | SplineMesh对象或者数组，支持更新以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
 
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `id` | `string` | 根据SplineMesh对象的ID更新以下属性 |
-| `groupId` | `string` | 可选，Group分组 |
-| `userData` | `string` | 可选，用户自定义数据 |
-| `coordinates` | `array` | 路径模型的轨迹坐标数组，取值示例：[取值示例](/docs/tutorials/coordinates) |
-| `range` | `array` | 可视范围: [近裁距离, 远裁距离]，取值范围: [任意负值, 任意正值] |
-| `forwardAxis` | `number` | 路径模型的轴朝向，取值范围：[0,1,2] 分别对应X、Y、Z三个轴 |
-| `scale` | `number` | 路径模型轴朝向的缩放值，默认值：1 |
-| `style` | [`SplineMeshStyle`](/docs/api/types#splinemeshstyle) | (`SplineMeshStyle`) 路径模型样式枚举，取值详情参考 `SplineMeshStyle` |
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | 根据SplineMesh对象的ID更新以下属性 |
+| `groupId` | `string` | 否 | - | 可选，Group分组 |
+| `userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `coordinates` | `array` | 是 | - | 路径模型的轨迹坐标数组，取值示例：[取值示例](/docs/tutorials/coordinates) |
+| `range` | `array` | 是 | - | 可视范围: [近裁距离, 远裁距离]，取值范围: [任意负值, 任意正值] |
+| `forwardAxis` | `number` | 是 | - | 路径模型的轴朝向，取值范围：[0,1,2] 分别对应X、Y、Z三个轴 |
+| `scale` | `number` | 否 | 1 | 路径模型轴朝向的缩放值，默认值：1 |
+| `style` | [`SplineMeshStyle`](/docs/api/types#splinemeshstyle) | 是 | - | (`SplineMeshStyle`) 路径模型样式枚举，取值详情参考 `SplineMeshStyle` |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -595,9 +597,9 @@ fdapi.xxx.updateEnd(function () {
 
 updateEnd是异步调用，可以用回调函数也可以await
 
-| 参数 | 类型 | 说明 |
-|------|------|------|
-| `fn` | `function` | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
