@@ -14,7 +14,7 @@ description: "智慧社区与 CIM 基础平台数字孪生方案：CIM 三维底
 
 | 能力点 | fdapi 接口 | 说明 |
 |------|-----------|------|
-| 地形 / 影像 / 建筑 | `globeTerrain` / `imageryLayer(2)` / `tileLayer` | 社区地形影像与建筑实景 / BIM 底座 |
+| 地形 / 影像 / 建筑 | `globeTerrain（球面）` / `imageryLayer2（球面）` / `tileLayer` | 社区地形影像与建筑实景 / BIM 底座 |
 | 行政 / 网格边界 | `geoJSONLayer` / `shapeFileLayer` | 社区、网格、责任区矢量边界加载与高亮 |
 | 设施分层 | `infoTree` | 按小区 / 楼栋 / 系统分级显隐 |
 

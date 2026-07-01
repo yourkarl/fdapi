@@ -26,6 +26,7 @@ description: "在三维场景中加载并沿指定轨迹运行的列车对象，
   - 站场、厂区铁路调车与应急演练中的列车移动仿真。
   - 轨道交通列车运行仿真：列车沿轨道行驶，配合 Camera.follow 跟随观察站段运行。
 - **注意事项**：
+  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
   - 列车沿 `coordinates` 轨迹坐标行驶，坐标需贴合实际轨道线形并与 `coordinateType`（Projection/WGS84）一致，否则会出现脱轨或抖动。
   - `carriageNum`/`carriageStyle` 决定车厢编组与模型，`maxSpeed`、`acceleration` 控制运行节奏；`doubleLocomotive`、`direction` 用于设置车头与运行方向。
 

@@ -14,7 +14,7 @@ description: "智慧水利水务数字孪生方案：三维水利底座、实时
 
 | 能力点 | fdapi 接口 | 说明 |
 |------|-----------|------|
-| 地形 / 影像底图 | `globeTerrain` / `imageryLayer(2)` | 流域地形与卫星影像叠加 |
+| 地形 / 影像底图 | `globeTerrain（球面）` / `imageryLayer2（球面）` | 流域地形与卫星影像叠加 |
 | 水库 / 泵站 / 管网 BIM | `tileLayer` / `cesium3dTileset` | 水利枢纽、泵闸、给排水管网三维加载与单体化 |
 | 设施分层管理 | `infoTree` | 按流域 / 工程 / 设施类型分级显隐 |
 
@@ -37,6 +37,20 @@ description: "智慧水利水务数字孪生方案：三维水利底座、实时
 | 溃坝 / 急流 | `smoothedParticleHydrodynamics` | SPH 粒子表达溃坝、急流冲击 |
 | 受影响区高亮 | `highlightArea` | 淹没 / 受影响范围着色标识 |
 
+
+### 防汛应急预警与预案推演
+
+面向流域防汛抗旱与多灾种应急，将监测预警、预演过程与预案推演在三维场景中联动。
+
+| 能力点 | fdapi 接口 | 说明 |
+|------|-----------|------|
+| 多灾种监测预警 | `marker` / `customTag` + `update` | 气象、地质灾害、防汛抗旱、森林防火监测点位与预警状态 |
+| 风险区高亮 | `highlightArea` / `heatMap` | 隐患点、风险区、受威胁范围高亮与密度热力 |
+| 雨水情 / 产汇流预演 | `hydrodynamic2d` / `hydrodynamic1d` + 时间轴 | 降雨产汇流、洪水演进、洪涝淹没过程分时演进 |
+| 淹没过程 | `floodFill` + `highlightArea` | 按预演水位动态推演淹没范围与受影响区 |
+| 预案推演 | `cameraTour` + `marker` / `polyline` | 应急预案分步演示，疏散 / 救援 / 转移流线 |
+| 应急资源 | `marker` / `markerLayer` + `groupId` | 物资库、救援队伍、避险场所点位分组管理 |
+
 ## 海洋与河口
 
 | 能力点 | fdapi 接口 | 说明 |
@@ -55,6 +69,57 @@ description: "智慧水利水务数字孪生方案：三维水利底座、实时
 | 量算分析 | `tools` | 淹没、填挖方、距离 / 面积 / 体积量算 |
 | 监测热力 | `heatMap` / `heatMap3D` | 降雨 / 水位 / 流量热力密度 |
 | 坐标统一 | `coord` | 经纬度↔投影↔屏幕互转，多源数据统一入库 |
+
+---
+
+## 水资源监管与水利工程管理
+
+面向水资源节约集约利用监管，覆盖取水计量、灌区、调度、生态、供水与水利工程（枢纽 / 大坝）
+的一体化管控，将取水、水位、水质、监测等数据在三维场景中融合，支撑数字驾驶舱与辅助决策。
+
+### 取水计量与用水监管
+
+| 能力点 | fdapi 接口 | 说明 |
+|------|-----------|------|
+| 取水口 / 计量点位 | `marker` / `customTag` + `update` | 取水口、计量设施点位与实时取水量刷新 |
+| 用水强度热力 | `heatMap` / `heatMap3D` | 按区域 / 行业用水量、取用水强度热力 |
+| 违法监管定位 | `marker.focus` + `highlightArea` | 超采、违规取水报警列表联动定位高亮 |
+| 水权 / 台账 | `marker.popupURL` / `customTag` | 取水许可、水权、计量台账弹窗查询 |
+
+### 灌区与水资源调度
+
+| 能力点 | fdapi 接口 | 说明 |
+|------|-----------|------|
+| 灌区边界 | `geoJSONLayer` / `polygon3D` + `highlightArea` | 灌区、供水分区边界渲染与高亮 |
+| 渠系 / 闸站 | `polyline` + `marker` / `customTag` | 干支渠走向、闸泵站点位与运行状态 |
+| 调水线路 | `odLine` / `polyline` | 跨区域调水、水量分配流向飞线 |
+| 调度指令 | `marker` / `customTag` + `update` | 调度指令、闸门开度在场景中跟踪 |
+
+### 生态监管与城乡供水
+
+| 能力点 | fdapi 接口 | 说明 |
+|------|-----------|------|
+| 水质监测点 | `marker` / `customTag` + `update` | 水质断面、生态流量监测点状态刷新 |
+| 水质热力 | `heatMap` / `heatMap3D` | 水质指标、生态敏感区热力分布 |
+| 供水厂 / 管网 | `marker` + `polyline` | 水厂、泵站点位与供水管网走向 |
+| 视频融合 | `videoProjection` | 取水口、水厂、河湖岸线监控画面融合 |
+
+### 水利枢纽与大坝安全监测
+
+| 能力点 | fdapi 接口 | 说明 |
+|------|-----------|------|
+| 枢纽 BIM 单体化 | `tileLayer` / `cesium3dTileset` + `enableClip` | 大坝、泄洪、发电等枢纽构件单体化与剖切 |
+| 安全测点状态 | `customTag` / `highlightActor` + `update` | 坝体位移、渗流、应力、扬压力测点刷新 |
+| 超界预警 | `highlightActor` / `highlightArea` + 分级 | 测值超界构件闪烁、分级预警定位 |
+| 库区水面 | `waterMesh` / `dynamicWater` | 库容水位涨落、库区动态水面表达 |
+
+### 数字驾驶舱
+
+| 能力点 | fdapi 接口 | 说明 |
+|------|-----------|------|
+| 宏观驾驶舱 | `cameraTour` / `misc.enterReportMode` | 全域概览与各业务视点自动巡游 |
+| 业务下钻 | `camera.lookAt` + `marker.focus` | 从驾驶舱下钻到灌区 / 枢纽 / 监测点 |
+| 场景切换 | `infoTree.setVisibility` + `groupId` | 按业务模块动态组装展示图层 |
 
 ---
 

@@ -26,6 +26,7 @@ HydroDynamic1D类
   - 防汛中干支流河道水流演进与流向箭头展示，辅助研判行洪态势。
   - 河道水文属性（热力值）沿程分布的热力样式展示，如流速、水位等指标着色。
 - **注意事项**：
+  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
   - 通过 points 采样点（coordinate/width/speed）定义河道，需保证采样点顺序沿河道走向、宽度合理，避免河道扭曲。
   - 可用 shpFilePath 对河道采样点做裁切，注意坐标系类型 coordinateType 与数据一致；开启 collision 会影响加载效率。
   - 属于一维带状河道模型，面状大范围淹没/漫滩应使用 HydroDynamic2D；River 为本对象旧版，新项目优先用 HydroDynamic1D。
