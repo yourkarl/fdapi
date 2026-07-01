@@ -26,6 +26,7 @@ description: "沿坐标轨迹放样生成带截面体量的三维路径模型，
   - 平滑三维航线 / 航道带：以样条生成连续光滑的低空飞行航道。
   - 轨道交通线路：以样条生成平滑的轨道 / 线路三维走向。
 - **注意事项**：
+  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
   - 相比 Polyline 的贴地/空间折线，SplineMesh 是有截面体量的三维实体，渲染开销更高，数量多时需控制。
   - curveType 与 segment 控制曲线插值类型与分段数，分段过密会增加面数、影响性能。
   - style 与 meshPath 二选一，传入 meshPath 自定义样式会自动覆盖内置 style。

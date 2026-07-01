@@ -26,6 +26,7 @@ description: "HydroDynamic2D 是现行的二维水动力模型对象，基于真
   - 溃坝、超标洪水的淹没过程仿真与受淹范围演示，支撑应急研判与撤离决策。
   - 河道行洪、漫滩淹没的流场样式/热力图样式展示，配合调色板表达水深或流速分布。
 - **注意事项**：
+  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
   - shp 方式要求投影坐标系（PCS）且单位为米；update() 更新用 .dat 文件，且只含有水网格面以减小文件、提升更新效率。
   - 真实水样式（displayMode=0）下 waterColor 生效，热力/流场样式需配置 depthRange/speedRange 与调色板；开启 collision 会影响加载效率。
   - 数据量大时注意分辨率与时序文件规模对加载与播放性能的影响；新项目请优先用本对象而非已废弃的 HydrodynamicModel 系列。

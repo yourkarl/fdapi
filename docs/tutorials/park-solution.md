@@ -15,7 +15,7 @@ description: "智慧园区数字孪生方案：园区三维底座、安防视频
 | 能力点 | fdapi 接口 | 说明 |
 |------|-----------|------|
 | 园区建筑 / BIM | `tileLayer` / `cesium3dTileset` | 楼宇、厂房 BIM / 实景加载与单体化拾取 |
-| 地形 / 影像底图 | `globeTerrain` / `imageryLayer(2)` | 园区地形与卫星影像 |
+| 地形 / 影像底图 | `globeTerrain（球面）` / `imageryLayer2（球面）` | 园区地形与卫星影像 |
 | 设施分层管理 | `infoTree` | 按楼栋 / 楼层 / 系统分级显隐 |
 
 ## 安防与人车监控

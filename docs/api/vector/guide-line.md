@@ -22,6 +22,7 @@ description: "在三维场景中绘制带流动动画的引导线，用于指示
   - 交通枢纽、停车场内的车行/人行引导，展示进出场动线与流向。
   - 航道引导线：绘制低空飞行引导路径与航线指示。
 - **注意事项**：
+  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
   - shape 设为曲线（1）时坐标点过多会显著影响添加效率，长路径建议适度精简点位。
   - 注意 coordinateType 与场景坐标系一致（Projection/WGS84/GCJ02/BD09），避免引导线偏移。
   - 引导线偏重视觉指示与动画，若需表达管线/拓扑连接关系应改用 Polyline、SplineMesh 或 TopologyLine。

@@ -26,6 +26,7 @@ description: "在三维场景中加载与驱动无人机模型，支持坐标定
   - 城市治理、园区安防的无人机空中巡逻与目标跟踪轨迹呈现。
   - 低空经济无人机全流程航线仿真：沿航道从起点到终点飞行，机头第一视角漫游，仪表盘展示高度 / 对地速度 / 剩余电量 / 航线偏离告警，支持多机同步并行。
 - **注意事项**：
+  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
   - 通过 `assetPath` 引用资源库无人机模型，`coordinate` 与 `coordinateType`（Projection/WGS84）需匹配；轨迹线 `trailDuration`、`trailType` 等影响渲染开销。
   - `delay` 控制 moveTo 移动延迟，设为 0 立即移动；大量无人机同时驱动时应关注性能与轨迹持续时间设置。
 

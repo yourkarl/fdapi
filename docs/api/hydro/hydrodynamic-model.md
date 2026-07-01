@@ -28,6 +28,7 @@ description: "早期版本的二维水动力模型对象，基于真实数据（
   - 维护采用 bin/tif 三件套（waterDepth、flowField、dem）数据格式的存量二维水动力工程。
   - 历史项目中二维洪水演进、流场结果的时序回放与水深/热力可视化。
 - **注意事项**：
+  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
   - 该对象已标记废弃，请迁移到 HydroDynamic2D；waterDepth、flowField、dem 三个 tif 文件分辨率必须一致。
   - 开启 collision 碰撞会影响加载效率；displayMode=0 时 waterColor 生效，热力样式下应配置 colors 调色板与 valueRange。
 
