@@ -55,6 +55,21 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: '数据指南',
+      collapsible: false,
+      items: [
+        'tutorials/data-overview',
+        'tutorials/data-georeference',
+        'tutorials/data-3dt',
+        'tutorials/data-3dtiles',
+        'tutorials/data-gis',
+        'tutorials/data-model',
+        'tutorials/data-dynamic',
+        'tutorials/data-checklist',
+      ],
+    },
+    {
+      type: 'category',
       label: '进阶与部署',
       collapsible: false,
       items: [

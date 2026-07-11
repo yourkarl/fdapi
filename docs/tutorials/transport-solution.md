@@ -3,6 +3,8 @@ title: 行业方案 · 智慧交通
 sidebar_label: 行业方案 · 智慧交通
 description: "交通产业数字孪生一张图平台方案：公路大数据汇聚、数字化辅助决策（低空经济 / 监管分析）、GIS 一张图三大模块的功能点与 fdapi 接口对照、典型实现思路与性能要点。"
 ---
+# 行业方案 · 智慧交通
+
 
 ### 方案概述
 
@@ -915,7 +917,7 @@ description: "交通产业数字孪生一张图平台方案：公路大数据汇
 
 | 能力点 | fdapi 接口 | 说明 |
 |------|-----------|------|
-| 底图 / 地形 / 影像 | `globeTerrain（球面）` / `imageryLayer2（球面）` / `tileLayer` | 地形、影像与三维底图叠加 |
+| 底图 / 地形 / 影像 | `globeTerrain（球面）` / `imageryLayer（投影）+imageryLayer2（球面）` / `tileLayer` | 地形、影像与三维底图叠加 |
 | 矢量边界 | `geoJSONLayer` / `shapeFileLayer` | 行政区划、园区边界等矢量面 / 线 |
 | 产业 / 企业点位 | `marker` / `marker3d` / `markerLayer` / `customTag` | 批量点位，按产业类型分色、聚合、避让 |
 | 点位批量加载 | `marker.add`（数组）+ `groupId` + `displayMode` | 海量点位批量添加、智能显示与分组 |

@@ -20,7 +20,7 @@ def map_type(t):
     return TYPE_MAP.get(t, 'any')
 
 ACC_RE = re.compile(r'通过\s*`(fdapi|api\.([\w.]+))`\s*访问')
-METHOD_RE = re.compile(r'^###\s+`([\w$]+)\(([^)]*)\)`\s*$', re.M)
+METHOD_RE = re.compile(r'^###\s+`([\w$]+)\(([^)]*)\)`\s*(?:\{#[\w-]+\})?\s*$', re.M)
 # 类型单元格里的竖线以 \| 转义出现（如 `object \| array`）
 PARAM_ROW_RE = re.compile(r'^\|\s*`(\w+)`\s*\|\s*`([^`]+)`\s*\|', re.M)
 FM_RE = re.compile(r'^---\n(.*?)\n---', re.S)

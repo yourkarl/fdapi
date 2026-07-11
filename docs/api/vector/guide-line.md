@@ -69,7 +69,7 @@ new GuideLine()
 
 
 
-![](/img/refdoc/api/copy_material_path.gif)
+![GuideLine · add(data, fn) 示意](/img/refdoc/api/copy_material_path.gif)
 
 如何获取自定义材质包含的参数请调用如下方法：
 

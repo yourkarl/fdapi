@@ -8,11 +8,11 @@ description: "Tools 提供量算与空间分析等通用工具能力（如测距
 
 Tools 提供量算与空间分析等通用工具能力（如测距、测面、天际线、通视、坡度、剖切、河道断面等，具体以方法为准）。
 
-![](/img/refdoc/api/tools-m.gif)
+![Tools 示意图 1](/img/refdoc/api/tools-m.gif)
 
-![](/img/refdoc/api/tools-m1.gif)
+![Tools 示意图 2](/img/refdoc/api/tools-m1.gif)
 
-![](/img/refdoc/api/tools-clip.gif)
+![Tools 示意图 3](/img/refdoc/api/tools-clip.gif)
 
 通过 `api.tools` 访问。
 
@@ -461,7 +461,7 @@ fdapi.tools.riverCrossSectionByShp({
 
 
 
-![](/img/refdoc/api/Tools.enterMeasurementmianji.gif)
+![Tools · setMeasurement(type, options, fn) 示意](/img/refdoc/api/Tools.enterMeasurementmianji.gif)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
@@ -829,7 +829,7 @@ TileLayer多边形剖切， 效果图如下：
 
 
 
-![](/img/refdoc/api/Tools.StartPolygonClip.gif)
+![Tools · startPolygonClip(coordinates, isReverseCut, fn) 示意](/img/refdoc/api/Tools.StartPolygonClip.gif)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
@@ -979,7 +979,7 @@ fdapi.tools.startSunshineAnalysis(options);
 
 
 
-![](/img/refdoc/api/terrainSlopeAnalysis.png)
+![Tools · startTerrainSlopeAnalysis(options, fn) 示意](/img/refdoc/api/terrainSlopeAnalysis.png)
 
 分析结果取值范围： [0~7],   对应颜色值： [0,0.968627,0,1]
 

@@ -21,7 +21,7 @@ HeatMap3D 效果图如下：
 
 
 
-![](/img/refdoc/api/heatmap3d.gif)
+![HeatMap3D 示意图](/img/refdoc/api/heatmap3d.gif)
 
 通过 `api.heatmap3d` 访问。
 

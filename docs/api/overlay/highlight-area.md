@@ -10,7 +10,7 @@ HighlightArea 根据多边形坐标在三维场景中对指定区域内的模型
 
 
 
-![](/img/refdoc/api/HlghlightArea.Update.gif)
+![HighlightArea 示意图](/img/refdoc/api/HlghlightArea.Update.gif)
 
 通过 `api.highlightArea` 访问。
 

@@ -3,6 +3,8 @@ title: 行业方案 · 地下综合管线
 sidebar_label: 行业方案 · 地下综合管线
 description: "地下综合管线与管廊数字孪生方案：管线管廊三维单体化、埋深/管径/材质属性查询、横断面分析、爆管与内涝影响分析、巡检养护的功能点与 fdapi 接口对照。"
 ---
+# 行业方案 · 地下综合管线
+
 
 ### 方案概述
 
@@ -18,7 +20,7 @@ description: "地下综合管线与管廊数字孪生方案：管线管廊三维
 |------|-----------|------|
 | 管线 / 管廊建模 | `tileLayer` / `polyline` + `getObjectIDs` | 多专业管线、管廊单体化与拾取 |
 | 属性查询 | `getActorInfo(FromDB)` / `marker.popupURL` | 管径、材质、埋深、权属、建设年代查询 |
-| 地形 / 地表 | `globeTerrain（球面）` / `imageryLayer2（球面）` + `enableClip` | 地表半透与地下管线透视 |
+| 地形 / 地表 | `globeTerrain（球面）` / `imageryLayer（投影）+imageryLayer2（球面）` + `enableClip` | 地表半透与地下管线透视 |
 | 专业分层 | `infoTree` / `groupId` | 按给水、排水、燃气、电力、通信分色分组 |
 
 ## 空间分析

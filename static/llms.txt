@@ -1,0 +1,224 @@
+# DTS 数字孪生平台 · 二次开发 API 文档（Digital Twin SDK v7.1）
+
+> DTS 是数字孪生云渲染平台。JS SDK（fdapi）在浏览器中连接云渲染实例，以异步方式（所有接口返回 Promise）操控三维场景：相机、标注、图层、矢量、天气、交通/水利仿真等。适用于智慧城市、园区、交通、水利、能源等 GIS+BIM 数字孪生二次开发。
+
+关键约定：入口类 `DigitalTwinAPI`，实例化后通过全局对象 `fdapi` 调用；坐标分投影（Projection）与球面（WGS84）两套体系，需与工程一致；相机朝向 rotation 为 [pitch, yaw, roll]。在线调试台：https://yourkarl.github.io/fdapi/sandbox（可真实运行全部示例）。
+
+## 教程 · 入门指南
+
+- [架构概览](https://yourkarl.github.io/fdapi/docs/tutorials/architecture) — 10 分钟建立 DTS SDK 的整体心智模型：云渲染原理、fdapi/fdplayer/HostConfig 三大入口、异步调用模型、投影与球面双场景、坐标系与对象生命周期。
+- [基本概念](https://yourkarl.github.io/fdapi/docs/tutorials/introduction) — DTS SDK 的架构说明、接入方式、云渲染原理介绍
+- [快速开始 (Hello World)](https://yourkarl.github.io/fdapi/docs/tutorials/hello-world) — 5分钟完成 DTS SDK 接入，创建第一个数字孪生页面
+- [异步调用方式](https://yourkarl.github.io/fdapi/docs/tutorials/async-call) — Callback、Promise.then、async/await 三种异步调用方式详解
+- [实战配方](https://yourkarl.github.io/fdapi/docs/tutorials/recipes) — 把多个 API 串成真实业务场景的端到端配方：应急指挥大屏、点击拾取与高亮联动、一键汇报巡游，每个配方都是可直接改用的完整代码。
+
+## 教程 · 行业方案
+
+- [行业方案 · 智慧交通](https://yourkarl.github.io/fdapi/docs/tutorials/transport-solution) — 交通产业数字孪生一张图平台方案：公路大数据汇聚、数字化辅助决策（低空经济 / 监管分析）、GIS 一张图三大模块的功能点与 fdapi 接口对照、典型实现思路与性能要点。
+- [行业方案 · 智慧水利水务](https://yourkarl.github.io/fdapi/docs/tutorials/water-solution) — 智慧水利水务数字孪生方案：三维水利底座、实时水体仿真、洪涝淹没推演、管网设施、调度分析的功能点与 fdapi 接口对照。
+- [行业方案 · 智慧园区](https://yourkarl.github.io/fdapi/docs/tutorials/park-solution) — 智慧园区数字孪生方案：园区三维底座、安防视频融合、人车轨迹、能耗 IoT 监控、周界报警的功能点与 fdapi 接口对照。
+- [行业方案 · 智慧社区与 CIM](https://yourkarl.github.io/fdapi/docs/tutorials/community-cim-solution) — 智慧社区与 CIM 基础平台数字孪生方案：CIM 三维底座、房屋分层分户、网格化管理、人口事件点位、空间圈选的功能点与 fdapi 接口对照。
+- [行业方案 · CIM 基础平台](https://yourkarl.github.io/fdapi/docs/tutorials/cim-platform-solution) — 城市级 CIM 基础平台数字孪生方案：CIM 时空数据底座多源融合、CIM 模拟分析、一张图可视化、数字驾驶舱、工程建设项目审批与 BIM 报建、城市运行管理（智慧城管/住建）的功能点与 fdapi 接口对照。
+- [行业方案 · 智慧建筑](https://yourkarl.github.io/fdapi/docs/tutorials/building-solution) — 智慧建筑数字孪生方案：BIM 单体化、楼层分户与爆炸拉抽屉、机电管线、设备运维、剖切透视的功能点与 fdapi 接口对照。
+- [行业方案 · 轨道交通（BIM+GIS）](https://yourkarl.github.io/fdapi/docs/tutorials/rail-transit-solution) — 轨道交通基于 BIM+GIS 全生命期一体化方案：一体化底座、线路隧道车站、列车运行仿真、设备资产、应急疏散的功能点与 fdapi 接口对照。
+- [行业方案 · 智慧校园（CIM）](https://yourkarl.github.io/fdapi/docs/tutorials/campus-solution) — 基于 CIM 的智慧校园数字孪生方案：校园三维底座与全景、空间数据可视化、实时数据接入与轨迹、视频图像接入、事件态势分析、运营中心的功能点与 fdapi 接口对照。
+- [行业方案 · 智慧文旅与景区（IOC）](https://yourkarl.github.io/fdapi/docs/tutorials/tourism-solution) — 智慧文旅与景区数字孪生综合管控（IOC）方案：景区三维底座、设备物联点位与告警、视频融合、客流统计、人员车船实时轨迹、综合态势的功能点与 fdapi 接口对照。
+- [行业方案 · 港口航道与海洋](https://yourkarl.github.io/fdapi/docs/tutorials/port-marine-solution) — 港口航道与海洋数字孪生方案：海洋/港口三维底座、水面潮汐波浪、洋流风场、船舶态势与 AIS 轨迹、航道靠泊、港航安全预警、航标船闸设施的功能点与 fdapi 接口对照。
+- [行业方案 · 智慧工地](https://yourkarl.github.io/fdapi/docs/tutorials/construction-site-solution) — 智慧工地数字孪生方案：工地三维底座、塔吊/升降机监测、劳务实名与人员定位、视频 AI 分析预警、智能安全帽、可燃气体监测、进度对比与质安巡检的功能点与 fdapi 接口对照。
+- [行业方案 · 智慧工厂与生产管控](https://yourkarl.github.io/fdapi/docs/tutorials/smart-factory-solution) — 智慧工厂与生产管控一体化数字孪生方案：厂区产线三维单体化、设备状态监测、生产运行监测、领导驾驶舱、调度指令、质量安全环保的功能点与 fdapi 接口对照。
+- [行业方案 · 石油化工与油气田](https://yourkarl.github.io/fdapi/docs/tutorials/oil-gas-solution) — 石油化工与油气田数字孪生方案：厂区/站库/罐区三维建模与单体化、井场与管线、设备与安全监测、可燃气体与应急联动的功能点与 fdapi 接口对照。
+- [行业方案 · 智慧矿山](https://yourkarl.github.io/fdapi/docs/tutorials/mine-solution) — 智慧矿山数字孪生方案：矿山信息模型（MIM）全生命周期、井上下三维一体化、生产工艺运行、设备与人员定位、安全监测预警的功能点与 fdapi 接口对照。
+- [行业方案 · 地下综合管线](https://yourkarl.github.io/fdapi/docs/tutorials/pipeline-solution) — 地下综合管线与管廊数字孪生方案：管线管廊三维单体化、埋深/管径/材质属性查询、横断面分析、爆管与内涝影响分析、巡检养护的功能点与 fdapi 接口对照。
+- [行业方案 · 人防应急指挥](https://yourkarl.github.io/fdapi/docs/tutorials/civil-defense-solution) — 人防与应急指挥数字孪生方案：人防工程三维一体化、指挥一张图、预案推演、资源与力量调度、视频融合与态势标绘的功能点与 fdapi 接口对照。
+- [行业方案 · 实景三维与测绘地理信息](https://yourkarl.github.io/fdapi/docs/tutorials/realscene3d-solution) — 实景三维与测绘地理信息数字孪生方案：地形/城市/部件级实景三维底座、遥感影像统筹与地形叠加、点云与矢量专题、高逼真渲染、主题导览与大屏展示的功能点与 fdapi 接口对照。
+
+## 教程 · 核心概念
+
+- [事件系统](https://yourkarl.github.io/fdapi/docs/tutorials/event) — 三维交互事件系统，包括点击、悬停、相机移动等事件类型
+- [帧同步与 FrameTick](https://yourkarl.github.io/fdapi/docs/tutorials/frame-tick) — 通过 FrameTick 实现逐帧更新动画和数据处理
+- [坐标系与坐标转换](https://yourkarl.github.io/fdapi/docs/tutorials/coordinates) — 投影坐标系、地理坐标系、火星/百度坐标系的说明与转换
+- [颜色与 Color 对象](https://yourkarl.github.io/fdapi/docs/tutorials/color) — DTS SDK 中颜色值的表示方式和使用方法
+- [资源描述与引用](https://yourkarl.github.io/fdapi/docs/tutorials/resources) — 场景资源路径、素材引用规则与最佳实践
+- [相机控制教程](https://yourkarl.github.io/fdapi/docs/tutorials/camera) — 详细介绍相机飞行定位、环绕、导览、视角锁定等常见场景
+- [TypeScript 类型支持](https://yourkarl.github.io/fdapi/docs/tutorials/typescript) — 在二次开发工程中使用 fdapi 的 TypeScript 类型声明，获得 IDE 智能提示与类型检查
+
+## 教程 · 数据指南
+
+- [数据接入总览](https://yourkarl.github.io/fdapi/docs/tutorials/data-overview) — DTS 支持的数据类型、格式与接入通道总矩阵：三维底座、GIS 矢量影像、模型资产、业务动态数据分别走哪条路、用哪个 API。
+- [坐标系与数据配准](https://yourkarl.github.io/fdapi/docs/tutorials/data-georeference) — 数据接入前的坐标配准指南：PCS/GCS 双体系选择、EPSG 与高程基准核对、火星/百度坐标纠偏、加载偏移的定位与调校方法。
+- [3dt 三维底座接入](https://yourkarl.github.io/fdapi/docs/tutorials/data-3dt) — 以 3dt 格式接入倾斜摄影、BIM 与人工模型底座：资源上传、tileLayer 加载、构件单体化与属性查询、剖切与 X 光。
+- [开放三维格式接入（3D Tiles / 3DGS）](https://yourkarl.github.io/fdapi/docs/tutorials/data-3dtiles) — 接入 Cesium 3D Tiles 瓦片服务与 3D 高斯泼溅（.ply）实景重建成果，以及与 3dt 底座的选型对照。
+- [GIS 矢量与影像服务接入](https://yourkarl.github.io/fdapi/docs/tutorials/data-gis) — GeoJSON、Shapefile 矢量数据与 WMTS/WMS/TMS/MVT 影像地形服务的接入方法，投影与球面场景的图层 API 选型。
+- [模型资产与 pak 管线](https://yourkarl.github.io/fdapi/docs/tutorials/data-model) — UE pak 模型资产的制作要求、三种挂载方式与 customObject 动态实体加载，以及 customMesh 程序化几何。
+- [业务动态数据接入](https://yourkarl.github.io/fdapi/docs/tutorials/data-dynamic) — IoT 点位、热力分布、风场洋流场数据、水利仿真与实时视频五类业务数据的接入通道与数据结构约定。
+- [数据性能与体检清单](https://yourkarl.github.io/fdapi/docs/tutorials/data-checklist) — 大场景数据的性能策略（分层加载、可视范围、批量更新）与上线前数据体检清单：加载失败、位置漂移、卡顿的症状归因表。
+
+## 教程 · 进阶与部署
+
+- [多视频同屏渲染](https://yourkarl.github.io/fdapi/docs/tutorials/multi-video) — 在单个页面中同时渲染多个视频流的实现方式
+- [框架集成指南](https://yourkarl.github.io/fdapi/docs/tutorials/framework-integration) — 在 Vue 3、React 18 中集成 DTS SDK 的完整示例
+- [性能最佳实践](https://yourkarl.github.io/fdapi/docs/tutorials/performance) — DTS 二次开发性能优化指南：批量更新、可视范围裁剪、对象生命周期与资源释放、渲染画质权衡、网络与大数据量场景，附自查清单。
+- [高级接口授权](https://yourkarl.github.io/fdapi/docs/tutorials/auth) — DTS SDK 高级付费接口授权说明：需单独授权的对象与模块清单、授权流程与授权状态验证。
+- [DTS Explorer 桌面端](https://yourkarl.github.io/fdapi/docs/tutorials/explorer) — DTS Explorer 桌面端的功能介绍与二次开发接入说明
+- [Explorer 使用指南](https://yourkarl.github.io/fdapi/docs/tutorials/explorer-guideline) — Explorer 操作流程与最佳实践
+- [云端部署说明](https://yourkarl.github.io/fdapi/docs/tutorials/cloud-deploy) — DTS 服务端部署环境要求、网络配置与前端接入指南
+- [平台技术优势与性能指标](https://yourkarl.github.io/fdapi/docs/tutorials/platform-capabilities) — 飞渡 DTS / CIM 平台的核心技术优势（数据轻量化、云渲染、海量数据 LOD 优化、高逼真渲染、CIM 数据底板、微服务与二次开发）与关键性能指标（并发、数据量、帧率、加载响应）。
+- [实例管理接口](https://yourkarl.github.io/fdapi/docs/tutorials/instance-management) — DTS 管理服务（Cloud 管理服务）二次开发接口参考：登录鉴权、实例启停/解锁/参数、运行状态、端口/许可、工程与用户授权，支持 WebSocket 与 REST，附真实响应示例。
+- [版本更新记录](https://yourkarl.github.io/fdapi/docs/tutorials/revision-history) — SDK 各版本更新内容与兼容性说明
+
+## 教程 · 帮助
+
+- [排错与常见报错](https://yourkarl.github.io/fdapi/docs/tutorials/troubleshooting) — DTS 二次开发常见报错与问题排查：连接失败、API 调用崩溃、版本不匹配、对象不显示或偏移、异步异常等，按「现象 → 原因 → 排查」组织。
+- [常见问题 FAQ](https://yourkarl.github.io/fdapi/docs/tutorials/faq) — DTS SDK 二次开发中最常见的问题与解决方案
+
+## 教程 · AI 与工具
+
+- [DTS MCP Server 使用说明](https://yourkarl.github.io/fdapi/docs/mcp-guide) — DTS MCP Server 的安装与使用说明。
+- [DTS 空间智能 Skill 使用说明](https://yourkarl.github.io/fdapi/docs/skill-guide) — DTS 空间智能技能包（Skill）的安装与使用说明。
+
+## API · 快速上手
+
+- [DigitalTwinAPI](https://yourkarl.github.io/fdapi/docs/api/quickstart/digital-twin-api) — DigitalTwinAPI 是 JS SDK 的总类与 API 总入口，new 之后通过全局变量 fdapi 调用所有接口，是连接与调用的核心对象。
+- [DigitalTwinPlayer](https://yourkarl.github.io/fdapi/docs/api/quickstart/digital-twin-player) — DigitalTwinPlayer 是云渲染视频流对象，在网页上创建并显示三维视频流，并承载键盘、鼠标、触摸等交互。
+
+## API · 相机操作
+
+- [CameraTourData](https://yourkarl.github.io/fdapi/docs/api/camera/camera-tour-data) — CameraTourData 是相机导览（漫游）的数据描述对象，封装一条飞行路线的 ID、名称与关键帧数组，作为 CameraTour 播放的数据载体。
+- [CameraTourKeyFrame](https://yourkarl.github.io/fdapi/docs/api/camera/camera-tour-key-frame) — CameraTourKeyFrame 是相机导览（漫游）的单个关键帧，描述某一时刻相机的到达时间、位置坐标与可选朝向，是构成飞行路线动画的最小单元。
+- [CameraTour](https://yourkarl.github.io/fdapi/docs/api/camera/camera-tour) — CameraTour 是相机导览（漫游）动画对象，用于按关键帧序列驱动相机沿预设路线自动飞行、播放、暂停与停止，实现自动巡游展示。
+- [Camera](https://yourkarl.github.io/fdapi/docs/api/camera/camera) — Camera 是三维场景的相机（视角）控制核心，负责观察位置、朝向、飞行进入/退出场景、定位到目标、以及对 CustomObject、Vehicle、Train 等对象的自动跟随。
+
+## API · 事件系统
+
+- [CameraTour](https://yourkarl.github.io/fdapi/docs/api/events/camera-tour) — CameraTour 定义并播放相机沿关键帧的导览/漫游动画，实现自动巡游、镜头切换与定点轮巡。
+- [EditHelper](https://yourkarl.github.io/fdapi/docs/api/events/edit-helper) — 在三维场景中手动绘制点/线/面/体的交互工具，并返回绘制结果坐标，供后续分析、测量或落库使用。
+- [Tools](https://yourkarl.github.io/fdapi/docs/api/events/tools) — Tools 提供量算与空间分析等通用工具能力（如测距、测面、天际线、通视、坡度、剖切、河道断面等，具体以方法为准）。
+
+## API · 图层操作
+
+- [Cesium3DTileset](https://yourkarl.github.io/fdapi/docs/api/layer/cesium3dtileset) — 加载、定位与管理 Cesium 3D Tiles（3DTiles）服务图层，通过服务 URL 流式加载海量三维瓦片数据，支持位置偏移与是否参与光照等控制。
+- [DaHuaVideoFusion](https://yourkarl.github.io/fdapi/docs/api/layer/da-hua-video-fusion) — 对接大华 ICC 开放平台的视频融合对象，将实时摄像头视频流投射融合到三维场景中，并提供可点击定位的摄像头标签。
+- [GeoJSONLayer](https://yourkarl.github.io/fdapi/docs/api/layer/geo-json-layer) — 从本地文件或 URL 加载标准 GeoJSON 矢量数据并进行符号化渲染，支持点、线、面（含 Polygon3D 拉伸体块）多种可视化类型与渲染器，可配合文字标注、贴地与可视范围控制。
+- [GlobeTerrain](https://yourkarl.github.io/fdapi/docs/api/layer/globe-terrain) — 球面坐标系下管理 Cesium 球面地形与影像服务的对象，可在数字地球上叠加 WMTS、WMS、MVT、TMS 等 OGC 网络图层服务，构建全球/大范围三维球面底图与地形。
+- [ImageryLayer2](https://yourkarl.github.io/fdapi/docs/api/layer/imagery-layer-2) — 球面坐标系下通过自定义切片参数加载 WMTS、WMS、MVT、TMS 等网络图层服务，可指定原点、瓦片尺寸、层级范围与 extent 等，适配各厂商服务规则。
+- [ImageryLayer](https://yourkarl.github.io/fdapi/docs/api/layer/imagery-layer) — 加载与管理 WMTS、WMS、MapServer 等网络地图服务图层，将卫星影像、电子地图等作为场景底图叠加，可批量添加并支持坐标系、切片方案等参数配置。
+- [InfoTree](https://yourkarl.github.io/fdapi/docs/api/layer/info-tree) — 管理场景图层树（目录树），提供对树上对象的定位、显隐控制、查询及蓝图函数调用，是组织与联动场景内置对象的统一入口。
+- [MarkerLayer](https://yourkarl.github.io/fdapi/docs/api/layer/marker-layer) — 标注图层对象，按相机距离分三个层级（圆形标记点、标记图片、Marker 标注）自适应展示点位，支持文字、图标、弹窗、多种坐标系与可视范围控制，用于在三维场景中海量标注业务点位。
+- [ShapeFileLayer](https://yourkarl.github.io/fdapi/docs/api/layer/shape-file-layer) — ShapeFileLayer 加载并管理 Shapefile 矢量数据（点/线/面），在三维场景中按样式渲染与查询。
+- [TileLayer](https://yourkarl.github.io/fdapi/docs/api/layer/tile-layer) — TileLayer 加载3dt图层模型（倾斜摄影、BIM、人工模型），支持增删改查、单体化高亮、样式与剖切等。
+
+## API · 测量绘制
+
+- [EditHelper](https://yourkarl.github.io/fdapi/docs/api/measure/edit-helper) — 在三维场景中手动绘制点/线/面/体的交互工具，并返回绘制结果坐标，供后续分析、测量或落库使用。
+- [Plot](https://yourkarl.github.io/fdapi/docs/api/measure/plot) — Plot 用于绘制点/线/面态势图标与军标，支持态势标绘与编辑，是指挥与态势图层的标号载体。
+
+## API · 环境天气
+
+- [Misc](https://yourkarl.github.io/fdapi/docs/api/weather/misc) — Misc 提供一些杂项/辅助功能接口（如图片按钮、提示等通用辅助能力，具体以方法为准）。
+- [Settings](https://yourkarl.github.io/fdapi/docs/api/weather/settings) — Settings 提供场景全局参数设置接口（画质、后期、显示、特效等）。
+- [Weather](https://yourkarl.github.io/fdapi/docs/api/weather/weather) — Weather 设置与获取场景的天气/气象效果（晴雨雪雾、时间、光照等环境特效）。
+
+## API · 系统设置
+
+- [SettingsPanel](https://yourkarl.github.io/fdapi/docs/api/settings/settings-panel) — SettingsPanel 提供对内置设置面板里各项参数进行读写操作的接口对象。
+- [Settings](https://yourkarl.github.io/fdapi/docs/api/settings/settings) — Settings 提供场景全局参数设置接口（画质、后期、显示、特效等）。
+
+## API · 分析工具
+
+- [ExcavationAnalysis](https://yourkarl.github.io/fdapi/docs/api/analysis/excavation-analysis) — ExcavationAnalysis 对比设计面与实际开挖/实测面，计算超挖、欠挖的体积与分布，并以三维云图着色呈现开挖偏差。
+- [QueryOption](https://yourkarl.github.io/fdapi/docs/api/analysis/query-option) — 数据库/属性查询的选项配置对象，用于设置查询字段、过滤条件与范围，作为查询接口的参数。
+- [Tools](https://yourkarl.github.io/fdapi/docs/api/analysis/tools) — Tools 提供量算与空间分析等通用工具能力（如测距、测面、天际线、通视、坡度、剖切、河道断面等，具体以方法为准）。
+
+## API · 辅助工具
+
+- [Coord](https://yourkarl.github.io/fdapi/docs/api/utils/coord) — Coord 提供坐标系之间的转换工具（投影、经纬度、场景坐标互转等）。
+- [FdExternal](https://yourkarl.github.io/fdapi/docs/api/utils/fd-external) — FdExternal 封装进程内 JS 与底层 C++ 的互操作，用于 Explorer WebUI、Marker 弹窗、JSTick 调试窗等 CEF 页面里直接调用底层能力。
+
+## API · 模型操作
+
+- [CustomMesh](https://yourkarl.github.io/fdapi/docs/api/model/custom-mesh) — CustomMesh 通过顶点/索引自定义三维网格几何体并着色，构建非标准的面片/体对象。
+- [CustomObject](https://yourkarl.github.io/fdapi/docs/api/model/custom-object) — CustomObject 加载用户自定义三维模型并控制其位置、姿态、动画、跟随与交互，是通用的“动态实体”载体。
+- [GaussianSplatting](https://yourkarl.github.io/fdapi/docs/api/model/gaussian-splatting) — GaussianSplatting 加载并渲染 3D 高斯泼溅(3DGS)重建成果，呈现照片级实景三维。
+
+## API · 场景标记
+
+- [CustomTag](https://yourkarl.github.io/fdapi/docs/api/marker/custom-tag) — 用于在三维场景中加载基于网页（HTML）的自定义标签，将外部网页内容贴合到指定坐标点，可承载富文本、图表、视频等网页化信息展示。该对象已停止更新，新项目推荐使用功能更丰富的 Marker 对象。
+- [Marker](https://yourkarl.github.io/fdapi/docs/api/marker/marker) — 在三维场景指定坐标处放置带图标与文字的标注点，是最常用的点位标记对象，支持图标、悬停图片、文字、可视范围、分组及交互事件，用于标识地物、设备、事件等关键点位。
+- [Marker3D](https://yourkarl.github.io/fdapi/docs/api/marker/marker3d) — 在三维场景中放置带特效的立体标注（动态标记），相较于二维 Marker 具有三维朝向、缩放、旋转与粒子/光效等表现力，并可叠加三维文字，用于强调重点目标或营造动态告警效果。
+
+## API · 矢量图形
+
+- [GuideLine](https://yourkarl.github.io/fdapi/docs/api/vector/guide-line) — 在三维场景中绘制带流动动画的引导线，用于指示路径、动线与流向，支持直线/曲线样式、宽度与速度，常用于强调移动轨迹与导览路线。
+- [ODLine](https://yourkarl.github.io/fdapi/docs/api/vector/odline) — 以起点(O)到终点(D)的弧线表达两点间的流向与流量关系，支持弯曲度、流速、亮度等参数，常用大量 OD 线表现迁徙、流动与关联强度。
+- [Polygon](https://yourkarl.github.io/fdapi/docs/api/vector/polygon) — 绘制贴地的二维多边形面，用于表达区域、地块与范围，支持多边形带洞（孔洞）及多 Part 复合多边形，可填充颜色表达分区属性。
+- [Polygon3D](https://yourkarl.github.io/fdapi/docs/api/vector/polygon3d) — 在二维多边形基础上拉伸出高度，绘制三维体块面，用于表达有体量的区域，如建筑体块、围墙、立体淹没水体等，支持带洞与多 Part 复合多边形。
+- [Polyline](https://yourkarl.github.io/fdapi/docs/api/vector/polyline) — 绘制由多个坐标点连成的折线/路径，支持箭头、光流、贴地、实线/虚线等样式与自定义材质，是表达道路、管线、轨迹、边界等线状要素的基础对象。
+- [SplineMesh](https://yourkarl.github.io/fdapi/docs/api/vector/spline-mesh) — 沿坐标轨迹放样生成带截面体量的三维路径模型，将模型沿样条曲线延展，用于表达具有真实粗细的管道、线缆、管廊等线状实体，支持内置样式或自定义模型路径。
+- [Tag](https://yourkarl.github.io/fdapi/docs/api/vector/tag) — 在三维场景指定坐标处放置图文标签，支持图片、文字、牵引线及点击弹出网页/视频窗口，用于对场景要素进行注记与信息标注。（注意：Tag 已停止更新，推荐使用功能更丰富的 Marker。）
+- [TopologyLine](https://yourkarl.github.io/fdapi/docs/api/vector/topology-line) — TopologyLine 绘制连接图层树上模型/对象之间的拓扑连接线，表达对象间的关系与连接。
+- [VectorField](https://yourkarl.github.io/fdapi/docs/api/vector/vector-field) — VectorField 基于真实数据(tif/bin)对风场、波浪、洋流、河流等场数据进行向量场/箭头/烟雾形态的仿真。
+
+## API · 覆盖物
+
+- [Decal](https://yourkarl.github.io/fdapi/docs/api/overlay/decal) — Decal 用于将一张贴图沿包围盒投影“喷涂”到三维场景的地表、模型或建筑表面，使图案自然贴合起伏地形与曲面，常用于在实景三维上叠加平面图形信息。
+- [HeatMap](https://yourkarl.github.io/fdapi/docs/api/overlay/heatmap) — HeatMap 根据离散热力点及其热力值，在地表生成二维平面热力图，通过颜色梯度直观表达数据在空间上的密度、强度或聚集分布。
+- [HeatMap3D](https://yourkarl.github.io/fdapi/docs/api/overlay/heatmap3d) — HeatMap3D 在三维空间内构建体热力图，支持空间图片、离散点、体素、稀疏体素等多种构建方式，以体积雾、体素、盒子或贴花等显示模式表达数据在三维空间中的分布与浓度。
+- [HighlightArea](https://yourkarl.github.io/fdapi/docs/api/overlay/highlight-area) — HighlightArea 根据多边形坐标在三维场景中对指定区域内的模型进行高亮染色，并可通过高度范围限定染色的 Z 区间，用于突出强调某一空间范围。
+- [Light](https://yourkarl.github.io/fdapi/docs/api/overlay/light) — Light 用于在三维场景中添加点光源、聚光源、矩形光源等动态光源，可设置颜色、亮度、衰减、阴影并支持按系统时间自动开关，营造真实的照明与夜景氛围。
+- [Panorama](https://yourkarl.github.io/fdapi/docs/api/overlay/panorama) — Panorama 在三维场景的指定坐标处加载并展示 360° 全景照片，使用户可在该点位沉浸式查看真实环境，实现三维模型与实景全景的融合浏览。
+- [RadiationPoint](https://yourkarl.github.io/fdapi/docs/api/overlay/radiation-point) — RadiationPoint 以辐射圈/扩散圈形式表达从某点向外扩散、强度逐渐衰减的影响范围。
+- [VideoProjection](https://yourkarl.github.io/fdapi/docs/api/overlay/video-projection) — VideoProjection 将视频/实时流以投影方式贴合到三维场景表面，实现视频与三维的融合。
+
+## API · 海洋气象仿真
+
+- [Coastline](https://yourkarl.github.io/fdapi/docs/api/ocean/coastline) — 用于在指定包围盒范围内模拟与渲染海岸线效果，包含海浪拍打沙滩、海风驱动的海面波动，并支持海平面水位逐级抬升的水淹推演。
+- [OceanHeatMap](https://yourkarl.github.io/fdapi/docs/api/ocean/ocean-heatmap) — OceanHeatMap 基于真实海洋数据(.tif)生成海面要素热力图，呈现海温、叶绿素等场量的空间分布。
+
+## API · 水文仿真
+
+- [DynamicWater](https://yourkarl.github.io/fdapi/docs/api/hydro/dynamic-water) — DynamicWater 用于在三维场景中按坐标多边形快速生成带波纹流动效果的动态水面，提供深蓝、蓝、湖水三种预设样式。它是一种轻量的“视觉级”水体表达，不依赖真实水动力计算，主要用于把河湖库等水域“点亮”为动态可视效果。
+- [FloodFill](https://yourkarl.github.io/fdapi/docs/api/hydro/flood-fill) — FloodFill 基于给定出水点（seed）和水位高度（elevation），在指定范围内沿地形进行漫延式的淹没计算与填充，模拟“给定水位下哪些区域会被淹没”，并以指定颜色渲染淹没范围与水面。
+- [Fluid](https://yourkarl.github.io/fdapi/docs/api/hydro/fluid) — Fluid 在指定包围盒（bbox）内进行实时流体仿真，通过出水点（sources）的位置、流速流向、形状与持续时间驱动水体流动，内置 28 种水样式，用于表达喷涌、漫流、注水等动态流体效果。
+- [HydrodynamicModel2](https://yourkarl.github.io/fdapi/docs/api/hydro/hydrodynamic-model-2) — HydrodynamicModel2 是早期的二维水动力模型对象，基于 JSON 数据文件驱动，按时序播放水深/流速等结果并以调色板着色，用于在三维场景中回放二维水动力计算成果。**该对象已废弃、待移除，新项目请改用 HydroDynamic2D 对象。**
+- [HydrodynamicModel](https://yourkarl.github.io/fdapi/docs/api/hydro/hydrodynamic-model) — 早期版本的二维水动力模型对象，基于真实数据（水深、流速流向、河道 DEM）驱动生成，支持水体/热力样式与流向着色；该对象已废弃，新项目请改用 HydroDynamic2D。
+- [HydroDynamic1D](https://yourkarl.github.io/fdapi/docs/api/hydro/hydrodynamic1d) — HydroDynamic1D 是一维水动力模型对象，沿河道中心线以采样点（坐标、河道宽度、流速、热力值）描述河道，生成带流向箭头与水面/热力样式的动态河道，可用 shp 文件裁切河道范围，适合表达带状河流的水流与水文属性。
+- [HydroDynamic2D](https://yourkarl.github.io/fdapi/docs/api/hydro/hydrodynamic2d) — HydroDynamic2D 是现行的二维水动力模型对象，基于真实数据驱动，支持 tif 栅格与 shp 矢量两类数据源，可按时序回放水深、流速流向，提供真实水样式、热力图样式、流场样式及流向箭头，是面状洪水演进与淹没动态展示的核心对象。
+- [River](https://yourkarl.github.io/fdapi/docs/api/hydro/river) — River（等价于一维水动力模型 Hydrodynamic1D）模拟河道水位、流量、流速的沿程演进，可视化河道水流过程。
+- [SmoothedParticleHydrodynamics](https://yourkarl.github.io/fdapi/docs/api/hydro/smoothed-particle-hydrodynamics) — SmoothedParticleHydrodynamics（SPH）基于光滑粒子流体动力学模拟自由表面流体（溃坝、喷溅、漫流）的粒子级运动。
+- [WaterFlowField](https://yourkarl.github.io/fdapi/docs/api/hydro/water-flow-field) — WaterFlowField 精确控制水面各网格的流向与流速，构建可控的水流流场效果。
+- [WaterMesh](https://yourkarl.github.io/fdapi/docs/api/hydro/water-mesh) — WaterMesh 以自定义网格构建水面/水体，控制其形态、材质与水流表现，作为流场与波纹效果的载体。
+
+## API · 信号仿真
+
+- [Antenna](https://yourkarl.github.io/fdapi/docs/api/signal/antenna) — Antenna 以方向图形式可视化天线的辐射/增益方向特性。
+- [Beam](https://yourkarl.github.io/fdapi/docs/api/signal/beam) — Beam 可视化雷达/通信波束的指向、形状与扫描，表达探测/覆盖扇区。
+- [SignalWave](https://yourkarl.github.io/fdapi/docs/api/signal/signal-wave) — SignalWave 以波/涟漪扩散形式表达信号或电磁波的传播与覆盖。
+
+## API · 交通仿真
+
+- [BoxTrigger](https://yourkarl.github.io/fdapi/docs/api/traffic/box-trigger) — BoxTrigger 用于在三维场景中绘制一个长方体盒子热区，当 CustomObject 自定义对象或 Camera 相机进入/退出该范围时自动触发回调事件，是一种基于空间包围盒的进出检测机制。
+- [Drone](https://yourkarl.github.io/fdapi/docs/api/traffic/drone) — 在三维场景中加载与驱动无人机模型，支持坐标定位、姿态旋转、moveTo 移动、轨迹线、自发光灯与标牌，模拟无人机的飞行与巡检过程。
+- [Satellite](https://yourkarl.github.io/fdapi/docs/api/traffic/satellite) — Satellite 用于球面坐标系场景中加载与表现卫星对象，支持像素点、缩略图与三维模型的多级可视化（按相机距离切换），并可设置标签文字、姿态旋转，用于卫星在轨与星座的可视化仿真。支持卫星按轨道运动，相机跟随运动，实现卫星运动伴随地球自转的晨昏线效果。支持使用卫星模型的蓝图函数实现打开关闭太阳帆，支持高亮闪烁像素点和缩略图。
+- [TrafficSimulation](https://yourkarl.github.io/fdapi/docs/api/traffic/traffic-simulation) — TrafficSimulation 提供城市级交通仿真能力，支持十万级别车辆的微观交通仿真，可通过 .dat 数据驱动大批量车辆按时间/定时器移动，并内置交通热力图模式与多车型配置。
+- [Train](https://yourkarl.github.io/fdapi/docs/api/traffic/train) — 在三维场景中加载并沿指定轨迹运行的列车对象，支持车头朝向、双车头、车厢节数与样式、最大速度与加减速度，模拟列车在轨道上的行驶。
+- [Vehicle2](https://yourkarl.github.io/fdapi/docs/api/traffic/vehicle-2) — Vehicle2 是高级载具对象，在 Vehicle 基础上提供更丰富的车辆驱动、外观与行为控制。
+- [Vehicle](https://yourkarl.github.io/fdapi/docs/api/traffic/vehicle) — Vehicle 加载车辆模型并沿路径行驶，模拟交通流与车辆运动。
+
+## API · 有限元仿真
+
+- [FiniteElement2](https://yourkarl.github.io/fdapi/docs/api/fem/finite-element-2) — FiniteElement2 是有限元仿真对象（增强版），在结果云图基础上支持更复杂/大规模的有限元仿真过程与动态演示。
+- [FiniteElement](https://yourkarl.github.io/fdapi/docs/api/fem/finite-element) — FiniteElement 加载有限元网格与计算结果（应力/应变/位移/温度等），以云图着色与形变动画三维呈现分析结果。
+
+## API · 战场仿真
+
+- [BattlefieldSimulation](https://yourkarl.github.io/fdapi/docs/api/battle/battlefield-simulation) — BattlefieldSimulation 加载并驱动装甲车、坦克、无人机、士兵等作战单元，模拟战场机动、编队与态势演进。
+- [Plot](https://yourkarl.github.io/fdapi/docs/api/battle/plot) — Plot 用于绘制点/线/面态势图标与军标，支持态势标绘与编辑，是指挥与态势图层的标号载体。
+
+## API · 类型参考
+
+- [类型与枚举](https://yourkarl.github.io/fdapi/docs/api/types) — API 参数中用到的对象类型与枚举常量（Color、各类 Style 样式、Mode 模式等）的取值参考
+
+## Optional
+
+- [llms-full.txt](https://yourkarl.github.io/fdapi/llms-full.txt) — 全部文档正文单文件版
+- [在线调试台](https://yourkarl.github.io/fdapi/sandbox) — 真实连接云渲染的 fdapi 调试环境

@@ -3,6 +3,8 @@ title: 常见问题 FAQ
 sidebar_label: 常见问题
 description: "DTS SDK 二次开发中最常见的问题与解决方案"
 ---
+# 常见问题 FAQ
+
 
 ## 初始化 / 连接问题
 

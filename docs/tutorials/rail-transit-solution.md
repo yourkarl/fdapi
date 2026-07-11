@@ -3,6 +3,8 @@ title: 行业方案 · 轨道交通（BIM+GIS）
 sidebar_label: 行业方案 · 轨道交通
 description: "轨道交通基于 BIM+GIS 全生命期一体化方案：一体化底座、线路隧道车站、列车运行仿真、设备资产、应急疏散的功能点与 fdapi 接口对照。"
 ---
+# 行业方案 · 轨道交通（BIM+GIS）
+
 
 ### 方案概述
 
@@ -14,7 +16,7 @@ description: "轨道交通基于 BIM+GIS 全生命期一体化方案：一体化
 
 | 能力点 | fdapi 接口 | 说明 |
 |------|-----------|------|
-| 地形 / 影像 GIS 底座 | `globeTerrain（球面）` / `imageryLayer2（球面）` | 沿线地形与卫星影像 |
+| 地形 / 影像 GIS 底座 | `globeTerrain（球面）` / `imageryLayer（投影）+imageryLayer2（球面）` | 沿线地形与卫星影像 |
 | 线路 / 隧道 / 车站 BIM | `tileLayer` / `cesium3dTileset` | 轨道、隧道、车站 BIM 加载与单体化拾取 |
 | 全生命期属性 | `tileLayer.getActorInfo(FromDB)` | 构件几何与设计 / 施工 / 运维属性查询 |
 | 设施分层 | `infoTree` | 按线路 / 区间 / 专业系统分级显隐 |

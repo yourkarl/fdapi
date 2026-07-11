@@ -3,6 +3,8 @@ title: 版本更新记录
 sidebar_label: 版本历史
 description: "SDK 各版本更新内容与兼容性说明"
 ---
+# 版本更新记录
+
 
 ### 2026.05.27 Satellite卫星系统新增高亮和取消高亮方法
 

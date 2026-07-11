@@ -8,7 +8,7 @@ description: "在三维场景中加载并沿指定轨迹运行的列车对象，
 
 在三维场景中加载并沿指定轨迹运行的列车对象，支持车头朝向、双车头、车厢节数与样式、最大速度与加减速度，模拟列车在轨道上的行驶。
 
-![](/img/refdoc/api/train.gif)
+![Train 示意图](/img/refdoc/api/train.gif)
 
 通过 `api.train` 访问。
 

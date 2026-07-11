@@ -8,7 +8,7 @@ description: "在二维多边形基础上拉伸出高度，绘制三维体块面
 
 在二维多边形基础上拉伸出高度，绘制三维体块面，用于表达有体量的区域，如建筑体块、围墙、立体淹没水体等，支持带洞与多 Part 复合多边形。
 
-![](/img/refdoc/api/3DPolugon.Update.gif)
+![Polygon3D 示意图 1](/img/refdoc/api/3DPolugon.Update.gif)
 
 **下面Example代码的运行效果图：**
 
@@ -18,7 +18,7 @@ description: "在二维多边形基础上拉伸出高度，绘制三维体块面
 let coords1 = [[872.16, -9485.86, 5.8], [864.77, -9196.58, 5.7], [624.34, -9209.29, 6.05], [482.58, -9373.57, 7.38]];
 ```
 
-![](/img/refdoc/api/Polygon3D1.png)
+![Polygon3D 示意图 2](/img/refdoc/api/Polygon3D1.png)
 
 2. 带2个洞的Polygon3D
 
@@ -30,7 +30,7 @@ let coords2 = [
     ];
 ```
 
-![](/img/refdoc/api/Polygon3D2.png)
+![Polygon3D 示意图 3](/img/refdoc/api/Polygon3D2.png)
 
 3. 2个Part的Polygon3D，每个Polygon3D有一个或多个洞
 
@@ -51,7 +51,7 @@ let coords2 = [
     ];
 ```
 
-![](/img/refdoc/api/Polygon3D3.png)
+![Polygon3D 示意图 4](/img/refdoc/api/Polygon3D3.png)
 
 通过 `api.polygon3d` 访问。
 
@@ -118,7 +118,7 @@ let coords2 = [
 
 
 
-![](/img/refdoc/api/copy_material_path.gif)
+![Polygon3D · add(data, fn) 示意](/img/refdoc/api/copy_material_path.gif)
 
 如何获取自定义材质包含的参数请调用如下方法：
 

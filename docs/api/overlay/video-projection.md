@@ -13,7 +13,7 @@ VideoProjection的效果图：
 
 
 
-![](/img/refdoc/api/videoProjection.gif)
+![VideoProjection 示意图](/img/refdoc/api/videoProjection.gif)
 
 通过 `api.videoProjection` 访问。
 

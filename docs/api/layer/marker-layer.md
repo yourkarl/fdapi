@@ -101,7 +101,7 @@ new MarkerLayer()
 | `markers` | `array` | 是 | - | 标注图层对象包含的标记点对象或数组，可以是Object类型或者Array类型，对于每一个对象，支持以下属性： |
 | `markers.id` | `string` | 是 | - | 必选，标记点的ID |
 | `markers.coordinate` | `array` | 是 | - | 标注点的位置坐标: [x, y, z]，[取值示例](/docs/tutorials/coordinates) |
-| `markers.anchors` | `array` | 否 | [0,0] | 锚点: [x, y]，设置Marker的聚焦图片位置的偏移，默认值：[0,0]，取值规则如下图：![](/img/refdoc/api/anchors.png) |
+| `markers.anchors` | `array` | 否 | [0,0] | 锚点: [x, y]，设置Marker的聚焦图片位置的偏移，默认值：[0,0]，取值规则如下图：![MarkerLayer · add(data, fn) 示意](/img/refdoc/api/anchors.png) |
 | `markers.text` | `string` | 是 | - | 显示的文字 |
 | `markers.popupURL` | `string` | 是 | - | 弹窗HTML链接或者视频文件路径，也支持实时流媒体视频地址，[资源引入说明](/docs/tutorials/resources) |
 | `markers.imagePath` | `string` | 是 | - | 图片路径，支持gif动图，支持本地路径和网络路径，[资源引入说明](/docs/tutorials/resources) |

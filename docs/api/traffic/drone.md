@@ -8,7 +8,7 @@ description: "在三维场景中加载与驱动无人机模型，支持坐标定
 
 在三维场景中加载与驱动无人机模型，支持坐标定位、姿态旋转、moveTo 移动、轨迹线、自发光灯与标牌，模拟无人机的飞行与巡检过程。
 
-![](/img/refdoc/api/drone.gif)
+![Drone 示意图 1](/img/refdoc/api/drone.gif)
 
 通过 `api.drone` 访问。
 
@@ -57,7 +57,7 @@ description: "在三维场景中加载与驱动无人机模型，支持坐标定
 
 
 
-![](/img/refdoc/api/copy_actor_path.gif)
+![Drone · add(data, fn) 示意](/img/refdoc/api/copy_actor_path.gif)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|

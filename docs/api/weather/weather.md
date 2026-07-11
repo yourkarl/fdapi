@@ -213,7 +213,7 @@ fdapi.weather.setAmbientLightIntensity(0.3);
 
 
 
-![](/img/refdoc/api/Weather.SetCloudDensity.gif)
+![Weather · setCloudDensity(cloudDensity, fn) 示意](/img/refdoc/api/Weather.SetCloudDensity.gif)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
@@ -257,7 +257,7 @@ fdapi.weather.setCloudParam("#FFFFFF", 2, 0.5);
 
 
 
-![](/img/refdoc/api/Weather.SetCloudDensity.gif)
+![Weather · setCloudThickness(cloudThickness, fn) 示意](/img/refdoc/api/Weather.SetCloudDensity.gif)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
@@ -280,7 +280,7 @@ fdapi.weather.setCloudThickness(2);
 
 
 
-![](/img/refdoc/api/Weather.SetDarkMode.gif)
+![Weather · setDarkMode(bDark, fn) 示意](/img/refdoc/api/Weather.SetDarkMode.gif)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
@@ -304,7 +304,7 @@ fdapi.weather.setDarkMode(__isDarkMode);
 
 
 
-![](/img/refdoc/api/Settings.SetDateTime.gif)
+![Weather · setDateTime(year, month, day, hour, minute, daynightLoop, fn) 示意](/img/refdoc/api/Settings.SetDateTime.gif)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
@@ -389,7 +389,7 @@ await fdapi.weather.setEarthStarBackgroundIntensity(0);
 
 
 
-![](/img/refdoc/api/Weather.SetFogParam.gif)
+![Weather · setFogParam(fogDensity, fogColor, fogHeightFalloff, fogStartDistance, fogOpacity, fn) 示意](/img/refdoc/api/Weather.SetFogParam.gif)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
@@ -538,7 +538,7 @@ fdapi.weather.setOceanWave(options);
 
 
 
-![](/img/refdoc/api/Weather.SetRainParam.gif)
+![Weather · setRainParam(strength, speed, raindropSize, rainColor, alignCamera, overcastStrength, fn) 示意](/img/refdoc/api/Weather.SetRainParam.gif)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
@@ -664,7 +664,7 @@ fdapi.weather.setSkyVisibleMaxHeight(50000);
 
 
 
-![](/img/refdoc/api/Weather.SetSnowParam.gif)
+![Weather · setSnowParam(strength, speed, snowflakeSize, snowColor, alignCamera, overcastStrength, fn) 示意](/img/refdoc/api/Weather.SetSnowParam.gif)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|

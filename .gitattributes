@@ -1,0 +1,12 @@
+# 统一换行为 LF，避免 Windows 编辑器/同步工具造成 CRLF 漂移
+# （本工程生成脚本 gen_utils 统一按 LF 原子写入；CRLF 混入会产生大量假 diff）
+* text=auto
+*.md text eol=lf
+*.js text eol=lf
+*.jsx text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.txt text eol=lf
+*.yml text eol=lf
