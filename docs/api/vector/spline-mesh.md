@@ -64,7 +64,7 @@ description: "沿坐标轨迹放样生成带截面体量的三维路径模型，
 
 
 
-![](/img/refdoc/api/SplineMesh.gif)
+![SplineMesh · add(data, fn) 示意](/img/refdoc/api/SplineMesh.gif)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|

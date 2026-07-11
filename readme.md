@@ -36,6 +36,7 @@ npm run serve      # 预览构建产物
 | `gen_dts.py` | `docs/api/*.md` | `static/dts-sdk.d.ts`（TS 类型声明）+ `src/data/api-completions.js`（编辑器补全） |
 | `gen_param_meta.py` | `docs/api/*.md` 参数表 | `src/data/param-meta.js`（调试台参数面板；`gen_param_meta.js` 为无 Python 环境时的等价 Node 版） |
 | `gen_real_examples.py` | `参考资料/.../doc/scripts/` 的 `page_content.js` + `api_examples(.ellipsoid).js`（权威示例源） | `src/data/real-examples.js`（投影 + 球面两套示例导航） |
+| `gen_llms_txt.py` | `docs/**/*.md` front matter + `nav_data.json` + `sidebars.js` | `static/llms.txt`（AI 可读文档索引，llmstxt.org 规范）+ `static/llms-full.txt`（全文单文件版），部署后见 `/llms.txt` |
 | `check_docs_integrity.py` | `docs/**/*.md` 及上述生成物 | 校验 UTF-8 / 无 NUL 空字节 / front matter YAML，失败则非零退出 |
 
 > 单独跑检查：`npm run check`（等同 `python3 check_docs_integrity.py`）。

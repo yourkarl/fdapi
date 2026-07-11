@@ -8,7 +8,7 @@ description: "HydroDynamic2D 是现行的二维水动力模型对象，基于真
 
 二维水动力模型对象，基于真实数据驱动生成水动力模型，支持2种格式数据源：.tif文件（栅格） | .shp文件（矢量）
 
-![](/img/refdoc/api/h2d.gif)
+![HydroDynamic2D 示意图](/img/refdoc/api/h2d.gif)
 
 通过 `api.hydrodynamic2d` 访问。
 

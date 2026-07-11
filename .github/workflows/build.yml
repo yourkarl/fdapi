@@ -28,7 +28,7 @@ jobs:
           python3 -c "import bs4; print('beautifulsoup4 OK')"
           python3 -c "
           import ast, sys
-          for f in ['regenerate_docs.py', 'gen_sidebar.py', 'gen_real_examples.py', 'gen_dts.py', 'gen_param_meta.py', 'check_docs_integrity.py']:
+          for f in ['regenerate_docs.py', 'gen_sidebar.py', 'gen_real_examples.py', 'gen_dts.py', 'gen_param_meta.py', 'gen_llms_txt.py', 'check_docs_integrity.py']:
             try:
               ast.parse(open(f).read())
               print(f, 'syntax OK')

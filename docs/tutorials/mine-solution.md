@@ -3,6 +3,8 @@ title: 行业方案 · 智慧矿山
 sidebar_label: 行业方案 · 智慧矿山
 description: "智慧矿山数字孪生方案：矿山信息模型（MIM）全生命周期、井上下三维一体化、生产工艺运行、设备与人员定位、安全监测预警的功能点与 fdapi 接口对照。"
 ---
+# 行业方案 · 智慧矿山
+
 
 ### 方案概述
 
@@ -17,7 +19,7 @@ description: "智慧矿山数字孪生方案：矿山信息模型（MIM）全生
 | 能力点 | fdapi 接口 | 说明 |
 |------|-----------|------|
 | 井上下一体化 | `tileLayer` / `cesium3dTileset` + `enableClip` | 地表、井筒、巷道、采区单体化与剖切透视 |
-| 地质 / 地形 | `globeTerrain（球面）` / `imageryLayer2（球面）` | 矿区地形、影像与地质体叠加 |
+| 地质 / 地形 | `globeTerrain（球面）` / `imageryLayer（投影）+imageryLayer2（球面）` | 矿区地形、影像与地质体叠加 |
 | 构件属性 | `getObjectIDs` / `getActorInfo(FromDB)` | 巷道、硐室、设备台账属性查询 |
 | 系统分层 | `infoTree` / `groupId` | 按开拓、采掘、运输、通风系统分组显隐 |
 

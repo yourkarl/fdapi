@@ -33,47 +33,7 @@ declare namespace fdapi {
   /** 显示/隐藏tick调试窗口。 该方法既可以在客户端调用，也可以在tick调试窗口调用 */
   function showTickWindow(visible?: boolean, fn?: (...args: any[]) => void): Promise<any>;
 
-  /** BoxTrigger 用于在三维场景中绘制一个长方体盒子热区，当 CustomObject 自定义对象或 Camera 相机进入/退出该范围时自动触发回调事件，是一种基于空间包围盒的进出检测机制。 */
-  namespace BoxTrigger {
-    /** 添加一个或多个BoxTrigger对象，当CustomObject对象或相机Camera对象进入和退出盒子热区范围触发事件相关的操作 */
-    function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 清空场景中所有的BoxTrigger对象 */
-    function clear(fn?: (...args: any[]) => void): Promise<any>;
-    /** 删除一个或多个BoxTrigger对象，注意：删除对象后热区和对应触发事件均会删除 */
-    function delete(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 用于批量多次修改对象的属性 */
-    function updateBegin(): Promise<any>;
-    /** 用于批量多次修改对象的属性，与updateBegin配套使用 */
-    function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
-  }
-
-  /** Drone类，提供无人机对象相关的操作 一般通过api.Drone调用其方法 */
-  namespace Drone {
-    /** 添加一个或多个无人机对象 */
-    function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 清空场景中所有的无人机对象 */
-    function clear(fn?: (...args: any[]) => void): Promise<any>;
-    /** 删除一个或多个无人机对象 */
-    function delete(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 自动定位到合适的观察距离 */
-    function focus(ids?: string | any[], followEnable?: boolean, distance?: number, flyTime?: number, viewPitch?: number, viewYaw?: number, sensitivity?: number, offset?: any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 根据ID获取无人机对象的详细信息 */
-    function get(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 隐藏一个或多个无人机对象 */
-    function hide(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 设置无人机对象飞行移动 */
-    function moveTo(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 显示一个或多个无人机对象 */
-    function show(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 修改一个或多个无人机对象 */
-    function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 用于批量多次修改对象的属性 */
-    function updateBegin(): Promise<any>;
-    /** 用于批量多次修改对象的属性，与updateBegin配套使用 */
-    function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
-  }
-
-  /** 二维水动力模型对象，基于真实数据驱动生成水动力模型 一般通过api.HydrodynamicModel调用其方法 */
+  /** 早期版本的二维水动力模型对象，基于真实数据（水深、流速流向、河道 DEM）驱动生成，支持水体/热力样式与流向着色；该对象已废弃，新项目请改用 HydroDynamic2D。 */
   namespace HydrodynamicModel {
     /** 添加一个或多个HydrodynamicModel二维水动力模型对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -203,44 +163,18 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** WaterMesh 以自定义网格构建水面/水体，控制其形态、材质与水流表现，作为流场与波纹效果的载体。 */
+  /** BoxTrigger 用于在三维场景中绘制一个长方体盒子热区，当 CustomObject 自定义对象或 Camera 相机进入/退出该范围时自动触发回调事件，是一种基于空间包围盒的进出检测机制。 */
   namespace boxTrigger {
-    /** 添加一个或多个WaterMesh对象 */
+    /** 添加一个或多个BoxTrigger对象，当CustomObject对象或相机Camera对象进入和退出盒子热区范围触发事件相关的操作 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 删除场景中所有的WaterMesh */
+    /** 清空场景中所有的BoxTrigger对象 */
     function clear(fn?: (...args: any[]) => void): Promise<any>;
-    /** 删除一个或多个WaterMesh对象 */
+    /** 删除一个或多个BoxTrigger对象，注意：删除对象后热区和对应触发事件均会删除 */
     function delete(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 自动定位到合适的观察距离 */
-    function focus(ids?: string | any[], distance?: number, flyTime?: number, rotation?: any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 根据ID获取WaterMesh的详细信息 */
-    function get(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 隐藏WaterMesh */
-    function hide(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 隐藏所有WaterMesh */
-    function hideAll(fn?: (...args: any[]) => void): Promise<any>;
-    /** 设置WaterMesh顶点坐标 */
-    function setCoordinates(id?: string, newVal?: any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 设置WaterMesh顶点坐标索引 */
-    function setIndices(id?: string, newVal?: any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 设置WaterMesh法向 */
-    function setNormals(id?: string, newVal?: any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 设置颜色 */
-    function setWaterColor(id?: string, newVal?: any, fn?: (...args: any[]) => void): Promise<any>;
-    /** 设置水流方向 */
-    function setWaterDirection(id?: string, newVal?: number, fn?: (...args: any[]) => void): Promise<any>;
-    /** 设置水流速度 */
-    function setWaterSpeed(id?: string, newVal?: number, fn?: (...args: any[]) => void): Promise<any>;
-    /** 设置水流贴图重复间隔距离 */
-    function setWaterUVRepeat(id?: string, newVal?: number, fn?: (...args: any[]) => void): Promise<any>;
-    /** 设置水波纹大小 */
-    function setWaterWaveScale(id?: string, newVal?: number, fn?: (...args: any[]) => void): Promise<any>;
-    /** 显示WaterMesh */
-    function show(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 显示所有WaterMesh */
-    function showAll(fn?: (...args: any[]) => void): Promise<any>;
-    /** 修改一个或多个WaterMesh对象 */
-    function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 用于批量多次修改对象的属性 */
+    function updateBegin(): Promise<any>;
+    /** 用于批量多次修改对象的属性，与updateBegin配套使用 */
+    function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
   /** Camera 是三维场景的相机（视角）控制核心，负责观察位置、朝向、飞行进入/退出场景、定位到目标、以及对 CustomObject、Vehicle、Train 等对象的自动跟随。 */
@@ -343,7 +277,7 @@ declare namespace fdapi {
     function updateEnd(fn?: any): Promise<any>;
   }
 
-  /** Cesium3DTileset 相关的操作 一般通过api.cesium3DTileset调用其方法 */
+  /** 加载、定位与管理 Cesium 3D Tiles（3DTiles）服务图层，通过服务 URL 流式加载海量三维瓦片数据，支持位置偏移与是否参与光照等控制。 */
   namespace cesium3DTileset {
     /** 添加一个或多个Cesium3DTileset对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -377,54 +311,20 @@ declare namespace fdapi {
   namespace coastline {
     /** 添加一个或多个Coastline对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 在两颗卫星之间添加连接线，卫星运动时连接线会跟随同步运动 */
-    function addLinkage(data?: Record<string, any> | any[], materials?: any[] | Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
-    /** 调用卫星模型包含的多个蓝图函数，注意：调用前请使用getBPFunction()函数来查询当前卫星模型包含的蓝图函数参数信息 */
-    function callBPFunction(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 删除场景中所有的Coastline */
     function clear(fn?: (...args: any[]) => void): Promise<any>;
-    /** 清空场景中所有的卫星连接线 */
-    function clearLinkage(fn?: (...args: any[]) => void): Promise<any>;
     /** 删除一个或多个Coastline对象 */
     function delete(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 根据卫星连接线的ID删除连接线 */
-    function deleteLinkage(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 删除一个或多个卫星模型和其对应的文字标签 */
-    function deleteSatellite(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 自动定位到合适的观察距离 */
     function focus(ids?: string | any[], distance?: number, flyTime?: number, rotation?: any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 根据ID获取Coastline的详细信息 */
     function get(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 根据卫星模型ID查询其包含的蓝图函数信息，注意：支持批量查询 */
-    function getBPFunction(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 隐藏一个或多个卫星模型 */
-    function hideModel(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 隐藏一个或多个卫星模型和其对应的文字标签 */
-    function hideSatellite(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 隐藏一个或多个卫星的文字标签 */
-    function hideText(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 打开指定卫星的缩略图的高亮效果 */
-    function highlight(ids?: string | any[], speed?: number, scaleRange?: number, alphaRange?: number, intensityRange?: number, fn?: (...args: any[]) => void): Promise<any>;
-    /** 设置卫星运动时自动跟随相机 */
-    function setFollow(ids?: string | any[], distance?: number, pitch?: number, yaw?: number, fn?: (...args: any[]) => void): Promise<any>;
-    /** 显示一个或多个卫星模型 */
-    function showModel(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 显示一个或多个卫星模型和其对应的文字标签 */
-    function showSatellite(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 显示一个或多个卫星的文字标签 */
-    function showText(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 取消指定卫星缩略图的高亮效果 */
-    function unHighlight(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 取消所有卫星缩略图的高亮效果 */
-    function unHighlightAll(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 修改一个或多个Coastline对象 */
     function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 用于批量多次修改对象的属性 */
     function updateBegin(): Promise<any>;
     /** 用于批量多次修改对象的属性，与updateBegin配套使用 */
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
-    /** 更新卫星之间连接线 */
-    function updateLinkage(data?: Record<string, any> | any[], materials?: any[] | Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
   }
 
   /** Coord 提供坐标系之间的转换工具（投影、经纬度、场景坐标互转等）。 */
@@ -572,7 +472,7 @@ declare namespace fdapi {
     /** 用于批量多次修改对象的属性 */
     function updateBegin(): Promise<any>;
     /** 用于批量多次修改对象的属性，与updateBegin配套使用 */
-    function updateEnd(fn?: any): Promise<any>;
+    function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
   /** 对接大华 ICC 开放平台的视频融合对象，将实时摄像头视频流投射融合到三维场景中，并提供可点击定位的摄像头标签。 */
@@ -621,37 +521,25 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** Vehicle 加载车辆模型并沿路径行驶，模拟交通流与车辆运动。 */
+  /** 在三维场景中加载与驱动无人机模型，支持坐标定位、姿态旋转、moveTo 移动、轨迹线、自发光灯与标牌，模拟无人机的飞行与巡检过程。 */
   namespace drone {
-    /** 添加一个或多个Vehicle对象 */
+    /** 添加一个或多个无人机对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 调用多个Vehicle对象的多个蓝图函数 */
-    function callBatchFunction(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 清空场景中所有的Vehicle对象 */
+    /** 清空场景中所有的无人机对象 */
     function clear(fn?: (...args: any[]) => void): Promise<any>;
-    /** 删除一个或多个Vehicle对象 */
+    /** 删除一个或多个无人机对象 */
     function delete(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 自动定位到合适的观察距离 */
-    function focus(ids?: string | any[], followEnable?: boolean, distance?: number, flyTime?: number, rotation?: any[], distanceRotation?: any[], offset?: any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 根据ID获取Vehicle对象的详细信息 */
+    function focus(ids?: string | any[], followEnable?: boolean, distance?: number, flyTime?: number, viewPitch?: number, viewYaw?: number, sensitivity?: number, offset?: any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 根据ID获取无人机对象的详细信息 */
     function get(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 隐藏一个或多个Vehicle对象 */
+    /** 隐藏一个或多个无人机对象 */
     function hide(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 设置Vehicle对象行驶（根据实时获取的GPS数据运动） */
+    /** 设置无人机对象飞行移动 */
     function moveTo(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 暂停指定的载具运动 */
-    function pause(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 恢复指定的载具运动 */
-    function resume(id?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 设置Vehicle对象行驶的路径点（已知路径点 轨迹动画） */
-    function setWayPoint(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 显示一个或多个Vehicle对象 */
+    /** 显示一个或多个无人机对象 */
     function show(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 启动指定的载具在某个时刻开始运动 */
-    function start(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 停止指定的载具运动 */
-    function stop(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 修改一个或多个Vehicle对象 */
+    /** 修改一个或多个无人机对象 */
     function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 用于批量多次修改对象的属性 */
     function updateBegin(): Promise<any>;
@@ -685,7 +573,7 @@ declare namespace fdapi {
     function updateEnd(fn?: any): Promise<any>;
   }
 
-  /** EditHelper类，提供用户手动绘制接口 */
+  /** 在三维场景中手动绘制点/线/面/体的交互工具，并返回绘制结果坐标，供后续分析、测量或落库使用。 */
   namespace editHelper {
     /** 取消绘制模式 */
     function cancel(fn?: (...args: any[]) => void): Promise<any>;
@@ -855,10 +743,6 @@ declare namespace fdapi {
     function stopSource(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 修改一个或多个流体仿真对象 */
     function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 用于批量多次修改对象的属性 */
-    function updateBegin(): Promise<any>;
-    /** 用于批量多次修改对象的属性，与updateBegin配套使用 */
-    function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
   /** GaussianSplatting 加载并渲染 3D 高斯泼溅(3DGS)重建成果，呈现照片级实景三维。 */
@@ -955,7 +839,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** GuideLine 相关的操作 一般通过api.guideLine调用其方法 */
+  /** 在三维场景中绘制带流动动画的引导线，用于指示路径、动线与流向，支持直线/曲线样式、宽度与速度，常用于强调移动轨迹与导览路线。 */
   namespace guideLine {
     /** 添加一个或多个GuideLine对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1197,7 +1081,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** ImageryLayer2 球面坐标系下加载网络图层服务 目前支持WMTS、WMS、MVT和TMS 一般通过api.ImageryLayer2调用其方法 */
+  /** 球面坐标系下通过自定义切片参数加载 WMTS、WMS、MVT、TMS 等网络图层服务，可指定原点、瓦片尺寸、层级范围与 extent 等，适配各厂商服务规则。 */
   namespace imageryLayer2 {
     /** 根据图层服务的自定义参数添加一个或多个球面网络地图服务，如WMTS/WMS/MVT/TMS服务等网络图层服务 */
     function addBySchemaParams(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1223,7 +1107,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** Layers, 图层树相关的操作 一般通过api.infoTree调用其方法 */
+  /** 管理场景图层树（目录树），提供对树上对象的定位、显隐控制、查询及蓝图函数调用，是组织与联动场景内置对象的统一入口。 */
   namespace infoTree {
     /** 调用图层树上对象包含的多个蓝图函数，注意：可以根据图层树上的对象id查询包含的所有蓝图函数 fdapi.misc.getBPFunction(id); */
     function callBPFunction(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1541,7 +1425,7 @@ declare namespace fdapi {
     function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** ODLine 迁徙线相关的操作 一般通过api.odline调用其方法，效果图如下： 迁徙线样式参数示例 */
+  /** 以起点(O)到终点(D)的弧线表达两点间的流向与流量关系，支持弯曲度、流速、亮度等参数，常用大量 OD 线表现迁徙、流动与关联强度。 */
   namespace odline {
     /** 添加一个或多个ODLine对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1757,7 +1641,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** Polyline 相关的操作 一般通过api.polyline调用其方法 */
+  /** 绘制由多个坐标点连成的折线/路径，支持箭头、光流、贴地、实线/虚线等样式与自定义材质，是表达道路、管线、轨迹、边界等线状要素的基础对象。 */
   namespace polyline {
     /** 添加一个或多个Polyline对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1865,6 +1749,58 @@ declare namespace fdapi {
     function show(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 修改一个或多个River对象 */
     function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+  }
+
+  /** Satellite 用于球面坐标系场景中加载与表现卫星对象，支持像素点、缩略图与三维模型的多级可视化（按相机距离切换），并可设置标签文字、姿态旋转，用于卫星在轨与星座的可视化仿真。支持卫星按轨道运动，相机跟随运动，实现卫星运动伴随地球自转的晨昏线效果。支持使用卫星模型的蓝图函数实现打开关闭太阳帆，支持高亮闪烁像素点和缩略图。 */
+  namespace satellite {
+    /** 添加一个或多个Satellite对象 */
+    function add(data?: Record<string, any> | any[], textRange?: any[], modelRange?: any[], imageVisibleDistance?: number, fn?: (...args: any[]) => void): Promise<any>;
+    /** 在两颗卫星之间添加连接线，卫星运动时连接线会跟随同步运动 */
+    function addLinkage(data?: Record<string, any> | any[], materials?: any[] | Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
+    /** 调用卫星模型包含的多个蓝图函数，注意：调用前请使用getBPFunction()函数来查询当前卫星模型包含的蓝图函数参数信息 */
+    function callBPFunction(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 清空场景中所有的Satellite */
+    function clear(fn?: (...args: any[]) => void): Promise<any>;
+    /** 清空场景中所有的卫星连接线 */
+    function clearLinkage(fn?: (...args: any[]) => void): Promise<any>;
+    /** 根据卫星连接线的ID删除连接线 */
+    function deleteLinkage(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 删除一个或多个卫星模型和其对应的文字标签 */
+    function deleteSatellite(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 自动定位到合适的观察距离 */
+    function focus(ids?: string | any[], distance?: number, flyTime?: number, pitch?: number, yaw?: number, sensitivity?: number, offset?: any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 根据卫星模型的ID获取卫星的实时位置信息 */
+    function get(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 根据卫星模型ID查询其包含的蓝图函数信息，注意：支持批量查询 */
+    function getBPFunction(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 隐藏一个或多个卫星模型 */
+    function hideModel(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 隐藏一个或多个卫星模型和其对应的文字标签 */
+    function hideSatellite(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 隐藏一个或多个卫星的文字标签 */
+    function hideText(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 打开指定卫星的缩略图的高亮效果 */
+    function highlight(ids?: string | any[], speed?: number, scaleRange?: number, alphaRange?: number, intensityRange?: number, fn?: (...args: any[]) => void): Promise<any>;
+    /** 设置卫星运动时自动跟随相机 */
+    function setFollow(ids?: string | any[], distance?: number, pitch?: number, yaw?: number, fn?: (...args: any[]) => void): Promise<any>;
+    /** 显示一个或多个卫星模型 */
+    function showModel(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 显示一个或多个卫星模型和其对应的文字标签 */
+    function showSatellite(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 显示一个或多个卫星的文字标签 */
+    function showText(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 取消指定卫星缩略图的高亮效果 */
+    function unHighlight(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 取消所有卫星缩略图的高亮效果 */
+    function unHighlightAll(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 修改一个或多个Satellite对象 */
+    function update(data?: Record<string, any> | any[], duration?: number, fn?: (...args: any[]) => void): Promise<any>;
+    /** 用于批量多次修改对象的属性 */
+    function updateBegin(): Promise<any>;
+    /** 用于批量多次修改对象的属性，与updateBegin配套使用 */
+    function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
+    /** 更新卫星之间连接线 */
+    function updateLinkage(data?: Record<string, any> | any[], materials?: any[] | Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
   }
 
   /** Settings 提供场景全局参数设置接口（画质、后期、显示、特效等）。 */
@@ -2244,7 +2180,7 @@ declare namespace fdapi {
     /** 用于批量多次修改对象的属性 */
     function updateBegin(): Promise<any>;
     /** 用于批量多次修改对象的属性，与updateBegin配套使用 */
-    function updateEnd(fn?: any): Promise<any>;
+    function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
   /** TileLayer 加载3dt图层模型（倾斜摄影、BIM、人工模型），支持增删改查、单体化高亮、样式与剖切等。 */
@@ -2541,7 +2477,7 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
-  /** 火车类对象，模拟火车移动 一般通过api.train对象调用 */
+  /** 在三维场景中加载并沿指定轨迹运行的列车对象，支持车头朝向、双车头、车厢节数与样式、最大速度与加减速度，模拟列车在轨道上的行驶。 */
   namespace train {
     /** 添加一个或多个Train对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -2593,6 +2529,44 @@ declare namespace fdapi {
     function show(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 修改一个或多个VectorField对象 */
     function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+  }
+
+  /** Vehicle 加载车辆模型并沿路径行驶，模拟交通流与车辆运动。 */
+  namespace vehicle {
+    /** 添加一个或多个Vehicle对象 */
+    function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 调用多个Vehicle对象的多个蓝图函数 */
+    function callBatchFunction(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 清空场景中所有的Vehicle对象 */
+    function clear(fn?: (...args: any[]) => void): Promise<any>;
+    /** 删除一个或多个Vehicle对象 */
+    function delete(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 自动定位到合适的观察距离 */
+    function focus(ids?: string | any[], followEnable?: boolean, distance?: number, flyTime?: number, rotation?: any[], distanceRotation?: any[], offset?: any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 根据ID获取Vehicle对象的详细信息 */
+    function get(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 隐藏一个或多个Vehicle对象 */
+    function hide(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 设置Vehicle对象行驶（根据实时获取的GPS数据运动） */
+    function moveTo(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 暂停指定的载具运动 */
+    function pause(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 恢复指定的载具运动 */
+    function resume(id?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 设置Vehicle对象行驶的路径点（已知路径点 轨迹动画） */
+    function setWayPoint(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 显示一个或多个Vehicle对象 */
+    function show(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 启动指定的载具在某个时刻开始运动 */
+    function start(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 停止指定的载具运动 */
+    function stop(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 修改一个或多个Vehicle对象 */
+    function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 用于批量多次修改对象的属性 */
+    function updateBegin(): Promise<any>;
+    /** 用于批量多次修改对象的属性，与updateBegin配套使用 */
+    function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
   /** Vehicle2 是高级载具对象，在 Vehicle 基础上提供更丰富的车辆驱动、外观与行为控制。 */
@@ -2684,6 +2658,46 @@ declare namespace fdapi {
     /** 显示WaterFlowField对象 */
     function show(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 修改一个或多个WaterFlowField对象 */
+    function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+  }
+
+  /** WaterMesh 以自定义网格构建水面/水体，控制其形态、材质与水流表现，作为流场与波纹效果的载体。 */
+  namespace waterMesh {
+    /** 添加一个或多个WaterMesh对象 */
+    function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 删除场景中所有的WaterMesh */
+    function clear(fn?: (...args: any[]) => void): Promise<any>;
+    /** 删除一个或多个WaterMesh对象 */
+    function delete(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 自动定位到合适的观察距离 */
+    function focus(ids?: string | any[], distance?: number, flyTime?: number, rotation?: any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 根据ID获取WaterMesh的详细信息 */
+    function get(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 隐藏WaterMesh */
+    function hide(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 隐藏所有WaterMesh */
+    function hideAll(fn?: (...args: any[]) => void): Promise<any>;
+    /** 设置WaterMesh顶点坐标 */
+    function setCoordinates(id?: string, newVal?: any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 设置WaterMesh顶点坐标索引 */
+    function setIndices(id?: string, newVal?: any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 设置WaterMesh法向 */
+    function setNormals(id?: string, newVal?: any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 设置颜色 */
+    function setWaterColor(id?: string, newVal?: any, fn?: (...args: any[]) => void): Promise<any>;
+    /** 设置水流方向 */
+    function setWaterDirection(id?: string, newVal?: number, fn?: (...args: any[]) => void): Promise<any>;
+    /** 设置水流速度 */
+    function setWaterSpeed(id?: string, newVal?: number, fn?: (...args: any[]) => void): Promise<any>;
+    /** 设置水流贴图重复间隔距离 */
+    function setWaterUVRepeat(id?: string, newVal?: number, fn?: (...args: any[]) => void): Promise<any>;
+    /** 设置水波纹大小 */
+    function setWaterWaveScale(id?: string, newVal?: number, fn?: (...args: any[]) => void): Promise<any>;
+    /** 显示WaterMesh */
+    function show(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 显示所有WaterMesh */
+    function showAll(fn?: (...args: any[]) => void): Promise<any>;
+    /** 修改一个或多个WaterMesh对象 */
     function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
   }
 

@@ -13,7 +13,7 @@ HeatMap 效果图如下：
 
 
 
-![](/img/refdoc/api/heatmap.gif)
+![HeatMap 示意图](/img/refdoc/api/heatmap.gif)
 
 通过 `api.heatmap` 访问。
 

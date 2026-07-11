@@ -10,7 +10,7 @@ description: "以起点(O)到终点(D)的弧线表达两点间的流向与流量
 
 
 
-![](/img/refdoc/api/odline.gif)
+![ODLine 示意图 1](/img/refdoc/api/odline.gif)
 
 
 
@@ -18,7 +18,7 @@ description: "以起点(O)到终点(D)的弧线表达两点间的流向与流量
 
 
 
-![](/img/refdoc/api/ODLine.png)
+![ODLine 示意图 2](/img/refdoc/api/ODLine.png)
 
 通过 `api.odline` 访问。
 ## 业务场景 Skill

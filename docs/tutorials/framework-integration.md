@@ -3,6 +3,8 @@ title: 框架集成指南
 sidebar_label: 框架集成
 description: "在 Vue 3、React 18 中集成 DTS SDK 的完整示例"
 ---
+# 框架集成指南
+
 
 DTS SDK 是面向浏览器的 JS 库，可以在任何现代前端框架中使用。核心要点：
 

@@ -3,6 +3,8 @@ title: 行业方案 · 人防应急指挥
 sidebar_label: 行业方案 · 人防应急指挥
 description: "人防与应急指挥数字孪生方案：人防工程三维一体化、指挥一张图、预案推演、资源与力量调度、视频融合与态势标绘的功能点与 fdapi 接口对照。"
 ---
+# 行业方案 · 人防应急指挥
+
 
 ### 方案概述
 
@@ -17,7 +19,7 @@ description: "人防与应急指挥数字孪生方案：人防工程三维一体
 | 能力点 | fdapi 接口 | 说明 |
 |------|-----------|------|
 | 人防工程建模 | `tileLayer` / `cesium3dTileset` + `enableClip` | 人防工程、地下空间单体化与剖切浏览 |
-| 城市底座 | `globeTerrain（球面）` / `imageryLayer2（球面）` / `geoJSONLayer` | 地形、影像、行政区划一张图底图 |
+| 城市底座 | `globeTerrain（球面）` / `imageryLayer（投影）+imageryLayer2（球面）` / `geoJSONLayer` | 地形、影像、行政区划一张图底图 |
 | 资源点位 | `marker` / `markerLayer` + `groupId` | 人防工程、物资库、避难场所、队伍点位 |
 | 设施分层 | `infoTree` / `groupId` | 按工程、物资、力量、监测分组显隐 |
 

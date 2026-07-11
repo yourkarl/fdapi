@@ -3,6 +3,8 @@ title: 行业方案 · 智慧文旅与景区（IOC）
 sidebar_label: 行业方案 · 智慧文旅/景区
 description: "智慧文旅与景区数字孪生综合管控（IOC）方案：景区三维底座、设备物联点位与告警、视频融合、客流统计、人员车船实时轨迹、综合态势的功能点与 fdapi 接口对照。"
 ---
+# 行业方案 · 智慧文旅与景区（IOC）
+
 
 ### 方案概述
 
@@ -15,7 +17,7 @@ description: "智慧文旅与景区数字孪生综合管控（IOC）方案：景
 | 能力点 | fdapi 接口 | 说明 |
 |------|-----------|------|
 | 景区实景 / 精模 | `tileLayer` / `cesium3dTileset` / `customObject` | 1:1 写实景区建模加载与单体化 |
-| 地形 / 影像底图 | `globeTerrain（球面）` / `imageryLayer2（球面）` | 景区地形与卫星影像 |
+| 地形 / 影像底图 | `globeTerrain（球面）` / `imageryLayer（投影）+imageryLayer2（球面）` | 景区地形与卫星影像 |
 | 分区 / 设施分层 | `infoTree` / `groupId` | 按景区分区、设备类型分组显隐 |
 
 ## 物联设备点位与告警

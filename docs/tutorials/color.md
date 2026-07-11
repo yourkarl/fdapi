@@ -3,6 +3,8 @@ title: 颜色与 Color 对象
 sidebar_label: 颜色系统
 description: "DTS SDK 中颜色值的表示方式和使用方法"
 ---
+# 颜色与 Color 对象
+
 
 ### 关于颜色参数格式的说明
 

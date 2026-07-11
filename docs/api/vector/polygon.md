@@ -10,7 +10,7 @@ Polygon 相关的操作， 通过api.polygon调用其方法
 
 
 
-![](/img/refdoc/api/Polugon.Update.gif)
+![Polygon 示意图 1](/img/refdoc/api/Polugon.Update.gif)
 
 **下面Example代码的运行效果图：**
 
@@ -20,7 +20,7 @@ Polygon 相关的操作， 通过api.polygon调用其方法
 let coords1 = [[872.16, -9485.86, 5.8], [864.77, -9196.58, 5.7], [624.34, -9209.29, 6.05], [482.58, -9373.57, 7.38]];
 ```
 
-![](/img/refdoc/api/Polygon1.png)
+![Polygon 示意图 2](/img/refdoc/api/Polygon1.png)
 
 2. 带2个洞的Polygon
 
@@ -32,7 +32,7 @@ let coords2 = [
     ];
 ```
 
-![](/img/refdoc/api/Polygon2.png)
+![Polygon 示意图 3](/img/refdoc/api/Polygon2.png)
 
 3. 2个Part的Polygon，每个Polygon有一个或多个洞
 
@@ -53,7 +53,7 @@ let coords3 = [
     ];
 ```
 
-![](/img/refdoc/api/Polygon3.png)
+![Polygon 示意图 4](/img/refdoc/api/Polygon3.png)
 
 通过 `api.polygon` 访问。
 
@@ -110,7 +110,7 @@ let coords3 = [
 
 
 
-![](/img/refdoc/api/copy_material_path.gif)
+![Polygon · add(data, fn) 示意](/img/refdoc/api/copy_material_path.gif)
 
 如何获取自定义材质包含的参数请调用如下方法：
 

@@ -8,7 +8,7 @@ description: "FiniteElement2 是有限元仿真对象（增强版），在结果
 
 FiniteElement2有限元仿真对象，实现对有限元仿真对象的操作
 
-![](/img/refdoc/api/finiteElement2.gif)
+![FiniteElement2 示意图](/img/refdoc/api/finiteElement2.gif)
 
 通过 `api.finiteElement2` 访问。
 

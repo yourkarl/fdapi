@@ -8,7 +8,7 @@ description: "Misc 提供一些杂项/辅助功能接口（如图片按钮、提
 
 Misc 提供一些杂项/辅助功能接口（如图片按钮、提示等通用辅助能力，具体以方法为准）。
 
-![](/img/refdoc/api/bpfuntion.gif)
+![Misc 示意图 1](/img/refdoc/api/bpfuntion.gif)
 
 通过 `api.misc` 访问。
 
@@ -161,7 +161,7 @@ await fdapi.misc.addImageButtons({
 
 
 
-![](/img/refdoc/api/Blueprints.gif)
+![Misc · callBPFunction(data, fn) 示意](/img/refdoc/api/Blueprints.gif)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
@@ -340,7 +340,7 @@ fdapi.misc.getActiveViewport();
 
 
 
-![](/img/refdoc/api/copy_actor_path.gif)
+![Misc · getBPFunction(assetPath, fn) 示意](/img/refdoc/api/copy_actor_path.gif)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
@@ -519,7 +519,7 @@ fdapi.polygon.focus('polygon1');
 
 
 
-![](/img/refdoc/api/copy_material_path.gif)
+![Misc · getMaterial(materialPath, fn) 示意](/img/refdoc/api/copy_material_path.gif)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|

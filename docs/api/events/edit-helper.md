@@ -10,7 +10,7 @@ description: "在三维场景中手动绘制点/线/面/体的交互工具，并
 
 
 
-![](/img/refdoc/api/EditHelper.Start.gif)
+![EditHelper 示意图](/img/refdoc/api/EditHelper.Start.gif)
 
 通过 `api.editHelper` 访问。
 

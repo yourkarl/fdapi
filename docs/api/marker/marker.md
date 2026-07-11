@@ -13,7 +13,7 @@ Marker标注点的效果图：
 
 
 
-![](/img/refdoc/api/show_marker.gif)
+![Marker 示意图 1](/img/refdoc/api/show_marker.gif)
 
 通过 `api.marker` 访问。
 
@@ -122,7 +122,7 @@ new Marker()
 | `userData` | `string` | 否 | - | 可选，用户自定义数据 |
 | `coordinateType` | `number` | 否 | 0 | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
 | `coordinate` | `array` | 是 | - | 标注点的位置坐标: [x, y, z]，[取值示例](/docs/tutorials/coordinates) |
-| `anchors` | `array` | 否 | [0,0] | 锚点: [x, y]，设置Marker的聚焦图片位置的偏移，默认值：[0,0]，取值规则如下图： ![](/img/refdoc/api/anchors.png) |
+| `anchors` | `array` | 否 | [0,0] | 锚点: [x, y]，设置Marker的聚焦图片位置的偏移，默认值：[0,0]，取值规则如下图： ![Marker · add(data, fn) 示意](/img/refdoc/api/anchors.png) |
 | `range` | `array` | 否 | [10, 10000] | 可视范围: [近裁距离, 远裁距离]，默认值: [10, 10000] |
 | `textRange` | `array` | 否 | [100, 6000] | 文本可视范围: [近裁距离, 远裁距离]，默认值: [100, 6000] |
 | `viewHeightRange` | `array` | 否 | [-1000000000, 1000000000] | 可见高度范围：[最小可见高度, 远最大可见高度]，默认值: [-1000000000, 1000000000] |

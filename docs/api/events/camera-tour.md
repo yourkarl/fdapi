@@ -8,7 +8,7 @@ description: "CameraTour 定义并播放相机沿关键帧的导览/漫游动画
 
 CameraTour 定义并播放相机沿关键帧的导览/漫游动画，实现自动巡游、镜头切换与定点轮巡。
 
-![](/img/refdoc/api/cameratour.gif)
+![CameraTour 示意图](/img/refdoc/api/cameratour.gif)
 
 通过 `api.cameraTour` 访问。
 
