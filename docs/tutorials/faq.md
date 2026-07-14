@@ -120,13 +120,15 @@ fdapi.marker.add({
 
 ```js
 // 屏幕坐标 → 世界坐标（点击事件中常用）
-fdapi.events.onClick((e) => {
-  const worldPos = fdapi.coord.screenToWorld([e.x, e.y]);
-  console.log('点击的世界坐标：', worldPos);
+fdapi.setEventCallback(async (event) => {
+  if (event.eventtype === 'LeftMouseButtonClick') {
+    const worldPos = await fdapi.coord.screen2World(event.x, event.y);
+    console.log('点击的世界坐标：', worldPos);
+  }
 });
 
 // 世界坐标 → 屏幕坐标（UI 标签定位常用）
-const screenPos = fdapi.coord.worldToScreen([488000, 2890000, 10]);
+const screenPos = await fdapi.coord.world2Screen(488000, 2890000, 10);
 ```
 
 ---

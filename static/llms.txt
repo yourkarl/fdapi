@@ -12,26 +12,6 @@
 - [异步调用方式](https://yourkarl.github.io/fdapi/docs/tutorials/async-call) — Callback、Promise.then、async/await 三种异步调用方式详解
 - [实战配方](https://yourkarl.github.io/fdapi/docs/tutorials/recipes) — 把多个 API 串成真实业务场景的端到端配方：应急指挥大屏、点击拾取与高亮联动、一键汇报巡游，每个配方都是可直接改用的完整代码。
 
-## 教程 · 行业方案
-
-- [行业方案 · 智慧交通](https://yourkarl.github.io/fdapi/docs/tutorials/transport-solution) — 交通产业数字孪生一张图平台方案：公路大数据汇聚、数字化辅助决策（低空经济 / 监管分析）、GIS 一张图三大模块的功能点与 fdapi 接口对照、典型实现思路与性能要点。
-- [行业方案 · 智慧水利水务](https://yourkarl.github.io/fdapi/docs/tutorials/water-solution) — 智慧水利水务数字孪生方案：三维水利底座、实时水体仿真、洪涝淹没推演、管网设施、调度分析的功能点与 fdapi 接口对照。
-- [行业方案 · 智慧园区](https://yourkarl.github.io/fdapi/docs/tutorials/park-solution) — 智慧园区数字孪生方案：园区三维底座、安防视频融合、人车轨迹、能耗 IoT 监控、周界报警的功能点与 fdapi 接口对照。
-- [行业方案 · 智慧社区与 CIM](https://yourkarl.github.io/fdapi/docs/tutorials/community-cim-solution) — 智慧社区与 CIM 基础平台数字孪生方案：CIM 三维底座、房屋分层分户、网格化管理、人口事件点位、空间圈选的功能点与 fdapi 接口对照。
-- [行业方案 · CIM 基础平台](https://yourkarl.github.io/fdapi/docs/tutorials/cim-platform-solution) — 城市级 CIM 基础平台数字孪生方案：CIM 时空数据底座多源融合、CIM 模拟分析、一张图可视化、数字驾驶舱、工程建设项目审批与 BIM 报建、城市运行管理（智慧城管/住建）的功能点与 fdapi 接口对照。
-- [行业方案 · 智慧建筑](https://yourkarl.github.io/fdapi/docs/tutorials/building-solution) — 智慧建筑数字孪生方案：BIM 单体化、楼层分户与爆炸拉抽屉、机电管线、设备运维、剖切透视的功能点与 fdapi 接口对照。
-- [行业方案 · 轨道交通（BIM+GIS）](https://yourkarl.github.io/fdapi/docs/tutorials/rail-transit-solution) — 轨道交通基于 BIM+GIS 全生命期一体化方案：一体化底座、线路隧道车站、列车运行仿真、设备资产、应急疏散的功能点与 fdapi 接口对照。
-- [行业方案 · 智慧校园（CIM）](https://yourkarl.github.io/fdapi/docs/tutorials/campus-solution) — 基于 CIM 的智慧校园数字孪生方案：校园三维底座与全景、空间数据可视化、实时数据接入与轨迹、视频图像接入、事件态势分析、运营中心的功能点与 fdapi 接口对照。
-- [行业方案 · 智慧文旅与景区（IOC）](https://yourkarl.github.io/fdapi/docs/tutorials/tourism-solution) — 智慧文旅与景区数字孪生综合管控（IOC）方案：景区三维底座、设备物联点位与告警、视频融合、客流统计、人员车船实时轨迹、综合态势的功能点与 fdapi 接口对照。
-- [行业方案 · 港口航道与海洋](https://yourkarl.github.io/fdapi/docs/tutorials/port-marine-solution) — 港口航道与海洋数字孪生方案：海洋/港口三维底座、水面潮汐波浪、洋流风场、船舶态势与 AIS 轨迹、航道靠泊、港航安全预警、航标船闸设施的功能点与 fdapi 接口对照。
-- [行业方案 · 智慧工地](https://yourkarl.github.io/fdapi/docs/tutorials/construction-site-solution) — 智慧工地数字孪生方案：工地三维底座、塔吊/升降机监测、劳务实名与人员定位、视频 AI 分析预警、智能安全帽、可燃气体监测、进度对比与质安巡检的功能点与 fdapi 接口对照。
-- [行业方案 · 智慧工厂与生产管控](https://yourkarl.github.io/fdapi/docs/tutorials/smart-factory-solution) — 智慧工厂与生产管控一体化数字孪生方案：厂区产线三维单体化、设备状态监测、生产运行监测、领导驾驶舱、调度指令、质量安全环保的功能点与 fdapi 接口对照。
-- [行业方案 · 石油化工与油气田](https://yourkarl.github.io/fdapi/docs/tutorials/oil-gas-solution) — 石油化工与油气田数字孪生方案：厂区/站库/罐区三维建模与单体化、井场与管线、设备与安全监测、可燃气体与应急联动的功能点与 fdapi 接口对照。
-- [行业方案 · 智慧矿山](https://yourkarl.github.io/fdapi/docs/tutorials/mine-solution) — 智慧矿山数字孪生方案：矿山信息模型（MIM）全生命周期、井上下三维一体化、生产工艺运行、设备与人员定位、安全监测预警的功能点与 fdapi 接口对照。
-- [行业方案 · 地下综合管线](https://yourkarl.github.io/fdapi/docs/tutorials/pipeline-solution) — 地下综合管线与管廊数字孪生方案：管线管廊三维单体化、埋深/管径/材质属性查询、横断面分析、爆管与内涝影响分析、巡检养护的功能点与 fdapi 接口对照。
-- [行业方案 · 人防应急指挥](https://yourkarl.github.io/fdapi/docs/tutorials/civil-defense-solution) — 人防与应急指挥数字孪生方案：人防工程三维一体化、指挥一张图、预案推演、资源与力量调度、视频融合与态势标绘的功能点与 fdapi 接口对照。
-- [行业方案 · 实景三维与测绘地理信息](https://yourkarl.github.io/fdapi/docs/tutorials/realscene3d-solution) — 实景三维与测绘地理信息数字孪生方案：地形/城市/部件级实景三维底座、遥感影像统筹与地形叠加、点云与矢量专题、高逼真渲染、主题导览与大屏展示的功能点与 fdapi 接口对照。
-
 ## 教程 · 核心概念
 
 - [事件系统](https://yourkarl.github.io/fdapi/docs/tutorials/event) — 三维交互事件系统，包括点击、悬停、相机移动等事件类型
@@ -66,6 +46,26 @@
 - [实例管理接口](https://yourkarl.github.io/fdapi/docs/tutorials/instance-management) — DTS 管理服务（Cloud 管理服务）二次开发接口参考：登录鉴权、实例启停/解锁/参数、运行状态、端口/许可、工程与用户授权，支持 WebSocket 与 REST，附真实响应示例。
 - [版本更新记录](https://yourkarl.github.io/fdapi/docs/tutorials/revision-history) — SDK 各版本更新内容与兼容性说明
 
+## 教程 · 行业方案
+
+- [行业方案 · 智慧交通](https://yourkarl.github.io/fdapi/docs/tutorials/transport-solution) — 交通产业数字孪生一张图平台方案：公路大数据汇聚、数字化辅助决策（低空经济 / 监管分析）、GIS 一张图三大模块的功能点与 fdapi 接口对照、典型实现思路与性能要点。
+- [行业方案 · 智慧水利水务](https://yourkarl.github.io/fdapi/docs/tutorials/water-solution) — 智慧水利水务数字孪生方案：三维水利底座、实时水体仿真、洪涝淹没推演、管网设施、调度分析的功能点与 fdapi 接口对照。
+- [行业方案 · 智慧园区](https://yourkarl.github.io/fdapi/docs/tutorials/park-solution) — 智慧园区数字孪生方案：园区三维底座、安防视频融合、人车轨迹、能耗 IoT 监控、周界报警的功能点与 fdapi 接口对照。
+- [行业方案 · 智慧社区与 CIM](https://yourkarl.github.io/fdapi/docs/tutorials/community-cim-solution) — 智慧社区与 CIM 基础平台数字孪生方案：CIM 三维底座、房屋分层分户、网格化管理、人口事件点位、空间圈选的功能点与 fdapi 接口对照。
+- [行业方案 · CIM 基础平台](https://yourkarl.github.io/fdapi/docs/tutorials/cim-platform-solution) — 城市级 CIM 基础平台数字孪生方案：CIM 时空数据底座多源融合、CIM 模拟分析、一张图可视化、数字驾驶舱、工程建设项目审批与 BIM 报建、城市运行管理（智慧城管/住建）的功能点与 fdapi 接口对照。
+- [行业方案 · 智慧建筑](https://yourkarl.github.io/fdapi/docs/tutorials/building-solution) — 智慧建筑数字孪生方案：BIM 单体化、楼层分户与爆炸拉抽屉、机电管线、设备运维、剖切透视的功能点与 fdapi 接口对照。
+- [行业方案 · 轨道交通（BIM+GIS）](https://yourkarl.github.io/fdapi/docs/tutorials/rail-transit-solution) — 轨道交通基于 BIM+GIS 全生命期一体化方案：一体化底座、线路隧道车站、列车运行仿真、设备资产、应急疏散的功能点与 fdapi 接口对照。
+- [行业方案 · 智慧校园（CIM）](https://yourkarl.github.io/fdapi/docs/tutorials/campus-solution) — 基于 CIM 的智慧校园数字孪生方案：校园三维底座与全景、空间数据可视化、实时数据接入与轨迹、视频图像接入、事件态势分析、运营中心的功能点与 fdapi 接口对照。
+- [行业方案 · 智慧文旅与景区（IOC）](https://yourkarl.github.io/fdapi/docs/tutorials/tourism-solution) — 智慧文旅与景区数字孪生综合管控（IOC）方案：景区三维底座、设备物联点位与告警、视频融合、客流统计、人员车船实时轨迹、综合态势的功能点与 fdapi 接口对照。
+- [行业方案 · 港口航道与海洋](https://yourkarl.github.io/fdapi/docs/tutorials/port-marine-solution) — 港口航道与海洋数字孪生方案：海洋/港口三维底座、水面潮汐波浪、洋流风场、船舶态势与 AIS 轨迹、航道靠泊、港航安全预警、航标船闸设施的功能点与 fdapi 接口对照。
+- [行业方案 · 智慧工地](https://yourkarl.github.io/fdapi/docs/tutorials/construction-site-solution) — 智慧工地数字孪生方案：工地三维底座、塔吊/升降机监测、劳务实名与人员定位、视频 AI 分析预警、智能安全帽、可燃气体监测、进度对比与质安巡检的功能点与 fdapi 接口对照。
+- [行业方案 · 智慧工厂与生产管控](https://yourkarl.github.io/fdapi/docs/tutorials/smart-factory-solution) — 智慧工厂与生产管控一体化数字孪生方案：厂区产线三维单体化、设备状态监测、生产运行监测、领导驾驶舱、调度指令、质量安全环保的功能点与 fdapi 接口对照。
+- [行业方案 · 石油化工与油气田](https://yourkarl.github.io/fdapi/docs/tutorials/oil-gas-solution) — 石油化工与油气田数字孪生方案：厂区/站库/罐区三维建模与单体化、井场与管线、设备与安全监测、可燃气体与应急联动的功能点与 fdapi 接口对照。
+- [行业方案 · 智慧矿山](https://yourkarl.github.io/fdapi/docs/tutorials/mine-solution) — 智慧矿山数字孪生方案：矿山信息模型（MIM）全生命周期、井上下三维一体化、生产工艺运行、设备与人员定位、安全监测预警的功能点与 fdapi 接口对照。
+- [行业方案 · 地下综合管线](https://yourkarl.github.io/fdapi/docs/tutorials/pipeline-solution) — 地下综合管线与管廊数字孪生方案：管线管廊三维单体化、埋深/管径/材质属性查询、横断面分析、爆管与内涝影响分析、巡检养护的功能点与 fdapi 接口对照。
+- [行业方案 · 人防应急指挥](https://yourkarl.github.io/fdapi/docs/tutorials/civil-defense-solution) — 人防与应急指挥数字孪生方案：人防工程三维一体化、指挥一张图、预案推演、资源与力量调度、视频融合与态势标绘的功能点与 fdapi 接口对照。
+- [行业方案 · 实景三维与测绘地理信息](https://yourkarl.github.io/fdapi/docs/tutorials/realscene3d-solution) — 实景三维与测绘地理信息数字孪生方案：地形/城市/部件级实景三维底座、遥感影像统筹与地形叠加、点云与矢量专题、高逼真渲染、主题导览与大屏展示的功能点与 fdapi 接口对照。
+
 ## 教程 · 帮助
 
 - [排错与常见报错](https://yourkarl.github.io/fdapi/docs/tutorials/troubleshooting) — DTS 二次开发常见报错与问题排查：连接失败、API 调用崩溃、版本不匹配、对象不显示或偏移、异步异常等，按「现象 → 原因 → 排查」组织。
@@ -90,7 +90,7 @@
 
 ## API · 事件系统
 
-- [CameraTour](https://yourkarl.github.io/fdapi/docs/api/events/camera-tour) — CameraTour 定义并播放相机沿关键帧的导览/漫游动画，实现自动巡游、镜头切换与定点轮巡。
+- [CameraTour](https://yourkarl.github.io/fdapi/docs/api/events/camera-tour) — CameraTour 是相机导览（漫游）动画对象，用于按关键帧序列驱动相机沿预设路线自动飞行、播放、暂停与停止，实现自动巡游展示。
 - [EditHelper](https://yourkarl.github.io/fdapi/docs/api/events/edit-helper) — 在三维场景中手动绘制点/线/面/体的交互工具，并返回绘制结果坐标，供后续分析、测量或落库使用。
 - [Tools](https://yourkarl.github.io/fdapi/docs/api/events/tools) — Tools 提供量算与空间分析等通用工具能力（如测距、测面、天际线、通视、坡度、剖切、河道断面等，具体以方法为准）。
 

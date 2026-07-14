@@ -116,6 +116,12 @@ fdapi.cameraTour.delete('1');
 
 **返回：** 返回查询结果。
 
+> 示例代码如下：
+
+```js
+fdapi.cameraTour.exportVideo('1', 'c:/test.mp4');
+```
+
 ---
 
 ### `pause()` {#pause}
@@ -177,6 +183,12 @@ fdapi.cameraTour.resume();
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
+> 示例代码如下：
+
+```js
+await fdapi.cameraTour.setDuration('对象ID', 0);
+```
+
 ---
 
 ### `setKeyFrames(id, val, fn)` {#setKeyFrames}
@@ -190,6 +202,12 @@ fdapi.cameraTour.resume();
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
+> 示例代码如下：
+
+```js
+await fdapi.cameraTour.setKeyFrames('对象ID', []);
+```
 
 ---
 
@@ -225,6 +243,12 @@ fdapi.cameraTour.setMouseClickToPause('1', false);
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
+> 示例代码如下：
+
+```js
+await fdapi.cameraTour.setName('对象ID', '示例值');
+```
+
 ---
 
 ### `setTime(id, time, fn)` {#setTime}
@@ -258,6 +282,12 @@ fdapi.cameraTour.setTime('1', 3);
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
+> 示例代码如下：
+
+```js
+await fdapi.cameraTour.setUserData('对象ID', '示例值');
+```
 
 ---
 
@@ -340,7 +370,14 @@ fdapi.xxx.updateEnd(function () {
 
 updateEnd是异步调用，可以用回调函数也可以await
 
-| 参数 | 类型 | 说明 |
-|
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
+> 示例代码如下：
+
+```js
+await fdapi.cameraTour.updateEnd();
+```

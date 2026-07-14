@@ -274,7 +274,7 @@ declare namespace fdapi {
     /** 用于批量多次修改对象的属性 */
     function updateBegin(): Promise<any>;
     /** 用于批量多次修改对象的属性，与updateBegin配套使用 */
-    function updateEnd(fn?: any): Promise<any>;
+    function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
   /** 加载、定位与管理 Cesium 3D Tiles（3DTiles）服务图层，通过服务 URL 流式加载海量三维瓦片数据，支持位置偏移与是否参与光照等控制。 */
