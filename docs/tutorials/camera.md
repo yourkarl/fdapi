@@ -12,7 +12,7 @@ description: "详细介绍相机飞行定位、环绕、导览、视角锁定等
 
 我们可以通过三种参数形式来调用camera.set方法
 
-ReuqestCamera
+RequestCamera
 
 #### 方式一：普通方式
 

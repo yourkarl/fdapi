@@ -469,6 +469,32 @@ fdapi.tools.riverCrossSectionByShp({
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
+> 示例代码如下：
+
+```js
+//options的每个属性都是可选的
+/**
+ *  <li>pointSize: 默认值 8.0</li>
+ *  <li>textSize:  默认值 10.0</li>
+ *  <li>textColor: 默认值 Color.Yellow</li>
+ *  <li>pointColor:默认值 [0,0,1,0.3]</li>
+ *  <li>lineColor: 默认值 Color.Red</li>
+ *  <li>areaColor: 默认值 [0,1,0,0.3]</li>
+ *  <li>showCoordinateText: 是否显示坐标测量的文本，默认值 false</li>
+ */
+let options = {
+    'pointSize': 8.0,//点大小
+    'textSize': 10.0,//字体大小
+    'textColor': Color.Yellow,//字体颜色
+    'pointColor': [0, 0, 1, 0.3],//点填充颜色
+    'lineColor': Color.Blue,//线填充颜色
+    'areaColor': [0, 1, 0, 0.3],//面填充颜色
+    'showCoordinateText': true //是否显示坐标信息
+};
+//测量模式：Coordinate 1坐标测量 2直线测量 3水平测量 4垂直测量 5多边形测量 6地表面积 7角度
+fdapi.tools.setMeasurement(MeasurementMode.Coordinate, options);
+```
+
 ---
 
 ### `showClipPanel(clipType, screenPosition, fn)` {#showClipPanel}
@@ -1188,6 +1214,12 @@ fdapi.tools.startVolumeClip(bbox, 0, true, true, [0, 0, 0]);
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
+> 示例代码如下：
+
+```js
+await fdapi.tools.stopClip();
+```
 
 ---
 
