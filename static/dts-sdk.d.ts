@@ -33,56 +33,6 @@ declare namespace fdapi {
   /** 显示/隐藏tick调试窗口。 该方法既可以在客户端调用，也可以在tick调试窗口调用 */
   function showTickWindow(visible?: boolean, fn?: (...args: any[]) => void): Promise<any>;
 
-  /** 早期版本的二维水动力模型对象，基于真实数据（水深、流速流向、河道 DEM）驱动生成，支持水体/热力样式与流向着色；该对象已废弃，新项目请改用 HydroDynamic2D。 */
-  namespace HydrodynamicModel {
-    /** 添加一个或多个HydrodynamicModel二维水动力模型对象 */
-    function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 删除场景中所有的HydrodynamicModel */
-    function clear(fn?: (...args: any[]) => void): Promise<any>;
-    /** 删除一个或多个HydrodynamicModel对象 */
-    function delete(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 自动定位到合适的观察距离 */
-    function focus(ids?: string | any[], distance?: number, flyTime?: number, rotation?: any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 根据ID获取HydrodynamicModel的详细信息 */
-    function get(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 隐藏HydrodynamicModel */
-    function hide(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 显示HydrodynamicModel */
-    function show(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 修改一个或多个HydrodynamicModel对象 */
-    function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-  }
-
-  /** HydrodynamicModel2 是早期的二维水动力模型对象，基于 JSON 数据文件驱动，按时序播放水深/流速等结果并以调色板着色，用于在三维场景中回放二维水动力计算成果。**该对象已废弃、待移除，新项目请改用 HydroDynamic2D 对象。** */
-  namespace HydrodynamicModel2 {
-    /** 添加一个或多个HydrodynamicModel2二维水动力模型对象 */
-    function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 清空场景中所有的HydrodynamicModel2对象 */
-    function clear(fn?: (...args: any[]) => void): Promise<any>;
-    /** 删除一个或多个HydrodynamicModel2对象 */
-    function delete(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 自动定位到合适的观察距离 */
-    function focus(ids?: string | any[], distance?: number, flyTime?: number, rotation?: any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 根据ID获取HydrodynamicModel2对象的详细信息 */
-    function get(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 隐藏HydrodynamicModel2对象 */
-    function hide(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 暂停播放 */
-    function pause(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 恢复播放 */
-    function resume(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 设置HydrodynamicModel2对象的当前播放时刻 */
-    function setTime(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 显示HydrodynamicModel2对象 */
-    function show(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 开始从某时刻播放 */
-    function startPlay(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 停止播放 */
-    function stopPlay(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 修改一个或多个HydrodynamicModel2对象 */
-    function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-  }
-
   /** Antenna 以方向图形式可视化天线的辐射/增益方向特性。 */
   namespace antenna {
     /** 添加一个或多个天线方向图对象 */
@@ -1046,6 +996,56 @@ declare namespace fdapi {
     /** 显示HydroDynamic2D */
     function show(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 修改一个或多个HydroDynamic2D对象 */
+    function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+  }
+
+  /** 早期版本的二维水动力模型对象，基于真实数据（水深、流速流向、河道 DEM）驱动生成，支持水体/热力样式与流向着色；该对象已废弃，新项目请改用 HydroDynamic2D。 */
+  namespace hydrodynamicModel {
+    /** 添加一个或多个HydrodynamicModel二维水动力模型对象 */
+    function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 删除场景中所有的HydrodynamicModel */
+    function clear(fn?: (...args: any[]) => void): Promise<any>;
+    /** 删除一个或多个HydrodynamicModel对象 */
+    function delete(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 自动定位到合适的观察距离 */
+    function focus(ids?: string | any[], distance?: number, flyTime?: number, rotation?: any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 根据ID获取HydrodynamicModel的详细信息 */
+    function get(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 隐藏HydrodynamicModel */
+    function hide(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 显示HydrodynamicModel */
+    function show(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 修改一个或多个HydrodynamicModel对象 */
+    function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+  }
+
+  /** HydrodynamicModel2 是早期的二维水动力模型对象，基于 JSON 数据文件驱动，按时序播放水深/流速等结果并以调色板着色，用于在三维场景中回放二维水动力计算成果。**该对象已废弃、待移除，新项目请改用 HydroDynamic2D 对象。** */
+  namespace hydrodynamicModel2 {
+    /** 添加一个或多个HydrodynamicModel2二维水动力模型对象 */
+    function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 清空场景中所有的HydrodynamicModel2对象 */
+    function clear(fn?: (...args: any[]) => void): Promise<any>;
+    /** 删除一个或多个HydrodynamicModel2对象 */
+    function delete(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 自动定位到合适的观察距离 */
+    function focus(ids?: string | any[], distance?: number, flyTime?: number, rotation?: any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 根据ID获取HydrodynamicModel2对象的详细信息 */
+    function get(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 隐藏HydrodynamicModel2对象 */
+    function hide(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 暂停播放 */
+    function pause(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 恢复播放 */
+    function resume(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 设置HydrodynamicModel2对象的当前播放时刻 */
+    function setTime(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 显示HydrodynamicModel2对象 */
+    function show(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 开始从某时刻播放 */
+    function startPlay(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 停止播放 */
+    function stopPlay(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 修改一个或多个HydrodynamicModel2对象 */
     function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
   }
 

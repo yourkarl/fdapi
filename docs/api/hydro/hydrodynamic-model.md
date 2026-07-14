@@ -14,7 +14,7 @@ description: "早期版本的二维水动力模型对象，基于真实数据（
 
 :::
 
-通过 `api.HydrodynamicModel` 访问。
+通过 `api.hydrodynamicModel` 访问（兼容简写别名 `api.hdm`）。
 
 ---
 ## 业务场景 Skill
@@ -144,7 +144,7 @@ description: "早期版本的二维水动力模型对象，基于真实数据（
 > 示例代码如下：
 
 ```js
-await fdapi.HydrodynamicModel.clear();
+await fdapi.hydrodynamicModel.clear();
 ```
 
 ---
@@ -185,7 +185,7 @@ fdapi.hydrodynamicModel2.delete('hdm1');
 > 示例代码如下：
 
 ```js
-await fdapi.HydrodynamicModel.focus(0, '2秒', [0, 0, 0]);
+await fdapi.hydrodynamicModel.focus(0, '2秒', [0, 0, 0]);
 ```
 
 ---

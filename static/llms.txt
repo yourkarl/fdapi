@@ -216,6 +216,7 @@
 
 ## API · 类型参考
 
+- [错误码与失败语义](https://yourkarl.github.io/fdapi/docs/api/error-codes) — fdapi 的失败语义契约（何时 resolve 携带错误码、何时 reject、无响应行为）、调用结果码总表与 WebSocket 连接关闭码总表。依据 SDK v7.1 源码整理。
 - [类型与枚举](https://yourkarl.github.io/fdapi/docs/api/types) — API 参数中用到的对象类型与枚举常量（Color、各类 Style 样式、Mode 模式等）的取值参考
 
 ## Optional

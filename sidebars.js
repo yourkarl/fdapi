@@ -290,6 +290,7 @@ const sidebars = {
       label: '参考枚举',
       items: [
         'api/types',
+        'api/error-codes',
       ],
     },
   ],
