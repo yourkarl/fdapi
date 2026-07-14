@@ -61,6 +61,16 @@ fdapi 的能力广度在国产数字孪生 SDK 中属第一梯队：70 个命名
 
 三，**把本文的"待核实"项清零**。三件事需要连真实实例各花十分钟：Promise 失败行为、Hydrodynamic 大小写、updateBegin 漏配对后果。建议放进下次联调的 checklist。
 
+## P0 执行结果（2026-07-14）
+
+两项 P0 均已通过 `ac.min.js` 源码静态分析完成，未依赖运行时：
+
+**F5 命名核实**：源码证实运行时挂载名为小驼峰 `api.hydrodynamicModel` / `api.hydrodynamicModel2`（另有兼容简写 `api.hdm` / `api.hdm2`），大写 `HydrodynamicModel*` 仅为内部协议命令名——即文档的大写访问语句与 13 处大写示例此前全部错误。已全站统一为小驼峰、访问语句注明别名、d.ts 重新生成后大写命名空间清零。
+
+**F3 失败语义**：源码分析结论——① 业务失败也 resolve（回调 map 只注册 resolve），需检查响应 `result` 字段；② 全 SDK 仅三类真正 reject（未连接 / 仅限 Cloud 环境 / tileLayer DB 查询参数非法）；③ **调用路径无超时机制**，服务端不回包则 Promise 永远挂起——比"缺文档"更严重的可靠性事实；④ 挖出两套从未文档化的枚举：调用结果码（OK:0 ~ ProjectNotOpened:12，共 13 个）与 WebSocket 连接关闭码（4004~4115，共 21 个）。已产出 `docs/api/error-codes.md`（失败语义契约 + 两张码表 + withTimeout 包装示例 + 十分钟运行时验证清单）并挂入 API 侧边栏「参考枚举」，async-call 教程补链错误处理章节。
+
+给 SDK 引擎侧的后续建议升级为：在 v7.x 给调用路径加可配置超时（默认关闭不破坏兼容），比任何文档补丁都更能消除"永远挂起"这类线上排查黑洞。
+
 ## 优先级建议
 
 | 优先级 | 事项 | 破坏性 | 成本 |

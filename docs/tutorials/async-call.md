@@ -99,3 +99,9 @@ o.coordinate = [cam.x, cam.y, 25.4];  // cam.x === undefined！
 :::warning
 异步接口的返回值是 `Promise`，不是直接结果。不加 `await` 或回调就取值，会得到 `undefined`。
 :::
+
+---
+
+### 错误处理与失败语义
+
+fdapi 的异步调用**业务失败时同样 resolve**，需检查响应对象的 `result` 字段（`0` 为成功）；只有未连接、非 Cloud 环境调用受限方法等少数情况会真正 reject；服务端无响应时 Promise 会永远挂起（SDK 无内建超时）。完整契约、调用结果码表、连接关闭码表与自带超时的包装写法，见[错误码与失败语义](/docs/api/error-codes)。
