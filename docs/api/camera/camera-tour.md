@@ -72,7 +72,7 @@ CameraTour 是相机导览（漫游）动画对象，用于按关键帧序列驱
 await fdapi.cameraTour.delete('1');
 //通过接口添加导览并播放
 let frames = [];
-//注意：rocation属可选参数，若不传入则相机朝向会根据相机的连续位置自动计算
+//注意：rotation为可选参数，若不传入则相机朝向会根据相机的连续位置自动计算
 frames.push(new CameraTourKeyFrame(0, 1.0, [492501.90625, 2483838.75, 5898.237305], [-55.95829, -89.993935, 0]));
 frames.push(new CameraTourKeyFrame(1, 2.0, [493538.75, 2487061.5, 1166.874878], [-36.769756, -91.261223, 0]));
 frames.push(new CameraTourKeyFrame(2, 3.0, [493364.78125, 2487789.25, 504.430054], [-23.049517, -91.261223, 0]));
@@ -325,7 +325,7 @@ fdapi.cameraTour.stop();
 ```js
 //调整关键帧
 let frames = [];
-//注意：rocation属可选参数，若不传入则相机朝向会根据相机的连续位置自动计算
+//注意：rotation为可选参数，若不传入则相机朝向会根据相机的连续位置自动计算
 frames.push(new CameraTourKeyFrame(0, 1.0, [492101.90625, 2483338.75, 5898.237305], [-25.95829, -29.993935, 0]));
 frames.push(new CameraTourKeyFrame(1, 2.0, [493238.75, 2487261.5, 1166.874878], [-46.769756, -11.261223, 0]));
 frames.push(new CameraTourKeyFrame(2, 3.0, [493364.78125, 2487489.25, 504.430054], [-23.049517, -21.261223, 0]));

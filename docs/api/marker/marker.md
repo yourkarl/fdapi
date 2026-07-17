@@ -125,7 +125,7 @@ new Marker()
 | `anchors` | `array` | 否 | [0,0] | 锚点: [x, y]，设置Marker的聚焦图片位置的偏移，默认值：[0,0]，取值规则如下图： ![Marker · add(data, fn) 示意](/img/refdoc/api/anchors.png) |
 | `range` | `array` | 否 | [10, 10000] | 可视范围: [近裁距离, 远裁距离]，默认值: [10, 10000] |
 | `textRange` | `array` | 否 | [100, 6000] | 文本可视范围: [近裁距离, 远裁距离]，默认值: [100, 6000] |
-| `viewHeightRange` | `array` | 否 | [-1000000000, 1000000000] | 可见高度范围：[最小可见高度, 远最大可见高度]，默认值: [-1000000000, 1000000000] |
+| `viewHeightRange` | `array` | 否 | [-1000000000, 1000000000] | 可见高度范围：[最小可见高度, 最大可见高度]，默认值: [-1000000000, 1000000000] |
 | `rangeRatio` | `number` | 是 | - | 可视范围的衰减因子，取值范围：[0~1]，仅在设置了viewHeightRange后才生效，会根据相机高度对可见距离进行衰减，相机高度=maxViewHeight时，marker的可见范围是range，相机高度下降到minViewHeight时marker的可见范围会线性衰减到rangeRatio*range |
 | `imageSize` | `array` | 否 | [32,32] | 图片的尺寸: [width, height]， 默认值[32,32] |
 | `fixedSize` | `boolean` | 否 | false | 图片是否固定尺寸，取值范围：false 自适应，近大远小，true 固定尺寸，默认值：false |
@@ -152,8 +152,8 @@ new Marker()
 | `autoHideText` | `boolean` | 否 | true | 打开弹窗时是否自动隐藏文字，默认值：true |
 | `autoHeight` | `boolean` | 否 | false | 自动判断下方是否有物体，设置正确高度，默认值：false。注意：如果Marker坐标的z值是0或者不设置，则自动判断位置下方是否有物体并进行贴合，如果z有值则相当于z方向的offset偏移 |
 | `displayMode` | `number` | 否 | 4 | 显示模式，默认值：4，取值说明如下： |
-| `autoDisplayModeSwitchFirstRatio` | `number` | 否 | 0.01 | 智能模式时的显示模式切换时range参数的首段比例，仅在displayMode=4时生效，取值范围：[0.01~1.0)，默认值0.01，示例：如果range=[1,1000]，则在[1,10]范围内dislayMode=2 |
-| `autoDisplayModeSwitchSecondRatio` | `number` | 否 | 0.1 | 智能模式时的显示模式切换时range参数的第二段比例，仅在displayMode=4时生效，取值范围：[0.01~1.0)，默认值0.1，示例：如果range=[1,1000]，则在[10,100]范围内dislayMode=1，大于100则dislayMode=0 |
+| `autoDisplayModeSwitchFirstRatio` | `number` | 否 | 0.01 | 智能模式时的显示模式切换时range参数的首段比例，仅在displayMode=4时生效，取值范围：[0.01~1.0)，默认值0.01，示例：如果range=[1,1000]，则在[1,10]范围内displayMode=2 |
+| `autoDisplayModeSwitchSecondRatio` | `number` | 否 | 0.1 | 智能模式时的显示模式切换时range参数的第二段比例，仅在displayMode=4时生效，取值范围：[0.01~1.0)，默认值0.1，示例：如果range=[1,1000]，则在[10,100]范围内displayMode=1，大于100则displayMode=0 |
 | `clusterByImage` | `boolean` | 是 | - | 聚合时是否根据图片路径(imagePath)分类聚合显示，即当多个marker的imagePath路径参数相同时按路径对marker分类聚合 |
 | `priority` | `number` | 否 | 0 | 避让优先级，默认值：0，注意：值越大显示越靠上 |
 | `occlusionCull` | `boolean` | 是 | - | 是否参与遮挡剔除，注意：仅displayMode设置为0或1时，遮挡剔除才会生效 |
@@ -252,8 +252,8 @@ let o2 = {
     autoHideText: true, //打开弹窗时是否自动隐藏文字，默认值：true
     autoHeight: true,// 自动判断下方是否有物体 开启后会叠加坐标Z
     displayMode: 4,// 智能显示模式: 根据当前相机高度自动适配以上模式，类似金字塔lod加载效果，内置规则:range范围的1%内取值2，1%至10%取值1，大于10%取值0
-    autoDisplayModeSwitchFirstRatio: 0.01,//智能模式时的显示模式切换时range参数的首段比例，仅在displayMode=4时生效，取值范围：[0.01~1.0)，默认值0.01，示例：如果range=[1,1000]，则在[1,10]范围内dislayMode=2
-    autoDisplayModeSwitchSecondRatio: 0.1,//智能模式时的显示模式切换时range参数的第二段比例，仅在displayMode=4时生效，取值范围：[0.01~1.0)，默认值0.1，示例：如果range=[1,1000]，则在[10,100]范围内dislayMode=1，大于100则dislayMode=1
+    autoDisplayModeSwitchFirstRatio: 0.01,//智能模式时的显示模式切换时range参数的首段比例，仅在displayMode=4时生效，取值范围：[0.01~1.0)，默认值0.01，示例：如果range=[1,1000]，则在[1,10]范围内displayMode=2
+    autoDisplayModeSwitchSecondRatio: 0.1,//智能模式时的显示模式切换时range参数的第二段比例，仅在displayMode=4时生效，取值范围：[0.01~1.0)，默认值0.1，示例：如果range=[1,1000]，则在[10,100]范围内displayMode=1，大于100则displayMode=0
     clusterByImage: true,// 聚合时是否根据图片路径分类，即当多个marker的imagePath路径参数相同时按路径对marker分类聚合
     priority: 2,//避让优先级 值越大显示越靠上
     occlusionCull: false//是否参与遮挡
@@ -301,8 +301,8 @@ let o3 = {
     autoHideText: true, //打开弹窗时是否自动隐藏文字，默认值：true
     autoHeight: false,// 自动判断下方是否有物体 开启后会叠加坐标Z
     displayMode: 4,// 智能显示模式
-    autoDisplayModeSwitchFirstRatio: 0.01,//智能模式时的显示模式切换时range参数的首段比例，仅在displayMode=4时生效，取值范围：[0.01~1.0)，默认值0.01，示例：如果range=[1,1000]，则在[1,10]范围内dislayMode=2
-    autoDisplayModeSwitchSecondRatio: 0.1,//智能模式时的显示模式切换时range参数的第二段比例，仅在displayMode=4时生效，取值范围：[0.01~1.0)，默认值0.1，示例：如果range=[1,1000]，则在[10,100]范围内dislayMode=1，大于100则dislayMode=1
+    autoDisplayModeSwitchFirstRatio: 0.01,//智能模式时的显示模式切换时range参数的首段比例，仅在displayMode=4时生效，取值范围：[0.01~1.0)，默认值0.01，示例：如果range=[1,1000]，则在[1,10]范围内displayMode=2
+    autoDisplayModeSwitchSecondRatio: 0.1,//智能模式时的显示模式切换时range参数的第二段比例，仅在displayMode=4时生效，取值范围：[0.01~1.0)，默认值0.1，示例：如果range=[1,1000]，则在[10,100]范围内displayMode=1，大于100则displayMode=0
     clusterByImage: true,// 聚合时是否根据图片路径分类，即当多个marker的imagePath路径参数相同时按路径对marker分类聚合
     priority: 3,//避让优先级 值越大显示越靠上
     occlusionCull: false//是否参与遮挡
