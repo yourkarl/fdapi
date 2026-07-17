@@ -2504,7 +2504,7 @@ function test_tag_get() {
 }
 ```
 
-之前对tag.get, polyline.get等这些对象的get方法的回调函数的返回值进行的特殊处理，现在进行了统一，对于使用async/await方式进行异步调用，所有的接口返回值都是一样的了，就是在int.html里调用接口后显示的Reponse输出内容 以tag.get举例，调用方式如下： 运行上面的代码后，res参数就是下面的JSON对象：
+之前对tag.get, polyline.get等这些对象的get方法的回调函数的返回值进行的特殊处理，现在进行了统一，对于使用async/await方式进行异步调用，所有的接口返回值都是一样的了，就是在int.html里调用接口后显示的Response输出内容 以tag.get举例，调用方式如下： 运行上面的代码后，res参数就是下面的JSON对象：
 
 ### 2021.03.18 重构JS库完善API接口
 
