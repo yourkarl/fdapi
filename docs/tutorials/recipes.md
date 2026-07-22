@@ -124,6 +124,85 @@ fdapi.cameraTour.play('1');
 
 ---
 
+## 配方四：接入第三方地理编码 / POI 检索与路径规划
+
+**场景**：fdapi 负责三维场景的渲染与交互，但**不提供地址检索、周边设施查询、路径规划**这类地图服务能力——这部分需要接入高德、腾讯地图等第三方开放平台，再把返回的地理坐标喂给 fdapi 渲染。本配方给出标准接入范式：地址/地点检索 → 渲染标注；起终点 → 路径规划 → 绘制路线。
+
+> 安全提醒：第三方地图开放平台的 Key 通常要求签名或限制来源域名，**不建议在浏览器端直接暴露 Key 发起请求**；生产环境应由你的业务后端代理转发地理编码/路径规划请求，前端只拿到坐标结果。下面为了聚焦 fdapi 侧的处理，示例直接在前端发起请求，实际项目请替换为你的后端代理地址。
+
+### 4.1 地址/地点检索 → 渲染为标注
+
+以高德地图 Web 服务 API 的地理编码/POI 搜索为例（腾讯地图等同理，返回字段名不同，具体以对应平台当前文档为准）。**关键点**：`marker.add`/`polyline.add` 等对象的 `coordinateType` 参数本身就支持 `2`（火星坐标系 GCJ02）与 `3`（百度坐标系 BD09），第三方检索结果的坐标可以**直接传入，无需手写纠偏算法**：
+
+```js
+// 1) 调用第三方地理编码/POI检索服务（实际项目请替换为你的后端代理地址）
+async function searchPOI(keyword, city) {
+  const url = `https://your-backend.example.com/api/geo/search?keyword=${encodeURIComponent(keyword)}&city=${encodeURIComponent(city)}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  // 约定后端代理统一返回：[{ name, lng, lat }, ...]（经纬度为高德的 GCJ02 坐标）
+  return data.pois || [];
+}
+
+// 2) 直接以 coordinateType: 2（GCJ02）渲染，无需预先转换坐标
+// marker.add 的 data 参数本身支持传对象数组做一次性批量新增，不需要 updateBegin/updateEnd
+// （那两个方法是给"循环调用 setXXX/update 修改属性"场景批量合并用的，不是给 add 用的）
+async function renderPOIs(pois) {
+  await fdapi.marker.add(pois.map((poi) => ({
+    id: 'poi_' + poi.name,
+    coordinate: [poi.lng, poi.lat, 0],
+    coordinateType: 2,   // 0=投影 1=WGS84 2=GCJ02 3=BD09
+    imagePath: '@path:/img/icons/poi.png',
+    text: poi.name,
+  })));
+}
+
+// 3) 串起来：检索 → 渲染 → 飞到第一个结果
+const pois = await searchPOI('加油站', '北京市');
+await renderPOIs(pois);
+if (pois[0]) {
+  // camera.lookAt 需要场景坐标（不支持 coordinateType），先用 Coord 转换一次
+  const [x, y, z] = await fdapi.coord.gcs2pcs([pois[0].lng, pois[0].lat, 0], 2);
+  fdapi.camera.lookAt(x, y, z, 500);
+}
+```
+
+### 4.2 起终点 → 路径规划 → 绘制路线
+
+```js
+// 1) 调用第三方路径规划服务（同样建议走后端代理）
+async function planRoute(originLngLat, destLngLat) {
+  const url = `https://your-backend.example.com/api/geo/route?origin=${originLngLat.join(',')}&destination=${destLngLat.join(',')}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  // 约定后端代理统一返回：{ path: [[lng,lat], [lng,lat], ...] }（GCJ02，已按路网抽稀采样）
+  return data.path || [];
+}
+
+// 2) 路径点同样以 coordinateType: 2 直接渲染为箭头样式折线
+async function drawRoute(path) {
+  await fdapi.polyline.delete(['route_001']);
+  fdapi.polyline.add({
+    id: 'route_001',
+    coordinates: path.map(([lng, lat]) => [lng, lat, 0]),
+    coordinateType: 2,          // GCJ02 坐标直接渲染
+    color: [0, 1, 1, 1],
+    thickness: 15,
+    range: [1, 1000000],
+    style: 0,                   // PolylineStyle.Arrow，见 /docs/api/types#polylinestyle
+  });
+}
+
+const path = await planRoute([116.397, 39.908], [116.407, 39.918]);
+await drawRoute(path);
+```
+
+**性能提示**：路径点、POI 点量大时优先用第三方服务的批量接口一次性拿全量结果，再把整个数组一次性传给 `add()` 提交（如上），避免逐点 `add` + `await` 造成的往返延迟叠加；`updateBegin`/`updateEnd` 是另一套机制，用于包裹**循环调用 `setXXX`/`update` 修改已有对象属性**的场景（见[业务动态数据接入](/docs/tutorials/data-dynamic)的 IoT 状态刷新例子），不用于批量新增。
+
+**用到的能力**：[Marker](/docs/api/marker/marker)（`coordinateType` 直接接受 GCJ02/BD09）· [Polyline](/docs/api/vector/polyline) · [Coord](/docs/api/utils/coord)（`gcs2pcs`，`camera.lookAt` 等不支持 `coordinateType` 的接口需要的场景坐标由此转换）· [Camera](/docs/api/camera/camera)
+
+---
+
 ## 通用组合技
 
 - **批量操作要合并**：一次添加/修改大量对象时，用 `add(数组)` 或 `updateBegin()`…`updateEnd()` 合并，避免逐个往返拖慢性能（见 [核心概念](/docs/tutorials/architecture)）。

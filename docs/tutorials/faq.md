@@ -100,14 +100,11 @@ fdapi.marker.update({ id: 'poi_1', coordinate: [121, 31, 0] });
 
 ### Q: 传入经纬度坐标后，对象出现在错误位置或消失
 
-当前场景可能使用**投影坐标系（PCS）**，直接传入经纬度会导致坐标错位。需要先转换：
+当前场景可能使用**投影坐标系（PCS）**，直接传入经纬度会导致坐标错位。场景是投影还是球面由服务端工程配置决定（见[核心概念与架构](/docs/tutorials/architecture)"两类场景"一节），投影场景下需先把经纬度转换为投影坐标：
 
 ```js
-// 查询当前坐标系类型（'0'=投影坐标, '1'=地理坐标）
-console.log('坐标系类型：', fdapi.coordType);
-
-// 如果是 PCS，先将经纬度转换为投影坐标
-const pcs = fdapi.coord.gcsToPcs([120.15, 30.27, 0]);
+// 经纬度（WGS84）→ 投影坐标；第二个参数为地理坐标类型：1=WGS84（默认）、2=GCJ02、3=BD09
+const pcs = await fdapi.coord.gcs2pcs([120.15, 30.27, 0], 1);
 fdapi.marker.add({
   id: 'marker_001',
   coordinate: pcs,  // 使用转换后的坐标
@@ -138,7 +135,7 @@ const screenPos = await fdapi.coord.world2Screen(488000, 2890000, 10);
 ### Q: 添加大量 Marker 后页面卡顿
 
 - **批量创建**：避免在循环中逐个 `add`，尽量一次性传入数组（部分 API 支持批量参数）。
-- **及时销毁不用的对象**：调用 `fdapi.marker.remove(id)` 删除不再显示的标注。
+- **及时销毁不用的对象**：调用 `fdapi.marker.delete(id)` 删除不再显示的标注。
 - **使用 MarkerLayer 代替单个 Marker**：大量同类标注推荐用 `fdapi.markerLayer` 管理，性能更好。
 
 ### Q: 切换场景或页面时内存持续增长

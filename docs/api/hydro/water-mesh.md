@@ -239,7 +239,7 @@ fdapi.waterMesh.hide('watermesh1');
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.hideAll();
+await fdapi.waterMesh.hideAll();
 ```
 
 ---
@@ -259,7 +259,7 @@ await fdapi.boxTrigger.hideAll();
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setCoordinates('对象ID', []);
+await fdapi.waterMesh.setCoordinates('对象ID', []);
 ```
 
 ---
@@ -279,7 +279,7 @@ await fdapi.boxTrigger.setCoordinates('对象ID', []);
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setIndices('对象ID', []);
+await fdapi.waterMesh.setIndices('对象ID', []);
 ```
 
 ---
@@ -299,7 +299,7 @@ await fdapi.boxTrigger.setIndices('对象ID', []);
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setNormals('对象ID', []);
+await fdapi.waterMesh.setNormals('对象ID', []);
 ```
 
 ---
@@ -319,7 +319,7 @@ await fdapi.boxTrigger.setNormals('对象ID', []);
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setWaterColor('对象ID', '示例值');
+await fdapi.waterMesh.setWaterColor('对象ID', '示例值');
 ```
 
 ---
@@ -339,7 +339,7 @@ await fdapi.boxTrigger.setWaterColor('对象ID', '示例值');
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setWaterDirection('对象ID', 0);
+await fdapi.waterMesh.setWaterDirection('对象ID', 0);
 ```
 
 ---
@@ -359,7 +359,7 @@ await fdapi.boxTrigger.setWaterDirection('对象ID', 0);
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setWaterSpeed('对象ID', 0);
+await fdapi.waterMesh.setWaterSpeed('对象ID', 0);
 ```
 
 ---
@@ -379,7 +379,7 @@ await fdapi.boxTrigger.setWaterSpeed('对象ID', 0);
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setWaterUVRepeat('对象ID', 0);
+await fdapi.waterMesh.setWaterUVRepeat('对象ID', 0);
 ```
 
 ---
@@ -399,7 +399,7 @@ await fdapi.boxTrigger.setWaterUVRepeat('对象ID', 0);
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setWaterWaveScale('对象ID', 0);
+await fdapi.waterMesh.setWaterWaveScale('对象ID', 0);
 ```
 
 ---
@@ -436,7 +436,7 @@ fdapi.waterMesh.show('watermesh1');
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.showAll();
+await fdapi.waterMesh.showAll();
 ```
 
 ---

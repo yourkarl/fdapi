@@ -145,7 +145,7 @@ fdapi.vehicle.focus('vc1');
 > 示例代码如下：
 
 ```js
-await fdapi.drone.callBatchFunction({
+await fdapi.vehicle.callBatchFunction({
     id: '对象ID',
     functionName: '示例值',
     parameters: []
@@ -574,7 +574,7 @@ updateEnd是异步调用，可以用回调函数也可以await
 > 示例代码如下：
 
 ```js
-await fdapi.drone.updateEnd();
+await fdapi.vehicle.updateEnd();
 ```
 
 
