@@ -759,13 +759,7 @@ await fdapi.misc.projectAssetCountAll();
 
 ```js
 //从Cloud的文件资源配置中重新挂载新添加的pak文件，从而避免重启服务引起的实例关闭
-    fdapi.misc.reloadPak();
-}
-
-// function test_misc_download() {
-//     //把文件下载到cloud服务器的指定磁盘路径
-//     fdapi.misc.download('https://www.freedoonline.com/public/static/home2022/images/ewm1.png', 'C:/gzh/', 'wx.png');
-//
+fdapi.misc.reloadPak();
 ```
 
 ---

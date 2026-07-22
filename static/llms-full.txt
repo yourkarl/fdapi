@@ -798,6 +798,85 @@ fdapi.cameraTour.play('1');
 
 ---
 
+## 配方四：接入第三方地理编码 / POI 检索与路径规划
+
+**场景**：fdapi 负责三维场景的渲染与交互，但**不提供地址检索、周边设施查询、路径规划**这类地图服务能力——这部分需要接入高德、腾讯地图等第三方开放平台，再把返回的地理坐标喂给 fdapi 渲染。本配方给出标准接入范式：地址/地点检索 → 渲染标注；起终点 → 路径规划 → 绘制路线。
+
+> 安全提醒：第三方地图开放平台的 Key 通常要求签名或限制来源域名，**不建议在浏览器端直接暴露 Key 发起请求**；生产环境应由你的业务后端代理转发地理编码/路径规划请求，前端只拿到坐标结果。下面为了聚焦 fdapi 侧的处理，示例直接在前端发起请求，实际项目请替换为你的后端代理地址。
+
+### 4.1 地址/地点检索 → 渲染为标注
+
+以高德地图 Web 服务 API 的地理编码/POI 搜索为例（腾讯地图等同理，返回字段名不同，具体以对应平台当前文档为准）。**关键点**：`marker.add`/`polyline.add` 等对象的 `coordinateType` 参数本身就支持 `2`（火星坐标系 GCJ02）与 `3`（百度坐标系 BD09），第三方检索结果的坐标可以**直接传入，无需手写纠偏算法**：
+
+```js
+// 1) 调用第三方地理编码/POI检索服务（实际项目请替换为你的后端代理地址）
+async function searchPOI(keyword, city) {
+  const url = `https://your-backend.example.com/api/geo/search?keyword=${encodeURIComponent(keyword)}&city=${encodeURIComponent(city)}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  // 约定后端代理统一返回：[{ name, lng, lat }, ...]（经纬度为高德的 GCJ02 坐标）
+  return data.pois || [];
+}
+
+// 2) 直接以 coordinateType: 2（GCJ02）渲染，无需预先转换坐标
+// marker.add 的 data 参数本身支持传对象数组做一次性批量新增，不需要 updateBegin/updateEnd
+// （那两个方法是给"循环调用 setXXX/update 修改属性"场景批量合并用的，不是给 add 用的）
+async function renderPOIs(pois) {
+  await fdapi.marker.add(pois.map((poi) => ({
+    id: 'poi_' + poi.name,
+    coordinate: [poi.lng, poi.lat, 0],
+    coordinateType: 2,   // 0=投影 1=WGS84 2=GCJ02 3=BD09
+    imagePath: '@path:/img/icons/poi.png',
+    text: poi.name,
+  })));
+}
+
+// 3) 串起来：检索 → 渲染 → 飞到第一个结果
+const pois = await searchPOI('加油站', '北京市');
+await renderPOIs(pois);
+if (pois[0]) {
+  // camera.lookAt 需要场景坐标（不支持 coordinateType），先用 Coord 转换一次
+  const [x, y, z] = await fdapi.coord.gcs2pcs([pois[0].lng, pois[0].lat, 0], 2);
+  fdapi.camera.lookAt(x, y, z, 500);
+}
+```
+
+### 4.2 起终点 → 路径规划 → 绘制路线
+
+```js
+// 1) 调用第三方路径规划服务（同样建议走后端代理）
+async function planRoute(originLngLat, destLngLat) {
+  const url = `https://your-backend.example.com/api/geo/route?origin=${originLngLat.join(',')}&destination=${destLngLat.join(',')}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  // 约定后端代理统一返回：{ path: [[lng,lat], [lng,lat], ...] }（GCJ02，已按路网抽稀采样）
+  return data.path || [];
+}
+
+// 2) 路径点同样以 coordinateType: 2 直接渲染为箭头样式折线
+async function drawRoute(path) {
+  await fdapi.polyline.delete(['route_001']);
+  fdapi.polyline.add({
+    id: 'route_001',
+    coordinates: path.map(([lng, lat]) => [lng, lat, 0]),
+    coordinateType: 2,          // GCJ02 坐标直接渲染
+    color: [0, 1, 1, 1],
+    thickness: 15,
+    range: [1, 1000000],
+    style: 0,                   // PolylineStyle.Arrow，见 /docs/api/types#polylinestyle
+  });
+}
+
+const path = await planRoute([116.397, 39.908], [116.407, 39.918]);
+await drawRoute(path);
+```
+
+**性能提示**：路径点、POI 点量大时优先用第三方服务的批量接口一次性拿全量结果，再把整个数组一次性传给 `add()` 提交（如上），避免逐点 `add` + `await` 造成的往返延迟叠加；`updateBegin`/`updateEnd` 是另一套机制，用于包裹**循环调用 `setXXX`/`update` 修改已有对象属性**的场景（见[业务动态数据接入](https://yourkarl.github.io/fdapi/docs/tutorials/data-dynamic)的 IoT 状态刷新例子），不用于批量新增。
+
+**用到的能力**：[Marker](https://yourkarl.github.io/fdapi/docs/api/marker/marker)（`coordinateType` 直接接受 GCJ02/BD09）· [Polyline](https://yourkarl.github.io/fdapi/docs/api/vector/polyline) · [Coord](https://yourkarl.github.io/fdapi/docs/api/utils/coord)（`gcs2pcs`，`camera.lookAt` 等不支持 `coordinateType` 的接口需要的场景坐标由此转换）· [Camera](https://yourkarl.github.io/fdapi/docs/api/camera/camera)
+
+---
+
 ## 通用组合技
 
 - **批量操作要合并**：一次添加/修改大量对象时，用 `add(数组)` 或 `updateBegin()`…`updateEnd()` 合并，避免逐个往返拖慢性能（见 [核心概念](https://yourkarl.github.io/fdapi/docs/tutorials/architecture)）。
@@ -1236,21 +1315,27 @@ let c4 = [
 
 ### 坐标转换
 
-使用 `fdapi.coord` 在各坐标系之间转换：
+使用 `fdapi.coord` 在各坐标系之间转换。调用前需确认工程已设置对应坐标系，否则转换失败（错误码 -4）：
 
 ```js
-// PCS ↔ GCS 互转
-const gcs = fdapi.coord.pcsToGcs([488000, 2890000, 10]);   // → [lng, lat, alt]
-const pcs = fdapi.coord.gcsToPcs([120.15, 30.27, 10]);     // → [x, y, z]
+// GCS → PCS：地理坐标（经纬度）转投影坐标
+// 第二个参数是地理坐标的坐标系类型：1=WGS84（默认）、2=火星坐标系GCJ02、3=百度坐标系BD09
+const pcs = await fdapi.coord.gcs2pcs([120.15, 30.27, 10], 1);
 
-// 屏幕坐标 → 世界坐标
-const world = fdapi.coord.screenToWorld([960, 540]);
+// PCS → GCS：投影坐标转地理坐标（同样支持按 coordinateType 转出 WGS84/GCJ02/BD09）
+const gcs = await fdapi.coord.pcs2gcs([488000, 2890000, 10], 1);
 
-// 世界坐标 → 屏幕坐标
-const screen = fdapi.coord.worldToScreen([488000, 2890000, 10]);
+// 屏幕坐标 → 世界（投影）坐标：注意 x/y 是两个独立参数，不是数组
+const world = await fdapi.coord.screen2World(960, 540);
+console.log(world.worldLocation);
+
+// 世界（投影）坐标 → 屏幕坐标：x/y/z 三个独立参数
+const screen = await fdapi.coord.world2Screen(488000, 2890000, 10);
 ```
 
-详细参数说明见 [Coord API 文档](https://yourkarl.github.io/fdapi/docs/api/utils/coord)。
+> 重要：第二个参数 `coordinateType` 意味着 `gcs2pcs`/`pcs2gcs` **已经内置了 GCJ02/BD09 与 WGS84 的互转**——从高德/腾讯地图（GCJ02）或百度地图（BD09）拿到的坐标，无需手写纠偏算法，直接传入对应的 `coordinateType` 即可转成场景坐标。实战示例见[实战配方](https://yourkarl.github.io/fdapi/docs/tutorials/recipes)"接入第三方地理编码 / POI 检索与路径规划"一节。
+
+详细参数说明与坐标格式见 [Coord API 文档](https://yourkarl.github.io/fdapi/docs/api/utils/coord)。
 
 ---
 
@@ -1817,12 +1902,16 @@ fdapi.customObject.add({
   rotation: [pitch, yaw, roll],
 });
 
-// 之后即可驱动：位置更新、姿态、动画、相机跟随
+// 之后即可驱动：位置更新、姿态、动画
 fdapi.customObject.update({ id: 'truck_01', coordinate: next });
-fdapi.camera.setFollow(...); // 相机跟随见 Camera API
+
+// 相机跟随：不是 camera 侧发起，而是 customObject.focus 的 distance<0 或 ActionMode 跟随模式
+fdapi.customObject.focus('truck_01', -1);   // distance=-1：相机自动跟随该对象移动
+// 结束跟随：
+fdapi.camera.cancelFollow();
 ```
 
-高频轨迹驱动（GPS/IoT 回传）注意用 `updateBegin()` / `updateEnd()` 包裹批量更新，帧同步与插值策略见[帧同步与 FrameTick](https://yourkarl.github.io/fdapi/docs/tutorials/frame-tick)。
+高频轨迹驱动（GPS/IoT 回传）注意用 `updateBegin()` / `updateEnd()` 包裹批量更新，帧同步与插值策略见[帧同步与 FrameTick](https://yourkarl.github.io/fdapi/docs/tutorials/frame-tick)；相机跟随的完整参数（`ActionMode`、偏移量等）见 [CustomObject.focus](https://yourkarl.github.io/fdapi/docs/api/model/custom-object#focus) 与 [Camera.cancelFollow](https://yourkarl.github.io/fdapi/docs/api/camera/camera#cancelFollow)。
 
 ## customMesh：程序化几何
 
@@ -1834,7 +1923,7 @@ fdapi.camera.setFollow(...); // 相机跟随见 Camera API
 
 ## 对接流程建议
 
-模型资产对接建议按此顺序推进：资产方交付 pak + assetPath 清单 → 开发期用 `setPakFile` 快速验证每个 assetPath 可实例化 → 验证通过后 pak 入 Cloud 文件资源、代码切换 `@path:` 引用 → 资产更新走 `reloadPak` 热挂载。将 assetPath 清单维护为配置文件而非散落在代码中，资产迭代时只改配置。
+模型
 
 ---
 
@@ -8299,14 +8388,11 @@ fdapi.marker.update({ id: 'poi_1', coordinate: [121, 31, 0] });
 
 ### Q: 传入经纬度坐标后，对象出现在错误位置或消失
 
-当前场景可能使用**投影坐标系（PCS）**，直接传入经纬度会导致坐标错位。需要先转换：
+当前场景可能使用**投影坐标系（PCS）**，直接传入经纬度会导致坐标错位。场景是投影还是球面由服务端工程配置决定（见[核心概念与架构](https://yourkarl.github.io/fdapi/docs/tutorials/architecture)"两类场景"一节），投影场景下需先把经纬度转换为投影坐标：
 
 ```js
-// 查询当前坐标系类型（'0'=投影坐标, '1'=地理坐标）
-console.log('坐标系类型：', fdapi.coordType);
-
-// 如果是 PCS，先将经纬度转换为投影坐标
-const pcs = fdapi.coord.gcsToPcs([120.15, 30.27, 0]);
+// 经纬度（WGS84）→ 投影坐标；第二个参数为地理坐标类型：1=WGS84（默认）、2=GCJ02、3=BD09
+const pcs = await fdapi.coord.gcs2pcs([120.15, 30.27, 0], 1);
 fdapi.marker.add({
   id: 'marker_001',
   coordinate: pcs,  // 使用转换后的坐标
@@ -8337,7 +8423,7 @@ const screenPos = await fdapi.coord.world2Screen(488000, 2890000, 10);
 ### Q: 添加大量 Marker 后页面卡顿
 
 - **批量创建**：避免在循环中逐个 `add`，尽量一次性传入数组（部分 API 支持批量参数）。
-- **及时销毁不用的对象**：调用 `fdapi.marker.remove(id)` 删除不再显示的标注。
+- **及时销毁不用的对象**：调用 `fdapi.marker.delete(id)` 删除不再显示的标注。
 - **使用 MarkerLayer 代替单个 Marker**：大量同类标注推荐用 `fdapi.markerLayer` 管理，性能更好。
 
 ### Q: 切换场景或页面时内存持续增长
@@ -8363,7 +8449,7 @@ window.addEventListener('beforeunload', () => {
 
 ### Q: 文档里的示例代码在实际环境中不能直接运行？
 
-示例代码中的坐标（如 `120.15, 30.27`）、IP（如 `127.0.0.1:8080`）、资源路径均为占位值，需替换为你实际项目中的数据。
+示例代码中的坐标（
 
 ---
 
@@ -22038,13 +22124,7 @@ await fdapi.misc.projectAssetCountAll();
 
 ```js
 //从Cloud的文件资源配置中重新挂载新添加的pak文件，从而避免重启服务引起的实例关闭
-    fdapi.misc.reloadPak();
-}
-
-// function test_misc_download() {
-//     //把文件下载到cloud服务器的指定磁盘路径
-//     fdapi.misc.download('https://www.freedoonline.com/public/static/home2022/images/ewm1.png', 'C:/gzh/', 'wx.png');
-//
+fdapi.misc.reloadPak();
 ```
 
 ---
@@ -45537,25 +45617,6 @@ updateEnd是异步调用，可以用回调函数也可以await
 await fdapi.coastline.updateEnd();
 ```
 
-
-## 更多示例
-
-> Show
-
-```js
-fdapi.coastline.show('coastline');
-```
-
-> Hide
-
-```js
-fdapi.coastline.hide('coastline');
-```
-
-> HideAll
-
-`
-
 ---
 
 # OceanHeatMap ｜ API · 海洋气象仿真
@@ -50672,7 +50733,7 @@ fdapi.waterMesh.hide('watermesh1');
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.hideAll();
+await fdapi.waterMesh.hideAll();
 ```
 
 ---
@@ -50692,7 +50753,7 @@ await fdapi.boxTrigger.hideAll();
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setCoordinates('对象ID', []);
+await fdapi.waterMesh.setCoordinates('对象ID', []);
 ```
 
 ---
@@ -50712,7 +50773,7 @@ await fdapi.boxTrigger.setCoordinates('对象ID', []);
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setIndices('对象ID', []);
+await fdapi.waterMesh.setIndices('对象ID', []);
 ```
 
 ---
@@ -50732,7 +50793,7 @@ await fdapi.boxTrigger.setIndices('对象ID', []);
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setNormals('对象ID', []);
+await fdapi.waterMesh.setNormals('对象ID', []);
 ```
 
 ---
@@ -50752,7 +50813,7 @@ await fdapi.boxTrigger.setNormals('对象ID', []);
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setWaterColor('对象ID', '示例值');
+await fdapi.waterMesh.setWaterColor('对象ID', '示例值');
 ```
 
 ---
@@ -50772,7 +50833,7 @@ await fdapi.boxTrigger.setWaterColor('对象ID', '示例值');
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setWaterDirection('对象ID', 0);
+await fdapi.waterMesh.setWaterDirection('对象ID', 0);
 ```
 
 ---
@@ -50792,7 +50853,7 @@ await fdapi.boxTrigger.setWaterDirection('对象ID', 0);
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setWaterSpeed('对象ID', 0);
+await fdapi.waterMesh.setWaterSpeed('对象ID', 0);
 ```
 
 ---
@@ -50812,7 +50873,7 @@ await fdapi.boxTrigger.setWaterSpeed('对象ID', 0);
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setWaterUVRepeat('对象ID', 0);
+await fdapi.waterMesh.setWaterUVRepeat('对象ID', 0);
 ```
 
 ---
@@ -50832,7 +50893,7 @@ await fdapi.boxTrigger.setWaterUVRepeat('对象ID', 0);
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.setWaterWaveScale('对象ID', 0);
+await fdapi.waterMesh.setWaterWaveScale('对象ID', 0);
 ```
 
 ---
@@ -50869,7 +50930,7 @@ fdapi.waterMesh.show('watermesh1');
 > 示例代码如下：
 
 ```js
-await fdapi.boxTrigger.showAll();
+await fdapi.waterMesh.showAll();
 ```
 
 ---
@@ -55529,7 +55590,7 @@ fdapi.vehicle.focus('vc1');
 > 示例代码如下：
 
 ```js
-await fdapi.drone.callBatchFunction({
+await fdapi.vehicle.callBatchFunction({
     id: '对象ID',
     functionName: '示例值',
     parameters: []
@@ -55958,7 +56019,7 @@ updateEnd是异步调用，可以用回调函数也可以await
 > 示例代码如下：
 
 ```js
-await fdapi.drone.updateEnd();
+await fdapi.vehicle.updateEnd();
 ```
 
 

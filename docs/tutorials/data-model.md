@@ -37,12 +37,16 @@ fdapi.customObject.add({
   rotation: [pitch, yaw, roll],
 });
 
-// 之后即可驱动：位置更新、姿态、动画、相机跟随
+// 之后即可驱动：位置更新、姿态、动画
 fdapi.customObject.update({ id: 'truck_01', coordinate: next });
-fdapi.camera.setFollow(...); // 相机跟随见 Camera API
+
+// 相机跟随：不是 camera 侧发起，而是 customObject.focus 的 distance<0 或 ActionMode 跟随模式
+fdapi.customObject.focus('truck_01', -1);   // distance=-1：相机自动跟随该对象移动
+// 结束跟随：
+fdapi.camera.cancelFollow();
 ```
 
-高频轨迹驱动（GPS/IoT 回传）注意用 `updateBegin()` / `updateEnd()` 包裹批量更新，帧同步与插值策略见[帧同步与 FrameTick](/docs/tutorials/frame-tick)。
+高频轨迹驱动（GPS/IoT 回传）注意用 `updateBegin()` / `updateEnd()` 包裹批量更新，帧同步与插值策略见[帧同步与 FrameTick](/docs/tutorials/frame-tick)；相机跟随的完整参数（`ActionMode`、偏移量等）见 [CustomObject.focus](/docs/api/model/custom-object#focus) 与 [Camera.cancelFollow](/docs/api/camera/camera#cancelFollow)。
 
 ## customMesh：程序化几何
 

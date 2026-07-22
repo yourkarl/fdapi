@@ -98,18 +98,24 @@ let c4 = [
 
 ### 坐标转换
 
-使用 `fdapi.coord` 在各坐标系之间转换：
+使用 `fdapi.coord` 在各坐标系之间转换。调用前需确认工程已设置对应坐标系，否则转换失败（错误码 -4）：
 
 ```js
-// PCS ↔ GCS 互转
-const gcs = fdapi.coord.pcsToGcs([488000, 2890000, 10]);   // → [lng, lat, alt]
-const pcs = fdapi.coord.gcsToPcs([120.15, 30.27, 10]);     // → [x, y, z]
+// GCS → PCS：地理坐标（经纬度）转投影坐标
+// 第二个参数是地理坐标的坐标系类型：1=WGS84（默认）、2=火星坐标系GCJ02、3=百度坐标系BD09
+const pcs = await fdapi.coord.gcs2pcs([120.15, 30.27, 10], 1);
 
-// 屏幕坐标 → 世界坐标
-const world = fdapi.coord.screenToWorld([960, 540]);
+// PCS → GCS：投影坐标转地理坐标（同样支持按 coordinateType 转出 WGS84/GCJ02/BD09）
+const gcs = await fdapi.coord.pcs2gcs([488000, 2890000, 10], 1);
 
-// 世界坐标 → 屏幕坐标
-const screen = fdapi.coord.worldToScreen([488000, 2890000, 10]);
+// 屏幕坐标 → 世界（投影）坐标：注意 x/y 是两个独立参数，不是数组
+const world = await fdapi.coord.screen2World(960, 540);
+console.log(world.worldLocation);
+
+// 世界（投影）坐标 → 屏幕坐标：x/y/z 三个独立参数
+const screen = await fdapi.coord.world2Screen(488000, 2890000, 10);
 ```
 
-详细参数说明见 [Coord API 文档](/docs/api/utils/coord)。
+> 重要：第二个参数 `coordinateType` 意味着 `gcs2pcs`/`pcs2gcs` **已经内置了 GCJ02/BD09 与 WGS84 的互转**——从高德/腾讯地图（GCJ02）或百度地图（BD09）拿到的坐标，无需手写纠偏算法，直接传入对应的 `coordinateType` 即可转成场景坐标。实战示例见[实战配方](/docs/tutorials/recipes)"接入第三方地理编码 / POI 检索与路径规划"一节。
+
+详细参数说明与坐标格式见 [Coord API 文档](/docs/api/utils/coord)。

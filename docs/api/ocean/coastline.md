@@ -263,22 +263,3 @@ updateEnd是异步调用，可以用回调函数也可以await
 ```js
 await fdapi.coastline.updateEnd();
 ```
-
-
-## 更多示例
-
-> Show
-
-```js
-fdapi.coastline.show('coastline');
-```
-
-> Hide
-
-```js
-fdapi.coastline.hide('coastline');
-```
-
-> HideAll
-
-`
