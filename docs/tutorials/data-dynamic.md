@@ -12,9 +12,9 @@ description: "IoT 点位、热力分布、风场洋流场数据、水利仿真�
 
 | 量级 | API | 说明 |
 |------|-----|------|
-| 几十~几百，交互丰富 | [`marker`](/docs/api/marker/marker) | 图文标注、弹窗、事件齐全 |
+| 几十~几百~几千，交互丰富，支持html弹窗 | [`marker`](/docs/api/marker/marker) | 属于屏幕级别的2DUI，支持图片、GIF、Canvas、文字、视频、弹窗，鼠标事件齐全，可贴合 CustomObject 运动 |
 | 成千上万，海量展示 | [`markerLayer`](/docs/api/layer/marker-layer) | 按相机距离三级自适应（圆点 → 图片 → 完整 Marker），自带聚合式降载 |
-| 需贴合模型/蓝图交互 | [`marker3d`](/docs/api/marker/marker3d) | 3D 标注，可贴合 CustomObject 运动 |
+| 三维标注/蓝图特效 | [`marker3d`](/docs/api/marker/marker3d) | 三维标注，支持自定义打包模型和蓝图函数特效，可贴合 CustomObject 运动 |
 
 实践约定：点位 `id` 与业务系统主键一一对应；批量刷新用 `updateBegin()`/`updateEnd()` 包裹；不同业务域用 `groupId` 分组，按组显隐替代逐个操作；设置 `setViewHeightRange` 可视高度范围，避免全高度渲染。
 

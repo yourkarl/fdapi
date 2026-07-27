@@ -18,7 +18,8 @@ description: 飞渡 DTS（DigitalTwin）数字孪生 SDK 开发与 API 查询工
 - **回调函数**：需要回调时优先用箭头函数 `() => {...}`；不需要时传 `null`。
 - **坐标系**：`coordinateType: 0=投影(Projection), 1=WGS84, 2=GCJ02, 3=BD09`。坐标与朝向须与工程坐标系一致，否则定位偏移。
 - **颜色**：参数类型 `Color` 支持枚举（如 `Color.White`）与 `[r,g,b,a]` 数组等多种写法，详见 `tutorials/color.md` 与 `api/types.md`。
-- **批量更新**：大量增改用 `updateBegin()` … `update(...)` … `updateEnd(cb)` 包裹，减少往返。
+- **批量更新**：大量增改用 `updateBegin()` … `update(...)` … `updateEnd(cb)` 包裹，减少往返；注意这套机制是给"循环调用 `setXXX`/`update` 改属性"用的，**批量新增走 `add(数组)` 一次性提交，不要把 `add` 包进 `updateBegin/updateEnd`**。
+- **两种"导览"不要混淆**：SDK 里有两类概念都叫"导览/漫游"，操作对象完全不同——① **Explorer 客户端里录制、随 ACP 工程保存**的导览动画，用**索引序号**引用，操作方法在 `camera` 对象下：`camera.getAnimationList`（查列表）、`camera.playAnimation`/`pauseAnimation`/`resumeAnimation`/`stopAnimation`（播放控制）、`camera.getAnimationImage`（缩略图）。② **接口按关键帧动态创建**的导览，先 `cameraTour.add()`（数据由 `CameraTourData` + `CameraTourKeyFrame` 关键帧序列构成）再操作，方法在 `cameraTour` 对象下：`cameraTour.play`/`pause`/`resume`/`stop`/`setKeyFrames`/`setTime`/`exportVideo` 等。判断依据：**有没有关键帧数据、是不是自己 `add` 出来的**——是，用 `cameraTour`；否则（引用 Explorer 里已录制好的），用 `camera` 的动画方法。
 
 ## 初始化模板
 
@@ -90,10 +91,10 @@ const fdapi  = player.getAPI();                       // API 总入口
 ### 相机 camera
 | 类 | 用途 | 访问器 | 文件 |
 |----|------|--------|------|
-| Camera | 相机/视角控制、飞入飞出、定位、跟随 | `fdapi.camera` | `api/camera/camera.md` |
-| CameraTour | 相机巡游 | `fdapi.cameraTour` | `api/camera/camera-tour.md` |
-| CameraTourData | 巡游数据 | — | `api/camera/camera-tour-data.md` |
-| CameraTourKeyFrame | 巡游关键帧 | — | `api/camera/camera-tour-key-frame.md` |
+| Camera | 相机/视角控制、飞入飞出、定位、跟随；**及 Explorer 客户端录制的导览动画播放**（getAnimationList/playAnimation 等，按索引引用） | `fdapi.camera` | `api/camera/camera.md` |
+| CameraTour | **接口按关键帧动态创建**的相机巡游（先 add 关键帧数据再 play，与上面 Explorer 录制的导览是两回事，见「调用约定」） | `fdapi.cameraTour` | `api/camera/camera-tour.md` |
+| CameraTourData | CameraTour 巡游关键帧序列的数据容器 | — | `api/camera/camera-tour-data.md` |
+| CameraTourKeyFrame | CameraTour 单个关键帧（位置/朝向/时间） | — | `api/camera/camera-tour-key-frame.md` |
 
 ### 标注 marker
 | 类 | 用途 | 访问器 | 文件 |
