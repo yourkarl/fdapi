@@ -25,12 +25,14 @@ SignalWave 以波/涟漪扩散形式表达信号或电磁波的传播与覆盖�
   - 事件信号传播的可视化
   - 低空通信信号覆盖：信号扩散覆盖渐变色块，自动镂空建筑遮挡盲区，支撑通信基站选址。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 为示意性可视化，非精确传播模型
   - 扩散参数需结合业务设定
   - 与 Antenna、Beam 配合使用
 
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

@@ -21,7 +21,7 @@ description: "加载、定位与管理 Cesium 3D Tiles（3DTiles）服务图层�
   - 接入第三方厂商或自建切片服务发布的 3DTiles 数据，实现跨平台三维数据共享。
   - 通过 offset 偏移微调三维瓦片与地形、底图的空间套合。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 数据通过网络流式加载，add 方法存在加载耗时，focus/定位等操作建议在加载完成后或延时执行。
   - 海量瓦片对显存与带宽要求较高，注意控制同屏加载的服务数量与可见层级。
   - 需关注服务发布坐标系与工程坐标系是否一致，必要时通过偏移与重投影对齐。
@@ -36,6 +36,8 @@ new Cesium3DTileset()
 
 ---
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

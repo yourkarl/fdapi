@@ -27,10 +27,12 @@ TrafficSimulation 提供城市级交通仿真能力，支持十万级别车辆�
   - 区域交通态势热力展示与城市数字孪生中的车流底座呈现。
   - 城市级十万级车流仿真：按断面流量 / 车速 IoT 数据帧同步批量驱动（updateBegin/updateEnd），以拥堵热力（showHeatMap）与流量标签（showTextLabel）实时表达畅通 / 缓行 / 拥堵。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 面向超大规模车辆（十万级），对硬件与渲染性能要求高，应控制可视范围与车型数量；车型 `models` 仅在 add() 时配置，`type` 需与 .dat 数据字段对应。
   - `timer` 决定按数据时间字段还是定时器间隔驱动；热力图 `bbox`、坐标依赖 `coordinateType`（Projection/WGS84），需与路网数据坐标系一致。
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 
@@ -72,7 +74,7 @@ TrafficSimulation 提供城市级交通仿真能力，支持十万级别车辆�
 | `id` | `string` | 是 | - | TrafficSimulation对象的ID |
 | `groupId` | `string` | 否 | - | 可选，Group分组Id |
 | `userData` | `string` | 否 | - | 可选，用户自定义数据 |
-| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值：0为Projection类型，1为WGS84类型，默认值：0 |
+| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
 | `noiseThreshold` | `number` | 否 | 0.05 | 车辆摆头的降噪距离，单位：米，默认值：0.05 |
 | `timer` | `boolean` | 是 | - | 设置为false使用dat数据内的时间字段time，设置为true则使用定时器的时间间隔，默认：false， |
 | `heatmap` | `object` | 是 | - | 交通仿真热力图模式配置对象，包含结构如下： |
@@ -87,7 +89,7 @@ TrafficSimulation 提供城市级交通仿真能力，支持十万级别车辆�
 | `heatmap.value` | `number` | 是 | - | 值 |
 | `models` | `array` | 是 | - | 交通仿真包含的车辆模型类型数组，注意：只需要在add()方法执行时配置，每一个数组元素对象包含属性如下： |
 | `models.type` | `number` | 是 | - | 车辆类型，注意这个数值会写入更新方法使用的.dat文件内。 |
-| `models.package` | `string` | 是 | - | 资源库车辆载具路径，取值类似CustomObject对象的assetPath，示例值：'/AirCityPlugin/ArtResources/Traffic/SUVTemplete' |
+| `models.package` | `string` | 是 | - | 资源库车辆载具路径，取值类似CustomObject对象的assetPath（详见[模型资产与 pak 管线](/docs/tutorials/data-model)），示例值：'/AirCityPlugin/ArtResources/Traffic/SUVTemplete' |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -520,7 +522,7 @@ fdapi.trafficSimulation.unHighlight("traffic");
 | `groupId` | `string` | 否 | - | 可选，Group分组Id |
 | `userData` | `string` | 否 | - | 可选，用户自定义数据 |
 | `file` | `string` | 是 | - | 某个时刻的多辆车的轨迹点数据文件路径，包含：车辆id、车辆经度、车辆纬度、车辆类型、时间。二进制文件格式(.dat)，包含内容如下：id(int 4字节),lon(double 8字节),lat(double 8字节),type(int 4字节),time(int 4字节) |
-| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值：0为Projection类型，1为WGS84类型，默认值：0 |
+| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
 | `noiseThreshold` | `number` | 否 | 0.05 | 车辆摆头的降噪距离，单位：米，默认值：0.05 |
 | `timer` | `boolean` | 是 | - | 设置为false使用dat数据内的时间字段time，设置为true则使用定时器的时间间隔，默认：false， |
 | `heatmap` | `object` | 是 | - | 交通仿真热力图模式配置对象，包含结构如下： |

@@ -26,12 +26,14 @@ GaussianSplatting类对象，提供3D高斯泼溅相关操作
   - 实景与传统模型混合展示
   - 高真实感的汇报与展示
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 3DGS 数据体量大，对显存敏感
   - 适合局部高保真，不适合大范围铺设
   - 与传统模型混排时注意遮挡与深度关系
 
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

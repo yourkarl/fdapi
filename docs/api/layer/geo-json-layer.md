@@ -26,7 +26,7 @@ description: "从本地文件或 URL 加载标准 GeoJSON 矢量数据并进行�
   - 一张图矢量边界：区县 / 乡镇行政区划、园区边界面图层加载、拾取与高亮。
   - 智慧社区 CIM：社区网格、责任区与行政边界矢量面加载与高亮。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 大体量 GeoJSON 会显著影响加载与渲染性能，建议精简要素或分层加载。
   - needProject 控制是否做投影转换，需结合源数据坐标系与工程坐标系正确设置以保证套合。
   - depthTest 与 enableAntialias 存在互斥关系（深度检测仅在反走样关闭时生效），贴地/遮挡效果需按需配置；自定义材质渲染器须按规范单独打包。
@@ -39,6 +39,8 @@ new GeoJSONLayer()
 
 ---
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 
@@ -54,6 +56,7 @@ new GeoJSONLayer()
 | [`highlightFeatureByProperty`](#highlightFeatureByProperty) | 根据要素包含的属性字段名称和对应的值来高亮GeoJSONLayer图层对象内部对应的要素区域 |  |
 | [`highlightFeatures`](#highlightFeatures) | 高亮GeoJSONLayer图层对象内部的多块要素区域 |  |
 | [`setViewHeightRange`](#setViewHeightRange) | 设置GeoJSONLayer对象的可视高度范围， |  |
+| [`setViewportVisible`](#setViewportVisible) | 多视口状态下，设置GeoJSONLayer图层对象在各视口的可见性 |  |
 | [`show`](#show) | 显示一个或多个GeoJSONLayer图层对象 | 按业务条件显示对象 |
 | [`unHighlightAllFeaturesById`](#unHighlightAllFeaturesById) | 取消高亮一个或者多个GeoJSONLayer图层的所有高亮要素区域 |  |
 | [`unHighlightFeature`](#unHighlightFeature) | 取消高亮GeoJSONLayer图层对象内部的某一块要素区域 |  |
@@ -513,6 +516,26 @@ fdapi.geoJSONLayer.highlightFeatures([{ "id": "layer3", "featureIds": [1, 2, 3] 
 
 ```js
 fdapi.geoJSONLayer.setViewHeightRange('layer5', 1, 1000);
+```
+
+---
+
+### `setViewportVisible(id, vp, fn)` {#setViewportVisible}
+
+多视口状态下，设置GeoJSONLayer图层对象在各视口的可见性（2026.06.28 新增）
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | GeoJSONLayer图层对象的ID |
+| `vp` | [`Viewport`](/docs/api/types#viewport) | 是 | - | 视口掩码（Viewport位运算） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
+> 示例代码如下：
+
+```js
+await fdapi.geoJSONLayer.setViewportVisible('layer5', Viewport.V1 | Viewport.V2);
 ```
 
 ---

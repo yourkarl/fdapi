@@ -24,7 +24,7 @@ ImageryLayer 网络图层相关的操作方法，包含WMS、WMTS、MapServer等
   - 一张图影像底图：卫星影像与 OGC（WMTS/WMS）、第三方地图（天地图等）配准叠加。
 - **注意事项**：
   - 遥感 / 航空正射影像（DOM）统筹叠加、多期多源影像分组比对。
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 适用于平面投影坐标系工程；球面坐标系下应使用 ImageryLayer2 / GlobeTerrain。
   - url 模板需正确包含 \{TileMatrix\}\{TileRow\}\{TileCol\} 等变量，xmlPath、layerName、坐标系等不传时会尝试从 init() 自动获取。
   - 需确保服务坐标系（ogcEPSG）与工程坐标系一致，避免底图错位。
@@ -37,6 +37,8 @@ new ImageryLayer()
 
 ---
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

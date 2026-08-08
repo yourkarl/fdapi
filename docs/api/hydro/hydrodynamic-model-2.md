@@ -29,10 +29,12 @@ description: "HydrodynamicModel2 是早期的二维水动力模型对象，基�
   - 仅用于维护使用旧版 JSON 数据格式的存量水动力回放工程，不建议新建场景采用。
   - 历史项目中二维水动力计算结果（JSON）的时序播放与着色展示。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 该对象已标记废弃、待移除，请勿在新项目中使用，统一迁移到 HydroDynamic2D（支持 tif 栅格与 shp 矢量数据源）。
   - 依赖外部 JSON 数据文件路径，需保证文件可访问；坐标系类型 coordinateType 须与数据一致。
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

@@ -26,11 +26,13 @@ description: "沿坐标轨迹放样生成带截面体量的三维路径模型，
   - 平滑三维航线 / 航道带：以样条生成连续光滑的低空飞行航道。
   - 轨道交通线路：以样条生成平滑的轨道 / 线路三维走向。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 相比 Polyline 的贴地/空间折线，SplineMesh 是有截面体量的三维实体，渲染开销更高，数量多时需控制。
   - curveType 与 segment 控制曲线插值类型与分段数，分段过密会增加面数、影响性能。
   - style 与 meshPath 二选一，传入 meshPath 自定义样式会自动覆盖内置 style。
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 
@@ -78,7 +80,7 @@ description: "沿坐标轨迹放样生成带截面体量的三维路径模型，
 | `id` | `string` | 是 | - | SplineMesh对象的ID |
 | `groupId` | `string` | 否 | - | 可选，Group分组 |
 | `userData` | `string` | 否 | - | 可选，用户自定义数据 |
-| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值：0为Projection类型，1为WGS84类型，默认值：0 |
+| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
 | `coordinates` | `array` | 是 | - | 必选，路径模型的轨迹坐标数组，取值示例：[取值示例](/docs/tutorials/coordinates) |
 | `style` | [`SplineMeshStyle`](/docs/api/types#splinemeshstyle) | 否 | - | (`SplineMeshStyle`) 可选(二选一)，路径模型内置样式枚举，取值详情参考 `SplineMeshStyle` |
 | `meshPath` | `string` | 否 | - | 可选(二选一)，路径模型自定义样式的打包路径，注意：若传入此路径会自动覆盖style样式 |
@@ -191,7 +193,7 @@ fdapi.splineMesh.callBPFunction([
 
 ### `callBPFunction(data, fn)` {#callBPFunction}
 
-调用splineMesh对象包含的多个蓝图函数
+调用splineMesh对象包含的多个蓝图函数；完整调用流程与参数类型映射见[蓝图函数集成](/docs/tutorials/blueprint-integration)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
@@ -202,9 +204,9 @@ fdapi.splineMesh.callBPFunction([
 
 | 属性 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
-| `id` | `string` | 是 | - | CustomObject对象的ID |
+| `id` | `string` | 是 | - | SplineMesh对象的ID |
 | `functionName` | `string` | 是 | - | 蓝图函数名 |
-| `parameters` | `array` | 否 | - | 蓝图函数包含的多个参数，可选参数，数组类型，注意：传入多参数的顺序与类型务必与蓝图函数的参数顺序及其参数类型一致以保证执行结果符合预期。多个参数结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
+| `parameters` | `array` | 否 | - | 蓝图函数包含的多个参数，可选参数，数组类型，注意：参数顺序与类型须与蓝图函数定义严格一致，详见[蓝图函数集成](/docs/tutorials/blueprint-integration)。结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

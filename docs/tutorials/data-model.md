@@ -8,6 +8,8 @@ description: "UE pak 模型资产的制作要求、三种挂载方式与 customO
 
 车辆、无人机、设备等**动态实体模型**不走 3dt 底座，而是以 UE `.pak` 资产包交付，由 [`customObject`](/docs/api/model/custom-object) 在运行时实例化并驱动。这是 DTS 与纯 Web 3D 引擎（glTF 直加载）差异最大的一条数据管线，理解它可以避免大量返工。
 
+> 本页以 `customObject` 为例讲解 pak 资产管线，但同一套"pak 挂载 + `assetPath` 引用"模式同样适用于 [`vehicle`](/docs/api/traffic/vehicle)/[`vehicle2`](/docs/api/traffic/vehicle-2)、[`drone`](/docs/api/traffic/drone)、[`satellite`](/docs/api/traffic/satellite)、[`marker`](/docs/api/marker/marker)/[`marker3d`](/docs/api/marker/marker3d)、[`boxTrigger`](/docs/api/traffic/box-trigger)、[`trafficSimulation`](/docs/api/traffic/traffic-simulation)、[`battlefieldSimulation`](/docs/api/battle/battlefield-simulation) 等其他挂载 pak 资源的对象——它们的 `assetPath` 参数说明大多直接标注"类似 CustomObject 对象的 assetPath"，具体字段名和挂载方式以各自 API 文档为准。
+
 ## pak 资产的制作要求
 
 pak 由美术侧在 UE 工程中打包产出，对接时向资产方明确两点：

@@ -26,10 +26,12 @@ description: "在三维场景中加载并沿指定轨迹运行的列车对象，
   - 站场、厂区铁路调车与应急演练中的列车移动仿真。
   - 轨道交通列车运行仿真：列车沿轨道行驶，配合 Camera.follow 跟随观察站段运行。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 列车沿 `coordinates` 轨迹坐标行驶，坐标需贴合实际轨道线形并与 `coordinateType`（Projection/WGS84）一致，否则会出现脱轨或抖动。
   - `carriageNum`/`carriageStyle` 决定车厢编组与模型，`maxSpeed`、`acceleration` 控制运行节奏；`doubleLocomotive`、`direction` 用于设置车头与运行方向。
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 
@@ -70,7 +72,7 @@ description: "在三维场景中加载并沿指定轨迹运行的列车对象，
 | `id` | `string` | 是 | - | Train对象的ID |
 | `groupId` | `string` | 否 | - | 可选，Group分组 |
 | `userData` | `string` | 否 | - | 可选，用户自定义数据 |
-| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值：0为Projection类型，1为WGS84类型，默认值：0 |
+| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
 | `coordinates` | `array` | 是 | - | 路径模型的轨迹坐标数组，取值示例：[取值示例](/docs/tutorials/coordinates) |
 | `range` | `array` | 是 | - | 可视范围: [近裁距离, 远裁距离]，取值范围: [任意负值, 任意正值] |
 | `doubleLocomotive` | `number` | 是 | - | 是否为双车头，取值范围：[0,1]，0：单向车头 1：双向车头 |

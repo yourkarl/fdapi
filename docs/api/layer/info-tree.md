@@ -29,6 +29,8 @@ description: "管理场景图层树（目录树），提供对树上对象的定
   - 主要面向工程内置场景对象，与运行时通过各图层对象动态添加的数据需区分管理。
 
 
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
+
 ## 方法列表
 
 | 方法 | 说明 | 适用业务场景 |
@@ -51,7 +53,7 @@ description: "管理场景图层树（目录树），提供对树上对象的定
 
 ### `callBPFunction(data, fn)` {#callBPFunction}
 
-调用图层树上对象包含的多个蓝图函数，注意：可以根据图层树上的对象id查询包含的所有蓝图函数 fdapi.misc.getBPFunction(id);
+调用图层树上对象包含的多个蓝图函数，注意：可以根据图层树上的对象id查询包含的所有蓝图函数 fdapi.misc.getBPFunction(id)；完整调用流程与参数类型映射见[蓝图函数集成](/docs/tutorials/blueprint-integration)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
@@ -64,7 +66,7 @@ description: "管理场景图层树（目录树），提供对树上对象的定
 |------|------|:----:|--------|------|
 | `id` | `string` | 是 | - | 图层树上对象的ID |
 | `functionName` | `string` | 是 | - | 蓝图函数名 |
-| `parameters` | `array` | 否 | - | 蓝图函数包含的多个参数，可选参数，数组类型，注意：传入多参数的顺序与类型务必与蓝图函数的参数顺序及其参数类型一致以保证执行结果符合预期。多个参数结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
+| `parameters` | `array` | 否 | - | 蓝图函数包含的多个参数，可选参数，数组类型，注意：参数顺序与类型须与蓝图函数定义严格一致，详见[蓝图函数集成](/docs/tutorials/blueprint-integration)。结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

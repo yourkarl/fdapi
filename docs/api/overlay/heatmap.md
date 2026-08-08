@@ -34,11 +34,13 @@ HeatMap 效果图如下：
   - 智慧文旅 / 景区：客流密度热力，分区进 / 出客流与实时存量可视化。
   - 工地 / 采区人员密度、车间能耗产能、气体扩散与报警密度热力分布。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 热力点 `heatValue` 须落在 `range` 设定范围内，超出范围的点将按无效处理。
   - `textureSize` 越大热力图越清晰但生成越耗时，海量热力点时应权衡纹理尺寸与性能。
   - 本对象为二维平面热力图，若需表达空间体积内的三维分布请使用 HeatMap3D。
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

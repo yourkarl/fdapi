@@ -25,12 +25,14 @@ Settings 提供场景全局参数设置接口（画质、后期、显示、特�
   - 按汇报/分析模式切换显示项
   - 批量配置全局参数
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 多为全局生效，影响整个场景
   - 部分参数性能开销较大
   - 与 SettingsPanel（面板 UI）配合使用
 
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 
@@ -41,8 +43,10 @@ Settings 提供场景全局参数设置接口（画质、后期、显示、特�
 | [`getDroneAssetPath`](#getDroneAssetPath) | 查询当前工程已经挂载的pak文件包含的自定义的无人机模型路径 |  |
 | [`getInteractiveMode`](#getInteractiveMode) | 查询当前交互模式 |  |
 | [`getLabelLayer`](#getLabelLayer) | 获取场景内所有的VTPK标注信息 |  |
+| [`getMainUISize`](#getMainUISize) | 查询主界面UI尺寸 |  |
 | [`getMapMode`](#getMapMode) | 获取地图样式 |  |
 | [`getProjectWKT`](#getProjectWKT) | 获取ACP工程的坐标系配准(wkt字符串) |  |
+| [`hideMainUI`](#hideMainUI) | 隐藏主界面 |  |
 | [`hidePropertiesPanel`](#hidePropertiesPanel) | 隐藏图层树上对象的属性面板 |  |
 | [`removeLabelLayer`](#removeLabelLayer) | 移除当前显示的VTPK的标注 |  |
 | [`setAmbientFadeDistance`](#setAmbientFadeDistance) | 设置环境光遮罩淡出距离 |  |
@@ -84,6 +88,7 @@ Settings 提供场景全局参数设置接口（画质、后期、显示、特�
 | [`setLutIntensity`](#setLutIntensity) | 设置 LUT 调色强度 |  |
 | [`setLutMode`](#setLutMode) | 设置 LUT 调色模式 |  |
 | [`setMainPanelPos`](#setMainPanelPos) | 设置左侧资源面板的位置偏移 |  |
+| [`setMainUISize`](#setMainUISize) | 设置主界面UI尺寸 |  |
 | [`setMainUIVisibility`](#setMainUIVisibility) | 设置主界面UI元素的可见性 |  |
 | [`setMapMode`](#setMapMode) | 设置地图样式 |  |
 | [`setMaxCameraHeight`](#setMaxCameraHeight) | 设置相机的最大观察高度 |  |
@@ -114,6 +119,7 @@ Settings 提供场景全局参数设置接口（画质、后期、显示、特�
 | [`setWMTSLayerOpacity`](#setWMTSLayerOpacity) | 设置WMTS图层的透明度 |  |
 | [`setWMTSLayerVisible`](#setWMTSLayerVisible) | 设置WMTS图层的可见性 |  |
 | [`setYawSpeed`](#setYawSpeed) | 设置水平视角的默认旋转速度，即按住鼠标右键拖拽水平视角旋转的速度 |  |
+| [`showMainUI`](#showMainUI) | 显示主界面 |  |
 | [`showPropertiesPanel`](#showPropertiesPanel) | 显示图层树上对象的属性面板 |  |
 
 ## 方法（Methods）
@@ -213,6 +219,25 @@ fdapi.settings.getInteractiveMode();
 
 ---
 
+### `getMainUISize(fn)` {#getMainUISize}
+
+查询主界面UI尺寸（2026.07.03 新增）
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），结果中的尺寸模式取值见[`UISizeMode`](/docs/api/types#uisizemode)。
+
+> 示例代码如下：
+
+```js
+const res = await fdapi.settings.getMainUISize();
+console.log(res);
+```
+
+---
+
 ### `getMapMode(fn, fn)` {#getMapMode}
 
 获取地图样式
@@ -265,6 +290,24 @@ fdapi.settings.getMapMode();
 
 ```js
 fdapi.settings.getProjectWKT();
+```
+
+---
+
+### `hideMainUI(fn)` {#hideMainUI}
+
+隐藏主界面（2026.07.03 新增）
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
+> 示例代码如下：
+
+```js
+await fdapi.settings.hideMainUI();
 ```
 
 ---
@@ -1107,6 +1150,25 @@ await fdapi.settings.setMainPanelPos(0, 0);
 
 ---
 
+### `setMainUISize(sizeMode, fn)` {#setMainUISize}
+
+设置主界面UI尺寸（2026.07.03 新增）
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `sizeMode` | [`UISizeMode`](/docs/api/types#uisizemode) | 否 | 标准 | UI尺寸枚举，包含四种尺寸：较小、标准、较大、最大，枚举类型请参考[`UISizeMode`](/docs/api/types#uisizemode)，默认值：标准 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
+> 示例代码如下：
+
+```js
+await fdapi.settings.setMainUISize(UISizeMode.Big);
+```
+
+---
+
 ### `setMainUIVisibility(visible, fn)` {#setMainUIVisibility}
 
 设置主界面UI元素的可见性
@@ -1764,6 +1826,24 @@ fdapi.settings.setWMTSLayerVisible([["1", false], ["2", true], ["3", false]]);
 ```js
 //设置水平视角的默认旋转速度，即按住鼠标右键拖拽水平视角旋转的速度
 fdapi.settings.setYawSpeed(1);
+```
+
+---
+
+### `showMainUI(fn)` {#showMainUI}
+
+显示主界面（2026.07.03 新增）
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
+> 示例代码如下：
+
+```js
+await fdapi.settings.showMainUI();
 ```
 
 ---

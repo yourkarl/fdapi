@@ -40,11 +40,13 @@ HeatMap3D 效果图如下：
   - 能源 / 气象：风场、温度场、辐射强度等空间体数据的立体可视化。
   - 三维产业 / 风险热力：体热力表达空间聚集程度与风险分布。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - `voxelShape` 设为球体（Sphere）时构建非常耗时，体素数量大时建议使用盒子（Box）模式。
   - `displayMode` 为 0/1（体积雾/体素）时与全局剖切方法联动，模式 2（盒子）需自行传入 `clipBox`。
   - 体素分辨率（`voxelSize`/`voxelGridSize`）与纹理尺寸直接影响显存与性能，海量数据需控制规模。
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

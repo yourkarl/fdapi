@@ -30,11 +30,13 @@ Tag已停止更新，推荐使用功能更丰富的标注对象Marker
   - 点击标签弹出监控视频、详情网页等关联信息窗口。
   - 重点部位、POI 兴趣点的图文标识与可视范围控制显示。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 该对象已废弃停止更新，新项目应优先使用 Marker，本对象仅用于存量兼容。
   - 通过 range/textRange 控制标签与文字的可见距离，避免远距离海量标签同时显示导致性能下降与画面拥挤。
   - 注意 coordinateType 与场景坐标系一致，autoHeight 可自动贴合下方物体高度。
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 
@@ -105,7 +107,7 @@ Tag已停止更新，推荐使用功能更丰富的标注对象Marker
 | `hoverImagePath` | `string` | 是 | - | 鼠标悬停时显示的图片路径，[资源引入说明](/docs/tutorials/resources) |
 | `autoHidePopupWindow` | `boolean` | 否 | true | 是否自动关闭弹出窗口，默认值：true，失去焦点后会自动关闭 |
 | `autoHeight` | `boolean` | 否 | false | 自动判断下方是否有物体，设置正确高度，默认值：false |
-| `coordinateType` | `number` | 是 | - | 坐标系类型，取值范围：0(Projection), 1(WGS84)，如果不设置此参数，默认为0。 |
+| `coordinateType` | `number` | 否 | 0 | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

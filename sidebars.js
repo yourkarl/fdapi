@@ -25,6 +25,8 @@ const sidebars = {
         'tutorials/coordinates',
         'tutorials/color',
         'tutorials/resources',
+        'tutorials/blueprint-integration',
+        'tutorials/material-customization',
         'tutorials/camera',
         'tutorials/typescript',
       ],

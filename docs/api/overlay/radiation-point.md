@@ -28,12 +28,14 @@ RadiationPoint 以辐射圈/扩散圈形式表达从某点向外扩散、强度�
   - 事件影响半径与预警圈表达
   - 信号/服务覆盖范围的示意
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 为示意性表达，非精确扩散模型
   - 半径与衰减参数需结合业务设定
   - 常与告警点、标注配合使用
 
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

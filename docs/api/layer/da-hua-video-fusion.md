@@ -24,7 +24,7 @@ description: "对接大华 ICC 开放平台的视频融合对象，将实时摄�
   - 交通指挥中心将车道监控视频投射到道路三维模型，辅助态势研判与事件复核。
   - 应急指挥时点击摄像头标签快速定位现场，调取实景视频联动处置。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 依赖大华 ICC 开放平台，需正确配置 serverIP、serverPort 与鉴权 accessToken，token 按其接口文档获取且存在有效期。
   - 视频融合对网络带宽与服务端并发能力敏感，需控制同屏融合的摄像头数量。
   - 仅适配大华视频平台，其它厂商视频源需使用对应的融合对象或通用方案。
@@ -37,6 +37,8 @@ new DaHuaVideoFusion()
 
 ---
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

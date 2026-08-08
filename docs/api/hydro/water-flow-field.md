@@ -26,12 +26,14 @@ WaterFlowField流场类对象，用于精确控制水流单个网格的方向速
   - 潮流、环流方向的动态展示
   - 景观水系的动态流动效果
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 网格分辨率影响细腻度与性能
   - 流场数据需规范采样
   - 通常与 WaterMesh、动态水面配合使用
 
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

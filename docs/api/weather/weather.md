@@ -32,6 +32,8 @@ Weather 设置与获取场景的天气/气象效果（晴雨雪雾、时间、�
 
 
 
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
+
 ## 方法列表
 
 | 方法 | 说明 | 适用业务场景 |
@@ -513,6 +515,7 @@ fdapi.weather.setMoonSize(6);
 | `amplitude` | `number` | 否 | 4.2米 | 海浪的振幅，值越大上下起伏越大，默认值：4.2米 |
 | `speed` | `number` | 否 | 9 | 海浪的运动速度倍率，值越大海浪运动越快，默认值：9 |
 | `formDensity` | `number` | 否 | 0.2 | 海浪泡沫的强度，默认值：0.2，取值范围：[0,1] |
+| `directionNorm` | `number` | 否 | 0.85 | 海浪传播方向的归一值，取值范围[0~1]，0映射0°、0.5映射180°、1映射360°，默认值：0.85（2026.06.11 新增） |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -524,7 +527,8 @@ let options = {
     length: 6, //波长
     amplitude: 4.2, //振幅
     speed: 9, //运动速率
-    formDensity: 0.5 //泡沫强度
+    formDensity: 0.5, //泡沫强度
+    directionNorm: 0.85 //海浪传播方向归一值
 
 }
 fdapi.weather.setOceanWave(options);

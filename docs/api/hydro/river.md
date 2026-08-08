@@ -30,12 +30,14 @@ River类 等价于一维水动力模型Hydrodynamic1D类
   - 闸坝调度对河道水流影响的推演
   - 河网联排联调的过程展示
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 依赖断面、糙率等水文参数
   - 一维模型不反映横向漫滩，需配合二维/淹没分析
   - 时序数据需与调度方案对齐
 
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 
@@ -209,12 +211,13 @@ await fdapi.river.focus(0, '2秒', [0, 0, 0]);
 | `ids` | `string \| array` | 是 | - | 要获取的River对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取）。返回字段结构未在源文档中给出，建议先用下方示例打印真实响应确认字段后再取用（River 已废弃，新项目请优先用 [Hydrodynamic1D](/docs/api/hydro/hydrodynamic1d)）。
 
 > 示例代码如下：
 
 ```js
-await fdapi.river.get(['对象ID']);
+let res = await fdapi.river.get(['对象ID']);
+console.log(JSON.stringify(res)); // 先打印确认真实返回结构，再按需取字段
 ```
 
 ---
@@ -264,10 +267,4 @@ await fdapi.river.show(['对象ID']);
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
 | `data` | `object \| array` | 是 | - | River数据，参考add方法 |
-| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
-
-**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
-
-> 示例代码如下：
-
-`
+| 

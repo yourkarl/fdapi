@@ -25,12 +25,14 @@ description: "OceanHeatMap 基于真实海洋数据(.tif)生成海面要素热�
   - 海洋环境要素的时序动态
   - 港口航道 / 海洋：海温 / 盐度 / 水深热力分布可视化。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 依赖规范的 .tif 栅格数据与色带映射
   - 大范围高分辨率注意性能
   - 时序数据需统一基准与单位
 
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

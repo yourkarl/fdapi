@@ -31,13 +31,15 @@ CustomObject 加载用户自定义三维模型并控制其位置、姿态、动�
   - 智慧文旅 / 景区：安保人员、车辆、船只实时位置与轨迹驱动，配合 Camera.follow 跟踪。
   - 港口航道 / 海洋：船舶模型实时位置与 AIS 航迹驱动，配合 Camera.follow 跟踪重点船舶。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 模型面数与数量影响性能，大量模型建议使用批量添加
   - 动画与跟随需注意时序
   - 注意资源路径配置，先在cloud里面配置pak模型文件才能添加
   - 模型位置坐标需要和场景的坐标系一致
   - 从图层actor复制为customObject对象时需要注意性能
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 
@@ -105,8 +107,8 @@ CustomObject 加载用户自定义三维模型并控制其位置、姿态、动�
 | `id` | `string` | 是 | - | CustomObject对象的ID |
 | `groupId` | `string` | 否 | - | 可选，Group分组 |
 | `userData` | `string` | 否 | - | 可选，用户自定义数据 |
-| `pakFilePath` | `string` | 是 | - | pak文件路径，[资源引入说明](/docs/tutorials/resources) |
-| `assetPath` | `string` | 是 | - | 蓝图Actor在UE工程的资源引用目录（相对路径），注意：模型必须是蓝图Actor类，即在使用UE打包pak文件时此自定义对象在UE工程内的相对路径 |
+| `pakFilePath` | `string` | 是 | - | pak文件路径，[资源引入说明](/docs/tutorials/resources)，完整 pak 制作与挂载流程见[模型资产与 pak 管线](/docs/tutorials/data-model) |
+| `assetPath` | `string` | 是 | - | 蓝图Actor在UE工程的资源引用目录（相对路径），注意：模型必须是蓝图Actor类，即在使用UE打包pak文件时此自定义对象在UE工程内的相对路径，详见[模型资产与 pak 管线](/docs/tutorials/data-model) |
 | `range` | `array` | 否 | [0, 10000] | 可视范围: [近裁距离, 远裁距离]，默认值: [0, 10000] |
 | `location` | `array` | 是 | - | 模型位置坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
 | `coordinateType` | `number` | 否 | 0 | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
@@ -185,7 +187,7 @@ fdapi.customObject.focus(o.id);
 | `tileLayerId` | `string` | 是 | - | TileLayer图层的ID |
 | `objectId` | `string \| array` | 是 | - | TileLayer图层中包含的待复制的模型(Actor)的ObjectId，同时也支持数组类型参数即把多个actor复制为一个customObject |
 | `location` | `array` | 否 | - | 可选，复制模型的位置坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值]，注意：不传此参数会使用原始Actor的位置坐标值 |
-| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值：0为Projection类型，1为WGS84类型，默认值：0 |
+| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
 | `rotation` | `array` | 否 | - | 可选，复制模型的旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，注意：不传此参数会使用原始Actor的旋转值 |
 | `scale` | `array` | 否 | - | 可选，复制模型的缩放：[X,Y,Z]，数组元素类型：(number)，取值范围：[任意正整数]，注意：不传此参数会使用原始Actor的缩放值 |
 | `smoothMotion` | `number` | 否 | 0 | 可选，运动时是否平滑差值，取值范围：1: 平滑插值，0: 跳跃，默认值：0 |
@@ -229,7 +231,7 @@ fdapi.customObject.focus('mergeActors', 10);
 
 ### `callBPFunction(data, fn)` {#callBPFunction}
 
-批量方法，调用多个CustomObject对象的多个蓝图函数
+批量方法，调用多个CustomObject对象的多个蓝图函数；完整调用流程与参数类型映射见[蓝图函数集成](/docs/tutorials/blueprint-integration)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
@@ -242,7 +244,7 @@ fdapi.customObject.focus('mergeActors', 10);
 |------|------|:----:|--------|------|
 | `id` | `string` | 是 | - | CustomObject对象的ID |
 | `functionName` | `string` | 是 | - | 蓝图函数名 |
-| `parameters` | `array` | 否 | - | 蓝图函数包含的多个参数，可选参数，数组类型，注意：传入多参数的顺序与类型务必与蓝图函数的参数顺序及其参数类型一致以保证执行结果符合预期。多个参数结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
+| `parameters` | `array` | 否 | - | 蓝图函数包含的多个参数，可选参数，数组类型，注意：参数顺序与类型须与蓝图函数定义严格一致，详见[蓝图函数集成](/docs/tutorials/blueprint-integration)。结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -454,6 +456,8 @@ CustomObject的详细信息
             "scale":	[1.000000, 1.000000, 1.000000]
         }]
 ```
+
+> **注意**：返回字段的大小写与请求字段不完全一致——`userdata`/`coordinatetype` 为全小写，`tileLayerId`/`objectId` 为驼峰，请勿假设与 `add()` 时传入的 `userData`/`coordinateType` 拼写一致。另外返回的 `coordinatetype`（如上例中的 `144`）不在请求侧 `coordinateType` 的 0~3 取值范围内，是另一套内部编码，不能直接按 `coordinateType` 枚举解读。
 
 > 示例：Get
 

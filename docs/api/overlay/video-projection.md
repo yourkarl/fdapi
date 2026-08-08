@@ -34,12 +34,14 @@ VideoProjection的效果图：
   - 智慧文旅 / 景区：摄像机点位视频调阅，监控视频与景区三维场景融合。
   - 工地 / 车间 / 罐区重点摄像头画面融合三维场景，联动 AI 分析预警定位。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 投影面与相机参数需标定对齐，否则画面错位
   - 多路视频流注意带宽与解码性能
   - 流地址需鉴权与时效管理
 
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 
@@ -82,7 +84,7 @@ VideoProjection的效果图：
 | `id` | `string` | 是 | - | 字符串类型的ID |
 | `groupId` | `string` | 否 | - | 可选，Group分组 |
 | `userData` | `string` | 否 | - | 可选，用户自定义数据 |
-| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值：0为Projection类型，1为WGS84类型，默认值：0 |
+| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
 | `videoURL` | `string` | 是 | - | 视频地址，支持本地文件和网络文件，同时支持rtsp协议、http协议等实时流媒体地址 |
 | `location` | `array` | 是 | - | 位置坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
 | `rotation` | `array` | 是 | - | 旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值] |
@@ -97,6 +99,7 @@ VideoProjection的效果图：
 | `frustumVisible` | `boolean` | 否 | false | 是否显示投影线框，默认值：false |
 | `frustumColor` | [`Color`](/docs/api/types#color) | 是 | - | 投影线框颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `texturePath` | `string` | 是 | - | 自定义投影蒙版图片路径，可以是本地路径，也支持网络路径，[资源引入说明](/docs/tutorials/resources) |
+| `order` | `number` | 否 | - | 层级：高层级会覆盖掉低层级，即值越大显示越靠上，取值范围：[任意正整数]（2026.06.16 新增） |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 

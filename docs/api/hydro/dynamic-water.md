@@ -24,11 +24,13 @@ DynamicWater 用于在三维场景中按坐标多边形快速生成带波纹流�
   - 水库、湖泊等大面积水域的常态化展示，按多边形勾勒水面范围并赋予流动质感。
   - 与建筑、桥梁、地形模型叠加，作为基础水域底景，无需精确仿真的轻量化表达。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 属于效果型水面，不反映真实水深、流速与演进过程；需要真实数据驱动时应改用 HydroDynamic2D / HydroDynamic1D 等水动力对象。
   - coordinates 需注意坐标系类型（coordinateType），高程 Z 决定水面贴合地形的高度，避免水面穿模或悬空。
   - 多边形顶点过多或水面范围过大可能影响渲染性能，建议按可视范围合理控制面片规模。
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

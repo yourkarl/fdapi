@@ -33,6 +33,12 @@ DTS 是**云渲染**数字孪生平台——三维场景并不在浏览器里渲
 2. **海量三维数据留在云端**，前端不下载模型，加载快、数据安全。
 3. **接口天然是异步的**——每次调用都要把命令发到云端、等执行结果回传（详见第三节）。
 
+云端的渲染服务基于 **Unreal Engine（UE）** 构建，这也是为什么 API 文档里会反复出现"蓝图 Actor""材质实例""pak 资产包"这些 UE 原生概念——它们不是 DTS 自造的抽象，而是 UE 工程本身的组成部分，通过 SDK 桥接给前端调用。三条最常打交道的桥接机制：
+
+- **蓝图函数**：模型 Actor 上可以发布可被远程调用的行为（动画、状态切换等），见 [蓝图函数集成](/docs/tutorials/blueprint-integration)。
+- **材质参数**：模型/矢量对象可替换材质并覆盖材质实例里的数值/颜色参数，见 [材质自定义参数](/docs/tutorials/material-customization)。
+- **pak 资产包**：车辆、无人机等动态实体模型以 UE `.pak` 包交付并按需挂载，见 [模型资产与 pak 管线](/docs/tutorials/data-model)。
+
 ## 二、三个全局对象
 
 整个 SDK 的入口就三个全局对象，先认清它们的分工：
@@ -80,6 +86,8 @@ DTS 场景分两大类，**写代码前先确认你的场景属于哪一类**，
 
 旋转统一用**欧拉角** `[Pitch, Yaw, Roll]`（俯仰/航向/翻滚），取值范围 Pitch `[-90,90]`、Yaw `[-180,180]`。
 
+> **注意**：`rotation` 数组语义上是 `[Pitch, Yaw, Roll]`，但对应 UE 引擎内部的轴是 `[Y, Z, X]`——即数组第一位（Pitch）由 UE 的 Y 轴承载、第二位（Yaw）由 Z 轴承载、第三位（Roll）由 X 轴承载，和 Explorer 场景 UI 里按 X/Y/Z 分别显示的旋转配置不是直接对应关系。几乎所有支持 `rotation` 参数的对象类都遵循这条规则，各类文档不再逐一重复解释。
+
 ## 六、对象生命周期与批量更新
 
 绝大多数可视化对象（继承自 `BaseObject`）遵循统一的生命周期：
@@ -107,6 +115,9 @@ fdapi.xxx.updateEnd(function () {     // 提交，异步
 | 搞懂异步三种写法 | [异步调用方式](/docs/tutorials/async-call) |
 | 坐标系与转换 | [坐标系与坐标转换](/docs/tutorials/coordinates) |
 | 监听鼠标/相机/绘制事件 | [事件系统](/docs/tutorials/event) |
+| 调用模型的蓝图函数 | [蓝图函数集成](/docs/tutorials/blueprint-integration) |
+| 替换/定制模型材质 | [材质自定义参数](/docs/tutorials/material-customization) |
+| 了解 pak 模型资产管线 | [模型资产与 pak 管线](/docs/tutorials/data-model) |
 | 高级接口授权 | [SDK 高级接口授权](/docs/tutorials/auth) |
 | TypeScript 类型提示 | [TypeScript 类型支持](/docs/tutorials/typescript) |
-| 在线试跑 API | [在线调试台](/sandbox) 
+| 在线试跑 API | [在线调试台](/sandbox) |

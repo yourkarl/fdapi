@@ -33,6 +33,8 @@ Misc 提供一些杂项/辅助功能接口（如图片按钮、提示等通用�
 
 
 
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
+
 ## 方法列表
 
 | 方法 | 说明 | 适用业务场景 |
@@ -157,7 +159,7 @@ await fdapi.misc.addImageButtons({
 
 ### `callBPFunction(data, fn)` {#callBPFunction}
 
-调用整个渲染场景内指定的蓝图函数 注意：调用前请先确认被调用的蓝图函数已存在，并和设计蓝图函数的开发人员沟通确认相关参数取值后再调用
+调用整个渲染场景内指定的蓝图函数 注意：调用前请先确认被调用的蓝图函数已存在，并和设计蓝图函数的开发人员沟通确认相关参数取值后再调用；完整调用流程与参数类型映射见[蓝图函数集成](/docs/tutorials/blueprint-integration)
 
 
 
@@ -513,7 +515,7 @@ fdapi.polygon.focus('polygon1');
 
 ### `getMaterial(materialPath, fn)` {#getMaterial}
 
-根据材质路径查询材质包含的图片纹理和材质参数信息，同时支持查询单个材质和多个材质包含的信息
+根据材质路径查询材质包含的图片纹理和材质参数信息，同时支持查询单个材质和多个材质包含的信息；完整工作流见[材质自定义参数](/docs/tutorials/material-customization)
 
 如何获取materialPath参数见如下动图：
 

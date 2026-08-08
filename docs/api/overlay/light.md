@@ -22,7 +22,7 @@ Light光源对象，实现对光源对象的操作
   - 交通行业：隧道照明、道路路灯、机场跑道灯光等照明设施模拟。
   - 能源 / 安防：探照灯、聚光投射、重点区域补光照明的可视化表达。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 开启 `castShadows` 阴影及批量添加多个光源时非常耗性能，建议默认关闭阴影并控制光源数量。
   - `automate` 开启后光源随系统时间昼灭夜亮，调试时需先用天气接口设置为夜晚时间才能看到效果。
   - `outerConAngle` 仅聚光源（type=2）生效，`thickness` 仅矩形光源（type=3）生效，不同类型参数不可混用。
@@ -35,6 +35,8 @@ new Light()
 
 ---
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

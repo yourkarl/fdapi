@@ -24,7 +24,7 @@ Satellite 用于在球面坐标系场景中加载与表现卫星对象，支持�
   - 遥感/导航卫星过境、覆盖范围与对地观测任务的态势推演。
   - 空间目标监视、空天一体作战与应急通信保障的态势呈现。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 卫星位于超大尺度空间，需配合相机模式（如 `setCameraMode` 设置 maxCameraHeight 至数十万公里）才能正常观察；`textRange`/`modelRange`/`imageVisibleDistance` 控制不同表现形式的可视距离。
   - 缩略图 `imagePath` 各分辨率需保持一致；`coordinate` 为大数值坐标，注意与坐标系及单位匹配，避免位置异常。
 
@@ -36,6 +36,8 @@ new Satellite()
 
 ---
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 
@@ -68,16 +70,15 @@ new Satellite()
 
 ## 方法（Methods）
 
-### `add(data, textRange, modelRange, imageVisibleDistance, fn)` {#add}
+### `add(data, fn)` {#add}
 
 添加一个或多个Satellite对象
+
+> **自 2026.07.07 起参数结构调整**：原先的 `textRange`/`modelRange`/`imageVisibleDistance` 三个顶层参数已合并为 `data` 对象内的可选属性（各自带默认值），方法签名简化为 `add(data, fn)`。
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
 | `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
-| `textRange` | `array` | 是 | - | 卫星文字的可视范围: [近裁距离, 远裁距离]，取值范围: [任意负值, 任意正值] |
-| `modelRange` | `array` | 是 | - | 卫星模型的可视范围: [近裁距离, 远裁距离]，取值范围: [任意负值, 任意正值] |
-| `imageVisibleDistance` | `number` | 是 | - | 卫星缩略图的可见距离，取值范围: [0~200000000] |
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 > **`data` 对象属性：**
@@ -86,13 +87,16 @@ new Satellite()
 |------|------|:----:|--------|------|
 | `id` | `string` | 是 | - | 卫星字符串类型的ID |
 | `text` | `string` | 是 | - | 卫星标签显示的文字内容 |
-| `assetPath` | `string` | 是 | - | 蓝图Actor在UE工程的资源引用目录（相对路径），注意：模型必须是蓝图Actor类，即在使用UE打包pak文件时此自定义对象在UE工程内的相对路径 |
+| `assetPath` | `string` | 是 | - | 蓝图Actor在UE工程的资源引用目录（相对路径），注意：模型必须是蓝图Actor类，即在使用UE打包pak文件时此自定义对象在UE工程内的相对路径，详见[模型资产与 pak 管线](/docs/tutorials/data-model) |
 | `coordinate` | `array` | 是 | - | 卫星的坐标位置 |
 | `pointSize` | `number` | 是 | - | 卫星像素点的像素尺寸，单位：像素 |
 | `color` | [`Color`](/docs/api/types#color) | 是 | - | 卫星像素点的显示颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
 | `imagePath` | `number` | 否 | - | 可选，卫星缩略图的文件路径，注意：参数配置的各缩略图的分辨率大小必须相同，[资源引入说明](/docs/tutorials/resources) |
 | `imageSize` | `array` | 否 | - | 可选，卫星的缩略图尺寸，宽高取值：[width, height]，默认使用图片尺寸 |
 | `modelRotation` | `array` | 否 | [0,0,0] | 可选，卫星的旋转姿态，世界坐标系旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |
+| `textRange` | `array` | 否 | [0, 500000] | 可选，卫星文字的可视范围: [近裁距离, 远裁距离]，取值范围: [任意负值, 任意正值]，默认值：[0, 500000]（2026.07.07 由顶层参数调整为该属性） |
+| `modelRange` | `array` | 否 | [0, 10000] | 可选，卫星模型的可视范围: [近裁距离, 远裁距离]，取值范围: [任意负值, 任意正值]，默认值：[0, 10000]（2026.07.07 由顶层参数调整为该属性） |
+| `imageVisibleDistance` | `number` | 否 | 50000000 | 可选，卫星缩略图的可见距离，默认值：50000000（2026.07.07 由顶层参数调整为该属性） |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -158,14 +162,16 @@ new Satellite()
             "coordinate": coord,
             "pointSize": 12, //卫星圆点像素大小
             "color": colorArr[colorIndex], //卫星圆点像素颜色 随机使用五种颜色其中的一种
-		    "modelRotation":[0,coord[0],0]//卫星模型旋转 需要再传，不需要不传，节省性能
+		    "modelRotation":[0,coord[0],0],//卫星模型旋转 需要再传，不需要不传，节省性能
+            "textRange": [0, 500000], //卫星文字可视范围
+            "modelRange": [0, 10000], //卫星模型可视范围
+            "imageVisibleDistance": 1000000 //卫星缩略图最大可见距离
         };
         satelliteArr.push(satellite);
     }
 
 
-    //参数说明：卫星对象数组、卫星文字可见范围、卫星模型可见范围、卫星缩略图的最大可见距离
-    fdapi.satellite.add(satelliteArr, [0, 500000], [0, 10000], 1000000);
+    fdapi.satellite.add(satelliteArr);
 
     let index = 0;
     let timer = setInterval(function () {
@@ -254,13 +260,15 @@ for (let i = 0; i < count; i++) {
         "color": colorArr[colorIndex], //卫星圆点像素颜色 随机使用五种颜色其中的一种
         "imagePath": thumbnailPathArr[(Math.random()>0.5?0:1)],//卫星缩略图文件路径 随机thumbnailPathArr[]数组内的路径
         "imageSize": [48,48],//卫星缩略图尺寸
+        "textRange": [0, 500000], //卫星文字可视范围
+        "modelRange": [0, 10000], //卫星模型可视范围
+        "imageVisibleDistance": 1000000 //卫星缩略图最大可见距离
     };
     satelliteArr.push(satellite);
 }
 
 
-//参数说明：卫星对象数组、卫星文字可见范围、卫星模型可见范围、卫星缩略图的最大可见距离
-fdapi.satellite.add(satelliteArr, [0, 500000], [0, 10000], 1000000);
+fdapi.satellite.add(satelliteArr);
 
 let index = 0;
 let timer = setInterval(function () {
@@ -349,7 +357,7 @@ await fdapi.satellite.addLinkage(linkArr,[{
 
 ### `callBPFunction(data, fn)` {#callBPFunction}
 
-调用卫星模型包含的多个蓝图函数，注意：调用前请使用getBPFunction()函数来查询当前卫星模型包含的蓝图函数参数信息
+调用卫星模型包含的多个蓝图函数，注意：调用前请使用getBPFunction()函数来查询当前卫星模型包含的蓝图函数参数信息；完整调用流程与参数类型映射见[蓝图函数集成](/docs/tutorials/blueprint-integration)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
@@ -362,7 +370,7 @@ await fdapi.satellite.addLinkage(linkArr,[{
 |------|------|:----:|--------|------|
 | `id` | `string` | 是 | - | 卫星对象的ID |
 | `functionName` | `string` | 是 | - | 蓝图函数名 |
-| `parameters` | `array` | 否 | - | 蓝图函数包含的多个参数，可选参数，数组类型，注意：传入多参数的顺序与类型务必与蓝图函数的参数顺序及其参数类型一致以保证执行结果符合预期。多个参数结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
+| `parameters` | `array` | 否 | - | 蓝图函数包含的多个参数，可选参数，数组类型，注意：参数顺序与类型须与蓝图函数定义严格一致，详见[蓝图函数集成](/docs/tutorials/blueprint-integration)。结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -508,12 +516,13 @@ fdapi.satellite.focus(["500"], 20, 0, -29, -30);
 | `ids` | `string \| array` | 是 | - | 要获取的卫星的ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取）。返回字段结构未在源文档中给出，建议先用下方示例打印真实响应确认字段（预期至少包含实时 `coordinate`）后再取用。
 
 > 示例：Get
 
 ```js
-fdapi.satellite.get(["500","501","502"]);
+let res = await fdapi.satellite.get(["500","501","502"]);
+console.log(JSON.stringify(res)); // 先打印确认真实返回结构，再按需取字段
 ```
 
 ---

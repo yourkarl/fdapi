@@ -37,6 +37,8 @@ new FdExternal()
 
 ---
 
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
+
 ## 方法（Methods）
 
 ### `.close()`

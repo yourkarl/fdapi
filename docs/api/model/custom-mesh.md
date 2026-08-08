@@ -24,12 +24,14 @@ CustomMesh 通过顶点/索引自定义三维网格几何体并着色，构建�
   - 自定义分析结果面/等值面
   - 特殊形状的标识体或包络体
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 顶点/索引须正确，法线与缠绕方向影响正反面显隐
   - 大网格注意性能
   - 坐标需与场景一致
 
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

@@ -11,9 +11,41 @@ description: "API 参数中用到的对象类型与枚举常量（Color、各类
 
 > 颜色相关参数（类型 `Color`）的四种取值格式与示例，另见 [颜色系统](/docs/tutorials/color)。
 
+## 参数命名与单位约定
+
+SDK 各类是分批迭代出来的，同一类概念在不同类里偶尔会用不同的参数名——这不是文档笔误，是真实的 API 现状。以下集中说明，避免每个类文档里重复写同一段解释，也避免误以为是漏写：
+
+**单位约定**：除参数说明里特别标注外，全站长度/距离类参数（`range`、`distance`、`thickness` 等）单位统一为**米**，角度类参数（`Pitch`/`Yaw`/`Roll`、`outerConAngle` 等）单位统一为**度**。
+
+**资源加载路径类参数**：以下三个参数名指向同一类"数据/模型从哪里加载"的概念，字段名因类而异，调用时以对应类的参数表为准，不要跨类假设字段名一致：
+
+| 参数名 | 出现的类 | 含义 |
+|------|------|------|
+| `assetPath` | CustomObject、Vehicle、Vehicle2、Drone、Satellite 等 | 蓝图 Actor 在 UE 工程内的相对路径 |
+| `pakFilePath` | CustomObject 等 | pak 资产包本身的路径（`assetPath` 是包内相对路径，两者配合使用），详见[模型资产与 pak 管线](/docs/tutorials/data-model) |
+| `fileName` | TileLayer | 3dt 文件路径，语义上等价于其他类的 `pakFilePath`/`assetPath`，只是 TileLayer 历史上单独命名 |
+
+**可见范围类参数**：以下参数名都表达"什么距离/高度范围内可见"，但作用维度不同，不要混淆：
+
+| 参数名 | 维度 | 出现的类举例 |
+|------|------|------|
+| `range` | 通用可视距离范围 `[近裁距离, 远裁距离]` | Marker、Polyline、CustomMesh 等大多数对象类 |
+| `textRange` / `modelRange` | 分别控制文字/模型两种表现形式各自的可视距离范围 | Satellite |
+| `viewHeightRange` | 可见**高度**范围（不是距离），`[最小可见高度, 最大可见高度]` | Marker、Marker3D 等 |
+| `imageVisibleDistance` | 缩略图的可见距离（单值，非区间） | Satellite |
+
+**布尔开关命名**：历史字段风格不统一，新增字段起统一使用 `enableXxx`；已有字段维持原名，不做重命名（重命名会破坏现有代码）：
+
+| 已有命名风格 | 举例 |
+|------|------|
+| 直接用名词 | `visible`、`collision` |
+| `autoXxx` | `autoHeight` |
+| `enableXxx`（推荐风格，新字段延续） | `enableXRay`、`enableDecal` |
+| 其他历史命名 | `castShadows`、`automate` |
+
 ## 索引
 
-[`ActionMode`](#actionmode) · [`AnimationMask`](#animationmask) · [`APIErrorCode`](#apierrorcode) · [`AssetType`](#assettype) · [`BPFuncParamType`](#bpfuncparamtype) · [`CloudStatus`](#cloudstatus) · [`Color`](#color) · [`DroneTrailStyle`](#dronetrailstyle) · [`FieldType`](#fieldtype) · [`ForwardAxis`](#forwardaxis) · [`HeatMapStyle`](#heatmapstyle) · [`HydroDynamic2DStyle`](#hydrodynamic2dstyle) · [`MapMode`](#mapmode) · [`MeasurementMode`](#measurementmode) · [`MousePickMask`](#mousepickmask) · [`OceanHeatMapStyle`](#oceanheatmapstyle) · [`PanelType`](#paneltype) · [`PlotStyle`](#plotstyle) · [`Polygon3DStyle`](#polygon3dstyle) · [`PolygonStyle`](#polygonstyle) · [`PolylineStyle`](#polylinestyle) · [`RendererType`](#renderertype) · [`ResetType`](#resettype) · [`SplineMeshStyle`](#splinemeshstyle) · [`UIPanelType`](#uipaneltype) · [`VectorFieldStyle`](#vectorfieldstyle) · [`VehicleViewMode`](#vehicleviewmode) · [`VERSION`](#version) · [`Viewport`](#viewport) · [`VisualType`](#visualtype) · [`WaterFlowFieldStyle`](#waterflowfieldstyle) · [`WaterMode`](#watermode)
+[`ActionMode`](#actionmode) · [`AnimationMask`](#animationmask) · [`APIErrorCode`](#apierrorcode) · [`AssetType`](#assettype) · [`BPFuncParamType`](#bpfuncparamtype) · [`CloudStatus`](#cloudstatus) · [`Color`](#color) · [`DroneTrailStyle`](#dronetrailstyle) · [`FieldType`](#fieldtype) · [`ForwardAxis`](#forwardaxis) · [`HeatMapStyle`](#heatmapstyle) · [`HydroDynamic2DStyle`](#hydrodynamic2dstyle) · [`MapMode`](#mapmode) · [`MeasurementMode`](#measurementmode) · [`MousePickMask`](#mousepickmask) · [`OceanHeatMapStyle`](#oceanheatmapstyle) · [`PanelType`](#paneltype) · [`PlotStyle`](#plotstyle) · [`Polygon3DStyle`](#polygon3dstyle) · [`PolygonStyle`](#polygonstyle) · [`PolylineStyle`](#polylinestyle) · [`RendererType`](#renderertype) · [`ResetType`](#resettype) · [`SplineMeshStyle`](#splinemeshstyle) · [`UIPanelType`](#uipaneltype) · [`UISizeMode`](#uisizemode) · [`VectorFieldStyle`](#vectorfieldstyle) · [`VehicleViewMode`](#vehicleviewmode) · [`VERSION`](#version) · [`Viewport`](#viewport) · [`VisualType`](#visualtype) · [`WaterFlowFieldStyle`](#waterflowfieldstyle) · [`WaterMode`](#watermode)
 
 ## ActionMode
 
@@ -597,6 +629,20 @@ description: "API 参数中用到的对象类型与枚举常量（Color、各类
 | `ContourLineAnalysis` | 56 | 等高线分析 |
 | `Plot` | 57 | 态势标绘 |
 | `SplineMesh` | 58 | 路径模型 |
+| `RolesFlow` | 59 | 行人（2026.07.08 新增） |
+| `TopologyLine` | 60 | 拓扑线（2026.07.08 新增） |
+| `Fluid` | 61 | 流体（2026.07.08 新增） |
+
+## UISizeMode
+
+类型：`number` — 主界面UI尺寸设置模式（2026.07.03 新增，配合 [`settings.setMainUISize`](/docs/api/settings/settings#setMainUISize) 使用）
+
+| 成员 | 值 | 说明 |
+|------|------|------|
+| `Small` | 0 | 较小 |
+| `Normal` | 1 | 标准 |
+| `Big` | 2 | 较大 |
+| `Large` | 3 | 最大 |
 
 ## VectorFieldStyle
 

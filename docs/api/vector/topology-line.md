@@ -26,12 +26,14 @@ description: "TopologyLine 绘制连接图层树上模型/对象之间的拓扑�
   - 管网、线缆拓扑的表达
   - 系统逻辑连接示意
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 依赖图层树上的目标对象存在
   - 连接数量多时注意可读性与性能
   - 目标对象删除/移动时需联动更新
 
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

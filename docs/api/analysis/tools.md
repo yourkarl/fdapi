@@ -32,12 +32,14 @@ Tools 提供量算与空间分析等通用工具能力（如测距、测面、�
   - 公路数字化监管工具集：坐标 / 距离 / 高度 / 投影面积量测，可视域、天际线、开敞度通视、淹没、日照、填挖方、坡度坡向、等高线分析，每种自动生成专题图层与统计图表。
 - **注意事项**：
   - CIM 基础平台的日照、天际线、视域、通视、开敞度、填挖方等模拟分析，辅助规划审批与方案比选。
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 分析结果依赖地形与模型精度
   - 部分分析（通视/可视域）计算量大，需控制范围
   - 量算结果受坐标系与高程基准影响
 
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 
@@ -583,6 +585,14 @@ fdapi.tools.showUIPanel(UIPanelType.Measure, [200, 100]);
 | `contourLineSpacing` | `-` | 否 | 20米 | 等高线的间距，仅当isShowContourLine设置为true时生效，&#123;number&#125;，单位：米，默认值：20米 |
 | `contourLineRangeMax` | `-` | 否 | 1000000米 | 等高线最高显示高度，&#123;number&#125;，单位：米，默认值：1000000米 |
 | `contourLineRangeMin` | `-` | 否 | -1000000米 | 等高线最低显示高度，&#123;number&#125;，单位：米，默认值：-1000000米 |
+| `isShowHeightLabel` | `boolean` | 否 | false | 是否显示高度标注文字，默认值：false（2026.07.08 新增） |
+| `heightLabelSpacing` | `number` | 否 | 10 | 相邻高度标注的高程间隔，默认值：10（2026.07.08 新增） |
+| `heightLabelColor` | [`Color`](/docs/api/types#color) | 否 | [1,1,1,1] | 文字标注的颜色，默认值：[1,1,1,1]（2026.07.08 新增） |
+| `heightLabelSize` | `number` | 否 | 20 | 文字标注的大小，默认值：20（2026.07.08 新增） |
+| `colors` | `object` | 否 | - | 等高面的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组（2026.07.08 新增） |
+| `colors.gradient` | `boolean` | 否 | - | 是否渐变 |
+| `colors.invalidColor` | [`Color`](/docs/api/types#color) | 否 | 白色 | 无效像素点的默认颜色，默认白色 |
+| `colors.colorStops` | `array` | 否 | - | 调色板对象数组，每一个对象包含高程值和对应颜色值，结构示例：[&#123;"value":0, "color":[0,0,1,1]&#125;]，每一个调色板对象支持 `color`（[`Color`](/docs/api/types#color)，高程值对应的调色板颜色）与 `value`（`number`，高程值） |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -606,6 +616,10 @@ let options = {
     contourLineSpacing: 20,       //等高线的间距，仅当isShowContourLine设置为true时生效，{number}，单位：米，默认值：20米
     contourLineRangeMax: 1000000, //等高线最高显示高度，{number}，单位：米，默认值：1000000米
     contourLineRangeMin: -1000000,//等高线最低显示高度，{number}，单位：米，默认值：-1000000米
+    isShowHeightLabel: true,      //是否显示高度标注文字，{boolean}，默认值：false
+    heightLabelSpacing: 50,       //相邻高度标注的高程间隔，{number}，默认值：10
+    heightLabelColor: [1, 1, 0, 1], //文字标注的颜色，{Color}，默认值：[1,1,1,1]
+    heightLabelSize: 24,          //文字标注的大小，{number}，默认值：20
 };
 fdapi.tools.startContourLineAnalysis(options);
 ```

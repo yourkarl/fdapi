@@ -25,7 +25,7 @@ description: "Antenna 以方向图形式可视化天线的辐射/增益方向特
   - 电磁态势中的天线要素
   - 低空通信与雷达可视化：三维天线方向图渲染，结合波束与信号覆盖辅助通信基站选址分析。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 方向图数据需规范
   - 通常与 Beam、SignalWave 配合表达完整信号链
   - 尺度需与场景匹配
@@ -39,6 +39,8 @@ new Antenna()
 
 ---
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

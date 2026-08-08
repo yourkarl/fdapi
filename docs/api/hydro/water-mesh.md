@@ -25,12 +25,14 @@ WaterMesh 以自定义网格构建水面/水体，控制其形态、材质与水
   - 动态水位下的水面表现
   - 港口航道 / 海洋：海面与动态海水、波浪表达。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 网格精度与范围影响性能
   - 需与 WaterFlowField、DynamicWater 等配合
   - 水面需与地形贴合、坐标一致
 
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

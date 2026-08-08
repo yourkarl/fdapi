@@ -30,11 +30,13 @@ HighlightArea 根据多边形坐标在三维场景中对指定区域内的模型
   - 产业分布区域高亮：按产业类型对园区 / 区域着色高亮区分。
   - 智慧社区网格化管理：按网格 / 责任区对区域着色高亮分区。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - `heightRange` 用于限定染色的 Z 坐标区间，只有处于该区间的模型才会被染色，需结合实际高程设置。
   - `depthTest` 为 true 时高亮会被前方物体遮挡，需穿透显示时设为 false。
   - 多边形 `coordinates` 应保证闭合且无自相交，避免染色异常。
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

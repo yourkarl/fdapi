@@ -24,12 +24,14 @@ BattlefieldSimulation 加载并驱动装甲车、坦克、无人机、士兵等�
   - 训练复盘与战场态势回放
   - 红蓝对抗与力量部署演示
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 作战单元数量大时需关注性能与 LOD
   - 机动轨迹与时序数据须规范
   - 通常与态势标绘(Plot)、波束(Beam)等配合呈现完整态势
 
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 
@@ -62,13 +64,13 @@ BattlefieldSimulation 加载并驱动装甲车、坦克、无人机、士兵等�
 | `id` | `string` | 是 | - | BattlefieldSimulation对象的ID |
 | `groupId` | `string` | 否 | - | 可选，Group分组Id |
 | `userData` | `string` | 否 | - | 可选，用户自定义数据 |
-| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值：0为Projection类型，1为WGS84类型，默认值：0 |
+| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
 | `noiseThreshold` | `number` | 否 | 0.05 | 可选，车辆摆头的降噪距离，单位：米，默认值：0.05 |
 | `delay` | `number` | 否 | 0.5 | 可选，控制车辆移动的延迟时间，单位：秒，默认值：0.5，设置0则不延时立刻移动 |
 | `timer` | `boolean` | 是 | - | 设置为false使用dat数据内的时间字段time，设置为true则使用定时器的时间间隔，默认：false， |
 | `models` | `array` | 是 | - | 战场仿真包含的作战单元对象模型类型数组，注意：只需要在add()方法执行时配置，每一个数组元素对象包含属性如下： |
 | `models.type` | `number` | 是 | - | 车辆类型，注意这个数值会写入更新方法使用的.dat文件内。 |
-| `models.package` | `string` | 是 | - | 资源库车辆载具路径，取值类似CustomObject对象的assetPath，示例值：'/AirCityPlugin/ArtResources/Traffic/SUVTemplete' |
+| `models.package` | `string` | 是 | - | 资源库车辆载具路径，取值类似CustomObject对象的assetPath（详见[模型资产与 pak 管线](/docs/tutorials/data-model)），示例值：'/AirCityPlugin/ArtResources/Traffic/SUVTemplete' |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -162,7 +164,7 @@ fdapi.battlefieldSimulation.focus("battlefield", 100);
 | `groupId` | `string` | 否 | - | 可选，Group分组Id |
 | `userData` | `string` | 否 | - | 可选，用户自定义数据 |
 | `file` | `string` | 是 | - | 某个时刻的多辆车的轨迹点数据文件路径，包含：车辆id、车辆经度、车辆纬度、车辆类型、时间、车辆朝向。二进制文件格式(.dat)，包含内容如下：id(int 4字节),lon(double 8字节),lat(double 8字节),type(int 4字节),time(int 4字节),heading(float 4字节) |
-| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值：0为Projection类型，1为WGS84类型，默认值：0 |
+| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
 | `noiseThreshold` | `number` | 否 | 0.05 | 车辆摆头的降噪距离，单位：米，默认值：0.05 |
 | `timer` | `boolean` | 是 | - | 设置为false使用dat数据内的时间字段time，设置为true则使用定时器的时间间隔，默认：false， |
 

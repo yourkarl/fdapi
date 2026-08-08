@@ -19,6 +19,8 @@
 - [坐标系与坐标转换](https://yourkarl.github.io/fdapi/docs/tutorials/coordinates) — 投影坐标系、地理坐标系、火星/百度坐标系的说明与转换
 - [颜色与 Color 对象](https://yourkarl.github.io/fdapi/docs/tutorials/color) — DTS SDK 中颜色值的表示方式和使用方法
 - [资源描述与引用](https://yourkarl.github.io/fdapi/docs/tutorials/resources) — 场景资源路径、素材引用规则与最佳实践
+- [蓝图函数集成](https://yourkarl.github.io/fdapi/docs/tutorials/blueprint-integration) — UE 蓝图函数从查询、参数映射到调用的完整流程，以及 misc 全局调用与各对象批量调用的选择
+- [材质自定义参数](https://yourkarl.github.io/fdapi/docs/tutorials/material-customization) — 查询 UE 材质实例参数(getMaterial)、覆盖 scalarParameters/vectorParameters 的完整工作流与常见坑
 - [相机控制教程](https://yourkarl.github.io/fdapi/docs/tutorials/camera) — 详细介绍相机飞行定位、环绕、导览、视角锁定等常见场景
 - [TypeScript 类型支持](https://yourkarl.github.io/fdapi/docs/tutorials/typescript) — 在二次开发工程中使用 fdapi 的 TypeScript 类型声明，获得 IDE 智能提示与类型检查
 

@@ -27,12 +27,14 @@ Vehicle2 是高级载具对象，在 Vehicle 基础上提供更丰富的车辆�
   - 高拟真车流场景
   - 交通 IoT 车辆数字孪生（高级载具）：沿车道精细化行驶仿真，自定义车型、车速与朝向，配合 Camera.follow 跟随重点车辆。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 功能更全但开销高于 Vehicle
   - 大规模车流需 LOD 与实例化
   - 路网与轨迹数据须规范
 
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 
@@ -76,9 +78,9 @@ Vehicle2 是高级载具对象，在 Vehicle 基础上提供更丰富的车辆�
 | `id` | `string` | 是 | - | Vehicle2对象的ID |
 | `groupId` | `string` | 否 | - | 可选，Group分组 |
 | `userData` | `string` | 否 | - | 可选，用户自定义数据 |
-| `assetPath` | `string` | 是 | - | 资源库车辆载具路径，类似CustomObject对象的assetPath，示例值：'/JC_CustomAssets/Vehicle2Library/Exhibition/SUV_01' |
+| `assetPath` | `string` | 是 | - | 资源库车辆载具路径，类似CustomObject对象的assetPath（详见[模型资产与 pak 管线](/docs/tutorials/data-model)），示例值：'/JC_CustomAssets/Vehicle2Library/Exhibition/SUV_01' |
 | `coordinate` | `array` | 是 | - | 载具初始位置坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
-| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值：0为Projection类型，1为WGS84类型，默认值：0 |
+| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
 | `autoHeight` | `boolean` | 否 | true | 可选，是否自动计算载具行驶高度，默认值：true，注意：当设置为false时会使用载具坐标的高度Z |
 | `delay` | `number` | 否 | 0.5 | 可选，控制载具moveTo()接口移动的延迟时间，单位：秒，默认值：0.5，设置0则不延时立刻移动 |
 | `rotation` | `array` | 否 | [0,0,0] | 可选，载具旋转，世界坐标系旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |

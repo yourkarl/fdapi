@@ -24,7 +24,7 @@ FiniteElement2有限元仿真对象，实现对有限元仿真对象的操作
   - 大规模有限元结果的云图与形变可视化
   - 多工况对比与安全评估
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 相比 FiniteElement 数据与计算量更大，更需 LOD 与分级加载
   - 时序结果需统一时间基准
   - 色带/量纲映射与坐标对齐须正确
@@ -36,6 +36,8 @@ new FiniteElement2()
 ```
 
 ---
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 
@@ -97,6 +99,7 @@ new FiniteElement2()
 | `arrow.sizeScale` | `number` | 否 | - | 可选，箭头尺寸 |
 | `arrow.colorField` | `string` | 是 | - | 颜色属性字段名称 |
 | `arrow.colorComponent` | `string` | 是 | - | 颜色属性字段对应的分量名称 |
+| `blendMode` | `number` | 否 | 0 | colors色带透明度的模式类型，取值范围：[0,1]；取值说明：0不透明，1半透明；默认值：0（2026.06.10 新增） |
 | `colors` | `object` | 是 | - | 有限元仿真对象的自定义调色板对象，包含颜色渐变控制、无效像素颜色和调色板区间数组 |
 | `colors.gradient` | `boolean` | 是 | - | 是否渐变 |
 | `colors.invalidColor` | [`Color`](/docs/api/types#color) | 是 | - | 无效像素点的默认颜色，默认白色 |

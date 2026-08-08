@@ -29,7 +29,7 @@ description: "在三维场景中放置带特效的立体标注（动态标记）
   - 公路 / 交通设施三维标牌（Billboard）点位标注，点击弹窗联动养护资料，按路段 groupId 分组管理。
   - 智慧文旅 / 景区：消防 / 安防 / 能耗等设备三维点位，状态着色与告警闪烁定位。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - pointName 特效名称需取自 Explorer 资源面板「动态标记」下的显示名称，否则无法显示；
   - 三维标注带特效，渲染开销高于普通 Marker，海量场景应控制数量；
   - 注意 coordinateType 坐标系与场景一致，pointScale/textScale 取值需合理；
@@ -43,6 +43,8 @@ new Marker3D()
 
 ---
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 
@@ -106,6 +108,7 @@ new Marker3D()
 | `viewHeightRange` | `array` | 否 | [-1000000000, 1000000000] | 可见高度范围：[最小可见高度, 最大可见高度]，默认值: [-1000000000, 1000000000] |
 | `autoHeight` | `boolean` | 否 | false | 自动判断下方是否有物体，设置正确高度，默认值：false |
 | `collision` | `boolean` | 否 | - | 可选，设置Marker3D对象加载后是否开启碰撞，默认：true |
+| `depthTest` | `boolean` | 否 | true | 可选，是否做深度检测，默认值：true，true会被遮挡，false不会被遮挡（2026.06.02 新增） |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -147,7 +150,8 @@ for (let i = 0; i < buildingCoordinates.length; i++) {
         'range': [1, 1000], //3D标注的可视距离范围：[min,max]，单位：米
         'viewHeightRange': [0, 1000],//可见高度范围
         'autoHeight': false,//自动判断下方是否有物体，设置正确高度，默认值：false
-        'collision': true //默认开启碰撞
+        'collision': true, //默认开启碰撞
+        'depthTest': true //是否做深度检测，默认值：true
     }
     marker3dArr.push(marker3d);
 
@@ -275,7 +279,7 @@ await fdapi.marker3d.attachObject({
 
 ### `callBPFunction(data, fn)` {#callBPFunction}
 
-调用Marker3D对象包含的多个蓝图函数，注意：可以根据marker3d的对象id查询包含的所有蓝图函数 fdapi.misc.getBPFunction(id);
+调用Marker3D对象包含的多个蓝图函数，注意：可以根据marker3d的对象id查询包含的所有蓝图函数 fdapi.misc.getBPFunction(id)；完整调用流程与参数类型映射见[蓝图函数集成](/docs/tutorials/blueprint-integration)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
@@ -286,9 +290,9 @@ await fdapi.marker3d.attachObject({
 
 | 属性 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
-| `id` | `string` | 是 | - | CustomObject对象的ID |
+| `id` | `string` | 是 | - | Marker3D对象的ID |
 | `functionName` | `string` | 是 | - | 蓝图函数名 |
-| `parameters` | `array` | 否 | - | 蓝图函数包含的多个参数，可选参数，数组类型，注意：传入多参数的顺序与类型务必与蓝图函数的参数顺序及其参数类型一致以保证执行结果符合预期。多个参数结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
+| `parameters` | `array` | 否 | - | 蓝图函数包含的多个参数，可选参数，数组类型，注意：参数顺序与类型须与蓝图函数定义严格一致，详见[蓝图函数集成](/docs/tutorials/blueprint-integration)。结构示例：[&#123;"paramType":BPFuncParamType.String,"paramValue":"示例值"&#125;,&#123;"paramType":BPFuncParamType.Bool,"paramValue":false&#125;,&#123;"paramType":BPFuncParamType.Float,"paramValue":100.8&#125;] |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
 
@@ -693,7 +697,8 @@ let o = {
     'coordinateType': 0, //坐标系类型 
     'range': [1, 10000], //3D标注的可视距离范围：[min,max]，单位：米
     'autoHeight': false,//自动判断下方是否有物体，设置正确高度，默认值：false
-    'collision': true //默认开启碰撞
+    'collision': true, //默认开启碰撞
+    'depthTest': true //是否做深度检测，默认值：true
 }
 fdapi.marker3d.add(o);
 

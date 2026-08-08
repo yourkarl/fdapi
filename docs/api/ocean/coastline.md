@@ -27,11 +27,13 @@ description: "用于在指定包围盒范围内模拟与渲染海岸线效果，
   - 滨海城市、港口、滩涂区域的海陆交界景观展示与防灾科普展示。
   - 港口航道 / 海洋：岸线与港区海岸表达，作为港航数字孪生底座。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - `bbox` 决定模拟范围，范围过大会增加渲染与计算开销，应结合实际关注区域设定。
   - 水淹推演由 `enableFloodFill`、`seaLevelTimeInterval`、`seaLevelIncrement`、`seaLevelMaxElevation` 共同控制，参数需与真实潮位/水文数据匹配，避免淹没结果失真。
   - `seaLevelOffset` 基于 bbox 中心 Z 偏移，使用前需确认坐标系与高程基准一致。
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

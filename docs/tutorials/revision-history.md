@@ -6,6 +6,92 @@ description: "SDK 各版本更新内容与兼容性说明"
 # 版本更新记录
 
 
+### 2026.07.17 TileLayer对象新增支持构件的符号化设置
+
+##### TileLayer对象新增以下方法
+
+- addSymbols(data) 对图层构件进行符号化设置，支持设置样式及样式的关联颜色
+- removeSymbols(data) 移除图层内指定构件的符号化样式
+- clearSymbols(ids) 清空图层内所有构件的符号化样式
+- getSymbols(ids) 查询图层内构件已经设置的符号化样式
+
+### 2026.07.08 Tools等高线分析接口支持自定义色带和高度标注、UIPanel面板新增枚举类型
+
+##### UIPanelType新增三种枚举
+
+- RolesFlow：行人
+- TopologyLine：拓扑线
+- Fluid：流体
+
+##### 等高线分析方法startContourLineAnalysis(options)新增以下参数
+
+- isShowHeightLabel 是否显示高度标注文字，`boolean`，默认值：false
+- heightLabelSpacing 相邻高度标注的高程间隔，`number`，默认值：10
+- heightLabelColor 文字标注的颜色，`color`，默认值：[1,1,1,1]
+- heightLabelSize 文字标注的大小，`number`，默认值：20
+- colors 等高面的自定义颜色色带配置，`object`
+
+### 2026.07.07 卫星系统对象Satellite支持卫星对象创建更新高亮的实例化
+
+##### 优化add()方法参数结构
+
+- `add(data, textRange, modelRange, imageVisibleDistance, fn)` 简化为 `add(data, fn)`
+- `textRange`/`modelRange`/`imageVisibleDistance` 由独立位置参数改为 `data` 对象内的可选属性，各自带默认值：`textRange` 默认 [0, 500000]，`modelRange` 默认 [0, 10000]，`imageVisibleDistance` 默认 50000000
+
+### 2026.07.03 Weather天气对象和Settings对象新增方法
+
+##### Weather对象新增查询太阳光线方向向量方法
+
+- getSunDirection(time) 查询当前工程场景的太阳照射方向的方向向量值并取反，即取反后的方向向量指向太阳
+
+##### Settings对象新增设置和查询主界面尺寸方法
+
+- getMainUISize() 查询主界面UI尺寸
+- setMainUISize(mode) 设置主界面UI尺寸
+- hideMainUI() 隐藏主界面
+- showMainUI() 显示主界面
+
+新增 UISizeMode 枚举：Small(较小)、Normal(标准)、Big(较大)、Large(最大)
+
+### 2026.06.28 Polyline对象和GeoJSONLayer对象新增设置视口可见性方法
+
+- Polyline对象新增 setViewportVisible() 方法：多视口状态下，设置Polyline对象在各视口下的可见性
+- GeoJSONLayer对象新增 setViewportVisible() 方法：多视口状态下，设置GeoJSONLayer对象在各视口下的可见性
+
+### 2026.06.16 视频投影VideoProjection对象新增层级参数
+
+视频投影VideoProjection对象新增层级Order参数
+
+- order (number) 层级：高层级会覆盖掉低层级，即值越大显示越靠上，取值范围：[任意正整数]
+
+### 2026.06.11 天气Weather对象setOceanWave(option)方法新增参数
+
+- directionNorm (number) 海浪传播方向的归一值，取值范围[0~1]，0映射0°、0.5映射180°、1映射360°，默认值：0.85
+
+### 2026.06.10 有限元2对象FiniteElement2新增参数
+
+FiniteElement2对象新增控制色带透明度类型参数
+
+- blendMode (number) colors色带透明度的模式类型，取值范围：[0,1]；取值说明：0不透明，1半透明；默认值：0
+
+### 2026.06.08 TileLayer图层对象新增方法
+
+新增查询TileLayer图层样式方法
+
+- getStyle(ids) 根据指定的TileLayer图层ID查询图层当前的样式参数
+
+### 2026.06.02 动态标注Marker3D对象新增深度检测参数
+
+Marker3D对象新增参数
+
+- depthTest (boolean) 可选，是否做深度检测，默认值：true，true会被遮挡，false不会被遮挡
+
+### 2026.06.01 Weather天气对象新增设置环境光颜色方法
+
+Weather对象新增setAmbientLightColor(color)方法
+
+- setAmbientLightColor(color) 设置自定义环境光颜色
+
 ### 2026.05.27 Satellite卫星系统新增高亮和取消高亮方法
 
 ##### Satellite新增方法如下：

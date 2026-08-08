@@ -31,12 +31,14 @@ TileLayer 加载3dt图层模型（倾斜摄影、BIM、人工模型），支持�
   - 轨道交通 BIM+GIS：线路、隧道、车站 BIM 单体化与属性查询，贯穿设计 / 施工 / 运维全生命期。
   - 厂区 / 车间 / 炼化装置 / 巷道 / 管廊 BIM 单体化拾取，配合 enableClip 剖切透视与 getActorInfoFromDB 关联台账。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 海量瓦片依赖 LOD 与缓存，注意带宽与显存
   - 坐标与高程基准需对齐
   - 单体化能力取决于数据是否已切分
 
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 
@@ -48,9 +50,11 @@ TileLayer 加载3dt图层模型（倾斜摄影、BIM、人工模型），支持�
 | [`addModifier`](#addModifier) | 添加一个压平操作 |  |
 | [`addModifierByShapeFile`](#addModifierByShapeFile) | 根据shapeFile添加一个或多个压平操作 |  |
 | [`addModifiers`](#addModifiers) | 根据多边形的坐标添加一个或多个压平操作， |  |
+| [`addSymbols`](#addSymbols) | 对图层构件进行符号化设置，支持设置样式及样式的关联颜色 |  |
 | [`clear`](#clear) | 清空接口添加的所有图层对象 | 清空全部对象，重置图层 |
 | [`clearHole`](#clearHole) | 清空所有挖洞操作 |  |
 | [`clearModifier`](#clearModifier) | 清空所有压平操作 |  |
+| [`clearSymbols`](#clearSymbols) | 清空图层内所有构件的符号化样式 |  |
 | [`createQuery`](#createQuery) | 创建数据库查询条件对象 |  |
 | [`delete`](#delete) | 删除一个或多个TileLayer对象 | 按 ID 移除指定对象 |
 | [`deleteHole`](#deleteHole) | 删除一个挖洞操作 |  |
@@ -72,6 +76,8 @@ TileLayer 加载3dt图层模型（倾斜摄影、BIM、人工模型），支持�
 | [`getCollision`](#getCollision) | 查询图层包含的碰撞检测信息 |  |
 | [`getDBTabID`](#getDBTabID) | 设置点云盒子的颜色， |  |
 | [`getObjectIDs`](#getObjectIDs) | 获取指定TileLayer包含的所有Actor对象的ID |  |
+| [`getStyle`](#getStyle) | 根据指定的TileLayer图层ID查询图层当前的样式参数 |  |
+| [`getSymbols`](#getSymbols) | 查询图层内构件已经设置的符号化样式 |  |
 | [`hide`](#hide) | 隐藏TileLayer图层 | 按业务条件隐藏对象 |
 | [`hideActor`](#hideActor) | 隐藏Actor |  |
 | [`hideActors`](#hideActors) | 隐藏一个或多个Actor |  |
@@ -82,6 +88,7 @@ TileLayer 加载3dt图层模型（倾斜摄影、BIM、人工模型），支持�
 | [`highlightActorWithColor`](#highlightActorWithColor) | 使用颜色去高亮一个Actor，支持设置不同的高亮颜色去高亮不同的Actor |  |
 | [`highlightPoints`](#highlightPoints) | 根据点云的属性字段值高亮点云匹配到点 |  |
 | [`query`](#query) | 根据TileLayer的ID在PG数据库中查询 |  |
+| [`removeSymbols`](#removeSymbols) | 移除图层内指定构件的符号化样式 |  |
 | [`setAltitudeHeatMap`](#setAltitudeHeatMap) | 根据海拔高度设置TileLayer的分层热力样式， |  |
 | [`setCollision`](#setCollision) | 设置TileLayer是否参与碰撞检测 |  |
 | [`setFileName`](#setFileName) | 修改TileLayer图层的3dt文件路径 |  |
@@ -233,7 +240,7 @@ fdapi.tileLayer.addHoleByShapeFile(data);
 
 ### `addModifier(id, tileLayerId, coordinates, ententBufferSize, fn)` {#addModifier}
 
-添加一个压平操作
+添加一个压平操作。**注意**：本方法用位置参数、仅支持单个操作；同族的 [`addModifiers`](#addModifiers)/[`addModifierByShapeFile`](#addModifierByShapeFile) 用对象参数且支持批量，新代码建议优先使用后两者，本方法保留用于兼容旧代码
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
@@ -332,6 +339,44 @@ await fdapi.tileLayer.addModifiers({
 
 ---
 
+### `addSymbols(data, fn)` {#addSymbols}
+
+对图层构件进行符号化设置，支持设置样式及样式的关联颜色（2026.07.17 新增）
+
+注意：目前接口支持的图层类型包括BIM、Max模型发布的3dt图层和美工3dt图层
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据对象或数组，支持批量对多个图层符号化，每个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+> **`data` 对象属性：**
+
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | TileLayer的ID |
+| `symbols` | `array` | 是 | - | 构件符号化分组数组，每组对一批构件应用同一样式，每个分组对象支持以下属性： |
+| `symbols[].objectIds` | `array` | 是 | - | TileLayer图层ID包含的构件ID的数组集合 |
+| `symbols[].style` | `number` | 是 | - | 构件符号化的样式，0：默认；1：X光；2：纯色；3：水晶体；4：暗黑；5：科幻；6：扩散；7：素体块 |
+| `symbols[].color` | [`Color`](/docs/api/types#color) | 是 | - | 构件符号化的颜色，支持四种格式，[取值示例](/docs/tutorials/color) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
+> 示例代码如下：
+
+```js
+// 对同一图层内的两组构件分别着色
+await fdapi.tileLayer.addSymbols({
+    id: 'FB92292E4EB1B0C5F415A48C2F53B0D3',
+    symbols: [
+        { style: 1, color: [1, 0, 0, 1], objectIds: ['1', '2', '3'] }, // 红
+        { style: 5, color: [0, 1, 0, 1], objectIds: ['4', '5'] }, // 绿
+    ],
+});
+```
+
+---
+
 ### `clear(fn)` {#clear}
 
 清空接口添加的所有图层对象
@@ -384,6 +429,25 @@ await fdapi.tileLayer.clearHole(['对象ID']);
 
 ```js
 await fdapi.tileLayer.clearModifier(['对象ID']);
+```
+
+---
+
+### `clearSymbols(ids, fn)` {#clearSymbols}
+
+清空图层内所有构件的符号化样式（2026.07.17 新增）
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | TileLayer对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
+> 示例代码如下：
+
+```js
+await fdapi.tileLayer.clearSymbols('FB92292E4EB1B0C5F415A48C2F53B0D3');
 ```
 
 ---
@@ -952,6 +1016,53 @@ fdapi.tileLayer.getObjectIDs('对象ID');
 
 ---
 
+### `getStyle(tileLayerIds, fn)` {#getStyle}
+
+根据指定的TileLayer图层ID查询图层当前的样式参数（2026.06.08 新增）
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `tileLayerIds` | `string \| array` | 是 | - | 待查询的TileLayer的ID或ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取）。
+
+> 示例代码如下：
+
+```js
+const res = await fdapi.tileLayer.getStyle('FB92292E4EB1B0C5F415A48C2F53B0D3');
+console.log(res);
+```
+
+---
+
+### `getSymbols(ids, fn)` {#getSymbols}
+
+查询图层内构件已经设置的符号化样式（2026.07.17 新增）
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | TileLayer对象的ID或者ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+
+> **返回数据结构**
+
+```js
+[
+  {
+    "id": "979A4C034E29728F8A2635AD747B72A3",
+    "symbols": [
+      { "style": 3, "color": [0, 1, 0, 1], "objectIds": ["0e567bfb-4f86-412b-af6a-7a1cdb731324-00076856", "c85e5be0-d8d5-4148-836f-b55e711ef373-00068ac9"] },
+      { "style": 1, "color": [1, 0, 0, 1], "objectIds": ["1551350c-45e5-41b8-bdf1-bcfa6794dc6a-000b0dce"] }
+    ]
+  }
+]
+```
+
+---
+
 ### `hide(ids, fn)` {#hide}
 
 隐藏TileLayer图层
@@ -975,7 +1086,7 @@ fdapi.tileLayer.hide('对象ID');
 
 ### `hideActor(id, objectId, fn)` {#hideActor}
 
-隐藏Actor
+隐藏Actor。**注意**：TileLayer 的 Actor 级操作是全站唯一按"单个/批量"拆成两个方法的例外（其余对象一律用 `hide(ids)` 兼容单个或数组）——本方法只隐藏一个 Actor，批量请用 [`hideActors`](#hideActors)（`{id, objectIds}` 结构，同一 TileLayer 下按 `objectIds` 批量）
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
@@ -1201,6 +1312,36 @@ fdapi.tileLayer.highlightPoints([{
 
 ```js
 await fdapi.tileLayer.query('示例值');
+```
+
+---
+
+### `removeSymbols(data, fn)` {#removeSymbols}
+
+移除图层内指定构件的符号化样式（2026.07.17 新增）
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+> **`data` 对象属性：**
+
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | TileLayer的ID |
+| `objectIds` | `array` | 是 | - | TileLayer图层ID包含的构件ID的数组集合 |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
+> 示例代码如下：
+
+```js
+// 移除图层内指定构件的符号化样式
+await fdapi.tileLayer.removeSymbols([{
+    id: 'FB92292E4EB1B0C5F415A48C2F53B0D3',
+    objectIds: ['1', '2', '3', '4', '5'],
+}]);
 ```
 
 ---
@@ -2455,24 +2596,6 @@ fdapi.infoTree.focus('hole1');
 
 ```js
 let tileLayerId = 'E637D8FE42335EE96C58A1840BCAD0CE';
-let holeCoordinate = [
-    [491280.3125, 2490323, 5.8794140815734863],
-    [491294.375, 2490340.5, 5.577080249786377],
-    [491324.9375, 2490327.75, 7.7592482566833496],
-    [491319.8125, 2490308.75, 8.2433004379272461]
-];
-await fdapi.tileLayer.updateHole("hole1", tileLayerId, holeCoordinate, false);
-```
-
-> 删除挖洞操作：DeleteHole
-
-```js
-fdapi.tileLayer.deleteHole("hole1", 'E637D8FE42335EE96C58A1840BCAD0CE');
-```
-
-> 清空挖洞操作：ClearHole
-
-```js
-//清空
-fdapi.tileLayer.clearHole('E637D8FE42335EE96C58A1840BCAD0CE');
+//沿用 AddHole 示例中已创建的 hole1 及其坐标，演示修改调用
+fdapi.tileLayer.updateHole('hole1', tileLayerId, coordinates1, false);
 ```

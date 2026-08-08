@@ -25,12 +25,14 @@ description: "Plot 用于绘制点/线/面态势图标与军标，支持态势�
   - 指挥所推演与态势图层构建
   - 工程测量标绘：距离 / 面积 / 高度等标绘测量，结果经 Measurement 事件回传，用于公路监管量算。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 军标需符合制图规范
   - 标号数量多时注意渲染与避让
   - 常与战场仿真、图层、相机导览配合
 
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

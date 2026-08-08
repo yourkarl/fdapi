@@ -22,7 +22,7 @@ description: "在三维场景中绘制带流动动画的引导线，用于指示
   - 交通枢纽、停车场内的车行/人行引导，展示进出场动线与流向。
   - 航道引导线：绘制低空飞行引导路径与航线指示。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - shape 设为曲线（1）时坐标点过多会显著影响添加效率，长路径建议适度精简点位。
   - 注意 coordinateType 与场景坐标系一致（Projection/WGS84/GCJ02/BD09），避免引导线偏移。
   - 引导线偏重视觉指示与动画，若需表达管线/拓扑连接关系应改用 Polyline、SplineMesh 或 TopologyLine。
@@ -35,6 +35,8 @@ new GuideLine()
 
 ---
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 
@@ -451,7 +453,7 @@ await fdapi.guideLine.setInterval('对象ID', 0);
 
 ---
 
-### `setRange(id, min, min, fn)` {#setRange}
+### `setRange(id, min, max, fn)` {#setRange}
 
 设置GuideLine对象的可视范围
 
@@ -459,7 +461,7 @@ await fdapi.guideLine.setInterval('对象ID', 0);
 |------|------|:----:|--------|------|
 | `id` | `string` | 是 | - | GuideLine对象的ID |
 | `min` | `number` | 是 | - | 可视范围最小值，取值范围：[任意负数~任意正数]，单位：米 |
-| `min` | `number` | 是 | - | 可视范围最大值，取值范围：[任意负数~任意正数]，单位：米 |
+| `max` | `number` | 是 | - | 可视范围最大值，取值范围：[任意负数~任意正数]，单位：米 |
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
 **返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
@@ -467,7 +469,7 @@ await fdapi.guideLine.setInterval('对象ID', 0);
 > 示例代码如下：
 
 ```js
-await fdapi.guideLine.setRange('对象ID', 0, 0);
+await fdapi.guideLine.setRange('对象ID', 0, 1000);
 ```
 
 ---

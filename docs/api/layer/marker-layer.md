@@ -27,7 +27,7 @@ MarkerLayer标注点的效果图：
   - 智慧社区海量人口 / 事件点位：聚合分色，点击弹窗展示户籍 / 事件详情。
   - 智慧校园监测点位：监测点分类展示 / 定位与海量聚合，点击弹窗展示属性。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 通过 coordinateType 区分投影/WGS84/火星/百度坐标系，需与数据来源一致，否则点位偏移。
   - range 与 viewHeightRange 等控制分级显隐，海量标注时应合理设置可视范围与像素阈值以保证性能。
   - autoHeight 可自动贴附下方物体高度，弹窗大小/偏移与文字动画等按业务需要配置。
@@ -40,6 +40,8 @@ new MarkerLayer()
 
 ---
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

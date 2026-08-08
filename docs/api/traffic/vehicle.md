@@ -27,12 +27,14 @@ Vehicle 加载车辆模型并沿路径行驶，模拟交通流与车辆运动。
   - 救援/巡逻等事件车辆的运动
   - 交通 IoT 车辆数字孪生：单辆车沿车道精细化行驶仿真，自定义车型、车速与朝向，配合 Camera.follow 对重点车辆第一视角跟随。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 大量车辆需用实例化/LOD 控制性能
   - 行驶路径需与路网匹配
   - 坐标系需与地形贴合
 
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 
@@ -80,9 +82,9 @@ Vehicle 加载车辆模型并沿路径行驶，模拟交通流与车辆运动。
 | `id` | `string` | 是 | - | Vehicle对象的ID |
 | `groupId` | `string` | 否 | - | 可选，Group分组 |
 | `userData` | `string` | 否 | - | 可选，用户自定义数据 |
-| `assetPath` | `string` | 是 | - | 资源库车辆载具路径，类似CustomObject对象的assetPath，示例值：'/JC_CustomAssets/VehicleLibrary/Exhibition/SUV_01' |
+| `assetPath` | `string` | 是 | - | 资源库车辆载具路径，类似CustomObject对象的assetPath（详见[模型资产与 pak 管线](/docs/tutorials/data-model)），示例值：'/JC_CustomAssets/VehicleLibrary/Exhibition/SUV_01' |
 | `coordinate` | `array` | 是 | - | 载具初始位置坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
-| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值：0为Projection类型，1为WGS84类型，默认值：0 |
+| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
 | `autoHeight` | `boolean` | 否 | true | 可选，是否自动计算载具行驶高度，默认值：true，注意：当设置为false时会使用载具坐标的高度Z |
 | `useInitZ` | `boolean` | 否 | - | 可选，是否使用添加载具初始化坐标的高度Z，默认：false |
 | `delay` | `number` | 否 | 0.5 | 可选，控制载具moveTo()接口移动的延迟时间，单位：秒，默认值：0.5，设置0则不延时立刻移动 |
@@ -125,7 +127,7 @@ fdapi.vehicle.focus('vc1');
 
 ### `callBatchFunction(data, fn)` {#callBatchFunction}
 
-调用多个Vehicle对象的多个蓝图函数
+调用多个Vehicle对象的多个蓝图函数。**注意**：Vehicle 是全站唯一用 `callBatchFunction` 命名此功能的类（其余支持蓝图函数调用的类均为 `callBPFunction`），这是 SDK 本身的命名差异而非文档笔误，调用时请勿按其他类的方法名类推；完整调用流程与参数类型映射见[蓝图函数集成](/docs/tutorials/blueprint-integration)
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
@@ -193,7 +195,7 @@ fdapi.vehicle.delete('vc1');
 
 ### `focus(ids, followEnable, distance, flyTime, rotation, distanceRotation, offset, fn)` {#focus}
 
-自动定位到合适的观察距离
+自动定位到合适的观察距离。**注意**：Vehicle 的 `focus` 比多数对象（如 Marker 的 5 个参数）多出 `followEnable`/`distanceRotation`，用于支持第一人称跟车视角，是在通用 `focus` 语义上的渐进增强，不是不同的方法——调用时按位置顺序传参，不需要的中间参数传 `null`/`undefined` 占位即可
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
 |------|------|:----:|--------|------|
@@ -596,7 +598,7 @@ let wayPoints = [{
             { "coordinate": [493152.84375, 2492023.25, 2.1], "gear": 3, "timeStamp": 6 },
             { "coordinate": [493150.59375, 2492019, 2.1], "gear": 3, "timeStamp": 7 },
             { "coordinate": [493148.75, 2492015, 2.1], "gear": 3, "timeStamp": 8 },
-            { "coordinate": [493148.03125, 2492012.25, 1.1], "gear": 3, "timeStamp": 9 }
+            { "coordinate": [493148.03125, 2492012.25, 1.1], "gear": 3, "timeStamp": 9 },
         ]
 }];
 fdapi.vehicle.setWayPoint(wayPoints);

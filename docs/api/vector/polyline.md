@@ -28,7 +28,7 @@ description: "绘制由多个坐标点连成的折线/路径，支持箭头、�
   - 三维航线绘制：连续打点生成航线 / 航道带，配合空域立体范围展示低空飞行通道。
   - 巡检轨迹回放、集输 / 地下管线走向、疏散与救援处置流线绘制。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 为贴地/空间折线，若需带粗细体量的三维管道/线缆模型应使用 SplineMesh；若按图层树模型 ID 自动连线表达拓扑请用 TopologyLine。
   - 注意 coordinateType 与场景坐标系一致，贴地球面弧线可通过 arcType 控制劣弧/优弧。
   - 海量点位或大量折线会影响性能，建议抽稀坐标点并合理设置可视范围 range。
@@ -41,6 +41,8 @@ new Polyline()
 
 ---
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 
@@ -63,6 +65,7 @@ new Polyline()
 | [`setStyle`](#setStyle) | 设置新的样式 |  |
 | [`setThickness`](#setThickness) | 设置新的厚度 |  |
 | [`setViewHeightRange`](#setViewHeightRange) | 设置Polyline对象的可视高度范围， |  |
+| [`setViewportVisible`](#setViewportVisible) | 多视口状态下，设置Polyline对象在各视口的可见性 |  |
 | [`show`](#show) | 显示Polyline | 按业务条件显示对象 |
 | [`showAll`](#showAll) | 显示所有Polyline | 一键显示全部对象 |
 | [`update`](#update) | 修改一个或多个Polyline对象 | 运行时动态更新对象属性/状态 |
@@ -564,6 +567,26 @@ fdapi.polyline.setThickness("p1", 60);
 
 ```js
 fdapi.polyline.setViewHeightRange("p1", 0, 1000);
+```
+
+---
+
+### `setViewportVisible(id, vp, fn)` {#setViewportVisible}
+
+多视口状态下，设置Polyline对象在各视口的可见性（2026.06.28 新增）
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `id` | `string` | 是 | - | Polyline对象的ID |
+| `vp` | [`Viewport`](/docs/api/types#viewport) | 是 | - | 视口掩码（Viewport位运算） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
+
+**返回：** 无返回数据；异步方法，可 `await` 等待执行完成，或在回调函数 `fn` 中处理。
+
+> 示例代码如下：
+
+```js
+await fdapi.polyline.setViewportVisible('p1', Viewport.V1 | Viewport.V2);
 ```
 
 ---

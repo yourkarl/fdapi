@@ -26,10 +26,12 @@ description: "在三维场景中加载与驱动无人机模型，支持坐标定
   - 城市治理、园区安防的无人机空中巡逻与目标跟踪轨迹呈现。
   - 低空经济无人机全流程航线仿真：沿航道从起点到终点飞行，机头第一视角漫游，仪表盘展示高度 / 对地速度 / 剩余电量 / 航线偏离告警，支持多机同步并行。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 通过 `assetPath` 引用资源库无人机模型，`coordinate` 与 `coordinateType`（Projection/WGS84）需匹配；轨迹线 `trailDuration`、`trailType` 等影响渲染开销。
   - `delay` 控制 moveTo 移动延迟，设为 0 立即移动；大量无人机同时驱动时应关注性能与轨迹持续时间设置。
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 
@@ -71,9 +73,9 @@ description: "在三维场景中加载与驱动无人机模型，支持坐标定
 | `id` | `string` | 是 | - | 无人机对象的ID |
 | `groupId` | `string` | 否 | - | 可选，Group分组 |
 | `userData` | `string` | 否 | - | 可选，用户自定义数据 |
-| `assetPath` | `string` | 是 | - | 资源库无人机的路径，类似CustomObject对象的assetPath，示例值：'/AirCityPlugin/ArtResources/Drone/Drone' |
+| `assetPath` | `string` | 是 | - | 资源库无人机的路径，类似CustomObject对象的assetPath（详见[模型资产与 pak 管线](/docs/tutorials/data-model)），示例值：'/AirCityPlugin/ArtResources/Drone/Drone' |
 | `coordinate` | `array` | 是 | - | 无人机初始位置坐标：[X,Y,Z]，[取值示例](/docs/tutorials/coordinates)，数组元素类型：(number)，取值范围：[任意数值] |
-| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值：0为Projection类型，1为WGS84类型，默认值：0 |
+| `coordinateType` | `number` | 否 | 0 | 可选，坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
 | `delay` | `number` | 否 | 0.5 | 可选，控制无人机moveTo()接口移动的延迟时间，单位：秒，默认值：0.5，设置0则不延时立刻移动 |
 | `rotation` | `array` | 否 | [0,0,0] | 可选，无人机旋转，世界坐标系旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]，默认值：[0,0,0] |
 | `localOffset` | `array` | 否 | [0,0,0] | 可选，无人机基于原始位置坐标的偏移量，默认值：[0,0,0] |

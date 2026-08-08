@@ -32,7 +32,7 @@ Marker标注点的效果图：
   - 智慧工地人员实时定位、油气田井场 / 计量站点位、矿山井下人员与车辆定位，配合 update / moveTo 增量刷新状态。
   - 水资源监管取水口 / 计量点、水质断面、灌区闸站点位标注，配合 update 实时刷新取水量与水位。
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 单次创建的 Marker 数量不要超过 5000 个，单工程内总量不要超过 20 万个，超量会影响性能；
   - 通过 range / textRange / viewHeightRange 控制可视范围，避免海量标注同屏堆叠；
   - 注意 coordinateType 坐标系（Projection/WGS84/GCJ02/BD09）与场景一致；
@@ -47,6 +47,8 @@ new Marker()
 
 ---
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

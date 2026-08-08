@@ -26,12 +26,14 @@ description: "ExcavationAnalysis 对比设计面与实际开挖/实测面，计�
   - 基坑、边坡开挖的土方量核算与偏差着色
   - 矿山采剥进度与超挖控制可视化
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 依赖高精度设计面与实测面（点云/DEM）且需配准对齐
   - 设计面与实测面坐标系、高程基准须一致
   - 大范围高精度计算开销较大，注意范围与精度的平衡
 
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

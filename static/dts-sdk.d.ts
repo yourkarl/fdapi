@@ -321,7 +321,7 @@ declare namespace fdapi {
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 把TileLayer图层中包含的一个或多个(Actor)模型复制为一个CustomObject对象 */
     function addByTileLayer(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 批量方法，调用多个CustomObject对象的多个蓝图函数 */
+    /** 批量方法，调用多个CustomObject对象的多个蓝图函数；完整调用流程与参数类型映射见[蓝图函数集成](/docs/tutorials/blueprint-integration) */
     function callBPFunction(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 删除场景中所有的CustomObject */
     function clear(fn?: (...args: any[]) => void): Promise<any>;
@@ -741,6 +741,8 @@ declare namespace fdapi {
     function highlightFeatures(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 设置GeoJSONLayer对象的可视高度范围，注意：当GeoJSONLayer使用贴地模式时，此方法会失效 */
     function setViewHeightRange(id?: string, minViewHeight?: number, maxViewHeight?: number, fn?: (...args: any[]) => void): Promise<any>;
+    /** 多视口状态下，设置GeoJSONLayer图层对象在各视口的可见性（2026.06.28 新增） */
+    function setViewportVisible(id?: string, vp?: any, fn?: (...args: any[]) => void): Promise<any>;
     /** 显示一个或多个GeoJSONLayer图层对象 */
     function show(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 取消高亮一个或者多个GeoJSONLayer图层的所有高亮要素区域 */
@@ -812,7 +814,7 @@ declare namespace fdapi {
     /** 设置新的播放时间间隔 */
     function setInterval(id?: string, newVal?: number, fn?: (...args: any[]) => void): Promise<any>;
     /** 设置GuideLine对象的可视范围 */
-    function setRange(id?: string, min?: number, min?: number, fn?: (...args: any[]) => void): Promise<any>;
+    function setRange(id?: string, min?: number, max?: number, fn?: (...args: any[]) => void): Promise<any>;
     /** 设置新的shape样式 */
     function setShape(id?: string, newVal?: number, fn?: (...args: any[]) => void): Promise<any>;
     /** 设置新的速率 */
@@ -1109,7 +1111,7 @@ declare namespace fdapi {
 
   /** 管理场景图层树（目录树），提供对树上对象的定位、显隐控制、查询及蓝图函数调用，是组织与联动场景内置对象的统一入口。 */
   namespace infoTree {
-    /** 调用图层树上对象包含的多个蓝图函数，注意：可以根据图层树上的对象id查询包含的所有蓝图函数 fdapi.misc.getBPFunction(id); */
+    /** 调用图层树上对象包含的多个蓝图函数，注意：可以根据图层树上的对象id查询包含的所有蓝图函数 fdapi.misc.getBPFunction(id)；完整调用流程与参数类型映射见[蓝图函数集成](/docs/tutorials/blueprint-integration) */
     function callBPFunction(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 通过GroupId删除各类API创建的对象 */
     function deleteByGroupId(groupId?: string, fn?: (...args: any[]) => void): Promise<any>;
@@ -1273,7 +1275,7 @@ declare namespace fdapi {
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 设置Marke3D贴合模型对象CustomObject对象，设置后Marker3D会跟随模型运动 */
     function attachObject(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 调用Marker3D对象包含的多个蓝图函数，注意：可以根据marker3d的对象id查询包含的所有蓝图函数 fdapi.misc.getBPFunction(id); */
+    /** 调用Marker3D对象包含的多个蓝图函数，注意：可以根据marker3d的对象id查询包含的所有蓝图函数 fdapi.misc.getBPFunction(id)；完整调用流程与参数类型映射见[蓝图函数集成](/docs/tutorials/blueprint-integration) */
     function callBPFunction(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 清空场景中所有的3D标注 */
     function clear(fn?: (...args: any[]) => void): Promise<any>;
@@ -1345,7 +1347,7 @@ declare namespace fdapi {
     function addAnimatedImageButtons(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 添加图片按钮 */
     function addImageButtons(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 调用整个渲染场景内指定的蓝图函数 注意：调用前请先确认被调用的蓝图函数已存在，并和设计蓝图函数的开发人员沟通确认相关参数取值后再调用 */
+    /** 调用整个渲染场景内指定的蓝图函数 注意：调用前请先确认被调用的蓝图函数已存在，并和设计蓝图函数的开发人员沟通确认相关参数取值后再调用；完整调用流程与参数类型映射见[蓝图函数集成](/docs/tutorials/blueprint-integration) */
     function callBPFunction(data?: Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
     /** 删除动画按钮 */
     function deleteImageButtons(ids?: any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -1363,7 +1365,7 @@ declare namespace fdapi {
     function getBPFunction(assetPath?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 从一组离散点中获取凸多边形的顶点索引 */
     function getConvexPolygon(pointArray?: boolean, fn?: (...args: any[]) => void): Promise<any>;
-    /** 根据材质路径查询材质包含的图片纹理和材质参数信息，同时支持查询单个材质和多个材质包含的信息 */
+    /** 根据材质路径查询材质包含的图片纹理和材质参数信息，同时支持查询单个材质和多个材质包含的信息；完整工作流见[材质自定义参数](/docs/tutorials/material-customization) */
     function getMaterial(materialPath?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 隐藏Explorer里创建的植物 */
     function hideAllFoliages(fn?: (...args: any[]) => void): Promise<any>;
@@ -1677,6 +1679,8 @@ declare namespace fdapi {
     function setThickness(id?: string, newVal?: number, fn?: (...args: any[]) => void): Promise<any>;
     /** 设置Polyline对象的可视高度范围，注意：当Polyline对象使用贴地模式时，此方法会失效 */
     function setViewHeightRange(id?: string, minViewHeight?: number, maxViewHeight?: number, fn?: (...args: any[]) => void): Promise<any>;
+    /** 多视口状态下，设置Polyline对象在各视口的可见性（2026.06.28 新增） */
+    function setViewportVisible(id?: string, vp?: any, fn?: (...args: any[]) => void): Promise<any>;
     /** 显示Polyline */
     function show(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 显示所有Polyline */
@@ -1748,16 +1752,16 @@ declare namespace fdapi {
     /** 显示River */
     function show(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 修改一个或多个River对象 */
-    function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    function update(data?: Record<string, any> | any[], fn?: any): Promise<any>;
   }
 
   /** Satellite 用于球面坐标系场景中加载与表现卫星对象，支持像素点、缩略图与三维模型的多级可视化（按相机距离切换），并可设置标签文字、姿态旋转，用于卫星在轨与星座的可视化仿真。支持卫星按轨道运动，相机跟随运动，实现卫星运动伴随地球自转的晨昏线效果。支持使用卫星模型的蓝图函数实现打开关闭太阳帆，支持高亮闪烁像素点和缩略图。 */
   namespace satellite {
     /** 添加一个或多个Satellite对象 */
-    function add(data?: Record<string, any> | any[], textRange?: any[], modelRange?: any[], imageVisibleDistance?: number, fn?: (...args: any[]) => void): Promise<any>;
+    function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 在两颗卫星之间添加连接线，卫星运动时连接线会跟随同步运动 */
     function addLinkage(data?: Record<string, any> | any[], materials?: any[] | Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
-    /** 调用卫星模型包含的多个蓝图函数，注意：调用前请使用getBPFunction()函数来查询当前卫星模型包含的蓝图函数参数信息 */
+    /** 调用卫星模型包含的多个蓝图函数，注意：调用前请使用getBPFunction()函数来查询当前卫星模型包含的蓝图函数参数信息；完整调用流程与参数类型映射见[蓝图函数集成](/docs/tutorials/blueprint-integration) */
     function callBPFunction(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 清空场景中所有的Satellite */
     function clear(fn?: (...args: any[]) => void): Promise<any>;
@@ -1815,10 +1819,14 @@ declare namespace fdapi {
     function getInteractiveMode(fn?: (...args: any[]) => void): Promise<any>;
     /** 获取场景内所有的VTPK标注信息 */
     function getLabelLayer(fn?: (...args: any[]) => void, fn?: (...args: any[]) => void): Promise<any>;
+    /** 查询主界面UI尺寸（2026.07.03 新增） */
+    function getMainUISize(fn?: (...args: any[]) => void): Promise<any>;
     /** 获取地图样式 */
     function getMapMode(fn?: (...args: any[]) => void, fn?: (...args: any[]) => void): Promise<any>;
     /** 获取ACP工程的坐标系配准(wkt字符串) */
     function getProjectWKT(fn?: (...args: any[]) => void): Promise<any>;
+    /** 隐藏主界面（2026.07.03 新增） */
+    function hideMainUI(fn?: (...args: any[]) => void): Promise<any>;
     /** 隐藏图层树上对象的属性面板 */
     function hidePropertiesPanel(fn?: (...args: any[]) => void): Promise<any>;
     /** 移除当前显示的VTPK的标注 */
@@ -1901,6 +1909,8 @@ declare namespace fdapi {
     function setLutMode(lutMode?: number, fn?: (...args: any[]) => void): Promise<any>;
     /** 设置左侧资源面板的位置偏移 */
     function setMainPanelPos(left?: number, top?: number, fn?: (...args: any[]) => void): Promise<any>;
+    /** 设置主界面UI尺寸（2026.07.03 新增） */
+    function setMainUISize(sizeMode?: any, fn?: (...args: any[]) => void): Promise<any>;
     /** 设置主界面UI元素的可见性 */
     function setMainUIVisibility(visible?: boolean, fn?: (...args: any[]) => void): Promise<any>;
     /** 设置地图样式 */
@@ -1961,6 +1971,8 @@ declare namespace fdapi {
     function setWMTSLayerVisible(data?: any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 设置水平视角的默认旋转速度，即按住鼠标右键拖拽水平视角旋转的速度 */
     function setYawSpeed(yawSpeed?: number, fn?: (...args: any[]) => void): Promise<any>;
+    /** 显示主界面（2026.07.03 新增） */
+    function showMainUI(fn?: (...args: any[]) => void): Promise<any>;
     /** 显示图层树上对象的属性面板 */
     function showPropertiesPanel(id?: string, fn?: (...args: any[]) => void): Promise<any>;
   }
@@ -2089,7 +2101,7 @@ declare namespace fdapi {
   namespace splineMesh {
     /** 添加一个或多个SplineMesh对象，绘制路径模型 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 调用splineMesh对象包含的多个蓝图函数 */
+    /** 调用splineMesh对象包含的多个蓝图函数；完整调用流程与参数类型映射见[蓝图函数集成](/docs/tutorials/blueprint-integration) */
     function callBPFunction(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 清空场景中所有的SplineMesh对象 */
     function clear(fn?: (...args: any[]) => void): Promise<any>;
@@ -2191,18 +2203,22 @@ declare namespace fdapi {
     function addHole(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 根据shapeFile添加一个或多个挖洞操作 */
     function addHoleByShapeFile(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 添加一个压平操作 */
+    /** 添加一个压平操作。**注意**：本方法用位置参数、仅支持单个操作；同族的 [`addModifiers`](#addModifiers)/[`addModifierByShapeFile`](#addModifierByShapeFile) 用对象参数且支持批量，新代码建议优先使用后两者，本方法保留用于兼容旧代码 */
     function addModifier(id?: string, tileLayerId?: string, coordinates?: any[], ententBufferSize?: number, fn?: (...args: any[]) => void): Promise<any>;
     /** 根据shapeFile添加一个或多个压平操作 */
     function addModifierByShapeFile(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 根据多边形的坐标添加一个或多个压平操作，注意：同时只能对一个图层id进行压平操作 */
     function addModifiers(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 对图层构件进行符号化设置，支持设置样式及样式的关联颜色（2026.07.17 新增） */
+    function addSymbols(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 清空接口添加的所有图层对象 */
     function clear(fn?: (...args: any[]) => void): Promise<any>;
     /** 清空所有挖洞操作 */
     function clearHole(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 清空所有压平操作 */
     function clearModifier(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 清空图层内所有构件的符号化样式（2026.07.17 新增） */
+    function clearSymbols(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 创建数据库查询条件对象 */
     function createQuery(): Promise<any>;
     /** 删除一个或多个TileLayer对象 */
@@ -2245,9 +2261,13 @@ declare namespace fdapi {
     function getDBTabID(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 获取指定TileLayer包含的所有Actor对象的ID */
     function getObjectIDs(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 根据指定的TileLayer图层ID查询图层当前的样式参数（2026.06.08 新增） */
+    function getStyle(tileLayerIds?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 查询图层内构件已经设置的符号化样式（2026.07.17 新增） */
+    function getSymbols(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 隐藏TileLayer图层 */
     function hide(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 隐藏Actor */
+    /** 隐藏Actor。**注意**：TileLayer 的 Actor 级操作是全站唯一按"单个/批量"拆成两个方法的例外（其余对象一律用 `hide(ids)` 兼容单个或数组）——本方法只隐藏一个 Actor，批量请用 [`hideActors`](#hideActors)（`{id, objectIds}` 结构，同一 TileLayer 下按 `objectIds` 批量） */
     function hideActor(id?: string, objectId?: string, fn?: (...args: any[]) => void): Promise<any>;
     /** 隐藏一个或多个Actor */
     function hideActors(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
@@ -2265,6 +2285,8 @@ declare namespace fdapi {
     function highlightPoints(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 根据TileLayer的ID在PG数据库中查询 */
     function query(queryOption?: any, fn?: (...args: any[]) => void): Promise<any>;
+    /** 移除图层内指定构件的符号化样式（2026.07.17 新增） */
+    function removeSymbols(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 根据海拔高度设置TileLayer的分层热力样式，注意：如果是球面坐标系工程，则使用Engine发布3dt图层时需要添加 -terUserHotMap 参数才可以支持热力样式 */
     function setAltitudeHeatMap(tileLayerIds?: string | any[], colors?: any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 设置TileLayer是否参与碰撞检测 */
@@ -2535,13 +2557,13 @@ declare namespace fdapi {
   namespace vehicle {
     /** 添加一个或多个Vehicle对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 调用多个Vehicle对象的多个蓝图函数 */
+    /** 调用多个Vehicle对象的多个蓝图函数。**注意**：Vehicle 是全站唯一用 `callBatchFunction` 命名此功能的类（其余支持蓝图函数调用的类均为 `callBPFunction`），这是 SDK 本身的命名差异而非文档笔误，调用时请勿按其他类的方法名类推；完整调用流程与参数类型映射见[蓝图函数集成](/docs/tutorials/blueprint-integratio */
     function callBatchFunction(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 清空场景中所有的Vehicle对象 */
     function clear(fn?: (...args: any[]) => void): Promise<any>;
     /** 删除一个或多个Vehicle对象 */
     function delete(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** 自动定位到合适的观察距离 */
+    /** 自动定位到合适的观察距离。**注意**：Vehicle 的 `focus` 比多数对象（如 Marker 的 5 个参数）多出 `followEnable`/`distanceRotation`，用于支持第一人称跟车视角，是在通用 `focus` 语义上的渐进增强，不是不同的方法——调用时按位置顺序传参，不需要的中间参数传 `null`/`undefined` 占位即可 */
     function focus(ids?: string | any[], followEnable?: boolean, distance?: number, flyTime?: number, rotation?: any[], distanceRotation?: any[], offset?: any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 根据ID获取Vehicle对象的详细信息 */
     function get(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;

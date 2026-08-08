@@ -56,6 +56,11 @@ await withTimeout(fdapi.tileLayer.add({ id: 't1', fileName: '@path:/3dt/demo.3dt
 | 11 | InvalidOperation | 无效操作 |
 | 12 | ProjectNotOpened | 工程未打开 |
 
+**两个最高频的失败场景**（几乎每个类都适用，各类文档不逐一重复标注）：
+
+- **`IDExists`（6）**：几乎所有对象类的 `add()` 方法，传入已存在的 `id` 时都会命中——批量 `add` 时同一批数据里 `id` 重复、或重复调用同一份数据都会触发，实现幂等写入前先 `delete` 旧对象或换新 `id`。
+- **`ResourceNotFound`（3）**：几乎所有对象类的 `get()`/`update()`/`delete()`/`focus()` 等按 `id` 操作的方法，传入不存在的 `id` 时都会命中——批量操作里只要数组中有一个 `id` 不存在，需确认响应里是整体失败还是逐项返回（以实测为准，不同类行为可能不同）。
+
 ## WebSocket 连接关闭码
 
 连接被关闭时 `onclose` 事件的 `code`（4000 段为 DTS 自定义）：

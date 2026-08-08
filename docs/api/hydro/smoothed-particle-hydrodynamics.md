@@ -24,7 +24,7 @@ description: "SmoothedParticleHydrodynamics（SPH）基于光滑粒子流体动�
   - 闸门泄流、喷溅过程的可视化
   - 强非线性自由表面流体过程展示
 - **注意事项**：
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - 粒子数量直接决定精度与性能，需权衡
   - 计算资源消耗大
   - 适合局部强动态场景，不适合大范围长历时模拟
@@ -38,6 +38,8 @@ new SmoothedParticleHydrodynamics()
 
 ---
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 

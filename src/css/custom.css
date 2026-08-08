@@ -95,39 +95,67 @@
   color: #00d4ff;
 }
 
-/* -------- Sidebar -------- */
-[data-theme='dark'] .menu {
-  background: var(--dts-surface);
-  border-right: 1px solid rgba(0, 212, 255, 0.08);
-}
+/* -------- Sidebar --------
+   字号/字重/字间距/圆角等版式属性与主题无关，日间/夜间必须保持一致；
+   仅配色随主题切换（深色需要提亮，浅色沿用 Docusaurus 默认配色）。
+   之前这些版式属性被写在 [data-theme='dark'] 选择器里，
+   导致浅色模式下没有对应规则、退回默认字号，与深色模式不一致——现拆分为
+   「版式（无主题前缀，两种模式通用）」与「配色（[data-theme='dark'] 专属）」两组。 */
 
-/* 默认链接文字：提亮基础色 */
-[data-theme='dark'] .menu__link {
-  color: #9eb4c6;
+/* 版式：默认链接 */
+.menu__link {
   font-size: 0.82rem;
   border-radius: 4px;
   transition: color 0.15s, background 0.15s;
 }
 
-/* 一级分类（有 emoji 图标那层，如"快速上手"） */
-[data-theme='dark'] .theme-doc-sidebar-item-category > .menu__list-item-collapsible > .menu__link {
-  color: #c8d8e8;
+/* 版式：一级分类（有 emoji 图标那层，如"快速上手"） */
+.theme-doc-sidebar-item-category > .menu__list-item-collapsible > .menu__link {
   font-weight: 600;
   font-size: 0.83rem;
   letter-spacing: 0.2px;
 }
 
-/* 二级分类（产品概览 / 安装引用 / 事件监听…） */
-[data-theme='dark'] .theme-doc-sidebar-item-category .theme-doc-sidebar-item-category > .menu__list-item-collapsible > .menu__link {
-  color: #5ecfef;
+/* 版式：二级分类（产品概览 / 安装引用 / 事件监听…） */
+.theme-doc-sidebar-item-category .theme-doc-sidebar-item-category > .menu__list-item-collapsible > .menu__link {
   font-weight: 500;
   font-size: 0.79rem;
 }
 
-/* 叶子节点（方法名，如 GetVersion / SaveProject…） */
+/* 版式：叶子节点（方法名，如 GetVersion / SaveProject…） */
+.theme-doc-sidebar-item-link .menu__link {
+  font-size: 0.79rem;
+}
+
+/* 版式：激活（当前页）与折叠区布局，两种模式通用 */
+.menu__link--active,
+.menu__link--active:hover {
+  border-left: 2px solid transparent;
+  padding-left: calc(var(--ifm-menu-link-padding-horizontal) - 2px);
+  border-radius: 0 4px 4px 0;
+  font-weight: 600;
+}
+
+/* -------- Sidebar 配色（深色模式专属，浅色沿用 Docusaurus 默认配色） -------- */
+[data-theme='dark'] .menu {
+  background: var(--dts-surface);
+  border-right: 1px solid rgba(0, 212, 255, 0.08);
+}
+
+[data-theme='dark'] .menu__link {
+  color: #9eb4c6;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-item-category > .menu__list-item-collapsible > .menu__link {
+  color: #c8d8e8;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-item-category .theme-doc-sidebar-item-category > .menu__list-item-collapsible > .menu__link {
+  color: #5ecfef;
+}
+
 [data-theme='dark'] .theme-doc-sidebar-item-link .menu__link {
   color: #8fb8cc;
-  font-size: 0.79rem;
 }
 
 /* Hover */
@@ -136,15 +164,12 @@
   color: #33dfff;
 }
 
-/* 激活（当前页） */
+/* 激活（当前页）配色 */
 [data-theme='dark'] .menu__link--active,
 [data-theme='dark'] .menu__link--active:hover {
   background: rgba(0, 212, 255, 0.12);
   color: #00d4ff !important;
-  border-left: 2px solid #00d4ff;
-  padding-left: calc(var(--ifm-menu-link-padding-horizontal) - 2px);
-  border-radius: 0 4px 4px 0;
-  font-weight: 600;
+  border-left-color: #00d4ff;
 }
 
 [data-theme='dark'] .menu__caret:before {

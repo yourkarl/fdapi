@@ -26,12 +26,14 @@ ShapeFileLayer 加载并管理 Shapefile 矢量数据（点/线/面），在三�
   - 一张图矢量边界：行政区划、园区边界 SHP 加载与拾取高亮。
 - **注意事项**：
   - 林班 / 地类图斑 / 界址矢量等测绘专题面加载，配合 groupId 分专题显隐与 highlightArea 高亮。
-  - 朝向参数rotation对应的是[pitch, yaw, roll ]，可以理解为rotation取值是： [Y, Z, X]，和场景UI的配置不是对应的；
+  - 朝向参数 `rotation` 是 `[Pitch, Yaw, Roll]`，与 UE 引擎内部轴的映射关系见[架构概览](/docs/tutorials/architecture)；
   - SHP 需带正确投影(.prj)，坐标系须一致
   - 要素量大时需简化或分级显示
   - 中文属性注意编码格式（避免乱码）
 
 
+
+> 调用失败语义与错误码：所有方法失败均通过 `resolve` 携带的响应对象体现（而非 reject），详见[错误码与失败语义](/docs/api/error-codes)。
 
 ## 方法列表
 
