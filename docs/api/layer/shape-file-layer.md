@@ -12,6 +12,8 @@ ShapeFileLayer 加载并管理 Shapefile 矢量数据（点/线/面），在三�
 
 ---
 
+> 继承自 [`BaseObject`](/docs/api/utils/base-object)：本类对象支持 `updateBegin` / `updateEnd` 批量更新协议——连续多次调用属性设置接口时，用 `updateBegin()` 开启、`updateEnd(fn)` 提交，可合并为一次刷新，避免逐条调用造成的画面抖动与性能损耗。
+
 ## 业务场景 Skill
 
 > 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
@@ -256,7 +258,7 @@ fdapi.shapeFileLayer.focusFeature("sp3", 13, 80, 1);
 | `ids` | `string \| array` | 是 | - | 要获取的ShapeFileLayer对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），返回结构见下方「返回数据结构」。
 
 > **返回数据结构**
 
@@ -305,7 +307,7 @@ fdapi.shapeFileLayer.get(['sp1', 'sp2', 'sp3']);
 | `shpId` | `string` | 是 | - | ShapeFileLayer对象的ID |
 | `featureIds` | `array` | 是 | - | ShapeFileLayer对象内部的要素区域ID，数组元素类型为number |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），返回结构见下方「返回数据结构」。
 
 > **返回数据结构**
 

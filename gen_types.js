@@ -1,3 +1,5 @@
+// ⛔ 已封存（一次性迁移脚本，勿重新执行）
+//    该步骤在迁移期已完成，日常不再使用；其产物现由 `npm run gen` 统一生成。
 // 从参考资料 global.html 提取所有 <constant> 类型/枚举定义（Color、各种 *Style、ResetType 等），
 // 生成 docs/api/types.md 作为「类型与枚举」参考页，供参数表里的类型名链接落地。
 // 运行：node gen_types.js

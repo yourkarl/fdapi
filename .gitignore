@@ -20,3 +20,9 @@ npm-debug.log*
 # Environment variables
 .env
 .env.local
+
+# 原始 jsdoc 导出的图片素材（349MB / 578 张）
+# 站点实际使用的那部分已复制到 static/img/refdoc/ 并纳入跟踪；
+# 这里只是上游导出的完整副本，作为回溯备份留在本地，不进版本库。
+# 需要时从 SDK 安装目录重新导出 jsdoc 即可重建。
+参考资料/API原始参考文档/doc/images/

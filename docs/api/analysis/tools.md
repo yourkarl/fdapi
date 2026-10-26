@@ -45,21 +45,53 @@ Tools 提供量算与空间分析等通用工具能力（如测距、测面、�
 
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
+| [`bboxContainsBBox`](#bboxContainsBBox) | 判断 inner 包围盒是否被完全包含在 outer 内 | 判断包含关系 |
+| [`bboxIntersect`](#bboxIntersect) | 判断两个AABB包围盒是否相交 | 判断包围盒相交 |
+| [`calcAdjacentPointDistances`](#calcAdjacentPointDistances) | 相邻点分段距离数组 | 计算相邻点距 |
+| [`calcPolylineTotalLength`](#calcPolylineTotalLength) | 折线总长度 | 计算线长 |
+| [`expandBBox`](#expandBBox) | 包围盒膨胀/收缩，各个方向向外增加buffer距离 | 外扩包围盒 |
 | [`exportSkyline`](#exportSkyline) | 导出天际线分析图片， |  |
+| [`getBBox`](#getBBox) | 根据点集计算AABB包围盒 | 计算点集包围盒 |
+| [`getBBoxCenter`](#getBBoxCenter) | 获取包围盒中心点 | 取包围盒中心点 |
+| [`getBBoxCorners`](#getBBoxCorners) | 包围盒 8 个角点 | 取包围盒 8 个角点 |
+| [`getBBoxSize`](#getBBoxSize) | 包围盒尺寸 [sx, sy, sz] | 取包围盒尺寸 |
+| [`getBBoxVolume`](#getBBoxVolume) | 包围盒体积（min>max 时为负数，可先用 validateBBox 检查） | 取包围盒体积 |
+| [`getMidddlePoint`](#getMidddlePoint) | 获取两点的中间点 | 取中点 |
+| [`getPointAtDistance`](#getPointAtDistance) | 沿折线按弧长取点：从起点出发走 dist 距离所在的位置 | 沿折线取点（沿线动画） |
+| [`getPointDistance`](#getPointDistance) | 两点三维欧氏距离 | 两点距离 |
+| [`getPointDistanceSq`](#getPointDistanceSq) | 两点距离平方（不开根号，用于对比，计算性能更高） | 两点距离平方（比较用） |
+| [`getPolylineInfo`](#getPolylineInfo) | 获取折线完整信息：分段距离 + 总长 | 折线统计信息 |
 | [`getUIPanel`](#getUIPanel) | 查询系统UI功能操作面板的显示状态 |  |
 | [`hideUIPanel`](#hideUIPanel) | 隐藏系统UI功能操作面板 |  |
+| [`lerpPoint`](#lerpPoint) | 两点线性插值 t=0 返回 p1，t=1 返回 p2；t 超出 [0,1] 为外插 | 两点线性插值 |
 | [`lineIntersect`](#lineIntersect) | 单条线段求交，如果线段上有多个对象则返回距离折线起点位置最近的对象信息，如果折线上没有对… |  |
 | [`linesIntersect`](#linesIntersect) | 多条线段批量求交 |  |
+| [`mergeBBox`](#mergeBBox) | 合并两个包围盒（取并集） | 合并多个包围盒 |
+| [`offsetPolyline`](#offsetPolyline) | 折线沿给定法线方向横向偏移，生成平行折线 | 折线偏移（缓冲区） |
+| [`pointInBBox`](#pointInBBox) | 判断点是否在AABB包围盒内部（包含边界） | 点是否在盒内 |
+| [`pointInPolygon2D`](#pointInPolygon2D) | 判断点是否在 XY 平面多边形内部（射线法，z 被忽略） | 点是否在多边形内 |
+| [`pointToPlaneDistance`](#pointToPlaneDistance) | 点到平面的有符号距离（正 = 位于法线一侧，负 = 反侧） | 点到平面距离 |
+| [`pointToPolyline`](#pointToPolyline) | 点到折线的最近点 | 点到折线最近距离 |
+| [`polygonArea2D`](#polygonArea2D) | XY 平面多边形面积（鞋带公式，顶点顺序任意，自动取绝对值） | 计算平面面积 |
+| [`polygonCentroid2D`](#polygonCentroid2D) | XY 平面多边形质心（面积加权；退化三角形近似共线时退化为顶点平均） | 计算形心 |
+| [`projectPointToSegment`](#projectPointToSegment) | 点投影到线段 p0-p1，返回投影点，以及是否在线段内部 | 点到线段投影 |
+| [`removeNearbyPoints`](#removeNearbyPoints) | 清理折线，删除相邻距离小于 tolerance 的点 | 去除过密点 |
 | [`replaceTextureByImage`](#replaceTextureByImage) | 使用图片替换纹理 |  |
 | [`replaceTextureByUrl`](#replaceTextureByUrl) | 使用网页替换纹理 |  |
 | [`replaceTextureByVideo`](#replaceTextureByVideo) | 使用视频流替换纹理 |  |
+| [`replaceTextures`](#replaceTextures) | 批量替换纹理路径 | 批量替换贴图 |
 | [`restoreTexture`](#restoreTexture) | 恢复纹理 |  |
 | [`riverCrossSection`](#riverCrossSection) | 根据河道的坐标点和tif高程对河道横断面进行分析 |  |
 | [`riverCrossSectionByShp`](#riverCrossSectionByShp) | 根据河道的shp文件和tif高程对河道横断面进行分析 |  |
+| [`samplePolylineByCount`](#samplePolylineByCount) | 折线均分采样，输出固定count个点 | 折线等分采样 |
+| [`samplePolylineByStep`](#samplePolylineByStep) | 折线按固定步长采样 | 折线按步长采样 |
+| [`segmentIntersect3D`](#segmentIntersect3D) | 三维空间两线段求最近点与距离 | 空间线段求交 |
 | [`setMeasurement`](#setMeasurement) | 设置测量模式及相关参数 |  |
 | [`showClipPanel`](#showClipPanel) | 打开剖切功能操作面板 |  |
 | [`showMeasurePanel`](#showMeasurePanel) | 打开测量功能操作面板 |  |
 | [`showUIPanel`](#showUIPanel) | 显示系统UI功能操作面板 |  |
+| [`simplifyPolyline`](#simplifyPolyline) | Douglas-Peucker 折线抽稀（支持三维），保留首尾点 | 折线抽稀 |
+| [`smoothPolyline`](#smoothPolyline) | Chaikin 折线平滑（切角算法，保持首尾点不动） | 折线平滑 |
 | [`startContourLineAnalysis`](#startContourLineAnalysis) | 开始等高线分析，适用于地形 |  |
 | [`startCutFillAnalysis`](#startCutFillAnalysis) | 开始填挖方分析，适用于地形 |  |
 | [`startFloodFill`](#startFloodFill) | 开始水淹分析 |  |
@@ -74,7 +106,7 @@ Tools 提供量算与空间分析等通用工具能力（如测距、测面、�
 | [`startViewshedAnalysis`](#startViewshedAnalysis) | 开始可视域分析 |  |
 | [`startVisiblityAnalysis`](#startVisiblityAnalysis) | 开始通视分析 |  |
 | [`startVolumeClip`](#startVolumeClip) | 开始体剖切 |  |
-| [`stopClip`](#stopClip) | :::caution 已废弃 |  |
+| [`stopClip`](#stopClip) | ⚠️ 已废弃 |  |
 | [`stopContourLineAnalysis`](#stopContourLineAnalysis) | 停止等高线分析 |  |
 | [`stopCutFillAnalysis`](#stopCutFillAnalysis) | 停止填挖方分析 |  |
 | [`stopFloodFill`](#stopFloodFill) | 停止水淹分析 |  |
@@ -89,7 +121,21 @@ Tools 提供量算与空间分析等通用工具能力（如测距、测面、�
 | [`stopViewshedAnalysis`](#stopViewshedAnalysis) | 停止可视域分析 |  |
 | [`stopVisiblityAnalysis`](#stopVisiblityAnalysis) | 停止通视分析 |  |
 | [`stopVolumeClip`](#stopVolumeClip) | 停止体剖切 |  |
+| [`triangleArea`](#triangleArea) | 三维三角形面积 | 三角形面积 |
 | [`updateVolumeClip`](#updateVolumeClip) | 更新体剖切 |  |
+| [`validateBBox`](#validateBBox) | 校验包围盒数组 [minX,minY,minZ,maxX,maxY,maxZ] | 参数校验 |
+| [`validateBBoxSize`](#validateBBoxSize) | - | 参数校验 |
+| [`validateNumber`](#validateNumber) | 校验数值 | 参数校验 |
+| [`validatePoint`](#validatePoint) | 校验单个三维点 [x,y,z] | 参数校验 |
+| [`validatePointArray`](#validatePointArray) | 校验点数组 [[x,y,z],...] | 参数校验 |
+| [`vecAdd`](#vecAdd) | 向量加法 a + b | 向量运算 |
+| [`vecAngle`](#vecAngle) | 两向量夹角（弧度，范围 [0, π]），任一向量为零向量报错 | 向量运算 |
+| [`vecCross`](#vecCross) | 向量叉积 a × b（结果同时垂直于 a、b，方向遵循右手定则） | 向量运算 |
+| [`vecDot`](#vecDot) | 向量点积 | 向量运算 |
+| [`vecLength`](#vecLength) | 向量长度 | 向量运算 |
+| [`vecNormalize`](#vecNormalize) | 向量归一化（零向量报错） | 向量运算 |
+| [`vecScale`](#vecScale) | 向量数乘 v * k | 向量运算 |
+| [`vecSub`](#vecSub) | 向量减法 a - b | 向量运算 |
 
 ## 方法（Methods）
 
@@ -112,7 +158,7 @@ Tools 提供量算与空间分析等通用工具能力（如测距、测面、�
 | `backgroundColor` | `-` | 否 | [0, 0, 0, 0.75] | 图片背景颜色，默认值：[0, 0, 0, 0.75] |
 | `tileLayers` | `-` | 是 | - | 数组类型，若此数组为空默认绘制所有物体形成的天际线;不为空则多个TileLayer形成的一条天际线，多条天际线绘制到该图上； 数组元素定义如下： |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取）。官方文档未给出该接口的返回结构定义，可参考下方示例的调用方式，实际结构以运行结果为准。
 
 ```js
 示例代码如下：
@@ -158,7 +204,7 @@ fdapi.tools.exportSkyline('base64', [400, 200], options);
 | `type` | `number` | 是 | - | 操作面板对应枚举，取值范围：[0~正整数]，详情参考 `UIPanelType` |
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取）。官方文档未给出该接口的返回结构定义，可参考下方示例的调用方式，实际结构以运行结果为准。
 
 > 示例：查询操作面板状态：GetUIPanel
 
@@ -1217,6 +1263,8 @@ fdapi.tools.startVolumeClip(bbox, 0, true, true, [0, 0, 0]);
 
 ### `stopClip(fn)` {#stopClip}
 
+> ⚠️ **已废弃**：接口已在新版 SDK 中标记废弃，新项目请勿使用，存量调用建议迁移到对应替代接口。
+
 :::caution 已废弃
 
 2021.03.23之后的版本已弃用，请用stopPolygonClip代替
@@ -1523,3 +1571,538 @@ fdapi.camera.set(494188.212969, 2489127.357422, 3717.1875, -50.044331, -177.0790
 let bbox = [488670.75, 2488165, -200, 491659.59375, 2490987.5, 800];
 fdapi.tools.updateVolumeClip(bbox, 0, true, false, [0, 40, 0]);
 ```
+
+### `bboxContainsBBox(outer, inner)` {#bboxContainsBBox}
+
+判断 inner 包围盒是否被完全包含在 outer 内
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `outer` | `Array.&lt;number&gt;` | 是 | - | 外包围盒 |
+| `inner` | `Array.&lt;number&gt;` | 是 | - | 内包围盒 |
+
+**返回：** Type boolean
+
+
+### `bboxIntersect(b1, b2)` {#bboxIntersect}
+
+判断两个AABB包围盒是否相交
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `b1` | `Array.&lt;number&gt;` | 是 | - | [minX,minY,minZ,maxX,maxY,maxZ] |
+| `b2` | `Array.&lt;number&gt;` | 是 | - | [minX,minY,minZ,maxX,maxY,maxZ] |
+
+**返回：** true相交
+
+
+### `calcAdjacentPointDistances(points)` {#calcAdjacentPointDistances}
+
+相邻点分段距离数组
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `points` | `Array.&lt;Array.&lt;number&gt;&gt;` | 是 | - | 点数组 |
+
+**返回：** Type Array.&lt;number&gt;
+
+
+### `calcPolylineTotalLength(points)` {#calcPolylineTotalLength}
+
+折线总长度
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `points` | `Array.&lt;Array.&lt;number&gt;&gt;` | 是 | - | 点数组 |
+
+**返回：** Type number
+
+
+### `expandBBox(bbox, buffer)` {#expandBBox}
+
+包围盒膨胀/收缩，各个方向向外增加buffer距离
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `bbox` | `Array.&lt;number&gt;` | 是 | - | [minX,minY,minZ,maxX,maxY,maxZ] |
+| `buffer` | `number` | 是 | - | 膨胀距离，正数向外扩大；负数向内收缩 |
+
+**返回：** 新包围盒
+
+
+### `getBBox(points)` {#getBBox}
+
+根据点集计算AABB包围盒
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `points` | `Array.&lt;Array.&lt;number&gt;&gt;` | 是 | - | 三维点数组 |
+
+**返回：** [minX, minY, minZ, maxX, maxY, maxZ]
+
+
+### `getBBoxCenter(bbox)` {#getBBoxCenter}
+
+获取包围盒中心点
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `bbox` | `Array.&lt;number&gt;` | 是 | - | [minX,minY,minZ,maxX,maxY,maxZ] |
+
+**返回：** [cx, cy, cz]
+
+
+### `getBBoxCorners(bbox)` {#getBBoxCorners}
+
+包围盒 8 个角点
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `bbox` | `Array.&lt;number&gt;` | 是 | - | [minX,minY,minZ,maxX,maxY,maxZ] |
+
+**返回：** 8 个 [x,y,z]
+
+
+### `getBBoxSize(bbox)` {#getBBoxSize}
+
+包围盒尺寸 [sx, sy, sz]
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `bbox` | `Array.&lt;number&gt;` | 是 | - | [minX,minY,minZ,maxX,maxY,maxZ] |
+
+**返回：** Type Array.&lt;number&gt;
+
+
+### `getBBoxVolume(bbox)` {#getBBoxVolume}
+
+包围盒体积（min>max 时为负数，可先用 validateBBox 检查）
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `bbox` | `Array.&lt;number&gt;` | 是 | - | [minX,minY,minZ,maxX,maxY,maxZ] |
+
+**返回：** Type number
+
+
+### `getMidddlePoint(p1, p2)` {#getMidddlePoint}
+
+获取两点的中间点
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `p1` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+| `p2` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+
+**返回：** 中间点
+
+
+### `getPointAtDistance(points, dist)` {#getPointAtDistance}
+
+沿折线按弧长取点：从起点出发走 dist 距离所在的位置
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `points` | `Array.&lt;Array.&lt;number&gt;&gt;` | 是 | - | 折线顶点 |
+| `dist` | `number` | 是 | - | 弧长距离（m），超出总长时返回终点 |
+
+**返回：** point: 目标点; segmentIndex: 所在线段索引（起点段为0）; t: 段内参数 [0,1]
+
+
+### `getPointDistance(p1, p2)` {#getPointDistance}
+
+两点三维欧氏距离
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `p1` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+| `p2` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+
+**返回：** 两点距离
+
+
+### `getPointDistanceSq(p1, p2)` {#getPointDistanceSq}
+
+两点距离平方（不开根号，用于对比，计算性能更高）
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `p1` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+| `p2` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+
+**返回：** 两点距离的平方
+
+
+### `getPolylineInfo(points)` {#getPolylineInfo}
+
+获取折线完整信息：分段距离 + 总长
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `points` | `Array.&lt;Array.&lt;number&gt;&gt;` | 是 | - | - |
+
+**返回：** Type Object
+
+
+### `lerpPoint(p1, p2, t)` {#lerpPoint}
+
+两点线性插值 t=0 返回 p1，t=1 返回 p2；t 超出 [0,1] 为外插
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `p1` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+| `p2` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+| `t` | `number` | 是 | - | 插值系数 |
+
+**返回：** Type Array.&lt;number&gt;
+
+
+### `mergeBBox(b1, b2)` {#mergeBBox}
+
+合并两个包围盒（取并集）
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `b1` | `Array.&lt;number&gt;` | 是 | - | [minX,minY,minZ,maxX,maxY,maxZ] |
+| `b2` | `Array.&lt;number&gt;` | 是 | - | 同上 |
+
+**返回：** 合并后包围盒
+
+
+### `offsetPolyline(points, normal, offset)` {#offsetPolyline}
+
+折线沿给定法线方向横向偏移，生成平行折线 注意：适合平面折线，法线是平面法向量；非平面空间曲线偏移会失真
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `points` | `Array.&lt;Array.&lt;number&gt;&gt;` | 是 | - | 原始折线 |
+| `normal` | `Array.&lt;number&gt;` | 是 | - | 平面单位法线 [nx,ny,nz] |
+| `offset` | `number` | 是 | - | 偏移距离（正负控制方向） |
+
+**返回：** 偏移后折线
+
+
+### `pointInBBox(point, bbox)` {#pointInBBox}
+
+判断点是否在AABB包围盒内部（包含边界）
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `point` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+| `bbox` | `Array.&lt;number&gt;` | 是 | - | [minX,minY,minZ,maxX,maxY,maxZ] |
+
+**返回：** Type boolean
+
+
+### `pointInPolygon2D(pt, polygon)` {#pointInPolygon2D}
+
+判断点是否在 XY 平面多边形内部（射线法，z 被忽略） 注意：点恰好在边界上时结果不稳定，边界场景请用专门逻辑处理
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `pt` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+| `polygon` | `Array.&lt;Array.&lt;number&gt;&gt;` | 是 | - | 顶点数组，至少3个 |
+
+**返回：** true 在内部
+
+
+### `pointToPlaneDistance(pt, planePoint, planeNormal)` {#pointToPlaneDistance}
+
+点到平面的有符号距离（正 = 位于法线一侧，负 = 反侧）
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `pt` | `Array.&lt;number&gt;` | 是 | - | 待求点 [x,y,z] |
+| `planePoint` | `Array.&lt;number&gt;` | 是 | - | 平面上一点 [x,y,z] |
+| `planeNormal` | `Array.&lt;number&gt;` | 是 | - | 平面法线（无需单位化，但不能为零向量） |
+
+**返回：** 有符号距离
+
+
+### `pointToPolyline(pt, points)` {#pointToPolyline}
+
+点到折线的最近点
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `pt` | `Array.&lt;number&gt;` | 是 | - | 待求点 [x,y,z] |
+| `points` | `Array.&lt;Array.&lt;number&gt;&gt;` | 是 | - | 折线顶点 |
+
+**返回：** point: 最近点; dist: 最近距离; segmentIndex: 所在线段索引; t: 段内参数 [0,1]
+
+
+### `polygonArea2D(points)` {#polygonArea2D}
+
+XY 平面多边形面积（鞋带公式，顶点顺序任意，自动取绝对值）
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `points` | `Array.&lt;Array.&lt;number&gt;&gt;` | 是 | - | 顶点数组 [[x,y,z],...]，至少3个，z 被忽略 |
+
+**返回：** 面积
+
+
+### `polygonCentroid2D(points)` {#polygonCentroid2D}
+
+XY 平面多边形质心（面积加权；退化三角形近似共线时退化为顶点平均）
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `points` | `Array.&lt;Array.&lt;number&gt;&gt;` | 是 | - | 顶点数组，至少3个，z 被忽略 |
+
+**返回：** [cx, cy, 平均z]
+
+
+### `projectPointToSegment(pt, p0, p1)` {#projectPointToSegment}
+
+点投影到线段 p0-p1，返回投影点，以及是否在线段内部
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `pt` | `Array.&lt;number&gt;` | 是 | - | 待投影点 |
+| `p0` | `Array.&lt;number&gt;` | 是 | - | 线段起点 |
+| `p1` | `Array.&lt;number&gt;` | 是 | - | 线段终点 |
+
+
+### `removeNearbyPoints(points, tolerance)` {#removeNearbyPoints}
+
+清理折线，删除相邻距离小于 tolerance 的点
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `points` | `Array.&lt;Array.&lt;number&gt;&gt;` | 是 | - | - |
+| `tolerance` | `number` | 是 | - | 距离阈值m，推荐1e-6 |
+
+**返回：** Type Array.&lt;Array.&lt;number&gt;&gt;
+
+
+### `replaceTextures(data, fn)` {#replaceTextures}
+
+批量替换纹理路径
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 数据结构，支持对象或数组，对于每一个对象支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考二次开发：异步接口调用方式 |
+
+> **`data` 对象属性：**
+
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data.sourceTexturePath` | `string` | 是 | - | 被替换的材质纹理路径 |
+| `data.targetTexturePath` | `string` | 是 | - | 待替换的新材质纹理路径 |
+| `data.type` | `number` | 是 | - | 新材质纹理的类型：1视频 2图片 3网页 |
+
+
+### `samplePolylineByCount(points, count)` {#samplePolylineByCount}
+
+折线均分采样，输出固定count个点
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `points` | `Array.&lt;Array.&lt;number&gt;&gt;` | 是 | - | 点数组 |
+| `count` | `number` | 是 | - | 总点数>=2 |
+
+**返回：** Type Array.&lt;Array.&lt;number&gt;&gt;
+
+
+### `samplePolylineByStep(points, step)` {#samplePolylineByStep}
+
+折线按固定步长采样
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `points` | `Array.&lt;Array.&lt;number&gt;&gt;` | 是 | - | - |
+| `step` | `number` | 是 | - | 步长m |
+
+**返回：** Type Array.&lt;Array.&lt;number&gt;&gt;
+
+
+### `segmentIntersect3D(s0, s1, t0, t1)` {#segmentIntersect3D}
+
+三维空间两线段求最近点与距离
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `s0` | `Array.&lt;number&gt;` | 是 | - | 线段1起点 [x,y,z] |
+| `s1` | `Array.&lt;number&gt;` | 是 | - | 线段1终点 [x,y,z] |
+| `t0` | `Array.&lt;number&gt;` | 是 | - | 线段2起点 [x,y,z] |
+| `t1` | `Array.&lt;number&gt;` | 是 | - | 线段2终点 [x,y,z] |
+
+
+### `simplifyPolyline(points, tolerance)` {#simplifyPolyline}
+
+Douglas-Peucker 折线抽稀（支持三维），保留首尾点
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `points` | `Array.&lt;Array.&lt;number&gt;&gt;` | 是 | - | 折线顶点 |
+| `tolerance` | `number` | 是 | - | 垂距阈值（m），越大抽稀越狠，推荐 0.1~1 |
+
+**返回：** 抽稀后顶点
+
+
+### `smoothPolyline(points, iterations)` {#smoothPolyline}
+
+Chaikin 折线平滑（切角算法，保持首尾点不动）
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `points` | `Array.&lt;Array.&lt;number&gt;&gt;` | 是 | - | 折线顶点 |
+| `iterations` | `number` | 是 | - | 平滑次数，1 次点数约翻倍，推荐 2~3 |
+
+**返回：** 平滑后顶点
+
+
+### `triangleArea(p1, p2, p3)` {#triangleArea}
+
+三维三角形面积
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `p1` | `Array.&lt;number&gt;` | 是 | - | 顶点1 [x,y,z] |
+| `p2` | `Array.&lt;number&gt;` | 是 | - | 顶点2 |
+| `p3` | `Array.&lt;number&gt;` | 是 | - | 顶点3 |
+
+**返回：** 面积
+
+
+### `validateBBox(bbox)` {#validateBBox}
+
+校验包围盒数组 [minX,minY,minZ,maxX,maxY,maxZ]
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `bbox` | `Array.&lt;number&gt;` | 是 | - | 待验证的包围盒 |
+
+
+### `validateBBoxSize(bbox, minLimit, maxLimit)` {#validateBBoxSize}
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `bbox` | `Array.&lt;number&gt;` | 是 | - | 待验证的包围盒 |
+| `minLimit` | `number` | 是 | - | 长宽高允许的最小尺寸 |
+| `maxLimit` | `number` | 是 | - | 长宽高允许的最大尺寸 |
+
+
+### `validateNumber(v, name)` {#validateNumber}
+
+校验数值
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `v` | `number` | 是 | - | 数值 |
+| `name` | `string` | 是 | - | 数值对应的字段名称 |
+
+
+### `validatePoint(p, idx)` {#validatePoint}
+
+校验单个三维点 [x,y,z]
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `p` | `Array.&lt;number&gt;` | 是 | - | 三维点 |
+| `idx` | `number` | 是 | - | 点索引，报错提示使用 |
+
+
+### `validatePointArray(points)` {#validatePointArray}
+
+校验点数组 [[x,y,z],...]
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `points` | `Array.&lt;Array.&lt;number&gt;&gt;` | 是 | - | 三维点数组 |
+
+
+### `vecAdd(a, b)` {#vecAdd}
+
+向量加法 a + b
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `a` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+| `b` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+
+**返回：** Type Array.&lt;number&gt;
+
+
+### `vecAngle(a, b)` {#vecAngle}
+
+两向量夹角（弧度，范围 [0, π]），任一向量为零向量报错
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `a` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+| `b` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+
+**返回：** 弧度
+
+
+### `vecCross(a, b)` {#vecCross}
+
+向量叉积 a × b（结果同时垂直于 a、b，方向遵循右手定则）
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `a` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+| `b` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+
+**返回：** Type Array.&lt;number&gt;
+
+
+### `vecDot(a, b)` {#vecDot}
+
+向量点积
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `a` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+| `b` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+
+**返回：** Type number
+
+
+### `vecLength(v)` {#vecLength}
+
+向量长度
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `v` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+
+**返回：** Type number
+
+
+### `vecNormalize(v)` {#vecNormalize}
+
+向量归一化（零向量报错）
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `v` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+
+**返回：** 单位向量
+
+
+### `vecScale(v, k)` {#vecScale}
+
+向量数乘 v * k
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `v` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+| `k` | `number` | 是 | - | 缩放系数 |
+
+**返回：** Type Array.&lt;number&gt;
+
+
+### `vecSub(a, b)` {#vecSub}
+
+向量减法 a - b
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `a` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+| `b` | `Array.&lt;number&gt;` | 是 | - | [x,y,z] |
+
+**返回：** Type Array.&lt;number&gt;

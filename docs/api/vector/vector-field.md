@@ -67,13 +67,16 @@ tif文件结构描述：
 | 方法 | 说明 | 适用业务场景 |
 |------|------|------------|
 | [`add`](#add) | 添加一个或多个VectorField向量场对象 | 向场景批量添加对象 |
+| [`addByWindCfd`](#addByWindCfd) | 根据模拟完成的实时风场仿真对象windCfd添加一个或多个VectorField向量场对象 | 接入风场 CFD 仿真结果 |
 | [`clear`](#clear) | 清空场景中所有的VectorField对象 | 清空全部对象，重置图层 |
 | [`delete`](#delete) | 删除一个或多个VectorField对象 | 按 ID 移除指定对象 |
+| [`deleteWindCfd`](#deleteWindCfd) | 删除已经完成的风场仿真 | 释放风场仿真任务 |
 | [`focus`](#focus) | 自动定位到合适的观察距离 | 相机定位到目标，点击联动跳转 |
 | [`get`](#get) | 根据ID获取VectorField对象的详细信息 | 查询对象信息，用于业务联动 |
 | [`hide`](#hide) | 隐藏VectorField对象 | 按业务条件隐藏对象 |
 | [`setViewportVisible`](#setViewportVisible) | 设置向量场对象在进入多视口状态下视口可见性 |  |
 | [`show`](#show) | 显示VectorField对象 | 按业务条件显示对象 |
+| [`simWindCfd`](#simWindCfd) | 远程风场仿真；计算完成后通过返回值或回调返回 url、jobId，不发送完成事件 | 发起远程风场仿真 |
 | [`update`](#update) | 修改一个或多个VectorField对象 | 运行时动态更新对象属性/状态 |
 
 ## 方法（Methods）
@@ -323,7 +326,7 @@ fdapi.vectorField.focus('typhoon', 10000000);
 | `ids` | `string \| array` | 是 | - | 要获取的VectorField对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），返回结构见下方「返回数据结构」。
 
 > **返回数据结构**
 
@@ -466,3 +469,92 @@ let typhoon = {
 }
 fdapi.vectorField.update(typhoon);
 ```
+
+### `addByWindCfd(data, fn)` {#addByWindCfd}
+
+根据模拟完成的实时风场仿真对象windCfd添加一个或多个VectorField向量场对象
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data` | `object \| array` | 是 | - | 构造向量场对象VectorField的数据对象，可以是Object类型或者Array类型，对于每一个VectorField对象，支持以下属性： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考二次开发：异步接口调用方式 |
+
+> **`data` 对象属性：**
+
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `data.id` | `string` | 是 | - | VectorField对象ID |
+| `data.groupId` | `string` | 否 | - | 可选，Group分组 |
+| `data.userData` | `string` | 否 | - | 可选，用户自定义数据 |
+| `data.coordinateType` | `number` | 是 | 0 | 坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0 |
+| `data.coordinate` | `array` | 是 | - | 向量场对象的坐标位置 |
+| `data.url` | `string` | 是 | - | simWindCfd 完成后返回的结果 URL，可保存后重新加载，无需原任务仍在内存中 |
+| `data.windCfdId` | `string` | 是 | - | 已经模拟完成的实时风场仿真对象windCfd的ID，注意：实时风场仿真对象通过simWindCfd(windCfd)方法来创建（兼容旧调用，限当前进程） |
+| `data.spawnRate` | `number` | 是 | - | 粒子每秒生成的速率，影响粒子数量 |
+| `data.spawnRateMin` | `number` | 是 | - | 近距离粒子的生成速度，影响粒子数量 |
+| `data.spawnRateMax` | `number` | 是 | - | 远距离粒子的生成速度，影响粒子数量 |
+| `data.spawnRatePower` | `number` | 是 | - | 按距离插值时使用指数函数，设置指数函数的N次方，影响粒子数量 |
+| `data.spawnLineRate` | `number` | 是 | - | 每个线条上每秒生成的粒子数量 |
+| `data.spawnLineCap` | `number` | 是 | - | 每个线条上粒子的最大数量 |
+| `data.repeatCount` | `number` | 是 | - | 向量场重复次数，即粒子发射器的数量，影响粒子数量 |
+| `data.killSpeed` | `number` | 是 | - | 粒子显示的最小速度，影响粒子数量 |
+| `data.backKill` | `boolean` | 是 | - | 是否背面剔除，影响粒子数量 |
+| `data.vfIntensAsVelocity` | `number` | 是 | - | 场的强度到速度的缩放比例，影响粒子长度 |
+| `data.lifeTime` | `number` | 是 | - | 粒子的生命周期，即粒子存活时间，单位：秒，影响粒子长度 |
+| `data.lifeTimeOcean` | `number` | 是 | - | 洋流模式下粒子存活时间，仅displayMode为洋流模式生效，单位：秒，影响粒子长度 |
+| `data.singleSpriteSize` | `number` | 是 | - | 单个粒子大小，单位米，影响粒子大小 |
+| `data.singleSpriteSizeOcean` | `number` | 是 | - | 洋流模式下单个粒子大小，仅displayMode为洋流模式生效，单位米，影响粒子大小 |
+| `data.lodMin` | `number` | 是 | 0.6 | 粒子大小最小缩放比例，默认值：0.6，影响粒子大小 |
+| `data.lodMax` | `number` | 是 | 2 | 粒子大小最大缩放比例，默认值：2，影响粒子大小 |
+| `data.lodMaxDistance` | `number` | 是 | - | 粒子大小的最大缩放距离，即从[0~lodMaxDistance]映射到[lodMin~lodMax]对粒子大小进行缩放，注意：若超过此值则使用lodMax进行缩放，影响粒子大小 |
+| `data.lodMinDistance` | `number` | 是 | - | 粒子大小的最小缩放距离，即从[0~lodMinDistance]映射到[lodMin~lodMax]对粒子大小进行缩放，注意：若小于此值则使用lodMin进行缩放，影响粒子大小 |
+| `data.headBrightness` | `number` | 是 | 0.3 | 粒子发射器头部粒子的亮度缩放值，默认值：0.3，值越大发射器头部的粒子越亮 |
+| `data.reset` | `boolean` | 是 | - | 向量场更新时是否对原场数据进行重置（动画拖影效果），默认：false，注意：仅对update()函数生效 |
+| `data.displayMode` | `string` | 是 | - | 向量场的显示形态类型枚举【风场、波浪、洋流、河流、箭头、烟雾等类型】 ，参考 `VectorFieldStyle` |
+| `data.bDynamicRenderBound` | `boolean` | 是 | - | 是否动态计算渲染范围，默认：false。注意：仅球面上生效 |
+| `data.fieldScale` | `array` | 是 | - | 向量场缩放大小 |
+| `data.bNeedProjection` | `boolean` | 是 | false | 是否需要重投影，经纬度坐标需要设置为true，默认值：false |
+| `data.wkt` | `string` | 是 | - | 重投影时的wkt字符串，为空时，默认投影到web墨卡托 |
+| `data.offset` | `array` | 是 | - | 向量场数据的整体偏移，默认不需要偏移 |
+| `data.speedRange` | `array` | 是 | - | 流速流向的取值范围，示例：[min,max] |
+| `data.vecScale` | `array` | 是 | [1,1,1] | 向量缩放，默认值：[1,1,1]，仅支持txt文件格式类型 |
+| `data.downsample` | `number` | 是 | - | 分辨率按此参数进行缩放的比例，一般取2的n次幂，如：2，4，6，8，16... |
+| `data.particleMaxNumber` | `number` | 是 | - | 粒子最大数量限制 |
+| `data.speedPower` | `number` | 是 | 1 | 粒子速度的幂次方，小于1则粒子速度变小，大于1则粒子速度变大。默认值：1，注意：场内粒子的速度差距比较大时才需要设置此参数 |
+| `data.colorStops` | `array` | 是 | - | 颜色插值对象数组，支持按速度显示对应颜色，每一个对象都有以下属性： **color** (Color) 速度值对应的图例颜色 **value** (number) 速度值 |
+| `data.opacityStops` | `array` | 是 | - | 不透明度插值对象数组，支持按速度显示对应的不透明度，每一个对象都有以下属性： **opacity** (number) 速度值对应的不透明度，取值范围：[0~1] **value** (number) 速度值 |
+
+
+### `deleteWindCfd(ids, fn)` {#deleteWindCfd}
+
+删除已经完成的风场仿真
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ids` | `string \| array` | 是 | - | 已经完成的风场仿真对象windCfd的任务ID或ID数组 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考二次开发：异步接口调用方式 |
+
+
+### `simWindCfd(winfCfd, fn)` {#simWindCfd}
+
+远程风场仿真；计算完成后通过返回值或回调返回 url、jobId，不发送完成事件
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `winfCfd` | `object` | 是 | - | 实时风场仿真数据输入对象，每个对象包含以下参数： |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考二次开发：异步接口调用方式 |
+
+> **`winfCfd` 对象属性：**
+
+| 属性 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `winfCfd.id` | `string` | 是 | - | 实时风场仿真对象windCfd的任务ID |
+| `winfCfd.serviceUrl` | `string` | 是 | - | 必填，RemoteCommandServer 的 HTTP/HTTPS 地址，例如 http://192.168.1.4:5080 |
+| `winfCfd.tileLayerIds` | `array` | 是 | - | 参与风场仿真的图层Id数组 |
+| `winfCfd.bbox` | `array` | 是 | - | 风场仿真的包围盒范围，格式：[minX,minY,minZ,maxX,maxY,maxZ]，数组元素类型：[任意浮点数]，注意：包围盒的尺寸需要在[10~10000】米范围区间内 |
+| `winfCfd.ignoreHidden` | `boolean` | 是 | false | 仿真计算时是否忽略隐藏的图层和构件Actor，默认值：false |
+| `winfCfd.cellSize` | `number` | 是 | 3 | 风场结果 TIFF 的采样间隔，单位：米，默认值：3 |
+| `winfCfd.windSpeed` | `number` | 是 | 3 | 仿真计算时来风的风速，单位：m/s，取值范围：[0~20]，默认值：3 |
+| `winfCfd.windDirection` | `number` | 是 | 0 | 仿真计算时来风的风向，单位：度，取值范围：[0~360]，正北为 0，顺时针增大（0 北 / 90 东 / 180 南 / 270 西），默认值：0 |
+
+**返回：** 与岩爆相同的响应对象：result 为 0 表示成功，包含 id、url、jobId；失败包含 errorMessage。

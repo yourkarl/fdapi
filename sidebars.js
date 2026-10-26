@@ -144,6 +144,7 @@ const sidebars = {
       items: [
         'api/analysis/tools',
         'api/analysis/excavation-analysis',
+        'api/analysis/viewshed',
       ],
     },
     {
@@ -167,6 +168,7 @@ const sidebars = {
       items: [
         'api/utils/coord',
         'api/utils/fd-external',
+        'api/utils/base-object',
         'api/analysis/query-option',
         'api/weather/misc',
       ],
@@ -285,6 +287,7 @@ const sidebars = {
       items: [
         'api/battle/plot',
         'api/battle/battlefield-simulation',
+        'api/battle/rockburst',
       ],
     },
     {

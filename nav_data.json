@@ -243,6 +243,12 @@
           "html_class": "QueryOption",
           "name": "查询选项",
           "desc": "查询筛选功能"
+        },
+        {
+          "id": "analysis-viewshed",
+          "html_class": "Viewshed",
+          "name": "可视域对象",
+          "desc": "Viewshed 持久化视锥/批量增删显隐"
         }
       ]
     },
@@ -261,6 +267,12 @@
           "html_class": "FdExternal",
           "name": "外部接口",
           "desc": "对接外部系统"
+        },
+        {
+          "id": "util-base-object",
+          "html_class": "BaseObject",
+          "name": "对象基类",
+          "desc": "updateBegin/updateEnd 批量更新协议"
         }
       ]
     },
@@ -621,6 +633,12 @@
           "html_class": "BattlefieldSimulation",
           "name": "战场仿真",
           "desc": "BattlefieldSimulation"
+        },
+        {
+          "id": "battle-rockburst",
+          "html_class": "Rockburst",
+          "name": "岩爆破碎",
+          "desc": "Rockburst 岩体破碎与抛掷仿真"
         }
       ]
     }

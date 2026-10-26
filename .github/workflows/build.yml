@@ -23,14 +23,19 @@ jobs:
       - name: Install Python dependencies
         run: pip install beautifulsoup4 pyyaml
 
+      # 只校验「日常管线实际会跑」的脚本。
+      # 注意：regenerate_docs.py / gen_sidebar.py / gen_types.js / insert_skills.js / linkify_types.js
+      # 为一次性迁移脚本，已封存，不再纳入 CI，也不应被重新执行（会覆盖手写文档）。
       - name: Verify generation scripts are importable
         run: |
           python3 -c "import bs4; print('beautifulsoup4 OK')"
           python3 -c "
           import ast, sys
-          for f in ['regenerate_docs.py', 'gen_sidebar.py', 'gen_real_examples.py', 'gen_dts.py', 'gen_param_meta.py', 'gen_llms_txt.py', 'check_docs_integrity.py']:
+          scripts = ['gen_dts.py', 'gen_param_meta.py', 'gen_real_examples.py',
+                     'gen_llms_txt.py', 'check_docs_integrity.py', 'gen_utils.py']
+          for f in scripts:
             try:
-              ast.parse(open(f).read())
+              ast.parse(open(f, encoding='utf-8').read())
               print(f, 'syntax OK')
             except SyntaxError as e:
               print(f'FAIL {f}:', e, file=sys.stderr)
@@ -48,5 +53,19 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      # 派生物同步门禁：docs/api/*.md 是唯一手写源，d.ts / 参数元数据 / 示例索引 / llms.txt
+      # 全部由脚本派生。若源文档改了但没重跑生成脚本，站点会出现「文档与补全不一致」。
+      # 这里重新生成一遍，要求工作区无差异，否则失败并提示本地执行 npm run gen。
+      - name: Verify generated artifacts are up to date
+        run: |
+          npm run gen
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "::error::派生物与源文档不一致，请在本地执行 npm run gen 后一并提交。"
+            git status --porcelain
+            git diff
+            exit 1
+          fi
+          echo "派生物与源文档一致。"
 
       - run: npm run build

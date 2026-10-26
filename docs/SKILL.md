@@ -1,11 +1,11 @@
 ---
 name: dts-sdk-development
-description: 飞渡 DTS（Digital Twin System）数字孪生 SDK 二次开发与 API 查询工具。涵盖云渲染初始化、异步调用、事件、坐标/颜色约定，以及 fdapi 全部类与方法（相机、标注、图层、矢量、模型、水利/海洋、交通、信号、战场、有限元、天气、分析量算等）。在用户进行 DTS 二次开发，或查询 fdapi / DigitalTwinAPI / DigitalTwinPlayer / 某个类或方法、需要标注/相机/图层/仿真等示例代码时使用。
+description: 飞渡 DTS（Digital Twin System）数字孪生 SDK 二次开发与 API 查询工具。涵盖云渲染初始化、异步调用、事件、坐标/颜色约定，以及 fdapi 全部类与方法（相机、标注、图层、矢量、模型、水利/海洋、交通、信号、战场/岩爆、有限元、天气、可视域、分析量算与几何计算等）。在用户进行 DTS 二次开发，或查询 fdapi / DigitalTwinAPI / DigitalTwinPlayer / 某个类或方法、需要标注/相机/图层/仿真/可视域/几何计算等示例代码时使用。
 ---
 
 # DTS 数字孪生 SDK 文档
 
-飞渡 DTS（Digital Twin System）Cloud 是云渲染数字孪生平台。网页通过 `DigitalTwinPlayer` 接收三维视频流，并通过 `fdapi`（即 `DigitalTwinAPI`）调用三维场景能力。本 Skill 提供初始化模板、调用约定，并把文档拆分到类/方法级别供按需查阅。当前对应 SDK v7.1；完整文档站见 https://yourkarl.github.io/fdapi/ 。
+飞渡 DTS（Digital Twin System）Cloud 是云渲染数字孪生平台。网页通过 `DigitalTwinPlayer` 接收三维视频流，并通过 `fdapi`（即 `DigitalTwinAPI`）调用三维场景能力。本 Skill 提供初始化模板、调用约定，并把文档拆分到类/方法级别供按需查阅。当前对应 SDK v7.1；完整文档站见 https://github.com/yourkarl/fdapi/tree/master
 
 ## 调用约定（务必先读）
 
@@ -48,6 +48,7 @@ const fdapi  = player.getAPI();                       // API 总入口
 3. **枚举 / 全局类型**（`Color`、`ActionMode`、各类 `Style`、`Mode` 等）→ 读 `api/types.md`。
 4. **事件回调**（`onEvent` 收到的事件）→ 读 `api/events/` 下对应文件。
 5. **中文功能词** → 用下方"功能→类"与"方法→类"映射先确定类，再按 1 取文件。
+6. **纯几何/数学计算**（算距离、面积、包围盒、折线抽稀、向量运算、点在多边形内等）→ 先看 `api/analysis/tools.md`，**这些方法同步返回结果，不要传回调**。
 
 ## 教程索引（`tutorials/`）
 
@@ -110,7 +111,7 @@ const fdapi  = player.getAPI();                       // API 总入口
 | ODLine | OD 飞线 | `fdapi.odLine` | `api/vector/odline.md` |
 | TopologyLine | 拓扑线 | `fdapi.topologyLine` | `api/vector/topology-line.md` |
 | SplineMesh | 样条网格 | `fdapi.splineMesh` | `api/vector/spline-mesh.md` |
-| VectorField | 矢量场 | `fdapi.vectorField` | `api/vector/vector-field.md` |
+| VectorField | 矢量场（风场/洋流/烟雾仿真，支持接入 CFD 风场结果） | `fdapi.vectorField` | `api/vector/vector-field.md` |
 | Tag | 2D 文字标签（已停更，建议用 Marker） | `fdapi.tag` | `api/vector/tag.md` |
 
 ### 图层 layer
@@ -186,6 +187,7 @@ const fdapi  = player.getAPI();                       // API 总入口
 | 类 | 用途 | 访问器 | 文件 |
 |----|------|--------|------|
 | BattlefieldSimulation | 战场仿真 | `fdapi.battlefieldSimulation` | `api/battle/battlefield-simulation.md` |
+| Rockburst | 岩爆/岩体破碎仿真（需服务端开启 `-FDEnablePhysSimulation`） | `fdapi.rockburst` | `api/battle/rockburst.md` |
 | Plot（战场标绘） | 军标标绘 | `fdapi.plot` | `api/battle/plot.md` |
 
 ### 有限元 fem
@@ -197,8 +199,9 @@ const fdapi  = player.getAPI();                       // API 总入口
 | 类 | 用途 | 访问器 | 文件 |
 |----|------|--------|------|
 | ExcavationAnalysis | 开挖分析 | `fdapi.excavationAnalysis` | `api/analysis/excavation-analysis.md` |
+| Viewshed | 可视域分析对象（持久化视锥，可批量增删/显隐，区别于 `tools.startViewshedAnalysis` 的面板式一次性分析） | `fdapi.viewshed` | `api/analysis/viewshed.md` |
 | QueryOption | 查询/拾取选项 | — | `api/analysis/query-option.md` |
-| Tools（分析工具） | 通用工具/量算 | `fdapi.tools` | `api/analysis/tools.md` |
+| Tools（分析工具） | 通用工具/量算/几何计算（含向量运算、包围盒、折线几何） | `fdapi.tools` | `api/analysis/tools.md` |
 | Plot（量算标绘） | 测量标绘 | `fdapi.plot` | `api/measure/plot.md` |
 | EditHelper（编辑） | 图形编辑助手 | `fdapi.editHelper` | `api/measure/edit-helper.md` |
 
@@ -219,7 +222,8 @@ const fdapi  = player.getAPI();                       // API 总入口
 | 类 | 用途 | 访问器 | 文件 |
 |----|------|--------|------|
 | Coord | 坐标转换 | `fdapi.coord` | `api/utils/coord.md` |
-| FdExternal | 外部/宿主交互 | `fdapi.fdExternal` | `api/utils/fd-external.md` |
+| FdExternal | 外部/宿主交互（CEF 页面里直连 C++） | `fdapi.fdExternal` | `api/utils/fd-external.md` |
+| BaseObject | 三维对象公共父类，定义 `updateBegin`/`updateEnd` 批量更新协议（无独立访问器，方法由各子类继承） | — | `api/utils/base-object.md` |
 
 ### 事件 events（`onEvent` 回调）
 | 主题 | 文件 |
@@ -241,6 +245,17 @@ const fdapi  = player.getAPI();                       // API 总入口
 | 样式 | `setColor`, `setStyle`, `setOpacity` |
 | 位置/高度 | `setCoordinate`, `setHeight` |
 | 批量更新 | `updateBegin`, `update`, `updateEnd` |
+| 包围盒计算 | `tools.getBBox`, `getBBoxCenter`, `getBBoxSize`, `getBBoxCorners`, `getBBoxVolume`, `mergeBBox`, `expandBBox`, `bboxIntersect`, `bboxContainsBBox` |
+| 几何判断 | `tools.pointInBBox`, `pointInPolygon2D`, `pointToPolyline`, `projectPointToSegment`, `segmentIntersect3D`, `pointToPlaneDistance` |
+| 折线处理 | `tools.calcPolylineTotalLength`, `getPolylineInfo`, `samplePolylineByCount`, `samplePolylineByStep`, `simplifyPolyline`, `smoothPolyline`, `offsetPolyline`, `getPointAtDistance`, `removeNearbyPoints` |
+| 面积/形心 | `tools.polygonArea2D`, `polygonCentroid2D`, `triangleArea` |
+| 向量运算 | `tools.vecAdd`, `vecSub`, `vecScale`, `vecDot`, `vecCross`, `vecLength`, `vecNormalize`, `vecAngle` |
+| 参数校验 | `tools.validateNumber`, `validatePoint`, `validatePointArray`, `validateBBox`, `validateBBoxSize` |
+| 光照方向 | `weather.getSunDirection`（取反后指向太阳），`setAmbientLightColor` |
+| 风场环境 | `weather.setWindDirection`, `setWindSpeed`；`vectorField.simWindCfd` → `addByWindCfd` 接入 CFD 结果 |
+| 可视域 | `viewshed.add`, `viewshed.update`, `viewshed.focus`（持久化对象）；对比 `tools.startViewshedAnalysis`（一次性分析） |
+| 岩爆破碎 | `rockburst.addByStl` / `addByPak` → `rockburst.burst` |
+| 相机碰撞 | `settings.setCameraActorCollision`, `setCameraTerrainCollision` |
 
 ### 方法 → 类 映射（举例）
 | 方法 | 所属类 |
@@ -250,6 +265,26 @@ const fdapi  = player.getAPI();                       // API 总入口
 | addByTif / addByShp | HydroDynamic2D |
 | addByFile | CustomObject |
 | setCoordinate | Tag / 多数对象类 |
+| getBBox / vecAdd / pointInPolygon2D / simplifyPolyline | Tools |
+| getSunDirection / setWindDirection / setAmbientLightColor | Weather |
+| simWindCfd / addByWindCfd | VectorField |
+| setCameraActorCollision / setCameraTerrainCollision | Settings |
+| updateBegin / updateEnd（所有对象通用） | BaseObject 及其子类 |
+
+## v7.1 新增能力速查
+
+> 依据 `参考资料/API原始参考文档/doc/doc/*.html`（2026-10-22 版）与文档逐类核对的结果。新增 3 个类、58 个方法。
+
+| 变化 | 内容 |
+|------|------|
+| **新增类** | `Viewshed`（可视域对象，12 方法）、`Rockburst`（岩爆破碎，11 方法）、`BaseObject`（对象基类，2 方法） |
+| **Tools 能力大增** | 新增 46 个纯计算/校验方法：包围盒体系（`getBBox*` / `mergeBBox` / `expandBBox` / `bbox*`）、折线几何（`simplifyPolyline` / `smoothPolyline` / `samplePolyline*` / `offsetPolyline`）、向量运算（`vec*` 8 个）、参数校验（`validate*` 5 个）、面积/形心、线段求交。**这些是同步/同步返回，不走回调**，可直接用返回值 |
+| **Weather** | `getSunDirection`（太阳方向向量，需取反后才指向太阳）、`setAmbientLightColor`、`setWindDirection`、`setWindSpeed` |
+| **VectorField** | `simWindCfd`（远程风场 CFD 仿真）→ `addByWindCfd`（用仿真结果建向量场）→ `deleteWindCfd` |
+| **Settings** | `setCameraActorCollision`、`setCameraTerrainCollision`（相机漫游碰撞阻挡）、`setTerrainGlobalPixelDepthOffsetRatio`（仅 dom+dem 地形生效） |
+| **Fluid** | 补齐 `updateBegin` / `updateEnd` 批量更新 |
+
+**已废弃（新项目勿用）**：`DigitalTwinPlayer.getVideoSize`、`Settings.setMainUIVisibility`、`Settings.setTerrainAlpha`、`Tools.stopClip`。文档内已加 ⚠️ 提示，迁移前请先确认替代接口。
 
 ## 常用代码模板
 
@@ -286,6 +321,35 @@ fdapi.polygon.updateBegin();
 fdapi.polygon.update({ id: 'p1', color: [1, 0, 0, 0.5] });
 fdapi.polygon.update({ id: 'p2', color: [0, 1, 0, 0.5] });
 fdapi.polygon.updateEnd(() => console.log('更新完成'));
+```
+
+### 可视域分析对象（Viewshed）
+```javascript
+fdapi.viewshed.add({
+  id: 'vs_01',
+  location: [486931.84, 2490639.75, 6.38],  // 观察点（默认投影坐标）
+  yaw: 30,            // 水平角 [-180,180]
+  pitch: -5,          // 俯仰角 [-90,90]
+  fov_h: 120,         // 横向视角 [1,150]
+  fov_v: 45,          // 纵向视角 [1,150]
+  distance: 800,      // 观察距离（米）
+  height: 10,         // 视点抬升（米）
+  visibleColor: [0, 1, 0, 1],
+  invisibleColor: [1, 0, 0, 1],
+  frustumVisible: true,   // 显示视锥线框
+}, () => {
+  fdapi.viewshed.focus(['vs_01'], 0, 2, [0, 0, 0]);
+});
+// 一次性面板式分析走 fdapi.tools.startViewshedAnalysis(options) / stopViewshedAnalysis()
+```
+
+### 纯几何计算（Tools，同步返回，不传回调）
+```javascript
+const box = fdapi.tools.getBBox([[0,0,0], [10,20,5], [3,4,9]]); // [minX,minY,minZ,maxX,maxY,maxZ]
+const center = fdapi.tools.getBBoxCenter(box);
+const len = fdapi.tools.calcPolylineTotalLength([[0,0,0], [10,0,0], [10,10,0]]);
+const inPoly = fdapi.tools.pointInPolygon2D([5,5], [[0,0],[10,0],[10,10],[0,10]]);
+const v = fdapi.tools.vecNormalize(fdapi.tools.vecCross([1,0,0], [0,1,0]));
 ```
 
 ## 最佳实践

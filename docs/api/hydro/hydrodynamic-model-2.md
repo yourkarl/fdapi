@@ -210,7 +210,7 @@ await fdapi.hydrodynamicModel2.focus(0, '2秒', [0, 0, 0]);
 | `ids` | `string \| array` | 是 | - | 要获取的HydrodynamicModel2对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），返回结构见下方「返回数据结构」。
 
 > **返回数据结构**
 

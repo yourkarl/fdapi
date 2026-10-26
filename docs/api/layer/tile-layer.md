@@ -16,6 +16,8 @@ TileLayer 加载3dt图层模型（倾斜摄影、BIM、人工模型），支持�
 
 ---
 
+> 继承自 [`BaseObject`](/docs/api/utils/base-object)：本类对象支持 `updateBegin` / `updateEnd` 批量更新协议——连续多次调用属性设置接口时，用 `updateBegin()` 开启、`updateEnd(fn)` 提交，可合并为一次刷新，避免逐条调用造成的画面抖动与性能损耗。
+
 ## 业务场景 Skill
 
 > 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
@@ -785,7 +787,7 @@ await fdapi.tileLayer.focusActors(data, distance, flyTime, rotation);
 | `ids` | `string \| array` | 是 | - | 要获取的TileLayer对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），返回结构见下方「返回数据结构」。
 
 > **返回数据结构**
 
@@ -838,7 +840,7 @@ fdapi.tileLayer.getAllFlattenInfo();
 | `id` | `string` | 是 | - | TileLayer对象的ID |
 | `objectIds` | `array` | 是 | - | TileLayer里的Actor的ObjectID字符串（单个或者数组） |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取）。官方文档未给出该接口的返回结构定义，可参考下方示例的调用方式，实际结构以运行结果为准。
 
 ```js
 fdapi.tileLayer.getActorInfo({
@@ -884,7 +886,7 @@ fdapi.tileLayer.getActorInfo({
 | `tileLayerId` | `string` | 是 | - | TileLayer对象的ID |
 | `objectIds` | `array` | 是 | - | TileLayer里的Actor的ObjectID字符串（单个或者数组） |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取）。官方文档未给出该接口的返回结构定义，可参考下方示例的调用方式，实际结构以运行结果为准。
 
 ```js
     //getActorInfoFromDB方法的参数可以是object或者array
@@ -908,7 +910,7 @@ fdapi.tileLayer.getActorInfoFromDB([{ "tileLayerId": villaId, "objectIds": ["a6a
 |------|------|:----:|--------|------|
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），返回结构见下方「返回数据结构」。
 
 > **返回数据结构**
 
@@ -937,7 +939,7 @@ fdapi.tileLayer.getActorInfoFromDB([{ "tileLayerId": villaId, "objectIds": ["a6a
 | `tileLayerIds` | `string \| array` | 是 | - | TileLayer对象的ID或ID数组 |
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），返回结构见下方「返回数据结构」。
 
 > **返回数据结构**
 
@@ -971,7 +973,7 @@ fdapi.tileLayer.getActorInfoFromDB([{ "tileLayerId": villaId, "objectIds": ["a6a
 | `values` | `array` | 是 | - | 点云图层包含的字段名称对应的取值数组，支持多个匹配到的值 |
 | `color` | `number` | 是 | - | 匹配到的box盒子待设置的颜色 |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取）。官方文档未给出该接口的返回结构定义，可参考下方示例的调用方式，实际结构以运行结果为准。
 
 > 示例代码如下：
 
@@ -995,7 +997,7 @@ await fdapi.tileLayer.getDBTabID({
 | `ids` | `string \| array` | 是 | - | TileLayer的ID或者ID数组 |
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），返回结构见下方「返回数据结构」。
 
 > **返回数据结构**
 
@@ -1045,7 +1047,7 @@ console.log(res);
 | `ids` | `string \| array` | 是 | - | TileLayer对象的ID或者ID数组 |
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），返回结构见下方「返回数据结构」。
 
 > **返回数据结构**
 
@@ -1306,7 +1308,7 @@ fdapi.tileLayer.highlightPoints([{
 | `queryOption` | `QueryOption` | 是 | - | 查询条件对象 请参考： [`QueryOption`](/docs/api/analysis/query-option) |
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取）。官方文档未给出该接口的返回结构定义，可参考下方示例的调用方式，实际结构以运行结果为准。
 
 > 示例代码如下：
 

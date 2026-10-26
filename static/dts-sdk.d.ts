@@ -693,6 +693,10 @@ declare namespace fdapi {
     function stopSource(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 修改一个或多个流体仿真对象 */
     function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 用于批量多次修改对象的属性 在开始修改之前调用updateBegin，然后可以多次调用setXXX方法，最后调用updateEnd提交修改更新数据 注意： updateBegin不是异步调用，不需要await，也没有回调函数参数 */
+    function updateBegin(): Promise<any>;
+    /** 用于批量多次修改对象的属性，与updateBegin配套使用 注意： updateEnd是异步调用，可以用回调函数也可以await */
+    function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
   /** GaussianSplatting 加载并渲染 3D 高斯泼溅(3DGS)重建成果，呈现照片级实景三维。 */
@@ -1755,6 +1759,32 @@ declare namespace fdapi {
     function update(data?: Record<string, any> | any[], fn?: any): Promise<any>;
   }
 
+  /** Rockburst 岩爆对象，基于 STL/PAK 岩体模型与破碎层级参数，在指定位置触发岩爆——岩体按层级碎裂并被抛掷，用于矿山、隧道、地下工程与军事毁伤仿真。 */
+  namespace rockburst {
+    /** 添加一个或多个Rockburst对象 注意：创建此对象需要在cloud配置命令行参数：-FDEnablePhysSimulation */
+    function addByPak(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 添加一个或多个Rockburst对象 注意：创建此对象需要在cloud配置命令行参数：-FDEnablePhysSimulation */
+    function addByStl(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 触发岩爆效果，在指定位置产生爆裂 / 岩块抛掷。作用于已创建的岩爆对象。 */
+    function burst(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 清除场景中所有的Rockburst对象 */
+    function clear(fn?: (...args: any[]) => void): Promise<any>;
+    /** 删除一个或多个Rockburst对象 */
+    function delete(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 自动定位到合适的观察距离 */
+    function focus(ids?: string | any[], distance?: number, flyTime?: number, rotation?: any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 根据ID获取Rockburst的详细信息 */
+    function get(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 隐藏指定的一组Rockburst对象 */
+    function hide(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 显示指定的一组Rockburst对象 */
+    function show(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 用于批量多次修改对象的属性 在开始修改之前调用updateBegin，然后可以多次调用setXXX方法，最后调用updateEnd提交修改更新数据 注意： updateBegin不是异步调用，不需要await，也没有回调函数参数 */
+    function updateBegin(): Promise<any>;
+    /** 用于批量多次修改对象的属性，与updateBegin配套使用 注意： updateEnd是异步调用，可以用回调函数也可以await */
+    function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
+  }
+
   /** Satellite 用于球面坐标系场景中加载与表现卫星对象，支持像素点、缩略图与三维模型的多级可视化（按相机距离切换），并可设置标签文字、姿态旋转，用于卫星在轨与星座的可视化仿真。支持卫星按轨道运动，相机跟随运动，实现卫星运动伴随地球自转的晨昏线效果。支持使用卫星模型的蓝图函数实现打开关闭太阳帆，支持高亮闪烁像素点和缩略图。 */
   namespace satellite {
     /** 添加一个或多个Satellite对象 */
@@ -1843,8 +1873,12 @@ declare namespace fdapi {
     function setAperture(aperture?: number, fn?: (...args: any[]) => void): Promise<any>;
     /** 设置泛光强度 */
     function setBloomIntensity(bloomIntensity?: number, fn?: (...args: any[]) => void): Promise<any>;
+    /** 设置相机交互（鼠标拖拽、滚轮缩放等漫游交互）是否受模型（Actor）碰撞阻挡 */
+    function setCameraActorCollision(collision?: boolean, fn?: (...args: any[]) => void): Promise<any>;
     /** 设置双击鼠标右键的默认行为，即双击右键是否自动开始相机旋转 */
     function setCameraAutoRotateOnRightDoubleClick(enable?: boolean, fn?: (...args: any[]) => void): Promise<any>;
+    /** 设置相机交互（鼠标拖拽、滚轮缩放等漫游交互）是否受地形高度碰撞阻挡 */
+    function setCameraTerrainCollision(collision?: boolean, fn?: (...args: any[]) => void): Promise<any>;
     /** 设置指北针位置 */
     function setCampassPosition(left?: number, top?: number, fn?: (...args: any[]) => void): Promise<any>;
     /** 设置指北针可见性 */
@@ -1911,7 +1945,7 @@ declare namespace fdapi {
     function setMainPanelPos(left?: number, top?: number, fn?: (...args: any[]) => void): Promise<any>;
     /** 设置主界面UI尺寸（2026.07.03 新增） */
     function setMainUISize(sizeMode?: any, fn?: (...args: any[]) => void): Promise<any>;
-    /** 设置主界面UI元素的可见性 */
+    /** 设置主界面UI元素的可见性 @deprecated 接口已在新版 SDK 中标记废弃，新项目请勿使用，存量调用建议迁移到对应替代接口。 */
     function setMainUIVisibility(visible?: boolean, fn?: (...args: any[]) => void): Promise<any>;
     /** 设置地图样式 */
     function setMapMode(mode?: any, options?: Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
@@ -1955,12 +1989,14 @@ declare namespace fdapi {
     function setScreenControlsVisible(visible?: boolean, fn?: (...args: any[]) => void): Promise<any>;
     /** 设置屏幕渲染百分比（分辨率缩放） */
     function setScreenPercentage(screenPercentage?: number, fn?: (...args: any[]) => void): Promise<any>;
-    /** :::caution 已废弃 */
+    /** 设置地形透明度 @deprecated 过时方法，推荐setTerrainGlobalAlpha() */
     function setTerrainAlpha(alpha?: number, fn?: (...args: any[]) => void): Promise<any>;
     /** 设置地形全局不透明度 */
     function setTerrainGlobalAlpha(terrainGlobalAlpha?: number, fn?: (...args: any[]) => void): Promise<any>;
     /** 设置地形是否参与光照计算 */
     function setTerrainGlobalLitStatus(terrainGlobalLitStatus?: boolean, fn?: (...args: any[]) => void): Promise<any>;
+    /** 设置地形全局的像素深度偏移缩放系数，注意：仅对dom+dem发布的地形3dt生效 */
+    function setTerrainGlobalPixelDepthOffsetRatio(pixelDepthOffsetRatio?: number, fn?: (...args: any[]) => void): Promise<any>;
     /** 设置色彩优化（Tonemapping）开关 */
     function setTonemapper(tonemapper?: boolean, fn?: (...args: any[]) => void): Promise<any>;
     /** 设置屏幕右侧工具栏的可见性 */
@@ -2345,28 +2381,88 @@ declare namespace fdapi {
 
   /** Tools 提供量算与空间分析等通用工具能力（如测距、测面、天际线、通视、坡度、剖切、河道断面等，具体以方法为准）。 */
   namespace tools {
+    /** 判断 inner 包围盒是否被完全包含在 outer 内 */
+    function bboxContainsBBox(outer?: any, inner?: any): Promise<any>;
+    /** 判断两个AABB包围盒是否相交 */
+    function bboxIntersect(b1?: any, b2?: any): Promise<any>;
+    /** 相邻点分段距离数组 */
+    function calcAdjacentPointDistances(points?: any): Promise<any>;
+    /** 折线总长度 */
+    function calcPolylineTotalLength(points?: any): Promise<any>;
+    /** 包围盒膨胀/收缩，各个方向向外增加buffer距离 */
+    function expandBBox(bbox?: any, buffer?: number): Promise<any>;
     /** 导出天际线分析图片，注意：需先执行开始天际线分析并在页面交互出现天际线图片后才可以执行导出方法exportSkyline */
     function exportSkyline(path?: string, size?: any[], options?: Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
+    /** 根据点集计算AABB包围盒 */
+    function getBBox(points?: any): Promise<any>;
+    /** 获取包围盒中心点 */
+    function getBBoxCenter(bbox?: any): Promise<any>;
+    /** 包围盒 8 个角点 */
+    function getBBoxCorners(bbox?: any): Promise<any>;
+    /** 包围盒尺寸 [sx, sy, sz] */
+    function getBBoxSize(bbox?: any): Promise<any>;
+    /** 包围盒体积（min>max 时为负数，可先用 validateBBox 检查） */
+    function getBBoxVolume(bbox?: any): Promise<any>;
+    /** 获取两点的中间点 */
+    function getMidddlePoint(p1?: any, p2?: any): Promise<any>;
+    /** 沿折线按弧长取点：从起点出发走 dist 距离所在的位置 */
+    function getPointAtDistance(points?: any, dist?: number): Promise<any>;
+    /** 两点三维欧氏距离 */
+    function getPointDistance(p1?: any, p2?: any): Promise<any>;
+    /** 两点距离平方（不开根号，用于对比，计算性能更高） */
+    function getPointDistanceSq(p1?: any, p2?: any): Promise<any>;
+    /** 获取折线完整信息：分段距离 + 总长 */
+    function getPolylineInfo(points?: any): Promise<any>;
     /** 查询系统UI功能操作面板的显示状态 */
     function getUIPanel(type?: number, fn?: (...args: any[]) => void): Promise<any>;
     /** 隐藏系统UI功能操作面板 */
     function hideUIPanel(type?: number, fn?: (...args: any[]) => void): Promise<any>;
+    /** 两点线性插值 t=0 返回 p1，t=1 返回 p2；t 超出 [0,1] 为外插 */
+    function lerpPoint(p1?: any, p2?: any, t?: number): Promise<any>;
     /** 单条线段求交，如果线段上有多个对象则返回距离折线起点位置最近的对象信息，如果折线上没有对象则返回ResourceNotFound */
     function lineIntersect(start?: any[], end?: any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 多条线段批量求交 */
     function linesIntersect(startEndPointArr?: any[], highPrecision?: boolean, returnDetails?: boolean, fn?: (...args: any[]) => void): Promise<any>;
+    /** 合并两个包围盒（取并集） */
+    function mergeBBox(b1?: any, b2?: any): Promise<any>;
+    /** 折线沿给定法线方向横向偏移，生成平行折线 注意：适合平面折线，法线是平面法向量；非平面空间曲线偏移会失真 */
+    function offsetPolyline(points?: any, normal?: any, offset?: number): Promise<any>;
+    /** 判断点是否在AABB包围盒内部（包含边界） */
+    function pointInBBox(point?: any, bbox?: any): Promise<any>;
+    /** 判断点是否在 XY 平面多边形内部（射线法，z 被忽略） 注意：点恰好在边界上时结果不稳定，边界场景请用专门逻辑处理 */
+    function pointInPolygon2D(pt?: any, polygon?: any): Promise<any>;
+    /** 点到平面的有符号距离（正 = 位于法线一侧，负 = 反侧） */
+    function pointToPlaneDistance(pt?: any, planePoint?: any, planeNormal?: any): Promise<any>;
+    /** 点到折线的最近点 */
+    function pointToPolyline(pt?: any, points?: any): Promise<any>;
+    /** XY 平面多边形面积（鞋带公式，顶点顺序任意，自动取绝对值） */
+    function polygonArea2D(points?: any): Promise<any>;
+    /** XY 平面多边形质心（面积加权；退化三角形近似共线时退化为顶点平均） */
+    function polygonCentroid2D(points?: any): Promise<any>;
+    /** 点投影到线段 p0-p1，返回投影点，以及是否在线段内部 */
+    function projectPointToSegment(pt?: any, p0?: any, p1?: any): Promise<any>;
+    /** 清理折线，删除相邻距离小于 tolerance 的点 */
+    function removeNearbyPoints(points?: any, tolerance?: number): Promise<any>;
     /** 使用图片替换纹理 */
     function replaceTextureByImage(texturePath?: string, imageUrl?: string, fn?: (...args: any[]) => void): Promise<any>;
     /** 使用网页替换纹理 */
     function replaceTextureByUrl(texturePath?: string, url?: string, fn?: (...args: any[]) => void): Promise<any>;
     /** 使用视频流替换纹理 */
     function replaceTextureByVideo(texturePath?: string, videoUrl?: string, fn?: (...args: any[]) => void): Promise<any>;
+    /** 批量替换纹理路径 */
+    function replaceTextures(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 恢复纹理 */
     function restoreTexture(texturePathArr?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 根据河道的坐标点和tif高程对河道横断面进行分析 */
     function riverCrossSection(option?: Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
     /** 根据河道的shp文件和tif高程对河道横断面进行分析 */
     function riverCrossSectionByShp(option?: Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
+    /** 折线均分采样，输出固定count个点 */
+    function samplePolylineByCount(points?: any, count?: number): Promise<any>;
+    /** 折线按固定步长采样 */
+    function samplePolylineByStep(points?: any, step?: number): Promise<any>;
+    /** 三维空间两线段求最近点与距离 */
+    function segmentIntersect3D(s0?: any, s1?: any, t0?: any, t1?: any): Promise<any>;
     /** 设置测量模式及相关参数 */
     function setMeasurement(type?: any, options?: Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
     /** 打开剖切功能操作面板 */
@@ -2375,6 +2471,10 @@ declare namespace fdapi {
     function showMeasurePanel(measureType?: number, screenPosition?: any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 显示系统UI功能操作面板 */
     function showUIPanel(type?: number, screenPosition?: any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** Douglas-Peucker 折线抽稀（支持三维），保留首尾点 */
+    function simplifyPolyline(points?: any, tolerance?: number): Promise<any>;
+    /** Chaikin 折线平滑（切角算法，保持首尾点不动） */
+    function smoothPolyline(points?: any, iterations?: number): Promise<any>;
     /** 开始等高线分析，适用于地形 */
     function startContourLineAnalysis(options?: Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
     /** 开始填挖方分析，适用于地形 */
@@ -2403,7 +2503,7 @@ declare namespace fdapi {
     function startVisiblityAnalysis(options?: Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
     /** 开始体剖切 */
     function startVolumeClip(bbox?: any[], direction?: number, isShowBBox?: boolean, isEditable?: boolean, rotation?: any[], fn?: (...args: any[]) => void): Promise<any>;
-    /** :::caution 已废弃 */
+    /** 停止多边形剖切 @deprecated 2021.03.23之后的版本已弃用，请用stopPolygonClip代替 */
     function stopClip(fn?: (...args: any[]) => void): Promise<any>;
     /** 停止等高线分析 */
     function stopContourLineAnalysis(fn?: (...args: any[]) => void): Promise<any>;
@@ -2433,8 +2533,35 @@ declare namespace fdapi {
     function stopVisiblityAnalysis(fn?: (...args: any[]) => void): Promise<any>;
     /** 停止体剖切 */
     function stopVolumeClip(fn?: (...args: any[]) => void): Promise<any>;
+    /** 三维三角形面积 */
+    function triangleArea(p1?: any, p2?: any, p3?: any): Promise<any>;
     /** 更新体剖切 */
     function updateVolumeClip(bbox?: any[], direction?: number, isShowBBox?: boolean, isEditable?: boolean, rotation?: any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 校验包围盒数组 [minX,minY,minZ,maxX,maxY,maxZ] */
+    function validateBBox(bbox?: any): Promise<any>;
+    function validateBBoxSize(bbox?: any, minLimit?: number, maxLimit?: number): Promise<any>;
+    /** 校验数值 */
+    function validateNumber(v?: number, name?: string): Promise<any>;
+    /** 校验单个三维点 [x,y,z] */
+    function validatePoint(p?: any, idx?: number): Promise<any>;
+    /** 校验点数组 [[x,y,z],...] */
+    function validatePointArray(points?: any): Promise<any>;
+    /** 向量加法 a + b */
+    function vecAdd(a?: any, b?: any): Promise<any>;
+    /** 两向量夹角（弧度，范围 [0, π]），任一向量为零向量报错 */
+    function vecAngle(a?: any, b?: any): Promise<any>;
+    /** 向量叉积 a × b（结果同时垂直于 a、b，方向遵循右手定则） */
+    function vecCross(a?: any, b?: any): Promise<any>;
+    /** 向量点积 */
+    function vecDot(a?: any, b?: any): Promise<any>;
+    /** 向量长度 */
+    function vecLength(v?: any): Promise<any>;
+    /** 向量归一化（零向量报错） */
+    function vecNormalize(v?: any): Promise<any>;
+    /** 向量数乘 v * k */
+    function vecScale(v?: any, k?: number): Promise<any>;
+    /** 向量减法 a - b */
+    function vecSub(a?: any, b?: any): Promise<any>;
   }
 
   /** TopologyLine 绘制连接图层树上模型/对象之间的拓扑连接线，表达对象间的关系与连接。 */
@@ -2535,10 +2662,14 @@ declare namespace fdapi {
   namespace vectorField {
     /** 添加一个或多个VectorField向量场对象 */
     function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 根据模拟完成的实时风场仿真对象windCfd添加一个或多个VectorField向量场对象 */
+    function addByWindCfd(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 清空场景中所有的VectorField对象 */
     function clear(fn?: (...args: any[]) => void): Promise<any>;
     /** 删除一个或多个VectorField对象 */
     function delete(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 删除已经完成的风场仿真 */
+    function deleteWindCfd(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 自动定位到合适的观察距离 */
     function focus(ids?: string | any[], distance?: number, flyTime?: number, rotation?: any[], fn?: (...args: any[]) => void): Promise<any>;
     /** 根据ID获取VectorField对象的详细信息 */
@@ -2549,6 +2680,8 @@ declare namespace fdapi {
     function setViewportVisible(id?: string, vp?: any, fn?: (...args: any[]) => void): Promise<any>;
     /** 显示VectorField对象 */
     function show(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 远程风场仿真；计算完成后通过返回值或回调返回 url、jobId，不发送完成事件 */
+    function simWindCfd(winfCfd?: Record<string, any>, fn?: (...args: any[]) => void): Promise<any>;
     /** 修改一个或多个VectorField对象 */
     function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
   }
@@ -2661,6 +2794,34 @@ declare namespace fdapi {
     function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
   }
 
+  /** Viewshed 可视域分析对象，从观察点按水平/俯仰角与横纵视角向外投射视锥，实时计算并着色地形与建筑的可见/不可见区域，用于监控布点、雷达/摄像头覆盖、观景视野评估。 */
+  namespace viewshed {
+    /** 添加一个或多个Viewshed对象 */
+    function add(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 清空场景中所有的Viewshed */
+    function clear(fn?: (...args: any[]) => void): Promise<any>;
+    /** 删除一个或多个Viewshed对象 */
+    function delete(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 自动定位到合适的观察距离 */
+    function focus(ids?: string | any[], distance?: number, flyTime?: number, rotation?: any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 根据ID获取Viewshed的详细信息 */
+    function get(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 隐藏指定的Viewshed */
+    function hide(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 隐藏所有Viewshed */
+    function hideAll(fn?: (...args: any[]) => void): Promise<any>;
+    /** 显示指定的Viewshed */
+    function show(ids?: string | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 显示所有Viewshed */
+    function showAll(fn?: (...args: any[]) => void): Promise<any>;
+    /** 修改一个或多个Viewshed对象 */
+    function update(data?: Record<string, any> | any[], fn?: (...args: any[]) => void): Promise<any>;
+    /** 用于批量多次修改对象的属性 在开始修改之前调用updateBegin，然后可以多次调用setXXX方法，最后调用updateEnd提交修改更新数据 注意： updateBegin不是异步调用，不需要await，也没有回调函数参数 */
+    function updateBegin(): Promise<any>;
+    /** 用于批量多次修改对象的属性，与updateBegin配套使用 注意： updateEnd是异步调用，可以用回调函数也可以await */
+    function updateEnd(fn?: (...args: any[]) => void): Promise<any>;
+  }
+
   /** WaterFlowField 精确控制水面各网格的流向与流速，构建可控的水流流场效果。 */
   namespace waterFlowField {
     /** 添加一个或多个WaterFlowField对象 */
@@ -2733,6 +2894,10 @@ declare namespace fdapi {
     function getOceanWave(fn?: (...args: any[]) => void): Promise<any>;
     /** 获取天气相关的参数 */
     function getParams(fn?: (...args: any[]) => void): Promise<any>;
+    /** 查询当前工程场景的太阳照射方向的方向向量值并取反，即取反后的方向向量指向太阳 */
+    function getSunDirection(time?: number, fn?: (...args: any[]) => void): Promise<any>;
+    /** 设置环境光颜色 */
+    function setAmbientLightColor(ambientLightColor?: any, fn?: (...args: any[]) => void): Promise<any>;
     /** 设置环境光强度 */
     function setAmbientLightIntensity(ambientLightIntensity?: number, fn?: (...args: any[]) => void): Promise<any>;
     /** 设置云层的密度 */
@@ -2785,14 +2950,99 @@ declare namespace fdapi {
     function setSunSize(sunSize?: number, fn?: (...args: any[]) => void): Promise<any>;
     /** 设置色温值 */
     function setTemperature(temperature?: number, fn?: (...args: any[]) => void): Promise<any>;
+    /** 设置场景全局风的风向，影响植被摆动、雨雪飘向等受风影响的环境效果 */
+    function setWindDirection(direction?: number, fn?: (...args: any[]) => void): Promise<any>;
+    /** 设置场景全局风的风速，影响植被摆动、雨雪飘向等受风影响的环境效果 */
+    function setWindSpeed(speed?: number, fn?: (...args: any[]) => void): Promise<any>;
     /** 模拟时间播放 */
     function simulateTime(startTime?: any[] | number, endTime?: any[] | number, duration?: number, fn?: (...args: any[]) => void): Promise<any>;
   }
 }
 
+/** CameraTourData 是相机导览（漫游）的数据描述对象，封装一条飞行路线的 ID、名称与关键帧数组，作为 CameraTour 播放的数据载体。 */
+declare class CameraTourData {
+  /** 构造：cameraTourData = new CameraTourData(id?: string, name?: any, keyFrames?: any) */
+  constructor(id?: string, name?: any, keyFrames?: any);
+}
+
+/** CameraTourKeyFrame 是相机导览（漫游）的单个关键帧，描述某一时刻相机的到达时间、位置坐标与可选朝向，是构成飞行路线动画的最小单元。 */
+declare class CameraTourKeyFrame {
+  /** 构造：cameraTourKeyFrame = new CameraTourKeyFrame(index?: number, time?: number, location?: any[], rotation?: any[]) */
+  constructor(index?: number, time?: number, location?: any[], rotation?: any[]);
+}
+
+/** DigitalTwinPlayer 是云渲染视频流对象，在网页上创建并显示三维视频流，并承载键盘、鼠标、触摸等交互。 */
+declare class DigitalTwinPlayer {
+  /** 构造：fdplayer = new DigitalTwinPlayer(host?: string, option?: Record<string, any>) */
+  constructor(host?: string, option?: Record<string, any>);
+  /** 销毁 */
+  destroy(reason?: string): Promise<any>;
+  /** 获取DigitalTwinAPI接口 */
+  getAPI(): Promise<any>;
+  /** 获取服务器的地址（ip:port） */
+  getHost(): Promise<any>;
+  /** 获取当前所连接的实例信息 */
+  getInstanceInfo(): Promise<any>;
+  /** 获取用于播放Cloud视频流的video元素 */
+  getVideoElement(): Promise<any>;
+  /** 获取Video元素的尺寸 */
+  getVideoElementSize(): Promise<any>;
+  /** @deprecated 已废弃，请使用getVideoStreamSize代替 */
+  getVideoSize(): Promise<any>;
+  /** 获取视频流的尺寸 */
+  getVideoStreamSize(): Promise<any>;
+  /** 重新调整布局 */
+  resize(): Promise<any>;
+  /** 屏幕坐标转为投影坐标 请参考[二次开发：四种坐标的区别](/docs/tutorials/introduction)。 */
+  screen2World(x?: number, y?: number, fn?: (...args: any[]) => void): Promise<any>;
+  /** 设置是否开启键盘、鼠标交互事件的回调功能 */
+  setActionEventEnabled(bEnable?: boolean): Promise<any>;
+  /** 用于开关交互事件同步功能 */
+  setEnableEventSync(bEnabled?: boolean): Promise<any>;
+  /** 设置实例选项，调用此接口可以实现在不刷新页面的情况下切换使用的实例或工程文件 */
+  setInstanceOptions(o?: Record<string, any>): Promise<any>;
+  /** 设置键盘交互事件的目标对象 */
+  setKeyEventTarget(newVal?: string): Promise<any>;
+  /** 设置视频流的尺寸，如果云渲染后台启用了自适应，那么视频流的分辨率也会自动调整。 如果没有启用自适应，则调用不起作用。 */
+  setResolution(w?: number, h?: number): Promise<any>;
+  /** 投影坐标转为屏幕坐标 请参考[二次开发：四种坐标的区别](/docs/tutorials/introduction) */
+  world2Screen(x?: number, y?: number, z?: number, fn?: (...args: any[]) => void): Promise<any>;
+}
+
+/** 数据库/属性查询的选项配置对象，用于设置查询字段、过滤条件与范围，作为查询接口的参数。 */
+declare class QueryOption {
+  /** 构造：queryOption = new QueryOption() */
+  constructor();
+}
+
+declare namespace FdExternal {
+  /** FdExternal 封装进程内 JS 与底层 C++ 的互操作，用于 Explorer WebUI、Marker 弹窗、JSTick 调试窗等 CEF 页面里直接调用底层能力。 */
+  /** 用于关闭当前的窗口 */
+  function close(): Promise<any>;
+  /** 用于通过JSON的方式调用JS接口 */
+  function execute(json?: string): Promise<any>;
+  /** 用于实现类似localStorage的功能 */
+  function getData(key?: string): Promise<any>;
+  /** 之所以增加此功能是因为 当WebUI 在某种情况下已加在页面但是内部的WebWidget组件尚未显示（被隐藏）的情况下， */
+  function getViewportSize(): Promise<any>;
+  /** 用于向主页面发送事件通知 */
+  function postEvent(msg?: string): Promise<any>;
+  /** 用于实现类似localStorage的功能 */
+  function setData(key?: string, value?: string): Promise<any>;
+  /** 检查是否在指定的环境里调用，FdExternal可以在以下环境调用： */
+  function valid(): Promise<any>;
+}
+
 /** 在线调试台/二开页面中与 fdapi 等价的全局对象 */
 declare const api: typeof fdapi;
-declare const fdplayer: any;
+declare const cameraTourData: CameraTourData;
+declare const cameraTourKeyFrame: CameraTourKeyFrame;
+declare const fdplayer: DigitalTwinPlayer;
+declare const queryOption: QueryOption;
 declare const HostConfig: { API: string; Player: string; PlayerMapping?: string; Path: string; [k: string]: any };
 declare function log(msg: any, noLineBreak?: boolean, color?: string): void;
 declare function sleep(ms: number): Promise<void>;
+
+/* 以下文档页未生成本文件的类型声明（多为数据容器 / 构造参数对象 / 枚举页），
+   其字段定义见对应文档页： */
+// 错误码与失败语义、类型与枚举、BaseObject

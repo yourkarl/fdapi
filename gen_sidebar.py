@@ -1,3 +1,5 @@
+# ⛔ 已封存（一次性迁移脚本，勿重新执行）
+#    该步骤在迁移期已完成，日常不再使用；其产物现由 `npm run gen` 统一生成。
 import json
 from gen_utils import atomic_write
 

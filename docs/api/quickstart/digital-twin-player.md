@@ -107,7 +107,7 @@ new DigitalTwinPlayer(host, option)
 | [`getInstanceInfo`](#getInstanceInfo) | 获取当前所连接的实例信息 |  |
 | [`getVideoElement`](#getVideoElement) | 获取用于播放Cloud视频流的video元素 |  |
 | [`getVideoElementSize`](#getVideoElementSize) | 获取Video元素的尺寸 |  |
-| [`getVideoSize`](#getVideoSize) | :::caution 已废弃 |  |
+| [`getVideoSize`](#getVideoSize) | ⚠️ 已废弃 |  |
 | [`getVideoStreamSize`](#getVideoStreamSize) | 获取视频流的尺寸 |  |
 | [`resize`](#resize) | 重新调整布局 |  |
 | [`screen2World`](#screen2World) | 屏幕坐标转为投影坐标 |  |
@@ -209,6 +209,8 @@ await fdplayer.getVideoElementSize();
 ---
 
 ### `getVideoSize()` {#getVideoSize}
+
+> ⚠️ **已废弃**：接口已在新版 SDK 中标记废弃，新项目请勿使用，存量调用建议迁移到对应替代接口。
 
 :::caution 已废弃
 

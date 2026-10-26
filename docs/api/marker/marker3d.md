@@ -15,6 +15,8 @@ description: "在三维场景中放置带特效的立体标注（动态标记）
 
 通过 `api.marker3d` 访问。
 
+> 继承自 [`BaseObject`](/docs/api/utils/base-object)：本类对象支持 `updateBegin` / `updateEnd` 批量更新协议——连续多次调用属性设置接口时，用 `updateBegin()` 开启、`updateEnd(fn)` 提交，可合并为一次刷新，避免逐条调用造成的画面抖动与性能损耗。
+
 ## 业务场景 Skill
 
 > 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
@@ -409,7 +411,7 @@ fdapi.marker3d.focus('m1', 100, 0.2);
 | `ids` | `string \| array` | 是 | - | 要获取的3D标注对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），返回结构见下方「返回数据结构」。
 
 > **返回数据结构**
 
@@ -452,7 +454,7 @@ fdapi.marker3d.get(['m1', 'm2']);
 | `ids` | `string \| array` | 是 | - | 3D标注对象ID或者ID数组 |
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取）。官方文档未给出该接口的返回结构定义，可参考下方示例的调用方式，实际结构以运行结果为准。
 
 > 示例：GetBPFunction
 

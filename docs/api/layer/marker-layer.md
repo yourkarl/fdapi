@@ -12,6 +12,8 @@ MarkerLayer标注点的效果图：
 
 通过 `api.markerLayer` 访问。
 
+> 继承自 [`BaseObject`](/docs/api/utils/base-object)：本类对象支持 `updateBegin` / `updateEnd` 批量更新协议——连续多次调用属性设置接口时，用 `updateBegin()` 开启、`updateEnd(fn)` 提交，可合并为一次刷新，避免逐条调用造成的画面抖动与性能损耗。
+
 ## 业务场景 Skill
 
 > 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。

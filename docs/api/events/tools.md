@@ -70,7 +70,7 @@ Tools 提供量算与空间分析等通用工具能力（如测距、测面、�
 | [`startViewshedAnalysis`](#startViewshedAnalysis) | 开始可视域分析 |  |
 | [`startVisiblityAnalysis`](#startVisiblityAnalysis) | 开始通视分析 |  |
 | [`startVolumeClip`](#startVolumeClip) | 开始体剖切 |  |
-| [`stopClip`](#stopClip) | :::caution 已废弃 |  |
+| [`stopClip`](#stopClip) | ⚠️ 已废弃 |  |
 | [`stopContourLineAnalysis`](#stopContourLineAnalysis) | 停止等高线分析 |  |
 | [`stopCutFillAnalysis`](#stopCutFillAnalysis) | 停止填挖方分析 |  |
 | [`stopFloodFill`](#stopFloodFill) | 停止水淹分析 |  |
@@ -108,7 +108,7 @@ Tools 提供量算与空间分析等通用工具能力（如测距、测面、�
 | `backgroundColor` | `-` | 否 | [0, 0, 0, 0.75] | 图片背景颜色，默认值：[0, 0, 0, 0.75] |
 | `tileLayers` | `-` | 是 | - | 数组类型，若此数组为空默认绘制所有物体形成的天际线;不为空则多个TileLayer形成的一条天际线，多条天际线绘制到该图上； 数组元素定义如下： |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取）。官方文档未给出该接口的返回结构定义，可参考下方示例的调用方式，实际结构以运行结果为准。
 
 ```js
 示例代码如下：
@@ -154,7 +154,7 @@ fdapi.tools.exportSkyline('base64', [400, 200], options);
 | `type` | `number` | 是 | - | 操作面板对应枚举，取值范围：[0~正整数]，详情参考 `UIPanelType` |
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取）。官方文档未给出该接口的返回结构定义，可参考下方示例的调用方式，实际结构以运行结果为准。
 
 > 示例：查询操作面板状态：GetUIPanel
 

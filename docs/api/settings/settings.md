@@ -55,7 +55,9 @@ Settings 提供场景全局参数设置接口（画质、后期、显示、特�
 | [`setAntiAliasing`](#setAntiAliasing) | 设置反走样（Anti-Aliasing）开关 |  |
 | [`setAperture`](#setAperture) | 设置景深光圈大小 |  |
 | [`setBloomIntensity`](#setBloomIntensity) | 设置泛光强度 |  |
+| [`setCameraActorCollision`](#setCameraActorCollision) | 设置相机交互（鼠标拖拽、滚轮缩放等漫游交互）是否受模型（Actor）碰撞阻挡 | 相机漫游碰撞控制 |
 | [`setCameraAutoRotateOnRightDoubleClick`](#setCameraAutoRotateOnRightDoubleClick) | 设置双击鼠标右键的默认行为，即双击右键是否自动开始相机旋转 |  |
+| [`setCameraTerrainCollision`](#setCameraTerrainCollision) | 设置相机交互（鼠标拖拽、滚轮缩放等漫游交互）是否受地形高度碰撞阻挡 | 相机漫游碰撞控制 |
 | [`setCampassPosition`](#setCampassPosition) | 设置指北针位置 |  |
 | [`setCampassVisible`](#setCampassVisible) | 设置指北针可见性 |  |
 | [`setCharacterAssetPath`](#setCharacterAssetPath) | 人物漫游模式下，设置自定义的人物角色模型 |  |
@@ -111,9 +113,10 @@ Settings 提供场景全局参数设置接口（画质、后期、显示、特�
 | [`setSaturation`](#setSaturation) | 设置画面饱和度 |  |
 | [`setScreenControlsVisible`](#setScreenControlsVisible) | 当交互模式为人物或无人机模式时，设置屏幕操纵杆UI的可见性 |  |
 | [`setScreenPercentage`](#setScreenPercentage) | 设置屏幕渲染百分比（分辨率缩放） |  |
-| [`setTerrainAlpha`](#setTerrainAlpha) | :::caution 已废弃 |  |
+| [`setTerrainAlpha`](#setTerrainAlpha) | ⚠️ 已废弃 |  |
 | [`setTerrainGlobalAlpha`](#setTerrainGlobalAlpha) | 设置地形全局不透明度 |  |
 | [`setTerrainGlobalLitStatus`](#setTerrainGlobalLitStatus) | 设置地形是否参与光照计算 |  |
+| [`setTerrainGlobalPixelDepthOffsetRatio`](#setTerrainGlobalPixelDepthOffsetRatio) | 设置地形全局的像素深度偏移缩放系数，注意：仅对dom+dem发布的地形3dt生效 | 修复地形与模型贴合 |
 | [`setTonemapper`](#setTonemapper) | 设置色彩优化（Tonemapping）开关 |  |
 | [`setToolbarVisible`](#setToolbarVisible) | 设置屏幕右侧工具栏的可见性 |  |
 | [`setWMTSLayerOpacity`](#setWMTSLayerOpacity) | 设置WMTS图层的透明度 |  |
@@ -151,7 +154,7 @@ await fdapi.settings.enableRightClickMousePick(false);
 |------|------|:----:|--------|------|
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取）。官方文档未给出该接口的返回结构定义，可参考下方示例的调用方式，实际结构以运行结果为准。
 
 > 示例代码如下：
 
@@ -169,7 +172,7 @@ await fdapi.settings.getCharacterAssetPath();
 |------|------|:----:|--------|------|
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取）。官方文档未给出该接口的返回结构定义，可参考下方示例的调用方式，实际结构以运行结果为准。
 
 > 示例代码如下：
 
@@ -187,7 +190,7 @@ await fdapi.settings.getDroneAssetPath();
 |------|------|:----:|--------|------|
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取）。官方文档未给出该接口的返回结构定义，可参考下方示例的调用方式，实际结构以运行结果为准。
 
 > 示例：获取交互模式：GetInteractiveMode
 
@@ -205,7 +208,7 @@ fdapi.settings.getInteractiveMode();
 |------|------|:----:|--------|------|
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），返回结构见下方「返回数据结构」。
 
 > **返回数据结构**
 
@@ -246,7 +249,7 @@ console.log(res);
 |------|------|:----:|--------|------|
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），返回结构见下方「返回数据结构」。
 
 > **返回数据结构**
 
@@ -284,7 +287,7 @@ fdapi.settings.getMapMode();
 |------|------|:----:|--------|------|
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取）。官方文档未给出该接口的返回结构定义，可参考下方示例的调用方式，实际结构以运行结果为准。
 
 > 示例：获取ACP工程的坐标系配准：GetProjectWKT
 
@@ -1171,6 +1174,8 @@ await fdapi.settings.setMainUISize(UISizeMode.Big);
 
 ### `setMainUIVisibility(visible, fn)` {#setMainUIVisibility}
 
+> ⚠️ **已废弃**：接口已在新版 SDK 中标记废弃，新项目请勿使用，存量调用建议迁移到对应替代接口。
+
 设置主界面UI元素的可见性
 
 | 参数 | 类型 | 必填 | 默认值 | 说明 |
@@ -1661,6 +1666,8 @@ fdapi.settings.setScreenPercentage(100);
 
 ### `setTerrainAlpha(alpha, fn)` {#setTerrainAlpha}
 
+> ⚠️ **已废弃**：接口已在新版 SDK 中标记废弃，新项目请勿使用，存量调用建议迁移到对应替代接口。
+
 :::caution 已废弃
 
 过时方法，推荐setTerrainGlobalAlpha()
@@ -1951,3 +1958,32 @@ fdapi.settings.setImageryLayerEnableDecal(2);
 //是否启用屏幕空间全局光照，默认值：false
 fdapi.settings.setGlobalIllumination(true);
 ```
+
+### `setCameraActorCollision(collision, fn)` {#setCameraActorCollision}
+
+设置相机交互（鼠标拖拽、滚轮缩放等漫游交互）是否受模型（Actor）碰撞阻挡
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `collision` | `boolean` | 是 | - | 模型（Actor）碰撞检测开关，true：相机交互碰到模型会被顶起，不穿模型 false：相机交互可以穿透模型，无视模型碰撞 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考二次开发：异步接口调用方式 |
+
+
+### `setCameraTerrainCollision(collision, fn)` {#setCameraTerrainCollision}
+
+设置相机交互（鼠标拖拽、滚轮缩放等漫游交互）是否受地形高度碰撞阻挡
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `collision` | `boolean` | 是 | - | 地形碰撞检测开关，true：相机交互碰到地形会被顶起，不穿地 false：相机交互可以穿透地形，无视地形高程 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考二次开发：异步接口调用方式 |
+
+
+### `setTerrainGlobalPixelDepthOffsetRatio(pixelDepthOffsetRatio, fn)` {#setTerrainGlobalPixelDepthOffsetRatio}
+
+设置地形全局的像素深度偏移缩放系数，注意：仅对dom+dem发布的地形3dt生效
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `pixelDepthOffsetRatio` | `number` | 是 | 0 | 作用于地形全局的像素深度偏移缩放系数，值越大地形在像素深度上远离摄像机偏移越多，用来防止模型被地形遮挡，解决地形 Z‑fighting，如二维水动力模型、矢量图形和地形交互的闪烁问题，取值范围：[0~1]，默认值：0 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考二次开发：异步接口调用方式 |

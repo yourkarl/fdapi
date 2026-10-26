@@ -42,6 +42,8 @@ Weather 设置与获取场景的天气/气象效果（晴雨雪雾、时间、�
 | [`getDateTime`](#getDateTime) | 获取日期时间 |  |
 | [`getOceanWave`](#getOceanWave) | 查询海浪效果参数 |  |
 | [`getParams`](#getParams) | 获取天气相关的参数 |  |
+| [`getSunDirection`](#getSunDirection) | 查询当前工程场景的太阳照射方向的方向向量值并取反，即取反后的方向向量指向太阳 | 太阳光照方向（阴影/朝向计算） |
+| [`setAmbientLightColor`](#setAmbientLightColor) | 设置环境光颜色 | 调整环境光氛围 |
 | [`setAmbientLightIntensity`](#setAmbientLightIntensity) | 设置环境光强度 |  |
 | [`setCloudDensity`](#setCloudDensity) | 设置云层的密度 |  |
 | [`setCloudParam`](#setCloudParam) | 设置云效参数 |  |
@@ -68,6 +70,8 @@ Weather 设置与获取场景的天气/气象效果（晴雨雪雾、时间、�
 | [`setSunIntensity`](#setSunIntensity) | 设置太阳光照射强度 |  |
 | [`setSunSize`](#setSunSize) | 设置太阳尺寸 |  |
 | [`setTemperature`](#setTemperature) | 设置色温值 |  |
+| [`setWindDirection`](#setWindDirection) | 设置场景全局风的风向，影响植被摆动、雨雪飘向等受风影响的环境效果 | 风场环境效果 |
+| [`setWindSpeed`](#setWindSpeed) | 设置场景全局风的风速，影响植被摆动、雨雪飘向等受风影响的环境效果 | 风场环境效果 |
 | [`simulateTime`](#simulateTime) | 模拟时间播放 |  |
 
 ## 方法（Methods）
@@ -98,7 +102,7 @@ fdapi.weather.disableRainSnow();
 |------|------|:----:|--------|------|
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），返回结构见下方「返回数据结构」。
 
 > **返回数据结构**
 
@@ -134,7 +138,7 @@ fdapi.weather.getDateTime();
 |------|------|:----:|--------|------|
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取）。官方文档未给出该接口的返回结构定义，可参考下方示例的调用方式，实际结构以运行结果为准。
 
 > 示例：查询海浪参数：GetOceanWave
 
@@ -152,7 +156,7 @@ fdapi.weather.getOceanWave();
 |------|------|:----:|--------|------|
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），返回结构见下方「返回数据结构」。
 
 > **返回数据结构**
 
@@ -800,3 +804,42 @@ fdapi.weather.simulateTime(9, 15, 10);
 ```js
 fdapi.weather.setRayleighScatter(0.5);
 ```
+
+### `getSunDirection(time, fn)` {#getSunDirection}
+
+查询当前工程场景的太阳照射方向的方向向量值并取反，即取反后的方向向量指向太阳
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `time` | `number` | 是 | - | 时间戳，单位：毫秒 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考二次开发：异步接口调用方式 |
+
+
+### `setAmbientLightColor(ambientLightColor, fn)` {#setAmbientLightColor}
+
+设置环境光颜色
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `ambientLightColor` | `Color` | 是 | - | 新的环境光颜色，支持四种格式，取值示例 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考二次开发：异步接口调用方式 |
+
+
+### `setWindDirection(direction, fn)` {#setWindDirection}
+
+设置场景全局风的风向，影响植被摆动、雨雪飘向等受风影响的环境效果
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `direction` | `number` | 是 | 0 | 风向，单位：度，取值范围：[0~360]，默认值：0；正北为 0，顺时针增大（0 北 / 90 东 / 180 南 / 270 西） |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考二次开发：异步接口调用方式 |
+
+
+### `setWindSpeed(speed, fn)` {#setWindSpeed}
+
+设置场景全局风的风速，影响植被摆动、雨雪飘向等受风影响的环境效果
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `speed` | `number` | 是 | 0 | 风速，取值范围：[0~100]，默认值：0；值越大风力越强 |
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考二次开发：异步接口调用方式 |

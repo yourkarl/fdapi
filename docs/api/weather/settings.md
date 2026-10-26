@@ -110,7 +110,7 @@ Settings 提供场景全局参数设置接口（画质、后期、显示、特�
 | [`setSaturation`](#setSaturation) | 设置画面饱和度 |  |
 | [`setScreenControlsVisible`](#setScreenControlsVisible) | 当交互模式为人物或无人机模式时，设置屏幕操纵杆UI的可见性 |  |
 | [`setScreenPercentage`](#setScreenPercentage) | 设置屏幕渲染百分比（分辨率缩放） |  |
-| [`setTerrainAlpha`](#setTerrainAlpha) | :::caution 已废弃 |  |
+| [`setTerrainAlpha`](#setTerrainAlpha) | ⚠️ 已废弃 |  |
 | [`setTerrainGlobalAlpha`](#setTerrainGlobalAlpha) | 设置地形全局不透明度 |  |
 | [`setTerrainGlobalLitStatus`](#setTerrainGlobalLitStatus) | 设置地形是否参与光照计算 |  |
 | [`setTonemapper`](#setTonemapper) | 设置色彩优化（Tonemapping）开关 |  |
@@ -150,7 +150,7 @@ await fdapi.settings.enableRightClickMousePick(false);
 |------|------|:----:|--------|------|
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取）。官方文档未给出该接口的返回结构定义，可参考下方示例的调用方式，实际结构以运行结果为准。
 
 > 示例代码如下：
 
@@ -168,7 +168,7 @@ await fdapi.settings.getCharacterAssetPath();
 |------|------|:----:|--------|------|
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取）。官方文档未给出该接口的返回结构定义，可参考下方示例的调用方式，实际结构以运行结果为准。
 
 > 示例代码如下：
 
@@ -186,7 +186,7 @@ await fdapi.settings.getDroneAssetPath();
 |------|------|:----:|--------|------|
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取）。官方文档未给出该接口的返回结构定义，可参考下方示例的调用方式，实际结构以运行结果为准。
 
 > 示例：获取交互模式：GetInteractiveMode
 
@@ -204,7 +204,7 @@ fdapi.settings.getInteractiveMode();
 |------|------|:----:|--------|------|
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），返回结构见下方「返回数据结构」。
 
 > **返回数据结构**
 
@@ -245,7 +245,7 @@ console.log(res);
 |------|------|:----:|--------|------|
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），返回结构见下方「返回数据结构」。
 
 > **返回数据结构**
 
@@ -283,7 +283,7 @@ fdapi.settings.getMapMode();
 |------|------|:----:|--------|------|
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取）。官方文档未给出该接口的返回结构定义，可参考下方示例的调用方式，实际结构以运行结果为准。
 
 > 示例：获取ACP工程的坐标系配准：GetProjectWKT
 

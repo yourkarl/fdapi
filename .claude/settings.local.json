@@ -1,10 +1,7 @@
 {
   "permissions": {
     "allow": [
-      "PowerShell(Get-ChildItem -Recurse src | Select-Object FullName | ForEach-Object { $_.FullName.Replace\\(\"D:\\\\工作备份\\\\DTS文档改版\\\\docusaurus\\\\\", \"\"\\) })",
       "Bash(npm run *)",
-      "Bash(grep -cE \"如下：$\" \"D:\\\\工作备份\\\\DTS文档改版\\\\docusaurus\\\\docs\\\\tutorials\\\\revision-history.md\")",
-      "Bash(awk '/如下：/{getline; getline; if \\($0 ~ /^#|^$/\\) c++} END{print \"可能缺失内容的小节:\", c}' \"D:\\\\工作备份\\\\DTS文档改版\\\\docusaurus\\\\docs\\\\tutorials\\\\revision-history.md\")",
       "Bash(node -e ' *)",
       "Bash(grep -rhoE '通过 \\\\`api\\\\.[a-zA-Z0-9]+\\\\` 访问' docs/api)",
       "Bash(grep -rhoE '^### `[a-zA-Z0-9_]+\\\\\\(' docs/api)",
@@ -13,7 +10,6 @@
       "Bash(grep -rhoE '`api\\\\.[a-zA-Z0-9]+`' docs/api)",
       "Bash(python gen_param_meta.py)",
       "Bash(python3 gen_param_meta.py)",
-      "PowerShell(cd \"D:\\\\工作备份\\\\DTS文档改版\\\\docusaurus\"; \\(Get-Command python\\).Source; python --version; python gen_param_meta.py 2>&1 | Out-String)",
       "Edit",
       "Write",
       "Read",
@@ -63,14 +59,6 @@
       "PowerShell(git commit*)",
       "PowerShell(git log*)",
       "PowerShell(git show*)",
-      "mcp__Claude_Preview__preview_start",
-      "mcp__Claude_Preview__preview_stop",
-      "mcp__Claude_Preview__preview_eval",
-      "mcp__Claude_Preview__preview_logs",
-      "mcp__Claude_Preview__preview_network",
-      "mcp__Claude_Preview__preview_screenshot",
-      "mcp__Claude_Preview__preview_console_logs",
-      "mcp__Claude_Preview__preview_resize",
       "PowerShell($tools = @{}; foreach\\($c in \"python\",\"python3\",\"node\",\"magick\",\"wkhtmltoimage\"\\){ $p = \\(Get-Command $c -ErrorAction SilentlyContinue\\).Source; if\\($p\\){ Write-Output \"$c -> $p\" } else { Write-Output \"$c -> NOT FOUND\" } }; Write-Output \"---chrome---\"; $chromePaths = @\\(\"C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\",\"C:\\\\Program Files \\(x86\\)\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\",\"C:\\\\Program Files \\(x86\\)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\",\"C:\\\\Program Files\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\"\\); foreach\\($cp in $chromePaths\\){ if\\(Test-Path $cp\\){ Write-Output \"FOUND: $cp\" } })",
       "PowerShell(Add-Type -AssemblyName System.Drawing; $img=[System.Drawing.Bitmap]::FromFile\\(\"D:\\\\UserData\\\\Desktop\\\\1.png\"\\); $pts=@{ \"blue-row\\(y50\\)\"= @\\(20,50\\); \"white-row\\(y75\\)\"=@\\(20,75\\); \"title-text\"=@\\(560,18\\); \"header-block\\(y150\\)\"=@\\(20,150\\); \"value-text\\(y230\\)\"=@\\(660,230\\) }; foreach\\($k in $pts.Keys\\){ $p=$pts[$k]; $c=$img.GetPixel\\($p[0],$p[1]\\); Write-Output \\(\"{0}: #{1:X2}{2:X2}{3:X2}\" -f $k,$c.R,$c.G,$c.B\\) }; $img.Dispose\\(\\))",
       "PowerShell(python gen_phrases_pdf.py)"

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Cloud</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script type="text/javascript" src="../../ac.min.js"></script>
+    <script type="text/javascript" src="../../ac_conf.js"></script>
+    <script>
+        async function getServers() {
+
+            let urls;
+            try {
+                urls = await ClusterDiscovery.getClusterServers(location.origin);
+                let sb = [];
+                for (let url of urls) {
+                    sb.push(`<a target="_blank" href=${url}>${url}</a><br/>`);
+                }
+                document.getElementById('servers').innerHTML = sb.join('');
+
+            } catch (e) {
+                document.write('ClusterDiscovery failed:', e.message);
+            }
+        }
+
+        window.onload = getServers;
+        setInterval(() => {
+            document.getElementById('status').innerText += '.';
+            getServers();
+        }, 1000);
+
+    </script>
+</head>
+
+<body id="player">
+    <p>服务器列表：</p>
+    <p id="servers"></p>
+    <p id="status"></p>
+</body>
+
+</html>

@@ -45,7 +45,7 @@ SDK 各类是分批迭代出来的，同一类概念在不同类里偶尔会用�
 
 ## 索引
 
-[`ActionMode`](#actionmode) · [`AnimationMask`](#animationmask) · [`APIErrorCode`](#apierrorcode) · [`AssetType`](#assettype) · [`BPFuncParamType`](#bpfuncparamtype) · [`CloudStatus`](#cloudstatus) · [`Color`](#color) · [`DroneTrailStyle`](#dronetrailstyle) · [`FieldType`](#fieldtype) · [`ForwardAxis`](#forwardaxis) · [`HeatMapStyle`](#heatmapstyle) · [`HydroDynamic2DStyle`](#hydrodynamic2dstyle) · [`MapMode`](#mapmode) · [`MeasurementMode`](#measurementmode) · [`MousePickMask`](#mousepickmask) · [`OceanHeatMapStyle`](#oceanheatmapstyle) · [`PanelType`](#paneltype) · [`PlotStyle`](#plotstyle) · [`Polygon3DStyle`](#polygon3dstyle) · [`PolygonStyle`](#polygonstyle) · [`PolylineStyle`](#polylinestyle) · [`RendererType`](#renderertype) · [`ResetType`](#resettype) · [`SplineMeshStyle`](#splinemeshstyle) · [`UIPanelType`](#uipaneltype) · [`UISizeMode`](#uisizemode) · [`VectorFieldStyle`](#vectorfieldstyle) · [`VehicleViewMode`](#vehicleviewmode) · [`VERSION`](#version) · [`Viewport`](#viewport) · [`VisualType`](#visualtype) · [`WaterFlowFieldStyle`](#waterflowfieldstyle) · [`WaterMode`](#watermode)
+[`ActionMode`](#actionmode) · [`AnimationMask`](#animationmask) · [`APIErrorCode`](#apierrorcode) · [`AssetType`](#assettype) · [`BPFuncParamType`](#bpfuncparamtype) · [`CloudStatus`](#cloudstatus) · [`Color`](#color) · [`DroneTrailStyle`](#dronetrailstyle) · [`FieldType`](#fieldtype) · [`ForwardAxis`](#forwardaxis) · [`HeatMapStyle`](#heatmapstyle) · [`HydroDynamic2DStyle`](#hydrodynamic2dstyle) · [`MapMode`](#mapmode) · [`MeasurementMode`](#measurementmode) · [`MousePickMask`](#mousepickmask) · [`OceanHeatMapStyle`](#oceanheatmapstyle) · [`PanelType`](#paneltype) · [`PlotStyle`](#plotstyle) · [`Polygon3DStyle`](#polygon3dstyle) · [`PolygonStyle`](#polygonstyle) · [`PolylineStyle`](#polylinestyle) · [`RendererType`](#renderertype) · [`ResetType`](#resettype) · [`RockStyle`](#rockstyle) · [`SplineMeshStyle`](#splinemeshstyle) · [`UIPanelType`](#uipaneltype) · [`UISizeMode`](#uisizemode) · [`VectorFieldStyle`](#vectorfieldstyle) · [`VehicleViewMode`](#vehicleviewmode) · [`VERSION`](#version) · [`Viewport`](#viewport) · [`VisualType`](#visualtype) · [`WaterFlowFieldStyle`](#waterflowfieldstyle) · [`WaterMode`](#watermode)
 
 ## ActionMode
 
@@ -535,6 +535,16 @@ SDK 各类是分批迭代出来的，同一类概念在不同类里偶尔会用�
 | `ClearObjects` | 1 | 清除所有通过接口添加的对象 |
 | `ResetSettings` | 2 | 重置用户设置 |
 | `ResetCamera` | 4 | 复位相机到初始位置 |
+
+## RockStyle
+
+类型：`string` — 岩体材质样式枚举，用于 `Rockburst.addByStl` / `Rockburst.addByPak` 的 `data.style` 字段
+
+| 成员 | 值 | 说明 |
+|------|------|------|
+| `Rock_1` | `"Rock_1"` | 默认岩体材质 |
+
+> 官方 jsdoc 中仅公开 `Rock_1` 一个成员作为默认值。若需其他岩体观感，请以 SDK 实际支持的材质名为准，或改用 `data.material` 之类的贴图字段自行指定。
 
 ## SplineMeshStyle
 

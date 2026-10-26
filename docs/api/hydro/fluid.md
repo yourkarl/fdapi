@@ -13,6 +13,8 @@ Fluid流体仿真对象，实现对流体仿真对象的操作
 
 通过 `api.fluid` 访问。
 
+> 继承自 [`BaseObject`](/docs/api/utils/base-object)：本类对象支持 `updateBegin` / `updateEnd` 批量更新协议——连续多次调用属性设置接口时，用 `updateBegin()` 开启、`updateEnd(fn)` 提交，可合并为一次刷新，避免逐条调用造成的画面抖动与性能损耗。
+
 ## 业务场景 Skill
 
 > 本节面向 AI 与业务人员，说明本对象在数字孪生业务中的定位与典型用法。
@@ -66,6 +68,8 @@ new Fluid()
 | [`show`](#show) | 显示流体仿真 | 按业务条件显示对象 |
 | [`stopSource`](#stopSource) | 停止仿真 |  |
 | [`update`](#update) | 修改一个或多个流体仿真对象 | 运行时动态更新对象属性/状态 |
+| [`updateBegin`](#updateBegin) | 用于批量多次修改对象的属性 在开始修改之前调用updateBegin，然后可以多次调用setXXX方法，最后调用updateEnd提交修改更新数据 | 批量改属性前开启事务 |
+| [`updateEnd`](#updateEnd) | 用于批量多次修改对象的属性，与updateBegin配套使用 | 提交批量修改 |
 
 ## 方法（Methods）
 
@@ -387,7 +391,7 @@ fdapi.fluid.focus('ff');
 | `ids` | `string \| array` | 是 | - | 要获取的流体仿真对象ID或者ID数组（可以获取一个或者多个） |
 | `fn` | `function` | 否 | - | 可选的回调函数，请参考[二次开发：异步接口调用方式](/docs/tutorials/async-call) |
 
-**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），具体数据结构见示例。
+**返回：** 异步方法，查询结果通过回调函数 `fn` 返回（也可 `await` 获取），返回结构见下方「返回数据结构」。
 
 > **返回数据结构**
 
@@ -611,3 +615,26 @@ fdapi.fluid.stopSource(data);
 > 示例：Update
 
 `
+
+### `updateBegin()` {#updateBegin}
+
+用于批量多次修改对象的属性 在开始修改之前调用updateBegin，然后可以多次调用setXXX方法，最后调用updateEnd提交修改更新数据 注意： updateBegin不是异步调用，不需要await，也没有回调函数参数
+
+```js
+fdapi.xxx.updateBegin();
+for (let i = 0; i < 1000; i++) {
+     fdapi.xxx.setColor(i, Color.Yellow);
+} 
+fdapi.xxx.updateEnd(function () {
+     log('update finished!');
+});
+```
+
+
+### `updateEnd(fn)` {#updateEnd}
+
+用于批量多次修改对象的属性，与updateBegin配套使用 注意： updateEnd是异步调用，可以用回调函数也可以await
+
+| 参数 | 类型 | 必填 | 默认值 | 说明 |
+|------|------|:----:|--------|------|
+| `fn` | `function` | 否 | - | 可选的回调函数，请参考二次开发：异步接口调用方式 |
