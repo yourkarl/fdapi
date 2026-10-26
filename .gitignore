@@ -26,3 +26,11 @@ npm-debug.log*
 # 这里只是上游导出的完整副本，作为回溯备份留在本地，不进版本库。
 # 需要时从 SDK 安装目录重新导出 jsdoc 即可重建。
 参考资料/API原始参考文档/doc/images/
+
+# jsdoc 页面的运行时资源（jquery / monaco / codemirror / markerlayer.js 50MB 等）
+# 生成管线只读 api_examples.js、api_examples_ellipsoid.js、page_content.js 三个文件，
+# 其余仅在浏览器里打开原始 jsdoc 页面时才需要，本地保留、不做跟踪。
+参考资料/API原始参考文档/doc/scripts/*
+!参考资料/API原始参考文档/doc/scripts/api_examples.js
+!参考资料/API原始参考文档/doc/scripts/api_examples_ellipsoid.js
+!参考资料/API原始参考文档/doc/scripts/page_content.js
