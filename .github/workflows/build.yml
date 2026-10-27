@@ -1,5 +1,6 @@
-# 文档站构建检查：push / PR 时验证 docusaurus build 是否通过
-# 同时验证内容生成管线 Python 依赖可用，并执行内容完整性检查（杜绝半截写入损坏入库）
+# 文档站构建与部署：push / PR 时验证 docusaurus build 是否通过并执行内容门禁；
+# master 分支构建通过后自动部署到 GitHub Pages
+# （首次启用需在仓库 Settings → Pages → Build and deployment 选择 Source: GitHub Actions）
 name: build
 
 on:
@@ -10,6 +11,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
         with:
@@ -69,3 +72,25 @@ jobs:
           echo "派生物与源文档一致。"
 
       - run: npm run build
+
+      # master 分支的构建产物上传为 Pages 部署工件（PR 上不部署）
+      - name: Upload Pages artifact
+        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
