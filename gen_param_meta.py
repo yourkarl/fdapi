@@ -126,7 +126,9 @@ def parse_doc(path):
 def main():
     by_ns = {}
     global_fields = {}
-    for path in glob.glob(os.path.join(DOCS, '**', '*.md'), recursive=True):
+    # 必须排序：产物字节顺序不能依赖文件系统的遍历顺序（NTFS 与 ext4 不同，
+    # 否则 CI 上的「派生物一致」门禁会因 json.dumps 保留插入顺序而误报）
+    for path in sorted(glob.glob(os.path.join(DOCS, '**', '*.md'), recursive=True)):
         ns, fields, methods = parse_doc(path)
         if ns not in by_ns:
             by_ns[ns] = {'fields': {}, 'methods': {}}
